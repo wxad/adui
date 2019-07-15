@@ -1,0 +1,1 @@
+webpackJsonp(["components/message/index.md"],{"9ye2":function(e,n){e.exports={content:["article",["p","\u6309\u94ae\u7528\u4e8e\u5f00\u59cb\u4e00\u4e2a\u5373\u65f6\u64cd\u4f5c\u3002"],["h2","Props"],["h3","Message"]],meta:{category:"Components",type:"General",title:"Message",subtitle:"\u5168\u5c40\u63d0\u9192",filename:"components/message/index.md"}}}});

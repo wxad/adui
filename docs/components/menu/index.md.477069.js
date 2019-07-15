@@ -1,0 +1,1 @@
+webpackJsonp(["components/menu/index.md"],{qkCF:function(e,n){e.exports={content:["article",["p","\u6309\u94ae\u7528\u4e8e\u5f00\u59cb\u4e00\u4e2a\u5373\u65f6\u64cd\u4f5c\u3002"],["h2","Props"],["h3","Pagination"]],meta:{category:"Components",type:"General",title:"Menu",subtitle:"\u884c\u52a8\u83dc\u5355",filename:"components/menu/index.md"}}}});

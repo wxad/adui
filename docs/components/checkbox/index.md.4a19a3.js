@@ -1,0 +1,1 @@
+webpackJsonp(["components/checkbox/index.md"],{ehGm:function(e,o){e.exports={content:["article",["p","\u6309\u94ae\u7528\u4e8e\u5f00\u59cb\u4e00\u4e2a\u5373\u65f6\u64cd\u4f5c\u3002"],["h2","Props"],["h3","Checkbox"],["h3","Checkbox.Group"]],meta:{category:"Components",type:"General",title:"Checkbox",subtitle:"\u52fe\u9009",filename:"components/checkbox/index.md"}}}});
