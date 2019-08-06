@@ -1,1 +1,0 @@
-webpackJsonp(["components/table/index.md"],{Ohkq:function(e,t){e.exports={content:["article",["p","\u6309\u94ae\u7528\u4e8e\u5f00\u59cb\u4e00\u4e2a\u5373\u65f6\u64cd\u4f5c\u3002"],["h2","Props"],["h3","Table"],["h3","Table.Column"]],meta:{category:"Components",type:"General",title:"Table",subtitle:"\u8868\u683c",filename:"components/table/index.md"}}}});

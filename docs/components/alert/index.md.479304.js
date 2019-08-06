@@ -1,1 +1,0 @@
-webpackJsonp(["components/alert/index.md"],{"3mTp":function(e,t){e.exports={content:["article",["p","\u6309\u94ae\u7528\u4e8e\u5f00\u59cb\u4e00\u4e2a\u5373\u65f6\u64cd\u4f5c\u3002"],["h2","Props"],["h3","Alert"]],meta:{category:"Components",type:"General",title:"Alert",subtitle:"\u63d0\u9192",filename:"components/alert/index.md"}}}});

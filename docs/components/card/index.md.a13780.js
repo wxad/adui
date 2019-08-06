@@ -1,1 +1,0 @@
-webpackJsonp(["components/card/index.md"],{VIxR:function(e,n){e.exports={content:["article",["p","\u5361\u7247\u7ec4\u4ef6\u7528\u4e8e\u5361\u7247\u5e03\u5c40\u3002"],["h2","Props"],["h3","Card"],["h3","Card.Header"]],meta:{category:"Components",type:"General",title:"Card",subtitle:"\u5361\u7247\u7ec4\u4ef6",filename:"components/card/index.md"}}}});

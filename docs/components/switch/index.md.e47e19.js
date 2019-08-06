@@ -1,1 +1,0 @@
-webpackJsonp(["components/switch/index.md"],{aqZ4:function(t,e){t.exports={content:["article",["p","\u6309\u94ae\u7528\u4e8e\u5f00\u59cb\u4e00\u4e2a\u5373\u65f6\u64cd\u4f5c\u3002"],["h2","Props"],["h3","Switch"]],meta:{category:"Components",type:"General",title:"Switch",subtitle:"\u5f00\u5173",filename:"components/switch/index.md"}}}});

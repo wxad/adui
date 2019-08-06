@@ -1,1 +1,0 @@
-webpackJsonp(["components/slider/index.md"],{AogS:function(e,n){e.exports={content:["article",["h2","Props"],["h3","Slider"]],meta:{category:"Components",type:"General",title:"Slider",subtitle:"\u6ed1\u52a8\u6761",filename:"components/slider/index.md"}}}});
