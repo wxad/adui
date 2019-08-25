@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[44],{1718:function(e,t){e.exports={content:["article",["p","按钮用于开始一个即时操作。"],["h2","Props"],["h3","Suggest"]],meta:{category:"Components",type:"General",title:"Suggest",subtitle:"弹出气泡",filename:"components/suggest/index.md"}}}}]);
