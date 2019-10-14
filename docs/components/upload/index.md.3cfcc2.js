@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[64],{1736:function(e,o){e.exports={content:["article",["p","旋转加载用于告知用户信息内容的加载状态，通常是即时、短时的。"],["h2","Props"],["h3","Upload.Img"]],meta:{category:"Components",type:"General",title:"Upload",subtitle:"上传",filename:"components/upload/index.md"}}}}]);

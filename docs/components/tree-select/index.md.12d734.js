@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[62],{1734:function(e,t){e.exports={content:["article",["p","按钮用于开始一个即时操作。"],["h2","Props"],["h3","TreeSelect"],["h3","TreeSelect.TreeNode"]],meta:{category:"Components",type:"General",title:"TreeSelect",subtitle:"树形选择",filename:"components/tree-select/index.md"}}}}]);

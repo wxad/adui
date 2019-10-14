@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[53],{1725:function(e,n){e.exports={content:["article",["p","表格是一种格式化信息的展示形式。通常服务于大量数据浏览、管理场景。"],["h2","Props"],["h3","Table"],["h3","Table.Column"]],meta:{category:"Components",type:"General",title:"Table",subtitle:"表格",filename:"components/table/index.md"}}}}]);
