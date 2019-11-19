@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[31],{1507:function(e,n){e.exports={content:["article",["p","分页器用于将大量内容以分页形式间隔，切换选择查看。"],["h2","Props"],["h3","NumericInput"]],meta:{category:"Components",type:"General",title:"NumericInput",subtitle:"数字输入框",filename:"components/numeric-input/index.md"}}}}]);
