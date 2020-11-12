@@ -1,9 +1,5 @@
 name: Deploy website
-on:
-  release:
-    types: [published]
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   build-and-deploy:
