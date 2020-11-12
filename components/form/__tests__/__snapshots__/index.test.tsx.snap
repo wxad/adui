@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form 是否正确渲染 1`] = `
+<div
+  className="adui-form-base"
+>
+  <div
+    className="adui-form-item"
+    style={Object {}}
+  >
+    <div
+      className="adui-form-label"
+      style={
+        Object {
+          "justifyContent": "flex-start",
+          "width": "nullem",
+        }
+      }
+    >
+      名称
+      <svg
+        className="adui-icon-base adui-icon-interactive adui-icon-interactive_level_2"
+        data-icon="help-circle"
+        data-interactive={true}
+        fill="var(--gray-600)"
+        height={18}
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "marginLeft": "4px",
+          }
+        }
+        viewBox="0 0 18 18"
+        width={18}
+      >
+        <path
+          d="M9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16ZM8 13.5H9.5V12H8V13.5ZM9.50346 10.5C9.50346 10.296 9.71546 10.136 10.5035 9.5C11.2235 8.919 12.0035 8.453 12.0035 7.25C12.0035 6.365 11.6825 5.672 11.1245 5.221C10.5565 4.761 9.90046 4.5 9.00346 4.5C7.94446 4.5 7.13046 4.85 6.56746 5.439C5.92046 6.115 6.00346 6.838 6.00346 7.5H7.50346V7.221C7.50346 6.939 7.55946 6.513 8.00346 6.221C8.21746 6.08 8.60846 6.004 9.00446 6C9.38546 5.996 9.76946 6.06 10.0035 6.221C10.4735 6.546 10.5035 6.895 10.5035 7.25C10.5035 7.638 10.1675 8.013 9.50346 8.5C8.49746 9.238 8.00346 9.518 8.00346 10V11H9.50546C9.50546 10.756 9.50346 10.752 9.50346 10.5Z"
+          fillRule="evenodd"
+        />
+        <g
+          className="adui-icon-interactive-cover"
+          fill="#000"
+        >
+          <path
+            d="M9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16ZM8 13.5H9.5V12H8V13.5ZM9.50346 10.5C9.50346 10.296 9.71546 10.136 10.5035 9.5C11.2235 8.919 12.0035 8.453 12.0035 7.25C12.0035 6.365 11.6825 5.672 11.1245 5.221C10.5565 4.761 9.90046 4.5 9.00346 4.5C7.94446 4.5 7.13046 4.85 6.56746 5.439C5.92046 6.115 6.00346 6.838 6.00346 7.5H7.50346V7.221C7.50346 6.939 7.55946 6.513 8.00346 6.221C8.21746 6.08 8.60846 6.004 9.00446 6C9.38546 5.996 9.76946 6.06 10.0035 6.221C10.4735 6.546 10.5035 6.895 10.5035 7.25C10.5035 7.638 10.1675 8.013 9.50346 8.5C8.49746 9.238 8.00346 9.518 8.00346 10V11H9.50546C9.50546 10.756 9.50346 10.752 9.50346 10.5Z"
+            fillRule="evenodd"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      className="adui-form-control"
+    >
+      dondondong
+      <div
+        className="adui-form-tip adui-form-tip_normal"
+      >
+        这表示名称
+      </div>
+    </div>
+  </div>
+  <div
+    className="adui-form-item"
+    style={Object {}}
+  >
+    <div
+      className="adui-form-label"
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "width": "nullem",
+        }
+      }
+    >
+      性别
+    </div>
+    <div
+      className="adui-form-control"
+    >
+      男
+    </div>
+  </div>
+  <div
+    className="adui-form-item"
+    style={Object {}}
+  >
+    <div
+      className="adui-form-label"
+      style={
+        Object {
+          "justifyContent": "center",
+          "width": "nullem",
+        }
+      }
+    >
+      职业
+    </div>
+    <div
+      className="adui-form-control"
+    >
+      设计师
+    </div>
+  </div>
+</div>
+`;

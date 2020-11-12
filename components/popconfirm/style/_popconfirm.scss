@@ -1,0 +1,12 @@
+$prefix: "adui-popconfirm";
+
+.#{$prefix} {
+  &-top {
+    padding: 20px;
+  }
+  &-bottom {
+    padding: 8px;
+    text-align: right;
+    box-shadow: 0 -1px 0 0 var(--gray-300);
+  }
+}

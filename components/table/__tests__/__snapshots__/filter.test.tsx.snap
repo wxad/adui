@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`筛选功能 是否正确渲染 1`] = `
+<div
+  className="adui-table-wrapper adui-table-small"
+>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "top": "40px",
+        "zIndex": "calc(var(--z-index-affix) + 2)",
+      }
+    }
+  />
+  <div
+    className="adui-table-tables"
+    style={
+      Object {
+        "maxHeight": undefined,
+        "paddingTop": "",
+      }
+    }
+  >
+    <div
+      className="adui-table-mainTable"
+      onScroll={[Function]}
+      role="table"
+    >
+      <div
+        className="adui-table-thead"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "height": "40px",
+          }
+        }
+      >
+        <div
+          className="adui-table-th adui-table-th_clickable"
+          data-column={0}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": undefined,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": undefined,
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": undefined,
+              }
+            }
+          >
+            <div
+              className="adui-table-filter"
+              data-value={
+                Array [
+                  "all",
+                ]
+              }
+              onClick={[Function]}
+              onMouseDown={[Function]}
+              onTouchStart={[Function]}
+              role="columnheader"
+            >
+              筛选
+              <svg
+                className="adui-icon-base"
+                data-icon="filter-outlined"
+                data-interactive={false}
+                fill="var(--gray-700)"
+                height={18}
+                onClick={[Function]}
+                viewBox="0 0 18 18"
+                width={18}
+              >
+                <path
+                  d="M7 10.0119L3.16049 5.23537C3.06738 5.11954 3 4.92396 3 4.7861L3 3.49279C3 3.21786 3.22401 3 3.50035 3H14.4997C14.771 3 15 3.22063 15 3.49279V4.7861C15 4.92627 14.9281 5.1251 14.8395 5.23537L11 10.0119V14.2474C11 14.663 10.659 15 10.2476 15H7.75237C7.33685 15 7 14.6562 7 14.2474V10.0119ZM8.5 9.5V13.5H9.5V9.5L13.247 4.78283V4.5H4.74627V4.78283L8.5 9.5Z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="adui-table-tbody"
+      >
+        <div
+          className="adui-table-tr"
+          data-row={0}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                filter
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

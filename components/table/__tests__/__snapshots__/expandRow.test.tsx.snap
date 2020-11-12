@@ -1,0 +1,321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`base 快照核对 1`] = `
+<div
+  className="adui-table-wrapper adui-table-small"
+>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "top": "40px",
+        "zIndex": "calc(var(--z-index-affix) + 2)",
+      }
+    }
+  />
+  <div
+    className="adui-table-tables"
+    style={
+      Object {
+        "maxHeight": undefined,
+        "paddingTop": "",
+      }
+    }
+  >
+    <div
+      className="adui-table-mainTable"
+      onScroll={[Function]}
+      role="table"
+    >
+      <div
+        className="adui-table-thead"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "height": "40px",
+          }
+        }
+      >
+        <div
+          className="adui-table-th adui-table-th_functional"
+        />
+        <div
+          className="adui-table-th"
+          data-column={0}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": undefined,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": undefined,
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": undefined,
+              }
+            }
+          >
+            one
+          </div>
+        </div>
+      </div>
+      <div
+        className="adui-table-tbody"
+      >
+        <div
+          className="adui-table-tr"
+          data-row={0}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_functional"
+            role="cell"
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-selectComponent"
+                onClick={[Function]}
+                role="none"
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
+              >
+                <svg
+                  className="adui-table-expandIcon adui-icon-base"
+                  data-icon="arrow-down"
+                  data-interactive={false}
+                  fill="var(--gray-700)"
+                  height={18}
+                  onClick={[Function]}
+                  viewBox="0 0 18 18"
+                  width={18}
+                >
+                  <path
+                    d="M14.303 6.70001L13.9495 6.34646C13.7542 6.1512 13.4376 6.1512 13.2424 6.34646L9.00048 10.5893L4.75709 6.34646C4.56183 6.1512 4.24525 6.1512 4.04999 6.34646L3.69643 6.70001C3.50117 6.89527 3.50117 7.21186 3.69643 7.40712L8.64618 12.3569C8.84144 12.5521 9.15803 12.5521 9.35329 12.3569L14.303 7.40712C14.4983 7.21186 14.4983 6.89527 14.303 6.70001Z"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                第一项
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr adui-table-tr_expanded"
+          data-row={1}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_functional"
+            role="cell"
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-selectComponent"
+                onClick={[Function]}
+                role="none"
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
+              >
+                <svg
+                  className="adui-table-expandIcon adui-icon-base"
+                  data-icon="arrow-down"
+                  data-interactive={false}
+                  fill="var(--gray-700)"
+                  height={18}
+                  onClick={[Function]}
+                  viewBox="0 0 18 18"
+                  width={18}
+                >
+                  <path
+                    d="M14.303 6.70001L13.9495 6.34646C13.7542 6.1512 13.4376 6.1512 13.2424 6.34646L9.00048 10.5893L4.75709 6.34646C4.56183 6.1512 4.24525 6.1512 4.04999 6.34646L3.69643 6.70001C3.50117 6.89527 3.50117 7.21186 3.69643 7.40712L8.64618 12.3569C8.84144 12.5521 9.15803 12.5521 9.35329 12.3569L14.303 7.40712C14.4983 7.21186 14.4983 6.89527 14.303 6.70001Z"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                第二项
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-expandRow"
+        >
+          
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={2}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_functional"
+            role="cell"
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-selectComponent"
+                onClick={[Function]}
+                role="none"
+                style={
+                  Object {
+                    "cursor": "pointer",
+                  }
+                }
+              >
+                <svg
+                  className="adui-table-expandIcon adui-icon-base"
+                  data-icon="arrow-down"
+                  data-interactive={false}
+                  fill="var(--gray-700)"
+                  height={18}
+                  onClick={[Function]}
+                  viewBox="0 0 18 18"
+                  width={18}
+                >
+                  <path
+                    d="M14.303 6.70001L13.9495 6.34646C13.7542 6.1512 13.4376 6.1512 13.2424 6.34646L9.00048 10.5893L4.75709 6.34646C4.56183 6.1512 4.24525 6.1512 4.04999 6.34646L3.69643 6.70001C3.50117 6.89527 3.50117 7.21186 3.69643 7.40712L8.64618 12.3569C8.84144 12.5521 9.15803 12.5521 9.35329 12.3569L14.303 7.40712C14.4983 7.21186 14.4983 6.89527 14.303 6.70001Z"
+                    fillRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                第三项
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

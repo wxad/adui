@@ -1,0 +1,169 @@
+$prefix: "adui-card";
+
+.#{$prefix} {
+  &-base {
+    background-color: #fff;
+    border-radius: 6px;
+  }
+  &-header {
+    padding: 20px 24px;
+  }
+  &-headerBlock {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-headerTop {
+    flex: 1;
+  }
+  &-title {
+    color: var(--gray-900);
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  &-subTitle {
+    color: var(--gray-800);
+  }
+  &-large {
+    &.#{$prefix}-header {
+      padding: 24px 24px 28px;
+    }
+
+    .#{$prefix}-title {
+      font-size: 18px;
+    }
+
+    .#{$prefix}-subTitle {
+      margin-top: 8px;
+      font-size: 16px;
+    }
+
+    .#{$prefix}-children {
+      margin-top: 20px;
+    }
+  }
+  &-medium {
+    &.#{$prefix}-header {
+      padding: 20px 20px 20px 24px;
+    }
+
+    .#{$prefix}-title {
+      font-size: 16px;
+    }
+
+    .#{$prefix}-subTitle {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    .#{$prefix}-children {
+      margin-top: 16px;
+    }
+  }
+  &-small {
+    &.#{$prefix}-header {
+      padding: 16px 16px 20px 24px;
+    }
+
+    .#{$prefix}-title {
+      font-size: 14px;
+    }
+
+    .#{$prefix}-subTitle {
+      margin-top: 2px;
+      font-size: 13px;
+    }
+
+    .#{$prefix}-children {
+      margin-top: 12px;
+    }
+  }
+  &-mini {
+    &.#{$prefix}-header {
+      padding: 16px 16px 20px 24px;
+    }
+
+    .#{$prefix}-title {
+      font-size: 13px;
+    }
+
+    .#{$prefix}-subTitle {
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    .#{$prefix}-children {
+      margin-top: 12px;
+    }
+  }
+
+  &-elevation_0 {
+    box-shadow: var(--box-shadow-elevation-0);
+  }
+
+  &-elevation_1 {
+    box-shadow: var(--box-shadow-elevation-1);
+  }
+
+  &-elevation_2 {
+    box-shadow: var(--box-shadow-elevation-2);
+  }
+
+  &-elevation_3 {
+    box-shadow: var(--box-shadow-elevation-3);
+  }
+
+  &-elevation_4 {
+    box-shadow: var(--box-shadow-elevation-4);
+  }
+
+  &-interactive {
+    cursor: pointer;
+    transition: box-shadow var(--ease-in-out) var(--motion-duration-base);
+
+    &.#{$prefix}-elevation_0 {
+      &:hover {
+        box-shadow: var(--box-shadow-elevation-2);
+      }
+
+      &:active {
+        box-shadow: var(--box-shadow-elevation-1);
+      }
+    }
+
+    &.#{$prefix}-elevation_1 {
+      &:hover {
+        box-shadow: var(--box-shadow-elevation-3);
+      }
+      &:active {
+        box-shadow: var(--box-shadow-elevation-1);
+      }
+    }
+
+    &.#{$prefix}-elevation_2 {
+      &:hover {
+        box-shadow: var(--box-shadow-elevation-3);
+      }
+      &:active {
+        box-shadow: var(--box-shadow-elevation-1);
+      }
+    }
+
+    &.#{$prefix}-elevation_3 {
+      &:hover {
+        box-shadow: var(--box-shadow-elevation-3);
+      }
+      &:active {
+        box-shadow: var(--box-shadow-elevation-1);
+      }
+    }
+
+    &.#{$prefix}-elevation_4 {
+      &:hover {
+        box-shadow: var(--box-shadow-elevation-3);
+      }
+      &:active {
+        box-shadow: var(--box-shadow-elevation-1);
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>导航 / right</title>
+    <desc>Created with Sketch.</desc>
+    <g id="导航-/-right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10,10 L3.5,10 C3.22385763,10 3,9.77614237 3,9.5 L3,8.5 C3,8.22385763 3.22385763,8 3.5,8 L10,8 L10,5.99703014 C10,5.45303631 10.3497775,5.27982203 10.78125,5.625 L14.6076584,8.68612671 C14.8220474,8.85763788 14.8243427,9.14052586 14.6076584,9.31387329 L10.78125,12.375 C10.3436702,12.7250638 10,12.5536144 10,12.0029699 L10,10 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

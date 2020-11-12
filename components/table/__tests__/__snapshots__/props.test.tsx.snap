@@ -1,0 +1,1134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table loading 快照 1`] = `
+<div
+  className="adui-table-wrapper adui-table-small adui-table-loading"
+>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "top": "40px",
+        "zIndex": "calc(var(--z-index-affix) + 2)",
+      }
+    }
+  >
+    <div
+      className="adui-table-progress"
+    >
+      <i />
+      <i />
+    </div>
+  </div>
+  <div
+    className="adui-table-tables"
+    style={
+      Object {
+        "maxHeight": undefined,
+        "paddingTop": "",
+      }
+    }
+  >
+    <div
+      className="adui-table-mainTable"
+      onScroll={[Function]}
+      role="table"
+    >
+      <div
+        className="adui-table-thead"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "height": "40px",
+          }
+        }
+      >
+        <div
+          className="adui-table-th adui-table-th_left"
+          data-column={0}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": 0,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": undefined,
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": undefined,
+              }
+            }
+          >
+            第一项
+          </div>
+        </div>
+      </div>
+      <div
+        className="adui-table-tbody"
+      >
+        <div
+          className="adui-table-tr"
+          data-row={0}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={1}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={2}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={3}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={3}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={4}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={4}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Table 合并单元格快照 1`] = `
+<div
+  className="adui-table-wrapper adui-table-small"
+>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "top": "40px",
+        "zIndex": "calc(var(--z-index-affix) + 2)",
+      }
+    }
+  />
+  <div
+    className="adui-table-tables adui-table-hasFixedRightColumns"
+    style={
+      Object {
+        "maxHeight": undefined,
+        "paddingTop": "",
+      }
+    }
+  >
+    <div
+      className="adui-table-mainTable"
+      onScroll={[Function]}
+      role="table"
+    >
+      <div
+        className="adui-table-thead"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "height": "40px",
+          }
+        }
+      >
+        <div
+          className="adui-table-th adui-table-th_left"
+          data-column={0}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": 0,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": undefined,
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": undefined,
+              }
+            }
+          >
+            第一项
+          </div>
+        </div>
+        <div
+          className="adui-table-th adui-table-th_left"
+          data-column={1}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": 0,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": undefined,
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": undefined,
+              }
+            }
+          >
+            第er项
+          </div>
+        </div>
+        <div
+          className="adui-table-th"
+          data-column={2}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": undefined,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": "center",
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": "center",
+              }
+            }
+          >
+            第3项
+            <div
+              className="adui-table-resizer"
+              onMouseDown={[Function]}
+              role="none"
+            />
+          </div>
+        </div>
+        <div
+          className="adui-table-th adui-table-th_right"
+          data-column={3}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": undefined,
+              "maxWidth": "",
+              "right": 0,
+              "textAlign": "center",
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": "center",
+              }
+            }
+          >
+            第四项
+          </div>
+        </div>
+      </div>
+      <div
+        className="adui-table-tbody"
+      >
+        <div
+          className="adui-table-tr"
+          data-row={0}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+                <div
+                  className="adui-table-cell_combined"
+                  style={Object {}}
+                >
+                  阿萨德
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={1}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={2}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_right"
+            data-column={3}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={1}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={1}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={2}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_right"
+            data-column={3}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={2}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+                <div
+                  className="adui-table-cell_combined"
+                  style={
+                    Object {
+                      "height": "calc(100% - 1px)",
+                      "width": "calc(100% - 1px)",
+                    }
+                  }
+                >
+                  阿萨德
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={1}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={2}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_right"
+            data-column={3}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={3}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={3}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={1}
+            data-row={3}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={2}
+            data-row={3}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德
+                <div
+                  className="adui-table-cell_combined"
+                  style={
+                    Object {
+                      "width": "calc(100% - 1px)",
+                    }
+                  }
+                >
+                  阿萨德阿萨德阿萨德阿萨德阿萨德
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_right"
+            data-column={3}
+            data-row={3}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+                <div
+                  className="adui-table-cell_combined"
+                  style={
+                    Object {
+                      "width": "calc(100% - 1px)",
+                    }
+                  }
+                >
+                  阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={4}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={0}
+            data-row={4}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_left"
+            data-column={1}
+            data-row={4}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": 0,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={2}
+            data-row={4}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+          <div
+            className="adui-table-td adui-table-td_right"
+            data-column={3}
+            data-row={4}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

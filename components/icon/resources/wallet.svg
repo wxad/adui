@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>工具 / wallet</title>
+    <desc>Created with Sketch.</desc>
+    <g id="工具-/-wallet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2.5,4 L15.5,4 C15.7761424,4 16,4.22385763 16,4.5 L16,14.5 C16,14.7761424 15.7761424,15 15.5,15 L2.5,15 C2.22385763,15 2,14.7761424 2,14.5 L2,4.5 C2,4.22385763 2.22385763,4 2.5,4 Z M10.5,7 C9.11928813,7 8,8.11928813 8,9.5 C8,10.8807119 9.11928813,12 10.5,12 L14.5,12 L14.5,7 L10.5,7 Z M10.5,10.25 C10.0857864,10.25 9.75,9.91421356 9.75,9.5 C9.75,9.08578644 10.0857864,8.75 10.5,8.75 C10.9142136,8.75 11.25,9.08578644 11.25,9.5 C11.25,9.91421356 10.9142136,10.25 10.5,10.25 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

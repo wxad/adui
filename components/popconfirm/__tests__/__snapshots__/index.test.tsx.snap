@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popconfirm 是否正确渲染 1`] = `
+<span
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onTouchStart={[Function]}
+>
+  children
+</span>
+`;

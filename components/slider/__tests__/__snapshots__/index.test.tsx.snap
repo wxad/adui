@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider Slider 是否正确渲染 1`] = `
+<div
+  className="adui-slider-wrapper"
+  style={Object {}}
+>
+  <div
+    className="adui-slider"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    onTouchStart={[Function]}
+  >
+    <div
+      className="adui-slider-rail"
+      style={Object {}}
+    />
+    <div
+      className="adui-slider-track"
+      style={
+        Object {
+          "left": "0%",
+          "right": "auto",
+          "width": "0%",
+        }
+      }
+    />
+    <div
+      className="adui-slider-step"
+    />
+    <div
+      aria-disabled={false}
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      className="adui-slider-handle"
+      onBlur={[Function]}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      role="slider"
+      style={
+        Object {
+          "left": "0%",
+          "right": "auto",
+          "transform": "translateX(-50%)",
+        }
+      }
+      tabIndex={0}
+    />
+    <div
+      className="adui-slider-mark"
+    />
+  </div>
+  <div
+    className="adui-numeric-input adui-input-wrapper adui-input-small adui-input-normal"
+    style={
+      Object {
+        "height": "22px",
+        "marginLeft": "12px",
+        "width": "56px",
+      }
+    }
+  >
+    <input
+      autoComplete="off"
+      autoFocus={false}
+      className="adui-input-base"
+      disabled={false}
+      id={null}
+      name={null}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      placeholder=""
+      required={false}
+      style={
+        Object {
+          "paddingLeft": undefined,
+          "paddingRight": undefined,
+        }
+      }
+      type={null}
+      value=""
+    />
+    <div
+      className="adui-input-right"
+      onClick={[Function]}
+      role="none"
+    >
+      <div
+        className="adui-numeric-input-buttons"
+      >
+        <div
+          className="adui-numeric-input-button"
+          onMouseDown={[Function]}
+          role="none"
+        >
+          <svg
+            className="adui-icon-base adui-icon-interactive adui-icon-interactive_level_2"
+            data-icon="arrow-up"
+            data-interactive={true}
+            fill="var(--gray-700)"
+            height={12}
+            onClick={[Function]}
+            viewBox="0 0 18 18"
+            width={12}
+          >
+            <path
+              d="M14.303 11.3033L13.9495 11.6569C13.7542 11.8521 13.4376 11.8521 13.2424 11.6569L9.00048 7.414L4.75709 11.6569C4.56183 11.8521 4.24525 11.8521 4.04999 11.6569L3.69643 11.3033C3.50117 11.108 3.50117 10.7915 3.69643 10.5962L8.64618 5.64645C8.84144 5.45118 9.15803 5.45118 9.35329 5.64645L14.303 10.5962C14.4983 10.7915 14.4983 11.108 14.303 11.3033Z"
+              fillRule="evenodd"
+            />
+            <g
+              className="adui-icon-interactive-cover"
+              fill="#000"
+            >
+              <path
+                d="M14.303 11.3033L13.9495 11.6569C13.7542 11.8521 13.4376 11.8521 13.2424 11.6569L9.00048 7.414L4.75709 11.6569C4.56183 11.8521 4.24525 11.8521 4.04999 11.6569L3.69643 11.3033C3.50117 11.108 3.50117 10.7915 3.69643 10.5962L8.64618 5.64645C8.84144 5.45118 9.15803 5.45118 9.35329 5.64645L14.303 10.5962C14.4983 10.7915 14.4983 11.108 14.303 11.3033Z"
+                fillRule="evenodd"
+              />
+            </g>
+          </svg>
+        </div>
+        <div
+          className="adui-numeric-input-button"
+          onMouseDown={[Function]}
+          role="none"
+        >
+          <svg
+            className="adui-icon-base adui-icon-interactive adui-icon-interactive_level_2"
+            data-icon="arrow-down"
+            data-interactive={true}
+            fill="var(--gray-700)"
+            height={12}
+            onClick={[Function]}
+            viewBox="0 0 18 18"
+            width={12}
+          >
+            <path
+              d="M14.303 6.70001L13.9495 6.34646C13.7542 6.1512 13.4376 6.1512 13.2424 6.34646L9.00048 10.5893L4.75709 6.34646C4.56183 6.1512 4.24525 6.1512 4.04999 6.34646L3.69643 6.70001C3.50117 6.89527 3.50117 7.21186 3.69643 7.40712L8.64618 12.3569C8.84144 12.5521 9.15803 12.5521 9.35329 12.3569L14.303 7.40712C14.4983 7.21186 14.4983 6.89527 14.303 6.70001Z"
+              fillRule="evenodd"
+            />
+            <g
+              className="adui-icon-interactive-cover"
+              fill="#000"
+            >
+              <path
+                d="M14.303 6.70001L13.9495 6.34646C13.7542 6.1512 13.4376 6.1512 13.2424 6.34646L9.00048 10.5893L4.75709 6.34646C4.56183 6.1512 4.24525 6.1512 4.04999 6.34646L3.69643 6.70001C3.50117 6.89527 3.50117 7.21186 3.69643 7.40712L8.64618 12.3569C8.84144 12.5521 9.15803 12.5521 9.35329 12.3569L14.303 7.40712C14.4983 7.21186 14.4983 6.89527 14.303 6.70001Z"
+                fillRule="evenodd"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

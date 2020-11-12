@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>工具 / report-outlined</title>
+    <desc>Created with Sketch.</desc>
+    <g id="工具-/-report-outlined" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2.5,14.9230769 L2.5,3.07692308 C2.5,2.21538462 2.71727273,2 3.59,2 L12.24295,2 C12.3873447,2 12.5799975,2.07999752 12.6786795,2.17867947 L15.3213205,4.82132053 C15.4258423,4.92584229 15.5,5.10982048 15.5,5.2452909 L15.5,14.9230769 C15.5,15.7846154 15.2827273,16 14.41,16 L3.59,16 C2.71727273,16 2.5,15.7846154 2.5,14.9230769 Z M11.5,3.5 L4,3.5 L4,14.5 L14,14.5 L14,6 L11.5,6 L11.5,3.5 Z M6,5.5 L10,5.5 L10,6.75 L6,6.75 L6,5.5 Z M6,8.5 L12,8.5 L12,9.75 L6,9.75 L6,8.5 Z M6,11.5 L12,11.5 L12,12.75 L6,12.75 L6,11.5 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

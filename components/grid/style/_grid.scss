@@ -1,0 +1,10 @@
+$prefix: "adui-grid";
+
+.#{$prefix}-row {
+  display: flex;
+}
+@for $i from 1 through 12 {
+  .#{$prefix}-col_#{$i} {
+    width: percentage($i / 12);
+  }
+}

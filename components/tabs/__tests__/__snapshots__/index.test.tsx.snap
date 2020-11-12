@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs 验证 setIndicatorStyle 快照 1`] = `ReactWrapper {}`;
+
+exports[`Tabs 验证 setIndicatorStyle 快照 2`] = `ReactWrapper {}`;
+
+exports[`Tabs 验证快照 1`] = `
+<div
+  className="adui-tabs-base adui-tabs-small"
+>
+  <div
+    className="adui-tabs-indicator"
+    style={Object {}}
+  />
+  <div
+    aria-disabled={false}
+    aria-selected={false}
+    className="adui-tabs-tab"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="tab"
+    style={
+      Object {
+        "marginRight": "10px",
+      }
+    }
+    tabIndex={-1}
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`Tabs 验证快照 2`] = `
+<div
+  className="adui-tabs-base adui-tabs-small"
+>
+  <div
+    className="adui-tabs-indicator"
+    style={Object {}}
+  />
+  string
+</div>
+`;

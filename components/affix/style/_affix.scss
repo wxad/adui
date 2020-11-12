@@ -1,0 +1,5 @@
+$prefix: "adui-affix";
+
+.#{$prefix}-base {
+  z-index: var(--z-index-affix);
+}

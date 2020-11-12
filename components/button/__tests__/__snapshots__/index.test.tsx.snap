@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button 是否支持 link button 1`] = `
+<a
+  className="adui-button-base adui-button-normal adui-button-small"
+  disabled={false}
+  href="https://ad.weixin.qq.com"
+  onClick={[Function]}
+  target="_blank"
+>
+  <span
+    className="adui-button-content"
+  >
+    link button
+  </span>
+</a>
+`;
+
+exports[`Button 是否正确渲染 1`] = `
+<button
+  className="adui-button-base adui-button-normal adui-button-small adui-button-hasLeftIcon adui-button-hasRightIcon"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <svg
+    className="adui-button-leftIcon adui-icon-base"
+    data-icon="add"
+    data-interactive={false}
+    fill="var(--gray-700)"
+    height={18}
+    onClick={[Function]}
+    viewBox="0 0 18 18"
+    width={18}
+  >
+    <path
+      d="M8.25 14.5C8.25 14.7761 8.47386 15 8.75 15H9.25C9.52614 15 9.75 14.7761 9.75 14.5V9.75H14.5C14.7761 9.75 15 9.52614 15 9.25V8.75C15 8.47386 14.7761 8.25 14.5 8.25H9.75V3.5C9.75 3.22386 9.52614 3 9.25 3H8.75C8.47386 3 8.25 3.22386 8.25 3.5V8.25H3.5C3.22386 8.25 3 8.47386 3 8.75V9.25C3 9.52614 3.22386 9.75 3.5 9.75H8.25V14.5Z"
+      fillRule="evenodd"
+    />
+  </svg>
+  <span
+    className="adui-button-content"
+  >
+    按钮
+  </span>
+  <svg
+    className="adui-button-rightIcon adui-icon-base"
+    data-icon="tick"
+    data-interactive={false}
+    fill="var(--gray-700)"
+    height={18}
+    onClick={[Function]}
+    viewBox="0 0 18 18"
+    width={18}
+  >
+    <path
+      d="M7.44975 11.3995L13.4602 5.38912C13.6554 5.19386 13.972 5.19386 14.1673 5.38912L14.8744 6.09623C15.0696 6.29149 15.0696 6.60807 14.8744 6.80334L7.8033 13.8744C7.60804 14.0697 7.29146 14.0697 7.09619 13.8744L2.85355 9.63176C2.65829 9.4365 2.65829 9.11992 2.85355 8.92466L3.56066 8.21755C3.75592 8.02229 4.07251 8.02229 4.26777 8.21755L7.44975 11.3995Z"
+      fillRule="evenodd"
+    />
+  </svg>
+</button>
+`;

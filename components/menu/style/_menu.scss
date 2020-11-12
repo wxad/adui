@@ -1,0 +1,108 @@
+$prefix: "adui-menu";
+
+.#{$prefix} {
+  &-base,
+  &-dropdown {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    min-width: 160px;
+  }
+  &-sub {
+    position: relative;
+
+    &.#{$prefix}-sub_open {
+      z-index: 1;
+
+      > .#{$prefix}-subTitle {
+        background-color: var(--gray-200);
+      }
+
+      > .#{$prefix}-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      }
+    }
+
+    &_disabled {
+      .#{$prefix}-subTitle {
+        color: var(--gray-700);
+        cursor: not-allowed;
+
+        > .#{$prefix}-icon {
+          fill: var(--gray-700);
+        }
+      }
+    }
+  }
+  &-subTitle,
+  &-item {
+    position: relative;
+    padding-left: 16px;
+    font-size: var(--font-size-medium);
+    line-height: 36px;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #fff;
+    transition: background-color var(--motion-duration-fast) var(--ease-in-out);
+    user-select: none;
+
+    > .#{$prefix}-icon {
+      fill: var(--gray-800);
+    }
+  }
+
+  &-sub:not(.#{$prefix}-sub_disabled) .#{$prefix}-subTitle,
+  &-item:not(.#{$prefix}-item_disabled) {
+    &:hover {
+      background-color: var(--gray-200);
+
+      > .#{$prefix}-icon {
+        fill: var(--gray-900);
+      }
+    }
+
+    &:active {
+      background-color: var(--gray-300);
+    }
+  }
+
+  &-subTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 12px;
+
+    > span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  &-item {
+    padding-right: 16px;
+
+    &_disabled {
+      color: var(--gray-700);
+      cursor: not-allowed;
+    }
+  }
+  &-dropdown {
+    position: absolute;
+    top: -2px;
+    left: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: var(--box-shadow-elevation-2);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transform-origin: 0 0;
+    transition: all var(--motion-duration-base) var(--ease-in-out);
+  }
+}

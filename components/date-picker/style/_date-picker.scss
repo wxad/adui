@@ -1,0 +1,321 @@
+$prefix: "adui-date";
+
+.#{$prefix} {
+  &-dateBase {
+    &.#{$prefix}-mini {
+      width: 108px;
+    }
+    &.#{$prefix}-small {
+      width: 118px;
+    }
+    &.#{$prefix}-medium {
+      width: 130px;
+    }
+    &.#{$prefix}-large {
+      width: 150px;
+    }
+  }
+  &-rangeBase {
+    &.#{$prefix}-mini {
+      width: 190px;
+    }
+    &.#{$prefix}-small {
+      width: 204px;
+    }
+    &.#{$prefix}-medium {
+      width: 224px;
+    }
+    &.#{$prefix}-large {
+      width: 256px;
+    }
+  }
+  &-wrapper {
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  &-navBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    height: 48px;
+    box-shadow: 0 -1px 0 var(--gray-300) inset;
+  }
+  &-outside {
+    color: var(--gray-600);
+  }
+  &-day,
+  &-today {
+    position: relative;
+    display: table-cell;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: var(--font-size-small);
+    border-radius: 4px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:not(.#{$prefix}-outside) {
+      cursor: pointer;
+
+      &:hover {
+        &::after {
+          background-color: var(--gray-300);
+        }
+      }
+
+      &:focus {
+        outline: none;
+
+        &::after {
+          background-color: var(--gray-300);
+        }
+      }
+
+      &.#{$prefix}-selected {
+        color: #fff;
+        font-weight: 600;
+
+        &::after {
+          background-color: var(--primary-color);
+        }
+      }
+
+      &.#{$prefix}-selectedRange {
+        color: var(--gray-900);
+        font-weight: 400;
+        border-radius: 0;
+
+        &::after {
+          background-color: var(--primary-color);
+          opacity: 0.1;
+        }
+
+        &:hover {
+          &::after {
+            opacity: 0.2;
+          }
+        }
+      }
+
+      &.#{$prefix}-rangeStartHover,
+      &.#{$prefix}-rangeEndHover {
+        color: var(--gray-900);
+        font-weight: 400;
+
+        &::after {
+          background-color: var(--primary-color);
+          opacity: 0.2;
+        }
+
+        &:active {
+          &::after {
+            opacity: 0.3;
+          }
+        }
+      }
+
+      &.#{$prefix}-rangeStart,
+      &.#{$prefix}-rangeStartHover {
+        &:not(.#{$prefix}-rangeEnd) {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &.#{$prefix}-rangeEnd,
+      &.#{$prefix}-rangeEndHover {
+        &:not(.#{$prefix}-rangeStart) {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+
+    &.#{$prefix}-disabled {
+      color: var(--gray-600);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+  &-cell {
+    position: relative;
+    z-index: 1;
+  }
+  &-disabled {
+    .#{$prefix}-day {
+      cursor: default;
+    }
+  }
+  &-navButtonPrev {
+    transform: rotate(90deg);
+  }
+  &-navButtonNext {
+    transform: rotate(-90deg);
+  }
+  &-caption {
+    margin-bottom: 8px;
+    height: 38px;
+  }
+  &-selects {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    margin: 8px 37px;
+    height: 30px;
+
+    svg {
+      position: absolute;
+      top: 7px;
+      right: 3px;
+      fill: var(--gray-800);
+    }
+
+    select {
+      position: relative;
+      z-index: 1;
+      padding-left: 11px;
+      width: 100%;
+      font-size: var(--font-size-small);
+      font-weight: 600;
+      background-color: transparent;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      appearance: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  &-selectYear,
+  &-selectMonth {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    cursor: pointer;
+
+    &::after {
+      opacity: 0;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--gray-800);
+      border-radius: 4px;
+      transform: scale(0.92);
+      transition: all var(--ease-in-out) var(--motion-duration-base);
+    }
+
+    &:hover {
+      &::after {
+        opacity: 0.1;
+        transform: scale(1);
+      }
+    }
+
+    &:active {
+      &::after {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+    }
+  }
+  &-selectYear {
+    width: 80px;
+  }
+  &-selectMonth {
+    width: 55px;
+
+    select {
+      letter-spacing: -1px;
+    }
+  }
+  &-months {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+  }
+  &-month {
+    user-select: none;
+  }
+  &-weekday {
+    display: table-cell;
+    width: 30px;
+    height: 34px;
+    vertical-align: middle;
+    text-align: center;
+
+    abbr {
+      display: inline-block;
+      padding-bottom: 4px;
+      font-size: var(--font-size-small);
+      font-weight: 600;
+      text-decoration: none !important;
+      border-bottom: none !important;
+    }
+  }
+  &-popup {
+    display: flex;
+
+    > div:last-child {
+      flex: 1;
+    }
+  }
+  &-shortcuts {
+    flex: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100px;
+    box-shadow: 1px 0 0 0 #ebebeb;
+  }
+  &-shortcut {
+    padding-left: 12px;
+    padding-right: 8px;
+    max-width: 100%;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all var(--motion-duration-fast) var(--ease-in-out);
+
+    &:hover {
+      background-color: var(--gray-200);
+    }
+
+    &:active {
+      background-color: var(--gray-400);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+  &-shortcutActive {
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+}

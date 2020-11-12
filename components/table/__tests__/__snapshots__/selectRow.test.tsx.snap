@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`base 快照核对 1`] = `
+<div
+  className="adui-table-wrapper adui-table-small"
+>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "top": "40px",
+        "zIndex": "calc(var(--z-index-affix) + 2)",
+      }
+    }
+  />
+  <div
+    className="adui-table-tables"
+    style={
+      Object {
+        "maxHeight": undefined,
+        "paddingTop": "",
+      }
+    }
+  >
+    <div
+      className="adui-table-mainTable"
+      onScroll={[Function]}
+      role="table"
+    >
+      <div
+        className="adui-table-thead"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "height": "40px",
+          }
+        }
+      >
+        <div
+          className="adui-table-th adui-table-th_functional"
+        />
+        <div
+          className="adui-table-th"
+          data-column={0}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": undefined,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": undefined,
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": undefined,
+              }
+            }
+          >
+            one
+          </div>
+        </div>
+      </div>
+      <div
+        className="adui-table-tbody"
+      >
+        <div
+          className="adui-table-tr"
+          data-row={0}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_functional"
+            role="cell"
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                }
+              }
+            >
+              <label
+                aria-checked={false}
+                className="adui-table-selectComponent adui-radio-base adui-radio-small adui-radio-noChildren"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="radio"
+              >
+                <span
+                  className="adui-radio-indicator"
+                />
+              </label>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                第一项
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr adui-table-tr_selected"
+          data-row={1}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_functional"
+            role="cell"
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                }
+              }
+            >
+              <label
+                aria-checked={true}
+                className="adui-table-selectComponent adui-radio-base adui-radio-small adui-radio-checked adui-radio-noChildren"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="radio"
+              >
+                <span
+                  className="adui-radio-indicator"
+                />
+              </label>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                第二项
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="adui-table-tr"
+          data-row={2}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        >
+          <div
+            className="adui-table-td adui-table-td_functional"
+            role="cell"
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                }
+              }
+            >
+              <label
+                aria-checked={false}
+                className="adui-table-selectComponent adui-radio-base adui-radio-small adui-radio-noChildren"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="radio"
+              >
+                <span
+                  className="adui-radio-indicator"
+                />
+              </label>
+            </div>
+          </div>
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                第三项
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Card 是否正确渲染 1`] = `
+<div
+  className="adui-card-base adui-card-elevation_1"
+>
+  <div
+    className="adui-card-header adui-card-small"
+  >
+    <div
+      className="adui-card-headerBlock"
+    >
+      <div
+        className="adui-card-headerTop"
+      >
+        <div
+          className="adui-card-title"
+        >
+          title
+        </div>
+        <div
+          className="adui-card-subTitle"
+        >
+          title
+        </div>
+      </div>
+    </div>
+    <div
+      className="adui-card-children"
+    >
+      children
+    </div>
+  </div>
+  children
+</div>
+`;

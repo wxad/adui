@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Radio 是否正确渲染 1`] = `
+<label
+  aria-checked={false}
+  className="adui-radio-base adui-radio-small"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="radio"
+>
+  <span
+    className="adui-radio-indicator"
+  />
+  <span>
+    children
+  </span>
+</label>
+`;

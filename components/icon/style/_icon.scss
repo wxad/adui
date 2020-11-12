@@ -1,0 +1,63 @@
+@use "sass:map";
+
+$prefix: "adui-icon";
+
+$colors: (
+  level_0_color: #fff,
+  level_0_hover: 0.25,
+  level_0_active: 0.25,
+  level_1_color: #000,
+  level_1_hover: 0.3,
+  level_1_active: 0.4,
+  level_2_color: #000,
+  level_2_hover: 0.23,
+  level_2_active: 0.35,
+  level_3_color: #000,
+  level_3_hover: 0.1,
+  level_3_active: 0.2,
+);
+
+.#{$prefix} {
+  &-base {
+    // 防止在 flex 布局中出现大小变化的问题
+    flex: none;
+  }
+  &-interactive {
+    cursor: pointer;
+    user-select: none;
+    transition: var(--motion-duration-base) ease all;
+
+    &.#{$prefix} {
+      // 白色的 icon 单独处理，实现方案也和其他盖一层的不同，直接变化 opacity
+      &-interactive_level_white {
+        opacity: 0.7;
+
+        &:hover {
+          opacity: 0.95;
+        }
+      }
+    }
+  }
+  &-interactive-cover {
+    fill-opacity: 0;
+    transition: inherit;
+  }
+  @for $i from 0 through 3 {
+    &-interactive_level_#{$i} {
+      .#{$prefix}-interactive-cover {
+        fill: map.get($colors, #{level_}#{$i}#{_color});
+      }
+
+      &:hover {
+        .#{$prefix}-interactive-cover {
+          fill-opacity: map.get($colors, #{level_}#{$i}#{_hover});
+        }
+      }
+      &:active {
+        .#{$prefix}-interactive-cover {
+          fill-opacity: map.get($colors, #{level_}#{$i}#{_active});
+        }
+      }
+    }
+  }
+}

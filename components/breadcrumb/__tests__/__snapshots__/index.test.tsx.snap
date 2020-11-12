@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb 是否正确渲染 1`] = `
+<div
+  className="adui-breadcrumb-small"
+>
+  <a
+    className="adui-breadcrumb-item"
+    href="https://ad.weixin.qq.com"
+    target="_blank"
+  >
+    <div
+      className="adui-breadcrumb-content"
+    >
+      页面一
+    </div>
+    <svg
+      className="adui-breadcrumb-icon adui-icon-base"
+      data-icon="arrow-right"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M7.2 3.69643L6.84644 4.04999C6.65118 4.24525 6.65118 4.56183 6.84644 4.75709L11.0893 8.99899L6.84644 13.2424C6.65118 13.4376 6.65118 13.7542 6.84644 13.9495L7.2 14.303C7.39526 14.4983 7.71184 14.4983 7.9071 14.303L12.8569 9.35329C13.0521 9.15803 13.0521 8.84144 12.8569 8.64618L7.9071 3.69643C7.71184 3.50117 7.39526 3.50117 7.2 3.69643Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </a>
+  <span
+    className="adui-breadcrumb-item"
+  >
+    <div
+      className="adui-breadcrumb-content"
+    >
+      页面二
+    </div>
+    <svg
+      className="adui-breadcrumb-icon adui-icon-base"
+      data-icon="arrow-right"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M7.2 3.69643L6.84644 4.04999C6.65118 4.24525 6.65118 4.56183 6.84644 4.75709L11.0893 8.99899L6.84644 13.2424C6.65118 13.4376 6.65118 13.7542 6.84644 13.9495L7.2 14.303C7.39526 14.4983 7.71184 14.4983 7.9071 14.303L12.8569 9.35329C13.0521 9.15803 13.0521 8.84144 12.8569 8.64618L7.9071 3.69643C7.71184 3.50117 7.39526 3.50117 7.2 3.69643Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </span>
+  <span
+    className="adui-breadcrumb-item"
+  >
+    <div
+      className="adui-breadcrumb-content"
+    >
+      页面三
+    </div>
+    <svg
+      className="adui-breadcrumb-icon adui-icon-base"
+      data-icon="arrow-right"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M7.2 3.69643L6.84644 4.04999C6.65118 4.24525 6.65118 4.56183 6.84644 4.75709L11.0893 8.99899L6.84644 13.2424C6.65118 13.4376 6.65118 13.7542 6.84644 13.9495L7.2 14.303C7.39526 14.4983 7.71184 14.4983 7.9071 14.303L12.8569 9.35329C13.0521 9.15803 13.0521 8.84144 12.8569 8.64618L7.9071 3.69643C7.71184 3.50117 7.39526 3.50117 7.2 3.69643Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </span>
+</div>
+`;

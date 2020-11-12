@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>生活 / safe-outlined</title>
+    <desc>Created with Sketch.</desc>
+    <g id="生活-/-safe-outlined" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M3,2 L15,2 C15.2761424,2 15.5,2.22385763 15.5,2.5 L15.5,11.2681005 C15.5,11.4151758 15.4352464,11.5547915 15.3229711,11.6497937 L9.32297112,16.7267167 C9.13654819,16.8844592 8.86345181,16.8844592 8.67702888,16.7267167 L2.67702888,11.6497937 C2.56475363,11.5547915 2.5,11.4151758 2.5,11.2681005 L2.5,2.5 C2.5,2.22385763 2.72385763,2 3,2 Z M4,3.5 L4,10.75 L9,15 L14,10.75 L14,3.5 L4,3.5 Z M8.01040764,9.33883476 L11.8994949,5.44974747 L12.9601551,6.51040764 L8.01040764,11.4601551 L5.00520382,8.45495129 L6.06586399,7.39429112 L8.01040764,9.33883476 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

@@ -1,0 +1,177 @@
+$prefix: "adui-checkbox";
+
+.#{$prefix}-base {
+  display: inline-block;
+  font-size: var(--font-size-medium);
+  line-height: 36px;
+
+  &:not(.#{$prefix}-disabled) {
+    cursor: pointer;
+
+    &:not(.#{$prefix}-checked) {
+      &:hover {
+        .#{$prefix}-indicator {
+          background-color: var(--gray-100);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-600);
+        }
+      }
+
+      &:active {
+        .#{$prefix}-indicator {
+          background-color: var(--gray-300);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-600);
+        }
+      }
+    }
+
+    &.#{$prefix}-checked {
+      .#{$prefix}-indicator {
+        background-color: var(--primary-color);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+          0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--primary-color);
+      }
+    }
+  }
+
+  &.#{$prefix}-disabled {
+    cursor: not-allowed;
+    color: var(--gray-700);
+
+    .#{$prefix}-indicator {
+      background-color: rgba(0, 0, 0, 0.03);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    &.#{$prefix}-checked {
+      .#{$prefix}-indicator {
+        svg {
+          fill: var(--gray-600);
+        }
+      }
+    }
+  }
+}
+.#{$prefix}-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--gray-50);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-500);
+  transform-origin: 0 50%;
+  transition: background-color var(--motion-duration-fast) var(--ease-in-out),
+    box-shadow var(--motion-duration-fast) var(--ease-in-out);
+
+  svg {
+    fill: #fff;
+    opacity: 0;
+    transform: scale(0.6) rotate(10deg);
+    transition: transform var(--motion-duration-base) var(--ease-in-out);
+  }
+}
+.#{$prefix}-checked {
+  svg {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  &.#{$prefix}-large {
+    .#{$prefix}-indicator {
+      svg {
+        opacity: 1;
+        transform: scale(1.1) rotate(0deg);
+      }
+    }
+  }
+
+  &.#{$prefix}-small,
+  &.#{$prefix}-mini {
+    .#{$prefix}-indicator {
+      svg {
+        opacity: 1;
+        transform: scale(0.85) rotate(0deg);
+      }
+    }
+  }
+}
+.#{$prefix}-helper {
+  margin-left: 4px;
+  vertical-align: -4px;
+}
+.#{$prefix}-large {
+  font-size: var(--font-size-large);
+  line-height: 42px;
+
+  .#{$prefix}-indicator {
+    transform: scale(1.125);
+  }
+
+  .#{$prefix}-helper {
+    vertical-align: -3px;
+  }
+}
+.#{$prefix}-small {
+  font-size: var(--font-size-small);
+  line-height: 30px;
+
+  .#{$prefix}-indicator {
+    margin-right: 4px;
+    transform: scale(0.875);
+  }
+
+  .#{$prefix}-helper {
+    vertical-align: -4px;
+  }
+}
+.#{$prefix}-mini {
+  font-size: var(--font-size-mini);
+  line-height: 26px;
+
+  .#{$prefix}-indicator {
+    margin-right: 4px;
+    transform: scale(0.875);
+
+    svg {
+      transform: scale(0.739636825); // calculated
+    }
+  }
+
+  .#{$prefix}-helper {
+    vertical-align: -4px;
+  }
+}
+
+/**
+ * Checkbox.Group
+ */
+.#{$prefix}-group {
+  .#{$prefix}-base {
+    &:not(:last-of-type) {
+      &.#{$prefix}-large {
+        margin-right: 24px;
+      }
+
+      &.#{$prefix}-medium {
+        margin-right: 20px;
+      }
+
+      &.#{$prefix}-small {
+        margin-right: 16px;
+      }
+
+      &.#{$prefix}-mini {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+.#{$prefix}-noChildren {
+  line-height: 0;
+
+  .#{$prefix}-indicator {
+    margin-right: 0;
+  }
+}

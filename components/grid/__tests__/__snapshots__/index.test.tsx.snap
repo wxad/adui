@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid 是否正确渲染 1`] = `
+<div>
+  <div />
+  <div
+    className="adui-grid-row"
+    style={
+      Object {
+        "marginLeft": "-8px",
+        "marginRight": "-8px",
+      }
+    }
+  >
+    <div
+      className="adui-grid-col adui-grid-col_4"
+      style={
+        Object {
+          "paddingLeft": "8px",
+          "paddingRight": "8px",
+        }
+      }
+    >
+      
+    </div>
+    <div
+      className="adui-grid-col adui-grid-col_6"
+      style={
+        Object {
+          "paddingLeft": "8px",
+          "paddingRight": "8px",
+        }
+      }
+    >
+      
+    </div>
+    <div
+      className="adui-grid-col adui-grid-col_2"
+      style={
+        Object {
+          "paddingLeft": "8px",
+          "paddingRight": "8px",
+        }
+      }
+    >
+      
+    </div>
+  </div>
+</div>
+`;

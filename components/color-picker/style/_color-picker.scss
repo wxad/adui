@@ -1,0 +1,307 @@
+$prefix: "adui-cp";
+$slider-prefix: "adui-slider";
+
+.#{$prefix} {
+  display: inline-block;
+
+  &-input {
+    margin-left: 8px;
+  }
+
+  &-prefix {
+    padding-left: 8px;
+    font-size: 12px;
+    color: var(--gray-600);
+    font-weight: 500;
+    cursor: text;
+  }
+
+  &-picker {
+    display: inline-block;
+    vertical-align: top;
+    padding: 4px;
+
+    > .adui-button-content {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      i {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+      }
+    }
+  }
+
+  &-popup {
+    width: 180px;
+
+    &-result {
+      display: flex;
+      align-items: center;
+      padding: 12px 10px;
+      box-shadow: 0 -1px 0 0 #f3f3f3 inset;
+
+      > i {
+        margin-right: 12px;
+        width: 20px;
+        height: 20px;
+        border-radius: 2px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+      }
+    }
+
+    .#{$prefix}-input {
+      flex: 1;
+      margin-left: 0;
+      width: auto;
+    }
+  }
+
+  &-collapse {
+    box-shadow: 0 -1px 0 0 #f3f3f3 inset;
+
+    &:last-child {
+      box-shadow: none;
+    }
+
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      cursor: pointer;
+      user-select: none;
+
+      &-icon {
+        transform: rotate(-180deg);
+        transition: var(--motion-duration-base) var(--ease-in-out) all;
+      }
+    }
+
+    &-content {
+      padding: 0 10px 10px;
+    }
+
+    &_collapsed {
+      .#{$prefix}-collapse-header-icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &-recent,
+  &-standard {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    > i {
+      flex-basis: calc(100% / 7 - 1px);
+      display: inline-block;
+      margin-right: 1px;
+      margin-bottom: 1px;
+      cursor: pointer;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+
+      &::before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+
+      &:hover {
+        box-shadow: 0 0 0 1px #fff inset, 0 0 0 2px rgba(0, 0, 0, 0.1) inset;
+      }
+
+      &.#{$prefix}-standard-item_selected {
+        box-shadow: 0 0 0 2px #fff inset, 0 0 0 3px rgba(0, 0, 0, 0.1) inset;
+      }
+
+      &:first-child {
+        border-top-left-radius: 2px;
+      }
+
+      &:nth-last-child(7) {
+        border-bottom-left-radius: 2px;
+      }
+
+      &:nth-child(7) {
+        border-top-right-radius: 2px;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 2px;
+      }
+    }
+  }
+
+  &-recent {
+    > i {
+      &:first-child {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+    }
+  }
+
+  &-slider {
+    flex: 1;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+    }
+    &-label {
+      margin-right: 6px;
+      width: 9px;
+      font-size: 12px;
+    }
+
+    // 对 Slider 的样式定义
+    .#{$slider-prefix} {
+      margin-right: 0;
+      height: 20px;
+
+      &-handle {
+        margin-top: -1px;
+        margin-left: -4px;
+        width: 8px;
+        height: 14px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13),
+          0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.08);
+        transform: scale(1);
+      }
+
+      &-rail,
+      &-step {
+        height: 12px;
+      }
+
+      &-rail {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06) inset;
+      }
+
+      &-track {
+        opacity: 0;
+        background-color: transparent;
+      }
+    }
+  }
+
+  &-slider_h {
+    .#{$slider-prefix} {
+      &-rail {
+        background-image: linear-gradient(
+          to right,
+          rgb(255, 0, 0) 0%,
+          rgb(255, 255, 0) 17%,
+          rgb(0, 255, 0) 33%,
+          rgb(0, 255, 255) 50%,
+          rgb(0, 0, 255) 67%,
+          rgb(255, 0, 255) 83%,
+          rgb(255, 0, 0) 100%
+        );
+      }
+    }
+  }
+
+  &-palette {
+    position: relative;
+    margin-bottom: 4px;
+    height: 90px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    user-select: none;
+
+    i {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 3px solid #fff;
+      border-radius: 100%;
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &-s,
+    &-b {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-s {
+      background-image: linear-gradient(
+        to right,
+        rgb(255, 255, 255),
+        rgba(255, 255, 255, 0)
+      );
+    }
+
+    &-b {
+      background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    }
+  }
+
+  &-large {
+    .#{$prefix} {
+      &-picker {
+        width: 42px;
+        height: 42px;
+      }
+
+      &-input {
+        width: 102px;
+      }
+    }
+  }
+
+  &-medium {
+    .#{$prefix} {
+      &-picker {
+        width: 36px;
+        height: 36px;
+      }
+
+      &-input {
+        width: 96px;
+      }
+    }
+  }
+
+  &-small {
+    .#{$prefix} {
+      &-picker {
+        width: 30px;
+        height: 30px;
+      }
+
+      &-input {
+        width: 90px;
+      }
+    }
+  }
+
+  &-mini {
+    .#{$prefix} {
+      &-picker {
+        width: 26px;
+        height: 26px;
+      }
+
+      &-input {
+        width: 84px;
+      }
+    }
+  }
+}

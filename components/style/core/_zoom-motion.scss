@@ -1,0 +1,49 @@
+@use "../mixins/motion" as *;
+
+@mixin zoom-motion(
+  $className,
+  $keyframeName,
+  $duration: var(--motion-duration-slow)
+) {
+  @include make-motion($className, $keyframeName, $duration);
+  .#{$className}-enter,
+  .#{$className}-appear {
+    transform: scale(0);
+    animation-timing-function: var(--ease-out-circ);
+  }
+  .#{$className}-leave {
+    animation-timing-function: var(--ease-in-out-circ);
+  }
+}
+
+@include zoom-motion(zoom-motion, wxadZoomMotion);
+@include zoom-motion(zoom-motion-horizontal, wxadZoomMotion);
+
+@keyframes wxadZoomMotionIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  62.5% {
+    opacity: 0.05;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes wxadZoomMotionOut {
+  0% {
+    transform: scale(1);
+  }
+  37.5% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}

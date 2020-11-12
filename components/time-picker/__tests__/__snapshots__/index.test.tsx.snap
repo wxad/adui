@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimePicker 各种情况快照核对 1`] = `
+<div
+  className="adui-time-input adui-time-mini adui-input-wrapper adui-input-mini adui-input-light adui-input-disabled adui-input-normal"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onTouchStart={[Function]}
+  style={Object {}}
+>
+  <input
+    autoComplete="off"
+    autoFocus={false}
+    className="adui-input-base"
+    disabled={true}
+    id={null}
+    name={null}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="请输入"
+    required={false}
+    style={
+      Object {
+        "paddingLeft": undefined,
+        "paddingRight": undefined,
+      }
+    }
+    type={null}
+    value=""
+  />
+  <div
+    className="adui-input-right adui-input-right_icon"
+    onClick={[Function]}
+    role="none"
+  >
+    <svg
+      className="adui-icon-base"
+      data-icon="time-outlined"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M9.75 9.18301L12.4641 10.75L11.7141 12.049L8.25 10.049L8.27831 10H8.25V5H9.75V9.18301ZM9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16ZM9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`TimePicker 是否正确渲染 1`] = `
+<div
+  className="adui-time-input adui-time-small adui-input-wrapper adui-input-small adui-input-normal"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onTouchStart={[Function]}
+  style={Object {}}
+>
+  <input
+    autoComplete="off"
+    autoFocus={false}
+    className="adui-input-base"
+    disabled={false}
+    id={null}
+    name={null}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="请输入"
+    required={false}
+    style={
+      Object {
+        "paddingLeft": undefined,
+        "paddingRight": undefined,
+      }
+    }
+    type={null}
+    value=""
+  />
+  <div
+    className="adui-input-right adui-input-right_icon"
+    onClick={[Function]}
+    role="none"
+  >
+    <svg
+      className="adui-icon-base"
+      data-icon="time-outlined"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M9.75 9.18301L12.4641 10.75L11.7141 12.049L8.25 10.049L8.27831 10H8.25V5H9.75V9.18301ZM9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16ZM9 14.5C12.0376 14.5 14.5 12.0376 14.5 9C14.5 5.96243 12.0376 3.5 9 3.5C5.96243 3.5 3.5 5.96243 3.5 9C3.5 12.0376 5.96243 14.5 9 14.5Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </div>
+</div>
+`;

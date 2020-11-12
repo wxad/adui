@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>反馈 / tick-circle-outlined</title>
+    <desc>Created with Sketch.</desc>
+    <g id="反馈-/-tick-circle-outlined" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M9,14.5 C12.0375661,14.5 14.5,12.0375661 14.5,9 C14.5,5.96243388 12.0375661,3.5 9,3.5 C5.96243388,3.5 3.5,5.96243388 3.5,9 C3.5,12.0375661 5.96243388,14.5 9,14.5 Z M9,16 C5.13400675,16 2,12.8659932 2,9 C2,5.13400675 5.13400675,2 9,2 C12.8659932,2 16,5.13400675 16,9 C16,12.8659932 12.8659932,16 9,16 Z M8.00520382,10.3336309 L11.8942911,6.44454365 L12.9549513,7.50520382 L8.00520382,12.4549513 L5,9.44974747 L6.06066017,8.3890873 L8.00520382,10.3336309 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

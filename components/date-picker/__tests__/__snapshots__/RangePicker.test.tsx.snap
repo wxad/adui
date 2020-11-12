@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RangePicker 是否正确渲染 1`] = `
+<div
+  className="adui-date-rangeBase adui-date-small adui-input-wrapper adui-input-small adui-input-normal"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  onTouchStart={[Function]}
+  style={Object {}}
+>
+  <input
+    autoComplete="off"
+    autoFocus={false}
+    className="adui-input-base"
+    disabled={false}
+    id={null}
+    name={null}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="选择日期范围"
+    required={false}
+    style={
+      Object {
+        "paddingLeft": undefined,
+        "paddingRight": undefined,
+      }
+    }
+    type={null}
+    value=""
+  />
+  <div
+    className="adui-input-right adui-input-right_icon"
+    onClick={[Function]}
+    role="none"
+  >
+    <svg
+      className="adui-icon-base"
+      data-icon="calendar-outlined"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M3.5 6.5H14.5V5.5H3.5V6.5ZM3.5 8V14.5H14.5V8H3.5ZM13.5 4H14.9932C15.5492 4 16 4.45576 16 5.00247V14.9975C16 15.5512 15.5501 16 14.9932 16H3.00685C2.45078 16 2 15.5442 2 14.9975V5.00247C2 4.44882 2.44995 4 3.00685 4H4.5V2.25578C4.5 2.11452 4.6177 2 4.74769 2H5.75231C5.8891 2 6 2.11394 6 2.25578V4H12V2.25578C12 2.11452 12.1177 2 12.2477 2H13.2523C13.3891 2 13.5 2.11394 13.5 2.25578V4ZM5.25 9.25H6.75V10.75H5.25V9.25ZM8.25 9.25H9.75V10.75H8.25V9.25ZM11.25 9.25H12.75V10.75H11.25V9.25ZM5.25 12H6.75V13.5H5.25V12ZM8.25 12H9.75V13.5H8.25V12ZM11.25 12H12.75V13.5H11.25V12Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </div>
+</div>
+`;

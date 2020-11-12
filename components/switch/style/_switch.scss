@@ -1,0 +1,133 @@
+$prefix: "adui-switch";
+
+.#{$prefix} {
+  &-wrapper {
+    display: inline-block;
+    cursor: pointer;
+  }
+  &-checked {
+    .#{$prefix} {
+      &-base {
+        background-color: var(--primary-color);
+
+        &:hover {
+          background-color: var(--primary-color);
+        }
+      }
+
+      &-indicator {
+        left: calc(100% - 2px);
+        transform: translateX(-100%);
+      }
+    }
+  }
+  &-disabled {
+    cursor: not-allowed;
+
+    .#{$prefix} {
+      &-base {
+        opacity: 0.5;
+      }
+      &-indicator {
+        opacity: 0.9;
+      }
+      &-text {
+        color: var(--gray-700);
+      }
+    }
+  }
+  &-base {
+    position: relative;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.12);
+    border-radius: 14px;
+    transition: background-color var(--ease-in-out) var(--motion-duration-base);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+  }
+  &-indicator {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
+      0 5px 10px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+    transition: all var(--ease-in-out) var(--motion-duration-base);
+  }
+  &-text {
+    margin-left: 8px;
+  }
+
+  /* 尺寸 sizes */
+  /* 由于 indicator 会在 active 的情况下增大 width，因此 border-radius 也要分开写*/
+  &-mini {
+    font-size: var(--font-size-mini);
+
+    .#{$prefix} {
+      &-base {
+        width: 24px;
+        height: 14px;
+        vertical-align: calc(-0.125em - (14px - var(--font-size-mini)) / 2);
+      }
+
+      &-indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+      }
+    }
+  }
+  &-small {
+    font-size: var(--font-size-small);
+
+    .#{$prefix} {
+      &-base {
+        width: 28px;
+        height: 16px;
+        vertical-align: calc(-0.125em - (16px - var(--font-size-small)) / 2);
+      }
+
+      &-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+      }
+    }
+  }
+  &-medium {
+    font-size: var(--font-size-medium);
+
+    .#{$prefix} {
+      &-base {
+        width: 34px;
+        height: 20px;
+        vertical-align: calc(-0.125em - (20px - var(--font-size-medium)) / 2);
+      }
+
+      &-indicator {
+        width: 16px;
+        height: 16px;
+        border-radius: 16px;
+      }
+    }
+  }
+  &-large {
+    font-size: var(--font-size-large);
+
+    .#{$prefix} {
+      &-base {
+        width: 44px;
+        height: 26px;
+        vertical-align: calc(-0.125em - (26px - var(--font-size-large)) / 2);
+      }
+
+      &-indicator {
+        width: 22px;
+        height: 22px;
+        border-radius: 22px;
+      }
+    }
+  }
+}

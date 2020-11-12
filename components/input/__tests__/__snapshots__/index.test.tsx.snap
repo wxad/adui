@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Textarea: 快照验证 1`] = `
+<div
+  className="adui-input-wrapper adui-input-wrapper_textarea adui-input-small adui-input-normal"
+>
+  <textarea
+    autoFocus={false}
+    className="adui-input-base"
+    defaultValue=""
+    disabled={false}
+    id={null}
+    name={null}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onScroll={[Function]}
+    placeholder="请输入"
+    required={false}
+    style={
+      Object {
+        "resize": "none",
+      }
+    }
+    type={null}
+  />
+</div>
+`;
+
+exports[`Input 快照验证 1`] = `
+<div
+  className="adui-input-wrapper adui-input-small adui-input-normal"
+  style={Object {}}
+>
+  <input
+    autoComplete="off"
+    autoFocus={false}
+    className="adui-input-base"
+    defaultValue=""
+    disabled={false}
+    id={null}
+    name={null}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="请输入"
+    required={false}
+    style={
+      Object {
+        "paddingLeft": undefined,
+        "paddingRight": undefined,
+      }
+    }
+    type={null}
+  />
+</div>
+`;
+
+exports[`Input 是否正确渲染文本框 1`] = `
+<div
+  className="adui-input-wrapper adui-input-wrapper_textarea adui-input-small adui-input-normal"
+>
+  <textarea
+    autoFocus={false}
+    className="adui-input-base"
+    defaultValue=""
+    disabled={false}
+    id={null}
+    name={null}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onScroll={[Function]}
+    placeholder="请输入"
+    required={false}
+    style={
+      Object {
+        "resize": "none",
+      }
+    }
+    type={null}
+  />
+</div>
+`;

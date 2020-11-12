@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table 快照核对 1`] = `
+<div
+  className="adui-table-wrapper adui-table-small"
+>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "top": "40px",
+        "zIndex": "calc(var(--z-index-affix) + 2)",
+      }
+    }
+  />
+  <div
+    className="adui-table-tables"
+    style={
+      Object {
+        "maxHeight": undefined,
+        "paddingTop": "",
+      }
+    }
+  >
+    <div
+      className="adui-table-mainTable"
+      onScroll={[Function]}
+      role="table"
+    >
+      <div
+        className="adui-table-thead"
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        style={
+          Object {
+            "height": "40px",
+          }
+        }
+      />
+      <div
+        className="adui-table-tbody"
+      >
+        <div
+          className="adui-table-tr"
+          data-row={0}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        />
+        <div
+          className="adui-table-tr"
+          data-row={1}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        />
+        <div
+          className="adui-table-tr"
+          data-row={2}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        />
+        <div
+          className="adui-table-tr"
+          data-row={3}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        />
+        <div
+          className="adui-table-tr"
+          data-row={4}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="row"
+          style={Object {}}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

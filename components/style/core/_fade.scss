@@ -1,0 +1,37 @@
+@use "../mixins/motion" as *;
+
+@mixin fade-motion(
+  $className,
+  $keyframeName,
+  $duration: var(--motion-duration-base)
+) {
+  @include make-motion($className, $keyframeName, $duration);
+  .#{$className}-enter,
+  .#{$className}-appear {
+    opacity: 0;
+    animation-timing-function: linear;
+  }
+  .#{$className}-leave {
+    animation-timing-function: linear;
+  }
+}
+
+@include fade-motion(fade, fade);
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

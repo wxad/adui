@@ -1,0 +1,59 @@
+$prefix: "adui-popover";
+
+.#{$prefix} {
+  &-popover {
+    > [class*="content"] {
+      color: var(--gray-900);
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: var(--box-shadow-elevation-2);
+    }
+
+    &:not(.#{$prefix}-popover_noArrow) {
+      > [class*="content"] > [class*="arrow"] {
+        width: 9px;
+        height: 9px;
+        background-color: #fff;
+        border-left: 1px solid rgba(0, 0, 0, 0.13);
+        border-top: 1px solid rgba(0, 0, 0, 0.13);
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-top-left-radius: 2px;
+      }
+
+      &[class*="-top"] {
+        > [class*="content"] > [class*="arrow"] {
+          transform: rotate(-135deg);
+        }
+      }
+
+      &[class*="-right"] {
+        > [class*="content"] > [class*="arrow"] {
+          transform: rotate(-45deg);
+        }
+      }
+
+      &[class*="-bottom"] {
+        > [class*="content"] > [class*="arrow"] {
+          transform: rotate(45deg);
+        }
+      }
+
+      &[class*="-left"] {
+        > [class*="content"] > [class*="arrow"] {
+          transform: rotate(135deg);
+        }
+      }
+    }
+  }
+  &-popover_noArrow {
+    > [class*="content"] > [class*="arrow"] {
+      display: none;
+    }
+  }
+  &-removeContentPadding {
+    > [class*="content"] {
+      padding: 0;
+    }
+  }
+}

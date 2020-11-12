@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination 是否正确渲染 1`] = `
+<div
+  className="adui-pagination-base adui-pagination-small adui-pagination-right"
+  data-current={1}
+>
+  <button
+    className="adui-button-base adui-button-normal adui-button-small adui-button-hasLeftIcon adui-button-hasRightIcon"
+    disabled={false}
+    onClick={[Function]}
+    style={
+      Object {
+        "marginRight": "8px",
+      }
+    }
+    type="button"
+  >
+    <svg
+      className="adui-button-leftIcon adui-icon-base"
+      data-icon="arrow-left-first"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M5 3.5C4.72386 3.5 4.5 3.72386 4.5 4V14C4.5 14.2761 4.72386 14.5 5 14.5H5.5C5.77614 14.5 6 14.2761 6 14V4C6 3.72386 5.77614 3.5 5.5 3.5H5ZM13.3 3.69645C13.1264 3.52288 12.857 3.50359 12.6621 3.63859L12.5929 3.69645L7.64315 8.64619C7.46958 8.81976 7.4503 9.08918 7.58529 9.28405L7.64315 9.3533L12.5929 14.303C12.7665 14.4766 13.0359 14.4959 13.2308 14.3609L13.3 14.303L13.6536 13.9495C13.8271 13.7759 13.8464 13.5065 13.7114 13.3116L13.6536 13.2424L9.4107 8.999L13.6536 4.75711C13.8271 4.58354 13.8464 4.31412 13.7114 4.11925L13.6536 4.05L13.3 3.69645Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+  <button
+    className="adui-button-base adui-button-normal adui-button-small adui-button-hasLeftIcon adui-button-hasRightIcon"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      className="adui-button-leftIcon adui-icon-base"
+      data-icon="arrow-left"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M10.8033 3.69643L11.1569 4.04999C11.3521 4.24525 11.3521 4.56183 11.1569 4.75709L6.914 8.99899L11.1569 13.2424C11.3521 13.4376 11.3521 13.7542 11.1569 13.9495L10.8033 14.303C10.608 14.4983 10.2915 14.4983 10.0962 14.303L5.14645 9.35329C4.95118 9.15803 4.95118 8.84144 5.14645 8.64618L10.0962 3.69643C10.2915 3.50117 10.608 3.50117 10.8033 3.69643Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+  <span
+    className="adui-pagination-text"
+  >
+    1
+     / 
+    10
+  </span>
+  <button
+    className="adui-button-base adui-button-normal adui-button-small adui-button-hasLeftIcon adui-button-hasRightIcon"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      className="adui-button-leftIcon adui-icon-base"
+      data-icon="arrow-right"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M7.2 3.69643L6.84644 4.04999C6.65118 4.24525 6.65118 4.56183 6.84644 4.75709L11.0893 8.99899L6.84644 13.2424C6.65118 13.4376 6.65118 13.7542 6.84644 13.9495L7.2 14.303C7.39526 14.4983 7.71184 14.4983 7.9071 14.303L12.8569 9.35329C13.0521 9.15803 13.0521 8.84144 12.8569 8.64618L7.9071 3.69643C7.71184 3.50117 7.39526 3.50117 7.2 3.69643Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+  <button
+    className="adui-button-base adui-button-normal adui-button-small adui-button-hasLeftIcon adui-button-hasRightIcon"
+    disabled={false}
+    onClick={[Function]}
+    style={
+      Object {
+        "marginLeft": "8px",
+      }
+    }
+    type="button"
+  >
+    <svg
+      className="adui-button-leftIcon adui-icon-base"
+      data-icon="arrow-right-last"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={18}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={18}
+    >
+      <path
+        d="M13.3 3.5C13.5761 3.5 13.8 3.72386 13.8 4V14C13.8 14.2761 13.5761 14.5 13.3 14.5H12.8C12.5239 14.5 12.3 14.2761 12.3 14V4C12.3 3.72386 12.5239 3.5 12.8 3.5H13.3ZM5 3.69645C5.17357 3.52288 5.44299 3.50359 5.63786 3.63859L5.70711 3.69645L10.6569 8.64619C10.8304 8.81976 10.8497 9.08918 10.7147 9.28405L10.6569 9.3533L5.70711 14.303C5.53354 14.4766 5.26412 14.4959 5.06925 14.3609L5 14.303L4.64645 13.9495C4.47288 13.7759 4.4536 13.5065 4.58859 13.3116L4.64645 13.2424L8.8893 8.999L4.64645 4.75711C4.47288 4.58354 4.4536 4.31412 4.58859 4.11925L4.64645 4.05L5 3.69645Z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+</div>
+`;

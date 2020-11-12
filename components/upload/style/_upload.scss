@@ -1,0 +1,256 @@
+$prefix: "adui-upload";
+
+.#{$prefix} {
+  &-img {
+    position: relative;
+    display: inline-block;
+    width: 72px;
+    height: 72px;
+    background-color: #fdfdfd;
+    border: 2px dashed #ebebeb;
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--motion-duration-base) var(--ease-in-out) all;
+
+    &:hover {
+      background-color: #fafafa;
+
+      .#{$prefix} {
+        &-img {
+          &-cover,
+          &-remove {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &-file,
+    &-cover,
+    &-upload-element {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-file {
+      object-fit: cover;
+    }
+
+    &-cover {
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--motion-duration-base) var(--ease-in-out) all;
+    }
+
+    &-remove {
+      position: absolute;
+      z-index: 2;
+      top: 4px;
+      right: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 100%;
+      opacity: 0;
+      visibility: hidden;
+      cursor: pointer;
+      transition: var(--motion-duration-base) var(--ease-in-out) all;
+
+      svg {
+        fill: #c4c4c4;
+        transition: inherit;
+      }
+
+      .adui-icon-interactive-cover {
+        display: none;
+      }
+
+      &:hover {
+        svg {
+          fill: #fff;
+        }
+      }
+    }
+
+    &-progress {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 16px);
+      height: 3px;
+      background-color: #f0f0f0;
+      opacity: 0;
+      visibility: hidden;
+
+      i {
+        display: block;
+        height: 100%;
+        background-color: var(--primary-color);
+        transition: all 0.35s cubic-bezier(0.08, 0.82, 0.17, 1);
+      }
+    }
+
+    &-preview {
+      position: fixed;
+      z-index: var(--z-index-tooltip);
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      cursor: default;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--motion-duration-base) var(--ease-in-out) all;
+
+      &-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        display: flex;
+        max-width: 90vw;
+
+        img {
+          max-width: calc(100% - 52px);
+          height: auto;
+        }
+
+        svg {
+          margin-left: 10px;
+        }
+      }
+
+      &-file {
+        box-shadow: var(--box-shadow-elevation-4);
+      }
+
+      &-show {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &-uploaded-inner {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &-unuploaded-inner {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &-uploaded {
+      border-color: transparent;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08) inset;
+
+      .#{$prefix} {
+        &-img {
+          &-uploaded-inner {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          &-unuploaded-inner {
+            opacity: 0;
+            visibility: hidden;
+          }
+        }
+      }
+    }
+
+    &-progressing {
+      .#{$prefix} {
+        &-img {
+          &-upload-element {
+            opacity: 0;
+            visibility: hidden;
+          }
+          &-progress {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+
+  &-file {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 8px;
+    padding-left: 8px;
+    width: 240px;
+    height: 36px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(223, 223, 223, 0.45);
+
+    &-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #f0f0f0;
+      opacity: 0;
+      visibility: hidden;
+
+      i {
+        display: block;
+        height: 100%;
+        background-color: var(--primary-color);
+        transition: all 0.35s cubic-bezier(0.08, 0.82, 0.17, 1);
+      }
+    }
+
+    &-link,
+    &-name {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-link {
+      color: var(--ad-blue);
+    }
+
+    &-icon {
+      margin-left: 4px;
+    }
+
+    &-progressing {
+      .#{$prefix} {
+        &-file {
+          &-progress {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}

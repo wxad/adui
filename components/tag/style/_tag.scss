@@ -1,0 +1,280 @@
+$prefix: "adui-tag";
+
+.#{$prefix} {
+  &-base {
+    position: relative;
+    display: inline-block;
+    margin-right: 12px;
+    border-radius: 3px;
+    cursor: default;
+    user-select: none;
+  }
+  &-background,
+  &-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  &-background {
+    transition: background-color var(--motion-duration-base) var(--ease-in-out),
+      opacity var(--motion-duration-base) var(--ease-in-out);
+  }
+  &-shadow {
+    transition: box-shadow var(--motion-duration-base) var(--ease-in-out);
+  }
+  &-content {
+    position: relative;
+    z-index: 1;
+  }
+  &-remove {
+    margin-left: 4px;
+    fill: currentColor;
+    transition: fill var(--motion-duration-base) var(--ease-in-out),
+      opacity var(--motion-duration-base) var(--ease-in-out);
+    opacity: 0.4;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.65;
+      fill: currentColor;
+    }
+
+    &:active {
+      opacity: 0.9;
+      fill: currentColor;
+    }
+  }
+  &-large {
+    padding-left: 8px;
+    font-size: var(--font-size-large);
+    line-height: 36px;
+
+    .#{$prefix}-remove {
+      vertical-align: calc(-0.125em - (16px - var(--font-size-large)) / 2);
+    }
+
+    &:not(.#{$prefix}-removable) {
+      padding-right: 8px;
+    }
+
+    &.#{$prefix}-removable {
+      padding-right: 4px;
+    }
+
+    &.#{$prefix}-round {
+      .#{$prefix}-background,
+      .#{$prefix}-shadow {
+        border-radius: 36px;
+      }
+    }
+  }
+  &-medium {
+    padding-left: 8px;
+    font-size: var(--font-size-medium);
+    line-height: 30px;
+
+    .#{$prefix}-remove {
+      vertical-align: calc(-0.125em - (16px - var(--font-size-medium)) / 2);
+    }
+
+    &:not(.#{$prefix}-removable) {
+      padding-right: 8px;
+    }
+
+    &.#{$prefix}-removable {
+      padding-right: 4px;
+    }
+
+    &.#{$prefix}-round {
+      .#{$prefix}-background,
+      .#{$prefix}-shadow {
+        border-radius: 30px;
+      }
+    }
+  }
+  &-small {
+    padding-left: 6px;
+    font-size: var(--font-size-small);
+    line-height: 26px;
+
+    .#{$prefix}-remove {
+      vertical-align: calc(-0.125em - (16px - var(--font-size-small)) / 2);
+    }
+
+    &:not(.#{$prefix}-removable) {
+      padding-right: 6px;
+    }
+
+    &.#{$prefix}-removable {
+      padding-right: 4px;
+    }
+
+    &.#{$prefix}-round {
+      .#{$prefix}-background,
+      .#{$prefix}-shadow {
+        border-radius: 26px;
+      }
+    }
+  }
+  &-mini {
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: var(--font-size-mini);
+    line-height: 22px;
+
+    .#{$prefix}-remove {
+      vertical-align: calc(-0.125em - (16px - var(--font-size-mini)) / 2);
+    }
+
+    &:not(.#{$prefix}-removable) {
+      padding-right: 4px;
+    }
+
+    &.#{$prefix}-removable {
+      padding-right: 2px;
+    }
+
+    &.#{$prefix}-round {
+      .#{$prefix}-background,
+      .#{$prefix}-shadow {
+        border-radius: 22px;
+      }
+    }
+  }
+  &-normal {
+    color: var(--gray-900);
+
+    .#{$prefix}-shadow {
+      box-shadow: 0 0 0 1px var(--gray-700);
+      opacity: 0.25;
+    }
+  }
+  &-interactive {
+    transition: all var(--motion-duration-base) var(--ease-in-out);
+    cursor: pointer;
+
+    &.#{$prefix}-normal {
+      .#{$prefix}-background {
+        opacity: 0;
+      }
+
+      &:hover {
+        .#{$prefix}-background {
+          opacity: 0.02;
+          background-color: #000;
+        }
+
+        .#{$prefix}-shadow {
+          opacity: 0.35;
+          box-shadow: 0 0 0 1px rgb(163, 163, 163);
+        }
+      }
+
+      &:active {
+        .#{$prefix}-background {
+          opacity: 0.05;
+          background-color: #000;
+        }
+
+        .#{$prefix}-shadow {
+          opacity: 0.35;
+          box-shadow: 0 0 0 1px rgb(163, 163, 163);
+        }
+      }
+    }
+  }
+  &-light {
+    margin-right: 4px;
+
+    &.#{$prefix} {
+      &-normal {
+        &:hover {
+          .#{$prefix}-remove {
+            fill: var(--gray-600);
+          }
+        }
+
+        .#{$prefix}-remove {
+          fill: var(--gray-500);
+          opacity: 1;
+
+          &:hover {
+            fill: var(--gray-700);
+          }
+        }
+      }
+    }
+
+    .#{$prefix} {
+      &-background {
+        background-color: currentColor;
+        opacity: 0;
+      }
+    }
+
+    &:hover {
+      .#{$prefix} {
+        &-background {
+          opacity: 0.06;
+        }
+      }
+    }
+  }
+  &-colored,
+  &-primary,
+  &-success,
+  &-warning,
+  &-danger {
+    &:not(.#{$prefix}-light) {
+      .#{$prefix} {
+        &-background {
+          background-color: currentColor;
+          opacity: 0.03;
+        }
+        &-shadow {
+          box-shadow: 0 0 0 1px currentColor;
+          opacity: 0.25;
+        }
+      }
+    }
+    &.#{$prefix}-interactive {
+      &:hover {
+        .#{$prefix} {
+          &-background {
+            opacity: 0.06;
+          }
+          &-shadow {
+            opacity: 0.35;
+          }
+        }
+      }
+
+      &:active {
+        .#{$prefix} {
+          &-background {
+            opacity: 0.12;
+          }
+          &-shadow {
+            opacity: 0.35;
+          }
+        }
+      }
+    }
+  }
+  &-primary {
+    color: var(--primary-color);
+  }
+  &-success {
+    color: var(--ad-green);
+  }
+  &-warning {
+    color: var(--ad-orange);
+  }
+  &-danger {
+    color: var(--ad-red);
+  }
+}

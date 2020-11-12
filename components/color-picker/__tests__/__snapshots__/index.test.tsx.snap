@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker 是否正确渲染 1`] = `
+<div
+  className="adui-cp adui-cp-small"
+  data-b={75.68627450980392}
+  data-h={148.70967741935485}
+  data-s={96.37305699481865}
+  data-value="#07C160"
+>
+  <button
+    className="adui-cp-picker adui-button-base adui-button-normal adui-button-small"
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}
+    type="button"
+  >
+    <span
+      className="adui-button-content"
+    >
+      <i
+        style={
+          Object {
+            "background": "#07C160",
+          }
+        }
+      />
+    </span>
+  </button>
+  <div
+    className="adui-cp-input adui-input-wrapper adui-input-small adui-input-normal"
+    style={Object {}}
+  >
+    <div
+      className="adui-input-left"
+      onClick={[Function]}
+      role="none"
+    >
+      <div
+        className="adui-cp-prefix"
+        onClick={[Function]}
+        role="none"
+      >
+        #
+      </div>
+    </div>
+    <input
+      autoComplete="off"
+      autoFocus={false}
+      className="adui-input-base"
+      disabled={false}
+      id={null}
+      name={null}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      placeholder=""
+      required={false}
+      style={
+        Object {
+          "paddingLeft": undefined,
+          "paddingRight": undefined,
+        }
+      }
+      type={null}
+      value="07C160"
+    />
+  </div>
+</div>
+`;

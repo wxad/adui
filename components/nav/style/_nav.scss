@@ -1,0 +1,211 @@
+@use "../../style/index" as mixins;
+
+$prefix: "adui-nav";
+
+.#{$prefix} {
+  &-wrapper {
+    background-color: #fff;
+    overflow: auto;
+    @include mixins.scrollbar();
+
+    .#{$prefix}-item {
+      padding-left: 28px;
+    }
+
+    .#{$prefix}-group .#{$prefix}-groupTitle {
+      padding-left: 28px;
+    }
+
+    .#{$prefix}-group {
+      .#{$prefix}-item {
+        padding-left: 40px;
+      }
+
+      .#{$prefix}-group .#{$prefix}-groupTitle {
+        padding-left: 52px;
+      }
+
+      .#{$prefix}-group {
+        .#{$prefix}-item {
+          padding-left: 64px;
+        }
+
+        .#{$prefix}-group .#{$prefix}-groupTitle {
+          padding-left: 64px;
+        }
+      }
+    }
+
+    .#{$prefix}-sub .#{$prefix}-subTitle {
+      padding-left: 28px;
+    }
+
+    .#{$prefix}-sub {
+      .#{$prefix}-item {
+        padding-left: 40px;
+      }
+
+      .#{$prefix}-sub .#{$prefix}-subTitle {
+        padding-left: 52px;
+      }
+
+      .#{$prefix}-sub {
+        .#{$prefix}-item {
+          padding-left: 64px;
+        }
+
+        .#{$prefix}-sub .#{$prefix}-subTitle {
+          padding-left: 64px;
+        }
+      }
+    }
+  }
+  &-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--gray-900);
+    cursor: pointer;
+    transition: all var(--motion-duration-base) var(--ease-out);
+
+    &:not(.#{$prefix}-item_disabled) {
+      &:hover {
+        background-color: var(--gray-200);
+      }
+
+      &:active {
+        background-color: var(--gray-300);
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 3px;
+      height: 20px;
+      background-color: var(--primary-color);
+      transform: translateY(-50%) scaleX(0);
+      transform-origin: 0 0;
+      transition: all var(--motion-duration-base) var(--ease-in-out);
+    }
+
+    // 为 <Link /> 优化样式
+    a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding-left: inherit;
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+  &-icon {
+    flex: none;
+    margin-right: 8px;
+    fill: var(--gray-800);
+  }
+  &-item_selected {
+    color: var(--primary-color);
+    font-weight: 500;
+
+    &::before {
+      transform: translateY(-50%) scaleX(1);
+    }
+
+    .#{$prefix}-icon {
+      fill: currentColor;
+    }
+  }
+  &-item_disabled {
+    color: var(--gray-600);
+    cursor: not-allowed;
+
+    .#{$prefix}-icon {
+      fill: currentColor;
+    }
+  }
+  &-divider {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 1px;
+    background-color: var(--gray-200);
+  }
+  &-groupTitle {
+    line-height: 36px;
+    color: var(--gray-700);
+  }
+  /* 尺寸 sizes */
+  &-mini {
+    font-size: var(--font-size-mini);
+
+    .#{$prefix}-item,
+    .#{$prefix}-subTitle {
+      height: 32px;
+    }
+  }
+  &-small {
+    font-size: var(--font-size-small);
+
+    .#{$prefix}-item,
+    .#{$prefix}-subTitle {
+      height: 36px;
+    }
+  }
+  &-medium {
+    font-size: var(--font-size-medium);
+
+    .#{$prefix}-item,
+    .#{$prefix}-subTitle {
+      height: 40px;
+    }
+  }
+  &-large {
+    font-size: var(--font-size-large);
+
+    .#{$prefix}-item,
+    .#{$prefix}-subTitle {
+      height: 48px;
+    }
+  }
+  &-subTitle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-right: 16px;
+    color: var(--gray-900);
+    cursor: pointer;
+    transition: all var(--motion-duration-base) var(--ease-out);
+
+    &:hover {
+      background-color: var(--gray-200);
+    }
+
+    &:active {
+      background-color: var(--gray-300);
+    }
+  }
+  &-arrow {
+    flex: none;
+    fill: var(--gray-600);
+    margin-left: 10px;
+    transition: all var(--motion-duration-base) var(--ease-in-out);
+    transform: rotate(180deg);
+  }
+  &-subTitleContent {
+    flex: 1;
+  }
+  &-open {
+    > .#{$prefix}-subTitle {
+      .#{$prefix}-arrow {
+        fill: var(--gray-800);
+        transform: rotate(0deg);
+      }
+    }
+  }
+}

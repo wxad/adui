@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>图表 / bar-chart</title>
+    <desc>Created with Sketch.</desc>
+    <g id="图表-/-bar-chart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2.5,4 L8.5,4 C8.77614237,4 9,4.22385763 9,4.5 L9,6 C9,6.27614237 8.77614237,6.5 8.5,6.5 L2.5,6.5 C2.22385763,6.5 2,6.27614237 2,6 L2,4.5 C2,4.22385763 2.22385763,4 2.5,4 Z M2.5,8 L11.5,8 C11.7761424,8 12,8.22385763 12,8.5 L12,10 C12,10.2761424 11.7761424,10.5 11.5,10.5 L2.5,10.5 C2.22385763,10.5 2,10.2761424 2,10 L2,8.5 C2,8.22385763 2.22385763,8 2.5,8 Z M2.5,12 L15.5,12 C15.7761424,12 16,12.2238576 16,12.5 L16,14 C16,14.2761424 15.7761424,14.5 15.5,14.5 L2.5,14.5 C2.22385763,14.5 2,14.2761424 2,14 L2,12.5 C2,12.2238576 2.22385763,12 2.5,12 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

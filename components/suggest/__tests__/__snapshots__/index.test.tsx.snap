@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Suggest Suggest 是否正确渲染 1`] = `
+<div
+  className="adui-suggest adui-suggest-single adui-suggest-customize-input adui-suggest-show-search"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+>
+  <div
+    className="adui-suggest-selector"
+    onClick={[Function]}
+    onMouseDown={[Function]}
+  >
+    <span
+      className="adui-suggest-selection-search"
+    >
+      <div
+        aria-activedescendant="undefined_list_0"
+        aria-autocomplete="list"
+        aria-controls="undefined_list"
+        aria-haspopup="listbox"
+        aria-owns="undefined_list"
+        className="adui-suggest-selection-search-input adui-input-wrapper adui-input-small adui-input-normal"
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onMouseDown={[Function]}
+        onPaste={[Function]}
+        readOnly={false}
+        role="combobox"
+        style={
+          Object {
+            "opacity": null,
+          }
+        }
+        unselectable={null}
+      >
+        <input
+          autoComplete="off"
+          autoFocus={false}
+          className="adui-input-base"
+          disabled={false}
+          id={null}
+          name={null}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          placeholder="请选择"
+          required={false}
+          style={
+            Object {
+              "paddingLeft": undefined,
+              "paddingRight": undefined,
+            }
+          }
+          type="search"
+          value="1"
+        />
+      </div>
+    </span>
+  </div>
+</div>
+`;

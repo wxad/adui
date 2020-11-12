@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>导航 / down</title>
+    <desc>Created with Sketch.</desc>
+    <g id="导航-/-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8,10 L8,3.5 C8,3.22385763 8.22385763,3 8.5,3 L9.5,3 C9.77614237,3 10,3.22385763 10,3.5 L10,10 L12.0029699,10 C12.5469637,10 12.720178,10.3497775 12.375,10.78125 L9.31387329,14.6076584 C9.14236212,14.8220474 8.85947414,14.8243427 8.68612671,14.6076584 L5.625,10.78125 C5.2749362,10.3436702 5.4463856,10 5.99703014,10 L8,10 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

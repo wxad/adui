@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox Checkbox 是否正确渲染 1`] = `
+<label
+  aria-checked={false}
+  className="adui-checkbox-base adui-checkbox-small"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="checkbox"
+>
+  <span
+    className="adui-checkbox-indicator"
+  >
+    <svg
+      height="10"
+      width="12"
+    >
+      <path
+        d="M.618 5.827a.463.463 0 0 1-.02-.675l.804-.804a.52.52 0 0 1 .716-.01L4.75 6.75l4.922-5.625a.513.513 0 0 1 .707-.06l.742.62a.478.478 0 0 1 .044.687l-6.08 6.756a.506.506 0 0 1-.703.045L.618 5.827z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </span>
+  <span>
+    children
+  </span>
+</label>
+`;

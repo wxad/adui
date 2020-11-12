@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>编辑 / lock-outlined</title>
+    <desc>Created with Sketch.</desc>
+    <g id="编辑-/-lock-outlined" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M5.5,8.5 L5.5,14.5 L12.5,14.5 L12.5,8.5 L5.5,8.5 Z M6,7 L6,5 C6,3.34314575 7.34314575,2 9,2 C10.6568542,2 12,3.34314575 12,5 L12,7 L13,7 C13.5522847,7 14,7.50367966 14,8.125 L14,14.875 C14,15.4963203 13.5522847,16 13,16 L5,16 C4.44771525,16 4,15.4963203 4,14.875 L4,8.125 C4,7.50367966 4.44771525,7 5,7 L6,7 Z M7.5,7 L10.5,7 L10.5,5 C10.5,4.17157288 9.82842712,3.5 9,3.5 C8.17157288,3.5 7.5,4.17157288 7.5,5 L7.5,7 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

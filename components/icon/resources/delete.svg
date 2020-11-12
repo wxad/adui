@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>编辑 / delete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="编辑-/-delete" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M14,5 L14,15 C14,15.5522847 13.5522847,16 13,16 L5,16 C4.44771525,16 4,15.5522847 4,15 L4,5 L2.5,5 C2.22385763,5 2,4.77614237 2,4.5 L2,4 C2,3.72385763 2.22385763,3.5 2.5,3.5 L6,3.5 L6,2.5 C6,2.22385763 6.22385763,2 6.5,2 L11.5,2 C11.7761424,2 12,2.22385763 12,2.5 L12,3.5 L15.5,3.5 C15.7761424,3.5 16,3.72385763 16,4 L16,4.5 C16,4.77614237 15.7761424,5 15.5,5 L14,5 L14,5 Z M6.75,6.5 L6.75,13 L8.25,13 L8.25,6.5 L6.75,6.5 Z M9.75,6.5 L9.75,13 L11.25,13 L11.25,6.5 L9.75,6.5 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

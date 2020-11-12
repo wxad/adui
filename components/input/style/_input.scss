@@ -1,0 +1,522 @@
+@use "../../style/index" as mixins;
+
+$prefix: "adui-input";
+
+.#{$prefix} {
+  &-wrapper {
+    position: relative;
+    display: inline-block;
+
+    &:focus-within {
+      .#{$prefix}-left_icon,
+      .#{$prefix}-right_icon {
+        svg {
+          fill: var(--gray-800);
+        }
+      }
+    }
+  }
+  &-wrapper_textarea {
+    width: 100%;
+
+    .#{$prefix}-limit {
+      top: initial;
+      bottom: 10px;
+      padding-right: 18px;
+      height: auto;
+    }
+  }
+  &-base {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    font-family: inherit;
+    text-align: inherit;
+    line-height: 1.5;
+    color: var(--gray-900);
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    appearance: none;
+    transition: var(--motion-duration-base) var(--ease-in-out) background-color,
+      var(--motion-duration-base) var(--ease-in-out) box-shadow;
+    @include mixins.scrollbar();
+    @include mixins.placeholder();
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+  &-left,
+  &-right {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 3px 4px;
+    height: 100%;
+  }
+  &-left {
+    left: 0;
+  }
+  &-right {
+    right: 0;
+  }
+  &-left_icon,
+  &-right_icon {
+    padding: 0;
+    cursor: text;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--gray-700);
+      cursor: pointer;
+    }
+
+    &:hover {
+      svg {
+        fill: var(--gray-800);
+      }
+    }
+  }
+  &-limit {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+    padding-right: 8px;
+    height: 100%;
+    white-space: nowrap;
+    color: var(--gray-700);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+  &-justify {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &-normal {
+    .#{$prefix}-base {
+      box-shadow: 0 0 0 1px var(--gray-400);
+
+      &:hover {
+        box-shadow: 0 0 0 1px var(--gray-600);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px var(--primary-color),
+          0 0 0 4px rgba(255, 255, 255, 0.75), 0 0 0 4px var(--primary-color);
+      }
+    }
+  }
+  &-primary {
+    .#{$prefix}-base {
+      box-shadow: 0 0 0 1px var(--primary-color);
+
+      &:hover {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15),
+          0 0 0 1px var(--primary-color);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px var(--primary-color),
+          0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 4px var(--primary-color);
+      }
+    }
+  }
+  &-success {
+    .#{$prefix}-base {
+      box-shadow: 0 0 0 1px var(--ad-green);
+
+      &:hover {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--ad-green);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px var(--ad-green),
+          0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 4px var(--ad-green);
+      }
+    }
+  }
+  &-warning {
+    .#{$prefix}-base {
+      box-shadow: 0 0 0 1px var(--ad-orange);
+
+      &:hover {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--ad-orange);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px var(--ad-orange),
+          0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 4px var(--ad-orange);
+      }
+    }
+  }
+  &-danger {
+    .#{$prefix}-base {
+      box-shadow: 0 0 0 1px var(--ad-red);
+
+      &:hover {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--ad-red);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 1px var(--ad-red), 0 0 0 4px rgba(255, 255, 255, 0.7),
+          0 0 0 4px var(--ad-red);
+      }
+    }
+    .#{$prefix}-limit {
+      color: var(--ad-red);
+    }
+  }
+  &-disabled {
+    .#{$prefix}-base {
+      color: var(--gray-700);
+      background-color: rgba(0, 0, 0, 0.03);
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+      cursor: not-allowed;
+
+      &:hover {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+      }
+    }
+
+    .#{$prefix}-limit {
+      cursor: not-allowed;
+    }
+
+    .#{$prefix}-left_icon,
+    .#{$prefix}-right_icon {
+      cursor: not-allowed;
+
+      svg {
+        cursor: not-allowed;
+        fill: var(--gray-600);
+      }
+    }
+  }
+  &-large {
+    .#{$prefix}-base,
+    .#{$prefix}-justify {
+      padding: 9px 16px;
+      height: 42px;
+      font-size: var(--font-size-large);
+    }
+
+    .#{$prefix}-limit {
+      font-size: var(--font-size-medium);
+    }
+
+    &.#{$prefix}-limited {
+      .#{$prefix}-base,
+      .#{$prefix}-justify {
+        padding-right: 48px;
+      }
+
+      &_digit-over-2 {
+        .#{$prefix}-base,
+        .#{$prefix}-justify {
+          padding-right: 60px;
+        }
+      }
+    }
+
+    .#{$prefix}-left_icon {
+      padding-left: 12px;
+      padding-right: 8px;
+    }
+
+    .#{$prefix}-right_icon {
+      padding-left: 8px;
+      padding-right: 12px;
+    }
+
+    .#{$prefix}-left_button,
+    .#{$prefix}-right_button {
+      button[class*="light"] {
+        padding-left: 8px;
+        padding-right: 8px;
+        height: 34px;
+        line-height: 34px;
+      }
+    }
+
+    .#{$prefix}-left_select,
+    .#{$prefix}-right_select {
+      $select-prefix-cls: "adui-select";
+      .#{$select-prefix-cls} {
+        height: 34px;
+
+        &-selection {
+          font-size: var(--font-size-large);
+          line-height: 34px;
+        }
+
+        &-selection__rendered {
+          font-size: var(--font-size-large);
+          line-height: 34px;
+        }
+
+        &-selection-item {
+          line-height: 34px;
+        }
+      }
+    }
+  }
+  &-medium {
+    .#{$prefix}-base,
+    .#{$prefix}-justify {
+      padding: 6px 12px;
+      height: 36px;
+      font-size: var(--font-size-medium);
+    }
+
+    .#{$prefix}-limit {
+      font-size: var(--font-size-small);
+    }
+
+    &.#{$prefix}-limited {
+      .#{$prefix}-base,
+      .#{$prefix}-justify {
+        padding-right: 48px;
+      }
+
+      &_digit-over-2 {
+        .#{$prefix}-base,
+        .#{$prefix}-justify {
+          padding-right: 60px;
+        }
+      }
+    }
+
+    .#{$prefix}-left_icon {
+      padding-left: 8px;
+      padding-right: 4px;
+    }
+
+    .#{$prefix}-right_icon {
+      padding-left: 4px;
+      padding-right: 8px;
+    }
+
+    .#{$prefix}-left_button,
+    .#{$prefix}-right_button {
+      button[class*="light"] {
+        padding-left: 5px;
+        padding-right: 5px;
+        height: 26px;
+        line-height: 26px;
+      }
+    }
+
+    .#{$prefix}-left_select,
+    .#{$prefix}-right_select {
+      $select-prefix-cls: "adui-select";
+      .#{$select-prefix-cls} {
+        height: 26px;
+
+        &-selection {
+          font-size: var(--font-size-medium);
+          line-height: 26px;
+        }
+
+        &-selection__rendered {
+          font-size: var(--font-size-medium);
+          line-height: 26px;
+        }
+
+        &-selection-item {
+          line-height: 26px;
+        }
+      }
+    }
+  }
+  &-small {
+    .#{$prefix}-base,
+    .#{$prefix}-justify {
+      padding: 6px 8px;
+      height: 30px;
+      font-size: var(--font-size-small);
+    }
+
+    .#{$prefix}-limit {
+      font-size: var(--font-size-mini);
+    }
+
+    &.#{$prefix}-limited {
+      .#{$prefix}-base,
+      .#{$prefix}-justify {
+        padding-right: 46px;
+      }
+
+      &_digit-over-2 {
+        .#{$prefix}-base,
+        .#{$prefix}-justify {
+          padding-right: 58px;
+        }
+      }
+    }
+
+    .#{$prefix}-left_icon {
+      padding-left: 8px;
+      padding-right: 4px;
+    }
+
+    .#{$prefix}-right_icon {
+      padding-left: 4px;
+      padding-right: 8px;
+    }
+
+    .#{$prefix}-left_button,
+    .#{$prefix}-right_button {
+      button[class*="light"] {
+        padding-left: 3px;
+        padding-right: 3px;
+        height: 24px;
+        line-height: 24px;
+      }
+    }
+
+    .#{$prefix}-left_select,
+    .#{$prefix}-right_select {
+      $select-prefix-cls: "adui-select";
+      .#{$select-prefix-cls} {
+        height: 24px;
+
+        &-selection {
+          font-size: var(--font-size-small);
+          line-height: 24px;
+        }
+
+        &-selection__rendered {
+          font-size: var(--font-size-small);
+          line-height: 24px;
+        }
+
+        &-selection-item {
+          line-height: 24px;
+        }
+      }
+    }
+  }
+  &-mini {
+    .#{$prefix}-base,
+    .#{$prefix}-justify {
+      padding: 4px 8px;
+      height: 26px;
+      font-size: var(--font-size-mini);
+    }
+
+    .#{$prefix}-limit {
+      font-size: var(--font-size-mini);
+    }
+
+    &.#{$prefix}-limited {
+      .#{$prefix}-base,
+      .#{$prefix}-justify {
+        padding-right: 44px;
+      }
+
+      &_digit-over-2 {
+        .#{$prefix}-base,
+        .#{$prefix}-justify {
+          padding-right: 56px;
+        }
+      }
+    }
+
+    .#{$prefix}-left_icon {
+      padding-left: 8px;
+      padding-right: 4px;
+    }
+
+    .#{$prefix}-right_icon {
+      padding-left: 4px;
+      padding-right: 8px;
+    }
+
+    .#{$prefix}-left_button,
+    .#{$prefix}-right_button {
+      button[class*="light"] {
+        padding-left: 1px;
+        padding-right: 1px;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+
+    .#{$prefix}-left_select,
+    .#{$prefix}-right_select {
+      $select-prefix-cls: "adui-select";
+      .#{$select-prefix-cls} {
+        height: 20px;
+
+        &-selection {
+          font-size: var(--font-size-mini);
+          line-height: 20px;
+        }
+
+        &-selection__rendered {
+          font-size: var(--font-size-mini);
+          line-height: 20px;
+        }
+
+        &-selection-item {
+          line-height: 20px;
+        }
+      }
+    }
+  }
+  &-light {
+    &::after {
+      opacity: 0;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--gray-800);
+      border-radius: 4px;
+      transform: scale(0.94);
+      transition: all var(--ease-in-out) var(--motion-duration-base);
+    }
+
+    &:not(.#{$prefix}-disabled) {
+      &:not(:focus-within) {
+        .#{$prefix}-base {
+          background-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      &:hover {
+        &:not(:focus-within) {
+          .#{$prefix}-base {
+            box-shadow: none;
+          }
+        }
+
+        &::after {
+          opacity: 0.1;
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}

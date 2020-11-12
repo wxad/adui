@@ -1,0 +1,133 @@
+$prefix: "adui-message";
+
+.#{$prefix} {
+  &-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-index-message);
+    width: 100vw;
+    opacity: 0;
+    transform: translate3d(0, -56px, 0);
+    transition: all var(--motion-duration-base) var(--ease-in-out);
+  }
+  &-base {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 12px;
+    min-width: 120px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all var(--motion-duration-base) var(--ease-in-out);
+  }
+  &-hasActions {
+    padding-right: 4px;
+  }
+  &-icon {
+    flex: none;
+    margin-right: 8px;
+  }
+  &-content {
+    flex: 1;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+  &-actions {
+    flex: none;
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+  }
+  &-action {
+    &:not(:last-child) {
+      position: relative;
+      margin-right: 9px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        margin-top: -8px;
+        width: 1px;
+        height: 16px;
+        background-color: #6b6b6b;
+        opacity: 0.2;
+      }
+    }
+  }
+  &-normal {
+    color: var(--gray-900);
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(107, 107, 107, 0.15),
+      0 10px 36px 0 rgba(0, 0, 0, 0.1), 0 6px 15px 0 rgba(0, 0, 0, 0.07);
+  }
+  &-primary,
+  &-success,
+  &-warning,
+  &-danger {
+    color: #fff;
+
+    .#{$prefix}-icon {
+      fill: #fff;
+    }
+
+    .#{$prefix}-actions {
+      button {
+        color: rgba(255, 255, 255, 0.5) !important;
+
+        svg {
+          fill: #fff !important;
+          opacity: 0.5;
+          transition: all var(--motion-duration-base) var(--ease-in-out);
+        }
+
+        &::after {
+          background-color: #fff !important;
+        }
+
+        &:hover {
+          color: #fff !important;
+
+          svg {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .#{$prefix}-action {
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+  &-primary {
+    background-color: var(--primary-color);
+    box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.1),
+      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+      0 0 0 1px var(--primary-color);
+  }
+  &-success {
+    background-color: var(--ad-green);
+    box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.1),
+      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+      0 0 0 1px var(--ad-green);
+  }
+  &-warning {
+    background-color: var(--ad-orange);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 10px 36px 0 rgba(0, 0, 0, 0.1),
+      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 0 0 1px var(--ad-orange);
+  }
+  &-danger {
+    background-color: var(--ad-red);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 10px 36px 0 rgba(0, 0, 0, 0.1),
+      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 0 0 1px var(--ad-red);
+  }
+}

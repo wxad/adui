@@ -1,0 +1,47 @@
+$prefix: "adui-breadcrumb";
+
+.#{$prefix} {
+  &-item {
+    display: inline-flex;
+    align-items: center;
+    color: var(--gray-800);
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--gray-900);
+    }
+
+    &:last-child {
+      color: var(--gray-900);
+
+      .#{$prefix}-icon {
+        display: none;
+      }
+    }
+  }
+  &-content {
+    cursor: pointer;
+  }
+  &-icon {
+    margin-left: 4px;
+    margin-right: 4px;
+    fill: var(--gray-700);
+  }
+  &-mini {
+    font-size: var(--font-size-mini);
+    line-height: 18px;
+  }
+  &-small {
+    font-size: var(--font-size-small);
+    line-height: 20px;
+  }
+  &-medium {
+    font-size: var(--font-size-medium);
+    line-height: 24px;
+  }
+  &-large {
+    font-size: var(--font-size-large);
+    line-height: 24px;
+  }
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>工具 / folder-outlined</title>
+    <desc>Created with Sketch.</desc>
+    <g id="工具-/-folder-outlined" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2.5,3 L7.69098301,3 C7.88036903,3 8.05350059,3.10700119 8.1381966,3.2763932 L8.94472136,4.88944272 C8.97859976,4.95719952 9.04785239,5 9.1236068,5 L15.5,5 C15.7761424,5 16,5.22385763 16,5.5 L16,14.5 C16,14.7761424 15.7761424,15 15.5,15 L2.5,15 C2.22385763,15 2,14.7761424 2,14.5 L2,3.5 C2,3.22385763 2.22385763,3 2.5,3 L2.5,3 Z M3.5,4.5 L3.5,13.5 L14.5,13.5 L14.5,6.5 L8,6.5 L7,4.5 L3.5,4.5 Z M9,10.5 L13,10.5 L13,12 L9,12 L9,10.5 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

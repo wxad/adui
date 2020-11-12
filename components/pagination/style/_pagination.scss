@@ -1,0 +1,57 @@
+$prefix: "adui-pagination";
+
+.#{$prefix} {
+  &-base {
+    display: flex;
+    align-items: center;
+  }
+  &-left {
+    justify-content: flex-start;
+  }
+  &-center {
+    justify-content: center;
+  }
+  &-right {
+    justify-content: flex-end;
+  }
+  &-text {
+    display: inline-block;
+  }
+  &-input {
+    margin-left: 16px;
+    margin-right: 8px;
+    width: 48px;
+  }
+  &-large {
+    font-size: var(--font-size-large);
+
+    .#{$prefix}-text {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+  &-medium {
+    font-size: var(--font-size-medium);
+
+    .#{$prefix}-text {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+  &-small {
+    font-size: var(--font-size-small);
+
+    .#{$prefix}-text {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+  &-mini {
+    font-size: var(--font-size-mini);
+
+    .#{$prefix}-text {
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  }
+}

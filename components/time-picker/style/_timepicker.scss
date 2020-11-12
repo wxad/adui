@@ -1,0 +1,82 @@
+@use "../../style/index" as mixins;
+
+$prefix: "adui-time";
+
+.#{$prefix} {
+  &-large {
+    &.#{$prefix}-input,
+    &.#{$prefix}-integerTimeSelect {
+      width: 104px;
+    }
+  }
+  &-medium {
+    &.#{$prefix}-input,
+    &.#{$prefix}-integerTimeSelect {
+      width: 88px;
+    }
+  }
+  &-small {
+    &.#{$prefix}-input,
+    &.#{$prefix}-integerTimeSelect {
+      width: 84px;
+    }
+  }
+  &-mini {
+    &.#{$prefix}-input,
+    &.#{$prefix}-integerTimeSelect {
+      width: 78px;
+    }
+  }
+  // TimeSelect 样式
+  &-timeSelect {
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 150px;
+    width: 64px;
+    height: 180px;
+    overflow: hidden;
+    @include mixins.scrollbar();
+
+    &:hover {
+      overflow: auto;
+    }
+
+    &:not(:last-child) {
+      box-shadow: 1px 0 0 var(--gray-300);
+    }
+  }
+
+  &-integerTimeSelect {
+    overflow: auto;
+  }
+
+  &-item {
+    display: flex;
+    padding-left: 16px;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color var(--motion-duration-fast) var(--ease-in-out);
+
+    &:not(.#{$prefix}-disabled) {
+      &:hover {
+        background-color: var(--gray-200);
+      }
+
+      &:active {
+        background-color: var(--gray-300);
+      }
+    }
+
+    &.#{$prefix}-active {
+      background-color: rgba(0, 0, 0, 0.06);
+    }
+
+    &.#{$prefix}-disabled {
+      color: var(--gray-700);
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>编辑 / copy-outlined</title>
+    <desc>Created with Sketch.</desc>
+    <g id="编辑-/-copy-outlined" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M13,13 L13,15.4987692 C13,15.7755913 12.7702494,16 12.4987692,16 L2.50123084,16 C2.22440869,16 2,15.7702494 2,15.4987692 L2,5.50123084 C2,5.22440869 2.22975063,5 2.50123084,5 L5,5 L5,2.50123084 C5,2.22440869 5.22975063,2 5.50123084,2 L15.4987692,2 C15.7755913,2 16,2.22975063 16,2.50123084 L16,12.4987692 C16,12.7755913 15.7702494,13 15.4987692,13 L13,13 Z M13,11.5 L14.5,11.5 L14.5,3.5 L6.5,3.5 L6.5,5 L12.4987692,5 C12.7755913,5 13,5.22975063 13,5.50123084 L13,11.5 Z M3.5,6.5 L3.5,14.5 L11.5,14.5 L11.5,6.5 L3.5,6.5 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

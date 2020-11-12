@@ -1,0 +1,104 @@
+$prefix: "adui-tooltip";
+
+.#{$prefix} {
+  &-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+  &-base {
+    max-width: 250px;
+    min-height: 28px;
+    word-break: break-all;
+
+    &-bottom,
+    &-bottomLeft,
+    &-bottomRight {
+      .#{$prefix}-arrow {
+        top: 3px;
+        border-width: 0 5px 5px;
+        border-bottom-color: rgba(0, 0, 0, 0.75);
+      }
+    }
+
+    &-top,
+    &-topLeft,
+    &-topRight {
+      .#{$prefix}-arrow {
+        bottom: 3px;
+        border-width: 5px 5px 0;
+        border-top-color: rgba(0, 0, 0, 0.75);
+      }
+    }
+    &-top,
+    &-bottom {
+      .#{$prefix}-arrow {
+        left: 50%;
+        margin-left: -5px;
+      }
+    }
+    &-topLeft,
+    &-bottomLeft {
+      .#{$prefix}-arrow {
+        left: 16px;
+      }
+    }
+    &-topRight,
+    &-bottomRight {
+      .#{$prefix}-arrow {
+        right: 16px;
+      }
+    }
+
+    &-left,
+    &-leftTop,
+    &-leftBottom {
+      .#{$prefix}-arrow {
+        right: 3px;
+        border-width: 5px 0 5px 5px;
+        border-left-color: rgba(0, 0, 0, 0.75);
+      }
+    }
+    &-right,
+    &-rightTop,
+    &-rightBottom {
+      .#{$prefix}-arrow {
+        left: 3px;
+        border-width: 5px 5px 5px 0;
+        border-right-color: rgba(0, 0, 0, 0.75);
+      }
+    }
+    &-left,
+    &-right {
+      .#{$prefix}-arrow {
+        top: 50%;
+        margin-top: -5px;
+      }
+    }
+    &-leftTop,
+    &-rightTop {
+      .#{$prefix}-arrow {
+        top: 8px;
+      }
+    }
+    &-leftBottom,
+    &-rightBottom {
+      .#{$prefix}-arrow {
+        bottom: 8px;
+      }
+    }
+  }
+  &-content {
+    padding: 10px 12px;
+    height: 100%;
+    font-size: 13px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 6px;
+  }
+}

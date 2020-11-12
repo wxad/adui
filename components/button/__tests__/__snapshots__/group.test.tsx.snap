@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button.Group 是否正确渲染 1`] = `
+<div
+  className="adui-button-group"
+>
+  <button
+    className="adui-button-base adui-button-normal adui-button-large"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="adui-button-content"
+    >
+      按钮一
+    </span>
+  </button>
+  <button
+    className="adui-button-base adui-button-normal adui-button-large"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="adui-button-content"
+    >
+      按钮二
+    </span>
+  </button>
+</div>
+`;

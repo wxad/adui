@@ -1,0 +1,46 @@
+$prefix: "adui-form";
+
+.#{$prefix} {
+  &-item {
+    display: flex;
+    margin-bottom: 24px;
+    align-items: baseline;
+  }
+  &-label {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 16px;
+    font-size: var(--font-size-small);
+    color: var(--gray-900);
+    white-space: nowrap;
+  }
+  &-tip {
+    font-size: var(--font-size-small);
+    line-height: 20px;
+
+    &:not(:empty) {
+      margin-top: 8px;
+    }
+
+    &_normal {
+      color: var(--gray-700);
+    }
+
+    &_primary {
+      color: var(--primary-color);
+    }
+
+    &_success {
+      color: var(--ad-green);
+    }
+
+    &_warning {
+      color: var(--ad-orange);
+    }
+
+    &_danger {
+      color: var(--ad-red);
+    }
+  }
+}

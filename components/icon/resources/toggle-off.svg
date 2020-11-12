@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>编辑 / toggle-off</title>
+    <desc>Created with Sketch.</desc>
+    <g id="编辑-/-toggle-off" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M5.5,5 L12.5,5 C14.709139,5 16.5,6.790861 16.5,9 C16.5,11.209139 14.709139,13 12.5,13 L5.5,13 C3.290861,13 1.5,11.209139 1.5,9 C1.5,6.790861 3.290861,5 5.5,5 Z M5.5,6.5 C4.11928813,6.5 3,7.61928813 3,9 C3,10.3807119 4.11928813,11.5 5.5,11.5 L12.5,11.5 C13.8807119,11.5 15,10.3807119 15,9 C15,7.61928813 13.8807119,6.5 12.5,6.5 L5.5,6.5 Z M5.5,10.5 C4.67157288,10.5 4,9.82842712 4,9 C4,8.17157288 4.67157288,7.5 5.5,7.5 C6.32842712,7.5 7,8.17157288 7,9 C7,9.82842712 6.32842712,10.5 5.5,10.5 Z" id="shape" fill="#1F1F1F"></path>
+    </g>
+</svg>

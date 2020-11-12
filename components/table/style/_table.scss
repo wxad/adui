@@ -1,0 +1,641 @@
+@use "../../style/index" as mixins;
+
+$prefix: "adui-table";
+
+.#{$prefix} {
+  &-wrapper {
+    position: relative;
+    font-size: 13px;
+    line-height: 20px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+
+    .rc-virtual-list-scrollbar {
+      width: 14px !important;
+
+      &-thumb {
+        left: 6px !important;
+        width: 6px !important;
+        background-color: rgba(0, 0, 0, 0.15) !important;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+      }
+    }
+  }
+  &-tables {
+    @include mixins.scrollbar();
+    display: flex;
+    overflow: auto;
+  }
+  &-thead {
+    display: inline-flex;
+    vertical-align: top;
+    min-width: 100%;
+    line-height: 16px;
+
+    &:hover {
+      .#{$prefix}-resizer {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  &-resizer {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: -9px;
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 100%;
+    cursor: col-resize;
+
+    &::before {
+      content: "";
+      width: 2px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:hover {
+      width: 21px;
+
+      &::before {
+        width: 2px;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    &.#{$prefix}-resizer_show {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &.#{$prefix}-resizer_current {
+      width: 20px;
+
+      &::before {
+        width: 2px;
+        background-color: var(--primary-color);
+      }
+    }
+  }
+  &-th,
+  &-td {
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    background-color: #fff;
+  }
+  &-th {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset;
+
+    &_left,
+    &_right {
+      position: sticky;
+      z-index: calc(var(--z-index-affix) + 1);
+      transition: box-shadow var(--motion-duration-base) var(--ease-in-out);
+    }
+
+    .#{$prefix}-overflow-x &_leftLast {
+      box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset,
+        1px 0 2px 0 rgba(0, 0, 0, 0.05), 1px 0 0 0 rgba(0, 0, 0, 0.05);
+    }
+    .#{$prefix}-overflow-x &_rightFirst {
+      box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset,
+        -1px 0 2px 0 rgba(0, 0, 0, 0.05), -1px 0 0 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .#{$prefix}-cell {
+      flex: 1;
+      color: var(--gray-800);
+      user-select: none;
+    }
+
+    &:last-of-type {
+      .#{$prefix}-resizer {
+        right: 0;
+        width: 10px;
+        justify-content: flex-end;
+      }
+    }
+  }
+  // headerEmphasized 要写在 th_clickable 上面，保证后者的优先级
+  &-headerEmphasized {
+    .#{$prefix}-th {
+      background-color: var(--gray-100);
+
+      .#{$prefix}-cell {
+        color: #1f1f1f;
+        font-weight: 600;
+      }
+    }
+  }
+  &-virtualScroll {
+    .#{$prefix}-innerScroll {
+      .#{$prefix}-mainTable {
+        overflow-y: hidden;
+      }
+    }
+  }
+  &-th_clickable {
+    cursor: pointer;
+    user-select: none; // 作用是快速双击时，保证每一次都能状态变化
+
+    &:hover {
+      background-color: var(--gray-200);
+
+      .#{$prefix}-cell {
+        color: var(--gray-900);
+      }
+    }
+
+    &:active {
+      background-color: var(--gray-300);
+    }
+  }
+  &-td {
+    white-space: nowrap;
+
+    .#{$prefix}-cell {
+      align-items: flex-start;
+    }
+
+    &_left,
+    &_right {
+      position: sticky;
+      z-index: var(--z-index-affix);
+      transition: box-shadow var(--motion-duration-base) var(--ease-in-out);
+    }
+
+    .#{$prefix}-overflow-x &_leftLast {
+      box-shadow: 1px 0 3px 0 rgba(0, 0, 0, 0.05), 1px 0 0 0 rgba(0, 0, 0, 0.05);
+    }
+    .#{$prefix}-overflow-x &_rightFirst {
+      box-shadow: -1px 0 3px 0 rgba(0, 0, 0, 0.05),
+        -1px 0 0 0 rgba(0, 0, 0, 0.05);
+    }
+  }
+  &-td_resizing {
+    box-shadow: -2px 0 0 0 #eaeaea inset;
+  }
+  &-th_functional,
+  &-td_functional {
+    flex: none;
+    left: 0; // sticky 的相关样式，static 或 relative 下 0 应该也不会有问题
+
+    &:empty,
+    .#{$prefix}-cell {
+      padding-left: 24px;
+      padding-right: 8px;
+      width: 50px;
+      user-select: none;
+    }
+  }
+  &-expandRow {
+    background-color: #fff;
+
+    &:not(:last-of-type) {
+      box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset;
+    }
+  }
+  &-expandIcon {
+    position: relative;
+    top: 1px;
+    display: block;
+    fill: var(--gray-600);
+    transform: rotate(-90deg);
+  }
+  &-title {
+    display: inline-block;
+  }
+  &-thGroup {
+    display: flex;
+  }
+  &-cell {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    max-width: 100%;
+    height: 100%;
+    word-break: break-all;
+  }
+  &-cellInner {
+    min-width: 0;
+    overflow: hidden;
+    white-space: inherit;
+    text-overflow: ellipsis;
+  }
+  &-cell_combined {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 10px 8px;
+    background-color: #fff;
+  }
+  &-tbody {
+    position: relative;
+    display: flex;
+    align-items: baseline; // 此行非常重要，为了让 -tr 扩充宽度
+    flex-direction: column;
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--motion-duration-base) var(--ease-in-out);
+    }
+  }
+  &-tr {
+    display: flex;
+    min-width: 100%;
+
+    &:hover {
+      .#{$prefix}-td,
+      .#{$prefix}-cell_combined {
+        background-color: var(--gray-100);
+      }
+    }
+
+    &:not(:last-of-type) {
+      .#{$prefix}-td {
+        .#{$prefix}-cell {
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset;
+        }
+
+        &.#{$prefix}-td_resizing {
+          .#{$prefix}-cell {
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset,
+              -2px 0 0 0 #eaeaea inset;
+          }
+        }
+      }
+    }
+  }
+  &-tr_clickable {
+    cursor: pointer;
+  }
+  &-selectComponent {
+    line-height: 20px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: inherit;
+    }
+
+    &:hover {
+      .#{$prefix}-expandIcon {
+        fill: var(--gray-700);
+      }
+    }
+
+    &:active {
+      .#{$prefix}-expandIcon {
+        fill: var(--gray-800);
+      }
+    }
+  }
+  &-tr_expanded {
+    background-color: var(--gray-100);
+
+    .#{$prefix}-selectComponent {
+      .#{$prefix}-expandIcon {
+        fill: var(--gray-900);
+        transform: rotate(0deg);
+      }
+    }
+  }
+  &-tr_selected {
+    .#{$prefix}-td,
+    .#{$prefix}-cell_combined {
+      background-color: var(--gray-100);
+    }
+
+    &:hover {
+      .#{$prefix}-td,
+      .#{$prefix}-cell_combined {
+        background-color: var(--gray-200);
+      }
+    }
+  }
+  &-mainTable {
+    @include mixins.scrollbar();
+    flex: 1;
+    overflow: auto;
+    // 最小宽度是为了防止外层宽度很小时，固定列完全把主表格挡住的情况发生。
+    min-width: 100px;
+  }
+  &-innerScroll {
+    position: relative;
+    overflow: visible;
+
+    .#{$prefix}-thead {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    &.#{$prefix}-overflowed {
+      .#{$prefix}-mainTable {
+        overflow-x: auto;
+        overflow-y: auto;
+      }
+
+      .#{$prefix}-thead {
+        &::after {
+          content: "";
+          flex: none;
+          width: 14px;
+          height: 100%;
+          background-color: #fff;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset;
+        }
+      }
+
+      &.#{$prefix}-hasFixedRightColumns {
+        .#{$prefix}-thead {
+          &::after {
+            position: sticky;
+            right: 0;
+          }
+        }
+      }
+    }
+
+    .#{$prefix}-mainTable {
+      overflow: auto;
+    }
+  }
+  &-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: var(--gray-700);
+    background-color: #fff;
+  }
+
+  // TableSort, TableFilter 相关样式
+  &-filter,
+  &-sort {
+    display: flex;
+    align-items: center;
+    outline: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: all var(--motion-duration-fast) var(--ease-in-out);
+    }
+
+    svg {
+      margin-left: 4px;
+    }
+  }
+  &-filter {
+    svg {
+      fill: var(--gray-600);
+    }
+
+    &:hover {
+      svg {
+        fill: var(--gray-700);
+      }
+    }
+
+    &.#{$prefix}-filtered {
+      color: var(--gray-900);
+      font-weight: 600;
+
+      svg {
+        fill: var(--gray-900);
+      }
+    }
+  }
+  &-filterList {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 28px;
+      padding-left: 12px;
+      padding-right: 12px;
+      margin-right: 0 !important;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--gray-300);
+      }
+    }
+  }
+  &-sort {
+    &:hover {
+      .#{$prefix}-asc,
+      .#{$prefix}-desc {
+        fill: var(--gray-700);
+      }
+    }
+
+    &.#{$prefix}-sort_asc,
+    &.#{$prefix}-sort_desc {
+      color: var(--gray-900);
+      font-weight: 600;
+    }
+
+    &.#{$prefix}-sort_asc {
+      .#{$prefix}-asc {
+        fill: var(--gray-900);
+      }
+    }
+
+    &.#{$prefix}-sort_desc {
+      .#{$prefix}-desc {
+        fill: var(--gray-900);
+      }
+    }
+  }
+  &-asc,
+  &-desc {
+    display: block;
+    fill: var(--gray-600);
+  }
+  &-desc {
+    margin-top: -16px;
+  }
+  &-affix {
+    overflow: hidden;
+  }
+  &-affixScrollbar {
+    @include mixins.scrollbar();
+    position: absolute;
+    display: none;
+    height: 14px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    > div {
+      height: 1px;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  &-affixScrollbar_show {
+    display: block;
+  }
+  &-empty {
+    .#{$prefix}-mainTable {
+      overflow: hidden;
+    }
+  }
+  &-loading {
+    .#{$prefix}-tbody {
+      &::after {
+        opacity: 0.7;
+        visibility: visible;
+      }
+    }
+  }
+  &-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: calc(var(--z-index-affix) + 1);
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+
+    i {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-color);
+
+      &:first-of-type {
+        animation: progress 2.1s linear both infinite;
+      }
+      &:last-of-type {
+        animation: progress 2.1s linear both infinite 0.75s;
+      }
+    }
+  }
+  &-virtual-wrapper {
+    @include mixins.scrollbar();
+  }
+  &-large {
+    .#{$prefix}-th {
+      .#{$prefix}-cell {
+        min-height: 60px;
+      }
+    }
+
+    .#{$prefix}-td {
+      .#{$prefix}-cell {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    }
+  }
+  &-medium {
+    .#{$prefix}-th {
+      .#{$prefix}-cell {
+        min-height: 50px;
+      }
+    }
+
+    .#{$prefix}-td {
+      .#{$prefix}-cell {
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
+  &-small {
+    .#{$prefix}-th {
+      .#{$prefix}-cell {
+        min-height: 40px;
+      }
+    }
+
+    .#{$prefix}-td {
+      .#{$prefix}-cell {
+        padding-top: 11px;
+        padding-bottom: 11px;
+      }
+    }
+  }
+  &-mini {
+    .#{$prefix}-th {
+      .#{$prefix}-cell {
+        min-height: 40px;
+      }
+    }
+
+    .#{$prefix}-td {
+      .#{$prefix}-cell {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+    }
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+
+  10% {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  24% {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  40% {
+    transform: translate3d(calc(200% + 1px), 0, 0);
+  }
+
+  100% {
+    transform: translate3d(calc(200% + 1px), 0, 0);
+  }
+}
