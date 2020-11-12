@@ -83,7 +83,6 @@
     "@babel/runtime": "^7.8.7",
     "@babel/standalone": "^7.8.8",
     "@commitlint/config-conventional": "^8.3.4",
-    "@tencent/adui-design-token": "^1.0.0",
     "@types/classnames": "^2.2.10",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.1",
