@@ -29,7 +29,7 @@ module.exports = {
   hash: true,
   source: {
     components: './components',
-    docs: './docs',
+    docs: './doc',
     changelog: 'CHANGELOG.md',
   },
   theme: './site/theme',
