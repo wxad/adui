@@ -91,7 +91,7 @@
     "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
-    "adui-icon": "^1.5.4",
+    "adui-icon": "1.5.5",
     "async": "^3.2.0",
     "autoprefixer": "^9.7.4",
     "babel-core": "^7.0.0-bridge.0",

@@ -212,6 +212,9 @@ var _default = {
       "name": "edit-outlined",
       "keywords": ["edit-outlined", "编辑", "笔", "修改", "更改", "写"]
     }, {
+      "name": "multi-select",
+      "keywords": ["multi-select", "多选", "选择", "勾", "管理"]
+    }, {
       "name": "scan",
       "keywords": ["scan", "扫描", "扫码"]
     }, {
@@ -606,6 +609,9 @@ var _default = {
     }, {
       "name": "line-chart",
       "keywords": ["line-chart", "线状图", "趋势", "图表"]
+    }, {
+      "name": "stacked-bar-chart-square",
+      "keywords": ["stacked-bar-chart-square", "柱状图", "条形图", "图表"]
     }]
   },
   "生活": {
