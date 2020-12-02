@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/wxad/adui/compare/v1.1.1...v1.1.2) (2020-12-02)
+
+
+### Bug Fixes
+
+* **Table:** 修复合并单元格问题 ([e330ff5](https://github.com/wxad/adui/commit/e330ff5008f1fa70ab555d49e4cee243ccbaffc6))
+
 ### 1.1.1 (2020-12-01)
 
 ## [1.1.0](http://git.code.oa.com/yijiejiang/adUI/compare/v1.0.5...v1.1.0) (2020-11-12)
