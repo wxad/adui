@@ -434,7 +434,7 @@ exports[`Table 合并单元格快照 1`] = `
           style={Object {}}
         >
           <div
-            className="adui-table-td adui-table-td_left"
+            className="adui-table-td adui-table-td_left adui-table-td_combined"
             data-column={0}
             data-row={0}
             role="cell"
@@ -463,7 +463,11 @@ exports[`Table 合并单元格快照 1`] = `
                 阿萨德
                 <div
                   className="adui-table-cell_combined"
-                  style={Object {}}
+                  style={
+                    Object {
+                      "textAlign": undefined,
+                    }
+                  }
                 >
                   阿萨德
                 </div>
@@ -706,7 +710,7 @@ exports[`Table 合并单元格快照 1`] = `
           style={Object {}}
         >
           <div
-            className="adui-table-td adui-table-td_left"
+            className="adui-table-td adui-table-td_left adui-table-td_combined"
             data-column={0}
             data-row={2}
             role="cell"
@@ -738,6 +742,7 @@ exports[`Table 合并单元格快照 1`] = `
                   style={
                     Object {
                       "height": "calc(100% - 1px)",
+                      "textAlign": undefined,
                       "width": "calc(100% - 1px)",
                     }
                   }
@@ -912,7 +917,7 @@ exports[`Table 合并单元格快照 1`] = `
             </div>
           </div>
           <div
-            className="adui-table-td"
+            className="adui-table-td adui-table-td_combined"
             data-column={2}
             data-row={3}
             role="cell"
@@ -943,6 +948,7 @@ exports[`Table 合并单元格快照 1`] = `
                   className="adui-table-cell_combined"
                   style={
                     Object {
+                      "textAlign": "center",
                       "width": "calc(100% - 1px)",
                     }
                   }
@@ -953,7 +959,7 @@ exports[`Table 合并单元格快照 1`] = `
             </div>
           </div>
           <div
-            className="adui-table-td adui-table-td_right"
+            className="adui-table-td adui-table-td_right adui-table-td_combined"
             data-column={3}
             data-row={3}
             role="cell"
@@ -984,6 +990,7 @@ exports[`Table 合并单元格快照 1`] = `
                   className="adui-table-cell_combined"
                   style={
                     Object {
+                      "textAlign": "center",
                       "width": "calc(100% - 1px)",
                     }
                   }

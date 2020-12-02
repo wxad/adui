@@ -467,7 +467,7 @@ declare class Table extends React.Component<ITableProps, ITableState> {
     generateTable: () => (false | JSX.Element | undefined)[];
     generateThCell: (col: IColumnProps, options?: IBaseObject | undefined) => JSX.Element;
     generateTbodyCell: (row: IBaseObject, cell: IColumnProps, rowIndex: number, cellIndex: number) => JSX.Element;
-    getCombinedCellStyle: (_: IBaseObject, col: IColumnProps, rowIndex: number, colIndex: number, rowSpan: number, colSpan: number) => React.CSSProperties;
+    getCombinedCellStyle: (_: IBaseObject, __: IColumnProps, rowIndex: number, colIndex: number, rowSpan: number, colSpan: number) => React.CSSProperties;
     saveRef: (name?: "affixHeader" | "affixScrollbar" | "mainTable" | "mainTableBody" | "mainThead" | "wrapper" | undefined) => (node: any) => void;
     render(): JSX.Element;
 }
