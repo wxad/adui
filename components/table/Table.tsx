@@ -1361,12 +1361,24 @@ class Table extends React.Component<ITableProps, ITableState> {
       ) : (
         <Radio {...selectProps} />
       )
-      const generateTr = (columnsParam: any[]) => {
-        columnsParam.forEach((col, colIndex) => {
+      const generateTr = (columnsParam: any[], parentIndex?: number) => {
+        columnsParam.forEach((col, colIndexParam) => {
+          /**
+           * 如果前面 的 col 有 children，则要把 children.length 额外加到 colIndex
+           */
+          let colIndex = colIndexParam
+          if (parentIndex) {
+            for (let i = 0; i < parentIndex; i += 1) {
+              const childrenCount = columns[i].children?.length || 1
+              if (childrenCount) {
+                colIndex += childrenCount
+              }
+            }
+          }
           if (!col.children) {
             colArray.push(this.generateTbodyCell(row, col, rowIndex, colIndex))
           } else {
-            generateTr(col.children)
+            generateTr(col.children, colIndexParam)
           }
         })
       }
@@ -1723,6 +1735,7 @@ class Table extends React.Component<ITableProps, ITableState> {
           [`${prefix}-td_rightFirst`]: fixedColumnsInfos.find(
             o => o.dataIndex === dataIndex
           )?.isFirstRight,
+          [`${prefix}-td_combined`]: rowSpan || colSpan,
         })}
         key={dataIndex || cellIndex}
         style={{
@@ -1763,14 +1776,17 @@ class Table extends React.Component<ITableProps, ITableState> {
             {(rowSpan || colSpan) && (
               <div
                 className={`${prefix}-cell_combined`}
-                style={this.getCombinedCellStyle(
-                  row,
-                  cell,
-                  rowIndex,
-                  cellIndex,
-                  rowSpan,
-                  colSpan
-                )}
+                style={{
+                  ...this.getCombinedCellStyle(
+                    row,
+                    cell,
+                    rowIndex,
+                    cellIndex,
+                    rowSpan,
+                    colSpan
+                  ),
+                  textAlign: align || undefined,
+                }}
               >
                 {render
                   ? render(row, cell, rowIndex, cellIndex)
@@ -1785,18 +1801,14 @@ class Table extends React.Component<ITableProps, ITableState> {
 
   public getCombinedCellStyle = (
     _: IBaseObject,
-    col: IColumnProps,
+    __: IColumnProps,
     rowIndex: number,
     colIndex: number,
     rowSpan: number,
     colSpan: number
   ) => {
-    const getTableCell = (
-      rowIndexParam: number,
-      colIndexParam: number,
-      fixed?: boolean | "left" | "right"
-    ) => {
-      if (this.mainTable && !fixed) {
+    const getTableCell = (rowIndexParam: number, colIndexParam: number) => {
+      if (this.mainTable) {
         const row = this.mainTable.querySelectorAll('[role="row"]')[
           rowIndexParam
         ]
@@ -1806,13 +1818,13 @@ class Table extends React.Component<ITableProps, ITableState> {
       }
       return null
     }
-    const cell = getTableCell(rowIndex, colIndex, col.fixed)
+    const cell = getTableCell(rowIndex, colIndex)
     const style: React.CSSProperties = {}
     if (rowSpan < 2 || typeof rowSpan === "undefined") {
       // 最后 - 1 是为了不挡住 cell 的 box-shadow
       style.height = "calc(100% - 1px)"
     } else {
-      const endCell = getTableCell(rowIndex + rowSpan - 1, colIndex, col.fixed)
+      const endCell = getTableCell(rowIndex + rowSpan - 1, colIndex)
       if (cell && endCell) {
         const cellRect = cell.getBoundingClientRect()
         const endCellRect = endCell.getBoundingClientRect()
@@ -1828,7 +1840,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       // 最后 - 1 是为了不挡住 cell 的 box-shadow
       style.width = "calc(100% - 1px)"
     } else {
-      const endCell = getTableCell(rowIndex, colIndex + colSpan - 1, col.fixed)
+      const endCell = getTableCell(rowIndex, colIndex + colSpan - 1)
       if (cell && endCell) {
         const cellRect = cell.getBoundingClientRect()
         const endCellRect = endCell.getBoundingClientRect()
@@ -1839,6 +1851,7 @@ class Table extends React.Component<ITableProps, ITableState> {
           1}px`
       }
     }
+
     return style
   }
 

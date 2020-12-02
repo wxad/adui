@@ -178,6 +178,9 @@ $prefix: "adui-table";
       position: sticky;
       z-index: var(--z-index-affix);
       transition: box-shadow var(--motion-duration-base) var(--ease-in-out);
+      &.#{$prefix}-td_combined {
+        z-index: calc(var(--z-index-affix) + 1);
+      }
     }
 
     .#{$prefix}-overflow-x &_leftLast {
