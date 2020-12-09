@@ -153,6 +153,7 @@ export interface IIconNames {
     "mobile": string;
     "more-horiz": string;
     "more-vert": string;
+    "multi-select": string;
     "music": string;
     "node-tree-2-outlined": string;
     "node-tree-outlined": string;
@@ -202,6 +203,7 @@ export interface IIconNames {
     "speaker-outlined": string;
     "speaker": string;
     "sport-outlined": string;
+    "stacked-bar-chart-square": string;
     "star-outlined": string;
     "star": string;
     "storage-outlined": string;

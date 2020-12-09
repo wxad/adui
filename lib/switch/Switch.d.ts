@@ -27,6 +27,10 @@ export interface ISwitchProps {
      */
     onChange?: ((checked: boolean) => void) | null;
     /**
+     * 点击事件的 handler
+     */
+    onClick?: (() => void) | null;
+    /**
      * 设置尺寸
      */
     size?: "mini" | "small" | "medium" | "large";
