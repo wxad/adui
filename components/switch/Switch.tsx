@@ -33,6 +33,10 @@ export interface ISwitchProps {
    */
   onChange?: ((checked: boolean) => void) | null
   /**
+   * 点击事件的 handler
+   */
+  onClick?: (() => void) | null
+  /**
    * 设置尺寸
    */
   size?: "mini" | "small" | "medium" | "large"
@@ -52,6 +56,7 @@ const Switch: React.FunctionComponent<ISwitchProps> = ({
   defaultChecked,
   disabled,
   onChange,
+  onClick,
   size,
   unCheckedText,
   ...otherProps
@@ -68,6 +73,9 @@ const Switch: React.FunctionComponent<ISwitchProps> = ({
   const { size: sizeContext } = useContext(ConfigContext)
 
   const handleChange = () => {
+    if (onClick) {
+      onClick()
+    }
     if (!disabled) {
       if (checkedProps === null) {
         setChecked(!checked)
@@ -143,6 +151,10 @@ Switch.propTypes = {
    */
   onChange: PropTypes.func,
   /**
+   * 点击事件的 handler
+   */
+  onClick: PropTypes.func,
+  /**
    * 设置尺寸
    */
   size: PropTypes.oneOf(["mini", "small", "medium", "large"]),
@@ -159,6 +171,7 @@ Switch.defaultProps = {
   defaultChecked: null,
   disabled: false,
   onChange: null,
+  onClick: null,
   size: "small",
   unCheckedText: null,
 }
