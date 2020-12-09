@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/wxad/adui/compare/v1.2.0...v1.2.1) (2020-12-09)
+
+
+### Bug Fixes
+
+* **Switch:** 修复对 onClick 事件的覆盖 ([0dccf21](https://github.com/wxad/adui/commit/0dccf21aba4c6f6e12b9b2ffd4f6052a2299c1ce))
+
 ## [1.2.0](https://github.com/wxad/adui/compare/v1.1.2...v1.2.0) (2020-12-02)
 
 
