@@ -52,7 +52,7 @@ export const WEEKDAYS_SHORT_EN = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 
 export const getDefaultMaxDate = () => {
   const date = new Date()
-  date.setFullYear(date.getFullYear())
+  date.setFullYear(date.getFullYear() + 1)
   date.setMonth(11, 31)
   return date
 }
