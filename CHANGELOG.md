@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/wxad/adui/compare/v1.2.2...v1.2.3) (2020-12-24)
+
+
+### Bug Fixes
+
+* **Select:** 修复  searchable + 空 options 时的报错 ([17bc6f8](https://github.com/wxad/adui/commit/17bc6f87cfd51bea789cce07d2635b6b1647767d))
+
 ### [1.2.2](https://github.com/wxad/adui/compare/v1.2.1...v1.2.2) (2020-12-21)
 
 
