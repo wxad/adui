@@ -325,10 +325,10 @@ class Select extends React.Component<ISelectProps, ISelectState> {
 
               if (listHolder) {
                 listHolder.dispatchEvent(new Event("scroll"))
-              }
 
-              if (listHolder.children[0]) {
-                listHolder.children[0].dispatchEvent(new Event("scroll"))
+                if (listHolder.children[0]) {
+                  listHolder.children[0].dispatchEvent(new Event("scroll"))
+                }
               }
 
               if (el) {
