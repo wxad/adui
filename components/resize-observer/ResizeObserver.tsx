@@ -12,6 +12,17 @@ import warning from "../_util/warning"
 import { composeRef } from "rc-util/lib/ref"
 import ResizeObserver from "./ResizeObserverPolyfill"
 
+interface ResizeObserverEntry {
+  readonly borderBoxSize: ResizeObserverEntryBoxSize
+  readonly contentBoxSize: ResizeObserverEntryBoxSize
+  readonly contentRect: DOMRectReadOnly
+  readonly target: Element
+}
+interface ResizeObserverEntryBoxSize {
+  blockSize: number
+  inlineSize: number
+}
+
 const supportRef = nodeOrComponent => {
   if (
     nodeOrComponent.type?.$$typeof &&
