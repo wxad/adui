@@ -64,7 +64,7 @@ const Icon: React.FunctionComponent<IIconProps> & {
   }
   const lightness = color2hsl(colorProp).l
 
-  const data = IconSvgPaths[icon]
+  const data = IconSvgPaths[icon] || []
   const paths = data.map((d: string) => (
     <path d={d} key={d} fillRule="evenodd" />
   ))

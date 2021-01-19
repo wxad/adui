@@ -5,6 +5,16 @@
  */
 import * as React from "react";
 import ResizeObserver from "./ResizeObserverPolyfill";
+interface ResizeObserverEntry {
+    readonly borderBoxSize: ResizeObserverEntryBoxSize;
+    readonly contentBoxSize: ResizeObserverEntryBoxSize;
+    readonly contentRect: DOMRectReadOnly;
+    readonly target: Element;
+}
+interface ResizeObserverEntryBoxSize {
+    blockSize: number;
+    inlineSize: number;
+}
 interface ResizeObserverProps {
     children: React.ReactNode;
     disabled?: boolean;
