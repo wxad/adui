@@ -2004,6 +2004,4 @@ class Table extends React.Component<ITableProps, ITableState> {
   }
 }
 
-polyfill(Table)
-
 export default Table

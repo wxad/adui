@@ -7,7 +7,6 @@ import RcTreeSelect, {
   TreeNode,
 } from "rc-tree-select"
 import PropTypes from "prop-types"
-import { polyfill } from "react-lifecycles-compat"
 import shallowEqual from "shallowequal"
 import classNames from "classnames"
 import toArray from "rc-util/lib/Children/toArray"
@@ -574,7 +573,5 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     )
   }
 }
-
-polyfill(TreeSelect)
 
 export default TreeSelect

@@ -2,7 +2,6 @@
 /* eslint-disable react/no-danger */
 import * as React from "react"
 import PropTypes from "prop-types"
-import { polyfill } from "react-lifecycles-compat"
 import classNames from "classnames"
 import RcSelect from "rc-select"
 import OptGroup from "./OptGroup"
@@ -546,7 +545,5 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     )
   }
 }
-
-polyfill(Select)
 
 export default Select
