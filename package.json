@@ -90,6 +90,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "adui-design-token": "^1.0.9",
     "adui-icon": "1.5.7",
     "async": "^3.2.0",
     "autoprefixer": "^9.8.6",

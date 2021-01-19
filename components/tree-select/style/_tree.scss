@@ -834,3 +834,20 @@ li.adui-tree-select-tree-treenode-disabled
     }
   }
 }
+.adui-tree-select-selection-overflow {
+  position: relative;
+  display: flex;
+  flex: auto;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.adui-tree-select-selection-overflow-item {
+  flex: none;
+  max-width: 100%;
+}
+.adui-tree-select-selection-search {
+  position: relative;
+  max-width: 100%;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
