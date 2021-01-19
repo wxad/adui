@@ -140,9 +140,10 @@ const Slider: React.FunctionComponent<ISliderProps> = ({
     (): SliderValue => {
       let val
       if (valueProp !== null) {
-        val = valueProp
+        val = typeof valueProp === "string" ? Number(valueProp) : valueProp
       } else if (defaultValue !== null) {
-        val = defaultValue
+        val =
+          typeof defaultValue === "string" ? Number(defaultValue) : defaultValue
       }
       if (val === undefined) {
         return val
@@ -156,7 +157,7 @@ const Slider: React.FunctionComponent<ISliderProps> = ({
     valueProp !== null &&
     valueProp !== undefined &&
     (typeof valueProp === "object" || !isNaN(valueProp)) &&
-    valueProp !== value
+    (typeof valueProp === "string" ? Number(valueProp) : valueProp) !== value
   ) {
     setValue(range ? valueProp : Number(valueProp))
   }
