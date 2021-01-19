@@ -84,8 +84,9 @@ export interface IColorPickerProps {
 /**
  * 颜色选择器
  */
-const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
-  React.RefAttributes<any>> = forwardRef(
+const ColorPicker: React.ForwardRefExoticComponent<
+  IColorPickerProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       className,
@@ -433,7 +434,7 @@ const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
                   header="最近使用"
                   content={
                     <div className={`${prefix}-recent`}>
-                      {[...new Set(recentColors.slice(0, 7))].map(color => (
+                      {[...new Set(recentColors.slice(0, 7))].map((color) => (
                         <i
                           key={color}
                           role="none"
@@ -451,7 +452,7 @@ const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
 
               <ColorPickerCollapse
                 collapsed={standardCollapsed}
-                onCollapseChange={bool =>
+                onCollapseChange={(bool) =>
                   handleCollapseChange(bool, "standard")
                 }
                 header="标准色板"
@@ -460,7 +461,7 @@ const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
                     {(transparentEnabled
                       ? STANDARDS_TRANSPARENT
                       : STANDARDS
-                    ).map(color => (
+                    ).map((color) => (
                       <i
                         key={color}
                         role="none"
@@ -481,7 +482,9 @@ const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
               />
               <ColorPickerCollapse
                 collapsed={customCollapsed}
-                onCollapseChange={bool => handleCollapseChange(bool, "custom")}
+                onCollapseChange={(bool) =>
+                  handleCollapseChange(bool, "custom")
+                }
                 header="自定义"
                 content={
                   <div className={`${prefix}-custom`}>
@@ -511,7 +514,7 @@ const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
                         min={0}
                         max={359}
                         value={h}
-                        onChange={param => {
+                        onChange={(param) => {
                           if (param && !Array.isArray(param)) {
                             handleCustomChange("h", param)
                           }
@@ -526,7 +529,7 @@ const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
                         min={0}
                         max={100}
                         value={s}
-                        onChange={param => {
+                        onChange={(param) => {
                           if (param && !Array.isArray(param)) {
                             handleCustomChange("s", param)
                           }
@@ -545,7 +548,7 @@ const ColorPicker: React.ForwardRefExoticComponent<IColorPickerProps &
                         min={0}
                         max={100}
                         value={b}
-                        onChange={param => {
+                        onChange={(param) => {
                           if (param && !Array.isArray(param)) {
                             handleCustomChange("b", param)
                           }

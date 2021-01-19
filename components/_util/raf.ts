@@ -1,6 +1,8 @@
+type ICb = (time: number) => void
+
 function requestAnimationFramePolyfill() {
   let lastTime = 0
-  return (callback: (time: number) => void) => {
+  return (callback: ICb) => {
     const currTime = new Date().getTime()
     const timeToCall = Math.max(0, 16 - (currTime - lastTime))
     const id = window.setTimeout(() => {

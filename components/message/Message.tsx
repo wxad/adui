@@ -269,8 +269,9 @@ const newInstance = (props: IMessageProps) => {
         messages,
         (message: HTMLDivElement, index: number) => {
           message.style.opacity = "1"
-          message.style.transform = `translate3d(0, ${56 *
-            (messages.length - 1 - index)}px, 0)`
+          message.style.transform = `translate3d(0, ${
+            56 * (messages.length - 1 - index)
+          }px, 0)`
         }
       )
     }, 50)
@@ -293,7 +294,7 @@ const newInstance = (props: IMessageProps) => {
 
   ReactDOM.render(
     <Message
-      ref={message => {
+      ref={(message) => {
         instance = message
       }}
       onClose={close}

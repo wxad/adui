@@ -38,8 +38,9 @@ export interface IFileProps {
 /**
  * 旋转加载用于告知用户信息内容的加载状态，通常是即时、短时的。
  */
-const File: React.ForwardRefExoticComponent<IFileProps &
-  React.RefAttributes<any>> = forwardRef(
+const File: React.ForwardRefExoticComponent<
+  IFileProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       className,

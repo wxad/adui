@@ -118,8 +118,8 @@ var _default = {
       "name": "warning",
       "keywords": ["warning", "警示", "反馈", "提示", "提醒", "警告", "注意"]
     }, {
-      "name": "warning-outlined",
-      "keywords": ["warning-outlined", "警示", "反馈", "提示", "提醒", "警告", "注意"]
+      "name": "warning-circle-outlined",
+      "keywords": ["warning-circle-outlined", "警示", "反馈", "提示", "提醒", "警告", "注意"]
     }]
   },
   "编辑": {
@@ -346,6 +346,12 @@ var _default = {
     }, {
       "name": "play",
       "keywords": ["play", "播放"]
+    }, {
+      "name": "wish",
+      "keywords": ["wish", "心愿", "心愿单", "喜爱"]
+    }, {
+      "name": "wish-outlined",
+      "keywords": ["wish-outlined", "心愿", "心愿单", "喜爱"]
     }]
   },
   "工具": {

@@ -48,8 +48,9 @@ export interface IImgState {
 /**
  * 旋转加载用于告知用户信息内容的加载状态，通常是即时、短时的。
  */
-const Img: React.ForwardRefExoticComponent<IImgProps &
-  React.RefAttributes<any>> = forwardRef(
+const Img: React.ForwardRefExoticComponent<
+  IImgProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       className,
@@ -159,7 +160,7 @@ const Img: React.ForwardRefExoticComponent<IImgProps &
               alt="img"
               className={`${prefix}-preview-file`}
               src={src}
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
               role="none"
             />
             <Icon size={36} icon="cancel" color="#fff" interactive />

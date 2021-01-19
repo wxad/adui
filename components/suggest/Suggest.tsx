@@ -292,7 +292,7 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
 
     let options = dataSource
       ? dataSource
-          .filter(o => {
+          .filter((o) => {
             if (searchValue) {
               if (typeof o !== "string") {
                 return o.props.title
@@ -303,7 +303,7 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
             }
             return true
           })
-          .map(item => {
+          .map((item) => {
             if (React.isValidElement(item)) {
               return item
             }

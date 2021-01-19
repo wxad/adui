@@ -58,7 +58,7 @@ const Caption: React.FunctionComponent<ICaptionProps> = ({
       <div className={`${prefix}-selects`}>
         <div className={`${prefix}-selectYear`}>
           <select name="year" onChange={handleYearChange} value={displayYear}>
-            {years.map(year => (
+            {years.map((year) => (
               <option key={year} value={year}>
                 {year}年
               </option>
@@ -72,7 +72,7 @@ const Caption: React.FunctionComponent<ICaptionProps> = ({
             onChange={handleMonthChange}
             value={displayMonth}
           >
-            {months.map(month => (
+            {months.map((month) => (
               <option key={month} value={month}>
                 {month + 1}月
               </option>

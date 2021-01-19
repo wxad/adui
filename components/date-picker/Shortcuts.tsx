@@ -30,7 +30,7 @@ const Shortcuts: React.FunctionComponent<IShortcutsProps> = ({
 }: IShortcutsProps) => (
   <div className={`${prefix}-shortcuts`}>
     {shortcuts &&
-      shortcuts.map(shortcut => {
+      shortcuts.map((shortcut) => {
         const { label, value: valueShortcut } = shortcut
         let selected = false
         if (
@@ -58,7 +58,7 @@ const Shortcuts: React.FunctionComponent<IShortcutsProps> = ({
             data-value={valueShortcut}
             onClick={() => onShortcutClick(valueShortcut)}
             tabIndex={0}
-            onKeyDown={e => {
+            onKeyDown={(e) => {
               if (e.keyCode === 13) {
                 onShortcutClick(valueShortcut)
               }

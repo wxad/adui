@@ -293,7 +293,7 @@ const Slider: React.FunctionComponent<ISliderProps> = ({
         <NumericInput
           placeholder=""
           precision={precision}
-          onChange={val => {
+          onChange={(val) => {
             handleChange(typeof val === "string" ? 0 : val)
           }}
           step={step}

@@ -25,8 +25,9 @@ export interface IPopoverProps extends ITooltipProps {
  * 可能是文字解释，也可能内涵操作，可设置带箭头、或不带箭头。
  * Popover 默认边缘对齐。
  */
-const Popover: React.ForwardRefExoticComponent<IPopoverProps &
-  React.RefAttributes<any>> = forwardRef(
+const Popover: React.ForwardRefExoticComponent<
+  IPopoverProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       arrowed,

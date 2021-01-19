@@ -90,7 +90,7 @@ const Icon: React.FunctionComponent<IIconProps> & {
       fill={color}
       data-interactive={interactive}
       data-icon={icon}
-      onClick={e => {
+      onClick={(e) => {
         if (onClick) {
           onClick(e)
         }

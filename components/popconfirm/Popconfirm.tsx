@@ -25,8 +25,9 @@ export interface IPopconfirmProps
 /**
  * 弹出式面板组件。
  */
-const Popconfirm: React.ForwardRefExoticComponent<IPopconfirmProps &
-  React.RefAttributes<any>> = forwardRef(
+const Popconfirm: React.ForwardRefExoticComponent<
+  IPopconfirmProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       cancelButton,

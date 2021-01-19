@@ -50,8 +50,9 @@ const scrollTo = (element: HTMLDivElement, to: number, duration: number) => {
   })
 }
 
-const TimeSelect: React.ForwardRefExoticComponent<ITimeSelectProps &
-  React.RefAttributes<any>> = forwardRef(
+const TimeSelect: React.ForwardRefExoticComponent<
+  ITimeSelectProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       currentHour,
@@ -162,7 +163,7 @@ const TimeSelect: React.ForwardRefExoticComponent<ITimeSelectProps &
 
     return (
       <div className={classSet} ref={selectRef} {...otherProps}>
-        {items.map(value => {
+        {items.map((value) => {
           const disabled = isDisabled(
             parseInt(value, 10),
             parseInt(minHour || "00", 10),

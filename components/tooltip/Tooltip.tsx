@@ -85,8 +85,9 @@ export interface ITooltipProps {
  * Tooltip 是基于 PopTrigger 进行封装的。
  * Tooltip 负责定义箭头与内容的相关样式。
  */
-const Tooltip: React.ForwardRefExoticComponent<ITooltipProps &
-  React.RefAttributes<any>> = forwardRef(
+const Tooltip: React.ForwardRefExoticComponent<
+  ITooltipProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       alignEdge,

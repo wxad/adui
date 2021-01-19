@@ -60,8 +60,9 @@ export interface IPopTriggerProps {
  * PopTrigger 应提供所有弹出相关的能力与配置，供 Tooltip、Select 等调用。
  * PopTrigger 也可以被使用者直接使用，实现自定的弹出功能。
  */
-const PopTrigger: React.ForwardRefExoticComponent<IPopTriggerProps &
-  React.RefAttributes<any>> = forwardRef(
+const PopTrigger: React.ForwardRefExoticComponent<
+  IPopTriggerProps & React.RefAttributes<any>
+> = forwardRef(
   ({ children, popup, popupVisible, ...otherProps }: IPopTriggerProps, ref) => {
     const visibleProp: IVisible = {}
 

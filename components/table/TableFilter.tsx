@@ -99,7 +99,7 @@ const TableFilter: React.FunctionComponent<ITableFilterProps> = ({
         value={filteredValue}
         onChange={handleChange}
       >
-        {filters.map(item => (
+        {filters.map((item) => (
           <Checkbox key={item.value} value={item.value}>
             {item.text}
           </Checkbox>
@@ -115,7 +115,7 @@ const TableFilter: React.FunctionComponent<ITableFilterProps> = ({
         onChange={handleChange}
       >
         <Radio value="all">全部</Radio>
-        {filters.map(item => (
+        {filters.map((item) => (
           <Radio key={item.value} value={item.value}>
             {item.text}
           </Radio>
@@ -128,7 +128,7 @@ const TableFilter: React.FunctionComponent<ITableFilterProps> = ({
     <Popover
       arrowed={false}
       visible={visible}
-      onVisibleChange={bool => {
+      onVisibleChange={(bool) => {
         if (typeof filterVisible !== "boolean") {
           setVisible(bool)
         }

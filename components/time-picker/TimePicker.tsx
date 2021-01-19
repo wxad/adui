@@ -99,8 +99,9 @@ export interface ITimePickerState {
 /**
  * 时间选择器用于了解当前已选时间，选择或输入需要的时间、时间范围等。
  */
-const TimePicker: React.ForwardRefExoticComponent<ITimePickerProps &
-  React.RefAttributes<any>> = forwardRef(
+const TimePicker: React.ForwardRefExoticComponent<
+  ITimePickerProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       className,

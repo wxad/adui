@@ -110,8 +110,9 @@ export interface ITextareaProps {
 /**
  * 输入区域，用于多行纯文本编辑。
  */
-const Textarea: React.ForwardRefExoticComponent<ITextareaProps &
-  React.RefAttributes<any>> = forwardRef(
+const Textarea: React.ForwardRefExoticComponent<
+  ITextareaProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       autoFocus,

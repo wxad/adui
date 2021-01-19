@@ -24,7 +24,7 @@ Dialog.inform = (props: IDialogProps) => {
   return confirm(config)
 }
 
-INTENTS.forEach(intent => {
+INTENTS.forEach((intent) => {
   Dialog[intent] = (props: IDialogProps) => {
     const { style, ...otherProps } = props
 

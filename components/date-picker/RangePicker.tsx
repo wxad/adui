@@ -144,8 +144,9 @@ export interface IRangePickerProps {
 /**
  * 日期选择器用于了解当前已选日期，选择或输入需要的日期、日期范围等。
  */
-const RangePicker: React.ForwardRefExoticComponent<IRangePickerProps &
-  React.RefAttributes<any>> = forwardRef(
+const RangePicker: React.ForwardRefExoticComponent<
+  IRangePickerProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       className,
@@ -493,7 +494,7 @@ const RangePicker: React.ForwardRefExoticComponent<IRangePickerProps &
           <div className={`${prefix}-popup`}>
             {shortcutsEnabled && (
               <Shortcuts
-                onShortcutClick={valueShortcut => {
+                onShortcutClick={(valueShortcut) => {
                   if (Array.isArray(valueShortcut)) {
                     const fromShortcut = valueShortcut[0]
                     const toShortcut = valueShortcut[1]

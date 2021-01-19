@@ -125,7 +125,7 @@ const Motion: React.FunctionComponent<IMotionProps> = ({
         node.style.paddingBottom = paddingBottom
       }
     }, 10)
-    const promise = new Promise(resolve => setTimeout(resolve, dur))
+    const promise = new Promise((resolve) => setTimeout(resolve, dur))
     promise.then(() => {
       node.classList.remove(
         `${transitionName}-enter`,
@@ -183,7 +183,7 @@ const Motion: React.FunctionComponent<IMotionProps> = ({
               node.style.transition = `all ${dur}ms var(--ease-in-out)`
               setNodeStyle(node)
             }, 10)
-            const promise = new Promise(resolve => setTimeout(resolve, dur))
+            const promise = new Promise((resolve) => setTimeout(resolve, dur))
             promise.then(() => {
               if (afterLeave) {
                 afterLeave(node)

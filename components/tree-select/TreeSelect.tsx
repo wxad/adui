@@ -116,7 +116,7 @@ const convertChildrenToData = (nodes: any) => {
 
       return data
     })
-    .filter(data => data)
+    .filter((data) => data)
 }
 
 /**
@@ -353,7 +353,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                     <Icon
                       icon="cancel"
                       onClick={() => {
-                        const vals = nodes.map(o => o.value)
+                        const vals = nodes.map((o) => o.value)
                         vals.splice(i, 1)
                         if (value === null) {
                           this.setState({ value: vals })
@@ -374,7 +374,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         <div
           className="adui-tree-select-maxPlaceholder"
           role="none"
-          onClick={e => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
         >
           {placeholderText}
           <Icon

@@ -44,8 +44,9 @@ export interface INumericInputProps
 /**
  * 数字输入框。
  */
-const NumericInput: React.ForwardRefExoticComponent<INumericInputProps &
-  React.RefAttributes<any>> = forwardRef(
+const NumericInput: React.ForwardRefExoticComponent<
+  INumericInputProps & React.RefAttributes<any>
+> = forwardRef(
   (
     {
       className,

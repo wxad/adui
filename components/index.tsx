@@ -1,4 +1,3 @@
-import cssVars from "css-vars-ponyfill"
 import { FocusManager } from "./_util/focusManager"
 import "./style/base.css"
 
@@ -42,12 +41,6 @@ export { default as TimePicker } from "./time-picker"
 export { default as Tooltip } from "./tooltip"
 export { default as TreeSelect } from "./tree-select"
 export { default as Upload } from "./upload"
-
-cssVars({
-  onlyLegacy: true,
-  preserveStatic: true,
-  watch: true,
-})
 
 const fakeFocusEngine = { start: () => true }
 const focusEngine =

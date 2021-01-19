@@ -1,8 +1,6 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
-// import TweenOne from 'rc-tween-one'
-// import SvgDrawPlugin from 'rc-tween-one/lib/plugin/SvgDrawPlugin'
 import { Link } from 'bisheng/router'
 import styles from './home.scss'
 import LogoSvg from './LogoSvg'

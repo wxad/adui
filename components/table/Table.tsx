@@ -7,7 +7,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import Animate from "rc-animate"
-import { polyfill } from "react-lifecycles-compat"
 import shallowEqual from "shallowequal"
 import addEventListener from "rc-util/lib/Dom/addEventListener"
 import List from "rc-virtual-list"
@@ -747,7 +746,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       ) *
         13 +
       2
-    const newResized = resized.filter(o => o.dataIndex !== dataIndex)
+    const newResized = resized.filter((o) => o.dataIndex !== dataIndex)
     const newWidth = Math.max(
       Math.ceil(parentWidth + e.pageX - startX),
       !!col.onSort || !!col.onFilter ? baseWidth + 36 : baseWidth + 16
@@ -885,10 +884,10 @@ class Table extends React.Component<ITableProps, ITableState> {
     /**
      * columns 变化后 fixedColumnsInfos 中可能存在已经移除的 column
      */
-    fixedColumnsInfos = fixedColumnsInfos.filter(o =>
-      columns.find(p => p.dataIndex === o.dataIndex)
+    fixedColumnsInfos = fixedColumnsInfos.filter((o) =>
+      columns.find((p) => p.dataIndex === o.dataIndex)
     )
-    const i = fixedColumnsInfos.findIndex(o => o.dataIndex === dataIndex)
+    const i = fixedColumnsInfos.findIndex((o) => o.dataIndex === dataIndex)
     // fixed 可能是 Boolean
     const fixed = fixedPosition === "right" ? "right" : "left"
     if (i > -1) {
@@ -901,17 +900,17 @@ class Table extends React.Component<ITableProps, ITableState> {
     fixedColumnsInfos.sort((a, b) => a.index - b.index)
 
     const fixedColumnsInfosLeft = fixedColumnsInfos.filter(
-      o => o.fixed === "left"
+      (o) => o.fixed === "left"
     )
     const fixedColumnsInfosRight = fixedColumnsInfos
-      .filter(o => o.fixed === "right")
+      .filter((o) => o.fixed === "right")
       .sort((a, b) => b.index - a.index)
 
-    fixedColumnsInfos.forEach(col => {
+    fixedColumnsInfos.forEach((col) => {
       let colIndex
       if (col.fixed === "left") {
         colIndex = fixedColumnsInfosLeft.findIndex(
-          o => o.dataIndex === col.dataIndex
+          (o) => o.dataIndex === col.dataIndex
         )
         if (colIndex === fixedColumnsInfosLeft.length - 1) {
           col.isLastLeft = true
@@ -927,7 +926,7 @@ class Table extends React.Component<ITableProps, ITableState> {
                 .reduce((acc, cur) => acc + cur.width, 0)
       } else {
         colIndex = fixedColumnsInfosRight.findIndex(
-          o => o.dataIndex === col.dataIndex
+          (o) => o.dataIndex === col.dataIndex
         )
         if (colIndex === fixedColumnsInfosRight.length - 1) {
           col.isFirstRight = true
@@ -1030,7 +1029,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     const keys = [...selectedRowKeys]
     const availableKeys = this.getAvailableRowsKeys()
     if (checked) {
-      availableKeys.forEach(key => {
+      availableKeys.forEach((key) => {
         if (!selectedRowKeys.includes(key)) {
           keys.push(key)
         }
@@ -1038,7 +1037,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     } else {
       // 不能直接清空数组，因为可能传入了与当前 dataSource 无关的 keys；
       // 也不能直接 splice，因为要检查是否 getSelectProps.disabled。
-      selectedRowKeys.forEach(key => {
+      selectedRowKeys.forEach((key) => {
         if (availableKeys.includes(key)) {
           keys.splice(keys.indexOf(key), 1)
         }
@@ -1065,7 +1064,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       dataSource &&
       dataSource.length &&
       keys.length &&
-      keys.every(key => selectedRowKeys.includes(key))
+      keys.every((key) => selectedRowKeys.includes(key))
     ) {
       return true
     }
@@ -1199,7 +1198,7 @@ class Table extends React.Component<ITableProps, ITableState> {
             width,
           } = col
 
-          const resizedCol = resized.find(o => o.dataIndex === dataIndex)
+          const resizedCol = resized.find((o) => o.dataIndex === dataIndex)
           const clickable =
             !!onSort ||
             (sortOrder !== null && sortOrder !== undefined) ||
@@ -1245,21 +1244,21 @@ class Table extends React.Component<ITableProps, ITableState> {
                   [`${prefix}-th_left`]: isFixedLeft(col),
                   [`${prefix}-th_right`]: isFixedRight(col),
                   [`${prefix}-th_leftLast`]: fixedColumnsInfos.find(
-                    o => o.dataIndex === dataIndex
+                    (o) => o.dataIndex === dataIndex
                   )?.isLastLeft,
                   [`${prefix}-th_rightFirst`]: fixedColumnsInfos.find(
-                    o => o.dataIndex === dataIndex
+                    (o) => o.dataIndex === dataIndex
                   )?.isFirstRight,
                 })}
                 key={dataIndex || index}
                 style={{
                   left: isFixedLeft(col)
-                    ? (fixedColumnsInfos.find(o => o.dataIndex === dataIndex)
+                    ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
                         ?.offset || 0) +
                       (theadPlaceholderVisible ? SELECT_TD_WIDTH : 0)
                     : undefined,
                   right: isFixedRight(col)
-                    ? (fixedColumnsInfos.find(o => o.dataIndex === dataIndex)
+                    ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
                         ?.offset || 0) +
                       (isMainTableOverflowY && height ? 14 : 0)
                     : undefined,
@@ -1398,12 +1397,16 @@ class Table extends React.Component<ITableProps, ITableState> {
           role="row"
           data-row={rowIndex}
           onMouseEnter={
-            onRowMouseEnter ? e => onRowMouseEnter(row, rowIndex, e) : undefined
+            onRowMouseEnter
+              ? (e) => onRowMouseEnter(row, rowIndex, e)
+              : undefined
           }
           onMouseLeave={
-            onRowMouseLeave ? e => onRowMouseLeave(row, rowIndex, e) : undefined
+            onRowMouseLeave
+              ? (e) => onRowMouseLeave(row, rowIndex, e)
+              : undefined
           }
-          onClick={e => this.handleRowClick(row, rowIndex, e)}
+          onClick={(e) => this.handleRowClick(row, rowIndex, e)}
           onKeyDown={noop}
           style={{
             ...((getRowStyle && getRowStyle(row, rowIndex)) || {}),
@@ -1464,7 +1467,7 @@ class Table extends React.Component<ITableProps, ITableState> {
           offsetTop={headerAffixedOffsetTop}
           getContainer={() => this.wrapper}
           getTarget={headerAffixGetTarget}
-          onChange={bool => {
+          onChange={(bool) => {
             this.setState({ affixedTop: bool }, () => {
               // 固定的那一刻也需要立即重新定位。
               // 重新定位、包括下面的 className, style 只在主表格上发生，因为固定列的 Affix 行为很单纯。
@@ -1534,7 +1537,7 @@ class Table extends React.Component<ITableProps, ITableState> {
           onScroll={(e: React.SyntheticEvent<HTMLElement>) =>
             this.syncTableScrollPosition(e.currentTarget.scrollLeft)
           }
-          onChange={bool => this.setState({ affixedBottom: bool })}
+          onChange={(bool) => this.setState({ affixedBottom: bool })}
         >
           <div style={{ width: this.mainTable?.scrollWidth }} />
         </Affix>
@@ -1586,7 +1589,7 @@ class Table extends React.Component<ITableProps, ITableState> {
         {(!!col.onSort ||
           (col.sortOrder !== null && col.sortOrder !== undefined)) && (
           <TableSort
-            onSort={order => (col.onSort ? col.onSort(order) : {})}
+            onSort={(order) => (col.onSort ? col.onSort(order) : {})}
             sortOrder={col.sortOrder}
             title={col.title}
           />
@@ -1598,12 +1601,12 @@ class Table extends React.Component<ITableProps, ITableState> {
             filterMultiple={col.filterMultiple}
             filterPopoverProps={col.filterPopoverProps}
             filters={col.filters}
-            onFilter={filter => {
+            onFilter={(filter) => {
               if (col.onFilter) {
                 col.onFilter(filter)
               }
             }}
-            onFilterVisibleChange={visible => {
+            onFilterVisibleChange={(visible) => {
               if (col.onFilterVisibleChange) {
                 col.onFilterVisibleChange(visible)
               }
@@ -1618,7 +1621,7 @@ class Table extends React.Component<ITableProps, ITableState> {
               [`${prefix}-resizer_current`]:
                 currentlyResizing.dataIndex === col.dataIndex,
             })}
-            onMouseDown={e => this.resizeColumnStart(e, col)}
+            onMouseDown={(e) => this.resizeColumnStart(e, col)}
             role="none"
           />
         )}
@@ -1703,7 +1706,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     } else {
       flexValue = `${Math.max(TD_MIN_WIDTH, minWidth)} 0 auto`
     }
-    const resizedCol = resized.find(o => o.dataIndex === dataIndex)
+    const resizedCol = resized.find((o) => o.dataIndex === dataIndex)
     const cellClassName =
       getCellClassName && getCellClassName(row, cell, rowIndex, cellIndex)
     const cellProps =
@@ -1730,21 +1733,21 @@ class Table extends React.Component<ITableProps, ITableState> {
           [`${prefix}-td_left`]: isFixedLeft(cell),
           [`${prefix}-td_right`]: isFixedRight(cell),
           [`${prefix}-td_leftLast`]: fixedColumnsInfos.find(
-            o => o.dataIndex === dataIndex
+            (o) => o.dataIndex === dataIndex
           )?.isLastLeft,
           [`${prefix}-td_rightFirst`]: fixedColumnsInfos.find(
-            o => o.dataIndex === dataIndex
+            (o) => o.dataIndex === dataIndex
           )?.isFirstRight,
           [`${prefix}-td_combined`]: rowSpan || colSpan,
         })}
         key={dataIndex || cellIndex}
         style={{
           left: isFixedLeft(cell)
-            ? (fixedColumnsInfos.find(o => o.dataIndex === dataIndex)?.offset ||
-                0) + (theadPlaceholderVisible ? SELECT_TD_WIDTH : 0)
+            ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
+                ?.offset || 0) + (theadPlaceholderVisible ? SELECT_TD_WIDTH : 0)
             : undefined,
           right: isFixedRight(cell)
-            ? fixedColumnsInfos.find(o => o.dataIndex === dataIndex)?.offset
+            ? fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)?.offset
             : undefined,
           flex: resizedCol ? `${resizedCol.value} 0 auto` : flexValue,
           width: resizedCol
@@ -1829,10 +1832,9 @@ class Table extends React.Component<ITableProps, ITableState> {
         const cellRect = cell.getBoundingClientRect()
         const endCellRect = endCell.getBoundingClientRect()
         // 最后 - 1 是为了不挡住 cell 的 box-shadow
-        style.height = `${endCellRect.height +
-          endCellRect.top -
-          cellRect.top -
-          1}px`
+        style.height = `${
+          endCellRect.height + endCellRect.top - cellRect.top - 1
+        }px`
       }
     }
 
@@ -1845,10 +1847,9 @@ class Table extends React.Component<ITableProps, ITableState> {
         const cellRect = cell.getBoundingClientRect()
         const endCellRect = endCell.getBoundingClientRect()
         // 最后 - 1 是为了不挡住 cell 的 box-shadow
-        style.width = `${endCellRect.width +
-          endCellRect.left -
-          cellRect.left -
-          1}px`
+        style.width = `${
+          endCellRect.width + endCellRect.left - cellRect.left - 1
+        }px`
       }
     }
 

@@ -73,7 +73,7 @@ export default class ColumnManager {
       )
       if (children.length) {
         depth = 2
-        children.forEach(child => {
+        children.forEach((child) => {
           const grands = child.children.some(
             (grand: IBaseObject) => !!grand.children
           )
@@ -103,8 +103,8 @@ export default class ColumnManager {
     const elements = Array.isArray(elementsParam)
       ? elementsParam
       : [elementsParam]
-    if (elements.find(o => React.isValidElement(o))) {
-      React.Children.forEach(elements, element => {
+    if (elements.find((o) => React.isValidElement(o))) {
+      React.Children.forEach(elements, (element) => {
         /**
          * Column 名存实亡，实际上是从 children 获取每一列的 props
          * 因此需要判断 children isValidElement，再从 children 遍历 prop
@@ -121,7 +121,7 @@ export default class ColumnManager {
         columns.push(column)
       })
     } else {
-      elements.forEach(o => {
+      elements.forEach((o) => {
         columns.push(o)
       })
     }

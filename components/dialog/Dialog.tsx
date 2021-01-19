@@ -563,7 +563,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
       <div ref={this.saveDialog}>
         <div
           className={`${prefix}-wrapper`}
-          ref={wrapper => {
+          ref={(wrapper) => {
             if (wrapper) {
               this.wrapper = wrapper
             }

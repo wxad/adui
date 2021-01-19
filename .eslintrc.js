@@ -8,6 +8,9 @@ const eslintrc = {
     "plugin:prettier/recommended",
     "prettier/react",
   ],
+  globals: {
+    JSX: "readonly",
+  },
   env: {
     browser: true,
     node: true,
@@ -79,6 +82,12 @@ const eslintrc = {
     "react/sort-comp": 0,
     // 不要求引入输入扩展格式
     "import/extensions": 0,
+    // 20210119 修复 'React' was used before it was defined
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
   },
 }
 

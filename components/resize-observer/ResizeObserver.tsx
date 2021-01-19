@@ -23,7 +23,7 @@ interface ResizeObserverEntryBoxSize {
   inlineSize: number
 }
 
-const supportRef = nodeOrComponent => {
+const supportRef = (nodeOrComponent) => {
   if (
     nodeOrComponent.type?.$$typeof &&
     nodeOrComponent.type.$$typeof.toString().includes("forward_ref")
