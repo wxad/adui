@@ -237,7 +237,11 @@ describe("DatePicker", () => {
         .simulate("click")
       jest.runAllTimers()
       wrapper.update()
-      expect(today.getMonth() - wrapper.state().value.getMonth()).toBe(1)
+      if (today.getFullYear() > wrapper.state().value.getFullYear()) {
+        expect(today.getMonth() - wrapper.state().value.getMonth()).toBe(-11)
+      } else {
+        expect(today.getMonth() - wrapper.state().value.getMonth()).toBe(1)
+      }
     })
 
     act(() => {

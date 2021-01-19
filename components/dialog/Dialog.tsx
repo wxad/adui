@@ -1,6 +1,5 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { polyfill } from "react-lifecycles-compat"
 import getScrollBarSize from "rc-util/lib/getScrollBarSize"
 import classNames from "classnames"
 import Animate from "rc-animate"
@@ -696,7 +695,5 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     )
   }
 }
-
-polyfill(Dialog)
 
 export default Dialog
