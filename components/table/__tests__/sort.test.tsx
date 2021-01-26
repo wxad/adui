@@ -23,7 +23,7 @@ class SortMounter extends React.Component {
           title="排序"
           dataIndex="order"
           sortOrder={sortOrder}
-          onSort={argSortOrder => this.setState({ sortOrder: argSortOrder })}
+          onSort={(argSortOrder) => this.setState({ sortOrder: argSortOrder })}
         />
       </Table>
     )
@@ -47,9 +47,9 @@ describe("排序功能", () => {
     expect(wrapper).toMatchSnapshot()
     const th = wrapper.find("[role='columnheader']").at(0)
     th.simulate("click")
-    expect(onSort).toHaveBeenCalledWith("asc")
-    th.simulate("click")
     expect(onSort).toHaveBeenCalledWith("desc")
+    th.simulate("click")
+    expect(onSort).toHaveBeenCalledWith("asc")
     th.simulate("click")
     expect(onSort).toHaveBeenCalledWith("")
   })
@@ -72,26 +72,15 @@ describe("排序功能", () => {
     const wrapper = mount(<SortMounter />)
     const th = wrapper.find("[role='columnheader']").at(0)
     th.simulate("click")
-    expect(
-      wrapper
-        .find(".adui-table-sort")
-        .at(0)
-        .props()["data-sort"]
-    ).toBe("asc")
+    expect(wrapper.find(".adui-table-sort").at(0).props()["data-sort"]).toBe(
+      "desc"
+    )
     th.simulate("click")
-    expect(
-      wrapper
-        .find(".adui-table-sort")
-        .at(0)
-        .props()["data-sort"]
-    ).toBe("desc")
+    expect(wrapper.find(".adui-table-sort").at(0).props()["data-sort"]).toBe(
+      "asc"
+    )
     th.simulate("click")
-    expect(
-      wrapper
-        .find(".adui-table-sort")
-        .at(0)
-        .props()["data-sort"]
-    ).toBe("")
+    expect(wrapper.find(".adui-table-sort").at(0).props()["data-sort"]).toBe("")
   })
 
   it("是否支持键盘操作", () => {

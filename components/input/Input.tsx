@@ -324,20 +324,23 @@ const Input: IInput = forwardRef(
       }
     })
 
-    useImperativeHandle(ref, () => ({
-      cleave: cleaveRef?.current,
-      input: inputElement,
-      leftElement: leftElementRef?.current,
-      rightElement: rightElementRef?.current,
-      updateElementsWidth,
-      handleChange,
-      handleKeyDown,
-      handleBlur,
-      handleFocus,
-      handleAttachedElementClick,
-      focus: () => inputElement.focus(),
-      blur: () => inputElement.blur(),
-    }))
+    useImperativeHandle(ref, () => {
+      const realRef = inputRef?.current || cleaveRef?.current?.element
+      return {
+        cleave: cleaveRef?.current,
+        input: realRef,
+        leftElement: leftElementRef?.current,
+        rightElement: rightElementRef?.current,
+        updateElementsWidth,
+        handleChange,
+        handleKeyDown,
+        handleBlur,
+        handleFocus,
+        handleAttachedElementClick,
+        focus: () => realRef.focus(),
+        blur: () => realRef.blur(),
+      }
+    })
 
     const inputProps: { [key: string]: any } = {
       autoComplete,
