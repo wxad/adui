@@ -30,9 +30,9 @@ const TableSort: React.FunctionComponent<ITableSortProps> = ({
   const handleChange = () => {
     let newOrder: "" | "asc" | "desc"
     if (sortOrder) {
-      newOrder = sortOrder === "asc" ? "desc" : ""
+      newOrder = sortOrder === "desc" ? "asc" : ""
     } else {
-      newOrder = "asc"
+      newOrder = "desc"
     }
     if (sortOrderProp === null) {
       setSortOrder(newOrder)
