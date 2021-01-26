@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/wxad/adui/compare/v1.2.3...v1.4.0) (2021-01-26)
+
+
+### Features
+
+* **Table:** 排序首选降序 ([9938c11](https://github.com/wxad/adui/commit/9938c1107a1e04d3a24bacb7775e2b06072e03a8))
+* **TreeSelect:** update ([e02f463](https://github.com/wxad/adui/commit/e02f463b9e1a6780e60f6057932e01b03f028123))
+
+
+### Bug Fixes
+
+* **Input:** 修复 ref undefined 问题 ([e7aa7d7](https://github.com/wxad/adui/commit/e7aa7d75a58509614849a6ab10497d59f4f7be56))
+* **ResizeObserver:** interface ([9f9e713](https://github.com/wxad/adui/commit/9f9e7132f879a986bf4088e6d28e2964b5efa90d))
+* **Slider:** 兼容传入 string 的情况 ([de54fdc](https://github.com/wxad/adui/commit/de54fdcf3a87a29059275b5973dee4ad5d072958))
+
 ## [1.3.0](https://github.com/wxad/adui/compare/v1.2.3...v1.3.0) (2021-01-19)
 
 
