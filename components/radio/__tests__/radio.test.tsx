@@ -5,7 +5,7 @@ import Radio from ".."
 
 const RadioMounter = () => {
   const [checked, setChecked] = useState(false)
-  return <Radio checked={checked} onChange={bool => setChecked(bool)} />
+  return <Radio checked={checked} onChange={(bool) => setChecked(bool)} />
 }
 
 describe("Radio", () => {
@@ -17,16 +17,9 @@ describe("Radio", () => {
   it("Radio 是否能内部驱动", () => {
     const onChange = jest.fn()
     const wrapper = mount(<Radio onChange={onChange} />)
-    wrapper
-      .find("label")
-      .at(0)
-      .simulate("click")
+    wrapper.find("label").at(0).simulate("click")
     expect(
-      wrapper
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper.find("label").at(0).props().className.includes("checked")
     ).toEqual(true)
     expect(onChange).toHaveBeenCalledWith(true)
   })
@@ -39,50 +32,39 @@ describe("Radio", () => {
      * 1. 确定 onChange 还是会传回应该变化的值；
      * 2. 但是由于 Radio 完全受外部控制，所以要确定内部状态不会改变。
      */
-    wrapper0
-      .find("label")
-      .at(0)
-      .simulate("click")
+    wrapper0.find("label").at(0).simulate("click")
     expect(onChange).toHaveBeenCalledWith(true)
     expect(
-      wrapper0
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper0.find("label").at(0).props().className.includes("checked")
     ).toEqual(false)
 
-    wrapper1
-      .find("label")
-      .at(0)
-      .simulate("click")
+    wrapper1.find("label").at(0).simulate("click")
     expect(
-      wrapper1
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper1.find("label").at(0).props().className.includes("checked")
     ).toEqual(true)
-    wrapper1
-      .find("label")
-      .at(0)
-      .simulate("click")
+    wrapper1.find("label").at(0).simulate("click")
     expect(
-      wrapper1
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper1.find("label").at(0).props().className.includes("checked")
     ).toEqual(true)
   })
 
   it("Radio 是否能响应 onClick", () => {
     const onClick = jest.fn()
     const wrapper = mount(<Radio onClick={onClick} />)
+    wrapper.find("label").at(0).simulate("click")
+    expect(onClick).toHaveBeenCalled()
+  })
+
+  it("Radio 是否能响应 enter", () => {
+    const onChange = jest.fn()
+    const wrapper = mount(<Radio onChange={onChange} />)
     wrapper
       .find("label")
       .at(0)
-      .simulate("click")
-    expect(onClick).toHaveBeenCalled()
+      .simulate("keydown", { key: "enter", keyCode: 13 })
+    expect(
+      wrapper.find("label").at(0).props().className.includes("checked")
+    ).toEqual(true)
+    expect(onChange).toHaveBeenCalledWith(true)
   })
 })

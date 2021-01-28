@@ -5,7 +5,7 @@ import Checkbox from ".."
 
 const CheckboxMounter = () => {
   const [checked, setChecked] = useState(false)
-  return <Checkbox checked={checked} onChange={bool => setChecked(bool)} />
+  return <Checkbox checked={checked} onChange={(bool) => setChecked(bool)} />
 }
 
 describe("Checkbox", () => {
@@ -17,10 +17,7 @@ describe("Checkbox", () => {
   it("Checkbox 是否能内部驱动", () => {
     const onChange = jest.fn()
     const wrapper = mount(<Checkbox onChange={onChange} />)
-    wrapper
-      .find("label")
-      .at(0)
-      .simulate("click")
+    wrapper.find("label").at(0).simulate("click")
     expect(onChange).toHaveBeenCalledWith(true)
   })
 
@@ -40,38 +37,22 @@ describe("Checkbox", () => {
     firstCheckbox.simulate("click")
     expect(onChange).toHaveBeenCalledWith(true)
     expect(
-      wrapper0
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper0.find("label").at(0).props().className.includes("checked")
     ).toEqual(false)
 
     secondCheckbox.simulate("click")
     expect(onChange).toHaveBeenCalledWith(false)
     expect(
-      wrapper1
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper1.find("label").at(0).props().className.includes("checked")
     ).toEqual(true)
 
     thirdCheckbox.simulate("click")
     expect(
-      wrapper2
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper2.find("label").at(0).props().className.includes("checked")
     ).toEqual(true)
     thirdCheckbox.simulate("click")
     expect(
-      wrapper2
-        .find("label")
-        .at(0)
-        .props()
-        .className.includes("checked")
+      wrapper2.find("label").at(0).props().className.includes("checked")
     ).toEqual(false)
   })
 
@@ -87,26 +68,30 @@ describe("Checkbox", () => {
         <Checkbox />
       </Checkbox.Group>
     )
-    wrapper0
-      .find("label")
-      .at(0)
-      .simulate("click")
+    wrapper0.find("label").at(0).simulate("click")
     expect(onChange).not.toHaveBeenCalled()
 
-    wrapper1
-      .find("label")
-      .at(0)
-      .simulate("click")
+    wrapper1.find("label").at(0).simulate("click")
     expect(onChange).not.toHaveBeenCalled()
   })
 
   it("Checkbox 是否能响应 onClick", () => {
     const onClick = jest.fn()
     const wrapper = mount(<Checkbox onClick={onClick} />)
+    wrapper.find("label").at(0).simulate("click")
+    expect(onClick).toHaveBeenCalled()
+  })
+
+  it("Checkbox 是否能响应 enter", () => {
+    const onChange = jest.fn()
+    const wrapper = mount(<Checkbox onChange={onChange} />)
     wrapper
       .find("label")
       .at(0)
-      .simulate("click")
-    expect(onClick).toHaveBeenCalled()
+      .simulate("keydown", { key: "enter", keyCode: 13 })
+    expect(
+      wrapper.find("label").at(0).props().className.includes("checked")
+    ).toEqual(true)
+    expect(onChange).toHaveBeenCalledWith(true)
   })
 })
