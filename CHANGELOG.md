@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/wxad/adui/compare/v1.4.0...v1.5.0) (2021-02-23)
+
+
+### Features
+
+* **TreeSelect:** onChange 增加第二个参数 titleList ([548e0e3](https://github.com/wxad/adui/commit/548e0e3a8f81a5fa7525bc00c60eb4d46378cc37))
+
 ## [1.4.0](https://github.com/wxad/adui/compare/v1.2.3...v1.4.0) (2021-01-26)
 
 
