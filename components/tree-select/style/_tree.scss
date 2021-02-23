@@ -699,7 +699,7 @@ li.adui-tree-select-tree-treenode-disabled
       }
     }
 
-    &:not(.adui-tree-select-tree-checkbox-checked.adui-tree-select-tree-checkbox-indeterminate) {
+    &:not(.adui-tree-select-tree-checkbox-checked):not(.adui-tree-select-tree-checkbox-indeterminate) {
       &:hover {
         background-color: var(--gray-100);
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-600);

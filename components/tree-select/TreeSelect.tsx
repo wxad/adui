@@ -46,7 +46,7 @@ export interface ITreeSelectProps {
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
   maxTagCount?: null | number
   multiple?: boolean
-  onChange?: (value: TreeNodeValue) => void
+  onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void
   onSearch?: (value: string) => void
   placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
@@ -279,14 +279,17 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     )
   }
 
-  public handleChange = (value: TreeNodeValue) => {
+  public handleChange = (
+    value: TreeNodeValue,
+    titleList: React.ReactNode[]
+  ) => {
     const { disabled, onChange, value: valueProp } = this.props
     if (!disabled) {
       if (valueProp === null) {
         this.setState({ value })
       }
       if (onChange) {
-        onChange(value)
+        onChange(value, titleList)
       }
     }
   }
@@ -357,8 +360,12 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                         if (value === null) {
                           this.setState({ value: vals })
                         }
+
+                        const labels = nodes.map((o) => o.label)
+                        labels.splice(i, 1)
+
                         if (onChange) {
-                          onChange(vals)
+                          onChange(vals, labels)
                         }
                       }}
                     />
@@ -384,7 +391,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                 this.setState({ value: [] })
               }
               if (onChange) {
-                onChange([])
+                onChange([], [])
               }
             }}
           />
