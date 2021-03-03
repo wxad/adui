@@ -19,7 +19,8 @@ export interface ITreeSelectProps {
     getPopupContainer?: null | ((node: HTMLElement) => HTMLElement);
     maxTagCount?: null | number;
     multiple?: boolean;
-    onChange?: (value: TreeNodeValue) => void;
+    onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void;
+    onDropdownVisibleChange: (visible: boolean) => void;
     onSearch?: (value: string) => void;
     placement?: Placement;
     resultRender?: null | ((values: ITreeNode[]) => JSX.Element);
@@ -85,6 +86,10 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
          */
         onChange: PropTypes.Requireable<(...args: any[]) => any>;
         /**
+         * 下拉 visible 变化时的回调，参数: boolean
+         */
+        onDropdownVisibleChange: PropTypes.Requireable<(...args: any[]) => any>;
+        /**
          * 搜索时的回调，参数: value
          */
         onSearch: PropTypes.Requireable<(...args: any[]) => any>;
@@ -132,7 +137,7 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     saveSelect: (node: React.ReactNode) => void;
     saveWrapper: (node: HTMLDivElement) => void;
     renderSwitcherIcon: ({ isLeaf, loading }: ITreeNodeProps) => JSX.Element | null;
-    handleChange: (value: TreeNodeValue) => void;
+    handleChange: (value: TreeNodeValue, titleList: React.ReactNode[]) => void;
     handleSearch: (val: string) => void;
     filterTreeNode: (input: string, treeNode: any) => boolean;
     getMaxTagCount: () => 0 | null;
