@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/wxad/adui/compare/v1.5.1...v1.5.2) (2021-03-03)
+
+
+### Bug Fixes
+
+* **TreeSelect:** 修复 jacky 发现的搜索值和 TreeNode 不对应的问题 ([755a29d](https://github.com/wxad/adui/commit/755a29df01219e49d0e93fef1c38731a5ba8596a))
+
 ### [1.5.1](https://github.com/wxad/adui/compare/v1.5.0...v1.5.1) (2021-03-02)
 
 ## [1.5.0](https://github.com/wxad/adui/compare/v1.4.0...v1.5.0) (2021-02-23)
