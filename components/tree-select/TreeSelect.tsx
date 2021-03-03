@@ -47,6 +47,7 @@ export interface ITreeSelectProps {
   maxTagCount?: null | number
   multiple?: boolean
   onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void
+  onDropdownVisibleChange: (visible: boolean) => void
   onSearch?: (value: string) => void
   placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
@@ -156,6 +157,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      */
     onChange: PropTypes.func,
     /**
+     * 下拉 visible 变化时的回调，参数: boolean
+     */
+    onDropdownVisibleChange: PropTypes.func,
+    /**
      * 搜索时的回调，参数: value
      */
     onSearch: PropTypes.func,
@@ -218,6 +223,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     maxTagCount: null,
     multiple: true,
     onChange: noop,
+    onDropdownVisibleChange: noop,
     onSearch: noop,
     placement: "bottomLeft",
     placeholder: "请选择",
@@ -298,6 +304,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     const { onSearch } = this.props
     if (onSearch) {
       onSearch(val)
+      setTimeout(() => {
+        this.forceUpdate()
+      }, 0)
     }
   }
 
@@ -453,6 +462,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       getPopupContainer,
       maxTagCount,
       multiple,
+      onDropdownVisibleChange,
       placement,
       placeholder,
       rightIcon,
@@ -567,6 +577,14 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               listItemHeight={36}
               listHeight={280}
               treeData={treeData || convertChildrenToData(children)}
+              onDropdownVisibleChange={(visible: boolean) => {
+                setTimeout(() => {
+                  this.forceUpdate()
+                }, 0)
+                if (onDropdownVisibleChange) {
+                  onDropdownVisibleChange(visible)
+                }
+              }}
               {...restProps}
             >
               {children}
