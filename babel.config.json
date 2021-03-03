@@ -1,0 +1,24 @@
+{
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": ["last 2 versions", "Firefox ESR", "> 1%", "ie >= 11"]
+          }
+        }
+      ],
+      "@babel/typescript"
+    ],
+    "plugins": [
+      ["@babel/plugin-transform-runtime", { "helpers": false }],
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-syntax-object-rest-spread",
+      ["@babel/plugin-proposal-class-properties", { "loose": true }],
+      "@babel/plugin-proposal-numeric-separator"
+    ],
+    "comments": false
+  }
+  

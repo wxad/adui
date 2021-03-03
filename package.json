@@ -42,9 +42,10 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "compile": "node scripts/generate-svg-icons.js && npm run test && rimraf lib && mkdir lib && mkdir lib/style && cp components/style/base.css lib/style/base.css && NODE_ENV=production webpack -p --config webpack.config.js && npm run compile:types && npm run compile:js && node scripts/build.js && cp components/resize-observer/ResizeObserverPolyfill.js lib/resize-observer/ResizeObserverPolyfill.js",
+    "compile": "node scripts/generate-svg-icons.js && npm run test && rimraf lib && mkdir lib && mkdir lib/style && cp components/style/base.css lib/style/base.css && NODE_ENV=production webpack -p --config webpack.config.js && npm run compile:types && npm run compile:lib && node scripts/build.js && cp components/resize-observer/ResizeObserverPolyfill.js lib/resize-observer/ResizeObserverPolyfill.js",
     "compile:types": "tsc --outDir lib --declaration --emitDeclarationOnly",
-    "compile:js": "babel components --out-dir lib --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*'",
+    "compile:lib": "babel components --out-dir lib --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*'",
+    "compile:es": "babel components --no-babelrc --config-file ./babel.config.json --out-dir es --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*'",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint-staged": "lint-staged",
     "eslint": "eslint $(git diff-index --cached HEAD --name-only --diff-filter ACMR | egrep '.js$')",
