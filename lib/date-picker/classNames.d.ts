@@ -1,0 +1,21 @@
+declare const _default: {
+    body: string;
+    caption: string;
+    day: string;
+    disabled: string;
+    month: string;
+    months: string;
+    navBar: string;
+    navButtonNext: string;
+    navButtonPrev: string;
+    outside: string;
+    selected: string;
+    today: string;
+    week: string;
+    weekday: string;
+    weekdays: string;
+    weekdaysRow: string;
+    weekNumber: string;
+    wrapper: string;
+};
+export default _default;
