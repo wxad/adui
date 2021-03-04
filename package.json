@@ -41,9 +41,10 @@
     "react-dom": ">=16.9.0"
   },
   "sideEffects": [
-    "dist/*",
     "es/**/style/*",
-    "lib/**/style/*"
+    "lib/**/style/*",
+    "components/**/*",
+    "*.scss"
   ],
   "scripts": {
     "type-check": "tsc --noEmit",
