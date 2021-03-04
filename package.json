@@ -43,8 +43,7 @@
   "sideEffects": [
     "dist/*",
     "es/**/style/*",
-    "lib/**/style/*",
-    "*.scss"
+    "lib/**/style/*"
   ],
   "scripts": {
     "type-check": "tsc --noEmit",
