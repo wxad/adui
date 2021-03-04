@@ -1,7 +1,7 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "1.5.2",
+  "version": "1.5.4",
   "files": [
     "lib",
     "dist",
@@ -42,8 +42,6 @@
   },
   "sideEffects": [
     "dist/*",
-    "es/**/style/*",
-    "lib/**/style/*",
     "*.scss"
   ],
   "scripts": {
