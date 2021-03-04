@@ -1,5 +1,5 @@
-import Tooltip from "./Tooltip"
+import Tooltip, { ITooltipProps as _ITooltipProps } from "./Tooltip"
 
-export { ITooltipProps } from "./Tooltip"
+export type ITooltipProps = _ITooltipProps
 
 export default Tooltip

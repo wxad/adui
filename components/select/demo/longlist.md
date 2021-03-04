@@ -8,21 +8,39 @@ title:
 虚拟滚动，处理 `10000` 行数据：
 
 ```jsx
-  const options = []
-  for (let i = 0; i < 10000; i++) {
-    const value = `${i.toString(36)}${i}`
-    options.push({
-      value,
-    })
-  }
+const options = []
+for (let i = 0; i < 10000; i++) {
+  const value = `${i.toString(36)}${i}`
+  options.push({
+    value,
+  })
+}
 
-  return (
-    <Select searchable style={{ width: "50%" }}>
-      {options.map(({ value }) => (
-        <Select.Option value={value}>{value}</Select.Option>
-      ))}
-    </Select>
-  )
+return (
+  <Select
+    searchable
+    style={{ width: "50%" }}
+    filterOption={(inputValue, option) => {
+      if (inputValue.includes(option.props.value)) {
+        return true
+      }
+      return false
+    }}
+  >
+    {options.map(({ value }) => (
+      <Select.Option value={value}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img
+            style={{ height: 24, width: 24, marginRight: 8 }}
+            src="https://wxa.wxs.qq.com/mpweb/delivery/legacy/moment-preview/placeholder/vid.png"
+            alt=""
+          />
+          {value}
+        </div>
+      </Select.Option>
+    ))}
+  </Select>
+)
 ```
 
 ## Alert

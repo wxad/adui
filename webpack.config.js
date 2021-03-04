@@ -67,7 +67,7 @@ module.exports = {
     }),
   ],
   output: {
-    path: path.resolve(__dirname, "lib"),
+    path: path.resolve(__dirname, process.env.COMPILE_TYPE),
     filename: "[name].js",
     libraryTarget: "umd",
     umdNamedDefine: true,

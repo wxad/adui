@@ -1,5 +1,5 @@
-import Popover from "./Popover"
+import Popover, { IPopoverProps as _IPopoverProps } from "./Popover"
 
-export { IPopoverProps } from "./Popover"
+export type IPopoverProps = _IPopoverProps
 
 export default Popover

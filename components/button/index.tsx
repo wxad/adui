@@ -1,5 +1,5 @@
-import Button from "./Button"
+import Button, { IButtonProps as _IButtonProps } from "./Button"
 
-export { IButtonProps } from "./Button"
+export type IButtonProps = _IButtonProps
 
 export default Button
