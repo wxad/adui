@@ -41,6 +41,8 @@
     "react-dom": ">=16.9.0"
   },
   "sideEffects": [
+    "es/index.js",
+    "lib/index.js",
     "es/**/style/*",
     "lib/**/style/*",
     "components/**/*",
