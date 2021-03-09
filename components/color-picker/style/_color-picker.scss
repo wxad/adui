@@ -17,9 +17,11 @@ $slider-prefix: "adui-slider";
   }
 
   &-picker {
-    display: inline-block;
-    vertical-align: top;
-    padding: 4px;
+    &.adui-button-base {
+      display: inline-block;
+      vertical-align: top;
+      padding: 4px;
+    }
 
     > .adui-button-content {
       display: block;

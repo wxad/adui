@@ -9,8 +9,6 @@ import Option from "./Option"
 import omit from "../_util/omit"
 import Icon, { IconNames } from "../icon"
 import { ConfigContext } from "../config-provider"
-// IconSvgPaths 用以判断 icon 相关的 prop 是否合法
-import IconSvgPaths from "../icon/IconSvgPaths"
 import { Placement } from "../pop-trigger"
 import getPlacements from "../tooltip/placements"
 import "./style"
@@ -187,7 +185,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     /**
      * 设置右图标
      */
-    rightIcon: PropTypes.oneOf(Object.keys(IconSvgPaths)),
+    rightIcon: PropTypes.any,
     /**
      * 搜索框默认文字
      */

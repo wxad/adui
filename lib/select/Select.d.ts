@@ -148,7 +148,7 @@ declare class Select extends React.Component<ISelectProps, ISelectState> {
         /**
          * 设置右图标
          */
-        rightIcon: PropTypes.Requireable<string>;
+        rightIcon: PropTypes.Requireable<any>;
         /**
          * 搜索框默认文字
          */
