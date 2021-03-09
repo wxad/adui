@@ -1,11 +1,12 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "1.5.3-alpha.0",
+  "version": "1.5.3",
   "files": [
     "lib",
-    "dist",
-    "es"
+    "es",
+    "adui-icon-loader.js",
+    "adui-icon-plugin.js"
   ],
   "keywords": [
     "design",
