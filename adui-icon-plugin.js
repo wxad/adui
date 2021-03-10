@@ -1,5 +1,5 @@
 /* eslint-disable */
-// @ts-ignore"
+// @ts-ignore
 
 var path = require("path")
 var fs = require("fs")

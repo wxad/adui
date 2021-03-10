@@ -1,5 +1,5 @@
 /* eslint-disable */
-// @ts-ignore"
+// @ts-ignore
 
 var parser = require("@babel/parser")
 var loaderUtils = require("loader-utils")
