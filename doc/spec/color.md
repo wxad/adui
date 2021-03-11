@@ -158,7 +158,7 @@
         </p>
         <hr>
         <p class="articleP">
-        <strong>色彩倾向对应的组件类型 <code>intend</code> 为：</strong>
+        <strong>色彩倾向对应的组件类型 <code>intent</code> 为：</strong>
         </p>
         <p class="articleP">
         主题：<code>primary</code><br>

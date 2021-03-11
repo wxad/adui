@@ -6,7 +6,8 @@
     "lib",
     "es",
     "adui-icon-loader.js",
-    "adui-icon-plugin.js"
+    "adui-icon-plugin.js",
+    "adui-tailwind-config.js"
   ],
   "keywords": [
     "design",
