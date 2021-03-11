@@ -2,18 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.5.4-alpha.0](https://github.com/wxad/adui/compare/v1.5.3...v1.5.4-alpha.0) (2021-03-09)
-
-### [1.5.3](https://github.com/wxad/adui/compare/v1.5.4...v1.5.3) (2021-03-09)
-
-### [1.5.3-alpha.1](https://github.com/wxad/adui/compare/v1.5.4...v1.5.3-alpha.1) (2021-03-05)
-
-### [1.5.3-alpha.1](https://github.com/wxad/adui/compare/v1.5.4...v1.5.3-alpha.1) (2021-03-04)
-
-### [1.5.3-alpha.0](https://github.com/wxad/adui/compare/v1.5.4...v1.5.3-alpha.0) (2021-03-04)
-
 ### [1.5.2](https://github.com/wxad/adui/compare/v1.5.1...v1.5.2) (2021-03-03)
-
 
 ### Bug Fixes
 
