@@ -1,0 +1,341 @@
+@use "./mixins";
+$prefix: "adui-button";
+
+.#{$prefix} {
+  &-base {
+    position: relative;
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    white-space: nowrap;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    outline: none;
+    user-select: none;
+    appearance: none;
+    cursor: pointer;
+    transition: color var(--motion-duration-fast) var(--ease-in-out),
+      background-color var(--motion-duration-fast) var(--ease-in-out),
+      background-image var(--motion-duration-fast) var(--ease-in-out),
+      box-shadow var(--motion-duration-fast) var(--ease-in-out);
+
+    &:not(.#{$prefix}-light) {
+      &.#{$prefix}-normal {
+        .#{$prefix}-spinner {
+          background-color: #fff;
+        }
+      }
+
+      &.#{$prefix}-primary {
+        .#{$prefix}-spinner {
+          background-color: var(--primary-color);
+        }
+      }
+
+      &.#{$prefix}-success {
+        .#{$prefix}-spinner {
+          background-color: var(--ad-green);
+        }
+      }
+
+      &.#{$prefix}-warning {
+        .#{$prefix}-spinner {
+          background-color: var(--ad-orange);
+        }
+      }
+
+      &.#{$prefix}-danger {
+        .#{$prefix}-spinner {
+          background-color: var(--ad-red);
+        }
+      }
+    }
+  }
+  &-content {
+    display: inline-block;
+    max-width: 100%;
+  }
+  &-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  /* 尺寸 sizes */
+  &-mini {
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 26px;
+    font-size: var(--font-size-mini);
+    line-height: 26px;
+
+    &.#{$prefix}-hasLeftIcon {
+      padding-left: 4px;
+    }
+
+    &.#{$prefix}-hasRightIcon {
+      padding-right: 4px;
+    }
+
+    .#{$prefix}-leftIcon,
+    .#{$prefix}-rightIcon {
+      vertical-align: calc(-0.125em - (18px - var(--font-size-mini)) / 2);
+    }
+  }
+  &-small {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+    font-size: var(--font-size-small);
+    line-height: 30px;
+
+    &.#{$prefix}-hasLeftIcon {
+      padding-left: 6px;
+    }
+
+    &.#{$prefix}-hasRightIcon {
+      padding-right: 6px;
+    }
+
+    .#{$prefix}-leftIcon,
+    .#{$prefix}-rightIcon {
+      vertical-align: calc(-0.125em - (18px - var(--font-size-small)) / 2);
+    }
+  }
+  &-medium {
+    padding-left: 13px;
+    padding-right: 13px;
+    height: 36px;
+    font-size: var(--font-size-medium);
+    line-height: 36px;
+
+    &.#{$prefix}-hasLeftIcon {
+      padding-left: 9px;
+    }
+
+    &.#{$prefix}-hasRightIcon {
+      padding-right: 9px;
+    }
+
+    .#{$prefix}-leftIcon,
+    .#{$prefix}-rightIcon {
+      vertical-align: calc(-0.125em - (18px - var(--font-size-medium)) / 2);
+    }
+  }
+  &-large {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 42px;
+    font-size: var(--font-size-large);
+    line-height: 42px;
+
+    &.#{$prefix}-hasLeftIcon {
+      padding-left: 12px;
+    }
+
+    &.#{$prefix}-hasRightIcon {
+      padding-right: 12px;
+    }
+
+    .#{$prefix}-leftIcon,
+    .#{$prefix}-rightIcon {
+      vertical-align: calc(-0.125em - (18px - var(--font-size-large)) / 2);
+    }
+  }
+}
+
+/* 形态 types */
+@include mixins.generate-button-type(normal);
+@include mixins.generate-button-type(primary);
+@include mixins.generate-button-type(success);
+@include mixins.generate-button-type(warning);
+@include mixins.generate-button-type(danger);
+
+.#{$prefix}-leftIcon {
+  flex: none;
+
+  &:not(:only-child) {
+    margin-right: 4px;
+  }
+}
+.#{$prefix}-rightIcon {
+  flex: none;
+
+  &:not(:only-child) {
+    margin-left: 4px;
+  }
+}
+
+.#{$prefix}-disabled {
+  color: var(--gray-600);
+  font-weight: 500;
+  cursor: not-allowed;
+  background-color: transparent;
+
+  &:not(.#{$prefix}-light) {
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.03);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+
+  .#{$prefix}-leftIcon,
+  .#{$prefix}-rightIcon {
+    fill: var(--gray-600);
+  }
+}
+.#{$prefix}-light {
+  &.#{$prefix}-loading {
+    .#{$prefix}-leftIcon,
+    .#{$prefix}-rightIcon,
+    .#{$prefix}-content {
+      opacity: 0;
+    }
+  }
+
+  .#{$prefix}-spinner {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      opacity: 0.1;
+    }
+  }
+
+  &.#{$prefix}-normal {
+    .#{$prefix}-spinner {
+      &::after {
+        background-color: var(--gray-800);
+      }
+    }
+  }
+
+  &.#{$prefix}-primary {
+    .#{$prefix}-spinner {
+      &::after {
+        background-color: var(--primary-color);
+      }
+    }
+  }
+
+  &.#{$prefix}-success {
+    .#{$prefix}-spinner {
+      &::after {
+        background-color: var(--ad-green);
+      }
+    }
+  }
+
+  &.#{$prefix}-warning {
+    .#{$prefix}-spinner {
+      &::after {
+        background-color: var(--ad-orange);
+      }
+    }
+  }
+
+  &.#{$prefix}-danger {
+    .#{$prefix}-spinner {
+      &::after {
+        background-color: var(--ad-red);
+      }
+    }
+  }
+}
+.#{$prefix}-group {
+  display: inline-block;
+
+  .#{$prefix}-base {
+    &:focus {
+      z-index: 1;
+    }
+
+    &:hover {
+      z-index: 2;
+    }
+
+    &.#{$prefix}-active {
+      z-index: 3;
+    }
+
+    &:not(.#{$prefix}-light) {
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:last-child) {
+        margin-right: 1px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    &.#{$prefix}-light {
+      color: var(--gray-800);
+
+      &:hover {
+        &::after {
+          opacity: 0.1;
+          transform: scale(1);
+        }
+      }
+
+      &.#{$prefix}-primary {
+        &:hover,
+        &.#{$prefix}-active {
+          color: var(--primary-color);
+        }
+      }
+
+      &.#{$prefix}-warning {
+        &:hover,
+        &.#{$prefix}-active {
+          color: var(--ad-orange);
+        }
+      }
+
+      &.#{$prefix}-danger {
+        &:hover,
+        &.#{$prefix}-active {
+          color: var(--ad-red);
+        }
+      }
+
+      &:not(.#{$prefix}-active) {
+        &::after {
+          background-color: var(--gray-800);
+        }
+      }
+
+      &.#{$prefix}-active {
+        &:not(:hover) {
+          &::after {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &_banner {
+    display: flex;
+
+    button {
+      flex: 1;
+    }
+  }
+}
