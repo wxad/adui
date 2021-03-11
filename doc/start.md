@@ -54,9 +54,6 @@ const AduiIconPlugin = require("adui/adui-icon-plugin")
 如果项目使用了 create-react-app 创建，请先 eject 操作，因为我们需要修改 webpack 配置：
 
 ```js
-const AduiIconLoader = require.resolve("adui/adui-icon-loader")
-const AduiIconPlugin = require("adui/adui-icon-plugin")
-
 // 第一步：对源文件在 babel-loader 后添加 AduiIconLoader
 {
   test: /\.(js|mjs|jsx|ts|tsx)$/,
@@ -90,6 +87,7 @@ plugins: [
 ```css
 :root {
   --primary-color: #07c160;
+  ...
 }
 ```
 
@@ -101,7 +99,7 @@ html:root {
 }
 ```
 
-**adui** 还设置了许多其他变量比如 `--gray-50` 至 `--gray-900`，但请不要去修改这些变量。
+**adui** 还设置了许多其他变量比如 `--gray-50` 至 `--gray-900`，请小心修改这些变量。
 
 ---
 
