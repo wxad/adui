@@ -208,6 +208,7 @@ $prefix: "adui-table";
     }
   }
   &-expandRow {
+    min-width: 100%;
     background-color: #fff;
 
     &:not(:last-of-type) {
