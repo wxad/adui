@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useMemo } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import { color2hsl } from "../_util/color"
@@ -52,17 +52,19 @@ const Icon: React.FunctionComponent<IIconProps> & {
   size,
   ...otherProps
 }: IIconProps) => {
-  let colorProp = color
-  if (colorProp && colorProp.includes("var")) {
-    const documentStyle = getComputedStyle(document.documentElement)
-    if (documentStyle) {
-      colorProp = documentStyle.getPropertyValue(
-        colorProp.slice(4, colorProp.length - 1)
-      )
+  const lightness = useMemo(() => {
+    let colorProp = color
+    if (colorProp && colorProp.includes("var")) {
+      const documentStyle = getComputedStyle(document.documentElement)
+      if (documentStyle) {
+        colorProp = documentStyle.getPropertyValue(
+          colorProp.slice(4, colorProp.length - 1)
+        )
+      }
+      colorProp = "#a3a3a3"
     }
-    colorProp = "#a3a3a3"
-  }
-  const lightness = color2hsl(colorProp).l
+    return color2hsl(colorProp).l
+  }, [color])
 
   const data = IconSvgPaths[icon] || []
   const paths = data.map((d: string) => (
