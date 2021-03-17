@@ -352,6 +352,15 @@ var _default = {
     }, {
       "name": "wish-outlined",
       "keywords": ["wish-outlined", "心愿", "心愿单", "喜爱"]
+    }, {
+      "name": "material",
+      "keywords": ["material", ""]
+    }, {
+      "name": "home-outlined",
+      "keywords": ["home-outlined", "主页", "首页"]
+    }, {
+      "name": "home",
+      "keywords": ["home", "主页", "首页"]
     }]
   },
   "工具": {
@@ -548,6 +557,12 @@ var _default = {
     }, {
       "name": "toolbox-outlined",
       "keywords": ["toolbox-outlined", "工具箱"]
+    }, {
+      "name": "headline",
+      "keywords": ["headline", ""]
+    }, {
+      "name": "channels",
+      "keywords": ["channels", "视频号"]
     }]
   },
   "图表": {

@@ -52,6 +52,7 @@ export interface IIconNames {
     "catering-outlined": string;
     "catering": string;
     "certificate-outlined": string;
+    "channels": string;
     "chat-bubble-outlined": string;
     "chat-bubble": string;
     "city-outlined": string;
@@ -104,6 +105,7 @@ export interface IIconNames {
     "game": string;
     "gender": string;
     "happy": string;
+    "headline": string;
     "heart-outlined": string;
     "heart": string;
     "help-circle-outlined": string;
@@ -111,6 +113,8 @@ export interface IIconNames {
     "histogram-outlined": string;
     "histogram-square": string;
     "histogram": string;
+    "home-outlined": string;
+    "home": string;
     "iPhone-outlined": string;
     "image-outlined": string;
     "image": string;
@@ -137,6 +141,7 @@ export interface IIconNames {
     "makeup": string;
     "male": string;
     "map-outlined": string;
+    "material": string;
     "maternal-baby-outlined": string;
     "maternal-baby": string;
     "medical-outlined": string;
