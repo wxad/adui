@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/wxad/adui/compare/v1.5.3...v1.6.0) (2021-03-17)
+
+
+### Features
+
+* channels ([ab708a2](https://github.com/wxad/adui/commit/ab708a2ef72f058a680663eac41418162a3a2895))
+
+
+### Bug Fixes
+
+* **Icon:** 修复过多的计算耗时 ([180f5f7](https://github.com/wxad/adui/commit/180f5f7f676386f226239ed6ccc4e616bc100ef1))
+
 ### [1.5.2](https://github.com/wxad/adui/compare/v1.5.1...v1.5.2) (2021-03-03)
 
 ### Bug Fixes
