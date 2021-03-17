@@ -4,7 +4,7 @@ import CodeBox from './components/CodeBox'
 import {
   Button,
   Switch,
-  Radio,
+  ChannelsRadio as Radio,
 } from '../../components'
 import { SIZES } from "./consts"
 

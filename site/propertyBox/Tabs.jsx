@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "./components/propertyBox.scss"
 import CodeBox from "./components/CodeBox"
-import { Button, Switch, Tabs } from "../../components"
+import { Button, Switch, ChannelsTabs as Tabs } from "../../components"
 import { SIZES } from "./consts"
 
 export default class PropertyBox extends React.Component {

@@ -4,7 +4,7 @@ import CodeBox from './components/CodeBox'
 import {
   Button,
   Switch,
-  Checkbox,
+  ChannelsCheckbox as Checkbox,
 } from '../../components'
 import { SIZES, INTENTS } from "./consts"
 

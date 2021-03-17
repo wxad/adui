@@ -3,7 +3,7 @@ import styles from './components/propertyBox.scss'
 import CodeBox from './components/CodeBox'
 import {
   Button,
-  Message,
+  ChannelsMessage as Message,
   Switch,
 } from '../../components'
 

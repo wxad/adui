@@ -4,7 +4,7 @@ import CodeBox from './components/CodeBox'
 import {
   Button,
   Switch,
-  Pagination,
+  ChannelsPagination as Pagination,
 } from '../../components'
 import { SIZES } from "./consts"
 
@@ -38,7 +38,7 @@ export default class PropertyBox extends React.Component {
         <div className={styles.property}>
           <div className={styles.left}>
             <Pagination
-              showInputJumper={showInput}
+              showInputJumper
               theme={theme ? "light" : null}
               size={size}
               align="center"
@@ -46,7 +46,6 @@ export default class PropertyBox extends React.Component {
               pageSize={10}
               total={99}
               onChange={(current, pageSize) => console.log(current, pageSize)}
-              showButtonJumper
             />
           </div>
           <div className={styles.right}>

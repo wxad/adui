@@ -4,7 +4,7 @@ import CodeBox from './components/CodeBox'
 import {
   Button,
   Switch,
-  Dialog,
+  ChannelsDialog as Dialog,
 } from '../../components'
 
 export default class PropertyBox extends React.Component {
@@ -34,7 +34,6 @@ export default class PropertyBox extends React.Component {
   ${mask ? `maskClosable` : ""}
   onCancel={() => this.setState({ visible: false })}
   onConfirm={() => this.setState({ visible: false })}
-  title="标题"
   ${type === "inform" ? `type="inform"` : ""}
   visible={visible}
   ${destroyAfterClose ? `destroyAfterClose` : ""}
@@ -62,7 +61,6 @@ export default class PropertyBox extends React.Component {
               maskClosable={mask}
               onCancel={() => this.setState({ visible: false })}
               onConfirm={() => this.setState({ visible: false })}
-              title="标题"
               type={type}
               visible={visible}
               destroyAfterClose={destroyAfterClose}
