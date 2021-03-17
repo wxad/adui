@@ -20,7 +20,7 @@ const Popup: React.FunctionComponent<IPopupProps> = ({
      * 在 Slider 中用 Tooltip 时发现 PopTrigger 不会在每一次移动时触发 onPopupAlign
      * 所以在这里利用 trigger 的接口强制定位
      */
-    if (trigger && trigger.forcePopupAlign) {
+    if (trigger?.forcePopupAlign) {
       trigger.forcePopupAlign()
     }
   })

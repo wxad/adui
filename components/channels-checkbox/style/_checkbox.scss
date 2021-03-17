@@ -1,0 +1,89 @@
+$prefix: "adui-channels-checkbox";
+
+.#{$prefix}-base {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 20px;
+
+  &:not(.#{$prefix}-disabled) {
+    cursor: pointer;
+
+    &.#{$prefix}-checked {
+      .#{$prefix}-indicator {
+        background-color: var(--channels);
+        border-color: var(--channels);
+      }
+    }
+  }
+
+  &.#{$prefix}-disabled {
+    cursor: not-allowed;
+    color: rgba(0, 0, 0, 0.55);
+
+    .#{$prefix}-indicator {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &.#{$prefix}-checked {
+      .#{$prefix}-indicator {
+        color: rgba(255, 255, 255, 0.5);
+        background-color: var(--channels);
+        border-color: var(--channels);
+      }
+    }
+  }
+}
+.#{$prefix}-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  width: 14px;
+  height: 14px;
+  vertical-align: 1px;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(216, 216, 216, 0.0001);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+
+  svg {
+    position: relative;
+    left: 1px;
+    opacity: 0;
+    transform: scale(0.6) rotate(10deg);
+
+    path {
+      fill: currentColor;
+      stroke: currentColor;
+    }
+  }
+}
+.#{$prefix}-checked {
+  svg {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+.#{$prefix}-helper {
+  margin-left: 4px;
+  vertical-align: -4px;
+}
+
+/**
+ * Checkbox.Group
+ */
+.#{$prefix}-group {
+  .#{$prefix}-base {
+    &:not(:last-of-type) {
+      margin-right: 24px;
+    }
+  }
+}
+.#{$prefix}-noChildren {
+  line-height: 0;
+
+  .#{$prefix}-indicator {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,97 @@
+$prefix: "adui-channels-radio";
+
+.#{$prefix}-base {
+  display: inline-block;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.9);
+
+  &:not(.#{$prefix}-disabled) {
+    cursor: pointer;
+
+    &.#{$prefix}-checked {
+      .#{$prefix}-indicator {
+        background-color: var(--channels);
+        border-color: var(--channels);
+
+        &::after {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}-disabled {
+    cursor: not-allowed;
+    color: rgba(0, 0, 0, 0.5);
+
+    .#{$prefix}-indicator {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &.#{$prefix}-checked {
+      color: rgba(0, 0, 0, 0.9);
+
+      .#{$prefix}-indicator {
+        background-color: var(--channels);
+        border-color: var(--channels);
+
+        &::after {
+          background-color: rgba(255, 255, 255, 0.5);
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &.#{$prefix}-noChildren {
+    .#{$prefix}-indicator {
+      margin-right: 0;
+    }
+  }
+}
+.#{$prefix}-indicator {
+  position: relative;
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 8px;
+  width: 14px;
+  height: 14px;
+  line-height: 1;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 100%;
+  transform-origin: 0 50%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -3px;
+    margin-left: -3px;
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 100%;
+    transform: scale(0);
+  }
+}
+.#{$prefix}-helper {
+  margin-left: 4px;
+  vertical-align: -4px;
+}
+
+/**
+ * Radio.Group
+ */
+.#{$prefix}-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .#{$prefix}-base {
+    &:not(:last-of-type) {
+      margin-right: 24px;
+    }
+  }
+}

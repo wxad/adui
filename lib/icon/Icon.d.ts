@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { IIconNames } from "./IconNames";
 import "./style";
 export declare type IconNames = keyof IIconNames;

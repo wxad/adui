@@ -1,4 +1,4 @@
-import React, { forwardRef, useContext } from "react"
+import React, { forwardRef, useContext, useMemo } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import { ConfigContext } from "../config-provider"
@@ -45,19 +45,21 @@ const Popover: React.ForwardRefExoticComponent<
       ConfigContext
     )
 
-    let popupTransitionName
-
-    if (arrowed) {
-      popupTransitionName = "zoom-big-fast"
-    } else if (placement && placement.indexOf("top") === 0) {
-      popupTransitionName = "slide-down"
-    } else if (placement && placement.indexOf("right") === 0) {
-      popupTransitionName = "slide-left"
-    } else if (placement && placement.indexOf("bottom") === 0) {
-      popupTransitionName = "slide-up"
-    } else if (placement && placement.indexOf("left") === 0) {
-      popupTransitionName = "slide-right"
-    }
+    const popupTransitionName = useMemo(() => {
+      if (arrowed) {
+        return "zoom-big-fast"
+      }
+      if (placement && placement.indexOf("top") === 0) {
+        return "slide-down"
+      }
+      if (placement && placement.indexOf("right") === 0) {
+        return "slide-left"
+      }
+      if (placement && placement.indexOf("left") === 0) {
+        return "slide-right"
+      }
+      return "slide-up"
+    }, [arrowed, placement])
 
     return (
       <Tooltip

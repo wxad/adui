@@ -177,7 +177,7 @@ PopTrigger.defaultProps = {
   popupClassName: "",
   popupPlacement: "bottom",
   popupStyle: null,
-  popupTransitionName: "",
+  popupTransitionName: undefined,
   popupVisible: null,
 }
 

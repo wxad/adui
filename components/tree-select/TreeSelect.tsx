@@ -47,7 +47,7 @@ export interface ITreeSelectProps {
   maxTagCount?: null | number
   multiple?: boolean
   onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void
-  onDropdownVisibleChange: (visible: boolean) => void
+  onDropdownVisibleChange?: (visible: boolean) => void
   onSearch?: (value: string) => void
   placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)

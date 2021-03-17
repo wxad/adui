@@ -6,6 +6,10 @@
   .#{$className}-appear {
     transform: scale(0);
     animation-timing-function: var(--ease-out-circ);
+
+    &-prepare {
+      transform: none;
+    }
   }
   .#{$className}-leave {
     animation-timing-function: var(--ease-in-out-circ);

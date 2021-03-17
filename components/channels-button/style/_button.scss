@@ -1,5 +1,5 @@
 @use "./mixins";
-$prefix: "adui-button";
+$prefix: "adui-channels-button";
 
 .#{$prefix} {
   &-base {
@@ -9,6 +9,7 @@ $prefix: "adui-button";
     margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    letter-spacing: 1px;
     white-space: nowrap;
     border: none;
     border-radius: 4px;
@@ -17,10 +18,6 @@ $prefix: "adui-button";
     user-select: none;
     appearance: none;
     cursor: pointer;
-    transition: color var(--motion-duration-fast) var(--ease-in-out),
-      background-color var(--motion-duration-fast) var(--ease-in-out),
-      background-image var(--motion-duration-fast) var(--ease-in-out),
-      box-shadow var(--motion-duration-fast) var(--ease-in-out);
 
     &:not(.#{$prefix}-light) {
       &.#{$prefix}-normal {
@@ -31,7 +28,7 @@ $prefix: "adui-button";
 
       &.#{$prefix}-primary {
         .#{$prefix}-spinner {
-          background-color: var(--primary-color);
+          background-color: var(--channels);
         }
       }
 
@@ -73,11 +70,23 @@ $prefix: "adui-button";
 
   /* 尺寸 sizes */
   &-mini {
-    padding-left: 8px;
-    padding-right: 8px;
-    height: 26px;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 32px;
     font-size: var(--font-size-mini);
-    line-height: 26px;
+    line-height: 32px;
+    background-color: #f5f5f5;
+
+    &:not(.#{$prefix}-disabled) {
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      &:active {
+        color: var(--channels);
+        background-color: #fef5eb;
+      }
+    }
 
     &.#{$prefix}-hasLeftIcon {
       padding-left: 4px;
@@ -93,11 +102,11 @@ $prefix: "adui-button";
     }
   }
   &-small {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 30px;
-    font-size: var(--font-size-small);
-    line-height: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 32px;
+    font-size: var(--font-size-medium);
+    line-height: 32px;
 
     &.#{$prefix}-hasLeftIcon {
       padding-left: 6px;
@@ -113,8 +122,8 @@ $prefix: "adui-button";
     }
   }
   &-medium {
-    padding-left: 13px;
-    padding-right: 13px;
+    padding-left: 22px;
+    padding-right: 22px;
     height: 36px;
     font-size: var(--font-size-medium);
     line-height: 36px;
@@ -133,11 +142,11 @@ $prefix: "adui-button";
     }
   }
   &-large {
-    padding-left: 16px;
-    padding-right: 16px;
-    height: 42px;
-    font-size: var(--font-size-large);
-    line-height: 42px;
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 40px;
+    font-size: 17px;
+    line-height: 40px;
 
     &.#{$prefix}-hasLeftIcon {
       padding-left: 12px;
@@ -155,7 +164,6 @@ $prefix: "adui-button";
 }
 
 /* 形态 types */
-@include mixins.generate-button-type(normal);
 @include mixins.generate-button-type(primary);
 @include mixins.generate-button-type(success);
 @include mixins.generate-button-type(warning);
@@ -177,15 +185,13 @@ $prefix: "adui-button";
 }
 
 .#{$prefix}-disabled {
-  color: var(--gray-600);
-  font-weight: 500;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 400;
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: #f5f5f5;
 
-  &:not(.#{$prefix}-light) {
-    font-weight: 400;
-    background-color: rgba(0, 0, 0, 0.03);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  &:not(.#{$prefix}-mini) {
+    font-weight: 500;
   }
 
   .#{$prefix}-leftIcon,
@@ -226,7 +232,7 @@ $prefix: "adui-button";
   &.#{$prefix}-primary {
     .#{$prefix}-spinner {
       &::after {
-        background-color: var(--primary-color);
+        background-color: var(--channels);
       }
     }
   }
@@ -297,7 +303,7 @@ $prefix: "adui-button";
       &.#{$prefix}-primary {
         &:hover,
         &.#{$prefix}-active {
-          color: var(--primary-color);
+          color: var(--channels);
         }
       }
 

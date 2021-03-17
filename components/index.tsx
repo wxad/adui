@@ -42,6 +42,14 @@ export { default as Tooltip } from "./tooltip"
 export { default as TreeSelect } from "./tree-select"
 export { default as Upload } from "./upload"
 
+export { default as ChannelsButton } from "./channels-button"
+export { default as ChannelsCheckbox } from "./channels-checkbox"
+export { default as ChannelsDialog } from "./channels-dialog"
+export { default as ChannelsMessage } from "./channels-message"
+export { default as ChannelsPagination } from "./channels-pagination"
+export { default as ChannelsRadio } from "./channels-radio"
+export { default as ChannelsTabs } from "./channels-tabs"
+
 const fakeFocusEngine = { start: () => true }
 const focusEngine =
   typeof document !== "undefined"

@@ -1,7 +1,7 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "1.5.4-alpha.0",
+  "version": "1.5.4-alpha.8",
   "files": [
     "lib",
     "es",
@@ -30,10 +30,10 @@
     "debounce": "^1.2.0",
     "prop-types": "^15.7.2",
     "rc-animate": "^3.1.1",
-    "rc-select": "^11.4.1",
+    "rc-select": "^12.1.6",
     "rc-slider": "^9.7.1",
     "rc-tree-select": "^4.3.0",
-    "rc-trigger": "4.2.2",
+    "rc-trigger": "^5.2.3",
     "rc-util": "^5.7.0",
     "rc-virtual-list": "^3.2.6",
     "shallowequal": "^1.1.0"

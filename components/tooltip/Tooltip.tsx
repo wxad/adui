@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 import React, {
   forwardRef,
   useContext,
@@ -100,6 +102,7 @@ const Tooltip: React.ForwardRefExoticComponent<
       popup,
       popupClassName,
       popupStyle,
+      popupTransitionName,
       trigger,
       visible: visibleProp,
       ...otherProps
@@ -329,6 +332,10 @@ const Tooltip: React.ForwardRefExoticComponent<
         onPopupAlign={handlePopupAlign}
         popup={<Popup content={popup} trigger={triggerRef.current} />}
         popupPlacement={placement}
+        popupMotion={{
+          motionName: popupTransitionName,
+          motionDeadline: 1000,
+        }}
         popupStyle={getPopupStyle()}
         popupVisible={visible}
         {...otherProps}

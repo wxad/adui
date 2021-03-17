@@ -8,7 +8,7 @@ import { ConfigContext, getComputedSize } from "../config-provider"
 import { ButtonGroupContext } from "./Context"
 import "./style"
 
-const prefix = "adui-cns"
+const prefix = "adui-channels-button"
 
 export interface IButtonProps {
   [key: string]: any
@@ -239,7 +239,7 @@ Button.defaultProps = {
   className: undefined,
   disabled: null,
   href: undefined,
-  intent: "normal",
+  intent: "primary",
   leftIcon: undefined,
   loading: false,
   onClick: null,

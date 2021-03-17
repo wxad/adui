@@ -1,9 +1,11 @@
+/* stylelint-disable */
 :root {
   --primary-color: rgb(7, 193, 96);
   --ad-green: rgb(7, 193, 96);
   --ad-orange: rgb(237, 162, 12);
   --ad-blue: rgb(43, 123, 214);
   --ad-red: rgb(217, 81, 76);
+  --channels: rgb(250, 157, 59);
 
   --transparent-gray-0: rgba(0, 0, 0, 0);
   --transparent-gray-50: rgba(0, 0, 0, 0.02);
@@ -17,7 +19,7 @@
   --transparent-gray-800: rgba(0, 0, 0, 0.58);
   --transparent-gray-900: rgba(0, 0, 0, 0.88);
   --transparent-gray-1000: rgb(0, 0, 0);
-  
+
   --gray-0: #ffffff;
   --gray-50: #fafafa;
   --gray-100: #f2f2f2;
@@ -68,6 +70,11 @@
   --motion-duration-fast: 0.1s;
   --motion-duration-base: 0.2s;
   --motion-duration-slow: 0.4s;
+
+  --dialog-offset-x: 0px;
+  --dialog-offset-y: 0px;
+  --message-offset-x: 0px;
+  --message-offset-y: 0px;
 }
 html {
   box-sizing: border-box;

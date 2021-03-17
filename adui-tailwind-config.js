@@ -4,18 +4,13 @@
 module.exports = {
   // 对以下文件进行 className 的 tree-shaking，支持字面量与三元
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  important: 'body',
   // https://tailwindcss.com/docs/presets#creating-a-preset
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     // 待设计规范引入
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-    },
+    screens: false,
     colors: {
       transparent: "transparent",
       current: "currentColor",

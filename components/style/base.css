@@ -1,3 +1,4 @@
+/* stylelint-disable */
 :root {
   --primary-color: rgb(7, 193, 96);
   --ad-green: rgb(7, 193, 96);
@@ -69,6 +70,11 @@
   --motion-duration-fast: 0.1s;
   --motion-duration-base: 0.2s;
   --motion-duration-slow: 0.4s;
+
+  --dialog-offset-x: 0px;
+  --dialog-offset-y: 0px;
+  --message-offset-x: 0px;
+  --message-offset-y: 0px;
 }
 html {
   box-sizing: border-box;

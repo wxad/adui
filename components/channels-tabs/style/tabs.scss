@@ -1,0 +1,106 @@
+$prefix: "adui-channels-tabs";
+
+.#{$prefix} {
+  &-base {
+    position: relative;
+    // 在 Card.Header title prop 中使用时，会加入粗体，为了适应这种需求因此加上 font-weight 规则
+    font-weight: normal;
+  }
+  &-base_disabled {
+    .#{$prefix}-indicator {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+  &-tab {
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.9);
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+
+    &:last-of-type {
+      margin-right: 0 !important;
+    }
+  }
+  &-active {
+    font-weight: 500;
+  }
+  &-disabled {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+  }
+  &-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.9);
+  }
+  &-banner {
+    display: flex;
+
+    .#{$prefix}-tab {
+      flex: 1;
+      text-align: center;
+      margin-right: 0 !important;
+    }
+  }
+
+  // sizes
+  &-mini {
+    font-size: var(--font-size-mini);
+    line-height: 18px;
+
+    .#{$prefix}-tab {
+      padding-bottom: 10px;
+
+      &:not(:last-of-type) {
+        margin-right: 16px;
+      }
+    }
+  }
+  &-small {
+    font-size: var(--font-size-small);
+    line-height: 20px;
+
+    .#{$prefix}-tab {
+      padding-bottom: 12px;
+
+      &:not(:last-of-type) {
+        margin-right: 20px;
+      }
+    }
+  }
+  &-medium {
+    font-size: 14px;
+    line-height: 18px;
+
+    .#{$prefix}-tab {
+      padding-bottom: 9px;
+
+      &:not(:last-of-type) {
+        margin-right: 25px;
+      }
+    }
+
+    .#{$prefix}-indicator {
+      height: 1px;
+    }
+  }
+  &-large {
+    font-size: 17px;
+    line-height: 20px;
+
+    .#{$prefix}-tab {
+      padding-bottom: 9px;
+
+      &:not(:last-of-type) {
+        margin-right: 28px;
+      }
+    }
+
+    .#{$prefix}-indicator {
+      height: 2px;
+    }
+  }
+}

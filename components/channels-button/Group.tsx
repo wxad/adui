@@ -4,7 +4,7 @@ import classNames from "classnames"
 import { ButtonGroupContext } from "./Context"
 import "./style"
 
-const prefix = "adui-button"
+const prefix = "adui-channels-button"
 
 export interface IButtonGroupProps {
   [key: string]: any
