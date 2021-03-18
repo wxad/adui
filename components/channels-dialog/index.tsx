@@ -32,7 +32,8 @@ INTENTS.forEach((intent) => {
       ...otherProps,
       intent,
       style: {
-        maxWidth: "560px",
+        maxWidth: "496px",
+        minHeight: "280px",
         ...style,
       },
     }

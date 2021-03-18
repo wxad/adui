@@ -12,7 +12,7 @@ $prefix: "adui-channels-dialog";
   }
   &-mask {
     will-change: opacity;
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.5);
   }
   &-wrapper {
     display: flex;
@@ -26,30 +26,35 @@ $prefix: "adui-channels-dialog";
     display: flex;
     flex-direction: column;
     margin: 36px auto;
-    padding: 32px;
+    padding: 32px 0;
     min-width: 420px;
     min-height: 280px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: var(--box-shadow-elevation-4);
   }
   &-header {
     flex: none;
     position: relative;
-    height: 24px;
+    margin: 0 32px;
+    min-height: 24px;
     background-color: #fff;
   }
   &-headerContent {
-    margin-top: 8px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.495);
   }
   &-title {
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--gray-900);
+    font-size: 20px;
     font-weight: 600;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.9);
   }
   &-body {
     flex: 1;
+    padding: 32px;
     overflow: auto;
     @include mixins.scrollbar();
   }
@@ -58,6 +63,7 @@ $prefix: "adui-channels-dialog";
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding: 0 32px;
     height: 32px;
     background-color: #fff;
 
@@ -80,7 +86,7 @@ $prefix: "adui-channels-dialog";
   &-intentWrapper {
     display: flex;
     justify-content: center;
-    padding: 8px 40px 34px;
+    margin-top: -32px;
   }
   &-intentWrapper_center {
     align-items: center;
@@ -110,16 +116,16 @@ $prefix: "adui-channels-dialog";
     }
   }
   &-intentTitle {
-    font-size: 16px;
-    line-height: 26px;
-    color: #1f1f1f;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.9);
   }
   &-intentText {
-    margin-top: 2px;
-    font-size: 13px;
+    margin-top: 8px;
+    font-size: 14px;
     line-height: 20px;
-    color: #636363;
+    color: rgba(0, 0, 0, 0.5);
   }
 
   &-appear {
@@ -137,7 +143,7 @@ $prefix: "adui-channels-dialog";
   &-enter.#{$prefix}-enter-active {
     opacity: 1;
     transform: scale(1) translate3d(0, 0, 0);
-    transition: var(--motion-duration-base) var(--ease-out) all;
+    transition: 0s var(--ease-out) all;
   }
 
   &-leave {
@@ -148,7 +154,7 @@ $prefix: "adui-channels-dialog";
   &-leave.#{$prefix}-leave-active {
     opacity: 0;
     transform: scale(0.8) translate3d(0, 50px, 0);
-    transition: all var(--motion-duration-base) var(--ease-in);
+    transition: all 0s var(--ease-in);
   }
 
   &-mask-appear,
@@ -159,7 +165,7 @@ $prefix: "adui-channels-dialog";
   &-mask-appear.#{$prefix}-mask-appear-active,
   &-mask-enter.#{$prefix}-mask-enter-active {
     opacity: 1;
-    transition: all var(--motion-duration-base) var(--ease-out);
+    transition: all 0s var(--ease-out);
   }
 
   &-mask-leave {
@@ -168,6 +174,6 @@ $prefix: "adui-channels-dialog";
 
   &-mask-leave.#{$prefix}-mask-leave-active {
     opacity: 0;
-    transition: all var(--motion-duration-base) var(--ease-in);
+    transition: all 0s var(--ease-in);
   }
 }

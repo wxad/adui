@@ -1,5 +1,4 @@
 import React from "react";
-import { IconNames } from "../icon";
 import "./style";
 export interface IMessageProps {
     [key: string]: any;
@@ -30,10 +29,6 @@ export interface IMessageProps {
      * Message 插入到哪个元素，默认 () => document.body
      */
     getContainer?: () => HTMLElement;
-    /**
-     * 设置图标
-     */
-    icon?: IconNames;
     /**
      * 设置类型
      */

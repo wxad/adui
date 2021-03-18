@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, {
   forwardRef,
   useEffect,
@@ -8,8 +9,6 @@ import * as ReactDOM from "react-dom"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import Button from "../button"
-import Icon, { IconNames } from "../icon"
-import ICON_INTENTS from "../alert/iconIntents"
 import "./style"
 
 const prefix = "adui-channels-message"
@@ -41,10 +40,6 @@ export interface IMessageProps {
    * Message 插入到哪个元素，默认 () => document.body
    */
   getContainer?: () => HTMLElement
-  /**
-   * 设置图标
-   */
-  icon?: IconNames
   /**
    * 设置类型
    */
@@ -79,7 +74,6 @@ const Message: IMessage = forwardRef(
       content,
       duration,
       getContainer,
-      icon,
       intent,
       onClose,
       ...otherProps
@@ -87,6 +81,83 @@ const Message: IMessage = forwardRef(
     ref: any
   ) => {
     const messageRef = useRef<HTMLDivElement>(null)
+
+    let icon = (
+      <svg
+        className={`${prefix}-icon`}
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M1.66663 10C1.66663 14.6024 5.39759 18.3333 9.99996 18.3333C14.6023 18.3333 18.3333 14.6024 18.3333 10C18.3333 5.39763 14.6023 1.66667 9.99996 1.66667C5.39759 1.66667 1.66663 5.39763 1.66663 10ZM13.6856 7.11667L9.01949 11.7828L6.71457 9.47785L5.83329 10.3591L8.31438 12.842C8.70481 13.2327 9.33806 13.2329 9.72871 12.8424L14.571 8.00211L13.6856 7.11667Z"
+          fill="#07C160"
+          fillOpacity="0.9"
+        />
+      </svg>
+    )
+
+    switch (intent) {
+      case "normal":
+        icon = (
+          <svg
+            className={`${prefix}-icon`}
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M9.99996 18.3333C5.39759 18.3333 1.66663 14.6024 1.66663 10C1.66663 5.39762 5.39759 1.66666 9.99996 1.66666C14.6023 1.66666 18.3333 5.39762 18.3333 10C18.3333 14.6024 14.6023 18.3333 9.99996 18.3333ZM10.625 8.33333V14.1667H9.37496V8.33333H10.625ZM9.99996 7.5C10.4602 7.5 10.8333 7.1269 10.8333 6.66666C10.8333 6.20643 10.4602 5.83333 9.99996 5.83333C9.53972 5.83333 9.16663 6.20643 9.16663 6.66666C9.16663 7.1269 9.53972 7.5 9.99996 7.5Z"
+              fill="#10AEFF"
+            />
+          </svg>
+        )
+        break
+      case "warning":
+        icon = (
+          <svg
+            className={`${prefix}-icon`}
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M18.3005 16.0439C18.6855 16.7105 18.2044 17.5439 17.4346 17.5439L2.5653 17.5452C1.79551 17.5452 1.31431 16.712 1.69913 16.0453L9.13254 3.16683C9.51738 2.5001 10.4797 2.50002 10.8646 3.16667L18.3005 16.0439ZM9.37253 7.9541H10.6274L10.5298 12.6758H9.47019L9.37253 7.9541ZM9.28952 14.4043C9.28952 14.79 9.60202 15.0977 9.99753 15.0977C10.3979 15.0977 10.7104 14.79 10.7104 14.4043C10.7104 14.0185 10.3979 13.7158 9.99753 13.7158C9.60202 13.7158 9.28952 14.0185 9.28952 14.4043Z"
+              fill="#FA9D3B"
+            />
+          </svg>
+        )
+        break
+      case "danger":
+        icon = (
+          <svg
+            className={`${prefix}-icon`}
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M9.99996 18.3333C5.39759 18.3333 1.66663 14.6024 1.66663 10C1.66663 5.39763 5.39759 1.66667 9.99996 1.66667C14.6023 1.66667 18.3333 5.39763 18.3333 10C18.3333 14.6024 14.6023 18.3333 9.99996 18.3333ZM9.36389 5.11312H10.6342L10.5431 11.4437H9.45504L9.36389 5.11312ZM9.24996 13.5173C9.24996 13.9331 9.58036 14.2521 9.99622 14.2521C10.4235 14.2521 10.7482 13.9331 10.7482 13.5173C10.7482 13.1014 10.4235 12.7824 9.99622 12.7824C9.58036 12.7824 9.24996 13.1014 9.24996 13.5173Z"
+              fill="#FA5151"
+            />
+          </svg>
+        )
+        break
+      default:
+        break
+    }
 
     let timer: null | ReturnType<typeof setTimeout>
 
@@ -145,11 +216,7 @@ const Message: IMessage = forwardRef(
         data-duration={duration}
         {...otherProps}
       >
-        <Icon
-          icon={icon || ICON_INTENTS[intent]}
-          size={20}
-          className={`${prefix}-icon`}
-        />
+        {icon}
         <div className={`${prefix}-content`}>{content}</div>
         {hasActions && (
           <div className={`${prefix}-actions`}>
@@ -206,10 +273,6 @@ Message.propTypes = {
    */
   getContainer: PropTypes.func,
   /**
-   * 设置图标
-   */
-  icon: PropTypes.any,
-  /**
    * 设置类型
    */
   intent: PropTypes.any,
@@ -226,7 +289,6 @@ Message.defaultProps = {
   content: null,
   duration: 2,
   getContainer: undefined,
-  icon: undefined,
   intent: "normal",
   onClose: null,
 }
@@ -245,7 +307,6 @@ const newInstance = (props: IMessageProps) => {
       firstInstance.dataset.close = "true"
       firstChild.style.opacity = "0"
       firstChild.style.visibility = "hidden"
-      firstChild.style.webkitFilter = "blur(4px)"
       firstChild.style.filter = "blur(4px)"
     }
   }

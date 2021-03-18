@@ -22,11 +22,14 @@ $prefix: "adui-channels-message";
     transform: translateX(-50%);
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-left: 16px;
     padding-right: 12px;
-    min-width: 120px;
+    min-width: 230px;
     height: 40px;
-    border-radius: 4px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
     transition: all var(--motion-duration-base) var(--ease-in-out);
   }
   &-hasActions {
@@ -37,10 +40,9 @@ $prefix: "adui-channels-message";
     margin-right: 8px;
   }
   &-content {
-    flex: 1;
     font-size: 14px;
     line-height: 20px;
-    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
   }
   &-actions {
     flex: none;
@@ -66,18 +68,10 @@ $prefix: "adui-channels-message";
       }
     }
   }
-  &-normal {
-    color: var(--gray-900);
-    background-color: #fff;
-    box-shadow: 0 0 0 1px rgba(107, 107, 107, 0.15),
-      0 10px 36px 0 rgba(0, 0, 0, 0.1), 0 6px 15px 0 rgba(0, 0, 0, 0.07);
-  }
   &-primary,
   &-success,
   &-warning,
   &-danger {
-    color: #fff;
-
     .#{$prefix}-icon {
       fill: #fff;
     }
@@ -111,27 +105,5 @@ $prefix: "adui-channels-message";
         background-color: #fff;
       }
     }
-  }
-  &-primary {
-    background-color: var(--primary-color);
-    box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.1),
-      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
-      0 0 0 1px var(--primary-color);
-  }
-  &-success {
-    background-color: var(--ad-green);
-    box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.1),
-      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
-      0 0 0 1px var(--ad-green);
-  }
-  &-warning {
-    background-color: var(--ad-orange);
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 10px 36px 0 rgba(0, 0, 0, 0.1),
-      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 0 0 1px var(--ad-orange);
-  }
-  &-danger {
-    background-color: var(--ad-red);
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 10px 36px 0 rgba(0, 0, 0, 0.1),
-      0 6px 15px 0 rgba(0, 0, 0, 0.07), 0 0 0 1px var(--ad-red);
   }
 }

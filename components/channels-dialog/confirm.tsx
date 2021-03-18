@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable max-len */
 /**
  * confirm 是将 Dialog 函数式编程的结果。
  * 1. confirm 是为了让使用者方便地函数式调用组件；因此 confirm 方法的 visible 状态是不交给外部处理的；
@@ -8,18 +9,9 @@ import * as React from "react"
 import * as ReactDOM from "react-dom"
 import classNames from "classnames"
 import Dialog, { IDialogProps } from "./Dialog"
-import Icon from "../icon"
 import "./style"
 
 const prefix = "adui-channels-dialog"
-
-const ICON_INTENTS = {
-  danger: "alert-circle" as "alert-circle",
-  info: "info-circle" as "info-circle",
-  success: "tick-circle" as "tick-circle",
-  warning: "warning" as "warning",
-}
-
 export interface IConfirmProps extends IDialogProps {
   content?: React.ReactNode
   contentTitle?: React.ReactNode
@@ -72,11 +64,21 @@ const Confirm = (props: IConfirmProps) => {
             }
           )}
         >
-          <Icon
+          <svg
+            width="48"
+            height="48"
+            viewBox="0 0 48 48"
+            fill="none"
             className={`${prefix}-intentIcon`}
-            size={48}
-            icon={ICON_INTENTS[intent]}
-          />
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M4 24C4 35.0457 12.9543 44 24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24ZM41.6 24C41.6 33.7202 33.7202 41.6 24 41.6C14.2798 41.6 6.4 33.7202 6.4 24C6.4 14.2798 14.2798 6.4 24 6.4C33.7202 6.4 41.6 14.2798 41.6 24ZM25.2 20V34H22.8V20H25.2ZM24 18C25.1046 18 26 17.1046 26 16C26 14.8954 25.1046 14 24 14C22.8954 14 22 14.8954 22 16C22 17.1046 22.8954 18 24 18Z"
+              fill="black"
+              fill-Opacity="0.9"
+            />
+          </svg>
           <div className={`${prefix}-intentContent`}>
             {!!contentTitle && (
               <div className={`${prefix}-intentTitle`}>{contentTitle}</div>

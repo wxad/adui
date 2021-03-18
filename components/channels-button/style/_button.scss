@@ -46,7 +46,7 @@ $prefix: "adui-channels-button";
 
       &.#{$prefix}-danger {
         .#{$prefix}-spinner {
-          background-color: var(--ad-red);
+          background-color: #fa5151;
         }
       }
     }
@@ -256,7 +256,7 @@ $prefix: "adui-channels-button";
   &.#{$prefix}-danger {
     .#{$prefix}-spinner {
       &::after {
-        background-color: var(--ad-red);
+        background-color: #fa5151;
       }
     }
   }
@@ -317,7 +317,7 @@ $prefix: "adui-channels-button";
       &.#{$prefix}-danger {
         &:hover,
         &.#{$prefix}-active {
-          color: var(--ad-red);
+          color: #fa5151;
         }
       }
 
