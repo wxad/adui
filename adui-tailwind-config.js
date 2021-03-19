@@ -4,7 +4,7 @@
 module.exports = {
   // 对以下文件进行 className 的 tree-shaking，支持字面量与三元
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  important: 'body',
+  important: "body",
   // https://tailwindcss.com/docs/presets#creating-a-preset
   presets: [],
   darkMode: false, // or 'media' or 'class'
@@ -16,11 +16,10 @@ module.exports = {
       current: "currentColor",
       black: "#000",
       white: "#fff",
-      primary: "rgb(7, 193, 96)",
-      green: "rgb(7, 193, 96)",
-      orange: "rgb(237, 162, 12)",
-      blue: "rgb(43, 123, 214)",
-      red: "rgb(217, 81, 76)",
+      green: "#07c160",
+      orange: "#eda20c",
+      blue: "#2b7bd6",
+      red: "#d9514c",
       gray: {
         0: "#ffffff",
         50: "#fafafa",
@@ -33,7 +32,6 @@ module.exports = {
         700: "#a3a3a3",
         800: "#6b6b6b",
         900: "#1f1f1f",
-        1000: "#000000",
       },
       "tp-gray": {
         0: "rgba(0, 0, 0, 0)",
@@ -47,7 +45,6 @@ module.exports = {
         700: "rgba(0, 0, 0, 0.36)",
         800: "rgba(0, 0, 0, 0.58)",
         900: "rgba(0, 0, 0, 0.88)",
-        1000: "rgb(0, 0, 0)",
       },
     },
     spacing: {
@@ -61,13 +58,19 @@ module.exports = {
       20: "20px",
       24: "24px",
       28: "28px",
+      30: "30px",
       32: "32px",
       36: "36px",
       40: "40px",
       42: "42px",
       48: "48px",
       52: "52px",
+      56: "56px",
+      60: "60px",
       64: "64px",
+      84: "84px",
+      100: "100px",
+      120: "120px",
     },
     // 待设计规范引入
     animation: {
@@ -105,6 +108,7 @@ module.exports = {
     borderWidth: {
       DEFAULT: "1px",
       0: "0px",
+      1: "1px",
       2: "2px",
       4: "4px",
       8: "8px",
@@ -148,6 +152,7 @@ module.exports = {
     // 不提供 fontSize + lineHeight 的组合
     fontSize: {
       12: "12px",
+      13: "13px",
       14: "14px",
       17: "17px",
       18: "18px",
@@ -526,8 +531,6 @@ module.exports = {
     width: (theme) => ({
       auto: "auto",
       ...theme("spacing"),
-      84: "84px",
-      120: "120px",
       "1/2": "50%",
       "1/3": "33.333333%",
       "2/3": "66.666667%",
