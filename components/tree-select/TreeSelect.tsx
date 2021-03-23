@@ -14,6 +14,7 @@ import omit from "../_util/omit"
 import { ConfigContext } from "../config-provider"
 import Icon from "../icon"
 import Popover from "../popover"
+import Portal from "../portal"
 import Spinner from "../spinner"
 import getPlacements from "../tooltip/placements"
 import { Placement } from "../pop-trigger"
@@ -53,10 +54,13 @@ export interface ITreeSelectProps {
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
   resultVisible?: boolean
   showCheckedStrategy?: "show-all" | "show-child" | "show-parent"
+  topContent?: React.ReactNode
   value?: TreeNodeValue
 }
 
 export interface ITreeSelectState {
+  hash: string
+  topContentPortalTarget?: HTMLDivElement
   value?: TreeNodeValue
 }
 
@@ -209,6 +213,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       "show-child",
     ]),
     /**
+     * 下拉框顶部显示的自定义元素
+     */
+    topContent: PropTypes.node,
+    /**
      * 外部控制：选中的 key
      */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
@@ -231,6 +239,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     resultVisible: true,
     rightIcon: "menu",
     showCheckedStrategy: "show-parent",
+    topContent: undefined,
     value: null,
   }
 
@@ -247,6 +256,8 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
   public select: typeof RcTreeSelect
 
+  public portal: React.ReactNode
+
   public wrapper: HTMLDivElement
 
   constructor(props: ITreeSelectProps) {
@@ -255,6 +266,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     const valueState = value !== null ? value : defaultValue
 
     this.state = {
+      hash: Math.random().toString(36).substring(3, 8),
       value: valueState,
     }
   }
@@ -267,6 +279,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
   public saveSelect = (node: React.ReactNode) => {
     this.select = node
+  }
+
+  public savePortal = (node: React.ReactNode) => {
+    this.portal = node
   }
 
   public saveWrapper = (node: HTMLDivElement) => {
@@ -283,6 +299,30 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     return (
       <Icon icon="arrow-right" className="adui-tree-select-switcher-icon" />
     )
+  }
+
+  public handleVisibleChange = (visible: boolean) => {
+    setTimeout(() => {
+      this.forceUpdate(() => {
+        const { topContent } = this.props
+        const { hash, topContentPortalTarget } = this.state
+        /**
+         * 下拉框显示 && 传入了顶部自定义元素 && 首次添加
+         */
+        if (visible && topContent && !topContentPortalTarget) {
+          const dropdown = document.querySelector(
+            `.${prefix}-dropdown_${hash} > div`
+          ) as HTMLDivElement
+          if (dropdown) {
+            const el = document.createElement("div")
+            dropdown.insertBefore(el, dropdown.children[0])
+            this.setState({
+              topContentPortalTarget: el,
+            })
+          }
+        }
+      })
+    }, 0)
   }
 
   public handleChange = (
@@ -450,7 +490,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      * 因此这里手动触发 resize
      */
     if (!resultVisible) {
-      window.dispatchEvent(new Event("resize"))
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"))
+      }, 0)
     }
   }
 
@@ -469,6 +511,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       resultRender,
       resultVisible,
       showCheckedStrategy,
+      topContent,
       treeData,
       ...otherProps
     } = this.props
@@ -480,7 +523,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       "value",
     ])
 
-    const { value } = this.state
+    const { hash, topContentPortalTarget, value } = this.state
 
     const classSet = classNames(className, `${prefix}-wrapper`, {
       [`${prefix}_resultHidden`]: !resultVisible,
@@ -544,6 +587,11 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
             })}
             ref={this.saveWrapper}
           >
+            {topContent && topContentPortalTarget && (
+              <Portal ref={this.savePortal} container={topContentPortalTarget}>
+                {topContent}
+              </Portal>
+            )}
             <RcTreeSelect
               autoClearSearchValue={
                 resultVisible ? autoClearSearchValue : false
@@ -551,7 +599,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               className={classSet}
               dropdownClassName={`${prefix}-dropdown-${
                 multiple ? "multiple" : "single"
-              }`}
+              } ${prefix}-dropdown_${hash}`}
               dropdownPopupAlign={
                 placement && getPlacements({ alignEdge: true })[placement]
               }
@@ -578,9 +626,13 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               listHeight={280}
               treeData={treeData || convertChildrenToData(children)}
               onDropdownVisibleChange={(visible: boolean) => {
-                setTimeout(() => {
-                  this.forceUpdate()
-                }, 0)
+                /**
+                 * 20210323 visible false 时输入框会被情况，但没有调用 onSearch
+                 */
+                if (!visible) {
+                  this.handleSearch("")
+                }
+                this.handleVisibleChange(visible)
                 if (onDropdownVisibleChange) {
                   onDropdownVisibleChange(visible)
                 }

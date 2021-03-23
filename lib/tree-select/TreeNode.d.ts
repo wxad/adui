@@ -10,6 +10,7 @@ import { IPopoverProps } from "../popover";
  */
 export interface ITreeNodeProps {
     [key: string]: any;
+    checkable?: boolean;
     children?: React.ReactNode;
     disabled?: boolean;
     popover?: React.ReactNode;
@@ -20,6 +21,10 @@ export interface ITreeNodeProps {
 export default class TreeNode extends React.Component<ITreeNodeProps> {
     static isTreeNode: number;
     static propTypes: {
+        /**
+         * 节点是否可勾选，通常用于父节点不可勾选，而子节点可以的情况
+         */
+        checkable: PropTypes.Requireable<boolean>;
         /**
          * 子节点
          */

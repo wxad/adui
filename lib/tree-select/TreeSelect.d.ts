@@ -26,9 +26,12 @@ export interface ITreeSelectProps {
     resultRender?: null | ((values: ITreeNode[]) => JSX.Element);
     resultVisible?: boolean;
     showCheckedStrategy?: "show-all" | "show-child" | "show-parent";
+    topContent?: React.ReactNode;
     value?: TreeNodeValue;
 }
 export interface ITreeSelectState {
+    hash: string;
+    topContentPortalTarget?: HTMLDivElement;
     value?: TreeNodeValue;
 }
 export interface ITreeNodeProps {
@@ -121,6 +124,10 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
          */
         showCheckedStrategy: PropTypes.Requireable<string>;
         /**
+         * 下拉框顶部显示的自定义元素
+         */
+        topContent: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+        /**
          * 外部控制：选中的 key
          */
         value: PropTypes.Requireable<string | any[]>;
@@ -131,12 +138,15 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     } | null;
     static TreeNode: typeof TreeNode;
     select: typeof RcTreeSelect;
+    portal: React.ReactNode;
     wrapper: HTMLDivElement;
     constructor(props: ITreeSelectProps);
     shouldComponentUpdate: (nextProps: ITreeSelectProps, nextState: ITreeSelectState) => boolean;
     saveSelect: (node: React.ReactNode) => void;
+    savePortal: (node: React.ReactNode) => void;
     saveWrapper: (node: HTMLDivElement) => void;
     renderSwitcherIcon: ({ isLeaf, loading }: ITreeNodeProps) => JSX.Element | null;
+    handleVisibleChange: (visible: boolean) => void;
     handleChange: (value: TreeNodeValue, titleList: React.ReactNode[]) => void;
     handleSearch: (val: string) => void;
     filterTreeNode: (input: string, treeNode: any) => boolean;
