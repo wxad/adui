@@ -120,7 +120,7 @@ const convertChildrenToData = (nodes: any) => {
 
       return data
     })
-    .filter((data) => data)
+    .filter(data => data)
 }
 
 /**
@@ -266,7 +266,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     const valueState = value !== null ? value : defaultValue
 
     this.state = {
-      hash: Math.random().toString(36).substring(3, 8),
+      hash: Math.random()
+        .toString(36)
+        .substring(3, 8),
       value: valueState,
     }
   }
@@ -311,10 +313,14 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
          */
         if (visible && topContent && !topContentPortalTarget) {
           const dropdown = document.querySelector(
-            `.${prefix}-dropdown_${hash} > div`
+            `.${prefix}-dropdown_${hash}`
           ) as HTMLDivElement
           if (dropdown) {
             const el = document.createElement("div")
+            el.onmousedown = e => {
+              e.preventDefault()
+              e.stopImmediatePropagation()
+            }
             dropdown.insertBefore(el, dropdown.children[0])
             this.setState({
               topContentPortalTarget: el,
@@ -404,13 +410,13 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                     <Icon
                       icon="cancel"
                       onClick={() => {
-                        const vals = nodes.map((o) => o.value)
+                        const vals = nodes.map(o => o.value)
                         vals.splice(i, 1)
                         if (value === null) {
                           this.setState({ value: vals })
                         }
 
-                        const labels = nodes.map((o) => o.label)
+                        const labels = nodes.map(o => o.label)
                         labels.splice(i, 1)
 
                         if (onChange) {
@@ -429,7 +435,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         <div
           className="adui-tree-select-maxPlaceholder"
           role="none"
-          onClick={(e) => e.stopPropagation()}
+          onClick={e => e.stopPropagation()}
         >
           {placeholderText}
           <Icon
