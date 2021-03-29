@@ -55,7 +55,7 @@ export interface INavProps {
 /**
  * 导航栏引导用户确认位置、方向，完成内容之间移动。依据内容选择适当配合的导航形式，为页面和功能提供引导性结构菜单。
  */
-const Nav: React.FunctionComponent<INavProps> & {
+const Nav: React.FC<INavProps> & {
   Divider: typeof Divider
   Group: typeof Group
   Item: typeof Item

@@ -20,7 +20,7 @@ export interface INavbarProps {
 /**
  * 日期选择 Navbar
  */
-const Navbar: React.FunctionComponent<INavbarProps> = ({
+const Navbar: React.FC<INavbarProps> = ({
   maxDate,
   minDate,
   month,

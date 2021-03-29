@@ -69,7 +69,7 @@ export interface IPaginationProps {
 /**
  * 分页器用于将大量内容以分页形式间隔，切换选择查看。
  */
-const Pagination: React.FunctionComponent<IPaginationProps> = ({
+const Pagination: React.FC<IPaginationProps> = ({
   align,
   className,
   current: currentProp,

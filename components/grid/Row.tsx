@@ -29,7 +29,7 @@ export interface IRowProps {
 /**
  * 栅格行
  */
-const Row: React.FunctionComponent<IRowProps> = ({
+const Row: React.FC<IRowProps> = ({
   children,
   className,
   gutter,

@@ -55,7 +55,7 @@ export default class CodeBox extends React.Component {
           {replacedCodes}
         </SyntaxHighlighter>
         <textarea
-          ref={textarea => {
+          ref={(textarea) => {
             this.textArea = textarea
           }}
           value={replacedCodes}

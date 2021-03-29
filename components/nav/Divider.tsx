@@ -16,7 +16,7 @@ export interface IDividerProps {
 /**
  * 导航栏 - 分割线
  */
-const Divider: React.FunctionComponent<IDividerProps> = ({
+const Divider: React.FC<IDividerProps> = ({
   className,
   ...otherProps
 }: IDividerProps) => {

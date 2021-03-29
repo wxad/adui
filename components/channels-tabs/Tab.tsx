@@ -37,7 +37,7 @@ export interface ITabProps {
 /**
  * 导航页签 - Tab
  */
-const Tab: React.FunctionComponent<ITabProps> = ({
+const Tab: React.FC<ITabProps> = ({
   className,
   disabled: disabledProp,
   onClick,

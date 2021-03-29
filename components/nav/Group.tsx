@@ -24,7 +24,7 @@ export interface IGroupProps {
 /**
  * 导航栏 - 分组
  */
-const Group: React.FunctionComponent<IGroupProps> = ({
+const Group: React.FC<IGroupProps> = ({
   children,
   className,
   title,

@@ -11,10 +11,7 @@ export interface IPopupProps {
   trigger?: ITrigger
 }
 
-const Popup: React.FunctionComponent<IPopupProps> = ({
-  content,
-  trigger,
-}: IPopupProps) => {
+const Popup: React.FC<IPopupProps> = ({ content, trigger }: IPopupProps) => {
   useEffect(() => {
     /**
      * 在 Slider 中用 Tooltip 时发现 PopTrigger 不会在每一次移动时触发 onPopupAlign

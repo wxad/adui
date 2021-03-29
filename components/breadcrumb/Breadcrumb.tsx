@@ -26,7 +26,7 @@ export interface IBreadcrumbProps {
 /**
  * 面包屑用于展示当前和历史的行为路径、所在位置，并能够依据线性逻辑进行返回。
  */
-const Breadcrumb: React.FunctionComponent<IBreadcrumbProps> & {
+const Breadcrumb: React.FC<IBreadcrumbProps> & {
   Item: typeof Item
 } = ({ children, className, size, ...otherProps }: IBreadcrumbProps) => {
   const { size: sizeContext } = useContext(ConfigContext)

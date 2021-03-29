@@ -41,7 +41,7 @@ export interface IAsideProps {
 /**
  * 布局 - 侧边栏 `<aside />`
  */
-const Aside: React.FunctionComponent<IAsideProps> & {
+const Aside: React.FC<IAsideProps> & {
   stickable: boolean
 } = ({
   affixed,

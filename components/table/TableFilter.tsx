@@ -30,7 +30,7 @@ export interface ITableFilterProps {
 /**
  * 表格筛选
  */
-const TableFilter: React.FunctionComponent<ITableFilterProps> = ({
+const TableFilter: React.FC<ITableFilterProps> = ({
   filteredValue: filteredValueProp,
   filterMultiple,
   filterPopoverProps,

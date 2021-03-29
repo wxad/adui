@@ -42,7 +42,7 @@ export const getComputedSize = (
   return size2 || size1 || size0 || "small"
 }
 
-const ConfigProvider: React.FunctionComponent<IConfigProviderProps> = ({
+const ConfigProvider: React.FC<IConfigProviderProps> = ({
   children,
   getPopupContainer,
   size,

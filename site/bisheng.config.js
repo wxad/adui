@@ -1,25 +1,29 @@
 /* eslint-disable */
-const webpack = require('webpack')
-const path = require('path')
-const WebpackBar = require('webpackbar')
-const StyleLintPlugin = require('stylelint-webpack-plugin')
-const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const webpack = require("webpack")
+const path = require("path")
+const WebpackBar = require("webpackbar")
+const StyleLintPlugin = require("stylelint-webpack-plugin")
+const CSSSplitWebpackPlugin = require("css-split-webpack-plugin").default
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin
 
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === "development"
 
 function usePrettyWebpackBar(config) {
   // remove old progress plugin.
-  config.plugins = config.plugins
-    .filter(plugin => !(plugin instanceof webpack.ProgressPlugin) && !(plugin instanceof WebpackBar))
+  config.plugins = config.plugins.filter(
+    (plugin) =>
+      !(plugin instanceof webpack.ProgressPlugin) &&
+      !(plugin instanceof WebpackBar)
+  )
 
   // use brand new progress bar.
   config.plugins.push(
     new WebpackBar({
-      name: '📦 Site',
+      name: "📦 Site",
       minimal: false,
     }),
-    new StyleLintPlugin({}),
+    new StyleLintPlugin({})
   )
 }
 
@@ -28,15 +32,15 @@ module.exports = {
   port: 8000,
   hash: true,
   source: {
-    components: './components',
-    docs: './doc',
-    changelog: 'CHANGELOG.md',
+    components: "./components",
+    docs: "./doc",
+    changelog: "CHANGELOG.md",
   },
-  theme: './site/theme',
-  htmlTemplate: './site/theme/static/template.html',
+  theme: "./site/theme",
+  htmlTemplate: "./site/theme/static/template.html",
   themeConfig: {
     categoryOrder: {
-      'AD UI': 0,
+      "AD UI": 0,
       原则: 1,
       Principles: 1,
       视觉: 2,
@@ -52,74 +56,85 @@ module.exports = {
   webpackConfig(config) {
     // eslint-disable-next-line
     config.resolve.alias = {
-      componentPath: path.join(process.cwd(), 'components'),
-      componentDistPath: path.join(process.cwd(), 'dist/index.js'),
-      site: path.join(process.cwd(), 'site'),
+      componentPath: path.join(process.cwd(), "components"),
+      componentDistPath: path.join(process.cwd(), "dist/index.js"),
+      site: path.join(process.cwd(), "site"),
     }
-
 
     usePrettyWebpackBar(config)
     const CSS_MODULE_LOADER = {
-      loader: 'css-loader',
+      loader: "css-loader",
       options: {
         modules: {
-          localIdentName: 'adui-[name]-[local]',
+          localIdentName: "adui-[name]-[local]",
         },
-      }
+      },
     }
-    const COMPONENTS_PATH = [
-      path.resolve(__dirname, "../components/")
-    ]
-    const index = config.module.rules.findIndex(o => o.test.toString().includes("scss"))
+    const COMPONENTS_PATH = [path.resolve(__dirname, "../components/")]
+    const index = config.module.rules.findIndex((o) =>
+      o.test.toString().includes("scss")
+    )
     config.module.rules.splice(index, 1)
 
-    const cssIndex = config.module.rules.findIndex(o => o.test.toString().includes(".css"))
+    const cssIndex = config.module.rules.findIndex((o) =>
+      o.test.toString().includes(".css")
+    )
     config.module.rules.splice(cssIndex, 1)
 
-    const tsxIndex = config.module.rules.findIndex(o => o.test.toString().includes(".tsx"))
+    const tsxIndex = config.module.rules.findIndex((o) =>
+      o.test.toString().includes(".tsx")
+    )
     config.module.rules.splice(tsxIndex, 1)
 
     config.module.rules.push(
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.scss$/,
         exclude: COMPONENTS_PATH,
-        loaders: [{
-          loader: 'style-loader',
-          options: {
-            attributes: {
-              id: "adui",
-              key: "adui",
+        loaders: [
+          {
+            loader: "style-loader",
+            options: {
+              attributes: {
+                id: "adui",
+                key: "adui",
+              },
             },
           },
-        }, CSS_MODULE_LOADER, 'postcss-loader', {
-          loader: 'sass-loader',
-          options: {
-            implementation: require('sass'),
+          CSS_MODULE_LOADER,
+          "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+            },
           },
-        }]
+        ],
       },
       {
         test: /\.scss$/,
         include: COMPONENTS_PATH,
-        loaders: [{
-          loader: 'style-loader',
-          options: {
-            attributes: {
-              id: "adui",
-              key: "adui",
+        loaders: [
+          {
+            loader: "style-loader",
+            options: {
+              attributes: {
+                id: "adui",
+                key: "adui",
+              },
             },
           },
-        }, 'postcss-loader',
-        {
-          loader: 'sass-loader',
-          options: {
-            implementation: require('sass'),
+          "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+            },
           },
-        }]
+        ],
       },
       {
         test: /\.js$/,
@@ -136,10 +151,10 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        enforce: 'pre',
+        enforce: "pre",
         use: "eslint-loader",
       },
-      { 
+      {
         test: /\.tsx?$/,
         use: [
           {
@@ -147,42 +162,40 @@ module.exports = {
             options: {
               transpileOnly: false,
               compilerOptions: {
-                target: 'es6',
-                jsx: 'react',
-                moduleResolution: 'node',
+                target: "es6",
+                jsx: "react",
+                moduleResolution: "node",
                 declaration: false,
                 noEmitOnError: true,
-              }
+              },
             },
           },
         ],
       },
-      {    
+      {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        loader: "file-loader"
+        loader: "file-loader",
       }
     )
 
-
-
     // eslint-disable-next-line
     config.externals = {
-      'react-router-dom': 'ReactRouterDOM',
+      "react-router-dom": "ReactRouterDOM",
     }
 
     config.node = {
-      fs: "empty"
+      fs: "empty",
     }
 
     if (isDev) {
       // eslint-disable-next-line
-      config.devtool = 'source-map'
+      config.devtool = "source-map"
     }
 
     config.module.rules.push({
       test: /\.mjs$/,
       include: /node_modules/,
-      type: 'javascript/auto',
+      type: "javascript/auto",
     })
 
     config.plugins.push(new CSSSplitWebpackPlugin({ size: 4000 }))
@@ -191,7 +204,7 @@ module.exports = {
   },
 
   devServerConfig: {
-    public: process.env.DEV_HOST || 'localhost',
+    public: process.env.DEV_HOST || "localhost",
     disableHostCheck: !!process.env.DEV_HOST,
   },
 

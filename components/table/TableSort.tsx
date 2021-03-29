@@ -15,7 +15,7 @@ export interface ITableSortProps {
 /**
  * 表格排序
  */
-const TableSort: React.FunctionComponent<ITableSortProps> = ({
+const TableSort: React.FC<ITableSortProps> = ({
   onSort,
   sortOrder: sortOrderProp,
   title,

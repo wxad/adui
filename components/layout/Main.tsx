@@ -20,7 +20,7 @@ export interface IMainProps {
 /**
  * 布局 - 主体内容 `<main />`
  */
-const Main: React.FunctionComponent<IMainProps> = ({
+const Main: React.FC<IMainProps> = ({
   children,
   className,
   ...otherProps

@@ -34,7 +34,7 @@ export interface IItemProps {
 /**
  * 导航栏 - item
  */
-const Item: React.FunctionComponent<IItemProps> = ({
+const Item: React.FC<IItemProps> = ({
   children,
   className,
   disabled,

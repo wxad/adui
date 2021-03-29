@@ -19,7 +19,7 @@ export interface ICollapseProps {
 /**
  * 颜色选择器
  */
-const ColorPickerCollapse: React.FunctionComponent<ICollapseProps> = ({
+const ColorPickerCollapse: React.FC<ICollapseProps> = ({
   className,
   collapsed: collapsedProp,
   content,

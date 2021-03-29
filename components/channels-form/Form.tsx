@@ -39,7 +39,7 @@ export interface IFormProps {
 /**
  * 表单，包含表单项标题、输入内容、行动按钮等数据采集的集合形态。通常服务于大量需要收集用户信息场景。
  */
-const Form: React.FunctionComponent<IFormProps> & {
+const Form: React.FC<IFormProps> & {
   Item: typeof Item
   Tip: typeof Tip
 } = ({

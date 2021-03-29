@@ -46,7 +46,7 @@ export interface IMotionProps {
   transition?: "slide" | "zoom" | "zoomHorizontal"
 }
 
-const Motion: React.FunctionComponent<IMotionProps> = ({
+const Motion: React.FC<IMotionProps> = ({
   afterLeave,
   animation,
   appear,

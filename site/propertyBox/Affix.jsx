@@ -23,8 +23,8 @@ export default class PropertyBox extends React.Component {
         <div className={styles.property}>
           <div className={styles.left}>
             <Affix
-              offsetTop={type === "offsetTop" ? value : null}
-              offsetBottom={type === "offsetBottom" ? value : null}
+              offsetTop={type === "offsetTop" ? value : undefined}
+              offsetBottom={type === "offsetBottom" ? value : undefined}
             >
               <Button style={{ width: "200px" }}>Affix</Button>
             </Affix>
@@ -36,7 +36,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   value={type}
-                  onChange={val => this.setState({ type: val })}
+                  onChange={(val) => this.setState({ type: val })}
                 >
                   <Select.Option value="offsetTop">向上固定</Select.Option>
                   <Select.Option value="offsetBottom">向下固定</Select.Option>
@@ -50,7 +50,7 @@ export default class PropertyBox extends React.Component {
                   step={1}
                   max={500}
                   min={0}
-                  onChange={val => this.setState({ value: val })}
+                  onChange={(val) => this.setState({ value: val })}
                 />
               </dd>
             </dl>

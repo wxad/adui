@@ -34,7 +34,7 @@ export interface IItemProps {
 /**
  * 行动菜单 - 菜单项
  */
-const Item: React.FunctionComponent<IItemProps> = ({
+const Item: React.FC<IItemProps> = ({
   className,
   disabled,
   index,

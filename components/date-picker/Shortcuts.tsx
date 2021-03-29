@@ -22,7 +22,7 @@ export interface IShortcutsProps {
 /**
  * 日期选择 Shortcuts
  */
-const Shortcuts: React.FunctionComponent<IShortcutsProps> = ({
+const Shortcuts: React.FC<IShortcutsProps> = ({
   onShortcutClick,
   selectedDay,
   selectedDays,

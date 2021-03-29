@@ -26,7 +26,7 @@ export interface IItemProps {
  * 面包屑 - item
  */
 
-const Item: React.FunctionComponent<IItemProps> = ({
+const Item: React.FC<IItemProps> = ({
   className,
   href,
   children,

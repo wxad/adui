@@ -34,7 +34,7 @@ export interface ISubMenuProps {
 /**
  * 行动菜单 - 子菜单
  */
-const SubMenu: React.FunctionComponent<ISubMenuProps> = ({
+const SubMenu: React.FC<ISubMenuProps> = ({
   className,
   children,
   disabled,

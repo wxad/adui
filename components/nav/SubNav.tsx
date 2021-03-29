@@ -35,7 +35,7 @@ export interface ISubNavProps {
 /**
  * 导航栏 - 子导航
  */
-const SubNav: React.FunctionComponent<ISubNavProps> = ({
+const SubNav: React.FC<ISubNavProps> = ({
   children,
   className,
   icon,

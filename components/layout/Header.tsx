@@ -27,7 +27,7 @@ export interface IHeaderProps {
 /**
  * 布局 - 头部 `<header />`
  */
-const Header: React.FunctionComponent<IHeaderProps> & {
+const Header: React.FC<IHeaderProps> & {
   stickable: boolean
 } = ({ affixed, children, className, ...otherProps }: IHeaderProps) => {
   const { setHeaderAffixed } = useContext(LayoutContext)

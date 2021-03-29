@@ -16,7 +16,7 @@ export interface ILayoutProps {
 /**
  * 布局组件用于搭建一个网站的基本框架。包含子组件 `Aside` `Header` `Main`
  */
-const Layout: React.FunctionComponent<ILayoutProps> & {
+const Layout: React.FC<ILayoutProps> & {
   Aside: typeof Aside
   Header: typeof Header
   Main: typeof Main

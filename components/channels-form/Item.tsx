@@ -55,7 +55,7 @@ export interface IItemProps {
 /**
  * 表单 item
  */
-const Item: React.FunctionComponent<IItemProps> = ({
+const Item: React.FC<IItemProps> = ({
   children,
   className,
   label,

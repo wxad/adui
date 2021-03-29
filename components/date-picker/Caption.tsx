@@ -17,7 +17,7 @@ export interface ICaptionProps {
 /**
  * 日期选择 Caption
  */
-const Caption: React.FunctionComponent<ICaptionProps> = ({
+const Caption: React.FC<ICaptionProps> = ({
   date,
   maxDate,
   minDate,

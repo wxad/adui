@@ -41,7 +41,7 @@ export interface IButtonGroupProps {
 /**
  * 按钮组
  */
-const Group: React.FunctionComponent<IButtonGroupProps> = ({
+const Group: React.FC<IButtonGroupProps> = ({
   banner,
   children,
   className,

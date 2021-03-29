@@ -29,7 +29,7 @@ export interface IColProps {
 /**
  * 栅格列
  */
-const Col: React.FunctionComponent<IColProps> = ({
+const Col: React.FC<IColProps> = ({
   children,
   className,
   span,
