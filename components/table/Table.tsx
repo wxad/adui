@@ -64,7 +64,7 @@ const isFixedLeft = (col: IBaseObject): boolean =>
   col.fixed === "left" || col.fixed === true
 const isFixedRight = (col: IBaseObject): boolean => col.fixed === "right"
 
-export interface ITableProps {
+export interface ITableProps<T extends IBaseObject> {
   [key: string]: any
   /**
    * 统一地控制列水平靠齐方向
@@ -77,7 +77,7 @@ export interface ITableProps {
   /**
    * 以数组的方式传入 Columns，如果传入了此 Prop，则 Table 会忽略 children
    */
-  columns?: IColumnProps[] | null
+  columns?: IColumnProps<T>[] | null
   /**
    * 附加类名
    */
@@ -89,7 +89,7 @@ export interface ITableProps {
   /**
    * 数据源
    */
-  dataSource?: IBaseObject[]
+  dataSource?: T[]
   /**
    * 【展开行】默认展开的行的 key，请在传入前进行合法校验，因为 Table 对此 Prop 没有过多校验
    * 请确保 dataSource 的对象含有属性 key，及其唯一的值。
@@ -124,34 +124,34 @@ export interface ITableProps {
   /**
    * 【展开行】展开行的内容
    */
-  expandedRowRender?: (row?: IBaseObject, rowIndex?: number) => React.ReactNode
+  expandedRowRender?: (row: T, rowIndex: number) => React.ReactNode
   /**
    * 设置每个单元格的类名：(row, col, rowIndex, colIndex) => (string)
    */
   getCellClassName?: (
-    row?: IBaseObject,
-    col?: IBaseObject,
-    rowIndex?: number,
-    colIndex?: number
+    row: T,
+    col: IBaseObject,
+    rowIndex: number,
+    colIndex: number
   ) => string
   /**
    * 设置每个单元格上的由组件规定的 prop，
    * 如 rowSpan colSpan，(row, col, rowIndex, colIndex) => ({})
    */
   getCellProps?: (
-    row?: IBaseObject,
-    col?: IBaseObject,
-    rowIndex?: number,
-    colIndex?: number
+    row: T,
+    col: IBaseObject,
+    rowIndex: number,
+    colIndex: number
   ) => IBaseObject | void
   /**
    * 设置每个单元格上的 style，(row, col, rowIndex, colIndex) => ({})
    */
   getCellStyle?: (
-    row?: IBaseObject,
-    col?: IBaseObject,
-    rowIndex?: number,
-    colIndex?: number
+    row: T,
+    col: IBaseObject,
+    rowIndex: number,
+    colIndex: number
   ) => React.CSSProperties | void
   /**
    * 设置 thead 的类名：() => (string)
@@ -164,30 +164,27 @@ export interface ITableProps {
   /**
    * 设置每个 TH 的类名：(col, colIndex) => (string)
    */
-  getHeadCellClassName?: (col?: IBaseObject, colIndex?: number) => string
+  getHeadCellClassName?: (col: IBaseObject, colIndex: number) => string
   /**
    * 设置每个 TH 上的 style，(col, colIndex) => ({})
    */
   getHeadCellStyle?: (
-    col?: IBaseObject,
-    colIndex?: number
+    col: IBaseObject,
+    colIndex: number
   ) => React.CSSProperties | void
   /**
    * 设置每行的类名：(row, rowIndex) => (string)
    */
-  getRowClassName?: (row?: IBaseObject, rowIndex?: number) => string
+  getRowClassName?: (row: T, rowIndex: number) => string
   /**
    * 设置每行的 style，(row, rowIndex) => ({})
    */
-  getRowStyle?: (
-    row?: IBaseObject,
-    rowIndex?: number
-  ) => React.CSSProperties | void
+  getRowStyle?: (row: T, rowIndex: number) => React.CSSProperties | void
   /**
    * 【选择行】设置每个 Checkbox/Radio 上的 prop (row, rowIndex) => ({})；
    * 可以在这里回传 disabled: true, 控制该行不能选择；请确保 dataSource 的对象含有属性 key，及其唯一的值。
    */
-  getSelectProps?: (row?: IBaseObject, rowIndex?: number) => IBaseObject
+  getSelectProps?: (row: T, rowIndex: number) => IBaseObject
   /**
    * 是否需要表头固定到页面上
    */
@@ -221,31 +218,19 @@ export interface ITableProps {
    * 每行的 click handler，(row, i, e) => {}
    */
   onRowClick?:
-    | ((
-        row?: IBaseObject,
-        rowIndex?: number,
-        e?: React.MouseEvent<HTMLDivElement>
-      ) => void)
+    | ((row: T, rowIndex: number, e?: React.MouseEvent<HTMLDivElement>) => void)
     | null
   /**
    * 每行的 mouseEnter handler，(row, i, e) => {}
    */
   onRowMouseEnter?:
-    | ((
-        row?: IBaseObject,
-        rowIndex?: number,
-        e?: React.MouseEvent<HTMLDivElement>
-      ) => void)
+    | ((row: T, rowIndex: number, e?: React.MouseEvent<HTMLDivElement>) => void)
     | null
   /**
    * 每行的 mouseLeave handler，(row, i, e) => {}
    */
   onRowMouseLeave?:
-    | ((
-        row?: IBaseObject,
-        rowIndex?: number,
-        e?: React.MouseEvent<HTMLDivElement>
-      ) => void)
+    | ((row: T, rowIndex: number, e?: React.MouseEvent<HTMLDivElement>) => void)
     | null
   /**
    * 【选择行】选择每行时的 handler，Table 也以此 prop 作为开启选择功能的判断；
@@ -314,7 +299,10 @@ export interface ITableState {
 /**
  * 表格是一种格式化信息的展示形式。通常服务于大量数据浏览、管理场景。
  */
-class Table extends React.Component<ITableProps, ITableState> {
+class Table<T extends IBaseObject> extends React.Component<
+  ITableProps<T>,
+  ITableState
+> {
   public static Column: typeof Column = Column
 
   public static propTypes = {
@@ -438,7 +426,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     /**
      * 指定高度以实现表格内滚动，此 prop 与 prop headerAffixed 互斥。
      */
-    height: (props: ITableProps) => {
+    height: (props: ITableProps<IBaseObject>) => {
       const { headerAffixed, height } = props
       if (height) {
         if (typeof height !== "number") {
@@ -523,7 +511,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     virtualScroll: PropTypes.bool,
   }
 
-  public static defaultProps: ITableProps = {
+  public static defaultProps: ITableProps<IBaseObject> = {
     align: null,
     children: "",
     className: undefined,
@@ -574,7 +562,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     columns,
     expandedRowKeys,
     selectedRowKeys,
-  }: ITableProps) => {
+  }: ITableProps<IBaseObject>) => {
     const newState: Partial<ITableState> = {}
     if (children !== null || columns !== null) {
       newState.children = columns || children
@@ -608,7 +596,7 @@ class Table extends React.Component<ITableProps, ITableState> {
 
   private columnManager: any
 
-  constructor(props: ITableProps) {
+  constructor(props: ITableProps<T>) {
     super(props)
     const {
       children,
@@ -650,7 +638,7 @@ class Table extends React.Component<ITableProps, ITableState> {
   }
 
   public shouldComponentUpdate = (
-    nextProps: ITableProps,
+    nextProps: ITableProps<T>,
     nextState: ITableState
   ) =>
     !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState)
@@ -681,7 +669,7 @@ class Table extends React.Component<ITableProps, ITableState> {
   public componentDidUpdate = ({
     dataSource: dataSourceOld,
     getCellProps: getCellPropsOld,
-  }: ITableProps) => {
+  }: ITableProps<T>) => {
     const { dataSource, getCellProps } = this.props
     /**
      * handleWindowResize 不应该只在 didmount 时执行
@@ -710,7 +698,7 @@ class Table extends React.Component<ITableProps, ITableState> {
 
   public resizeColumnStart = (
     e: React.MouseEvent<HTMLDivElement>,
-    col: IColumnProps
+    col: IColumnProps<T>
   ) => {
     e.stopPropagation()
     document.body.style.cursor = "col-resize"
@@ -841,7 +829,7 @@ class Table extends React.Component<ITableProps, ITableState> {
   }
 
   public handleRowClick = (
-    row: IBaseObject,
+    row: T,
     i: number,
     e: React.MouseEvent<HTMLDivElement>
   ) => {
@@ -880,7 +868,7 @@ class Table extends React.Component<ITableProps, ITableState> {
   ) => {
     const { getColumns } = this.columnManager
     let { fixedColumnsInfos } = this.state
-    const columns = getColumns() as IColumnProps[]
+    const columns = getColumns() as IColumnProps<T>[]
     /**
      * columns 变化后 fixedColumnsInfos 中可能存在已经移除的 column
      */
@@ -1140,7 +1128,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       isAnyColumnsLeftFixed,
     } = this.columnManager
 
-    const columns = getColumns() as IColumnProps[]
+    const columns = getColumns() as IColumnProps<T>[]
 
     const theadStyle: React.CSSProperties = {
       height: `${TD_HEIGHT[size || "small"] * getGroupColumnsDepth()}px`,
@@ -1275,7 +1263,7 @@ class Table extends React.Component<ITableProps, ITableState> {
                 {col.children && (
                   <div className={`${prefix}-thGroup`}>
                     {col.children.map(
-                      (childCol: IColumnProps, childColIndex: number) => (
+                      (childCol: IColumnProps<T>, childColIndex: number) => (
                         <div
                           className={classNames(`${prefix}-th`, {
                             [`${prefix}-th_clickable`]:
@@ -1297,7 +1285,7 @@ class Table extends React.Component<ITableProps, ITableState> {
                             <div className={`${prefix}-thGroup`}>
                               {childCol.children.map(
                                 (
-                                  grandCol: IColumnProps,
+                                  grandCol: IColumnProps<T>,
                                   grandColIndex: number
                                 ) => (
                                   <div
@@ -1334,7 +1322,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       </div>
     )
 
-    const generateTrs = (row: IBaseObject, rowIndex: number) => {
+    const generateTrs = (row: T, rowIndex: number) => {
       const { key } = row
       const colArray: any = []
       const selectPropsGetted = getSelectProps && getSelectProps(row, rowIndex)
@@ -1515,7 +1503,7 @@ class Table extends React.Component<ITableProps, ITableState> {
             }}
             {...virtualListProps}
           >
-            {(row: IBaseObject, rowIndex: number) => {
+            {(row: T, rowIndex: number) => {
               return generateTrs(row, rowIndex)
             }}
           </List>
@@ -1545,7 +1533,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     ]
   }
 
-  public generateThCell = (col: IColumnProps, options?: IBaseObject) => {
+  public generateThCell = (col: IColumnProps<T>, options?: IBaseObject) => {
     const {
       align,
       columnsResizable,
@@ -1651,8 +1639,8 @@ class Table extends React.Component<ITableProps, ITableState> {
   }
 
   public generateTbodyCell = (
-    row: IBaseObject,
-    cell: IColumnProps,
+    row: T,
+    cell: IColumnProps<T>,
     rowIndex: number,
     cellIndex: number
   ) => {
@@ -1804,7 +1792,7 @@ class Table extends React.Component<ITableProps, ITableState> {
 
   public getCombinedCellStyle = (
     _: IBaseObject,
-    __: IColumnProps,
+    __: IColumnProps<T>,
     rowIndex: number,
     colIndex: number,
     rowSpan: number,
