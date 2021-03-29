@@ -311,10 +311,14 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
          */
         if (visible && topContent && !topContentPortalTarget) {
           const dropdown = document.querySelector(
-            `.${prefix}-dropdown_${hash} > div`
+            `.${prefix}-dropdown_${hash}`
           ) as HTMLDivElement
           if (dropdown) {
             const el = document.createElement("div")
+            el.onmousedown = (e) => {
+              e.preventDefault()
+              e.stopImmediatePropagation()
+            }
             dropdown.insertBefore(el, dropdown.children[0])
             this.setState({
               topContentPortalTarget: el,
