@@ -1,0 +1,51 @@
+$prefix: "adui-channels-form";
+
+.#{$prefix} {
+  &-item {
+    display: flex;
+    align-items: baseline;
+  }
+  &-label {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 24px;
+    padding-top: 24px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.9);
+  }
+  &-control {
+    flex: 1;
+    padding: 24px 24px 24px 0;
+    box-shadow: inset 0 -0.5px 0 rgba(0, 0, 0, 0.1);
+  }
+  &-tip {
+    font-size: var(--font-size-small);
+    line-height: 20px;
+
+    &:not(:empty) {
+      margin-top: 8px;
+    }
+
+    &_normal {
+      color: var(--gray-700);
+    }
+
+    &_primary {
+      color: var(--primary-color);
+    }
+
+    &_success {
+      color: var(--ad-green);
+    }
+
+    &_warning {
+      color: var(--ad-orange);
+    }
+
+    &_danger {
+      color: var(--ad-red);
+    }
+  }
+}
