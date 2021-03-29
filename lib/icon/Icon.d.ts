@@ -32,7 +32,7 @@ export interface IIconProps {
 /**
  * 语义化的矢量图形，分为导航、反馈、编辑、工具、图表和生活五种类型。
  */
-declare const Icon: React.FunctionComponent<IIconProps> & {
+declare const Icon: React.FC<IIconProps> & {
     type: string;
 };
 export default Icon;

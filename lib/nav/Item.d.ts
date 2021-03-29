@@ -27,5 +27,5 @@ export interface IItemProps {
 /**
  * 导航栏 - item
  */
-declare const Item: React.FunctionComponent<IItemProps>;
+declare const Item: React.FC<IItemProps>;
 export default Item;

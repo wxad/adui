@@ -30,5 +30,5 @@ export interface ITabProps {
 /**
  * 导航页签 - Tab
  */
-declare const Tab: React.FunctionComponent<ITabProps>;
+declare const Tab: React.FC<ITabProps>;
 export default Tab;

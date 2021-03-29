@@ -10,5 +10,5 @@ export interface ICaptionProps {
 /**
  * 日期选择 Caption
  */
-declare const Caption: React.FunctionComponent<ICaptionProps>;
+declare const Caption: React.FC<ICaptionProps>;
 export default Caption;

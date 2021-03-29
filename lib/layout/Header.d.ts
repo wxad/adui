@@ -18,7 +18,7 @@ export interface IHeaderProps {
 /**
  * 布局 - 头部 `<header />`
  */
-declare const Header: React.FunctionComponent<IHeaderProps> & {
+declare const Header: React.FC<IHeaderProps> & {
     stickable: boolean;
 };
 export default Header;

@@ -26,5 +26,5 @@ export interface IItemProps {
 /**
  * 行动菜单 - 菜单项
  */
-declare const Item: React.FunctionComponent<IItemProps>;
+declare const Item: React.FC<IItemProps>;
 export default Item;

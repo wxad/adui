@@ -13,5 +13,5 @@ export interface IShortcutsProps {
 /**
  * 日期选择 Shortcuts
  */
-declare const Shortcuts: React.FunctionComponent<IShortcutsProps>;
+declare const Shortcuts: React.FC<IShortcutsProps>;
 export default Shortcuts;

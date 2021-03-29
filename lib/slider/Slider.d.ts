@@ -75,5 +75,5 @@ export interface ISliderProps {
 /**
  * 滑动条用于以拖拽的方式，更人性化地完成输入数据、选择数据区间等目的。
  */
-declare const Slider: React.FunctionComponent<ISliderProps>;
+declare const Slider: React.FC<ISliderProps>;
 export default Slider;

@@ -22,5 +22,5 @@ export interface IColProps {
 /**
  * 栅格列
  */
-declare const Col: React.FunctionComponent<IColProps>;
+declare const Col: React.FC<IColProps>;
 export default Col;

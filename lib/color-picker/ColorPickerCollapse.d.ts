@@ -11,5 +11,5 @@ export interface ICollapseProps {
 /**
  * 颜色选择器
  */
-declare const ColorPickerCollapse: React.FunctionComponent<ICollapseProps>;
+declare const ColorPickerCollapse: React.FC<ICollapseProps>;
 export default ColorPickerCollapse;

@@ -8,5 +8,5 @@ export interface ITableSortProps {
 /**
  * 表格排序
  */
-declare const TableSort: React.FunctionComponent<ITableSortProps>;
+declare const TableSort: React.FC<ITableSortProps>;
 export default TableSort;

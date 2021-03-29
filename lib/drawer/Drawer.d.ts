@@ -65,5 +65,5 @@ export interface IDrawerProps {
 /**
  * 旋转加载用于告知用户信息内容的加载状态，通常是即时、短时的。
  */
-declare const Drawer: React.FunctionComponent<IDrawerProps>;
+declare const Drawer: React.FC<IDrawerProps>;
 export default Drawer;

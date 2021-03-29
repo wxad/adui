@@ -50,7 +50,7 @@ declare namespace Group {
         /**
          * 默认已选中的值
          */
-        defaultValue: PropTypes.Requireable<React.ReactText>;
+        defaultValue: PropTypes.Requireable<string | number>;
         /**
          * 是否禁用
          */
@@ -66,7 +66,7 @@ declare namespace Group {
         /**
          * 已选中的值
          */
-        value: PropTypes.Requireable<React.ReactText>;
+        value: PropTypes.Requireable<string | number>;
     };
     var defaultProps: {
         children: null;

@@ -91,7 +91,7 @@ declare class Suggest extends React.Component<ISuggestProps, ISuggestState> {
         /**
          * 默认值 - 内部驱动
          */
-        defaultValue: PropTypes.Requireable<React.ReactText>;
+        defaultValue: PropTypes.Requireable<string | number>;
         /**
          * 指定弹出层的父级，默认为 document.body
          */
@@ -147,7 +147,7 @@ declare class Suggest extends React.Component<ISuggestProps, ISuggestState> {
         /**
          * 从外部指定当前选中项的值
          */
-        value: PropTypes.Requireable<React.ReactText>;
+        value: PropTypes.Requireable<string | number>;
     };
     static defaultProps: ISuggestProps;
     static getDerivedStateFromProps: ({ open, value }: ISuggestProps) => ISuggestState | null;

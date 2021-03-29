@@ -18,5 +18,5 @@ export interface IItemProps {
 /**
  * 面包屑 - item
  */
-declare const Item: React.FunctionComponent<IItemProps>;
+declare const Item: React.FC<IItemProps>;
 export default Item;

@@ -26,5 +26,5 @@ export interface ISubMenuProps {
 /**
  * 行动菜单 - 子菜单
  */
-declare const SubMenu: React.FunctionComponent<ISubMenuProps>;
+declare const SubMenu: React.FC<ISubMenuProps>;
 export default SubMenu;

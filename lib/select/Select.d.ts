@@ -116,7 +116,7 @@ declare class Select extends React.Component<ISelectProps, ISelectState> {
         /**
          * 内部驱动：当前选中项的值
          */
-        defaultValue: PropTypes.Requireable<React.ReactText>;
+        defaultValue: PropTypes.Requireable<string | number>;
         /**
          * 下拉菜单和选择器同宽
          */
@@ -168,7 +168,7 @@ declare class Select extends React.Component<ISelectProps, ISelectState> {
         /**
          * 外部控制：当前选中项的值
          */
-        value: PropTypes.Requireable<React.ReactText>;
+        value: PropTypes.Requireable<string | number>;
     };
     static defaultProps: ISelectProps;
     static getDerivedStateFromProps: ({ open, value }: ISelectProps) => ISelectState | null;

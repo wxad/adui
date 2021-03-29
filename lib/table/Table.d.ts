@@ -19,7 +19,7 @@ interface IFixedColumnsInfo {
     isFirstRight?: boolean;
     offset?: number;
 }
-export interface ITableProps {
+export interface ITableProps<T extends IBaseObject> {
     [key: string]: any;
     /**
      * 统一地控制列水平靠齐方向
@@ -32,7 +32,7 @@ export interface ITableProps {
     /**
      * 以数组的方式传入 Columns，如果传入了此 Prop，则 Table 会忽略 children
      */
-    columns?: IColumnProps[] | null;
+    columns?: IColumnProps<T>[] | null;
     /**
      * 附加类名
      */
@@ -44,7 +44,7 @@ export interface ITableProps {
     /**
      * 数据源
      */
-    dataSource?: IBaseObject[];
+    dataSource?: T[];
     /**
      * 【展开行】默认展开的行的 key，请在传入前进行合法校验，因为 Table 对此 Prop 没有过多校验
      * 请确保 dataSource 的对象含有属性 key，及其唯一的值。
@@ -79,20 +79,20 @@ export interface ITableProps {
     /**
      * 【展开行】展开行的内容
      */
-    expandedRowRender?: (row?: IBaseObject, rowIndex?: number) => React.ReactNode;
+    expandedRowRender?: (row: T, rowIndex: number) => React.ReactNode;
     /**
      * 设置每个单元格的类名：(row, col, rowIndex, colIndex) => (string)
      */
-    getCellClassName?: (row?: IBaseObject, col?: IBaseObject, rowIndex?: number, colIndex?: number) => string;
+    getCellClassName?: (row: T, col: IBaseObject, rowIndex: number, colIndex: number) => string;
     /**
      * 设置每个单元格上的由组件规定的 prop，
      * 如 rowSpan colSpan，(row, col, rowIndex, colIndex) => ({})
      */
-    getCellProps?: (row?: IBaseObject, col?: IBaseObject, rowIndex?: number, colIndex?: number) => IBaseObject | void;
+    getCellProps?: (row: T, col: IBaseObject, rowIndex: number, colIndex: number) => IBaseObject | void;
     /**
      * 设置每个单元格上的 style，(row, col, rowIndex, colIndex) => ({})
      */
-    getCellStyle?: (row?: IBaseObject, col?: IBaseObject, rowIndex?: number, colIndex?: number) => React.CSSProperties | void;
+    getCellStyle?: (row: T, col: IBaseObject, rowIndex: number, colIndex: number) => React.CSSProperties | void;
     /**
      * 设置 thead 的类名：() => (string)
      */
@@ -104,24 +104,24 @@ export interface ITableProps {
     /**
      * 设置每个 TH 的类名：(col, colIndex) => (string)
      */
-    getHeadCellClassName?: (col?: IBaseObject, colIndex?: number) => string;
+    getHeadCellClassName?: (col: IBaseObject, colIndex: number) => string;
     /**
      * 设置每个 TH 上的 style，(col, colIndex) => ({})
      */
-    getHeadCellStyle?: (col?: IBaseObject, colIndex?: number) => React.CSSProperties | void;
+    getHeadCellStyle?: (col: IBaseObject, colIndex: number) => React.CSSProperties | void;
     /**
      * 设置每行的类名：(row, rowIndex) => (string)
      */
-    getRowClassName?: (row?: IBaseObject, rowIndex?: number) => string;
+    getRowClassName?: (row: T, rowIndex: number) => string;
     /**
      * 设置每行的 style，(row, rowIndex) => ({})
      */
-    getRowStyle?: (row?: IBaseObject, rowIndex?: number) => React.CSSProperties | void;
+    getRowStyle?: (row: T, rowIndex: number) => React.CSSProperties | void;
     /**
      * 【选择行】设置每个 Checkbox/Radio 上的 prop (row, rowIndex) => ({})；
      * 可以在这里回传 disabled: true, 控制该行不能选择；请确保 dataSource 的对象含有属性 key，及其唯一的值。
      */
-    getSelectProps?: (row?: IBaseObject, rowIndex?: number) => IBaseObject;
+    getSelectProps?: (row: T, rowIndex: number) => IBaseObject;
     /**
      * 是否需要表头固定到页面上
      */
@@ -154,15 +154,15 @@ export interface ITableProps {
     /**
      * 每行的 click handler，(row, i, e) => {}
      */
-    onRowClick?: ((row?: IBaseObject, rowIndex?: number, e?: React.MouseEvent<HTMLDivElement>) => void) | null;
+    onRowClick?: ((row: T, rowIndex: number, e?: React.MouseEvent<HTMLDivElement>) => void) | null;
     /**
      * 每行的 mouseEnter handler，(row, i, e) => {}
      */
-    onRowMouseEnter?: ((row?: IBaseObject, rowIndex?: number, e?: React.MouseEvent<HTMLDivElement>) => void) | null;
+    onRowMouseEnter?: ((row: T, rowIndex: number, e?: React.MouseEvent<HTMLDivElement>) => void) | null;
     /**
      * 每行的 mouseLeave handler，(row, i, e) => {}
      */
-    onRowMouseLeave?: ((row?: IBaseObject, rowIndex?: number, e?: React.MouseEvent<HTMLDivElement>) => void) | null;
+    onRowMouseLeave?: ((row: T, rowIndex: number, e?: React.MouseEvent<HTMLDivElement>) => void) | null;
     /**
      * 【选择行】选择每行时的 handler，Table 也以此 prop 作为开启选择功能的判断；
      * 请确保 dataSource 的对象含有属性 key，及其唯一的值。
@@ -228,7 +228,7 @@ export interface ITableState {
 /**
  * 表格是一种格式化信息的展示形式。通常服务于大量数据浏览、管理场景。
  */
-declare class Table extends React.Component<ITableProps, ITableState> {
+declare class Table<T extends IBaseObject> extends React.Component<ITableProps<T>, ITableState> {
     static Column: typeof Column;
     static propTypes: {
         /**
@@ -351,7 +351,7 @@ declare class Table extends React.Component<ITableProps, ITableState> {
         /**
          * 指定高度以实现表格内滚动，此 prop 与 prop headerAffixed 互斥。
          */
-        height: (props: ITableProps) => Error | null;
+        height: (props: ITableProps<IBaseObject>) => Error | null;
         /**
          * 是否加载中
          */
@@ -420,8 +420,8 @@ declare class Table extends React.Component<ITableProps, ITableState> {
          */
         virtualScroll: PropTypes.Requireable<boolean>;
     };
-    static defaultProps: ITableProps;
-    static getDerivedStateFromProps: ({ children, columns, expandedRowKeys, selectedRowKeys, }: ITableProps) => Partial<ITableState> | null;
+    static defaultProps: ITableProps<IBaseObject>;
+    static getDerivedStateFromProps: ({ children, columns, expandedRowKeys, selectedRowKeys, }: ITableProps<IBaseObject>) => Partial<ITableState> | null;
     combinedCellsInfo: IBaseObject[];
     affixHeader: Affix;
     affixScrollbar: Affix;
@@ -432,18 +432,18 @@ declare class Table extends React.Component<ITableProps, ITableState> {
     private debouncedWindowResize;
     private resizeEvent;
     private columnManager;
-    constructor(props: ITableProps);
-    shouldComponentUpdate: (nextProps: ITableProps, nextState: ITableState) => boolean;
+    constructor(props: ITableProps<T>);
+    shouldComponentUpdate: (nextProps: ITableProps<T>, nextState: ITableState) => boolean;
     componentDidMount: () => void;
-    componentDidUpdate: ({ dataSource: dataSourceOld, getCellProps: getCellPropsOld, }: ITableProps) => void;
+    componentDidUpdate: ({ dataSource: dataSourceOld, getCellProps: getCellPropsOld, }: ITableProps<T>) => void;
     componentWillUnmount: () => void;
-    resizeColumnStart: (e: React.MouseEvent<HTMLDivElement>, col: IColumnProps) => void;
+    resizeColumnStart: (e: React.MouseEvent<HTMLDivElement>, col: IColumnProps<T>) => void;
     resizeColumnMoving: (e: MouseEvent) => void;
     resizeColumnEnd: (e: MouseEvent) => void;
     handleWindowResize: () => void;
     handleMainTableScroll: (e?: React.UIEvent<HTMLDivElement, UIEvent> | undefined) => void;
     syncTableScrollPosition: (value: number) => void;
-    handleRowClick: (row: IBaseObject, i: number, e: React.MouseEvent<HTMLDivElement>) => void;
+    handleRowClick: (row: T, i: number, e: React.MouseEvent<HTMLDivElement>) => void;
     handleThResize: (width: number, dataIndex: string, index: number, fixedPosition?: boolean | "left" | "right" | undefined) => void;
     handleTheadMouseEnter: () => void;
     handleTheadMouseLeave: () => void;
@@ -465,9 +465,9 @@ declare class Table extends React.Component<ITableProps, ITableState> {
     hasSelectedAll: () => boolean;
     getAvailableRowsKeys: () => React.ReactText[];
     generateTable: () => (false | JSX.Element | undefined)[];
-    generateThCell: (col: IColumnProps, options?: IBaseObject | undefined) => JSX.Element;
-    generateTbodyCell: (row: IBaseObject, cell: IColumnProps, rowIndex: number, cellIndex: number) => JSX.Element;
-    getCombinedCellStyle: (_: IBaseObject, __: IColumnProps, rowIndex: number, colIndex: number, rowSpan: number, colSpan: number) => React.CSSProperties;
+    generateThCell: (col: IColumnProps<T>, options?: IBaseObject | undefined) => JSX.Element;
+    generateTbodyCell: (row: T, cell: IColumnProps<T>, rowIndex: number, cellIndex: number) => JSX.Element;
+    getCombinedCellStyle: (_: IBaseObject, __: IColumnProps<T>, rowIndex: number, colIndex: number, rowSpan: number, colSpan: number) => React.CSSProperties;
     saveRef: (name?: "affixHeader" | "affixScrollbar" | "mainTable" | "mainTableBody" | "mainThead" | "wrapper" | undefined) => (node: any) => void;
     render(): JSX.Element;
 }

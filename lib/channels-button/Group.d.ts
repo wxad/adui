@@ -34,5 +34,5 @@ export interface IButtonGroupProps {
 /**
  * 按钮组
  */
-declare const Group: React.FunctionComponent<IButtonGroupProps>;
+declare const Group: React.FC<IButtonGroupProps>;
 export default Group;

@@ -6,5 +6,5 @@ export interface IPopupProps {
     content?: React.ReactNode;
     trigger?: ITrigger;
 }
-declare const Popup: React.FunctionComponent<IPopupProps>;
+declare const Popup: React.FC<IPopupProps>;
 export default Popup;

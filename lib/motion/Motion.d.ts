@@ -34,5 +34,5 @@ export interface IMotionProps {
      */
     transition?: "slide" | "zoom" | "zoomHorizontal";
 }
-declare const Motion: React.FunctionComponent<IMotionProps>;
+declare const Motion: React.FC<IMotionProps>;
 export default Motion;

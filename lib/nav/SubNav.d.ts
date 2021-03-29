@@ -27,5 +27,5 @@ export interface ISubNavProps {
 /**
  * 导航栏 - 子导航
  */
-declare const SubNav: React.FunctionComponent<ISubNavProps>;
+declare const SubNav: React.FC<ISubNavProps>;
 export default SubNav;

@@ -21,6 +21,6 @@ export declare const ConfigConsumer: React.Consumer<IConfigConsumerProps>;
 /**
  * 三个 param，权重依次递减
  */
-export declare const getComputedSize: (size0?: "small" | "medium" | "large" | "mini" | undefined, size1?: "small" | "medium" | "large" | "mini" | undefined, size2?: "small" | "medium" | "large" | "mini" | undefined) => sizeType;
-declare const ConfigProvider: React.FunctionComponent<IConfigProviderProps>;
+export declare const getComputedSize: (size0?: sizeType | undefined, size1?: sizeType | undefined, size2?: sizeType | undefined) => sizeType;
+declare const ConfigProvider: React.FC<IConfigProviderProps>;
 export default ConfigProvider;

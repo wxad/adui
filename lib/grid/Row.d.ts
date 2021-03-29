@@ -22,5 +22,5 @@ export interface IRowProps {
 /**
  * 栅格行
  */
-declare const Row: React.FunctionComponent<IRowProps>;
+declare const Row: React.FC<IRowProps>;
 export default Row;

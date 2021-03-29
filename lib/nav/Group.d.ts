@@ -18,5 +18,5 @@ export interface IGroupProps {
 /**
  * 导航栏 - 分组
  */
-declare const Group: React.FunctionComponent<IGroupProps>;
+declare const Group: React.FC<IGroupProps>;
 export default Group;

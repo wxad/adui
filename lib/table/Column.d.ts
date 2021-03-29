@@ -4,7 +4,7 @@ import { IPopoverProps } from "../popover";
 interface IBaseObject {
     [key: string]: any;
 }
-export interface IColumnProps {
+export interface IColumnProps<T extends IBaseObject> {
     /**
      * 水平靠齐方向
      */
@@ -47,7 +47,7 @@ export interface IColumnProps {
     /**
      * 设置该列每个单元格上的 style，(row, rowIndex) => ({})
      */
-    getCellStyle?: (row?: IBaseObject, rowIndex?: number) => React.CSSProperties | void;
+    getCellStyle?: (row: T, rowIndex: number) => React.CSSProperties | void;
     /**
      * 筛选时的 handler，筛选和排序功能不能同时使用
      */
@@ -67,7 +67,7 @@ export interface IColumnProps {
     /**
      * 如果有 render，则 render (row, col, rowIndex, colIndex)，否则取 dataIndex。
      */
-    render?: (row?: IBaseObject, col?: IBaseObject, rowIndex?: number, colIndex?: number) => React.ReactNode;
+    render?: (row: T, col: IBaseObject, rowIndex: number, colIndex: number) => React.ReactNode;
     /**
      * 是否允许调整宽度，默认 true
      */
@@ -93,9 +93,9 @@ export interface IColumnProps {
  * Column.js 的作用仅是约束 PropTypes。
  * 每一列的 props 在 ColumnManager.js 中得到处理。
  */
-declare const Column: {
-    (props: IColumnProps): JSX.Element;
-    propTypes: {
+declare function Column<T extends IBaseObject>(props: IColumnProps<T>): JSX.Element;
+declare namespace Column {
+    var propTypes: {
         /**
          * 水平靠齐方向
          */
@@ -135,7 +135,7 @@ declare const Column: {
         /**
          * 筛选时的 handler，筛选和排序功能不能同时使用
          */
-        onFilter: (props: IColumnProps) => Error | null;
+        onFilter: (props: IColumnProps<IBaseObject>) => Error | null;
         /**
          * 筛选 popup visible 变化时的 handler，参数 (bool, col)
          */
@@ -143,7 +143,7 @@ declare const Column: {
         /**
          * 排序时的 handler，筛选和排序功能不能同时使用
          */
-        onSort: (props: IColumnProps) => Error | null;
+        onSort: (props: IColumnProps<IBaseObject>) => Error | null;
         /**
          * 在列头上增加 popover。这样的需求越来越常规，样式上内置到 Table 内做规范，作为 prop 是有必要的。
          */
@@ -171,9 +171,9 @@ declare const Column: {
         /**
          * 列的固定宽度
          */
-        width: (props: IColumnProps) => Error | null;
+        width: (props: IColumnProps<IBaseObject>) => Error | null;
     };
-    defaultProps: {
+    var defaultProps: {
         align: null;
         dataIndex: null;
         filterMultiple: boolean;
@@ -193,5 +193,5 @@ declare const Column: {
         verticalAlign: null;
         width: null;
     };
-};
+}
 export default Column;

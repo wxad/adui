@@ -14,5 +14,5 @@ export interface IMainProps {
 /**
  * 布局 - 主体内容 `<main />`
  */
-declare const Main: React.FunctionComponent<IMainProps>;
+declare const Main: React.FC<IMainProps>;
 export default Main;

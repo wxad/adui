@@ -44,6 +44,6 @@ declare class ReactResizeObserver extends React.Component<ResizeObserverProps, R
     onResize: (entries: ResizeObserverEntry[]) => void;
     setChildNode: (node: RefNode) => void;
     destroyObserver(): void;
-    render(): React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)> | React.ReactElement<unknown, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)>[] | null;
+    render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactElement<unknown, string | React.JSXElementConstructor<any>>[] | null;
 }
 export default ReactResizeObserver;

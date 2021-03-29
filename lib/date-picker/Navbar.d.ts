@@ -12,5 +12,5 @@ export interface INavbarProps {
 /**
  * 日期选择 Navbar
  */
-declare const Navbar: React.FunctionComponent<INavbarProps>;
+declare const Navbar: React.FC<INavbarProps>;
 export default Navbar;

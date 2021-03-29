@@ -30,7 +30,7 @@ export interface IAsideProps {
 /**
  * 布局 - 侧边栏 `<aside />`
  */
-declare const Aside: React.FunctionComponent<IAsideProps> & {
+declare const Aside: React.FC<IAsideProps> & {
     stickable: boolean;
 };
 export default Aside;

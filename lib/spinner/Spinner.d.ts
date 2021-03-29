@@ -46,5 +46,5 @@ export interface ISpinnerProps {
 /**
  * 旋转加载用于告知用户信息内容的加载状态，通常是即时、短时的。
  */
-declare const Spinner: React.FunctionComponent<ISpinnerProps>;
+declare const Spinner: React.FC<ISpinnerProps>;
 export default Spinner;

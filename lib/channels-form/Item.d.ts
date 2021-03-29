@@ -48,5 +48,5 @@ export interface IItemProps {
 /**
  * 表单 item
  */
-declare const Item: React.FunctionComponent<IItemProps>;
+declare const Item: React.FC<IItemProps>;
 export default Item;

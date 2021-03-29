@@ -10,5 +10,5 @@ export interface IDividerProps {
 /**
  * 导航栏 - 分割线
  */
-declare const Divider: React.FunctionComponent<IDividerProps>;
+declare const Divider: React.FC<IDividerProps>;
 export default Divider;

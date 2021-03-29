@@ -18,5 +18,5 @@ export interface ITableFilterProps {
 /**
  * 表格筛选
  */
-declare const TableFilter: React.FunctionComponent<ITableFilterProps>;
+declare const TableFilter: React.FC<ITableFilterProps>;
 export default TableFilter;
