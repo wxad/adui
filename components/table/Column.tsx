@@ -7,7 +7,7 @@ interface IBaseObject {
   [key: string]: any
 }
 
-export interface IColumnProps<T extends IBaseObject> {
+export interface IColumnProps<T extends IBaseObject = IBaseObject> {
   /**
    * 水平靠齐方向
    */
@@ -99,7 +99,7 @@ export interface IColumnProps<T extends IBaseObject> {
  * Column.js 的作用仅是约束 PropTypes。
  * 每一列的 props 在 ColumnManager.js 中得到处理。
  */
-function Column<T extends IBaseObject>(props: IColumnProps<T>) {
+function Column<T extends IBaseObject = IBaseObject>(props: IColumnProps<T>) {
   const restProps = omit(props, [
     "align",
     "children",
@@ -164,7 +164,7 @@ Column.propTypes = {
   /**
    * 筛选时的 handler，筛选和排序功能不能同时使用
    */
-  onFilter: (props: IColumnProps<IBaseObject>) => {
+  onFilter: (props: IColumnProps) => {
     const { onFilter, onSort } = props
     if (onFilter) {
       if (typeof onFilter !== "function") {
@@ -185,7 +185,7 @@ Column.propTypes = {
   /**
    * 排序时的 handler，筛选和排序功能不能同时使用
    */
-  onSort: (props: IColumnProps<IBaseObject>) => {
+  onSort: (props: IColumnProps) => {
     const { onFilter, onSort } = props
     if (onSort) {
       if (typeof onSort !== "function") {
@@ -226,7 +226,7 @@ Column.propTypes = {
   /**
    * 列的固定宽度
    */
-  width: (props: IColumnProps<IBaseObject>) => {
+  width: (props: IColumnProps) => {
     /**
      * 1. width 目前只支持 {50}，"50px"，"50%" 三种格式，请不要使用其他单位；
      * 2. 固定列必须设置宽度，Table 做这样的约束，是为了避免太多的计算成本。

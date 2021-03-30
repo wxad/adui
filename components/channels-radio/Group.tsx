@@ -8,7 +8,7 @@ const prefix = "adui-channels-radio"
 
 type ValueType = React.ReactText
 
-export interface IRadioGroupProps<T extends ValueType> {
+export interface IRadioGroupProps<T extends ValueType = ValueType> {
   [key: string]: any
   /**
    * 子节点
@@ -43,7 +43,7 @@ export interface IRadioGroupProps<T extends ValueType> {
 /**
  * 单选组，用以统一地管理内部单选状态。
  */
-function Group<T extends ValueType>({
+function Group<T extends ValueType = ValueType>({
   children,
   className,
   defaultValue,

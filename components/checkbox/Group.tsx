@@ -8,7 +8,7 @@ const prefix = "adui-checkbox"
 
 type ValueType = React.ReactText
 
-export interface ICheckboxGroupProps<T extends ValueType> {
+export interface ICheckboxGroupProps<T extends ValueType = ValueType> {
   /**
    * 子节点
    */
@@ -42,7 +42,7 @@ export interface ICheckboxGroupProps<T extends ValueType> {
 /**
  * 勾选组
  */
-function Group<T extends ValueType>({
+function Group<T extends ValueType = ValueType>({
   children,
   className,
   defaultValue,
