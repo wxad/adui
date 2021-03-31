@@ -12,8 +12,9 @@ import classNames from "classnames"
 import toArray from "rc-util/lib/Children/toArray"
 import omit from "../_util/omit"
 import { ConfigContext } from "../config-provider"
+import Checkbox from "../checkbox"
 import Icon from "../icon"
-import Popover from "../popover"
+import Popover, { IPopoverProps } from "../popover"
 import Portal from "../portal"
 import Spinner from "../spinner"
 import getPlacements from "../tooltip/placements"
@@ -29,6 +30,20 @@ const strategies = {
   "show-parent": SHOW_PARENT,
 }
 
+/**
+ * a1 是否包含 a2
+ */
+const isArrayIncludes = (
+  a1: React.ReactText[],
+  a2: React.ReactText[]
+): boolean => {
+  if (!a1 || !a2) {
+    return false
+  }
+
+  return a2.every((o) => a1.includes(o))
+}
+
 export type TreeNodeValue = string[] | number[] | null
 
 export interface ITreeNode {
@@ -37,6 +52,21 @@ export interface ITreeNode {
   key: string
   disabled: boolean
 }
+export interface DataNode {
+  [key: string]: any
+  value?: React.ReactText
+  title?: React.ReactNode
+  label?: React.ReactNode
+  key?: React.ReactText
+  disabled?: boolean
+  disableCheckbox?: boolean
+  checkable?: boolean
+  popover?: React.ReactNode
+  popoverProps?: IPopoverProps
+  children?: DataNode[]
+}
+
+export type TreeData = DataNode[] | undefined
 
 export interface ITreeSelectProps {
   [key: string]: any
@@ -53,8 +83,10 @@ export interface ITreeSelectProps {
   placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
   resultVisible?: boolean
+  selectAll?: boolean
   showCheckedStrategy?: "show-all" | "show-child" | "show-parent"
   topContent?: React.ReactNode
+  treeData?: TreeData
   value?: TreeNodeValue
 }
 
@@ -80,47 +112,6 @@ export interface ITreeNodeProps {
   selected?: boolean
   selectable?: boolean
   children?: React.ReactNode
-}
-
-const convertChildrenToData = (nodes: any) => {
-  return toArray(nodes)
-    .map((node: React.ReactElement) => {
-      if (!React.isValidElement(node) || !node.type) {
-        return null
-      }
-      const {
-        key,
-        props: { children, value, popover, popoverProps, title, ...restProps },
-      } = node as React.ReactElement
-
-      /**
-       * 如果有 popover 则在这里包装一下 title
-       */
-      const data = {
-        key,
-        value,
-        dataTitle: title,
-        title: popover ? (
-          <>
-            <div className="adui-tree-select-pop-trigger">{title}</div>
-            <Popover popup={popover} placement="right" {...popoverProps}>
-              <div className="adui-tree-select-pop-trigger-placeholder" />
-            </Popover>
-          </>
-        ) : (
-          title
-        ),
-        ...restProps,
-      }
-
-      const childData = convertChildrenToData(children)
-      if (childData.length) {
-        data.children = childData
-      }
-
-      return data
-    })
-    .filter((data) => data)
 }
 
 /**
@@ -202,6 +193,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      */
     rightIcon: PropTypes.string,
     /**
+     * 是否开启全选功能
+     */
+    selectAll: PropTypes.bool,
+    /**
      * 定义选中项回填的方式：
      * 1. show-all：显示包括父节点的所有选中节点；
      * 2. show-parent：只显示父节点；
@@ -216,6 +211,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      * 下拉框顶部显示的自定义元素
      */
     topContent: PropTypes.node,
+    /**
+     * treeNodes 数据，格式参照 interface DataNode
+     */
+    treeData: PropTypes.array,
     /**
      * 外部控制：选中的 key
      */
@@ -238,8 +237,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     resultRender: null,
     resultVisible: true,
     rightIcon: "menu",
+    selectAll: false,
     showCheckedStrategy: "show-parent",
     topContent: undefined,
+    treeData: undefined,
     value: null,
   }
 
@@ -259,6 +260,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
   public portal: React.ReactNode
 
   public wrapper: HTMLDivElement
+
+  public treeData: DataNode[]
+
+  public treeValueAll: any[]
 
   constructor(props: ITreeSelectProps) {
     super(props)
@@ -291,13 +296,18 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
   public renderSwitcherIcon = ({ isLeaf, loading }: ITreeNodeProps) => {
     if (loading) {
-      return <Spinner size="mini" className="adui-tree-select-switcher-icon" />
+      return (
+        <Spinner size="mini" className="adui-tree-select-tree-switcher-icon" />
+      )
     }
     if (isLeaf) {
       return null
     }
     return (
-      <Icon icon="arrow-right" className="adui-tree-select-switcher-icon" />
+      <Icon
+        icon="triangle-right"
+        className="adui-tree-select-tree-switcher-icon"
+      />
     )
   }
 
@@ -370,6 +380,32 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       return null
     }
     return 0
+  }
+
+  public handleSelectAll = () => {
+    const { value: valueProp, onChange } = this.props
+    const { value } = this.state
+    if (isArrayIncludes(value || [], this.treeValueAll)) {
+      /**
+       * 已全选
+       */
+      if (valueProp === null) {
+        this.setState({ value: [] })
+      }
+      if (onChange) {
+        onChange([], [])
+      }
+    } else {
+      /**
+       * 清空
+       */
+      if (valueProp === null) {
+        this.setState({ value: this.treeValueAll })
+      }
+      if (onChange) {
+        onChange(this.treeValueAll, [])
+      }
+    }
   }
 
   public getMaxTagPlaceholder = (nodes: ITreeNode[]) => {
@@ -453,6 +489,154 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     )
   }
 
+  public convertChildrenToData = (
+    nodes: any,
+    options: { selectAll?: boolean } = {}
+  ): DataNode[] => {
+    const { selectAll } = options
+
+    const result = toArray(nodes)
+      .map((node: React.ReactElement) => {
+        if (!React.isValidElement(node) || !node.type) {
+          return null
+        }
+        const {
+          key,
+          props: {
+            children,
+            value,
+            popover,
+            popoverProps,
+            title,
+            ...restProps
+          },
+        } = node as React.ReactElement
+
+        /**
+         * 如果有 popover 则在这里包装一下 title
+         */
+        const data = {
+          key,
+          value,
+          dataTitle: title,
+          title: popover ? (
+            <>
+              <div className="adui-tree-select-pop-trigger">{title}</div>
+              <Popover popup={popover} placement="right" {...popoverProps}>
+                <div className="adui-tree-select-pop-trigger-placeholder" />
+              </Popover>
+            </>
+          ) : (
+            title
+          ),
+          ...restProps,
+        }
+
+        const childData = this.convertChildrenToData(children)
+        if (childData.length) {
+          data.children = childData
+        }
+
+        return data
+      })
+      .filter((data) => data)
+
+    if (selectAll) {
+      result.unshift({
+        title: <div>全选</div>,
+      })
+    }
+
+    return result
+  }
+
+  public convertTreeData = (
+    dataNode: TreeData,
+    options: { selectAll?: boolean } = {}
+  ): TreeData => {
+    const { value: valueState } = this.state
+    const isAllSelected = isArrayIncludes(valueState || [], this.treeValueAll)
+    const indeterminate = !isAllSelected && !!valueState?.length
+
+    if (!dataNode) {
+      return undefined
+    }
+
+    if (dataNode[0]?.key === `${prefix}-tree-treenode-all`) {
+      return dataNode
+    }
+
+    const { selectAll } = options
+
+    const process = (node: DataNode[]) => {
+      node.forEach((o) => {
+        const {
+          children,
+          key,
+          title,
+          dataTitle,
+          value,
+          popover,
+          popoverProps = {},
+        } = o
+        if (dataTitle) {
+          return
+        }
+        /**
+         * dataTitle 用于有 popover 的情况下的搜索
+         */
+        if (title) {
+          o.dataTitle = title
+        }
+        if (key === undefined) {
+          o.key = value
+        } else if (value === undefined) {
+          o.value = key
+        }
+        if (popover) {
+          o.title = (
+            <>
+              <div className={`${prefix}-pop-trigger`}>{title}</div>
+              <Popover popup={popover} placement="right" {...popoverProps}>
+                <div className={`${prefix}-pop-trigger-placeholder`} />
+              </Popover>
+            </>
+          )
+        }
+        if (children) {
+          process(children)
+        }
+      })
+    }
+
+    process(dataNode)
+
+    if (selectAll) {
+      dataNode.unshift({
+        title: (
+          <div
+            role="none"
+            className={`${prefix}-tree-treenode-all-inner`}
+            onClick={this.handleSelectAll}
+          >
+            全选
+            <Checkbox
+              size="medium"
+              checked={isAllSelected}
+              indeterminate={indeterminate}
+            />
+          </div>
+        ),
+        className: `${prefix}-tree-treenode-all`,
+        key: `${prefix}-tree-treenode-all`,
+        checkable: false,
+        disableCheckbox: true,
+      })
+    }
+
+    return dataNode
+  }
+
   listenInputChange = (e: any) => {
     const {
       target: { value },
@@ -514,6 +698,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       rightIcon,
       resultRender,
       resultVisible,
+      selectAll,
       showCheckedStrategy,
       topContent,
       treeData,
@@ -529,7 +714,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
     const { hash, topContentPortalTarget, value } = this.state
 
-    const classSet = classNames(className, `${prefix}-wrapper`, {
+    const classSet = classNames(className, {
       [`${prefix}_resultHidden`]: !resultVisible,
     })
 
@@ -581,6 +766,28 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       restProps.maxTagCount = 0
     }
 
+    const treeDataFinal =
+      this.convertTreeData(treeData, { selectAll }) ||
+      this.convertChildrenToData(children, { selectAll })
+
+    this.treeData = treeDataFinal
+    this.treeValueAll = treeDataFinal
+      .map(({ value: val, disabled, disableCheckbox, checkable }) => {
+        if (
+          val !== undefined &&
+          !disabled &&
+          !disableCheckbox &&
+          checkable !== false
+        ) {
+          return val
+        }
+        return undefined
+      })
+      .filter(Boolean)
+
+    // 是否是多层级
+    const multiLevel = treeDataFinal.some((o) => o.children?.length)
+
     return (
       <ConfigContext.Consumer>
         {({ getPopupContainer: getPopupContainerContext }) => (
@@ -601,9 +808,12 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                 resultVisible ? autoClearSearchValue : false
               }
               className={classSet}
-              dropdownClassName={`${prefix}-dropdown-${
-                multiple ? "multiple" : "single"
-              } ${prefix}-dropdown_${hash}`}
+              dropdownClassName={classNames(`${prefix}-dropdown_${hash}`, {
+                [`${prefix}-dropdown-multiple`]: multiple,
+                [`${prefix}-dropdown-single`]: !multiple,
+                [`${prefix}-dropdown-all`]: selectAll,
+                [`${prefix}-dropdown-single-level`]: !multiLevel,
+              })}
               dropdownPopupAlign={
                 placement && getPlacements({ alignEdge: true })[placement]
               }
@@ -611,7 +821,16 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               getPopupContainer={getPopupContainer || getPopupContainerContext}
               inputIcon={<Icon icon="triangle-down" />}
               maxTagPlaceholder={this.getMaxTagPlaceholder}
-              notFoundContent="无匹配结果"
+              notFoundContent={
+                <>
+                  <Icon
+                    icon="file-outlined"
+                    color="var(--transparent-gray-600)"
+                    style={{ marginRight: "4px" }}
+                  />
+                  无匹配项
+                </>
+              }
               onChange={this.handleChange}
               onSearch={this.handleSearch}
               placeholder={placeholder}
@@ -626,9 +845,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               transitionName="slide-up"
               treeCheckable={checkbox}
               treeNodeFilterProp="title"
-              listItemHeight={36}
+              listItemHeight={32}
               listHeight={280}
-              treeData={treeData || convertChildrenToData(children)}
+              treeData={treeDataFinal}
               onDropdownVisibleChange={(visible: boolean) => {
                 /**
                  * 20210323 visible false 时输入框会被情况，但没有调用 onSearch
@@ -642,9 +861,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                 }
               }}
               {...restProps}
-            >
-              {children}
-            </RcTreeSelect>
+            />
             {!!rightIcon && multiple && (
               <Icon icon={rightIcon} className="adui-tree-select-icon" />
             )}
