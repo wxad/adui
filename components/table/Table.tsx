@@ -1440,7 +1440,16 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           tr,
           expandedRowKeys.includes(key) ? (
             <div className={`${prefix}-expandRow`} key="tr-expand">
-              {!!expandedRowRender && expandedRowRender(row, rowIndex)}
+              <div
+                className={`${prefix}-expandRow-inner`}
+                style={
+                  isMainTableOverflowX
+                    ? { width: mainTableStyle.width }
+                    : undefined
+                }
+              >
+                {!!expandedRowRender && expandedRowRender(row, rowIndex)}
+              </div>
             </div>
           ) : null,
         ]

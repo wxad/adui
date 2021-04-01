@@ -211,6 +211,11 @@ $prefix: "adui-table";
     min-width: 100%;
     background-color: #fff;
 
+    &-inner {
+      position: sticky;
+      left: 0;
+    }
+
     &:not(:last-of-type) {
       box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08) inset;
     }
@@ -253,7 +258,9 @@ $prefix: "adui-table";
   }
   &-tbody {
     position: relative;
-    display: flex;
+    display: inline-flex;
+    min-width: 100%;
+    vertical-align: top;
     align-items: baseline; // 此行非常重要，为了让 -tr 扩充宽度
     flex-direction: column;
 
