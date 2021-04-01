@@ -19,7 +19,7 @@ interface IFixedColumnsInfo {
     isFirstRight?: boolean;
     offset?: number;
 }
-export interface ITableProps<T extends IBaseObject> {
+export interface ITableProps<T extends IBaseObject = IBaseObject> {
     [key: string]: any;
     /**
      * 统一地控制列水平靠齐方向
@@ -228,7 +228,7 @@ export interface ITableState {
 /**
  * 表格是一种格式化信息的展示形式。通常服务于大量数据浏览、管理场景。
  */
-declare class Table<T extends IBaseObject> extends React.Component<ITableProps<T>, ITableState> {
+declare class Table<T extends IBaseObject = IBaseObject> extends React.Component<ITableProps<T>, ITableState> {
     static Column: typeof Column;
     static propTypes: {
         /**

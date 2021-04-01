@@ -4,7 +4,7 @@ import { IPopoverProps } from "../popover";
 interface IBaseObject {
     [key: string]: any;
 }
-export interface IColumnProps<T extends IBaseObject> {
+export interface IColumnProps<T extends IBaseObject = IBaseObject> {
     /**
      * 水平靠齐方向
      */
@@ -93,7 +93,7 @@ export interface IColumnProps<T extends IBaseObject> {
  * Column.js 的作用仅是约束 PropTypes。
  * 每一列的 props 在 ColumnManager.js 中得到处理。
  */
-declare function Column<T extends IBaseObject>(props: IColumnProps<T>): JSX.Element;
+declare function Column<T extends IBaseObject = IBaseObject>(props: IColumnProps<T>): JSX.Element;
 declare namespace Column {
     var propTypes: {
         /**

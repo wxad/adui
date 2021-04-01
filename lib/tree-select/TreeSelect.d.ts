@@ -1,6 +1,7 @@
 import * as React from "react";
 import RcTreeSelect, { TreeNode } from "rc-tree-select";
 import PropTypes from "prop-types";
+import { IPopoverProps } from "../popover";
 import { Placement } from "../pop-trigger";
 import "./style";
 export declare type TreeNodeValue = string[] | number[] | null;
@@ -10,6 +11,20 @@ export interface ITreeNode {
     key: string;
     disabled: boolean;
 }
+export interface DataNode {
+    [key: string]: any;
+    value?: React.ReactText;
+    title?: React.ReactNode;
+    label?: React.ReactNode;
+    key?: React.ReactText;
+    disabled?: boolean;
+    disableCheckbox?: boolean;
+    checkable?: boolean;
+    popover?: React.ReactNode;
+    popoverProps?: IPopoverProps;
+    children?: DataNode[];
+}
+export declare type TreeData = DataNode[] | undefined;
 export interface ITreeSelectProps {
     [key: string]: any;
     autoClearSearchValue?: boolean;
@@ -25,8 +40,10 @@ export interface ITreeSelectProps {
     placement?: Placement;
     resultRender?: null | ((values: ITreeNode[]) => JSX.Element);
     resultVisible?: boolean;
+    selectAll?: boolean;
     showCheckedStrategy?: "show-all" | "show-child" | "show-parent";
     topContent?: React.ReactNode;
+    treeData?: TreeData;
     value?: TreeNodeValue;
 }
 export interface ITreeSelectState {
@@ -117,6 +134,10 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
          */
         rightIcon: PropTypes.Requireable<string>;
         /**
+         * 是否开启全选功能
+         */
+        selectAll: PropTypes.Requireable<boolean>;
+        /**
          * 定义选中项回填的方式：
          * 1. show-all：显示包括父节点的所有选中节点；
          * 2. show-parent：只显示父节点；
@@ -127,6 +148,10 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
          * 下拉框顶部显示的自定义元素
          */
         topContent: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+        /**
+         * treeNodes 数据，格式参照 interface DataNode
+         */
+        treeData: PropTypes.Requireable<any[]>;
         /**
          * 外部控制：选中的 key
          */
@@ -140,6 +165,8 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     select: typeof RcTreeSelect;
     portal: React.ReactNode;
     wrapper: HTMLDivElement;
+    treeData: DataNode[];
+    treeValueAll: any[];
     constructor(props: ITreeSelectProps);
     shouldComponentUpdate: (nextProps: ITreeSelectProps, nextState: ITreeSelectState) => boolean;
     saveSelect: (node: React.ReactNode) => void;
@@ -151,7 +178,12 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     handleSearch: (val: string) => void;
     filterTreeNode: (input: string, treeNode: any) => boolean;
     getMaxTagCount: () => 0 | null;
+    handleSelectAll: () => void;
     getMaxTagPlaceholder: (nodes: ITreeNode[]) => JSX.Element | null;
+    convertChildrenToData: (nodes: any) => DataNode[];
+    convertTreeData: (dataNode: TreeData, options?: {
+        selectAll?: boolean;
+    }) => TreeData;
     listenInputChange: (e: any) => void;
     componentDidMount: () => void;
     componentDidUpdate: () => void;

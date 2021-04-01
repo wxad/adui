@@ -489,13 +489,8 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     )
   }
 
-  public convertChildrenToData = (
-    nodes: any,
-    options: { selectAll?: boolean } = {}
-  ): DataNode[] => {
-    const { selectAll } = options
-
-    const result = toArray(nodes)
+  public convertChildrenToData = (nodes: any): DataNode[] =>
+    toArray(nodes)
       .map((node: React.ReactElement) => {
         if (!React.isValidElement(node) || !node.type) {
           return null
@@ -540,15 +535,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         return data
       })
       .filter((data) => data)
-
-    if (selectAll) {
-      result.unshift({
-        title: <div>全选</div>,
-      })
-    }
-
-    return result
-  }
 
   public convertTreeData = (
     dataNode: TreeData,
@@ -768,7 +754,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
     const treeDataFinal =
       this.convertTreeData(treeData, { selectAll }) ||
-      this.convertChildrenToData(children, { selectAll })
+      this.convertChildrenToData(children)
 
     this.treeData = treeDataFinal
     this.treeValueAll = treeDataFinal

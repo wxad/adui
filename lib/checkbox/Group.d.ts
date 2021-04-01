@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style";
 declare type ValueType = React.ReactText;
-export interface ICheckboxGroupProps<T extends ValueType> {
+export interface ICheckboxGroupProps<T extends ValueType = ValueType> {
     /**
      * 子节点
      */
@@ -35,7 +35,7 @@ export interface ICheckboxGroupProps<T extends ValueType> {
 /**
  * 勾选组
  */
-declare function Group<T extends ValueType>({ children, className, defaultValue, disabled, onChange, size, value: valueProp, ...otherProps }: ICheckboxGroupProps<T>): JSX.Element;
+declare function Group<T extends ValueType = ValueType>({ children, className, defaultValue, disabled, onChange, size, value: valueProp, ...otherProps }: ICheckboxGroupProps<T>): JSX.Element;
 declare namespace Group {
     var propTypes: {
         /**

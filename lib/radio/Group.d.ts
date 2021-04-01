@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style";
 declare type ValueType = React.ReactText;
-export interface IRadioGroupProps<T extends ValueType> {
+export interface IRadioGroupProps<T extends ValueType = ValueType> {
     [key: string]: any;
     /**
      * 子节点
@@ -36,7 +36,7 @@ export interface IRadioGroupProps<T extends ValueType> {
 /**
  * 单选组，用以统一地管理内部单选状态。
  */
-declare function Group<T extends ValueType>({ children, className, defaultValue, disabled, onChange, size, value: valueProp, ...otherProps }: IRadioGroupProps<T>): JSX.Element;
+declare function Group<T extends ValueType = ValueType>({ children, className, defaultValue, disabled, onChange, size, value: valueProp, ...otherProps }: IRadioGroupProps<T>): JSX.Element;
 declare namespace Group {
     var propTypes: {
         /**
