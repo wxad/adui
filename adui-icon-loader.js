@@ -33,7 +33,7 @@ var ICON_DEFAULTS = {
   numericinput: ["arrow-up", "arrow-down"],
   tag: ["cancel-circle"],
   timepicker: ["time-outlined"],
-  treeselect: ["menu", "arrow-right", "triangle-down", "cancel"],
+  treeselect: ["menu", "triangle-right", "triangle-down", "cancel", "file-outlined"],
   upload: ["delete-outlined", "add", "cancel"],
 }
 

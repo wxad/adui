@@ -206,7 +206,14 @@ $prefix: "adui-table";
       width: 50px;
       user-select: none;
     }
+
+    &_both {
+      .#{$prefix}-cell {
+        width: 80px;
+      }
+    }
   }
+
   &-expandRow {
     min-width: 100%;
     background-color: #fff;
@@ -329,6 +336,18 @@ $prefix: "adui-table";
     &:active {
       .#{$prefix}-expandIcon {
         fill: var(--gray-800);
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 80px;
+
+      .#{$prefix}-selectComponent {
+        &::after {
+          display: none;
+        }
       }
     }
   }

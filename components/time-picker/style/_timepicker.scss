@@ -4,35 +4,28 @@ $prefix: "adui-time";
 
 .#{$prefix} {
   &-large {
-    &.#{$prefix}-input,
-    &.#{$prefix}-integerTimeSelect {
-      width: 104px;
-    }
+    --width: var(--tp-w-lg);
   }
   &-medium {
-    &.#{$prefix}-input,
-    &.#{$prefix}-integerTimeSelect {
-      width: 88px;
-    }
+    --width: var(--tp-w-md);
   }
   &-small {
-    &.#{$prefix}-input,
-    &.#{$prefix}-integerTimeSelect {
-      width: 84px;
-    }
+    --width: var(--tp-w-sm);
   }
   &-mini {
-    &.#{$prefix}-input,
-    &.#{$prefix}-integerTimeSelect {
-      width: 78px;
-    }
+    --width: var(--tp-w-mn);
   }
-  // TimeSelect 样式
+
+  &-input {
+    width: calc(var(--width) * 1px);
+  }
+
+  // TimeSelect
   &-timeSelect {
     display: inline-block;
     vertical-align: top;
     padding-bottom: 150px;
-    width: 64px;
+    width: calc(var(--width) * 0.5px);
     height: 180px;
     overflow: hidden;
     @include mixins.scrollbar();
@@ -48,11 +41,12 @@ $prefix: "adui-time";
 
   &-integerTimeSelect {
     overflow: auto;
+    width: var(--width);
   }
 
   &-item {
     display: flex;
-    padding-left: 16px;
+    padding-left: 8px;
     width: 100%;
     height: 30px;
     align-items: center;

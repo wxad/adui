@@ -7,7 +7,9 @@
     "es",
     "adui-icon-loader.js",
     "adui-icon-plugin.js",
-    "adui-tailwind-config.js"
+    "adui-tailwind-config.js",
+    "adui-tailwind.css",
+    "tailwind.config.js"
   ],
   "keywords": [
     "design",
