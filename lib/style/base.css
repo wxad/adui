@@ -75,6 +75,12 @@
   --dialog-offset-y: 0px;
   --message-offset-x: 0px;
   --message-offset-y: 0px;
+
+  /* TimePicker */
+  --tp-w-mn: 78;
+  --tp-w-sm: 84;
+  --tp-w-md: 88;
+  --tp-w-lg: 104;
 }
 html {
   box-sizing: border-box;
