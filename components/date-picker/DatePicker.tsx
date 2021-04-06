@@ -70,11 +70,11 @@ export interface IDatePickerProps {
   /**
    * 最大限制日期
    */
-  maxDate?: Date
+  maxDate?: Date | null
   /**
    * 最小限制日期
    */
-  minDate?: Date
+  minDate?: Date | null
   /**
    * 日期改变时的 handler
    */
