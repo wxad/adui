@@ -44,6 +44,7 @@ const noop = () => {}
 const prefix = "adui-table"
 const TD_MIN_WIDTH = 100
 const SELECT_TD_WIDTH = 50
+const SELECT_AND_EXPAND_TD_WIDTH = 80
 const TD_HEIGHT = {
   large: 60,
   medium: 50,
@@ -1139,8 +1140,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      * 展开行和选择行时，thead和每行的第一列前都要加入一列
      * 此列也会影响 sticky 的偏移位置
      */
-    const theadPlaceholderVisible =
-      expandIconVisible && (!!onSelectChange || !!onExpandChange)
+    const selectAndExpand = !!onSelectChange || !!onExpandChange
+    const theadPlaceholderVisible = expandIconVisible && selectAndExpand
 
     const thead = (
       <div
@@ -1158,6 +1159,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           <div
             className={classNames(`${prefix}-th`, `${prefix}-th_functional`, {
               [`${prefix}-th_left`]: isAnyColumnsLeftFixed(),
+              [`${prefix}-th_functional_both`]: selectAndExpand,
             })}
             key="functional-all"
           >
@@ -1243,7 +1245,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                   left: isFixedLeft(col)
                     ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
                         ?.offset || 0) +
-                      (theadPlaceholderVisible ? SELECT_TD_WIDTH : 0)
+                      (theadPlaceholderVisible
+                        ? selectAndExpand
+                          ? SELECT_AND_EXPAND_TD_WIDTH
+                          : SELECT_TD_WIDTH
+                        : 0)
                     : undefined,
                   right: isFixedRight(col)
                     ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
@@ -1334,7 +1340,12 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         ...(selectPropsGetted || {}),
       }
       const selectProps = omit(allSelectProps, ["popoverProps"])
-      const selectCell = onExpandChange ? (
+      const selectContent = selectMultiple ? (
+        <Checkbox {...selectProps} />
+      ) : (
+        <Radio {...selectProps} />
+      )
+      const expandContent = (
         <div
           className={`${prefix}-selectComponent`}
           style={{ cursor: "pointer" }}
@@ -1343,11 +1354,16 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         >
           <Icon className={`${prefix}-expandIcon`} icon="arrow-down" />
         </div>
-      ) : selectMultiple ? (
-        <Checkbox {...selectProps} />
-      ) : (
-        <Radio {...selectProps} />
       )
+      let selectCell = onExpandChange ? expandContent : selectContent
+      if (selectAndExpand) {
+        selectCell = (
+          <div className={`${prefix}-selectComponent-wrapper`}>
+            {selectContent}
+            {expandContent}
+          </div>
+        )
+      }
       const generateTr = (columnsParam: any[], parentIndex?: number) => {
         columnsParam.forEach((col, colIndexParam) => {
           /**
@@ -1404,6 +1420,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             <div
               className={classNames(`${prefix}-td`, `${prefix}-td_functional`, {
                 [`${prefix}-td_left`]: isAnyColumnsLeftFixed(),
+                [`${prefix}-td_functional_both`]: selectAndExpand,
               })}
               key="functional"
               role="cell"
@@ -1663,8 +1680,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       onSelectChange,
       verticalAlign: verticalAlignProp,
     } = this.props
-    const theadPlaceholderVisible =
-      expandIconVisible && (!!onSelectChange || !!onExpandChange)
+    const selectAndExpand = !!onSelectChange || !!onExpandChange
+    const theadPlaceholderVisible = expandIconVisible && selectAndExpand
     const { currentlyResizing, fixedColumnsInfos, resized } = this.state
     const {
       align,
@@ -1741,7 +1758,12 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         style={{
           left: isFixedLeft(cell)
             ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
-                ?.offset || 0) + (theadPlaceholderVisible ? SELECT_TD_WIDTH : 0)
+                ?.offset || 0) +
+              (theadPlaceholderVisible
+                ? selectAndExpand
+                  ? SELECT_AND_EXPAND_TD_WIDTH
+                  : SELECT_TD_WIDTH
+                : 0)
             : undefined,
           right: isFixedRight(cell)
             ? fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)?.offset
