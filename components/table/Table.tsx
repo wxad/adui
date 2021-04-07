@@ -1140,8 +1140,9 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      * 展开行和选择行时，thead和每行的第一列前都要加入一列
      * 此列也会影响 sticky 的偏移位置
      */
-    const selectAndExpand = !!onSelectChange || !!onExpandChange
-    const theadPlaceholderVisible = expandIconVisible && selectAndExpand
+    const selectAndExpand = !!onSelectChange && !!onExpandChange
+    const theadPlaceholderVisible =
+      expandIconVisible && (!!onSelectChange || !!onExpandChange)
 
     const thead = (
       <div
@@ -1680,8 +1681,9 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       onSelectChange,
       verticalAlign: verticalAlignProp,
     } = this.props
-    const selectAndExpand = !!onSelectChange || !!onExpandChange
-    const theadPlaceholderVisible = expandIconVisible && selectAndExpand
+    const selectAndExpand = !!onSelectChange && !!onExpandChange
+    const theadPlaceholderVisible =
+      expandIconVisible && (!!onSelectChange || !!onExpandChange)
     const { currentlyResizing, fixedColumnsInfos, resized } = this.state
     const {
       align,
