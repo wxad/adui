@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+/* eslint-disable no-empty */
+/* eslint-disable react/no-did-update-set-state */
 import * as React from "react"
 import RcTreeSelect, {
   SHOW_ALL,
@@ -75,6 +77,7 @@ export interface ITreeSelectProps {
   defaultValue?: TreeNodeValue
   disabled?: boolean
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
+  heightFixed?: boolean
   maxTagCount?: null | number
   multiple?: boolean
   onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void
@@ -94,6 +97,7 @@ export interface ITreeSelectState {
   hash: string
   topContentPortalTarget?: HTMLDivElement
   value?: TreeNodeValue
+  maxHeightFixed: boolean
 }
 
 export interface ITreeNodeProps {
@@ -139,6 +143,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      * 指定弹出层的父级，默认为 document.body
      */
     getPopupContainer: PropTypes.func,
+    /**
+     * 高度是否固定一行，TreeSelect 将根据内容区域宽度自动将结果收起，开启这个 Prop 后 TreeSelect 会忽略 maxTagCount Prop
+     */
+    heightFixed: PropTypes.bool,
     /**
      * 最多显示多少个 tag，如果超过了则以收起的形式出现
      */
@@ -227,6 +235,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     defaultValue: null,
     disabled: false,
     getPopupContainer: null,
+    heightFixed: false,
     maxTagCount: null,
     multiple: true,
     onChange: noop,
@@ -273,6 +282,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     this.state = {
       hash: Math.random().toString(36).substring(3, 8),
       value: valueState,
+      maxHeightFixed: false,
     }
   }
 
@@ -296,18 +306,13 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
   public renderSwitcherIcon = ({ isLeaf, loading }: ITreeNodeProps) => {
     if (loading) {
-      return (
-        <Spinner size="mini" className="adui-tree-select-tree-switcher-icon" />
-      )
+      return <Spinner size="mini" className={`${prefix}-tree-switcher-icon`} />
     }
     if (isLeaf) {
       return null
     }
     return (
-      <Icon
-        icon="triangle-right"
-        className="adui-tree-select-tree-switcher-icon"
-      />
+      <Icon icon="triangle-right" className={`${prefix}-tree-switcher-icon`} />
     )
   }
 
@@ -374,9 +379,12 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
   public getMaxTagCount = () => {
     const { maxTagCount } = this.props
-    const { value } = this.state
+    const { value, maxHeightFixed } = this.state
 
-    if (!maxTagCount || !value || value.length <= maxTagCount) {
+    if (
+      (!maxTagCount || !value || value.length <= maxTagCount) &&
+      !maxHeightFixed
+    ) {
       return null
     }
     return 0
@@ -421,11 +429,20 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     const { length } = nodes
     const placeholderText = (
       <>
-        <span style={{ display: "inline-block", verticalAlign: "top" }}>
+        <span
+          style={{
+            display: "inline-block",
+            verticalAlign: "top",
+            maxWidth: "calc(100% - 53px)",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
           {nodes[0].label}
         </span>
         <span style={{ display: "inline-block", verticalAlign: "top" }}>
-          ...等 {length} 个
+          等 {length} 个
         </span>
       </>
     )
@@ -435,10 +452,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         alignEdge={false}
         placement="top"
         popup={
-          <div className="adui-tree-select-max-popover-item-wrapper">
+          <div className={`${prefix}-max-popover-item-wrapper`}>
             {nodes.map(({ key, disabled, label }, i) => {
               return (
-                <div className="adui-tree-select-max-popover-item" key={key}>
+                <div className={`${prefix}-max-popover-item`} key={key}>
                   <span>{label}</span>
                   {!disabled && (
                     <Icon
@@ -464,10 +481,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
             })}
           </div>
         }
-        popupClassName="adui-tree-select-maxPopover"
+        popupClassName={`${prefix}-maxPopover`}
       >
         <div
-          className="adui-tree-select-maxPlaceholder"
+          className={`${prefix}-maxPlaceholder`}
           role="none"
           onClick={(e) => e.stopPropagation()}
         >
@@ -516,9 +533,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
           dataTitle: title,
           title: popover ? (
             <>
-              <div className="adui-tree-select-pop-trigger">{title}</div>
+              <div className={`${prefix}-pop-trigger`}>{title}</div>
               <Popover popup={popover} placement="right" {...popoverProps}>
-                <div className="adui-tree-select-pop-trigger-placeholder" />
+                <div className={`${prefix}-pop-trigger-placeholder`} />
               </Popover>
             </>
           ) : (
@@ -654,8 +671,12 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     }
   }
 
-  public componentDidUpdate = () => {
-    const { resultVisible } = this.props
+  public componentDidUpdate = (
+    _: ITreeSelectProps,
+    { value: valuePrev }: ITreeSelectState
+  ) => {
+    const { resultVisible, heightFixed } = this.props
+    const { hash, value, maxHeightFixed } = this.state
     /**
      * resultVisible 为 false 时， selector 高度不会改变。
      * 根据我的经验 Popup 触发重新定位的时机是：
@@ -668,6 +689,41 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         window.dispatchEvent(new Event("resize"))
       }, 0)
     }
+
+    if (heightFixed && valuePrev?.length !== value?.length) {
+      try {
+        const wrapper = document.querySelector(
+          `.${prefix}-wrapper_${hash} .${prefix}-selection-overflow`
+        ) as HTMLDivElement
+        const suffix = document.querySelector(
+          `.${prefix}-wrapper_${hash} .${prefix}-selection-overflow-item-suffix`
+        ) as HTMLDivElement
+        const last = suffix.children[
+          suffix.children.length - 1
+        ] as HTMLDivElement
+        if (
+          last.offsetLeft > wrapper.offsetWidth - 30 &&
+          !maxHeightFixed &&
+          valuePrev &&
+          value &&
+          valuePrev.length < value.length
+        ) {
+          this.setState({
+            maxHeightFixed: true,
+          })
+        } else if (
+          last.offsetLeft < wrapper.offsetWidth - 30 &&
+          maxHeightFixed &&
+          valuePrev &&
+          value &&
+          valuePrev.length > value.length
+        ) {
+          this.setState({
+            maxHeightFixed: false,
+          })
+        }
+      } catch (error) {}
+    }
   }
 
   public render() {
@@ -676,6 +732,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       children,
       className,
       getPopupContainer,
+      heightFixed,
       maxTagCount,
       multiple,
       onDropdownVisibleChange,
@@ -698,7 +755,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       "value",
     ])
 
-    const { hash, topContentPortalTarget, value } = this.state
+    const { hash, topContentPortalTarget, value, maxHeightFixed } = this.state
 
     const classSet = classNames(className, {
       [`${prefix}_resultHidden`]: !resultVisible,
@@ -711,7 +768,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
           <svg
             width="12"
             height="10"
-            className="adui-tree-select-tree-checkbox-indeterminateSvg"
+            className={`${prefix}-tree-checkbox-indeterminateSvg`}
           >
             <rect
               x="1"
@@ -726,7 +783,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
           <svg
             width="12"
             height="10"
-            className="adui-tree-select-tree-checkbox-checkedSvg"
+            className={`${prefix}-tree-checkbox-checkedSvg`}
           >
             <path
               d="M.618 5.827a.463.463 0 0 1-.02-.675l.804-.804a.52.52 0 0 1 .716-.01L4.75 6.75l4.922-5.625a.513.513 0 0 1 .707-.06l.742.62a.478.478 0 0 1 .044.687l-6.08 6.756a.506.506 0 0 1-.703.045L.618 5.827z"
@@ -741,7 +798,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       restProps.value = value
     }
 
-    if (maxTagCount !== null) {
+    if (maxTagCount !== null || maxHeightFixed) {
       const count = this.getMaxTagCount()
       if (count !== null) {
         restProps.maxTagCount = count
@@ -778,10 +835,14 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       <ConfigContext.Consumer>
         {({ getPopupContainer: getPopupContainerContext }) => (
           <div
-            className={classNames("adui-tree-select-wrapper", {
-              "adui-tree-select-wrapper-maxTag": this.getMaxTagCount() !== null,
-              "adui-tree-select-wrapper-resultRender": !!resultRender,
-            })}
+            className={classNames(
+              `${prefix}-wrapper ${prefix}-wrapper_${hash}`,
+              {
+                [`${prefix}-wrapper-maxTag`]: this.getMaxTagCount() !== null,
+                [`${prefix}-wrapper-fixed`]: heightFixed,
+                [`${prefix}-wrapper-resultRender`]: !!resultRender,
+              }
+            )}
             ref={this.saveWrapper}
           >
             {topContent && topContentPortalTarget && (
@@ -820,7 +881,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               onChange={this.handleChange}
               onSearch={this.handleSearch}
               placeholder={placeholder}
-              prefixCls="adui-tree-select"
+              prefixCls={prefix}
               ref={this.saveSelect}
               removeIcon={<Icon icon="cancel" interactive size={16} />}
               showCheckedStrategy={
@@ -849,7 +910,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               {...restProps}
             />
             {!!rightIcon && multiple && (
-              <Icon icon={rightIcon} className="adui-tree-select-icon" />
+              <Icon icon={rightIcon} className={`${prefix}-icon`} />
             )}
           </div>
         )}

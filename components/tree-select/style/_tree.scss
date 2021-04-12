@@ -31,6 +31,24 @@ $prefix: "adui-tree-select";
         }
       }
     }
+
+    &-fixed {
+      .#{$prefix} {
+        &-selection-overflow {
+          flex-wrap: nowrap;
+
+          &-item {
+            max-width: 75%;
+          }
+
+          &-item-suffix {
+            max-width: initial;
+            flex: 1;
+            min-width: 0;
+          }
+        }
+      }
+    }
   }
 
   &-selector {
@@ -390,6 +408,7 @@ $prefix: "adui-tree-select";
     &-search {
       position: relative;
       max-width: 100%;
+      min-width: 6px;
       margin-top: 2px;
       margin-bottom: 2px;
       margin-left: 4px;
@@ -397,8 +416,11 @@ $prefix: "adui-tree-select";
       &-input {
         margin: 0;
         padding: 0;
-        min-width: 100%;
+        min-width: 6px;
+        width: 100%;
         height: 24px;
+        font-size: 13px;
+        line-height: 15px;
         background-color: transparent;
         border: none;
         outline: none;
@@ -431,7 +453,7 @@ $prefix: "adui-tree-select";
       margin-top: 3px;
       margin-right: 4px;
       margin-bottom: 3px;
-      padding: 0 4px 0 2px;
+      padding: 0 4px;
       height: 22px;
       border-radius: 4px;
       box-shadow: 0 0 0 1px rgba(163, 163, 163, 0.25);
