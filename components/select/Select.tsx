@@ -43,11 +43,15 @@ export interface ISelectProps {
    */
   className?: string
   /**
-   * 内部驱动：是否展开
+   * 内部驱动：是否初始展开
    */
   defaultOpen?: boolean | null
   /**
-   * 内部驱动：当前选中项的值
+   * 内部驱动：搜索的初始值
+   */
+  defaultSearchValue?: string | null
+  /**
+   * 内部驱动：选中项的初始值
    */
   defaultValue?: React.ReactText | null
   /**
@@ -62,6 +66,10 @@ export interface ISelectProps {
    * 下拉展示发生变化时的 handler，参数：bool
    */
   onDropdownVisibleChange?: (open: boolean) => void
+  /**
+   * 搜索时的 handler，参数：value
+   */
+  onSearch?: (value: string) => void
   /**
    * 选择时的 handler，参数：(value, option)
    */
@@ -87,6 +95,10 @@ export interface ISelectProps {
    */
   searchable?: boolean
   /**
+   * 外部控制：搜索值
+   */
+  searchValue?: string | null
+  /**
    * 是否需要内嵌搜索
    */
   searchPlaceholder?: string
@@ -110,6 +122,7 @@ export interface ISelectState {
   placeholderText?: string
   value?: React.ReactText | null
   selectId?: string
+  searchValue?: string
 }
 
 /**
@@ -138,6 +151,10 @@ class Select extends React.Component<ISelectProps, ISelectState> {
      */
     defaultOpen: PropTypes.bool,
     /**
+     * 内部驱动：搜索的初始值
+     */
+    defaultSearchValue: PropTypes.string,
+    /**
      * 内部驱动：当前选中项的值
      */
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -153,6 +170,10 @@ class Select extends React.Component<ISelectProps, ISelectState> {
      * 下拉展示发生变化时的 handler，参数：bool
      */
     onDropdownVisibleChange: PropTypes.func,
+    /**
+     * 搜索时的 handler，参数：value
+     */
+    onSearch: PropTypes.func,
     /**
      * 选择时的 handler，参数：(value, option)
      */
@@ -195,6 +216,10 @@ class Select extends React.Component<ISelectProps, ISelectState> {
      */
     searchable: PropTypes.bool,
     /**
+     * 外部控制：搜索值
+     */
+    searchValue: PropTypes.string,
+    /**
      * 设置尺寸，跟着 button 走
      */
     size: PropTypes.oneOf(["mini", "small", "medium", "large"]),
@@ -212,10 +237,12 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     children: null,
     className: undefined,
     defaultOpen: null,
+    defaultSearchValue: null,
     defaultValue: null,
     dropdownMatchSelectWidth: true,
     getPopupContainer: null,
     onDropdownVisibleChange: noop,
+    onSearch: noop,
     onSelect: noop,
     open: null,
     placeholder: "请选择",
@@ -223,13 +250,21 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     rightIcon: "triangle-down",
     searchPlaceholder: "搜索",
     searchable: false,
+    searchValue: null,
     size: "small",
     theme: null,
     value: null,
   }
 
-  public static getDerivedStateFromProps = ({ open, value }: ISelectProps) => {
+  public static getDerivedStateFromProps = ({
+    open,
+    searchValue,
+    value,
+  }: ISelectProps) => {
     const newState: ISelectState = {}
+    if (searchValue !== null) {
+      newState.searchValue = searchValue
+    }
     if (open !== null) {
       newState.open = open
     }
@@ -253,7 +288,14 @@ class Select extends React.Component<ISelectProps, ISelectState> {
 
   constructor(props: ISelectProps) {
     super(props)
-    const { defaultOpen, defaultValue, open, value } = props
+    const {
+      defaultOpen,
+      defaultSearchValue,
+      defaultValue,
+      open,
+      value,
+      searchValue,
+    } = props
 
     let valueState
     if (value !== null) {
@@ -272,9 +314,18 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     } else if (defaultOpen !== null) {
       openState = defaultOpen
     }
+
+    let searchValueState
+    if (searchValue !== null) {
+      searchValueState = searchValue
+    } else if (defaultSearchValue !== null) {
+      searchValueState = defaultSearchValue
+    }
+
     this.state = {
       open: openState,
       placeholderShow: false,
+      searchValue: searchValueState,
       selectId: "",
       placeholderText: "",
       value: valueState,
@@ -291,7 +342,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
 
   public onDropdownVisibleChange = (open: boolean) => {
     const { onDropdownVisibleChange, open: openProp } = this.props
-    const { value, selectId } = this.state
+    const { value, selectId, searchValue } = this.state
 
     if (this.locked) {
       return
@@ -301,43 +352,48 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     }
     if (open) {
       this.preventVisibleChange()
-
       setTimeout(() => {
         if (this.search) {
-          if (value) {
-            let id = selectId
-            if (!selectId) {
-              id = (this.search.parentNode?.nextSibling as Element)?.id
-              this.setState({ selectId: id })
-            }
-            if (id) {
-              const parent = document.getElementById(id)?.nextSibling as Element
-              const el = parent?.getElementsByClassName(
-                "adui-select-item-option-selected"
-              )[0]?.children[0] as HTMLElement
+          let id = selectId
+          if (!selectId) {
+            id = (this.search.parentNode?.nextSibling as Element)?.id
+            this.setState({ selectId: id })
+          }
+          if (searchValue) {
+            this.handleSearchEffect({ id, val: searchValue })
+          }
+          setTimeout(() => {
+            if (value) {
+              if (id) {
+                const parent = document.getElementById(id)
+                  ?.nextSibling as Element
+                const el = parent?.getElementsByClassName(
+                  "adui-select-item-option-selected"
+                )[0]?.children[0] as HTMLElement
 
-              const listHolder = parent?.getElementsByClassName(
-                "rc-virtual-list-holder"
-              )[0] as HTMLElement
+                const listHolder = parent?.getElementsByClassName(
+                  "rc-virtual-list-holder"
+                )[0] as HTMLElement
 
-              if (listHolder) {
-                listHolder.dispatchEvent(new Event("scroll"))
+                if (listHolder) {
+                  listHolder.dispatchEvent(new Event("scroll"))
 
-                if (listHolder.children[0]) {
-                  listHolder.children[0].dispatchEvent(new Event("scroll"))
+                  if (listHolder.children[0]) {
+                    listHolder.children[0].dispatchEvent(new Event("scroll"))
+                  }
+                }
+
+                if (el) {
+                  this.setState({
+                    placeholderText: el.dataset.html || el.innerHTML,
+                  })
                 }
               }
-
-              if (el) {
-                this.setState({
-                  placeholderText: el.dataset.html || el.innerHTML,
-                })
-              }
             }
-          }
-          this.search.focus()
+            this.search.focus()
+          }, 150)
         }
-      }, 150)
+      }, 0)
     } else {
       if (this.search) {
         this.search.value = ""
@@ -374,6 +430,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
   public handleDropdownRender = (menu: JSX.Element) => {
     this.menu = menu
     const { searchable, searchPlaceholder } = this.props
+    const { searchValue } = this.state
     if (searchable) {
       return (
         <div>
@@ -382,9 +439,9 @@ class Select extends React.Component<ISelectProps, ISelectState> {
               ref={this.saveSearch}
               placeholder={searchPlaceholder}
               onChange={this.handleSearch}
-              onKeyDown={this.handleSearchKeyDown}
               onMouseDown={this.preventVisibleChange}
               onMouseUp={this.preventVisibleChange}
+              value={searchValue}
             />
             <Icon icon="search" className={`${prefix}-icon`} />
           </div>
@@ -397,37 +454,47 @@ class Select extends React.Component<ISelectProps, ISelectState> {
 
   public handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
-    const { placeholderShow, selectId } = this.state
-    if (val && !placeholderShow) {
-      this.setState({ placeholderShow: true })
-    }
-    if (!val && placeholderShow) {
-      this.setState({ placeholderShow: false })
-    }
+    // const { searchValue, onSearch } = this.props
+    const { selectId } = this.state
     if (this.select) {
       let id = selectId
       if (!selectId) {
         id = (e.target.parentNode?.nextSibling as Element)?.id
         this.setState({ selectId: id })
       }
-      const realInput = document.querySelector(`[aria-owns="${id}"]`) as any
-      if (realInput) {
-        const lastValue = realInput.value
-        realInput.value = val
-        const event = new Event("input", { bubbles: true })
-        // hack React16 内部定义了descriptor拦截value，此处重置状态
-        const tracker = realInput._valueTracker
-        if (tracker) {
-          tracker.setValue(lastValue)
-        }
-        realInput.dispatchEvent(event)
-      }
+      this.handleSearchEffect({ id, val })
     }
   }
 
-  public handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (this.select && this.select.onInputKeyDown) {
-      this.select.onInputKeyDown(e)
+  public handleSearchEffect = ({
+    id,
+    val: value,
+  }: {
+    id?: string
+    val?: string | null
+  }) => {
+    const { placeholderShow } = this.state
+    let val = value
+    if (!val) {
+      val = ""
+    }
+    if (val && !placeholderShow) {
+      this.setState({ placeholderShow: true })
+    }
+    if (!val && placeholderShow) {
+      this.setState({ placeholderShow: false })
+    }
+    const realInput = document.querySelector(`[aria-owns="${id}"]`) as any
+    if (realInput) {
+      const lastValue = realInput.value
+      realInput.value = val
+      const event = new Event("input", { bubbles: true })
+      // hack React16 内部定义了 descriptor 拦截 value，此处重置状态
+      const tracker = realInput._valueTracker
+      if (tracker) {
+        tracker.setValue(lastValue)
+      }
+      realInput.dispatchEvent(event)
     }
   }
 
@@ -437,6 +504,16 @@ class Select extends React.Component<ISelectProps, ISelectState> {
       this.locked = false
       this.setState({ open: true })
     }, 200)
+  }
+
+  public componentDidUpdate = ({
+    searchValue: searchValueOld,
+  }: ISelectProps) => {
+    const { searchValue } = this.props
+    const { selectId } = this.state
+    if (searchValue !== searchValueOld) {
+      this.handleSearchEffect({ id: selectId, val: searchValue })
+    }
   }
 
   public render() {
@@ -454,11 +531,13 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     } = this.props
 
     const restProps = omit(otherProps, [
+      "defaultSearchValue",
       "defaultValue",
       "open",
       "onDropdownVisibleChange",
       "onSelect",
       "searchPlaceholder",
+      "searchValue",
     ])
 
     const {
