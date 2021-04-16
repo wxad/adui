@@ -99,6 +99,10 @@ export interface IDrawerProps {
    * 外部控制：是否显示
    */
   visible?: boolean
+  /**
+   * 设置 z-index 层级，默认为 var(--z-index-dialog)
+   */
+  zIndex?: React.ReactNode
 }
 
 /**
@@ -120,8 +124,10 @@ const Drawer: React.FC<IDrawerProps> = ({
   placement,
   size,
   visible,
+  zIndex: zIndexProp,
   ...otherProps
 }: IDrawerProps) => {
+  const zIndex = zIndexProp as React.CSSProperties["zIndex"]
   const [hasEverOpened, setHasEverOpened] = useState(visible)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -190,7 +196,10 @@ const Drawer: React.FC<IDrawerProps> = ({
       <div
         className={`${prefix}-wrapper`}
         ref={wrapperRef}
-        style={{ display: visible ? "block" : "" }}
+        style={{
+          display: visible ? "block" : "",
+          zIndex,
+        }}
         tabIndex={0}
         role="none"
         onKeyDown={handleKeyDown}
@@ -321,6 +330,10 @@ Drawer.propTypes = {
    * 外部控制：是否显示
    */
   visible: PropTypes.bool,
+  /**
+   * 设置 z-index 层级，默认为 var(--z-index-dialog)
+   */
+  zIndex: PropTypes.any,
 }
 
 Drawer.defaultProps = {
@@ -339,6 +352,7 @@ Drawer.defaultProps = {
   placement: "right",
   size: "medium",
   visible: false,
+  zIndex: "var(--z-index-dialog)",
 }
 
 export default Drawer

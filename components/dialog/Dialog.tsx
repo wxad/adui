@@ -128,6 +128,10 @@ export interface IDialogProps extends IStepProps {
    * 外部控制：是否显示
    */
   visible?: null | boolean
+  /**
+   * 设置 z-index 层级，默认为 var(--z-index-dialog)
+   */
+  zIndex?: React.ReactNode
 }
 
 export interface IDialogState {
@@ -250,6 +254,10 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      * 外部控制：是否显示
      */
     visible: PropTypes.bool,
+    /**
+     * 设置 z-index 层级，默认为 var(--z-index-dialog)
+     */
+    zIndex: PropTypes.any,
   }
 
   public static defaultProps: IDialogProps = {
@@ -280,6 +288,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     title: null,
     type: "confirm",
     visible: null,
+    zIndex: "var(--z-index-dialog)",
   }
 
   public static info: any
@@ -529,8 +538,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
       steps,
       style,
       title,
+      zIndex: zIndexProp,
       ...otherProps
     } = this.props
+
+    const zIndex = zIndexProp as React.CSSProperties["zIndex"]
 
     const restProps = omit(otherProps, [
       "afterClose",
@@ -567,7 +579,10 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
               this.wrapper = wrapper
             }
           }}
-          style={{ display: visible ? "flex" : "" }}
+          style={{
+            display: visible ? "flex" : "",
+            zIndex,
+          }}
           tabIndex={0}
           role="none"
           onKeyDown={this.handleKeyDown}

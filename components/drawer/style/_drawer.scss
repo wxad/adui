@@ -19,7 +19,6 @@ $prefix: "adui-drawer";
 
   &-wrapper {
     outline: none;
-    z-index: var(--z-index-dialog);
     pointer-events: none;
   }
 

@@ -20,7 +20,6 @@ $prefix: "adui-dialog";
     justify-content: center;
     overflow: auto;
     outline: none;
-    z-index: var(--z-index-dialog);
   }
   &-inner {
     display: flex;

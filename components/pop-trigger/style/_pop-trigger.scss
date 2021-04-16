@@ -2,7 +2,7 @@
   position: absolute;
   top: -9999px;
   left: -9999px;
-  z-index: 1090;
+  z-index: var(--z-index-tooltip);
 }
 .rc-trigger-popup-hidden {
   display: none;
