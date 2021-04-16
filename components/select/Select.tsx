@@ -395,8 +395,14 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     return menu
   }
 
-  public handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value
+  public handleSearch = (e?: React.ChangeEvent<HTMLInputElement>) => {
+    let target: HTMLInputElement
+    if (e) {
+      target = e.target
+    } else {
+      target = this.search
+    }
+    const val = target.value
     const { placeholderShow, selectId } = this.state
     if (val && !placeholderShow) {
       this.setState({ placeholderShow: true })
@@ -407,7 +413,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     if (this.select) {
       let id = selectId
       if (!selectId) {
-        id = (e.target.parentNode?.nextSibling as Element)?.id
+        id = (target.parentNode?.nextSibling as Element)?.id
         this.setState({ selectId: id })
       }
       const realInput = document.querySelector(`[aria-owns="${id}"]`) as any

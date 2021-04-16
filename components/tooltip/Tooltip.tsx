@@ -440,6 +440,7 @@ Tooltip.defaultProps = {
   popupTransitionName: "zoom-big-fast",
   trigger: "hover",
   visible: null,
+  zIndex: "var(--z-index-dialog)",
 }
 
 export default Tooltip
