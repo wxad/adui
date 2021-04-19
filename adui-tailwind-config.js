@@ -52,11 +52,14 @@ module.exports = {
       1: "1px",
       2: "2px",
       4: "4px",
+      6: "6px",
       8: "8px",
+      10: "10px",
       12: "12px",
       16: "16px",
       20: "20px",
       24: "24px",
+      25: "25px",
       28: "28px",
       30: "30px",
       32: "32px",
@@ -70,8 +73,13 @@ module.exports = {
       64: "64px",
       72: "72px",
       84: "84px",
+      88: "88px",
       100: "100px",
       120: "120px",
+      150: "150px",
+      200: "200px",
+      240: "240px",
+      300: "300px",
     },
     // 待设计规范引入
     animation: {
@@ -336,6 +344,7 @@ module.exports = {
     keyframes: false,
     letterSpacing: {
       0: "0",
+      0.5: "0.5px",
       1: "1px",
       2: "2px",
       4: "4px",
@@ -343,10 +352,13 @@ module.exports = {
     lineHeight: {
       none: "1",
       12: "12px",
+      14: "14px",
       16: "16px",
+      17: "17px",
       18: "18px",
       20: "20px",
       24: "24px",
+      25: "25px",
       28: "28px",
       32: "32px",
       36: "36px",
@@ -407,7 +419,16 @@ module.exports = {
     order: false,
     // 暂且无用
     outline: false,
-    padding: (theme) => theme("spacing"),
+    padding: (theme) => ({
+      ...theme("spacing"),
+      "1/2": "50%",
+      "1/3": "33.333333%",
+      "2/3": "66.666667%",
+      "1/4": "25%",
+      "2/4": "50%",
+      "3/4": "75%",
+      full: "100%",
+    }),
     // 暂且无用
     placeholderColor: false,
     // 暂且无用
