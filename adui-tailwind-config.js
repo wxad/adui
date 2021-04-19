@@ -79,6 +79,7 @@ module.exports = {
       150: "150px",
       200: "200px",
       240: "240px",
+      280: "280px",
       300: "300px",
     },
     // 待设计规范引入
@@ -631,6 +632,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "active",
     ],
     backgroundImage: ["responsive"],
     backgroundOpacity: [
@@ -640,6 +642,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "active",
     ],
     backgroundPosition: ["responsive"],
     backgroundRepeat: ["responsive"],
@@ -652,6 +655,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "active",
     ],
     borderOpacity: [
       "responsive",
@@ -660,6 +664,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "active",
     ],
     borderRadius: ["responsive"],
     borderStyle: ["responsive"],
@@ -750,6 +755,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "active",
     ],
     textDecoration: [
       "responsive",
@@ -757,6 +763,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "active",
     ],
     textOpacity: [
       "responsive",
@@ -765,6 +772,7 @@ module.exports = {
       "focus-within",
       "hover",
       "focus",
+      "active",
     ],
     textOverflow: ["responsive"],
     textTransform: ["responsive"],
