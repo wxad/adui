@@ -11,7 +11,7 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import { getRequestAnimationFrame } from "../_util/raf"
 import "./style"
-import { extractHourAndMinuteFromTime, hours, hours24, minutes } from "./core"
+import { extractHourAndMinuteFromTime, hours, minutes } from "./core"
 import { ConfigContext, getComputedSize } from "../config-provider"
 
 const prefix = "adui-time"
@@ -155,8 +155,6 @@ const TimeSelect: React.ForwardRefExoticComponent<
     let items: string[] = []
     if (type === "minute") {
       items = minutes
-    } else if (onlyHour) {
-      items = hours24
     } else {
       items = hours
     }
@@ -168,7 +166,7 @@ const TimeSelect: React.ForwardRefExoticComponent<
             parseInt(value, 10),
             parseInt(minHour || "00", 10),
             parseInt(minMinute || "00", 10),
-            parseInt(maxHour || "23", 10),
+            parseInt(maxHour || "24", 10),
             parseInt(maxMinute || "59", 10),
             onlyHour
           )
@@ -253,7 +251,7 @@ TimeSelect.defaultProps = {
   currentHour: null,
   disabledHours: noop,
   disabledMinutes: noop,
-  maxTime: "23:59",
+  maxTime: "24:00",
   minTime: "00:00",
   onChange: noop,
   onlyHour: false,

@@ -1,9 +1,7 @@
 const makeArray = (length: number) =>
   Array.from(new Array(length), (_, i) => (i < 10 ? `0${i}` : `${i}`))
 
-export const hours = makeArray(24)
-
-export const hours24 = makeArray(25)
+export const hours = makeArray(25)
 
 export const minutes = makeArray(60)
 
@@ -25,7 +23,7 @@ export const isLegalTimeString = (time: string, onlyHour?: boolean) => {
     if (onlyHour) {
       return hour > -1 && hour < 25 && minute === 0
     }
-    return hour > -1 && hour < 24 && minute > -1 && minute < 60
+    return hour > -1 && hour < 25 && minute > -1 && minute < 60
   }
   return false
 }

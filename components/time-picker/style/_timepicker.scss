@@ -41,7 +41,7 @@ $prefix: "adui-time";
 
   &-integerTimeSelect {
     overflow: auto;
-    width: var(--width);
+    width: calc(var(--width) * 1px);
   }
 
   &-item {

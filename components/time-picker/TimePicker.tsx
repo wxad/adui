@@ -397,7 +397,7 @@ TimePicker.defaultProps = {
   disabledHours: noop,
   disabledMinutes: noop,
   intent: "normal",
-  maxTime: null,
+  maxTime: "24:00",
   minTime: null,
   onChange: noop,
   onlyHour: false,
