@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[30],{1272:function(e,n){e.exports={content:["article",["p","行动菜单是以“行动”、“操作”为主的选择菜单，与选择器 ",["code","Select"]," 不同，行动菜单不用于选择某项内容，而用于进行某种操作。"],["h2","Props"],["h3","Menu"],["h3","Menu.SubMenu"],["h3","Menu.Item"]],meta:{category:"Components",type:"General",title:"Menu",subtitle:"行动菜单",filename:"components/menu/index.md"}}}}]);
