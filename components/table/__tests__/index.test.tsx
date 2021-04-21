@@ -52,7 +52,7 @@ describe("Table", () => {
             render: (row) => row.four,
           },
         ]}
-        getCellClassName={(row) => "asd"}
+        getCellClassName={() => "asd"}
       />
     )
     expect(wrapper).toMatchSnapshot()

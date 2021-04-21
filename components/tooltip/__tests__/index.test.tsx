@@ -8,31 +8,6 @@ import { act } from "react-dom/test-utils"
 import { mount } from "enzyme"
 import Tooltip from ".."
 
-class TooltipMounter extends React.Component<any> {
-  trigger: any
-
-  render() {
-    const { placement } = this.props
-
-    return (
-      <Tooltip
-        visible
-        placement={placement}
-        mouseEnterDelay={0}
-        mouseLeaveDelay={0}
-        popup="popup"
-        ref={trigger => {
-          this.trigger = trigger
-        }}
-      >
-        <div id="children" style={{ padding: "100px" }}>
-          children
-        </div>
-      </Tooltip>
-    )
-  }
-}
-
 describe("Tooltip", () => {
   beforeEach(() => {
     jest.useFakeTimers()
@@ -40,49 +15,6 @@ describe("Tooltip", () => {
 
   afterEach(() => {
     jest.useRealTimers()
-  })
-
-  it("Tooltip 是否正确渲染各位置样式", () => {
-    const topLeft = mount(<TooltipMounter placement="topLeft" />)
-    const bottomRight = mount(<TooltipMounter placement="bottomRight" />)
-    const leftTop = mount(<TooltipMounter placement="leftTop" />)
-    const rightBottom = mount(<TooltipMounter placement="rightBottom" />)
-
-    const {
-      style: {
-        paddingBottom: topLeftPaddingBottom,
-        transformOrigin: topLeftTransformOrigin,
-      },
-    } = topLeft.instance().trigger.current.popupRef.current.popupRef.current
-    expect(topLeftPaddingBottom).toBe("8px")
-    expect(topLeftTransformOrigin).toBe("18px 100%")
-
-    const {
-      style: {
-        paddingTop: bottomRightPaddingTop,
-        transformOrigin: bottomRightTransformOrigin,
-      },
-    } = bottomRight.instance().trigger.current.popupRef.current.popupRef.current
-    expect(bottomRightPaddingTop).toBe("8px")
-    expect(bottomRightTransformOrigin).toBe("calc(100% - 18px) -4px")
-
-    const {
-      style: {
-        paddingRight: leftTopPaddingRight,
-        transformOrigin: leftTopTransformOrigin,
-      },
-    } = leftTop.instance().trigger.current.popupRef.current.popupRef.current
-    expect(leftTopPaddingRight).toBe("8px")
-    expect(leftTopTransformOrigin).toBe("100% 10px")
-
-    const {
-      style: {
-        paddingLeft: rightBottomPaddingLeft,
-        transformOrigin: rightBottomTransformOrigin,
-      },
-    } = rightBottom.instance().trigger.current.popupRef.current.popupRef.current
-    expect(rightBottomPaddingLeft).toBe("8px")
-    expect(rightBottomTransformOrigin).toBe("0% calc(100% - 10px)")
   })
 
   it("是否能内部驱动", () => {
