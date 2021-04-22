@@ -263,7 +263,7 @@ module.exports = function (source) {
                 "intent",
               ])
               if (!props.icon) {
-                props.intent.forEach(function (o) {
+                (props.intent || ["normal"]).forEach(function (o) {
                   searchIconByName(ICON_INTENTS[o])
                 })
               }
