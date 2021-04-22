@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import { ConfigContext } from "../config-provider"
 import Tooltip, { ITooltipProps } from "../tooltip"
+import getPlacements from "./placements"
 import "./style"
 
 const prefix = "adui-popover"
@@ -30,7 +31,9 @@ const Popover: React.ForwardRefExoticComponent<
 > = forwardRef(
   (
     {
+      alignEdge,
       arrowed,
+      autoAdjustPlacement = true,
       children,
       getPopupContainer,
       placement,
@@ -73,6 +76,7 @@ const Popover: React.ForwardRefExoticComponent<
         })}
         popupStyle={arrowed ? popupStyle : { padding: 0, ...popupStyle }}
         popupTransitionName={popupTransitionName}
+        builtinPlacements={getPlacements({ alignEdge, autoAdjustPlacement })}
         ref={ref}
         {...otherProps}
       >

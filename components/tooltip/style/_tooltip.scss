@@ -17,7 +17,7 @@ $prefix: "adui-tooltip";
     &-bottomLeft,
     &-bottomRight {
       .#{$prefix}-arrow {
-        top: 3px;
+        top: 7px;
         border-width: 0 5px 5px;
         border-bottom-color: rgba(0, 0, 0, 0.75);
       }
@@ -27,7 +27,7 @@ $prefix: "adui-tooltip";
     &-topLeft,
     &-topRight {
       .#{$prefix}-arrow {
-        bottom: 3px;
+        bottom: 7px;
         border-width: 5px 5px 0;
         border-top-color: rgba(0, 0, 0, 0.75);
       }
@@ -56,7 +56,7 @@ $prefix: "adui-tooltip";
     &-leftTop,
     &-leftBottom {
       .#{$prefix}-arrow {
-        right: 3px;
+        right: 7px;
         border-width: 5px 0 5px 5px;
         border-left-color: rgba(0, 0, 0, 0.75);
       }
@@ -65,7 +65,7 @@ $prefix: "adui-tooltip";
     &-rightTop,
     &-rightBottom {
       .#{$prefix}-arrow {
-        left: 3px;
+        left: 7px;
         border-width: 5px 5px 5px 0;
         border-right-color: rgba(0, 0, 0, 0.75);
       }

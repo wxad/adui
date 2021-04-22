@@ -142,15 +142,15 @@ const Tooltip: React.ForwardRefExoticComponent<
             typeof popupStyle.paddingBottom === "undefined" &&
             typeof popupStyle.padding === "undefined"
           ) {
-            extraStyle.paddingBottom = "8px"
+            extraStyle.paddingBottom = "12px"
           }
         } else if (placement.indexOf("bottom") === 0) {
-          transformOrigin.y = "-4px"
+          transformOrigin.y = "-6px"
           if (
             typeof popupStyle.paddingTop === "undefined" &&
             typeof popupStyle.padding === "undefined"
           ) {
-            extraStyle.paddingTop = "8px"
+            extraStyle.paddingTop = "12px"
           }
         } else if (placement.indexOf("right") === 0) {
           transformOrigin.x = "0%"
@@ -158,7 +158,7 @@ const Tooltip: React.ForwardRefExoticComponent<
             typeof popupStyle.paddingLeft === "undefined" &&
             typeof popupStyle.padding === "undefined"
           ) {
-            extraStyle.paddingLeft = "8px"
+            extraStyle.paddingLeft = "12px"
           }
         } else if (placement.indexOf("left") === 0) {
           transformOrigin.x = "100%"
@@ -166,7 +166,7 @@ const Tooltip: React.ForwardRefExoticComponent<
             typeof popupStyle.paddingRight === "undefined" &&
             typeof popupStyle.padding === "undefined"
           ) {
-            extraStyle.paddingRight = "8px"
+            extraStyle.paddingRight = "12px"
           }
         }
 
@@ -220,7 +220,7 @@ const Tooltip: React.ForwardRefExoticComponent<
               newPlacement = "bottom".concat(placement.slice(3))
             }
             if (
-              Y > rect.height + wrapperRect.height + 8 &&
+              Y > rect.height + wrapperRect.height + 12 &&
               placement.indexOf("bottom") === 0
             ) {
               newPlacement = "top".concat(placement.slice(6))
@@ -234,7 +234,7 @@ const Tooltip: React.ForwardRefExoticComponent<
               newPlacement = "top".concat(placement.slice(6))
             }
             if (
-              wrapperRect.top + wrapperRect.height + height + 8 <
+              wrapperRect.top + wrapperRect.height + height + 12 <
                 window.innerHeight &&
               placement.indexOf("top") === 0
             ) {
@@ -275,7 +275,7 @@ const Tooltip: React.ForwardRefExoticComponent<
               newPlacement = "right".concat(placement.slice(4))
             }
             if (
-              X > rect.width + wrapperRect.width + 8 &&
+              X > rect.width + wrapperRect.width + 12 &&
               placement.indexOf("right") === 0
             ) {
               newPlacement = "left".concat(placement.slice(5))
@@ -289,7 +289,7 @@ const Tooltip: React.ForwardRefExoticComponent<
               newPlacement = "left".concat(placement.slice(5))
             }
             if (
-              wrapperRect.left + wrapperRect.width + width + 8 <
+              wrapperRect.left + wrapperRect.width + width + 12 <
                 window.innerWidth &&
               placement.indexOf("left") === 0
             ) {
@@ -440,7 +440,7 @@ Tooltip.defaultProps = {
   popupTransitionName: "zoom-big-fast",
   trigger: "hover",
   visible: null,
-  zIndex: "var(--z-index-dialog)",
+  zIndex: "var(--z-index-tooltip)",
 }
 
 export default Tooltip
