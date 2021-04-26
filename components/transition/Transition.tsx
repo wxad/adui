@@ -1,15 +1,19 @@
 /* eslint-disable max-len */
 import React, { useEffect, useMemo, useRef, useState } from "react"
 import PropTypes from "prop-types"
-// import classNames from "classnames"
 import { animate, AnimationOptions } from "popmotion"
 import { useIsInitialRender } from "../_util/hooks/use-is-initial-render"
 import Memo from "./Memo"
-import "./style"
 
-// const prefix = "adui-transition"
-const HUNDREDS = ["opacity", "scale"]
-const TRANSFORMS = ["scale", "rotate"]
+const HUNDREDS = ["opacity", "scale", "scale-x", "scale-y"]
+const TRANSFORMS = [
+  "scale",
+  "rotate",
+  "scale-x",
+  "scale-y",
+  "translate-x",
+  "translate-y",
+]
 const ANIMATE_DISABLEDS = ["transform"]
 const UNITS: { [key: string]: string } = {
   rotate: "deg",
@@ -252,7 +256,7 @@ const Transition: React.FC<ITransitionProps> = ({
     const promises: Promise<PromiseReturn>[] = []
     Object.keys(toStyles).forEach((key) => {
       promises.push(
-        new Promise((resolve, reject) => {
+        new Promise((resolve) => {
           const { value: to, unit = "", index } = toStyles[key]
           const { value: from } = fromStyles[key]
           if (
@@ -510,7 +514,7 @@ Transition.defaultProps = {
   leaveFriction: undefined,
   leaveFrom: "",
   leaveTo: "",
-  show: false,
+  show: true,
   style: {},
   tag: "div",
 }
