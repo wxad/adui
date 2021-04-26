@@ -40,6 +40,7 @@ import {
   Tag,
   TimePicker,
   Tooltip,
+  Transition,
   TreeSelect,
   Upload,
 } from "componentPath"
@@ -107,6 +108,7 @@ export default class DemoRenderer extends Component {
         "Tag",
         "TimePicker",
         "Tooltip",
+        "Transition",
         "TreeSelect",
         "Upload",
       ]
@@ -150,6 +152,7 @@ export default class DemoRenderer extends Component {
         Tag,
         TimePicker,
         Tooltip,
+        Transition,
         TreeSelect,
         Upload
       )

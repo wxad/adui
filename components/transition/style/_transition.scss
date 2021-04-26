@@ -1,0 +1,17 @@
+$prefix: "adui-transition";
+
+.#{$prefix} {
+  &-base {
+    --adui-translate-x: 0;
+    --adui-translate-y: 0;
+    --adui-rotate: 0;
+    --adui-skew-x: 0;
+    --adui-skew-y: 0;
+    --adui-scale-x: 1;
+    --adui-scale-y: 1;
+    transform: translateX(var(--adui-translate-x))
+      translateY(var(--adui-translate-y)) rotate(var(--adui-rotate))
+      skewX(var(--adui-skew-x)) skewY(var(--adui-skew-y))
+      scaleX(var(--adui-scale-x)) scaleY(var(--adui-scale-y));
+  }
+}
