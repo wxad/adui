@@ -232,7 +232,11 @@ exports[`base 快照核对 1`] = `
         <div
           className="adui-table-expandRow"
         >
-          
+          <div
+            className="adui-table-expandRow-inner"
+          >
+            
+          </div>
         </div>
         <div
           className="adui-table-tr"

@@ -654,7 +654,7 @@ class SiteLayout extends React.Component {
                       </p>
                     </div>
                     <p className={styles.connection}>
-                      如有任何优化建议，请联系我们：dondondong@tencent.com
+                      如有任何优化建议，请联系我们：hingliang@tencent.com
                     </p>
                   </div>
                 </div>

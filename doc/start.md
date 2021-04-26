@@ -124,84 +124,10 @@ html:root {
 
 代表内部驱动的 Prop 是 `defaultValue`，代表外部控制的 Prop 是 `value`。比如 `<Switch />` 组件的 `defaultChecked` 与 `checked`。
 
-`defaultChecked` 只在第一次渲染（constructor）时生效，之后的状态变化都会完全交给组件自身完成；  
-而 `checked` 则代表如果不从外部改变，那么组件的状态就不会变化（代码上由生命周期 `getDerivedStateFromProps` 实现的）。
+`defaultChecked` 只在第一次渲染时生效，之后的状态变化都会完全交给组件自身完成；  
+而 `checked` 则代表如果不从外部改变，那么组件的状态就不会变化（代码上由生命周期 `getDerivedStateFromProps` 或 `useEffect` 实现的）。
 
 这样设计的原理来源于 React 对表单的 Controlled/Uncontrolled 的概念。[请阅读学习](https://reactjs.org/docs/forms.html#controlled-components)，并且按照需求选择这两种模式使用。
 
 如果你只是需要设置一个初始值，并且只想要关心这个值的改变情况，比如 `<Switch defaultChecked onChange={xxx} />`，这样你就不需要单独地设置一个 state 保证组件 UI 状态的完整；
-如果你想要存储这个变化的值，并且之后会用这个值回传给 `<Switch />`，那么你需要自己存储这个 state `<Switch checked={xxx} onChange={xxx} />`。
-
----
-
-## \*Git Submodule
-
-Package 是推荐的使用方式。 我们会在每 1 - 2 周进行日常的修订版本号更新。主版本与次版本号的发布不在发布周期内。你可以在 [更新日志](https://) 中查看具体发布信息。
-
-如果在需要更新时，你不想更新 Package 的版本，而是随时跟进 `origin/master` 分支的最新代码，你可以选择使用 [Git Submodule](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97)。它允许你将 **adui** 添加到你的 Git 仓库子目录内。同时，**adui** 的提交与你的项目是独立的。因此，这也是解决项目间依赖的一种方法。
-
-### 添加 Submodule
-
-```
-$ git submodule add http://git.code.oa.com/yijiejiang/adUI.git adui
-```
-
-这样，你的项目中就会新增 ".gitmodules" 文件与 "adui" 文件夹。
-
-### 配置 Submodule
-
-注意：
-
-- Submodule 使用的路径是 `adui/lib`；
-- 请确保针对 "adui" 文件夹配置了 webpack 的 `css-loader`。我们推荐的 loader 配置是：
-  ```
-  {
-    test: /\.css$/,
-    include: "path/to/adui/",
-    loaders: ["style-loader", "css-loader"]
-  }
-  ```
-- 你还需要安装 **adui** 自身的 `dependencies`，一种方法是使用 [yarn workspace](https://yarnpkg.com/lang/zh-hans/docs/workspaces/)，`yarn workspace` 就是为了解决多项目依赖安装的问题，你只需要在主项目的 `package.json` 中：
-  ```
-  {
-    "private": true,
-    "workspaces": ["adui"]
-  }
-  ```
-  这样在执行 `yarn` 时就会同时安装 **adui** 的依赖了。
-
-### 使用 Submodule
-
-推荐通过 webpack 的 [resolve](https://webpack.docschina.org/configuration/resolve/) 配置 alias 存储相对路径：
-
-```
-resolve: {
-  alias: {
-    aduiPath: path.resolve(__dirname, 'adui/lib/'),
-  }
-}
-```
-
-这样，引入时也简便了很多：
-
-```js
-// import { Button } from "path/to/adui/lib"
-import { Button } from "aduiPath"
-
-<Button intent="primary">开始使用<Button/>
-```
-
-另外，为了让你的 IDE 能够识别 alias，并且给出 TypeScript 自动提示，请在你的 `tsconfig.json` 中配置：
-
-```js
-{
-  "compilerOptions": {
-    "paths": {
-      "aduiPath": ["path/to/adui/lib/"]
-    }
-  },
-}
-
-```
-
-综上所述，`Git Submodule` 除了敏捷开发的优点以外，非常麻烦。请尽量不要使用。
+如果你想要存储这个值，那么你需要在变化时将这个值回传给组件：`<Switch checked={xxx} onChange={xxx} />`。

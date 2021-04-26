@@ -36,7 +36,33 @@ exports[`Table 快照核对 1`] = `
             "height": "40px",
           }
         }
-      />
+      >
+        <div
+          className="adui-table-th"
+          data-column={0}
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "left": undefined,
+              "maxWidth": "",
+              "right": undefined,
+              "textAlign": undefined,
+              "width": 100,
+            }
+          }
+        >
+          <div
+            className="adui-table-cell"
+            style={
+              Object {
+                "justifyContent": undefined,
+              }
+            }
+          >
+            分组好
+          </div>
+        </div>
+      </div>
       <div
         className="adui-table-tbody"
       >
@@ -47,7 +73,39 @@ exports[`Table 快照核对 1`] = `
           onKeyDown={[Function]}
           role="row"
           style={Object {}}
-        />
+        >
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={0}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell asd"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           className="adui-table-tr"
           data-row={1}
@@ -55,7 +113,39 @@ exports[`Table 快照核对 1`] = `
           onKeyDown={[Function]}
           role="row"
           style={Object {}}
-        />
+        >
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={1}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell asd"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           className="adui-table-tr"
           data-row={2}
@@ -63,7 +153,39 @@ exports[`Table 快照核对 1`] = `
           onKeyDown={[Function]}
           role="row"
           style={Object {}}
-        />
+        >
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={2}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell asd"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           className="adui-table-tr"
           data-row={3}
@@ -71,7 +193,39 @@ exports[`Table 快照核对 1`] = `
           onKeyDown={[Function]}
           role="row"
           style={Object {}}
-        />
+        >
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={3}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell asd"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           className="adui-table-tr"
           data-row={4}
@@ -79,7 +233,39 @@ exports[`Table 快照核对 1`] = `
           onKeyDown={[Function]}
           role="row"
           style={Object {}}
-        />
+        >
+          <div
+            className="adui-table-td"
+            data-column={0}
+            data-row={4}
+            role="cell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "left": undefined,
+                "maxWidth": "",
+                "right": undefined,
+                "width": 100,
+              }
+            }
+          >
+            <div
+              className="adui-table-cell asd"
+              style={
+                Object {
+                  "alignItems": undefined,
+                  "justifyContent": undefined,
+                }
+              }
+            >
+              <div
+                className="adui-table-cellInner"
+              >
+                阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

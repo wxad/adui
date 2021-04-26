@@ -39,6 +39,7 @@ export { default as Table } from "./table"
 export { default as Tag } from "./tag"
 export { default as TimePicker } from "./time-picker"
 export { default as Tooltip } from "./tooltip"
+export { default as Transition } from "./transition"
 export { default as TreeSelect } from "./tree-select"
 export { default as Upload } from "./upload"
 
