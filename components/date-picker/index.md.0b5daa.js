@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{1251:function(e,t){e.exports={content:["article",["p","日期选择器用于了解当前已选日期，选择或输入需要的日期、日期范围等。"],["h2","Props"],["h3","DatePicker"],["h3","DatePicker.RangePicker"]],meta:{category:"Components",type:"General",title:"DatePicker",subtitle:"日期选择",filename:"components/date-picker/index.md"}}}}]);
