@@ -135,15 +135,22 @@ export const convertDateToString = (date?: Date | "" | null) => {
   if (!date) {
     return ""
   }
-  const dateString = date.toLocaleDateString("zh-Hans-CN")
-  const strings = dateString.split("/")
+  let year = ""
+  let month = ""
+  let day = ""
+  try {
+    ;[year, month, day] = date.toLocaleDateString("zh-Hans-CN").split("/")
+  } catch (error) {
+    ;[month, day, year] = date.toLocaleDateString("en-US").split("/")
+  }
+
   const addZero = (s: string) => {
     if (parseInt(s, 10) < 10) {
       return `0${s}`
     }
     return s
   }
-  return `${strings[0]}-${addZero(strings[1])}-${addZero(strings[2])}`
+  return `${year}-${addZero(month)}-${addZero(day)}`
 }
 
 export const convertDateRangeToString = (
