@@ -66,7 +66,7 @@ const Switch: React.FC<ISwitchProps> = ({
   )
 
   // 相当于生命周期 getDerivedStateFromProps
-  if (checkedProps !== null && checked !== checkedProps) {
+  if (checkedProps !== null && checked !== !!checkedProps) {
     setChecked(!!checkedProps)
   }
 

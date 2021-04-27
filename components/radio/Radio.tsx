@@ -103,7 +103,7 @@ const Radio: IRadio = forwardRef(
     } = useContext(GroupContext)
 
     // 相当于生命周期 getDerivedStateFromProps
-    if (checkedProp !== null && checked !== checkedProp) {
+    if (checkedProp !== null && checked !== !!checkedProp) {
       setChecked(!!checkedProp)
     }
 
