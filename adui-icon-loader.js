@@ -1,13 +1,28 @@
 /* eslint-disable */
 // @ts-ignore
 
+/**
+ * @babel/parser: Babel 中使用的 JavaScript 解析器，主要基于 acorn 和 acorn jsx
+ * Babel解析器根据 Babel-AS T格式生成 AST。它基于 ESTree 规范
+ */
 var parser = require("@babel/parser")
+/**
+ * @babel/traverse: parse 的好伙伴，用于遍历和设置 ast 节点信息
+ */
+var traverse = require("@babel/traverse").default
+/**
+ * loaderUtils: Webpack 官方提供的 loader 开发者工具
+ * 使用 getOptions 拿到自定义的配置
+ */
 var loaderUtils = require("loader-utils")
+/**
+ * 通过 @babel/parser 将 JS 代码转换为 ast 格式，并修改后，你需要将 ast 格式转回 JS 代码，交给下一个 webpack loader
+ * 最后输出物为 core.transformFromAstSync(ast).code
+ */
 var core = require("@babel/core")
 var IconSvgPaths = require("./lib/icon/IconSvgPaths").default
 var fs = require("fs")
 var path = require("path")
-var traverse = require("@babel/traverse").default
 
 var tempFilePath = ""
 var initIcons = []
@@ -183,6 +198,11 @@ function searchIcons(icons = []) {
     searchIconByName(iconItem)
   })
 }
+/**
+ * adui-icon-loader
+ * @param {source} source babel-loader 吐给我的 js 文件代码
+ * @returns core.transformFromAstSync(ast).code
+ */
 module.exports = function (source) {
   parseOptions.call(this)
   if (!fs.existsSync(tempFilePath)) {

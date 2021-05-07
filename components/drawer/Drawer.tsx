@@ -39,6 +39,7 @@ const resetScrollbarPadding = () => {
 }
 
 export interface IDrawerProps {
+  [key: string]: any
   /**
    * 关闭后（transition 结束后）的 handler
    */

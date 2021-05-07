@@ -87,6 +87,7 @@ html {
 }
 html * {
   box-sizing: inherit;
+  border: 0 solid;
 }
 html *::before,
 html *::after {
