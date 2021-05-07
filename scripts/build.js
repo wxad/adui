@@ -17,6 +17,7 @@ libPaths.forEach(function (libPath) {
         o.indexOf("portal") === -1 &&
         o.indexOf("resize-observer") === -1 &&
         o.indexOf("config-provider") === -1 &&
+        o.indexOf("transition") === -1 &&
         fs.statSync(path.join(libPath, o)).isDirectory()
     )
 

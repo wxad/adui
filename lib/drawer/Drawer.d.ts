@@ -1,6 +1,7 @@
 import React from "react";
 import "./style";
 export interface IDrawerProps {
+    [key: string]: any;
     /**
      * 关闭后（transition 结束后）的 handler
      */
@@ -61,6 +62,10 @@ export interface IDrawerProps {
      * 外部控制：是否显示
      */
     visible?: boolean;
+    /**
+     * 设置 z-index 层级，默认为 var(--z-index-dialog)
+     */
+    zIndex?: React.ReactNode;
 }
 /**
  * 旋转加载用于告知用户信息内容的加载状态，通常是即时、短时的。

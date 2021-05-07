@@ -118,6 +118,10 @@ export interface IDialogProps extends IStepProps {
      * 外部控制：是否显示
      */
     visible?: null | boolean;
+    /**
+     * 设置 z-index 层级，默认为 var(--z-index-dialog)
+     */
+    zIndex?: React.ReactNode;
 }
 export interface IDialogState {
     visible?: boolean;
@@ -238,6 +242,10 @@ declare class Dialog extends React.Component<IDialogProps, IDialogState> {
          * 外部控制：是否显示
          */
         visible: PropTypes.Requireable<boolean>;
+        /**
+         * 设置 z-index 层级，默认为 var(--z-index-dialog)
+         */
+        zIndex: PropTypes.Requireable<any>;
     };
     static defaultProps: IDialogProps;
     static info: any;

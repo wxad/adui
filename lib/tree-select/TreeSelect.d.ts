@@ -32,6 +32,7 @@ export interface ITreeSelectProps {
     defaultValue?: TreeNodeValue;
     disabled?: boolean;
     getPopupContainer?: null | ((node: HTMLElement) => HTMLElement);
+    heightFixed?: boolean;
     maxTagCount?: null | number;
     multiple?: boolean;
     onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void;
@@ -50,6 +51,7 @@ export interface ITreeSelectState {
     hash: string;
     topContentPortalTarget?: HTMLDivElement;
     value?: TreeNodeValue;
+    maxHeightFixed: boolean;
 }
 export interface ITreeNodeProps {
     [key: string]: any;
@@ -93,6 +95,10 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
          * 指定弹出层的父级，默认为 document.body
          */
         getPopupContainer: PropTypes.Requireable<(...args: any[]) => any>;
+        /**
+         * 高度是否固定一行，TreeSelect 将根据内容区域宽度自动将结果收起，开启这个 Prop 后 TreeSelect 会忽略 maxTagCount Prop
+         */
+        heightFixed: PropTypes.Requireable<boolean>;
         /**
          * 最多显示多少个 tag，如果超过了则以收起的形式出现
          */
@@ -186,7 +192,7 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     }) => TreeData;
     listenInputChange: (e: any) => void;
     componentDidMount: () => void;
-    componentDidUpdate: () => void;
+    componentDidUpdate: (_: ITreeSelectProps, { value: valuePrev }: ITreeSelectState) => void;
     render(): JSX.Element;
 }
 export default TreeSelect;

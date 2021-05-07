@@ -182,7 +182,7 @@ declare class Select extends React.Component<ISelectProps, ISelectState> {
     onDropdownVisibleChange: (open: boolean) => void;
     onSelect: (value: React.ReactText, option: any) => void;
     handleDropdownRender: (menu: JSX.Element) => JSX.Element;
-    handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handleSearch: (e?: React.ChangeEvent<HTMLInputElement> | undefined) => void;
     handleSearchKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     preventVisibleChange: () => void;
     render(): JSX.Element;

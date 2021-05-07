@@ -1,5 +1,4 @@
 export declare const hours: string[];
-export declare const hours24: string[];
 export declare const minutes: string[];
 export declare const isLegalTimeString: (time: string, onlyHour?: boolean | undefined) => boolean;
 export declare const extractHourAndMinuteFromTime: (time?: string | null | undefined) => {

@@ -27,6 +27,7 @@ export interface IPopTriggerProps {
     popupStyle?: null | React.CSSProperties;
     popupTransitionName?: string;
     popupVisible?: null | boolean;
+    zIndex?: React.ReactNode;
 }
 /**
  * 弹出行为。

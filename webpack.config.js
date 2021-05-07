@@ -26,7 +26,7 @@ const componentDir = fs
       fs.statSync(path.join(componentPath, o)).isDirectory()
   )
 componentDir.forEach(component => {
-  if (!["config-provider", "portal", "resize-observer"].includes(component)) {
+  if (!["config-provider", "portal", "resize-observer", "transition"].includes(component)) {
     entry[`${component}/style`] = `${componentPath}/${component}/style/index.ts`
   }
 })
