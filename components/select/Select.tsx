@@ -71,6 +71,16 @@ export interface ISelectProps {
    */
   open?: null | boolean
   /**
+   * 可直接传入 options，替代手动构造 children jsx 的方式，需传入每项的 label 和 value
+   */
+  options?: {
+    [key: string]: any
+    className?: string
+    disabled?: boolean
+    label: React.ReactNode
+    value: React.ReactText
+  }[]
+  /**
    * 选择框默认文字
    */
   placeholder?: React.ReactNode
@@ -166,6 +176,10 @@ class Select extends React.Component<ISelectProps, ISelectState> {
      */
     open: PropTypes.bool,
     /**
+     * 可直接传入 options，替代手动构造 children jsx 的方式，需传入每项的 label 和 value
+     */
+    options: PropTypes.array,
+    /**
      * 选择框默认文字
      */
     placeholder: PropTypes.any,
@@ -226,6 +240,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     onDropdownVisibleChange: noop,
     onSelect: noop,
     open: null,
+    options: undefined,
     placeholder: "请选择",
     placeholderColor: undefined,
     placement: "bottomLeft",
@@ -458,6 +473,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     const {
       className,
       getPopupContainer,
+      options,
       placeholder,
       placeholderColor,
       placement,
@@ -547,8 +563,9 @@ class Select extends React.Component<ISelectProps, ISelectState> {
             onSelect={this.onSelect}
             defaultActiveFirstOption={false}
             getPopupContainer={getPopupContainer || getPopupContainerContext}
-            optionLabelProp="children"
-            optionFilterProp="children"
+            optionLabelProp={options ? "label" : "children"}
+            optionFilterProp={options ? "label" : "children"}
+            options={options}
             placeholder={
               placeholderColor ? (
                 <span style={{ color: placeholderColor }}>{placeholder}</span>
