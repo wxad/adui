@@ -75,6 +75,10 @@ export interface ISelectProps {
    */
   placeholder?: React.ReactNode
   /**
+   * 选择框默认文字的颜色
+   */
+  placeholderColor?: string
+  /**
    * 设置 placement
    */
   placement?: Placement
@@ -166,6 +170,10 @@ class Select extends React.Component<ISelectProps, ISelectState> {
      */
     placeholder: PropTypes.any,
     /**
+     * 选择框默认文字的颜色
+     */
+    placeholderColor: PropTypes.string,
+    /**
      * 设置 placement
      */
     placement: PropTypes.oneOf([
@@ -219,6 +227,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     onSelect: noop,
     open: null,
     placeholder: "请选择",
+    placeholderColor: undefined,
     placement: "bottomLeft",
     rightIcon: "triangle-down",
     searchPlaceholder: "搜索",
@@ -450,6 +459,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
       className,
       getPopupContainer,
       placeholder,
+      placeholderColor,
       placement,
       rightIcon,
       searchable,
@@ -512,12 +522,16 @@ class Select extends React.Component<ISelectProps, ISelectState> {
                   "string" ? (
                     <div
                       className={`${prefix}-placeholder-text`}
+                      style={{ color: placeholderColor }}
                       dangerouslySetInnerHTML={{
                         __html: `${placeholderText || placeholder || ""}`,
                       }}
                     />
                   ) : (
-                    <div className={`${prefix}-placeholder-text`}>
+                    <div
+                      className={`${prefix}-placeholder-text`}
+                      style={{ color: placeholderColor }}
+                    >
                       {placeholderText || placeholder || ""}
                     </div>
                   ))}
@@ -535,7 +549,13 @@ class Select extends React.Component<ISelectProps, ISelectState> {
             getPopupContainer={getPopupContainer || getPopupContainerContext}
             optionLabelProp="children"
             optionFilterProp="children"
-            placeholder={placeholder}
+            placeholder={
+              placeholderColor ? (
+                <span style={{ color: placeholderColor }}>{placeholder}</span>
+              ) : (
+                placeholder
+              )
+            }
             prefixCls="adui-select"
             // 开启 showSearch 才可能 hack 式地触发 input change 事件
             showSearch
