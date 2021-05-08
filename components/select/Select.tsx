@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-danger */
+/* eslint-disable no-nested-ternary */
 import * as React from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
@@ -506,7 +507,16 @@ class Select extends React.Component<ISelectProps, ISelectState> {
       openProps.open = openState
     }
     if (valueState !== null) {
-      openProps.value = valueProp === "" ? placeholder : valueState
+      openProps.value =
+        valueProp === "" ? (
+          placeholderColor ? (
+            <span style={{ color: placeholderColor }}>{placeholder}</span>
+          ) : (
+            placeholder
+          )
+        ) : (
+          valueState
+        )
     }
 
     return (
