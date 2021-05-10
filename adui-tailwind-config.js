@@ -57,6 +57,7 @@ module.exports = {
       10: "10px",
       12: "12px",
       16: "16px",
+      18: "18px",
       20: "20px",
       24: "24px",
       25: "25px",
@@ -534,6 +535,8 @@ module.exports = {
       opacity: "opacity",
       shadow: "box-shadow",
       transform: "transform",
+      width: "width",
+      height: "height",
     },
     transitionTimingFunction: {
       DEFAULT: "cubic-bezier(0.4, 0, 0.2, 1)",

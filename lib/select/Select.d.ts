@@ -52,9 +52,23 @@ export interface ISelectProps {
      */
     open?: null | boolean;
     /**
+     * 可直接传入 options，替代手动构造 children jsx 的方式，需传入每项的 label 和 value
+     */
+    options?: {
+        [key: string]: any;
+        className?: string;
+        disabled?: boolean;
+        label: React.ReactNode;
+        value: React.ReactText;
+    }[];
+    /**
      * 选择框默认文字
      */
     placeholder?: React.ReactNode;
+    /**
+     * 选择框默认文字的颜色
+     */
+    placeholderColor?: string;
     /**
      * 设置 placement
      */
@@ -138,9 +152,17 @@ declare class Select extends React.Component<ISelectProps, ISelectState> {
          */
         open: PropTypes.Requireable<boolean>;
         /**
+         * 可直接传入 options，替代手动构造 children jsx 的方式，需传入每项的 label 和 value
+         */
+        options: PropTypes.Requireable<any[]>;
+        /**
          * 选择框默认文字
          */
         placeholder: PropTypes.Requireable<any>;
+        /**
+         * 选择框默认文字的颜色
+         */
+        placeholderColor: PropTypes.Requireable<string>;
         /**
          * 设置 placement
          */
