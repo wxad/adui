@@ -44,7 +44,6 @@ $prefix: "adui-tabs";
     left: 0;
     height: 3px;
     background-color: var(--primary-color);
-    transition: all var(--motion-duration-base) var(--ease-in-out);
   }
   &-banner {
     display: flex;

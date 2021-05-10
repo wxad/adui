@@ -8,6 +8,7 @@ import React, {
 } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
+import { useIsInitialRender } from "../_util/hooks/use-is-initial-render"
 import { ConfigContext, getComputedSize } from "../config-provider"
 import Tab from "./Tab"
 import { TabsContext } from "./Context"
@@ -82,6 +83,7 @@ const Tabs: ITabs = forwardRef(
     }: ITabsProps,
     ref: any
   ) => {
+    const initial = useIsInitialRender()
     const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>(
       {}
     )
@@ -123,6 +125,9 @@ const Tabs: ITabs = forwardRef(
             const { clientWidth, offsetLeft } = theActiveTab
             setIndicatorStyle({
               transform: `translateX(${Math.floor(offsetLeft)}px)`,
+              transition: initial
+                ? ""
+                : "all var(--motion-duration-base) var(--ease-in-out)",
               width: clientWidth,
             })
           } else {
