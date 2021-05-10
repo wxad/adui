@@ -17,6 +17,8 @@ const TRANSFORMS = [
 const ANIMATE_DISABLEDS = ["transform"]
 const UNITS: { [key: string]: string } = {
   rotate: "deg",
+  width: "px",
+  height: "px",
 }
 
 export type TEase = "ease-in" | "ease-out"
