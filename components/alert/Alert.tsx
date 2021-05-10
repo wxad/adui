@@ -42,7 +42,7 @@ export interface IAlertProps {
   /**
    * 设置图标
    */
-  icon?: IconNames
+  icon?: IconNames | null
   /**
    * 设置类型
    */
