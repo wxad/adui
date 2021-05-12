@@ -146,7 +146,7 @@ $prefix: "adui-tree-select";
     }
 
     &-single-level {
-      .#{$prefix}-tree-switcher {
+      .#{$prefix}-tree-switcher-noop {
         width: 0;
       }
     }
