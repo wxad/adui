@@ -5,10 +5,12 @@
   "files": [
     "lib",
     "es",
+    "components",
     "adui-icon-loader.js",
     "adui-icon-plugin.js",
     "adui-tailwind-config.js",
     "adui-tailwind.css",
+    "adui-tailwind-build.css",
     "tailwind.config.js"
   ],
   "keywords": [
@@ -57,7 +59,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "compile": "node scripts/generate-svg-icons.js && npm run compile:lib && npm run compile:es && node scripts/build",
+    "compile": "node scripts/generate-svg-icons.js && npx tailwindcss-cli@latest build ./adui-tailwind.css  -o ./adui-tailwind-build.css --no-autoprefixer && npm run compile:lib && npm run compile:es && node scripts/build",
     "compile:lib": "rimraf lib && mkdir lib && mkdir lib/style && tsc --outDir lib --declaration --emitDeclarationOnly && NODE_ENV=production COMPILE_TYPE=lib webpack -p --config webpack.config.js && cp components/style/base.css lib/style/base.css && babel components --out-dir lib --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*' && cp components/resize-observer/ResizeObserverPolyfill.js lib/resize-observer/ResizeObserverPolyfill.js",
     "compile:es": "rimraf es && mkdir es && mkdir es/style && tsc --outDir es --declaration --emitDeclarationOnly && NODE_ENV=production COMPILE_TYPE=es webpack -p --config webpack.config.js && cp components/style/base.css es/style/base.css && babel components --no-babelrc --config-file ./babel.config.json --out-dir es --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*' && cp components/resize-observer/ResizeObserverPolyfill.js es/resize-observer/ResizeObserverPolyfill.js",
     "commitmsg": "commitlint -e $GIT_PARAMS",

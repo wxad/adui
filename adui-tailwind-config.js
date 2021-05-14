@@ -1,6 +1,57 @@
 /* eslint-disable */
 // @ts-ignore
 
+const colors = {
+  transparent: "transparent",
+  current: "currentColor",
+  black: "#000",
+  white: "#fff",
+  green: "#07c160",
+  orange: "#eda20c",
+  blue: "#2b7bd6",
+  red: "#d9514c",
+  gray: {
+    0: "#ffffff",
+    50: "#fafafa",
+    100: "#f2f2f2",
+    200: "#ebebeb",
+    300: "#e6e6e6",
+    400: "#e0e0e0",
+    500: "#d6d6d6",
+    600: "#c7c7c7",
+    700: "#a3a3a3",
+    800: "#6b6b6b",
+    900: "#1f1f1f",
+  },
+  "tp-gray": {
+    0: "rgba(0, 0, 0, 0)",
+    50: "rgba(0, 0, 0, 0.02)",
+    100: "rgba(0, 0, 0, 0.06)",
+    200: "rgba(0, 0, 0, 0.08)",
+    300: "rgba(0, 0, 0, 0.1)",
+    400: "rgba(0, 0, 0, 0.12)",
+    500: "rgba(0, 0, 0, 0.16)",
+    600: "rgba(0, 0, 0, 0.22)",
+    700: "rgba(0, 0, 0, 0.36)",
+    800: "rgba(0, 0, 0, 0.58)",
+    900: "rgba(0, 0, 0, 0.88)",
+  },
+}
+
+const shadows = {}
+;["t", "r", "b", "l"].forEach((prefix) => {
+  Object.keys(colors).forEach((key) => {
+    const value = colors[key]
+    if (typeof value === "string") {
+      shadows[`${prefix}-${key}`] = value
+    } else {
+      Object.keys(value).forEach((valKey) => {
+        shadows[`${prefix}-${key}-${valKey}`] = value[valKey]
+      })
+    }
+  })
+})
+
 module.exports = {
   // 对以下文件进行 className 的 tree-shaking，支持字面量与三元
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
@@ -11,42 +62,7 @@ module.exports = {
   theme: {
     // 待设计规范引入
     screens: false,
-    colors: {
-      transparent: "transparent",
-      current: "currentColor",
-      black: "#000",
-      white: "#fff",
-      green: "#07c160",
-      orange: "#eda20c",
-      blue: "#2b7bd6",
-      red: "#d9514c",
-      gray: {
-        0: "#ffffff",
-        50: "#fafafa",
-        100: "#f2f2f2",
-        200: "#ebebeb",
-        300: "#e6e6e6",
-        400: "#e0e0e0",
-        500: "#d6d6d6",
-        600: "#c7c7c7",
-        700: "#a3a3a3",
-        800: "#6b6b6b",
-        900: "#1f1f1f",
-      },
-      "tp-gray": {
-        0: "rgba(0, 0, 0, 0)",
-        50: "rgba(0, 0, 0, 0.02)",
-        100: "rgba(0, 0, 0, 0.06)",
-        200: "rgba(0, 0, 0, 0.08)",
-        300: "rgba(0, 0, 0, 0.1)",
-        400: "rgba(0, 0, 0, 0.12)",
-        500: "rgba(0, 0, 0, 0.16)",
-        600: "rgba(0, 0, 0, 0.22)",
-        700: "rgba(0, 0, 0, 0.36)",
-        800: "rgba(0, 0, 0, 0.58)",
-        900: "rgba(0, 0, 0, 0.88)",
-      },
-    },
+    colors,
     spacing: {
       0: "0",
       1: "1px",
@@ -126,12 +142,13 @@ module.exports = {
       8: "8px",
     },
     boxShadow: {
+      none: "none",
       0: "0 0 0 1px rgba(223, 223, 223, 0.45)",
       1: "0 0 0 1px rgba(223, 223, 223, 0.5), 0 3px 6px 0 rgba(0, 0, 0, 0.04)",
       2: "0 0 0 1px rgba(219, 219, 219, 0.55),0 3px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 15px 0 rgba(0, 0, 0, 0.05)",
       3: "0 0 0 1px rgba(219, 219, 219, 0.7), 0 8px 20px 0 rgba(0, 0, 0, 0.08), 0 4px 10px 0 rgba(0, 0, 0, 0.07)",
       4: "0 0 0 1px rgba(107, 107, 107, 0.15), 0 10px 36px 0 rgba(0, 0, 0, 0.1), 0 6px 15px 0 rgba(0, 0, 0, 0.07)",
-      none: "none",
+      ...shadows,
     },
     container: false,
     cursor: {
