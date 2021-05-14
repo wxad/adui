@@ -39,17 +39,29 @@ const colors = {
 }
 
 const shadows = {}
-;["t", "r", "b", "l"].forEach((prefix) => {
-  Object.keys(colors).forEach((key) => {
-    const value = colors[key]
-    if (typeof value === "string") {
-      shadows[`${prefix}-${key}`] = value
-    } else {
-      Object.keys(value).forEach((valKey) => {
-        shadows[`${prefix}-${key}-${valKey}`] = value[valKey]
-      })
-    }
-  })
+Object.keys(colors).forEach((key) => {
+  const value = colors[key]
+  if (typeof value === "string") {
+    shadows[`t-${key}`] = `0 -1px 0 ${value}`
+    shadows[`t-inset-${key}`] = `0 1px 0 ${value} inset`
+    shadows[`b-${key}`] = `0 1px 0 ${value}`
+    shadows[`b-inset-${key}`] = `0 -1px 0 ${value} inset`
+    shadows[`r-${key}`] = `1px 0 0 ${value}`
+    shadows[`r-inset-${key}`] = `-1px 0 0 ${value} inset`
+    shadows[`l-${key}`] = `-1px 0 0 ${value}`
+    shadows[`l-inset-${key}`] = `1px 0 0 ${value} inset`
+  } else {
+    Object.keys(value).forEach((valKey) => {
+      shadows[`t-${key}-${valKey}`] = `0 -1px 0 ${value[valKey]}`
+      shadows[`t-inset-${key}-${valKey}`] = `0 1px 0 ${value[valKey]} inset`
+      shadows[`b-${key}-${valKey}`] = `0 1px 0 ${value[valKey]}`
+      shadows[`b-inset-${key}-${valKey}`] = `0 -1px 0 ${value[valKey]} inset`
+      shadows[`r-${key}-${valKey}`] = `1px 0 0 ${value[valKey]}`
+      shadows[`r-inset-${key}-${valKey}`] = `-1px 0 0 ${value[valKey]} inset`
+      shadows[`l-${key}-${valKey}`] = `-1px 0 0 ${value[valKey]}`
+      shadows[`l-inset-${key}-${valKey}`] = `1px 0 0 ${value[valKey]} inset`
+    })
+  }
 })
 
 module.exports = {
