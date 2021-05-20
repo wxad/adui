@@ -1,6 +1,14 @@
 /* eslint-disable */
 // @ts-ignore
 
+/**
+ * 基础 spacing 取 4px 间距生成
+ */
+const spacing = {}
+for (let index = 0; index <= 500; index += 4) {
+  spacing[index] = `${index}${index === 0 ? "" : "px"}`
+}
+
 const colors = {
   transparent: "transparent",
   current: "currentColor",
@@ -38,6 +46,9 @@ const colors = {
   },
 }
 
+/**
+ * 对 t r b l 四个方向单面的 1px shadow
+ */
 const shadows = {}
 Object.keys(colors).forEach((key) => {
   const value = colors[key]
@@ -76,40 +87,16 @@ module.exports = {
     screens: false,
     colors,
     spacing: {
-      0: "0",
+      ...spacing,
       1: "1px",
       2: "2px",
-      4: "4px",
       6: "6px",
-      8: "8px",
       10: "10px",
-      12: "12px",
-      16: "16px",
       18: "18px",
-      20: "20px",
-      24: "24px",
       25: "25px",
-      28: "28px",
       30: "30px",
-      32: "32px",
-      36: "36px",
-      40: "40px",
       42: "42px",
-      48: "48px",
-      52: "52px",
-      56: "56px",
-      60: "60px",
-      64: "64px",
-      72: "72px",
-      84: "84px",
-      88: "88px",
-      100: "100px",
-      120: "120px",
       150: "150px",
-      200: "200px",
-      240: "240px",
-      280: "280px",
-      300: "300px",
     },
     // 待设计规范引入
     animation: {

@@ -8,122 +8,37 @@ title:
 上中下布局：
 
 ```jsx
-  return (
-    <Layout
-      style={{
-        width: "100%",
-        height: "420px",
-        transform: "translate(0px)",
-        overflow: "hidden",
-        borderRadius: "8px 8px 0px 0px"
+return (
+  <Layout className="w-full h-420 transform overflow-hidden rounded-t-8">
+    <Layout.Header className="pr-16 h-64">
+      <div className="flex items-center ml-28 text-20">AD UI</div>
+      <div className="flex items-center">
+        <div className="w-28 h-28 rounded-full bg-tp-gray-700" />
+        <div className="ml-8 mr-4">Aragakey.</div>
+        <Icon icon="triangle-down" color="#C7C7C7" />
+      </div>
+    </Layout.Header>
+    <Layout.Main>
+      <div className="flex items-center justify-between h-84 px-48 bg-white shadow-b-tp-gray-100">
+        <div className="text-16 leading-24 text-tp-gray-900 font-bold">
+          页面标题
+        </div>
+        <Button leftIcon="setting" theme="light">
+          设置
+        </Button>
+      </div>
+      <div className="pt-32 px-48">
+        <Card elevation={0}>
+          <div className="w-full h-240" />
+        </Card>
+      </div>
+    </Layout.Main>
+    {/** 请忽略这个 style 标签 😊 */}
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `.adui-ComponentDoc-demoWrapper { padding: 0px; }`,
       }}
-    >
-      <Layout.Header
-        style={{
-          height: "64px",
-          paddingRight: "16px"
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            fontSize: "20px",
-            marginLeft: "28px"
-          }}
-        >
-          AD UI
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center"
-          }}
-        >
-          <div
-            style={{
-              width: "28px",
-              height: "28px",
-              borderRadius: "50%",
-              background: "#A3A3A3"
-            }}
-          />
-          <div
-            style={{
-              marginRight: "4px",
-              marginLeft: "8px"
-            }}
-          >
-            Aragakey
-          </div>
-          <Icon icon="triangle-down" color="#C7C7C7" />
-        </div>
-      </Layout.Header>
-      <Layout.Main>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: "86px",
-            padding: "0px 46px",
-            backgroundColor: "#fff",
-            boxShadow: "0 1px 0 0 rgba(223,223,223,0.45)",
-            borderRadius: "3px 0px"
-          }}
-        >
-          <div
-            style={{
-              fontSize: "16px",
-              color: "#1F1F1F",
-              letterSpacing: "0",
-              fontWeight: "600",
-              lineHeight: "24px"
-            }}
-          >
-            页面标题
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontSize: "13px",
-              color: "#6B6B6B",
-              letterSpacing: "0",
-              lineHeight: "20px"
-            }}
-          >
-            <Button
-              leftIcon="setting"
-              theme="light"
-            >
-            设置
-            </Button>
-          </div>
-        </div>
-        <div
-          style={{
-            padding: "32px 48px 0px 48px"
-          }}
-        >
-          <Card elevation={0}>
-            <div
-              style={{
-                width: "100%",
-                height: "250px"
-              }}
-            >
-              {" "}
-            </div>
-          </Card>
-        </div>
-      </Layout.Main>
-      {/** 请忽略这个 style 标签 😊 */}
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `.adui-ComponentDoc-demoWrapper { padding: 0px; }`
-        }}
-      />
-    </Layout>
-  )
+    />
+  </Layout>
+)
 ```

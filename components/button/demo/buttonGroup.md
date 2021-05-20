@@ -12,7 +12,7 @@ title:
 
   return (
     <React.Fragment>
-      <Button.Group style={{ marginRight: "20px" }}>
+      <Button.Group className="mr-20">
         {
           ["选项一", "选项二", "选项三"].map((text, index) => (
             <Button

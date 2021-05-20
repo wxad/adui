@@ -25,11 +25,11 @@ export default class Demo extends React.Component {
     const { utils, content } = this.props
     const contentChildren = JsonML.getChildren(content)
     const preStartIndex = contentChildren.findIndex(
-      node => JsonML.getTagName(node) === "pre"
+      (node) => JsonML.getTagName(node) === "pre"
     )
     // 只能在 h2 中使用 Alert
     const alertStartIndex = contentChildren.findIndex(
-      node => JsonML.getTagName(node) === "h2"
+      (node) => JsonML.getTagName(node) === "h2"
     )
 
     let alert
@@ -71,7 +71,7 @@ export default class Demo extends React.Component {
     if (realCode) {
       const codeArrayFirst = new Set(realCode.match(/<[A-Z]\w*/g))
       const codeSecond = [...codeArrayFirst].join("").match(/[a-z-A-Z]+/g)
-      codeFinal = codeSecond.filter(item => item !== "React")
+      codeFinal = codeSecond.filter((item) => item !== "React")
     }
 
     // codeSandBox的html模板
@@ -110,6 +110,7 @@ import { ${
                 }${realCode.includes("Message") ? ", Message" : ""}`
               : ""
           } } from 'adui'
+import "adui/adui-tailwind-build.css"
 
 const AduiExample = () => {
 ${realCode}
@@ -153,7 +154,7 @@ ReactDOM.render(<AduiExample />, document.getElementById('container'))
                 action="https://codesandbox.io/api/v1/sandboxes/define"
                 method="POST"
                 target="_blank"
-                ref={element => {
+                ref={(element) => {
                   this.form = element
                 }}
               >

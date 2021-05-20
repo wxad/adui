@@ -18,6 +18,7 @@ import {
   Nav,
 } from "../../../../components/"
 
+import '../../../../adui-tailwind-build.css'
 import styles from "./site.scss"
 
 class SiteLayout extends React.Component {
