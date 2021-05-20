@@ -187,7 +187,7 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     handleSelectAll: () => void;
     getMaxTagPlaceholder: (nodes: ITreeNode[]) => JSX.Element | null;
     convertChildrenToData: (nodes: any) => DataNode[];
-    convertTreeData: (dataNode: TreeData, options?: {
+    convertTreeData: (dataNodeParam: TreeData, options?: {
         selectAll?: boolean;
     }) => TreeData;
     listenInputChange: (e: any) => void;

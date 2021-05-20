@@ -82,7 +82,10 @@ const Item: React.FC<IItemProps> = ({
     labelClassName: labelClassNameContext,
   } = useContext(FormContext)
 
-  const classSet = classNames(className, `${prefix}-item`, itemClassNameContext)
+  const classSet = classNames(
+    className || itemClassNameContext,
+    `${prefix}-item`
+  )
 
   let align: string | undefined | null = labelAlign || labelAlignContext
   switch (align) {

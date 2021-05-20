@@ -13,6 +13,10 @@ export interface IFormProps {
      */
     className?: string;
     /**
+     * item className
+     */
+    itemClassName?: string;
+    /**
      * item style
      */
     itemStyle?: React.CSSProperties;
@@ -24,6 +28,10 @@ export interface IFormProps {
      * label 字符数，Form 会以 em 单位设置 label 宽度
      */
     labelSize?: number | null;
+    /**
+     * label className
+     */
+    labelClassName?: string;
     /**
      * label style
      */

@@ -37,6 +37,10 @@ export interface IItemProps {
      */
     labelSize?: number | null;
     /**
+     * label className
+     */
+    labelClassName?: string;
+    /**
      * label style
      */
     labelStyle?: React.CSSProperties;
