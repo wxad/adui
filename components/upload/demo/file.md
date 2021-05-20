@@ -49,20 +49,15 @@ title:
   }
 
   return (
-    <div style={{ width: "240px" }}>
+    <div className="w-240">
       <Button onClick={handleUpload}>{name ? "替换" : "上传"} pdf</Button>
       <div
-        style={{
-          padding: "12px 0",
-          fontSize: "12px",
-          lineHeight: "18px",
-          color: "#a3a3a3",
-        }}
+        className="py-12 text-12 leading-18 text-tp-gray-700"
       >
         支持格式：.pdf
       </div>
       <Upload.File
-        style={{ width: "240px" }}
+        className="w-240"
         ref={upload}
         progress={progress}
         src={src}

@@ -13,15 +13,11 @@ return (
     <Card>
       <Table
         dataSource={dataSource}
-        getHeadCellStyle={(col, colIndex) =>
-          !colIndex && { paddingLeft: "24px" }
+        getHeadCellClassName={(col, colIndex) => !colIndex && "pl-24"}
+        getCellClassName={(row, col, rowIndex, colIndex) =>
+          !colIndex && "pl-24"
         }
-        getCellStyle={(row, col, rowIndex, colIndex) =>
-          !colIndex && { paddingLeft: "24px" }
-        }
-        style={{
-          boxShadow: "0 1px 0 rgba(0, 0, 0, .08), 0 -1px 0 rgba(0, 0, 0, .08)",
-        }}
+        className="shadow-b-tp-gray-200"
         columns={[
           {
             dataIndex: "one",
@@ -67,7 +63,7 @@ return (
         pageSize={10}
         total={99}
         showButtonJumper
-        style={{ padding: "16px 16px 16px 0px" }}
+        className="pr-16 py-16"
       />
     </Card>
     {/** 请忽略这个 style 标签 😊 */}

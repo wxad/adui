@@ -88,17 +88,14 @@ const [treeData, setTreeData] = useState(treeDatas[0])
 return (
   <TreeSelect
     placeholder="请选择位置"
-    style={{ width: "360px" }}
+    className="w-360"
     onChange={setValue}
     value={value}
     treeData={treeData}
     maxTagCount={1}
     topContent={
       <Tabs
-        style={{
-          paddingLeft: "18px",
-          boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.06)",
-        }}
+        className="pl-18 shadow-b-tp-gray-100"
         defaultValue={0}
         onChange={(val) => {
           setTreeData(treeDatas[val])

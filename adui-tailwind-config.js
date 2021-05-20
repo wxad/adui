@@ -53,6 +53,8 @@ const shadows = {}
 Object.keys(colors).forEach((key) => {
   const value = colors[key]
   if (typeof value === "string") {
+    shadows[key] = `0 0 0 1px ${value}`
+    shadows[`inset-${key}`] = `0 0 0 1px ${value} inset`
     shadows[`t-${key}`] = `0 -1px 0 ${value}`
     shadows[`t-inset-${key}`] = `0 1px 0 ${value} inset`
     shadows[`b-${key}`] = `0 1px 0 ${value}`
@@ -61,8 +63,18 @@ Object.keys(colors).forEach((key) => {
     shadows[`r-inset-${key}`] = `-1px 0 0 ${value} inset`
     shadows[`l-${key}`] = `-1px 0 0 ${value}`
     shadows[`l-inset-${key}`] = `1px 0 0 ${value} inset`
+    shadows[`x-${key}`] = `-1px 0 0 ${value}, 1px 0 0 ${value}`
+    shadows[
+      `x-inset-${key}`
+    ] = `-1px 0 0 ${value} inset, 1px 0 0 ${value} inset`
+    shadows[`y-${key}`] = `0 -1px 0 ${value}, 0 1px 0 ${value}`
+    shadows[
+      `y-inset-${key}`
+    ] = `0 -1px 0 ${value} inset, 0 1px 0 ${value} inset`
   } else {
     Object.keys(value).forEach((valKey) => {
+      shadows[`${key}-${valKey}`] = `0 0 0 1px ${value[valKey]}`
+      shadows[`inset-${key}-${valKey}`] = `0 0 0 1px ${value[valKey]} inset`
       shadows[`t-${key}-${valKey}`] = `0 -1px 0 ${value[valKey]}`
       shadows[`t-inset-${key}-${valKey}`] = `0 1px 0 ${value[valKey]} inset`
       shadows[`b-${key}-${valKey}`] = `0 1px 0 ${value[valKey]}`
@@ -71,6 +83,18 @@ Object.keys(colors).forEach((key) => {
       shadows[`r-inset-${key}-${valKey}`] = `-1px 0 0 ${value[valKey]} inset`
       shadows[`l-${key}-${valKey}`] = `-1px 0 0 ${value[valKey]}`
       shadows[`l-inset-${key}-${valKey}`] = `1px 0 0 ${value[valKey]} inset`
+      shadows[
+        `x-${key}-${valKey}`
+      ] = `-1px 0 0 ${value[valKey]}, 1px 0 0 ${value[valKey]}`
+      shadows[
+        `x-inset-${key}-${valKey}`
+      ] = `-1px 0 0 ${value[valKey]} inset, 1px 0 0 ${value[valKey]} inset`
+      shadows[
+        `y-${key}-${valKey}`
+      ] = `0 -1px 0 ${value[valKey]}, 0 1px 0 ${value[valKey]}`
+      shadows[
+        `y-inset-${key}-${valKey}`
+      ] = `0 -1px 0 ${value[valKey]} inset, 0 1px 0 ${value[valKey]} inset`
     })
   }
 })
@@ -404,18 +428,22 @@ module.exports = {
       screen: "100vh",
     }),
     maxWidth: (theme, { breakpoints }) => ({
-      full: "100%",
-      ...breakpoints(theme("screens")),
-    }),
-    minHeight: {
-      0: "0px",
+      ...theme("spacing"),
       full: "100%",
       screen: "100vh",
-    },
-    minWidth: {
-      0: "0px",
+      initial: "initial",
+      ...breakpoints(theme("screens")),
+    }),
+    minHeight: (theme) => ({
+      ...theme("spacing"),
       full: "100%",
-    },
+      screen: "100vh",
+    }),
+    minWidth: (theme) => ({
+      ...theme("spacing"),
+      full: "100%",
+      screen: "100vw",
+    }),
     // 暂且无用
     objectPosition: false,
     opacity: {

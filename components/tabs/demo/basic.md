@@ -22,7 +22,7 @@ title:
         <Tabs.Tab title="选择项二" value={1} />
         <Tabs.Tab title="选择项三" value={2} />
       </Tabs>
-      <div style={{ paddingTop: "20px" }}>
+      <div className="pt-20">
         { value === 0 && "内容 A" }
         { value === 1 && "内容 B" }
         { value === 2 && "内容 C" }

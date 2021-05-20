@@ -35,10 +35,7 @@ return (
             getCellClassName={(row, col, rowIndex, colIndex) =>
               !colIndex ? "pl-12" : null
             }
-            style={{
-              boxShadow:
-                "0 1px 0 rgba(0, 0, 0, .08), 0 -1px 0 rgba(0, 0, 0, .08)",
-            }}
+            className="shadow-y-tp-gray-200"
             columns={[
               {
                 title: "项目",
@@ -52,7 +49,7 @@ return (
           />
         </div>
       }
-      popupStyle={{ maxWidth: "initial" }}
+      popupClassName="max-w-initial"
       placement="bottom"
     >
       <Button>内嵌表格</Button>

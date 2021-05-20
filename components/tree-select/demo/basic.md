@@ -191,33 +191,9 @@ const treeData = [
 
 return (
   <div>
-    <div
-      style={{
-        width: "360px",
-        marginBottom: "8px",
-        border: "1px solid #E6E6E6",
-        borderRadius: "4px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 2px 0 8px",
-          height: "32px",
-          boxShadow: "0 1px 0 rgba(0, 0, 0, 0.06)",
-        }}
-      >
-        <span
-          style={{
-            fontSize: "13px",
-            lineHeight: "20px",
-            color: "#a3a3a3",
-          }}
-        >
-          已选结果
-        </span>
+    <div className="mb-8 w-360 rounded-4 shadow-tp-gray-300">
+      <div className="flex items-center justify-between pl-8 pr-2 h-32 shadow-b-tp-gray-100">
+        <span className="text-13 leading-20 text-tp-gray-700">已选结果</span>
         <Button
           leftIcon="delete-outlined"
           size="mini"
@@ -229,7 +205,7 @@ return (
           清空
         </Button>
       </div>
-      <div style={{ padding: "8px", minHeight: "108px" }}>
+      <div className="p-8 min-h-108">
         {value.map((o) => (
           <Tag
             key={o}
@@ -239,7 +215,7 @@ return (
               valueDuplicated.splice(value.indexOf(o), 1)
               setValue(valueDuplicated)
             }}
-            style={{ marginRight: "4px", marginBottom: "4px" }}
+            className="mr-4 mb-4"
           >
             {o}
           </Tag>
@@ -250,7 +226,7 @@ return (
       selectAll
       resultVisible
       placeholder="请选择位置请选择位置请选择位置请选择位置请选择位置请选择位置"
-      style={{ width: "360px" }}
+      className="w-360"
       onChange={(val) => {
         console.log(val, "onchange")
         setValue(val)

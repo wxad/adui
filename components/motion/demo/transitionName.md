@@ -8,26 +8,17 @@ title:
 CSS：通过 `transitionName` 自定义 css animation。
 
 ```jsx
-  const [visible, setVisible] = useState(false)
+const [visible, setVisible] = useState(false)
 
-  return (
-    <div style={{ width: "50%", textAlign: "center" }}>
-      <Button onClick={() => setVisible(!visible)}>toggle animation</Button>
-      <Motion
-        transitionName="custom"
-      >
-        {
-          visible && (
-            <div
-              className="adui-custom-example"
-            >
-            </div>
-          )
-        }
-      </Motion>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
+return (
+  <div className="w-2/4 text-center">
+    <Button onClick={() => setVisible(!visible)}>toggle animation</Button>
+    <Motion transitionName="custom">
+      {visible && <div className="adui-custom-example"></div>}
+    </Motion>
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `
             .adui-custom-example {
               display: flex;
               align-items: center;
@@ -70,8 +61,8 @@ CSS：通过 `transitionName` 自定义 css animation。
               100% { opacity: 1; transform: translateX(0); }
             }
           `,
-        }}
-      />
-    </div>
-  )
+      }}
+    />
+  </div>
+)
 ```

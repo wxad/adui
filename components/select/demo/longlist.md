@@ -18,8 +18,8 @@ for (let i = 0; i < 10000; i++) {
 
 return (
   <Select
+    className="w-2/4"
     searchable
-    style={{ width: "50%" }}
     filterOption={(inputValue, option) => {
       if (inputValue.includes(option.props.value)) {
         return true
@@ -29,9 +29,9 @@ return (
   >
     {options.map(({ value }) => (
       <Select.Option value={value}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="flex items-center">
           <img
-            style={{ height: 24, width: 24, marginRight: 8 }}
+            className="mr-8 w-24 h-24"
             src="https://wxa.wxs.qq.com/mpweb/delivery/legacy/moment-preview/placeholder/vid.png"
             alt=""
           />

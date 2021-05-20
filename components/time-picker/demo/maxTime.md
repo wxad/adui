@@ -21,7 +21,7 @@ title:
         minTime="06:27"
         maxTime="23:45"
         disabledHours={hour => hour === "12"}
-        style={{ marginRight: "16px" }}
+        className="mr-16"
         value={value}
         onChange={val => setValue(val)}
       />
