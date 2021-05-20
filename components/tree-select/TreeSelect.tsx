@@ -554,9 +554,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       .filter((data) => data)
 
   public convertTreeData = (
-    dataNode: TreeData,
+    dataNodeParam: TreeData,
     options: { selectAll?: boolean } = {}
   ): TreeData => {
+    const dataNode = [...dataNodeParam]
     const { value: valueState } = this.state
     const isAllSelected = isArrayIncludes(valueState || [], this.treeValueAll)
     const indeterminate = !isAllSelected && !!valueState?.length
