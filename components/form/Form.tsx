@@ -19,6 +19,10 @@ export interface IFormProps {
    */
   className?: string
   /**
+   * item className
+   */
+  itemClassName?: string
+  /**
    * item style
    */
   itemStyle?: React.CSSProperties
@@ -30,6 +34,10 @@ export interface IFormProps {
    * label 字符数，Form 会以 em 单位设置 label 宽度
    */
   labelSize?: number | null
+  /**
+   * label className
+   */
+  labelClassName?: string
   /**
    * label style
    */
@@ -45,8 +53,10 @@ const Form: React.FC<IFormProps> & {
 } = ({
   children,
   className,
+  itemClassName,
   itemStyle,
   labelAlign,
+  labelClassName,
   labelSize,
   labelStyle,
   ...otherProps
@@ -55,7 +65,14 @@ const Form: React.FC<IFormProps> & {
 
   return (
     <FormContext.Provider
-      value={{ itemStyle, labelAlign, labelSize, labelStyle }}
+      value={{
+        itemClassName,
+        itemStyle,
+        labelAlign,
+        labelClassName,
+        labelSize,
+        labelStyle,
+      }}
     >
       <div className={classSet} {...otherProps}>
         {children}
@@ -78,6 +95,10 @@ Form.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * item className
+   */
+  itemClassName: PropTypes.string,
+  /**
    * item style
    */
   itemStyle: PropTypes.object,
@@ -85,6 +106,10 @@ Form.propTypes = {
    * label 字符对齐方式
    */
   labelAlign: PropTypes.oneOf(["left", "center", "right"]),
+  /**
+   * label className
+   */
+  labelClassName: PropTypes.string,
   /**
    * label 字符数，Form 会以 em 单位设置 label 宽度
    */
@@ -98,8 +123,10 @@ Form.propTypes = {
 Form.defaultProps = {
   children: null,
   className: undefined,
+  itemClassName: undefined,
   itemStyle: {},
   labelAlign: null,
+  labelClassName: undefined,
   labelSize: null,
   labelStyle: {},
 }

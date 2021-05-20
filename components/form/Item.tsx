@@ -43,6 +43,10 @@ export interface IItemProps {
    */
   labelSize?: number | null
   /**
+   * label className
+   */
+  labelClassName?: string
+  /**
    * label style
    */
   labelStyle?: React.CSSProperties
@@ -64,18 +68,21 @@ const Item: React.FC<IItemProps> = ({
   labelHelperIcon,
   labelHelperProps,
   labelSize,
+  labelClassName,
   labelStyle,
   style,
   ...otherProps
 }: IItemProps) => {
   const {
-    labelAlign: labelAlignContext,
+    itemClassName: itemClassNameContext,
     itemStyle,
+    labelAlign: labelAlignContext,
     labelStyle: labelStyleContext,
     labelSize: labelSizeContext,
+    labelClassName: labelClassNameContext,
   } = useContext(FormContext)
 
-  const classSet = classNames(className, `${prefix}-item`)
+  const classSet = classNames(className, `${prefix}-item`, itemClassNameContext)
 
   let align: string | undefined | null = labelAlign || labelAlignContext
   switch (align) {
@@ -104,7 +111,7 @@ const Item: React.FC<IItemProps> = ({
     >
       {!!label && (
         <div
-          className={`${prefix}-label`}
+          className={classNames(`${prefix}-label`, labelClassNameContext)}
           style={{
             width: `${labelSize || labelSizeContext}em`,
             ...alignStyle,
@@ -153,6 +160,10 @@ Item.propTypes = {
    */
   labelAlign: PropTypes.oneOf([null, "left", "center", "right"]),
   /**
+   * label className
+   */
+  labelClassName: PropTypes.string,
+  /**
    * label 解释内容
    */
   labelHelper: PropTypes.node,
@@ -187,6 +198,7 @@ Item.defaultProps = {
   labelHelperIcon: "help-circle",
   labelHelperProps: {},
   labelSize: null,
+  labelClassName: undefined,
   labelStyle: {},
   style: {},
 }

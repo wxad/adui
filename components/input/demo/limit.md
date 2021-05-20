@@ -15,7 +15,7 @@ title:
       limit={10}
       onChange={({ target: { value: val } }) => setValue(val)}
       value={value}
-      style={{ width: "28%" }}
+      className="w-240"
     />
   )
 ```

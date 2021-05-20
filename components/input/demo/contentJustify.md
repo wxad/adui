@@ -8,23 +8,17 @@ title:
 `contentJustify` 内容自适应宽度：
 
 ```jsx
-  const [value, setValue] = useState("contentJustify")
-  const inputRef = useRef(null)
+const [value, setValue] = useState("contentJustify")
 
-  useEffect(() => {
-    console.log(inputRef.current, "yijie")
-  }, [])
-
-  return (
-    <Input
-      size="large"
-      ref={inputRef}
-      contentJustify
-      rightElement={<Icon icon="edit-outlined" />}
-      style={{ minWidth: "100px" }}
-      theme="light"
-      onChange={({ target: { value: val } }) => setValue(val)}
-      value={value}
-    />
-  )
+return (
+  <Input
+    size="large"
+    contentJustify
+    rightElement={<Icon icon="edit-outlined" />}
+    className="min-w-100"
+    theme="light"
+    onChange={({ target: { value: val } }) => setValue(val)}
+    value={value}
+  />
+)
 ```
