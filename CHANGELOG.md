@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/wxad/adui/compare/v1.6.0...v2.0.0) (2021-05-20)
+
+
+### Features
+
+* **channels-input:** init ([89fe673](https://github.com/wxad/adui/commit/89fe67302c0a391e90407105ba591acc07ddc3be))
+* **Dialog, Drawer, Tooltip, Popover:** 支持 zIndex Prop ([f85132d](https://github.com/wxad/adui/commit/f85132d0c1f7566094ff82a006db8db9353fc530))
+* **Select:** 支持 searchValue onSearch 的 prop ([7780ba9](https://github.com/wxad/adui/commit/7780ba9e6ce377e803d7a01e4897eb605706f6a2))
+* **Select:** placeholderColor prop ([3f23602](https://github.com/wxad/adui/commit/3f23602c6659d4fc124ee267188415eb5ef6143e))
+* **TimePicker:** 支持 24:00 选择 ([9a18d90](https://github.com/wxad/adui/commit/9a18d9070427a6b4a33b45952909de0e9c1f73a0))
+* **Transition:** init ([ccb5d6c](https://github.com/wxad/adui/commit/ccb5d6ce05103a306cda96a562a16c4792cae1f4))
+* **TreeSelect:** 尝试支持 topContent props ([02350d4](https://github.com/wxad/adui/commit/02350d4f6cca8b8a6ee01a40a70192de559553c2))
+* **TreeSelect:** 支持 heightFixed Prop ([6a36375](https://github.com/wxad/adui/commit/6a3637540d5ea3f76d2bc8e8ba6022b0d189c1fb))
+* **TreeSelect:** 支持全选 ([43d954b](https://github.com/wxad/adui/commit/43d954ba94e82a1b2085053aabfb154f23049f71))
+
+
+### Bug Fixes
+
+* **Alert:** 修复 icon null 类型错误 ([54ae4e7](https://github.com/wxad/adui/commit/54ae4e77c22676a59d4f7a882bdd4ff7fdb54918))
+* **DatePicker:** 尝试修复可能的 toLocaleDateString 报错 ([49e8ac4](https://github.com/wxad/adui/commit/49e8ac47ab359e93c2c753527b1ea9342fdf8f63))
+* **DatePicker:** maxDate minDate 支持 Null ([dd7b8c0](https://github.com/wxad/adui/commit/dd7b8c08cc8c2e2d8f7f3f93f55bb75e94c4f7c8))
+* **loader:** 修复 Alert 没有传 intent 时的报错 ([6e52bd9](https://github.com/wxad/adui/commit/6e52bd91101c5f3f50e6ce4846f94ede9c602fbc))
+* **Radio, Checkbox, Switch:** 修复 string 类型会造成的死循环 ([da8ac70](https://github.com/wxad/adui/commit/da8ac70378493731f5fe922122c73396747cf722))
+* **Select:** 修复 options label 不显示在结果区的错误 ([885a7b5](https://github.com/wxad/adui/commit/885a7b51b0cf9e02c5f1bdd94e5f7caebb00d87b))
+* **Select:** 修复问题 ([0c56cc0](https://github.com/wxad/adui/commit/0c56cc07842939d705fd077ee0f6b9f49f37952d))
+* **Table:** 支持 select 和 expand 同时使用 ([ce5968a](https://github.com/wxad/adui/commit/ce5968a28dc7d20e9e8393dd711e50b08389dced))
+* **Table:** 支持展开行+固定列的情景 ([645ba01](https://github.com/wxad/adui/commit/645ba01280a4ebb65073a43a40fd528af9497b86))
+* **Transition:** width, height 加入单位 ([79bd2c7](https://github.com/wxad/adui/commit/79bd2c765014ba36c30e6cabe52119ab003471be))
+* **TreeSelect:** 防止 topContent 点击时 dropdown 会消失的问题 ([4647f8e](https://github.com/wxad/adui/commit/4647f8eecd5e47aed7b33b511929b15c6790da7a))
+
 ## [1.6.0](https://github.com/wxad/adui/compare/v1.5.3...v1.6.0) (2021-03-17)
 
 
