@@ -114,7 +114,10 @@ const Item: React.FC<IItemProps> = ({
     >
       {!!label && (
         <div
-          className={classNames(`${prefix}-label`, labelClassNameContext)}
+          className={classNames(
+            `${prefix}-label`,
+            labelClassName || labelClassNameContext
+          )}
           style={{
             width: `${labelSize || labelSizeContext}em`,
             ...alignStyle,
