@@ -557,14 +557,13 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     dataNodeParam: TreeData,
     options: { selectAll?: boolean } = {}
   ): TreeData => {
-    const dataNode = [...(dataNodeParam || [])]
+    if (!dataNodeParam) {
+      return undefined
+    }
+    const dataNode = [...dataNodeParam]
     const { value: valueState } = this.state
     const isAllSelected = isArrayIncludes(valueState || [], this.treeValueAll)
     const indeterminate = !isAllSelected && !!valueState?.length
-
-    if (!dataNode) {
-      return undefined
-    }
 
     if (dataNode[0]?.key === `${prefix}-tree-treenode-all`) {
       return dataNode
