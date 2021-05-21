@@ -1,0 +1,3 @@
+import Nav from "./Nav";
+export default Nav;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2NvbXBvbmVudHMvbmF2L2luZGV4LnRzeCJdLCJuYW1lcyI6WyJOYXYiXSwibWFwcGluZ3MiOiJBQUFBLE9BQU9BLEdBQVAsTUFBZ0IsT0FBaEI7QUFFQSxlQUFlQSxHQUFmIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IE5hdiBmcm9tIFwiLi9OYXZcIlxuXG5leHBvcnQgZGVmYXVsdCBOYXZcbiJdfQ==

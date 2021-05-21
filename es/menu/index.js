@@ -1,0 +1,3 @@
+import Menu from "./Menu";
+export default Menu;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2NvbXBvbmVudHMvbWVudS9pbmRleC50c3giXSwibmFtZXMiOlsiTWVudSJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBT0EsSUFBUCxNQUFpQixRQUFqQjtBQUVBLGVBQWVBLElBQWYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgTWVudSBmcm9tIFwiLi9NZW51XCJcblxuZXhwb3J0IGRlZmF1bHQgTWVudVxuIl19

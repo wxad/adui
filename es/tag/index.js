@@ -1,0 +1,3 @@
+import Tag from "./Tag";
+export default Tag;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2NvbXBvbmVudHMvdGFnL2luZGV4LnRzeCJdLCJuYW1lcyI6WyJUYWciXSwibWFwcGluZ3MiOiJBQUFBLE9BQU9BLEdBQVAsTUFBZ0IsT0FBaEI7QUFFQSxlQUFlQSxHQUFmIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFRhZyBmcm9tIFwiLi9UYWdcIlxuXG5leHBvcnQgZGVmYXVsdCBUYWdcbiJdfQ==

@@ -1,0 +1,3 @@
+import Form from "./Form";
+export default Form;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2NvbXBvbmVudHMvZm9ybS9pbmRleC50c3giXSwibmFtZXMiOlsiRm9ybSJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBT0EsSUFBUCxNQUFpQixRQUFqQjtBQUVBLGVBQWVBLElBQWYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgRm9ybSBmcm9tIFwiLi9Gb3JtXCJcblxuZXhwb3J0IGRlZmF1bHQgRm9ybVxuIl19

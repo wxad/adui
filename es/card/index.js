@@ -1,0 +1,3 @@
+import Card from "./Card";
+export default Card;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2NvbXBvbmVudHMvY2FyZC9pbmRleC50c3giXSwibmFtZXMiOlsiQ2FyZCJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBT0EsSUFBUCxNQUFpQixRQUFqQjtBQUVBLGVBQWVBLElBQWYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgQ2FyZCBmcm9tIFwiLi9DYXJkXCJcblxuZXhwb3J0IGRlZmF1bHQgQ2FyZFxuIl19

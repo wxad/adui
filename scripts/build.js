@@ -6,7 +6,7 @@ const libPaths = [
   path.resolve(__dirname, "../lib/"),
   path.resolve(__dirname, "../es/"),
 ]
-libPaths.forEach(function (libPath) {
+libPaths.forEach(function (libPath, i) {
   const dirs = fs
     .readdirSync(libPath)
     .filter(
@@ -25,7 +25,9 @@ libPaths.forEach(function (libPath) {
     fs.unlink(`${libPath}/${dir}/style.js`)
     fs.writeFile(
       `${libPath}/${dir}/style/index.js`,
-      '"use strict";\nrequire("./index.css");',
+      i === 0
+        ? '"use strict";\nrequire("./index.css");'
+        : 'import "./index.scss"',
       "utf8"
     )
   })
