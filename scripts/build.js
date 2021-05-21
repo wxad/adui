@@ -27,7 +27,7 @@ libPaths.forEach(function (libPath, i) {
       `${libPath}/${dir}/style/index.js`,
       i === 0
         ? '"use strict";\nrequire("./index.css");'
-        : 'import "./index.scss"',
+        : 'import "./index.css"',
       "utf8"
     )
   })
