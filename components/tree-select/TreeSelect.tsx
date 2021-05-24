@@ -439,7 +439,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
             whiteSpace: "nowrap",
           }}
         >
-          {nodes[0].label}
+          {nodes[0]?.label}
         </span>
         <span style={{ display: "inline-block", verticalAlign: "top" }}>
           等 {length} 个
