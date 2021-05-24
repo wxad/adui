@@ -49,7 +49,11 @@ export interface IDialogProps extends IStepProps {
    */
   afterClose?: (() => void) | null
   /**
-   * 设置 body 样式
+   * 设置 body className
+   */
+  bodyClassName?: string
+  /**
+   * 设置 body style
    */
   bodyStyle?: React.CSSProperties
   /**
@@ -85,7 +89,11 @@ export interface IDialogProps extends IStepProps {
    */
   footerElement?: React.ReactNode
   /**
-   * 设置 footer 样式
+   * 设置 footer className
+   */
+  footerClassName?: string
+  /**
+   * 设置 footer style
    */
   footerStyle?: React.CSSProperties
   /**
@@ -101,7 +109,11 @@ export interface IDialogProps extends IStepProps {
    */
   headerElement?: React.ReactNode
   /**
-   * 设置 header 样式
+   * 设置 header className
+   */
+  headerClassName?: string
+  /**
+   * 设置 header style
    */
   headerStyle?: React.CSSProperties
   /**
@@ -151,7 +163,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      */
     afterClose: PropTypes.func,
     /**
-     * 设置 body 样式
+     * 设置 body className
+     */
+    bodyClassName: PropTypes.string,
+    /**
+     * 设置 body style
      */
     bodyStyle: PropTypes.object,
     /**
@@ -207,7 +223,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      */
     footerElement: PropTypes.node,
     /**
-     * 设置 footer 样式
+     * 设置 footer className
+     */
+    footerClassName: PropTypes.string,
+    /**
+     * 设置 footer style
      */
     footerStyle: PropTypes.object,
     /**
@@ -223,7 +243,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      */
     headerElement: PropTypes.node,
     /**
-     * 设置 header 样式
+     * 设置 header className
+     */
+    headerClassName: PropTypes.string,
+    /**
+     * 设置 header style
      */
     headerStyle: PropTypes.object,
     /**
@@ -262,6 +286,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
 
   public static defaultProps: IDialogProps = {
     afterClose: null,
+    bodyClassName: "",
     bodyStyle: {},
     cancelProps: {},
     cancelText: "取消",
@@ -276,9 +301,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     destroyAfterClose: false,
     escapeKeyClosable: true,
     footerElement: undefined,
+    footerClassName: "",
     footerStyle: {},
     getContainer: null,
     headerContent: null,
+    headerClassName: "",
     headerElement: undefined,
     headerStyle: {},
     maskClosable: false,
@@ -526,11 +553,14 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
 
   public getComponent = (options?: { visible: boolean }) => {
     const {
+      bodyClassName,
       bodyStyle,
       children,
       className,
+      footerClassName,
       footerElement,
       footerStyle,
+      headerClassName,
       headerContent,
       headerElement,
       headerStyle,
@@ -628,7 +658,10 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
                 {headerElement === null
                   ? null
                   : headerElement || (
-                      <div className={`${prefix}-header`} style={headerStyle}>
+                      <div
+                        className={`${prefix}-header ${headerClassName}`}
+                        style={headerStyle}
+                      >
                         {[
                           <div key={0} className={`${prefix}-title`}>
                             {title}
@@ -650,13 +683,19 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
                         ]}
                       </div>
                     )}
-                <div className={`${prefix}-body`} style={bodyStyle}>
+                <div
+                  className={`${prefix}-body ${bodyClassName}`}
+                  style={bodyStyle}
+                >
                   {steps && steps.length
                     ? steps[currentStep].children
                     : children}
                 </div>
                 {footerElement === null ? null : (
-                  <div className={`${prefix}-footer`} style={footerStyle}>
+                  <div
+                    className={`${prefix}-footer ${footerClassName}`}
+                    style={footerStyle}
+                  >
                     {footerElement || [
                       this.getCancelButton(),
                       this.getConfirmButton(),
