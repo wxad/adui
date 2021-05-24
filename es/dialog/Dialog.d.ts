@@ -39,7 +39,11 @@ export interface IDialogProps extends IStepProps {
      */
     afterClose?: (() => void) | null;
     /**
-     * 设置 body 样式
+     * 设置 body className
+     */
+    bodyClassName?: string;
+    /**
+     * 设置 body style
      */
     bodyStyle?: React.CSSProperties;
     /**
@@ -75,7 +79,11 @@ export interface IDialogProps extends IStepProps {
      */
     footerElement?: React.ReactNode;
     /**
-     * 设置 footer 样式
+     * 设置 footer className
+     */
+    footerClassName?: string;
+    /**
+     * 设置 footer style
      */
     footerStyle?: React.CSSProperties;
     /**
@@ -91,7 +99,11 @@ export interface IDialogProps extends IStepProps {
      */
     headerElement?: React.ReactNode;
     /**
-     * 设置 header 样式
+     * 设置 header className
+     */
+    headerClassName?: string;
+    /**
+     * 设置 header style
      */
     headerStyle?: React.CSSProperties;
     /**
@@ -139,7 +151,11 @@ declare class Dialog extends React.Component<IDialogProps, IDialogState> {
          */
         afterClose: PropTypes.Requireable<(...args: any[]) => any>;
         /**
-         * 设置 body 样式
+         * 设置 body className
+         */
+        bodyClassName: PropTypes.Requireable<string>;
+        /**
+         * 设置 body style
          */
         bodyStyle: PropTypes.Requireable<object>;
         /**
@@ -195,7 +211,11 @@ declare class Dialog extends React.Component<IDialogProps, IDialogState> {
          */
         footerElement: PropTypes.Requireable<PropTypes.ReactNodeLike>;
         /**
-         * 设置 footer 样式
+         * 设置 footer className
+         */
+        footerClassName: PropTypes.Requireable<string>;
+        /**
+         * 设置 footer style
          */
         footerStyle: PropTypes.Requireable<object>;
         /**
@@ -211,7 +231,11 @@ declare class Dialog extends React.Component<IDialogProps, IDialogState> {
          */
         headerElement: PropTypes.Requireable<PropTypes.ReactNodeLike>;
         /**
-         * 设置 header 样式
+         * 设置 header className
+         */
+        headerClassName: PropTypes.Requireable<string>;
+        /**
+         * 设置 header style
          */
         headerStyle: PropTypes.Requireable<object>;
         /**

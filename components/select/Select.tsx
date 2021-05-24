@@ -441,7 +441,9 @@ class Select extends React.Component<ISelectProps, ISelectState> {
         id = (target.parentNode?.nextSibling as Element)?.id
         this.setState({ selectId: id })
       }
-      const realInput = document.querySelector(`[aria-owns="${id}"]`) as any
+      const realInput = document.querySelector(
+        `.adui-select-selection-search [aria-owns="${id}"]`
+      ) as any
       if (realInput) {
         const lastValue = realInput.value
         realInput.value = val
