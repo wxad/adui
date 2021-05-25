@@ -1521,7 +1521,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         {virtualScroll && dataSource && !!dataSource.length && (
           <List
             data={dataSource}
-            itemKey="dataIndex"
+            itemKey="key"
             height={(height || 400) - 40}
             itemHeight={42}
             className={`${prefix}-virtual-wrapper`}
