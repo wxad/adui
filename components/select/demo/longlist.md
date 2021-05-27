@@ -47,4 +47,4 @@ return (
 
 ### 虚拟滚动与 dropdownMatchSelectWidth Prop
 
-当 `dropdownMatchSelectWidth` 为 `false` 时，虚拟滚动将失效。在 adui 1.0 前，此 Prop 默认为 `false`，现在改为 `true`，请注意对样式的影响。
+当 `dropdownMatchSelectWidth` 为 `false` 时，虚拟滚动将失效。在 adui 2.0 前，此 Prop 默认为 `false`，现在改为 `true`，请注意对样式的影响。

@@ -14,7 +14,7 @@
 yarn add adui react react-dom
 ```
 
-**adui** 目前依赖的 `react` 与 `react-dom` 版本为 16.9.0。**adui 1.0** 使用了 `Hooks` 书写组件，请保证你的 React 版本 ^16.9.0。
+**adui** 目前依赖的 `react` 与 `react-dom` 版本为 16.9.0。**adui 2.0** 使用了 `Hooks` 书写组件，请保证你的 React 版本 ^16.9.0。
 
 ---
 
@@ -38,13 +38,13 @@ import { Button } from "adui"
 
 ### 组件与样式文件
 
-**adui 1.0** 在每个组件中单独引入了该组件的样式。因此，组件和样式的按需打包，通过 webpack 的 tree shaking 会自动得到处理。
+**adui 2.0** 在每个组件中单独引入了该组件的样式。因此，组件和样式的按需打包，通过 webpack 的 tree shaking 会自动得到处理。
 
 ### 图标 Icon
 
-由于 **adui 1.0** 的组件设计，在只使用 `<Icon icon="add" />` 时会引入整个图标资源文件，因为所有的路径信息都存放在这同一个文件下。同样，如果只使用了 `<Button leftIcon="add" />` 也会引入所有图标，因为 `<Button />` 使用了 `<Icon />`。
+由于 **adui 2.0** 的组件设计，在只使用 `<Icon icon="add" />` 时会引入整个图标资源文件，因为所有的路径信息都存放在这同一个文件下。同样，如果只使用了 `<Button leftIcon="add" />` 也会引入所有图标，因为 `<Button />` 使用了 `<Icon />`。
 
-现有的 API 有它的优势。对比业界方案（此处不展开讨论），**adui 1.0** 提供了基于 webpack 的 loader 和 plugin 帮助处理图标的按需提取。
+现有的 API 有它的优势。对比业界方案（此处不展开讨论），**adui 2.0** 提供了基于 webpack 的 loader 和 plugin 帮助处理图标的按需提取。
 
 ```js
 const AduiIconLoader = require.resolve("adui/adui-icon-loader")
@@ -115,7 +115,7 @@ html:root {
 
 ## 关于组件类型
 
-**adui 1.0** 一部分组件以 `Function Component` + `Hooks` 实现。
+**adui 2.0** 一部分组件以 `Function Component` + `Hooks` 实现。
 现在，组件一共有 类组件（`Class Component`），函数组件（`Function Component`），以及也属于函数组件的`ForwardRef Component`这三种。
 
 ## 关于内部驱动与外部控制

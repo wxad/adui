@@ -11,7 +11,7 @@ title:
 const [value, setValue] = useState([])
 return (
   <Table
-    dataSource={Array.from(new Array(10000), (_, i) => ({ key: i }))}
+    dataSource={Array.from(new Array(100), (_, i) => ({ key: i }))}
     selectOnRowClick
     virtualScroll
     virtualListStyle={{ width: "1530px" }}

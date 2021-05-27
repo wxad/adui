@@ -6,7 +6,6 @@ const eslintrc = {
     "plugin:react/recommended",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
-    "prettier/react",
   ],
   globals: {
     JSX: "readonly",
@@ -35,6 +34,7 @@ const eslintrc = {
     },
   ],
   rules: {
+    "prettier/prettier": 0,
     // 不要求文件末必须有一行空行
     "eol-last": 0,
     // 不要求字符串单引号

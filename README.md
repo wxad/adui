@@ -14,7 +14,7 @@
 ```js
 yarn add adui react react-dom
 ```
-**adui** 目前依赖的 `react` 与 `react-dom` 版本为 16.13.1。**adui 1.0** 使用了 `Hooks` 书写组件，请保证你的 React 版本 ^16.8。
+**adui** 目前依赖的 `react` 与 `react-dom` 版本为 16.13.1。**adui 2.0** 使用了 `Hooks` 书写组件，请保证你的 React 版本 ^16.8。
 
 ---
 
@@ -62,7 +62,7 @@ html:root { --primary-color: #00bb9c; }
 
 ## 关于组件类型
 
-**adui 1.0** 一部分组件以 `Function Component` + `Hooks` 实现。
+**adui 2.0** 一部分组件以 `Function Component` + `Hooks` 实现。
 现在，组件一共有 类组件（`Class Component`），函数组件（`Function Component`），以及也属于函数组件的`ForwardRef Component`这三种。
 
 ## 关于内部驱动与外部控制
