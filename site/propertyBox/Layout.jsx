@@ -27,10 +27,10 @@ export default class PropertyBox extends React.Component {
       bottomFence,
     } = this.state
     const codes = `<Layout
-  style={{ display: "flex", flexDirection: "column" }}
+  className="flex flex-col"
 >
   ${topFence ? "<Layout.Header />" : ""}
-  <Grid.Row style={{ flex: 1 }}>
+  <Grid.Row className="flex-1">
     ${leftFence ? "<Layout.Aside />" : ""}
     <Layout.Main>
       ${contentTop ? "<div>contentTop</div>" : ""}
