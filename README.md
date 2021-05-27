@@ -174,9 +174,9 @@ enzyme + jest 书写测试用例。正在学习。
 
 提交规范现在使用了 [commitlint](https://github.com/conventional-changelog/commitlint) + `husky` 自动在 git pre-commit hook 时检测。同样在这时候会执行 stylelint 和 eslint。
 
-未来会使用 commitlint 做自动化 changelog。此处感谢 charlieyin 推荐此工具。
+使用 commitlint 做自动化 changelog。
 
-现在推荐的 commit 示例：
+推荐的 commit 示例：
 
 ### 新组件、功能（feature）
 feat(Button): 添加 focus prop。
