@@ -206,9 +206,10 @@ const RangePicker: React.ForwardRefExoticComponent<
     const [month, setMonth] = useState<Date | null | undefined>(
       initialState.month
     )
-    const [prevValueProp, setPrevValueProp] = useState<
-      [Date | null | undefined, Date | null | undefined] | null | undefined
-    >(valueProp)
+    const [prevValueProp, setPrevValueProp] =
+      useState<
+        [Date | null | undefined, Date | null | undefined] | null | undefined
+      >(valueProp)
     const [rangeValue, setRangeValue] = useState<string>(
       initialState.rangeValue
     )
@@ -332,6 +333,12 @@ const RangePicker: React.ForwardRefExoticComponent<
     }
 
     const handleDayClick = (day: Date) => {
+      if (
+        DateUtils.isDayBefore(day, minDate) ||
+        DateUtils.isDayAfter(day, maxDate)
+      ) {
+        return
+      }
       if (isSelectingFirstDay(from, to)) {
         if (onStartDaySelect) {
           onStartDaySelect(day)
@@ -457,7 +464,8 @@ const RangePicker: React.ForwardRefExoticComponent<
       if (e) {
         const { currentTarget: target } = e
         const targetRect = target && target.getBoundingClientRect()
-        const dayPickerRect = dayPickerRef.current.dayPicker.getBoundingClientRect()
+        const dayPickerRect =
+          dayPickerRef.current.dayPicker.getBoundingClientRect()
 
         if (
           target.name === "month" &&
@@ -536,6 +544,9 @@ const RangePicker: React.ForwardRefExoticComponent<
                 <Navbar
                   maxDate={maxDate}
                   minDate={minDate}
+                  onManuallyChangeMonth={() => {
+                    setMonth(minDate)
+                  }}
                   {...NavbarElementProps}
                 />
               }

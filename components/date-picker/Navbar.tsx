@@ -15,6 +15,7 @@ export interface INavbarProps {
   nextMonth: Date | null
   onNextClick: () => void
   onPreviousClick: () => void
+  onManuallyChangeMonth?: () => void
 }
 
 /**
@@ -27,6 +28,7 @@ const Navbar: React.FC<INavbarProps> = ({
   nextMonth,
   onNextClick,
   onPreviousClick,
+  onManuallyChangeMonth,
 }: INavbarProps) => (
   <div className={`${prefix}-navBar`}>
     <Button
@@ -37,7 +39,9 @@ const Navbar: React.FC<INavbarProps> = ({
       onClick={() => {
         onPreviousClick()
       }}
-      disabled={areSameMonth(minDate, month)}
+      disabled={
+        areSameMonth(minDate, month) || DateUtils.isDayBefore(month, minDate)
+      }
     />
     <Button
       className={`${prefix}-navButtonNext`}
@@ -45,6 +49,9 @@ const Navbar: React.FC<INavbarProps> = ({
       theme="light"
       size="small"
       onClick={() => {
+        if (DateUtils.isDayBefore(month, minDate) && onManuallyChangeMonth) {
+          onManuallyChangeMonth()
+        }
         onNextClick()
       }}
       disabled={
@@ -79,6 +86,10 @@ Navbar.propTypes = {
    * previous click handler
    */
   onPreviousClick: PropTypes.any,
+  /**
+   * previous click handler
+   */
+  onManuallyChangeMonth: PropTypes.any,
 }
 
 Navbar.defaultProps = {
@@ -88,6 +99,7 @@ Navbar.defaultProps = {
   nextMonth: null,
   onNextClick: () => {},
   onPreviousClick: () => {},
+  onManuallyChangeMonth: () => {},
 }
 
 export default Navbar

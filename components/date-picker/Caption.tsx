@@ -46,11 +46,16 @@ const Caption: React.FC<ICaptionProps> = ({
 
   const displayMonth = date.getMonth()
   const displayYear = date.getFullYear()
+
   const startMonth = displayYear === minYear ? minDate.getMonth() : 0
   const endMonth = displayYear === maxYear ? maxDate.getMonth() + 1 : 12
   const months = [startMonth]
   for (let month = startMonth + 1; month < endMonth; month += 1) {
     months.push(month)
+  }
+
+  if (!months.includes(displayMonth)) {
+    months.unshift(displayMonth)
   }
 
   return (
@@ -71,6 +76,7 @@ const Caption: React.FC<ICaptionProps> = ({
             name="month"
             onChange={handleMonthChange}
             value={displayMonth}
+            data-value={displayMonth}
           >
             {months.map((month) => (
               <option key={month} value={month}>

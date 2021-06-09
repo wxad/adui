@@ -8,6 +8,7 @@ export interface INavbarProps {
     nextMonth: Date | null;
     onNextClick: () => void;
     onPreviousClick: () => void;
+    onManuallyChangeMonth?: () => void;
 }
 /**
  * 日期选择 Navbar
