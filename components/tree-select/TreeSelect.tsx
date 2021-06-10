@@ -675,7 +675,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     _: ITreeSelectProps,
     { value: valuePrev }: ITreeSelectState
   ) => {
-    const { resultVisible, heightFixed } = this.props
+    const { resultVisible, heightFixed, placeholder } = this.props
     const { hash, value, maxHeightFixed } = this.state
     /**
      * resultVisible 为 false 时， selector 高度不会改变。
@@ -687,6 +687,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     if (!resultVisible) {
       setTimeout(() => {
         window.dispatchEvent(new Event("resize"))
+        const input = this.wrapper.querySelector("input")
+        if (input) {
+          input.placeholder = placeholder
+        }
       }, 0)
     }
 
