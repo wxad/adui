@@ -9,6 +9,7 @@ import shallowequal from "shallowequal"
 import addEventListener from "rc-util/lib/Dom/addEventListener"
 import { debounce } from "debounce"
 import omit from "../_util/omit"
+import ResizeObserver from "../resize-observer"
 import "./style"
 
 const prefix = "adui-affix"
@@ -284,17 +285,24 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
 
     return (
       <div ref={this.savePlaceholderNode} style={{ ...placeholderStyle }}>
-        <div
-          className={classSet}
-          ref={this.saveFixedNode}
-          style={{
-            ...affixStyle,
-            ...style,
+        <ResizeObserver
+          onResize={() => {
+            this.updatePosition()
+            this.syncPlaceholderStyle()
           }}
-          {...restProps}
         >
-          {children}
-        </div>
+          <div
+            className={classSet}
+            ref={this.saveFixedNode}
+            style={{
+              ...affixStyle,
+              ...style,
+            }}
+            {...restProps}
+          >
+            {children}
+          </div>
+        </ResizeObserver>
       </div>
     )
   }
