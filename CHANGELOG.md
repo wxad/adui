@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/wxad/adui/compare/v2.0.0...v2.1.0) (2021-06-22)
+
+
+### Features
+
+* **Dialog:** header body footer 支持 className ([777b05a](https://github.com/wxad/adui/commit/777b05afe901a80ab81e19fa5de40622430ceaa0))
+* **Form:** 支持 itemClassName labelClassName ([377991d](https://github.com/wxad/adui/commit/377991dd78c41c6277f14f963f45206ed02df932))
+
+
+### Bug Fixes
+
+* **Affix:** 修复在 display: none 变为 Block 时的状态问题 ([ff9226a](https://github.com/wxad/adui/commit/ff9226a04d3867da0a731226aa917475ce80f2e4))
+* **ColorPicker:** 修复无法重置为 "" 的问题 ([246c5aa](https://github.com/wxad/adui/commit/246c5aaef417f961fec9b0f091d278f4223a4cc3))
+* **compile:** 修复 es 编译的 css require 问题 ([0e3a3f4](https://github.com/wxad/adui/commit/0e3a3f4aa7a4f2f5ef48e8bece5926980cb5f392))
+* **DatePicker.RangePicker:** 修复 minDate 比 value 大时的导航区域显示问题 ([d28e7cc](https://github.com/wxad/adui/commit/d28e7cc3f0a2855ca77f4475f1038322119cc433))
+* **Form:** 修复 itemClassName 和 context 的冲突 ([aac7859](https://github.com/wxad/adui/commit/aac7859793823b127bccf4a99ec97b6526005a48))
+* **Form:** 修复 labelClassName 关系 ([ddf08a8](https://github.com/wxad/adui/commit/ddf08a80cbb2e32e1c337c4bf486de15ec0cd2f4))
+* **Table:** 修复虚拟滚动 key warning 问题 ([413ee37](https://github.com/wxad/adui/commit/413ee373541c0226116215e5fbe9ae1e98f76b81))
+* **TreeSelect:** 尝试修复 getMaxTagPlaceholder 报错 ([453e3bc](https://github.com/wxad/adui/commit/453e3bcd056a039723a1f14b72f19c3b608fa898))
+* **TreeSelect:** 修复 children 用法无选项的问题 ([d58c225](https://github.com/wxad/adui/commit/d58c225c6e4714786fae0500eb65e650b18b9742))
+* **TreeSelect:** 修复 resultVisible false 时 placeholder 不更新的问题 ([33d5ef0](https://github.com/wxad/adui/commit/33d5ef0d3af5e5788288391aec58775615df1ec3))
+* **TreeSelect:** 修复全选数据处理问题 ([7bd767e](https://github.com/wxad/adui/commit/7bd767eebd3c477f5140c262209a0ccf70d59e52))
+
 ## [2.0.0](https://github.com/wxad/adui/compare/v1.6.0...v2.0.0) (2021-05-20)
 
 
