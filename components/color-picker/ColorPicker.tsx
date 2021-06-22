@@ -170,6 +170,12 @@ const ColorPicker: React.ForwardRefExoticComponent<
       setB(color2hsb(valueProp)[2] * 100)
       setInputValue(removeHashTag(valueProp.toUpperCase()))
       setValue(valueProp.toUpperCase())
+    } else if (valueProp === "" && value !== "") {
+      setH(0)
+      setS(0)
+      setB(0)
+      setInputValue("")
+      setValue("")
     } else if (
       transparentEnabled &&
       valueProp === "transparent" &&

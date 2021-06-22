@@ -751,7 +751,7 @@ module.exports = {
     fontSmoothing: ["responsive"],
     fontStyle: ["responsive"],
     fontVariantNumeric: ["responsive"],
-    fontWeight: ["responsive"],
+    fontWeight: ["responsive", "hover"],
     gap: ["responsive"],
     gradientColorStops: ["responsive", "dark", "hover", "focus"],
     gridAutoColumns: ["responsive"],
