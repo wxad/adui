@@ -33,6 +33,10 @@ export interface IButtonProps {
    */
   href?: string
   /**
+   * icon 附加样式
+   */
+  iconStyle?: React.CSSProperties
+  /**
    * 类型
    */
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -86,6 +90,7 @@ const Button: IButton = forwardRef(
       href,
       leftIcon,
       rightIcon,
+      iconStyle,
       intent: intentProp,
       loading,
       onClick,
@@ -144,11 +149,21 @@ const Button: IButton = forwardRef(
     const tagChildren = (
       <>
         {!!leftIcon && (
-          <Icon size={18} className={`${prefix}-leftIcon`} icon={leftIcon} />
+          <Icon
+            size={18}
+            className={`${prefix}-leftIcon`}
+            icon={leftIcon}
+            style={{ ...(iconStyle || {}) }}
+          />
         )}
         {!!children && <span className={`${prefix}-content`}>{children}</span>}
         {!!rightIcon && (
-          <Icon size={18} className={`${prefix}-rightIcon`} icon={rightIcon} />
+          <Icon
+            size={18}
+            className={`${prefix}-rightIcon`}
+            icon={rightIcon}
+            style={{ ...(iconStyle || {}) }}
+          />
         )}
         {loading && (
           <div className={`${prefix}-spinner`}>
@@ -198,6 +213,10 @@ Button.propTypes = {
    */
   href: PropTypes.string,
   /**
+   * icon 附加样式
+   */
+  iconStyle: PropTypes.any,
+  /**
    * 类型
    */
   intent: PropTypes.oneOf([
@@ -239,6 +258,7 @@ Button.defaultProps = {
   className: undefined,
   disabled: null,
   href: undefined,
+  iconStyle: {},
   intent: "normal",
   leftIcon: undefined,
   loading: false,
