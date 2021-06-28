@@ -1,5 +1,6 @@
 /* eslint-disable */
 // @ts-ignore
+const plugin = require("tailwindcss/plugin")
 
 /**
  * 基础 spacing 取 4px 间距生成
@@ -50,61 +51,86 @@ const colors = {
  * 对 t r b l 四个方向单面的 1px shadow
  */
 const shadows = {}
-Object.keys(colors).forEach((key) => {
-  const value = colors[key]
-  if (typeof value === "string") {
-    shadows[key] = `0 0 0 1px ${value}`
-    shadows[`inset-${key}`] = `0 0 0 1px ${value} inset`
-    shadows[`t-${key}`] = `0 -1px 0 ${value}`
-    shadows[`t-inset-${key}`] = `0 1px 0 ${value} inset`
-    shadows[`b-${key}`] = `0 1px 0 ${value}`
-    shadows[`b-inset-${key}`] = `0 -1px 0 ${value} inset`
-    shadows[`r-${key}`] = `1px 0 0 ${value}`
-    shadows[`r-inset-${key}`] = `-1px 0 0 ${value} inset`
-    shadows[`l-${key}`] = `-1px 0 0 ${value}`
-    shadows[`l-inset-${key}`] = `1px 0 0 ${value} inset`
-    shadows[`x-${key}`] = `-1px 0 0 ${value}, 1px 0 0 ${value}`
-    shadows[
-      `x-inset-${key}`
-    ] = `-1px 0 0 ${value} inset, 1px 0 0 ${value} inset`
-    shadows[`y-${key}`] = `0 -1px 0 ${value}, 0 1px 0 ${value}`
-    shadows[
-      `y-inset-${key}`
-    ] = `0 -1px 0 ${value} inset, 0 1px 0 ${value} inset`
-  } else {
-    Object.keys(value).forEach((valKey) => {
-      shadows[`${key}-${valKey}`] = `0 0 0 1px ${value[valKey]}`
-      shadows[`inset-${key}-${valKey}`] = `0 0 0 1px ${value[valKey]} inset`
-      shadows[`t-${key}-${valKey}`] = `0 -1px 0 ${value[valKey]}`
-      shadows[`t-inset-${key}-${valKey}`] = `0 1px 0 ${value[valKey]} inset`
-      shadows[`b-${key}-${valKey}`] = `0 1px 0 ${value[valKey]}`
-      shadows[`b-inset-${key}-${valKey}`] = `0 -1px 0 ${value[valKey]} inset`
-      shadows[`r-${key}-${valKey}`] = `1px 0 0 ${value[valKey]}`
-      shadows[`r-inset-${key}-${valKey}`] = `-1px 0 0 ${value[valKey]} inset`
-      shadows[`l-${key}-${valKey}`] = `-1px 0 0 ${value[valKey]}`
-      shadows[`l-inset-${key}-${valKey}`] = `1px 0 0 ${value[valKey]} inset`
+;["1", "2"].forEach((length) => {
+  const prefix = length === "1" ? "" : `${length}-`
+  Object.keys(colors).forEach((key) => {
+    const value = colors[key]
+    if (typeof value === "string") {
+      shadows[`${prefix}${key}`] = `0 0 0 ${length}px ${value}`
+      shadows[`${prefix}inset-${key}`] = `0 0 0 ${length}px ${value} inset`
+      shadows[`${prefix}t-${key}`] = `0 -${length}px 0 ${value}`
+      shadows[`${prefix}t-inset-${key}`] = `0 ${length}px 0 ${value} inset`
+      shadows[`${prefix}b-${key}`] = `0 ${length}px 0 ${value}`
+      shadows[`${prefix}b-inset-${key}`] = `0 -${length}px 0 ${value} inset`
+      shadows[`${prefix}r-${key}`] = `${length}px 0 0 ${value}`
+      shadows[`${prefix}r-inset-${key}`] = `-${length}px 0 0 ${value} inset`
+      shadows[`${prefix}l-${key}`] = `-${length}px 0 0 ${value}`
+      shadows[`${prefix}l-inset-${key}`] = `${length}px 0 0 ${value} inset`
       shadows[
-        `x-${key}-${valKey}`
-      ] = `-1px 0 0 ${value[valKey]}, 1px 0 0 ${value[valKey]}`
+        `${prefix}x-${key}`
+      ] = `-${length}px 0 0 ${value}, ${length}px 0 0 ${value}`
       shadows[
-        `x-inset-${key}-${valKey}`
-      ] = `-1px 0 0 ${value[valKey]} inset, 1px 0 0 ${value[valKey]} inset`
+        `${prefix}x-inset-${key}`
+      ] = `-${length}px 0 0 ${value} inset, ${length}px 0 0 ${value} inset`
       shadows[
-        `y-${key}-${valKey}`
-      ] = `0 -1px 0 ${value[valKey]}, 0 1px 0 ${value[valKey]}`
+        `${prefix}y-${key}`
+      ] = `0 -${length}px 0 ${value}, 0 ${length}px 0 ${value}`
       shadows[
-        `y-inset-${key}-${valKey}`
-      ] = `0 -1px 0 ${value[valKey]} inset, 0 1px 0 ${value[valKey]} inset`
-    })
-  }
+        `${prefix}y-inset-${key}`
+      ] = `0 -${length}px 0 ${value} inset, 0 ${length}px 0 ${value} inset`
+    } else {
+      Object.keys(value).forEach((valKey) => {
+        shadows[
+          `${prefix}${key}-${valKey}`
+        ] = `0 0 0 ${length}px ${value[valKey]}`
+        shadows[
+          `${prefix}inset-${key}-${valKey}`
+        ] = `0 0 0 ${length}px ${value[valKey]} inset`
+        shadows[
+          `${prefix}t-${key}-${valKey}`
+        ] = `0 -${length}px 0 ${value[valKey]}`
+        shadows[
+          `${prefix}t-inset-${key}-${valKey}`
+        ] = `0 ${length}px 0 ${value[valKey]} inset`
+        shadows[
+          `${prefix}b-${key}-${valKey}`
+        ] = `0 ${length}px 0 ${value[valKey]}`
+        shadows[
+          `${prefix}b-inset-${key}-${valKey}`
+        ] = `0 -${length}px 0 ${value[valKey]} inset`
+        shadows[
+          `${prefix}r-${key}-${valKey}`
+        ] = `${length}px 0 0 ${value[valKey]}`
+        shadows[
+          `${prefix}r-inset-${key}-${valKey}`
+        ] = `-${length}px 0 0 ${value[valKey]} inset`
+        shadows[
+          `${prefix}l-${key}-${valKey}`
+        ] = `-${length}px 0 0 ${value[valKey]}`
+        shadows[
+          `${prefix}l-inset-${key}-${valKey}`
+        ] = `${length}px 0 0 ${value[valKey]} inset`
+        shadows[
+          `${prefix}x-${key}-${valKey}`
+        ] = `-${length}px 0 0 ${value[valKey]}, ${length}px 0 0 ${value[valKey]}`
+        shadows[
+          `${prefix}x-inset-${key}-${valKey}`
+        ] = `-${length}px 0 0 ${value[valKey]} inset, ${length}px 0 0 ${value[valKey]} inset`
+        shadows[
+          `${prefix}y-${key}-${valKey}`
+        ] = `0 -${length}px 0 ${value[valKey]}, 0 ${length}px 0 ${value[valKey]}`
+        shadows[
+          `${prefix}y-inset-${key}-${valKey}`
+        ] = `0 -${length}px 0 ${value[valKey]} inset, 0 ${length}px 0 ${value[valKey]} inset`
+      })
+    }
+  })
 })
 
 module.exports = {
   // 对以下文件进行 className 的 tree-shaking，支持字面量与三元
   purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   important: "body",
-  // https://tailwindcss.com/docs/presets#creating-a-preset
-  presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     // 待设计规范引入
@@ -872,5 +898,43 @@ module.exports = {
     wordBreak: ["responsive"],
     zIndex: ["responsive", "focus-within", "focus"],
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        ".overflow-overlay": {
+          overflow: "overlay",
+          "&::-webkit-scrollbar": {
+            width: "14px",
+            height: "14px",
+          },
+
+          "&::-webkit-scrollbar-thumb": {
+            "min-width": "14px",
+            "min-height": "14px",
+            "background-color": "rgba(0, 0, 0, 0.15)",
+            "background-clip": "content-box",
+            border: "4px solid transparent",
+            "border-radius": "14px",
+          },
+
+          "&::-webkit-scrollbar-track": {
+            "background-color": "rgba(0, 0, 0, 0)",
+          },
+
+          "&::-webkit-scrollbar-thumb:hover": {
+            "background-color": "rgba(0, 0, 0, 0.4)",
+          },
+
+          "&::-webkit-scrollbar-thumb:active": {
+            "background-color": "rgba(0, 0, 0, 0.65)",
+          },
+          "&::-webkit-scrollbar-track": {
+            "background-color": "rgba(0, 0, 0, .0)",
+          },
+        },
+      }
+
+      addUtilities(newUtilities, [])
+    }),
+  ],
 }
