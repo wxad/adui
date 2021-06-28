@@ -33,10 +33,9 @@ $prefix: "adui-layout";
   &-asideContent {
     height: 100%;
     overflow: hidden;
-    @include mixins.scrollbar();
 
     &:hover {
-      overflow: auto;
+      @include mixins.overlay();
     }
   }
   &-aside_affixed {
@@ -80,8 +79,7 @@ $prefix: "adui-layout";
 
     .#{$prefix}-asideContent {
       height: calc(100vh - 72px);
-      overflow: auto;
-      @include mixins.scrollbar();
+      @include mixins.overlay();
     }
   }
 

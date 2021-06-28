@@ -29,8 +29,7 @@ $prefix: "adui-drawer";
     background-color: #fff;
     box-shadow: var(--box-shadow-elevation-4);
     pointer-events: initial;
-    overflow: auto;
-    @include mixins.scrollbar();
+    @include mixins.overlay();
   }
 
   &-header {

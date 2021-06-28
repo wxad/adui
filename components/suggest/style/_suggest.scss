@@ -89,7 +89,7 @@ $prefix: "adui-suggest";
 
     [role*="listbox"] + div {
       padding: 4px 0;
-      @include mixins.scrollbar();
+      @include mixins.overlay();
     }
 
     .#{$prefix}-dropdown-menu-item {
@@ -107,9 +107,8 @@ $prefix: "adui-suggest";
     margin: 0;
     padding: 4px 0;
     max-height: 250px;
-    overflow: auto;
     list-style: none;
-    @include mixins.scrollbar();
+    @include mixins.overlay();
   }
 
   &-item-option {

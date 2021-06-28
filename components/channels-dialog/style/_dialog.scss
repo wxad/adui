@@ -53,8 +53,7 @@ $prefix: "adui-channels-dialog";
   &-body {
     flex: 1;
     padding: 32px;
-    overflow: auto;
-    @include mixins.scrollbar();
+    @include mixins.overlay();
   }
   &-footer {
     flex: none;

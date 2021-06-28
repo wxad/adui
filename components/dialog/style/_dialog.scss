@@ -51,8 +51,7 @@ $prefix: "adui-dialog";
   &-body {
     padding: 24px;
     flex: 1;
-    overflow: auto;
-    @include mixins.scrollbar();
+    @include mixins.overlay();
   }
   &-footer {
     flex: none;

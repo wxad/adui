@@ -28,10 +28,9 @@ $prefix: "adui-time";
     width: calc(var(--width) * 0.5px);
     height: 180px;
     overflow: hidden;
-    @include mixins.scrollbar();
 
     &:hover {
-      overflow: auto;
+      @include mixins.overlay();
     }
 
     &:not(:last-child) {
@@ -40,7 +39,7 @@ $prefix: "adui-time";
   }
 
   &-integerTimeSelect {
-    overflow: auto;
+    @include mixins.overlay();
     width: calc(var(--width) * 1px);
   }
 
