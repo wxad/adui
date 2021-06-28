@@ -72,8 +72,11 @@ $prefix: "adui-cascader";
     max-width: initial;
 
     .adui-tooltip-content {
-      overflow: hidden;
+      // overflow: hidden;
+      background-color: transparent;
       white-space: nowrap;
+      box-shadow: none;
+      filter: none;
     }
   }
 
@@ -82,10 +85,35 @@ $prefix: "adui-cascader";
   }
 
   &-menu {
+    position: relative;
+    width: 200px;
     @include mixins.overlay();
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(223, 223, 223, 0.5),
+      0 3px 3px 0 rgba(0, 0, 0, 0.04);
 
-    &:not(:last-of-type) {
-      box-shadow: 1px 0 0 var(--transparent-gray-100);
+    &:first-of-type {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      z-index: 5;
+    }
+
+    &:nth-of-type(2) {
+      z-index: 4;
+    }
+
+    &:nth-of-type(3) {
+      z-index: 3;
+    }
+
+    &:nth-of-type(4) {
+      z-index: 2;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      z-index: 1;
     }
 
     &-mini,
@@ -130,10 +158,10 @@ $prefix: "adui-cascader";
 
     &-item {
       position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 200px;
       white-space: nowrap;
       cursor: pointer;
       overflow: hidden;
@@ -200,6 +228,40 @@ $prefix: "adui-cascader";
         padding: 0;
         list-style: none;
       }
+    }
+  }
+
+  &-appear,
+  &-enter {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  &-appear.#{$prefix}-appear-active,
+  &-enter.#{$prefix}-enter-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition: 0.15s var(--ease-out) all;
+  }
+
+  &-leave {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &-leave.#{$prefix}-leave-active {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+    transition: all 0.15s var(--ease-in);
+  }
+}
+
+.slide-up {
+  .#{$prefix} {
+    &-appear,
+    &-enter,
+    &-leave {
+      transition: 0s !important;
     }
   }
 }

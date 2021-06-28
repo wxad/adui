@@ -123,11 +123,6 @@ $prefix: "adui-dialog";
     color: #636363;
   }
 
-  &-appear {
-    opacity: 0;
-    transform: scale(0.9) translate3d(0, 10px, 0);
-  }
-
   &-appear,
   &-enter {
     opacity: 0;

@@ -271,11 +271,6 @@ body {
 }
 
 .aside {
-  &:hover {
-    .search {
-      padding-right: 6px;
-    }
-  }
   :global {
     .adui-layout-asideContent {
       padding-bottom: 120px;

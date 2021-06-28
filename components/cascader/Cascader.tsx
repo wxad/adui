@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
+import Animate from "rc-animate"
 import Button from "../button"
 import Icon from "../icon"
 import Popover, { IPopoverProps } from "../popover"
@@ -43,10 +44,6 @@ export interface IDrawerProps {
    * 默认值，内部驱动
    */
   defaultValue?: CascaderValueType | null
-  /**
-   * 自定义下拉框内容
-   */
-  dropdownRender?: (menus: React.ReactNode) => React.ReactNode
   /**
    * 是否禁用
    */
@@ -107,7 +104,6 @@ const Cascader: React.FC<IDrawerProps> = ({
   defaultValue,
   disabled,
   displayRender = (title: string[]) => title.join("/"),
-  dropdownRender,
   expandTrigger,
   onChange,
   onVisibleChange,
@@ -244,74 +240,123 @@ const Cascader: React.FC<IDrawerProps> = ({
     }
   }
 
+  const optss = getShowOptions()
+
   const menus = (
     <div className={`${prefix}-menus`}>
-      {getShowOptions().map((opts, menuIndex) => (
-        <div
-          className={classNames(`${prefix}-menu`, {
-            [`${prefix}-menu-${size}`]: size,
-          })}
-          key={menuIndex}
-        >
-          {(opts || []).map((o, j) => {
-            const { value: v, title, children: c, disabled: d } = o
-            const handleSelect = () => {
-              if (d) {
-                return
+      <Animate
+        transitionAppear
+        component="div"
+        style={{ display: "flex" }}
+        animation={{
+          appear(node: HTMLElement, done: () => void) {
+            node.classList.add(`${prefix}-enter`)
+            setTimeout(() => {
+              node.classList.add(`${prefix}-enter-active`)
+            }, 50)
+            const promise = new Promise((resolve) => setTimeout(resolve, 200))
+            promise.then(() => {
+              node.classList.remove(`${prefix}-enter-active`)
+              node.classList.remove(`${prefix}-enter`)
+              return done()
+            })
+            return done()
+          },
+          enter(node: HTMLElement, done: () => void) {
+            node.classList.add(`${prefix}-enter`)
+            setTimeout(() => {
+              node.classList.add(`${prefix}-enter-active`)
+            }, 50)
+            const promise = new Promise((resolve) => setTimeout(resolve, 200))
+            promise.then(() => {
+              node.classList.remove(`${prefix}-enter-active`)
+              node.classList.remove(`${prefix}-enter`)
+              return done()
+            })
+            return done()
+          },
+          leave(node: HTMLElement, done: () => void) {
+            node.classList.add(`${prefix}-leave`)
+            setTimeout(() => {
+              node.classList.add(`${prefix}-leave-active`)
+            }, 50)
+            const promise = new Promise((resolve) => setTimeout(resolve, 200))
+            promise.then(() => {
+              return done()
+            })
+          },
+        }}
+      >
+        {optss.map((opts, menuIndex) => (
+          <div
+            className={classNames(`${prefix}-menu`, {
+              [`${prefix}-menu-${size}`]: size,
+            })}
+            key={menuIndex}
+          >
+            {(opts || []).map((o, j) => {
+              const { value: v, title, children: c, disabled: d } = o
+              const handleSelect = () => {
+                if (d) {
+                  return
+                }
+                let activeValueDuplicated = [...activeValue]
+                activeValueDuplicated = activeValueDuplicated.slice(
+                  0,
+                  menuIndex + 1
+                )
+                activeValueDuplicated[menuIndex] = v || ""
+                const activeOptions = getActiveOptions(activeValueDuplicated)
+                setActiveValue(activeValueDuplicated)
+                if (!c?.length) {
+                  handleChange(activeOptions, { visible: false })
+                  if (valueProps === null) {
+                    setValue(activeValueDuplicated)
+                  }
+                } else if (changeOnSelect) {
+                  handleChange(activeOptions, { visible: true })
+                  if (valueProps === null) {
+                    setValue(activeValueDuplicated)
+                  }
+                }
               }
-              let activeValueDuplicated = [...activeValue]
-              activeValueDuplicated = activeValueDuplicated.slice(
-                0,
-                menuIndex + 1
+              return (
+                <div
+                  role="none"
+                  key={v || j}
+                  className={classNames(`${prefix}-menu-item`, {
+                    [`${prefix}-menu-item-active`]: isActiveOption(
+                      o,
+                      menuIndex
+                    ),
+                  })}
+                  title={title?.toString()}
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={handleSelect}
+                  onMouseEnter={() => {
+                    if (expandTrigger === "hover" && c?.length) {
+                      delaySelect(handleSelect)
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (expandTrigger === "hover" && c?.length) {
+                      delaySelect()
+                    }
+                  }}
+                >
+                  <div className={`${prefix}-menu-item-content`}>{title}</div>
+                  {!!c?.length && (
+                    <Icon
+                      icon="triangle-right"
+                      className={`${prefix}-menu-item-icon`}
+                    />
+                  )}
+                </div>
               )
-              activeValueDuplicated[menuIndex] = v || ""
-              const activeOptions = getActiveOptions(activeValueDuplicated)
-              setActiveValue(activeValueDuplicated)
-              if (!c?.length) {
-                handleChange(activeOptions, { visible: false })
-                if (valueProps === null) {
-                  setValue(activeValueDuplicated)
-                }
-              } else if (changeOnSelect) {
-                handleChange(activeOptions, { visible: true })
-                if (valueProps === null) {
-                  setValue(activeValueDuplicated)
-                }
-              }
-            }
-            return (
-              <div
-                role="none"
-                key={v || j}
-                className={classNames(`${prefix}-menu-item`, {
-                  [`${prefix}-menu-item-active`]: isActiveOption(o, menuIndex),
-                })}
-                title={title?.toString()}
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={handleSelect}
-                onMouseEnter={() => {
-                  if (expandTrigger === "hover" && c?.length) {
-                    delaySelect(handleSelect)
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (expandTrigger === "hover" && c?.length) {
-                    delaySelect()
-                  }
-                }}
-              >
-                <div className={`${prefix}-menu-item-content`}>{title}</div>
-                {!!c?.length && (
-                  <Icon
-                    icon="triangle-right"
-                    className={`${prefix}-menu-item-icon`}
-                  />
-                )}
-              </div>
-            )
-          })}
-        </div>
-      ))}
+            })}
+          </div>
+        ))}
+      </Animate>
     </div>
   )
 
@@ -322,7 +367,7 @@ const Cascader: React.FC<IDrawerProps> = ({
       visible={disabled ? false : visible}
       onVisibleChange={setPopupVisible}
       trigger="click"
-      popup={dropdownRender ? dropdownRender(menus) : menus}
+      popup={menus}
       {...popoverProps}
     >
       <Button
@@ -393,10 +438,6 @@ Cascader.propTypes = {
    */
   displayRender: PropTypes.any,
   /**
-   * 自定义下拉框内容
-   */
-  dropdownRender: PropTypes.any,
-  /**
    * 次级菜单的展开方式，可选 'click' 和 'hover'
    */
   expandTrigger: PropTypes.oneOf(["click", "hover"]),
@@ -442,7 +483,6 @@ Cascader.defaultProps = {
   defaultValue: null,
   disabled: false,
   displayRender: undefined,
-  dropdownRender: undefined,
   expandTrigger: "click",
   onChange: undefined,
   onVisibleChange: undefined,
