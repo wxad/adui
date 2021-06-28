@@ -1,0 +1,205 @@
+@use "../../style/index" as mixins;
+$prefix: "adui-cascader";
+
+.#{$prefix} {
+  &-button {
+    text-align: left;
+
+    .adui-button-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+      min-width: 0;
+    }
+
+    &-valued {
+      &.#{$prefix}-button-clearable {
+        &:not([disabled]) {
+          &:hover {
+            .#{$prefix} {
+              &-suffix {
+                opacity: 0;
+                visibility: hidden;
+              }
+              &-remove {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-placeholder {
+    color: var(--transparent-gray-700);
+  }
+
+  &-label,
+  &-placeholder {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-icons {
+    flex: none;
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+  }
+
+  &-suffix,
+  &-remove {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all var(--motion-duration-fast) var(--ease-in-out);
+  }
+
+  &-remove {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &-popup {
+    max-width: initial;
+
+    .adui-tooltip-content {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  &-menus {
+    display: flex;
+  }
+
+  &-menu {
+    @include mixins.overlay();
+
+    &:not(:last-of-type) {
+      box-shadow: 1px 0 0 var(--transparent-gray-100);
+    }
+
+    &-mini,
+    &-small {
+      max-height: 252px;
+
+      .#{$prefix}-menu {
+        &-item {
+          padding-left: 12px;
+          padding-right: 12px;
+          font-size: var(--font-size-medium);
+          line-height: 36px;
+        }
+      }
+    }
+
+    &-medium {
+      max-height: 252px;
+
+      .#{$prefix}-menu {
+        &-item {
+          padding-left: 14px;
+          padding-right: 14px;
+          font-size: var(--font-size-medium);
+          line-height: 36px;
+        }
+      }
+    }
+
+    &-large {
+      max-height: 280px;
+
+      .#{$prefix}-menu {
+        &-item {
+          padding-left: 16px;
+          padding-right: 16px;
+          font-size: var(--font-size-large);
+          line-height: 40px;
+        }
+      }
+    }
+
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 200px;
+      white-space: nowrap;
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all var(--motion-duration-fast) var(--ease-in-out);
+
+      &-content {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: inherit;
+      }
+
+      &-icon {
+        fill: var(--transparent-gray-600);
+        transition: inherit;
+      }
+
+      &:hover {
+        background-color: var(--gray-100);
+
+        .#{$prefix}-menu-item {
+          &-icon {
+            fill: var(--transparent-gray-700);
+          }
+        }
+      }
+
+      &:active {
+        background-color: var(--gray-300);
+
+        .#{$prefix}-menu-item {
+          &-icon {
+            fill: var(--transparent-gray-800);
+          }
+        }
+      }
+
+      &-active {
+        color: var(--primary-color);
+        font-weight: 600;
+
+        &,
+        &:hover {
+          .#{$prefix}-menu-item {
+            &-icon {
+              fill: var(--transparent-gray-800);
+            }
+          }
+        }
+      }
+
+      &-disabled {
+        color: var(--gray-700);
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: #fff;
+          cursor: not-allowed;
+        }
+      }
+
+      &-group-list {
+        padding: 0;
+        list-style: none;
+      }
+    }
+  }
+}
