@@ -48,7 +48,13 @@ var ICON_DEFAULTS = {
   numericinput: ["arrow-up", "arrow-down"],
   tag: ["cancel-circle"],
   timepicker: ["time-outlined"],
-  treeselect: ["menu", "triangle-right", "triangle-down", "cancel", "file-outlined"],
+  treeselect: [
+    "menu",
+    "triangle-right",
+    "triangle-down",
+    "cancel",
+    "file-outlined",
+  ],
   upload: ["delete-outlined", "add", "cancel"],
 }
 
@@ -283,7 +289,7 @@ module.exports = function (source) {
                 "intent",
               ])
               if (!props.icon) {
-                (props.intent || ["normal"]).forEach(function (o) {
+                ;(props.intent || ["normal"]).forEach(function (o) {
                   searchIconByName(ICON_INTENTS[o])
                 })
               }
@@ -336,6 +342,14 @@ module.exports = function (source) {
                 }
                 searchIconByName("search")
               }
+            }
+            if (validIdentifierType === "cascader") {
+              /**
+               * 判断 cascader，加入 triangle-down cancel-circle triangle-right
+               */
+              searchIconByName("triangle-down")
+              searchIconByName("triangle-right")
+              searchIconByName("cancel-circle")
             }
           } else {
             Object.keys(ICON_DEFAULTS).forEach(function (o) {
