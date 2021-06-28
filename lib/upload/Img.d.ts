@@ -14,11 +14,15 @@ export interface IImgProps {
     /**
      * 右上角图标点击时的 handler
      */
-    onIconClick?: () => void;
+    onIconClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
     /**
      * 触发上传
      */
     onUpload?: () => void;
+    /**
+     * 禁止点击图片预览
+     */
+    previewDisabled?: boolean;
     /**
      * 进度，传入 null 时表示不显示进度条
      */

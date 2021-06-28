@@ -8,6 +8,7 @@ import {
   Breadcrumb,
   Button,
   Card,
+  Cascader,
   Checkbox,
   ColorPicker,
   ConfigProvider,
@@ -76,6 +77,7 @@ export default class DemoRenderer extends Component {
         "Breadcrumb",
         "Button",
         "Card",
+        "Cascader",
         "Checkbox",
         "ColorPicker",
         "ConfigProvider",
@@ -120,6 +122,7 @@ export default class DemoRenderer extends Component {
         Breadcrumb,
         Button,
         Card,
+        Cascader,
         Checkbox,
         ColorPicker,
         ConfigProvider,
@@ -176,7 +179,7 @@ export default class DemoRenderer extends Component {
     return (
       <section
         {...otherProps}
-        ref={demoWrapper => {
+        ref={(demoWrapper) => {
           this.demoWrapper = demoWrapper
         }}
       />

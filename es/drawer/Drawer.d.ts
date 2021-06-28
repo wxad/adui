@@ -68,7 +68,7 @@ export interface IDrawerProps {
     zIndex?: React.ReactNode;
 }
 /**
- * 旋转加载用于告知用户信息内容的加载状态，通常是即时、短时的。
+ * 浮层覆盖在页面内容上，并固定在屏幕的边缘。
  */
 declare const Drawer: React.FC<IDrawerProps>;
 export default Drawer;

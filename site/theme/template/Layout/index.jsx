@@ -573,6 +573,11 @@ class SiteLayout extends React.Component {
                             颜色选择器 ColorPicker
                           </Link>
                         </Nav.Item>
+                        <Nav.Item index="cascader">
+                          <Link to="/components/cascader">
+                            级联选择器 Cascader
+                          </Link>
+                        </Nav.Item>
                       </Nav.Group>
                       <Nav.Divider />
                       <Nav.Group title="反馈类">

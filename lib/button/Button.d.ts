@@ -25,6 +25,10 @@ export interface IButtonProps {
      */
     href?: string;
     /**
+     * icon 附加样式
+     */
+    iconStyle?: React.CSSProperties;
+    /**
      * 类型
      */
     intent?: "normal" | "primary" | "success" | "warning" | "danger";

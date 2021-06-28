@@ -1,14 +1,9 @@
-import React from 'react'
-import styles from './components/propertyBox.scss'
-import CodeBox from './components/CodeBox'
-import {
-  Button,
-  Switch,
-  Dialog,
-} from '../../components'
+import React from "react"
+import styles from "./components/propertyBox.scss"
+import CodeBox from "./components/CodeBox"
+import { Button, Switch, Dialog } from "../../components"
 
 export default class PropertyBox extends React.Component {
-
   state = {
     type: "confirm",
     headerElement: true,
@@ -77,21 +72,53 @@ export default class PropertyBox extends React.Component {
               <dt className={styles.controlTitle}>底栏类型</dt>
               <dd className={styles.controlContent}>
                 <Button.Group banner>
-                  <Button active={type === "confirm"} onClick={() => this.setState({ type: "confirm" })}>确认类</Button>
-                  <Button active={type === "inform"} onClick={() => this.setState({ type: "inform" })}>告知类</Button>
+                  <Button
+                    active={type === "confirm"}
+                    onClick={() => this.setState({ type: "confirm" })}
+                  >
+                    确认类
+                  </Button>
+                  <Button
+                    active={type === "inform"}
+                    onClick={() => this.setState({ type: "inform" })}
+                  >
+                    告知类
+                  </Button>
                 </Button.Group>
               </dd>
               <div className={styles.switchControl}>
-                <Switch checkedText="带顶栏" unCheckedText="带顶栏" checked={headerElement} onChange={param => this.setState({ headerElement: param })} />
+                <Switch
+                  checkedText="带顶栏"
+                  unCheckedText="带顶栏"
+                  checked={headerElement}
+                  onChange={(param) => this.setState({ headerElement: param })}
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="带底栏" unCheckedText="带底栏" checked={footerElement} onChange={param => this.setState({ footerElement: param })} />
+                <Switch
+                  checkedText="带底栏"
+                  unCheckedText="带底栏"
+                  checked={footerElement}
+                  onChange={(param) => this.setState({ footerElement: param })}
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="点击遮罩可关闭" unCheckedText="点击遮罩可关闭" checked={mask} onChange={param => this.setState({ mask: param })} />
+                <Switch
+                  checkedText="点击遮罩可关闭"
+                  unCheckedText="点击遮罩可关闭"
+                  checked={mask}
+                  onChange={(param) => this.setState({ mask: param })}
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="关闭后是否销毁 DOM" unCheckedText="关闭后是否销毁 DOM" checked={destroyAfterClose} onChange={param => this.setState({ destroyAfterClose: param })} />
+                <Switch
+                  checkedText="关闭后是否销毁 DOM"
+                  unCheckedText="关闭后是否销毁 DOM"
+                  checked={destroyAfterClose}
+                  onChange={(param) =>
+                    this.setState({ destroyAfterClose: param })
+                  }
+                />
               </div>
             </dl>
           </div>

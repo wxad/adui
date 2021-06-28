@@ -19,6 +19,7 @@ import { default as ButtonRaw } from "!raw-loader!../../../../components/button/
 import { default as ButtonGroupRaw } from "!raw-loader!../../../../components/button/Group"
 import { default as CardRaw } from "!raw-loader!../../../../components/card/Card"
 import { default as CardHeaderRaw } from "!raw-loader!../../../../components/card/Header"
+import { default as CascaderRaw } from "!raw-loader!../../../../components/cascader/Cascader"
 import { default as CheckboxRaw } from "!raw-loader!../../../../components/checkbox/Checkbox"
 import { default as CheckboxGroupRaw } from "!raw-loader!../../../../components/checkbox/Group"
 import { default as ColorPickerRaw } from "!raw-loader!../../../../components/color-picker/ColorPicker"
@@ -79,6 +80,7 @@ import AlertPropertyBox from "../../../propertyBox/Alert"
 import BreadcrumbPropertyBox from "../../../propertyBox/Breadcrumb"
 import ButtonPropertyBox from "../../../propertyBox/Button"
 import CardPropertyBox from "../../../propertyBox/Card"
+import CascaderPropertyBox from "../../../propertyBox/Cascader"
 import CheckboxPropertyBox from "../../../propertyBox/Checkbox"
 import ColorPickerPropertyBox from "../../../propertyBox/ColorPicker"
 import DatePickerPropertyBox from "../../../propertyBox/DatePicker"
@@ -160,6 +162,12 @@ const parsed = {
     raw: CardHeaderRaw,
     doc: reactDocs.parse(CardHeaderRaw, undefined, undefined, {
       filename: "CardHeader.tsx",
+    }),
+  },
+  "Cascader": {
+    raw: CascaderRaw,
+    doc: reactDocs.parse(CascaderRaw, undefined, undefined, {
+      filename: "Cascader.tsx",
     }),
   },
   Checkbox: {
@@ -493,6 +501,7 @@ const propertyboxes = {
   Breadcrumb: BreadcrumbPropertyBox,
   Button: ButtonPropertyBox,
   Card: CardPropertyBox,
+  Cascader: CascaderPropertyBox,
   Checkbox: CheckboxPropertyBox,
   ColorPicker: ColorPickerPropertyBox,
   DatePicker: DatePickerPropertyBox,

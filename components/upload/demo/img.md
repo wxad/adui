@@ -8,50 +8,64 @@ title:
 简单地模拟 `Upload.Img` 所支持的 Props
 
 ```jsx
-  const link = "http://wxa.wxs.qq.com/images/preview/img-placeholder_320x180.png"
+const link = "http://wxa.wxs.qq.com/images/preview/img-placeholder_320x180.png"
 
-  const [progress, setProgress] = useState(null)
-  const [src, setSrc] = useState(link)
-  const upload = useRef(null)
+const [progress, setProgress] = useState(null)
+const [src, setSrc] = useState(link)
+const upload = useRef(null)
 
-  useEffect(() => {
-    if (upload?.current) {
-      const { uploadElement } = upload.current
-      console.log(uploadElement)
-      uploadElement.addEventListener("click", () => {
-        console.log("click")
-      })
-    }
-  }, [])
-
-  const handleUpload = () => {
-    const x = document.createElement("INPUT")
-    x.setAttribute("type", "file")
-    x.setAttribute("accept", "image/x-png,image/gif,image/jpeg")
-    x.addEventListener("change", () => {
-      // 模拟进度
-      setProgress(0)
-      setTimeout(() => { setProgress(20) }, 200)
-      setTimeout(() => { setProgress(80) }, 500)
-      setTimeout(() => { setProgress(100) }, 1000)
-      setTimeout(() => {
-        setProgress(null)
-        setSrc(link)
-      }, 1300)
+useEffect(() => {
+  if (upload?.current) {
+    const { uploadElement } = upload.current
+    console.log(uploadElement)
+    uploadElement.addEventListener("click", () => {
+      console.log("click")
     })
-    x.click()
   }
+}, [])
 
-  return (
+const handleUpload = () => {
+  const x = document.createElement("INPUT")
+  x.setAttribute("type", "file")
+  x.setAttribute("accept", "image/x-png,image/gif,image/jpeg")
+  x.addEventListener("change", () => {
+    // 模拟进度
+    setProgress(0)
+    setTimeout(() => {
+      setProgress(20)
+    }, 200)
+    setTimeout(() => {
+      setProgress(80)
+    }, 500)
+    setTimeout(() => {
+      setProgress(100)
+    }, 1000)
+    setTimeout(() => {
+      setProgress(null)
+      setSrc(link)
+    }, 1300)
+  })
+  x.click()
+}
+
+return (
+  <div
+    onClick={() => {
+      console.log("click")
+    }}
+  >
     <Upload.Img
       ref={upload}
       progress={progress}
       src={src}
-      onIconClick={() => {
+      onIconClick={(e) => {
+        e.stopPropagation()
         setSrc("")
       }}
+      previewDisabled
       onUpload={handleUpload}
       icon="replace"
     />
-  )
+  </div>
+)
 ```
