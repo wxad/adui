@@ -26,11 +26,15 @@ export interface IImgProps {
   /**
    * 右上角图标点击时的 handler
    */
-  onIconClick?: () => void
+  onIconClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void
   /**
    * 触发上传
    */
   onUpload?: () => void
+  /**
+   * 禁止点击图片预览
+   */
+  previewDisabled?: boolean
   /**
    * 进度，传入 null 时表示不显示进度条
    */
@@ -57,6 +61,7 @@ const Img: React.ForwardRefExoticComponent<
       icon,
       onIconClick,
       onUpload,
+      previewDisabled,
       progress,
       src,
       ...otherProps
@@ -129,10 +134,21 @@ const Img: React.ForwardRefExoticComponent<
           <div
             role="none"
             className={`${prefix}-cover`}
-            onClick={handlePreview}
+            onClick={() => {
+              if (!previewDisabled) {
+                handlePreview()
+              }
+            }}
           />
           <div className={`${prefix}-remove`}>
-            <Icon icon={icon || "delete-outlined"} onClick={onIconClick} />
+            <Icon
+              icon={icon || "delete-outlined"}
+              onClick={(e) => {
+                if (onIconClick) {
+                  onIconClick(e)
+                }
+              }}
+            />
           </div>
         </div>
         <div className={`${prefix}-unuploaded-inner`}>
@@ -189,6 +205,10 @@ Img.propTypes = {
    */
   onUpload: PropTypes.func,
   /**
+   * 禁止点击图片预览
+   */
+  previewDisabled: PropTypes.bool,
+  /**
    * 进度，传入 null 时表示不显示进度条
    */
   progress: PropTypes.number,
@@ -203,6 +223,7 @@ Img.defaultProps = {
   icon: "delete-outlined",
   onIconClick: () => {},
   onUpload: () => {},
+  previewDisabled: false,
   progress: null,
   src: "",
 }
