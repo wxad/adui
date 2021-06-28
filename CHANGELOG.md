@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/wxad/adui/compare/v2.1.0...v2.2.0) (2021-06-28)
+
+
+### Features
+
+* **Button:** iconStyle Props ([b1dfbe4](https://github.com/wxad/adui/commit/b1dfbe4c1f79a6c3739aa908acff4f3a34cb8513))
+* **Cascader:** 添加 Cascader 组件 ([15de950](https://github.com/wxad/adui/commit/15de9503896466c5477de735a55bde57681c024c))
+* **loader:** icon-loader 添加 cascader 按需 ([00f57be](https://github.com/wxad/adui/commit/00f57be2425b16bfce8c0337b167579208ba00a9))
+* **tailwind:** 添加 overflow: overlay; ([02c7caf](https://github.com/wxad/adui/commit/02c7cafcb97141e9bd36ff4b78c2352ae533ea9a))
+* **Upload.Img:** 添加 previewDisabled prop ([cc1d004](https://github.com/wxad/adui/commit/cc1d004229c177b9505497e516dfca35858d6672))
+
 ## [2.1.0](https://github.com/wxad/adui/compare/v2.0.0...v2.1.0) (2021-06-22)
 
 
