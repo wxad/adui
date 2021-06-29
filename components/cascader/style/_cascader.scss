@@ -242,7 +242,7 @@ $prefix: "adui-cascader";
   &-enter.#{$prefix}-enter-active {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-        transition: var(--motion-duration-fast) var(--ease-in-out) all;
+    transition: var(--motion-duration-fast) var(--ease-in-out) all;
   }
 
   &-leave {
@@ -253,7 +253,7 @@ $prefix: "adui-cascader";
   &-leave.#{$prefix}-leave-active {
     opacity: 0;
     transform: translate3d(-20px, 0, 0);
-        transition: var(--motion-duration-fast) var(--ease-in-out) all;
+    transition: var(--motion-duration-fast) var(--ease-in-out) all;
   }
 }
 
