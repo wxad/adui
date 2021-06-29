@@ -90,7 +90,8 @@ $prefix: "adui-cascader";
     @include mixins.overlay();
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(223, 223, 223, 0.5),
-      0 3px 3px 0 rgba(0, 0, 0, 0.04);
+      0 3px 3px 0 rgba(0, 0, 0, 0.06);
+    transition: var(--motion-duration-fast) var(--ease-in-out) all;
 
     &:first-of-type {
       border-top-left-radius: 6px;
@@ -241,7 +242,7 @@ $prefix: "adui-cascader";
   &-enter.#{$prefix}-enter-active {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    transition: 0.15s var(--ease-out) all;
+        transition: var(--motion-duration-fast) var(--ease-in-out) all;
   }
 
   &-leave {
@@ -252,7 +253,7 @@ $prefix: "adui-cascader";
   &-leave.#{$prefix}-leave-active {
     opacity: 0;
     transform: translate3d(-20px, 0, 0);
-    transition: all 0.15s var(--ease-in);
+        transition: var(--motion-duration-fast) var(--ease-in-out) all;
   }
 }
 
