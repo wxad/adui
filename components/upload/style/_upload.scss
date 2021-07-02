@@ -19,6 +19,7 @@ $prefix: "adui-upload";
       .#{$prefix} {
         &-img {
           &-cover,
+          &-operations,
           &-remove {
             opacity: 1;
             visibility: visible;
@@ -36,6 +37,7 @@ $prefix: "adui-upload";
 
     &-file,
     &-cover,
+    &-operations,
     &-upload-element {
       position: absolute;
       top: 0;
@@ -54,6 +56,39 @@ $prefix: "adui-upload";
       opacity: 0;
       visibility: hidden;
       transition: var(--motion-duration-base) var(--ease-in-out) all;
+
+      .#{$prefix}-img-hasOperation & {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    &-operations {
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--motion-duration-base) var(--ease-in-out) all;
+
+      &-divider {
+        flex: none;
+        width: 1px;
+        height: 12px;
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+
+      &-item {
+        flex: 1;
+        color: rgba(255, 255, 255, 0.6);
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+        transition: inherit;
+        transform: scale(calc(10 / 12));
+
+        &:hover {
+          color: #fff;
+        }
+      }
     }
 
     &-remove {

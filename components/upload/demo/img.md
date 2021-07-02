@@ -49,23 +49,34 @@ const handleUpload = () => {
 }
 
 return (
-  <div
-    onClick={() => {
-      console.log("click")
+  <Upload.Img
+    ref={upload}
+    progress={progress}
+    src={src}
+    onIconClick={(e) => {
+      e.stopPropagation()
+      setSrc("")
     }}
-  >
-    <Upload.Img
-      ref={upload}
-      progress={progress}
-      src={src}
-      onIconClick={(e) => {
-        e.stopPropagation()
-        setSrc("")
-      }}
-      previewDisabled
-      onUpload={handleUpload}
-      icon="replace"
-    />
-  </div>
+    previewDisabled
+    onUpload={handleUpload}
+    icon="replace"
+    hoverOperations={[
+      {
+        text: "更改",
+        onClick: (e) => {
+          e.stopPropagation()
+          setSrc("")
+          handleUpload()
+        },
+      },
+      {
+        text: "删除",
+        onClick: (e) => {
+          e.stopPropagation()
+          setSrc("")
+        },
+      },
+    ]}
+  />
 )
 ```

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, {
   forwardRef,
   useImperativeHandle,
@@ -20,13 +21,21 @@ export interface IImgProps {
    */
   className?: string
   /**
+   * 鼠标 hover 时的操作显示
+   */
+  hoverOperations?: {
+    [key: string]: any
+    text: string
+    onClick: (e: React.MouseEvent<HTMLDivElement>) => void
+  }[]
+  /**
    * 指定右上角图标
    */
   icon?: IconNames
   /**
    * 右上角图标点击时的 handler
    */
-  onIconClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void
+  onIconClick?: (e: React.MouseEvent<SVGSVGElement>) => void
   /**
    * 触发上传
    */
@@ -58,6 +67,7 @@ const Img: React.ForwardRefExoticComponent<
   (
     {
       className,
+      hoverOperations,
       icon,
       onIconClick,
       onUpload,
@@ -74,7 +84,10 @@ const Img: React.ForwardRefExoticComponent<
 
     const scrollbarWidth = useMemo(getScrollBarSize, [])
 
+    const hasOperation = hoverOperations?.length
+
     const classSet = classNames(className, `${prefix}`, {
+      [`${prefix}-hasOperation`]: hasOperation,
       [`${prefix}-uploaded`]: src,
       [`${prefix}-progressing`]: progress !== null,
     })
@@ -140,16 +153,31 @@ const Img: React.ForwardRefExoticComponent<
               }
             }}
           />
-          <div className={`${prefix}-remove`}>
-            <Icon
-              icon={icon || "delete-outlined"}
-              onClick={(e) => {
-                if (onIconClick) {
-                  onIconClick(e)
-                }
-              }}
-            />
-          </div>
+          {hoverOperations?.length ? (
+            <div className={`${prefix}-operations`}>
+              {hoverOperations.map(({ text, ...others }, i) => (
+                <React.Fragment key={i}>
+                  <div className={`${prefix}-operations-item`} {...others}>
+                    {text}
+                  </div>
+                  {i !== hoverOperations.length - 1 && (
+                    <i className={`${prefix}-operations-divider`} />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          ) : (
+            <div className={`${prefix}-remove`}>
+              <Icon
+                icon={icon || "delete-outlined"}
+                onClick={(e) => {
+                  if (onIconClick) {
+                    onIconClick(e)
+                  }
+                }}
+              />
+            </div>
+          )}
         </div>
         <div className={`${prefix}-unuploaded-inner`}>
           <div
@@ -193,6 +221,10 @@ Img.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * 鼠标 hover 时的操作显示
+   */
+  hoverOperations: PropTypes.any,
+  /**
    * 指定右上角图标
    */
   icon: PropTypes.any,
@@ -220,6 +252,7 @@ Img.propTypes = {
 
 Img.defaultProps = {
   className: "",
+  hoverOperations: undefined,
   icon: "delete-outlined",
   onIconClick: () => {},
   onUpload: () => {},
