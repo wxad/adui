@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/wxad/adui/compare/v2.2.0...v2.3.0) (2021-07-02)
+
+
+### Features
+
+* **Cascader:** 加入动画 ([7f59382](https://github.com/wxad/adui/commit/7f59382e3d207a79087cca4310626be49ca4db11))
+* **Icon:** update adui-icon ([6b0af9a](https://github.com/wxad/adui/commit/6b0af9a9e042aa4fa055ba0116ed4e2855e4d64a))
+* **Upload:** hoverOperations Props ([551c147](https://github.com/wxad/adui/commit/551c14753d37ec0988546d1eacd15d6315ced139))
+
 ## [2.2.0](https://github.com/wxad/adui/compare/v2.1.0...v2.2.0) (2021-06-28)
 
 
