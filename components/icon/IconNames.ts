@@ -13,6 +13,7 @@
   "adjust": string;
   "alert-circle-outlined": string;
   "alert-circle": string;
+  "alert": string;
   "app-outlined": string;
   "app": string;
   "arrow-back": string;
@@ -57,6 +58,7 @@
   "channels": string;
   "chat-bubble-outlined": string;
   "chat-bubble": string;
+  "circle-optimize-target": string;
   "city-outlined": string;
   "city": string;
   "code-sand-box": string;
@@ -112,6 +114,7 @@
   "heart": string;
   "help-circle-outlined": string;
   "help-circle": string;
+  "help": string;
   "histogram-outlined": string;
   "histogram-square": string;
   "histogram": string;
@@ -123,6 +126,7 @@
   "import": string;
   "info-circle-outlined": string;
   "info-circle": string;
+  "info": string;
   "key-outlined": string;
   "key": string;
   "law": string;
@@ -142,8 +146,11 @@
   "makeup-outlined": string;
   "makeup": string;
   "male": string;
+  "man-outlinad": string;
+  "man": string;
   "map-outlined": string;
-  "material": string;
+  "material-image": string;
+  "material-layer": string;
   "maternal-baby-outlined": string;
   "maternal-baby": string;
   "medical-outlined": string;
@@ -183,9 +190,11 @@
   "radar-outlined": string;
   "receipt-outlined": string;
   "receipt": string;
+  "redenvelope-outlined": string;
   "refresh-circle-cancel": string;
   "refresh-circle": string;
   "refresh": string;
+  "refund-outlined": string;
   "replace": string;
   "replay": string;
   "report-outlined": string;
@@ -257,6 +266,8 @@
   "website": string;
   "wish-outlined": string;
   "wish": string;
+  "woman-outlined": string;
+  "woman": string;
   "zoom-in": string;
   "zoom-out": string;
   }

@@ -94,9 +94,6 @@ var _default = {
       "name": "tick-circle",
       "keywords": ["tick-circle", "勾", "成功", "正确", "优化", "完成", "反馈"]
     }, {
-      "name": "tick",
-      "keywords": ["tick", "勾", "成功", "正确", "优化", "完成", "反馈"]
-    }, {
       "name": "alert-circle",
       "keywords": ["alert-circle", "提醒", "提示", "信息"]
     }, {
@@ -120,6 +117,18 @@ var _default = {
     }, {
       "name": "warning-circle-outlined",
       "keywords": ["warning-circle-outlined", "警示", "反馈", "提示", "提醒", "警告", "注意"]
+    }, {
+      "name": "tick",
+      "keywords": ["tick", "勾", "成功", "正确", "优化", "完成", "反馈"]
+    }, {
+      "name": "alert",
+      "keywords": ["alert", "提醒", "提示", "信息"]
+    }, {
+      "name": "help",
+      "keywords": ["help", "问号", "帮助", "反馈"]
+    }, {
+      "name": "info",
+      "keywords": ["info", "信息", "消息", "反馈"]
     }]
   },
   "编辑": {
@@ -232,9 +241,6 @@ var _default = {
     }, {
       "name": "cancel-circle",
       "keywords": ["cancel-circle", "删除", "关闭", "禁止", "叉"]
-    }, {
-      "name": "cancel",
-      "keywords": ["cancel", "删除", "关闭", "禁止", "叉"]
     }, {
       "name": "full-screen",
       "keywords": ["full-screen", ""]
@@ -353,14 +359,20 @@ var _default = {
       "name": "wish-outlined",
       "keywords": ["wish-outlined", "心愿", "心愿单", "喜爱"]
     }, {
-      "name": "material",
-      "keywords": ["material", ""]
+      "name": "material-layer",
+      "keywords": ["material-layer", ""]
+    }, {
+      "name": "material-image",
+      "keywords": ["material-image", ""]
     }, {
       "name": "home-outlined",
       "keywords": ["home-outlined", "主页", "首页"]
     }, {
       "name": "home",
       "keywords": ["home", "主页", "首页"]
+    }, {
+      "name": "cancel",
+      "keywords": ["cancel", "删除", "关闭", "禁止", "叉"]
     }]
   },
   "工具": {
@@ -563,6 +575,9 @@ var _default = {
     }, {
       "name": "channels",
       "keywords": ["channels", "视频号"]
+    }, {
+      "name": "circle-optimize-target",
+      "keywords": ["circle-optimize-target", "提升目标"]
     }]
   },
   "图表": {
@@ -638,6 +653,9 @@ var _default = {
   "生活": {
     "description": "衣食住行、行业等",
     "data": [{
+      "name": "redenvelope-outlined",
+      "keywords": ["redenvelope-outlined", "金融", "货币", "钱币", "硬币", "钱", "现金", "收入", "预算", "出价", "价格", "价钱"]
+    }, {
       "name": "male",
       "keywords": ["male", "男性", "性别"]
     }, {
@@ -796,6 +814,21 @@ var _default = {
     }, {
       "name": "people-outlined",
       "keywords": ["people-outlined", "人群", "用户", "组", "多人"]
+    }, {
+      "name": "man",
+      "keywords": ["man", ""]
+    }, {
+      "name": "woman-outlined",
+      "keywords": ["woman-outlined", ""]
+    }, {
+      "name": "woman",
+      "keywords": ["woman", ""]
+    }, {
+      "name": "man-outlinad",
+      "keywords": ["man-outlinad", ""]
+    }, {
+      "name": "refund-outlined",
+      "keywords": ["refund-outlined", "刷新", "运行", "循环"]
     }]
   }
 };
