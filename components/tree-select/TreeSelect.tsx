@@ -46,7 +46,7 @@ const isArrayIncludes = (
   return a2.every((o) => a1.includes(o))
 }
 
-export type TreeNodeValue = string[] | number[] | null
+export type TreeNodeValue = React.ReactText[] | null
 
 export interface ITreeNode {
   value: string
@@ -86,6 +86,7 @@ export interface ITreeSelectProps {
   placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
   resultVisible?: boolean
+  sameValueEnabled?: boolean
   selectAll?: boolean
   showCheckedStrategy?: "show-all" | "show-child" | "show-parent"
   topContent?: React.ReactNode
@@ -201,6 +202,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      */
     rightIcon: PropTypes.string,
     /**
+     * 是否允许相同值，使用情况：如同一个人可能存在于两个组织架构中，如果使用此 Prop，请同时使用 resultVisible={false}
+     */
+    sameValueEnabled: PropTypes.bool,
+    /**
      * 是否开启全选功能
      */
     selectAll: PropTypes.bool,
@@ -246,6 +251,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     resultRender: null,
     resultVisible: true,
     rightIcon: "menu",
+    sameValueEnabled: false,
     selectAll: false,
     showCheckedStrategy: "show-parent",
     topContent: undefined,
@@ -273,6 +279,8 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
   public treeData: DataNode[]
 
   public treeValueAll: any[]
+
+  public treeValueFlatten: any[] = []
 
   constructor(props: ITreeSelectProps) {
     super(props)
@@ -348,13 +356,42 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     value: TreeNodeValue,
     titleList: React.ReactNode[]
   ) => {
-    const { disabled, onChange, value: valueProp } = this.props
+    let valueParam = [] as React.ReactText[]
+    const {
+      disabled,
+      onChange,
+      value: valueProp,
+      sameValueEnabled,
+    } = this.props
+    const { value: valueState } = this.state
     if (!disabled) {
+      if (sameValueEnabled) {
+        value?.forEach((v) => {
+          const splited = `${v}`.split("__")
+          const val = splited[splited.length - 1]
+          const { length } = value.filter((o) => `${o}`.includes(`__${val}`))
+          if (
+            length ===
+            this.treeValueFlatten.filter((o) => `${o}`.includes(`__${val}`))
+              .length
+          ) {
+            // 表示全包含了，则保留
+            valueParam.push(val)
+          } else if (!valueState?.includes(val)) {
+            valueParam.push(val)
+          }
+        })
+      } else if (value) {
+        valueParam = value
+      }
+
+      valueParam = [...new Set(valueParam)]
+
       if (valueProp === null) {
-        this.setState({ value })
+        this.setState({ value: valueParam })
       }
       if (onChange) {
-        onChange(value, titleList)
+        onChange(valueParam, titleList)
       }
     }
   }
@@ -557,6 +594,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     dataNodeParam: TreeData,
     options: { selectAll?: boolean } = {}
   ): TreeData => {
+    const { sameValueEnabled } = this.props
     if (!dataNodeParam) {
       return undefined
     }
@@ -569,20 +607,25 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       return dataNode
     }
 
+    if (sameValueEnabled && !dataNode[0]?.dataTitle) {
+      this.treeValueFlatten = []
+    }
+
     const { selectAll } = options
 
-    const process = (node: DataNode[]) => {
+    const process = (node: DataNode[], parentValue?: React.ReactText) => {
       node.forEach((o) => {
         const {
           children,
           key,
           title,
+          dataChildren,
           dataTitle,
           value,
           popover,
           popoverProps = {},
         } = o
-        if (dataTitle) {
+        if (dataTitle && dataChildren) {
           return
         }
         /**
@@ -591,11 +634,26 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         if (title) {
           o.dataTitle = title
         }
+        /**
+         * 加入 dataChildren 是为了支持 loadData 的使用
+         */
+        if (children?.length) {
+          o.dataChildren = 1
+        }
         if (key === undefined) {
           o.key = value
         } else if (value === undefined) {
           o.value = key
         }
+        if (sameValueEnabled) {
+          const newVal = `${parentValue ? `${parentValue}__` : ""}${value}`
+          o.key = newVal
+          o.value = newVal
+          if (!this.treeValueFlatten.includes(newVal)) {
+            this.treeValueFlatten.push(newVal)
+          }
+        }
+
         if (popover) {
           o.title = (
             <>
@@ -607,7 +665,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
           )
         }
         if (children) {
-          process(children)
+          process(children, o.value)
         }
       })
     }
@@ -745,6 +803,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       rightIcon,
       resultRender,
       resultVisible,
+      sameValueEnabled,
       selectAll,
       showCheckedStrategy,
       topContent,
@@ -802,6 +861,21 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       restProps.value = value
     }
 
+    if (sameValueEnabled) {
+      const trueValue: TreeNodeValue = []
+      if (restProps.value) {
+        restProps.value.forEach((o: any) => {
+          this.treeValueFlatten.forEach((p) => {
+            const splited = p.split("__")
+            if (splited[splited.length - 1] === o) {
+              trueValue.push(p)
+            }
+          })
+        })
+      }
+      restProps.value = trueValue
+    }
+
     if (maxTagCount !== null || maxHeightFixed) {
       const count = this.getMaxTagCount()
       if (count !== null) {
@@ -814,8 +888,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     }
 
     const treeDataFinal =
-      this.convertTreeData(treeData, { selectAll }) ||
-      this.convertChildrenToData(children)
+      this.convertTreeData(treeData || this.convertChildrenToData(children), {
+        selectAll,
+      }) || []
 
     this.treeData = treeDataFinal
     this.treeValueAll = treeDataFinal
