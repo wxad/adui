@@ -11,6 +11,7 @@ declare const _default: {
     adjust: string[];
     'alert-circle-outlined': string[];
     'alert-circle': string[];
+    alert: string[];
     'app-outlined': string[];
     app: string[];
     'arrow-back': string[];
@@ -55,6 +56,7 @@ declare const _default: {
     channels: string[];
     'chat-bubble-outlined': string[];
     'chat-bubble': string[];
+    'circle-optimize-target': string[];
     'city-outlined': string[];
     city: string[];
     'code-sand-box': string[];
@@ -110,6 +112,7 @@ declare const _default: {
     heart: string[];
     'help-circle-outlined': string[];
     'help-circle': string[];
+    help: string[];
     'histogram-outlined': string[];
     'histogram-square': string[];
     histogram: string[];
@@ -121,6 +124,7 @@ declare const _default: {
     import: string[];
     'info-circle-outlined': string[];
     'info-circle': string[];
+    info: string[];
     'key-outlined': string[];
     key: string[];
     law: string[];
@@ -140,8 +144,11 @@ declare const _default: {
     'makeup-outlined': string[];
     makeup: string[];
     male: string[];
+    'man-outlinad': string[];
+    man: string[];
     'map-outlined': string[];
-    material: string[];
+    'material-image': string[];
+    'material-layer': string[];
     'maternal-baby-outlined': string[];
     'maternal-baby': string[];
     'medical-outlined': string[];
@@ -181,9 +188,11 @@ declare const _default: {
     'radar-outlined': string[];
     'receipt-outlined': string[];
     receipt: string[];
+    'redenvelope-outlined': string[];
     'refresh-circle-cancel': string[];
     'refresh-circle': string[];
     refresh: string[];
+    'refund-outlined': string[];
     replace: string[];
     replay: string[];
     'report-outlined': string[];
@@ -255,6 +264,8 @@ declare const _default: {
     website: string[];
     'wish-outlined': string[];
     wish: string[];
+    'woman-outlined': string[];
+    woman: string[];
     'zoom-in': string[];
     'zoom-out': string[];
 };

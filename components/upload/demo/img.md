@@ -15,7 +15,7 @@ const [src, setSrc] = useState(link)
 const upload = useRef(null)
 
 useEffect(() => {
-  if (upload?.current) {
+  if (upload.current) {
     const { uploadElement } = upload.current
     console.log(uploadElement)
     uploadElement.addEventListener("click", () => {

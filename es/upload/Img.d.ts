@@ -8,13 +8,21 @@ export interface IImgProps {
      */
     className?: string;
     /**
+     * 鼠标 hover 时的操作显示
+     */
+    hoverOperations?: {
+        [key: string]: any;
+        text: string;
+        onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+    }[];
+    /**
      * 指定右上角图标
      */
     icon?: IconNames;
     /**
      * 右上角图标点击时的 handler
      */
-    onIconClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
+    onIconClick?: (e: React.MouseEvent<SVGSVGElement>) => void;
     /**
      * 触发上传
      */

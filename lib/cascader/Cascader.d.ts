@@ -32,10 +32,6 @@ export interface IDrawerProps {
      */
     defaultValue?: CascaderValueType | null;
     /**
-     * 自定义下拉框内容
-     */
-    dropdownRender?: (menus: React.ReactNode) => React.ReactNode;
-    /**
      * 是否禁用
      */
     disabled?: boolean;

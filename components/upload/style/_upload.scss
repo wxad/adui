@@ -66,7 +66,6 @@ $prefix: "adui-upload";
       z-index: 2;
       display: flex;
       align-items: center;
-      text-align: center;
       opacity: 0;
       visibility: hidden;
       transition: var(--motion-duration-base) var(--ease-in-out) all;
@@ -80,6 +79,10 @@ $prefix: "adui-upload";
 
       &-item {
         flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
         color: rgba(255, 255, 255, 0.6);
         text-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
         transition: inherit;

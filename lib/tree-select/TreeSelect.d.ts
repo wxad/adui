@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { IPopoverProps } from "../popover";
 import { Placement } from "../pop-trigger";
 import "./style";
-export declare type TreeNodeValue = string[] | number[] | null;
+export declare type TreeNodeValue = React.ReactText[] | null;
 export interface ITreeNode {
     value: string;
     label: string;
@@ -41,6 +41,7 @@ export interface ITreeSelectProps {
     placement?: Placement;
     resultRender?: null | ((values: ITreeNode[]) => JSX.Element);
     resultVisible?: boolean;
+    sameValueEnabled?: boolean;
     selectAll?: boolean;
     showCheckedStrategy?: "show-all" | "show-child" | "show-parent";
     topContent?: React.ReactNode;
@@ -140,6 +141,10 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
          */
         rightIcon: PropTypes.Requireable<string>;
         /**
+         * 是否允许相同值，使用情况：如同一个人可能存在于两个组织架构中，如果使用此 Prop，请同时使用 resultVisible={false}
+         */
+        sameValueEnabled: PropTypes.Requireable<boolean>;
+        /**
          * 是否开启全选功能
          */
         selectAll: PropTypes.Requireable<boolean>;
@@ -165,7 +170,7 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     };
     static defaultProps: ITreeSelectProps;
     static getDerivedStateFromProps: ({ value }: ITreeSelectProps) => {
-        value: string[] | number[] | undefined;
+        value: React.ReactText[] | undefined;
     } | null;
     static TreeNode: typeof TreeNode;
     select: typeof RcTreeSelect;
@@ -173,6 +178,7 @@ declare class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectSt
     wrapper: HTMLDivElement;
     treeData: DataNode[];
     treeValueAll: any[];
+    treeValueFlatten: any[];
     constructor(props: ITreeSelectProps);
     shouldComponentUpdate: (nextProps: ITreeSelectProps, nextState: ITreeSelectState) => boolean;
     saveSelect: (node: React.ReactNode) => void;
