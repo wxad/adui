@@ -98,7 +98,6 @@ AduiIconPlugin.prototype.apply = function (compiler) {
   }
 
   compiler.hooks.make.tap("AduiIconPlugin", function (compilation) {
-    deleteAllFile()
     if (mode !== "production") {
       buildPluginFile(compilation)
       asyncIconFileToLocal()
