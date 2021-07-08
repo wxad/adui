@@ -41,6 +41,7 @@ var ICON_INTENTS = {
 }
 var ICON_DEFAULTS = {
   breadcrumb: ["arrow-right"],
+  cascader: ["triangle-down", "triangle-right", "cancel-circle"],
   colorpicker: ["arrow-down"],
   datepicker: ["calendar-outlined", "triangle-down", "arrow-down"],
   dialog: ["cancel"],
@@ -342,14 +343,6 @@ module.exports = function (source) {
                 }
                 searchIconByName("search")
               }
-            }
-            if (validIdentifierType === "cascader") {
-              /**
-               * 判断 cascader，加入 triangle-down cancel-circle triangle-right
-               */
-              searchIconByName("triangle-down")
-              searchIconByName("triangle-right")
-              searchIconByName("cancel-circle")
             }
           } else {
             Object.keys(ICON_DEFAULTS).forEach(function (o) {
