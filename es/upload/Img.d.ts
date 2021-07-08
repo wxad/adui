@@ -16,9 +16,13 @@ export interface IImgProps {
         onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
     }[];
     /**
+     * 是否禁用
+     */
+    disabled?: boolean;
+    /**
      * 指定右上角图标
      */
-    icon?: IconNames;
+    icon?: IconNames | null;
     /**
      * 右上角图标点击时的 handler
      */
