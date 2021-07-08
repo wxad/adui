@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/wxad/adui/compare/v2.3.0...v2.4.0) (2021-07-08)
+
+
+### Features
+
+* **TreeSelect:** 增加 sameValueEnabled Props ([503bece](https://github.com/wxad/adui/commit/503bece3e371382bece92cb7d3cace4143b1239f))
+* **Upload.Img:** 支持 icon null；支持 disabled 态 ([ca35e16](https://github.com/wxad/adui/commit/ca35e165a7e0a1f2e7015207a46d82de8471eca7))
+
+
+### Bug Fixes
+
+* **loader:** 修复没有 icon 情况下，loader 的报错 ([af6d60e](https://github.com/wxad/adui/commit/af6d60ef88a7334bc2d2d621c3b356074df32c0f))
+
 ## [2.3.0](https://github.com/wxad/adui/compare/v2.2.0...v2.3.0) (2021-07-02)
 
 
