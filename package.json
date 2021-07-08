@@ -1,7 +1,7 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "2.4.0",
+  "version": "2.4.1-alpha.0",
   "files": [
     "lib",
     "es",
@@ -11,6 +11,7 @@
     "adui-tailwind-config.js",
     "adui-tailwind.css",
     "adui-tailwind-build.css",
+    "rollup-plugin-adui-icon.js",
     "tailwind.config.js"
   ],
   "keywords": [
