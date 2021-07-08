@@ -13,16 +13,22 @@ $prefix: "adui-upload";
     overflow: hidden;
     transition: var(--motion-duration-base) var(--ease-in-out) all;
 
-    &:hover {
-      background-color: #fafafa;
+    &.#{$prefix}-img-disabled {
+      cursor: not-allowed;
+    }
 
-      .#{$prefix} {
-        &-img {
-          &-cover,
-          &-operations,
-          &-remove {
-            opacity: 1;
-            visibility: visible;
+    &:hover {
+      &:not(.#{$prefix}-img-noIcon):not(.#{$prefix}-img-disabled) {
+        background-color: #fafafa;
+
+        .#{$prefix} {
+          &-img {
+            &-cover,
+            &-operations,
+            &-remove {
+              opacity: 1;
+              visibility: visible;
+            }
           }
         }
       }

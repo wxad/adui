@@ -29,9 +29,13 @@ export interface IImgProps {
     onClick: (e: React.MouseEvent<HTMLDivElement>) => void
   }[]
   /**
+   * 是否禁用
+   */
+  disabled?: boolean
+  /**
    * 指定右上角图标
    */
-  icon?: IconNames
+  icon?: IconNames | null
   /**
    * 右上角图标点击时的 handler
    */
@@ -67,6 +71,7 @@ const Img: React.ForwardRefExoticComponent<
   (
     {
       className,
+      disabled,
       hoverOperations,
       icon,
       onIconClick,
@@ -90,10 +95,12 @@ const Img: React.ForwardRefExoticComponent<
       [`${prefix}-hasOperation`]: hasOperation,
       [`${prefix}-uploaded`]: src,
       [`${prefix}-progressing`]: progress !== null,
+      [`${prefix}-noIcon`]: icon === null,
+      [`${prefix}-disabled`]: disabled,
     })
 
     const handleClick = () => {
-      if (!src && onUpload) {
+      if (!src && onUpload && !disabled) {
         onUpload()
       }
     }
@@ -221,6 +228,10 @@ Img.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * 是否禁用
+   */
+  disabled: PropTypes.bool,
+  /**
    * 鼠标 hover 时的操作显示
    */
   hoverOperations: PropTypes.any,
@@ -252,6 +263,7 @@ Img.propTypes = {
 
 Img.defaultProps = {
   className: "",
+  disabled: false,
   hoverOperations: undefined,
   icon: "delete-outlined",
   onIconClick: () => {},
