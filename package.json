@@ -1,7 +1,7 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "2.3.2-alpha.2",
+  "version": "2.3.2-alpha.3",
   "files": [
     "lib",
     "es",
@@ -61,8 +61,8 @@
     "type-check:watch": "npm run type-check -- --watch",
     "tailwind": "npx tailwindcss-cli@latest build ./adui-tailwind.css  -o ./adui-tailwind-build.css --no-autoprefixer && uglifycss ./adui-tailwind-build.css --output ./adui-tailwind-build.css",
     "compile": "node scripts/generate-svg-icons.js && npm run tailwind && npm run compile:lib && npm run compile:es && node scripts/build",
-    "compile:lib": "rimraf lib && mkdir lib && mkdir lib/style && tsc --outDir lib --declaration --emitDeclarationOnly && NODE_ENV=production COMPILE_TYPE=lib webpack -p --config webpack.config.js && cp components/style/base.css lib/style/base.css && babel components --out-dir lib --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*' && cp components/resize-observer/ResizeObserverPolyfill.js lib/resize-observer/ResizeObserverPolyfill.js",
-    "compile:es": "rimraf es && mkdir es && mkdir es/style && tsc --outDir es --declaration --emitDeclarationOnly && NODE_ENV=production COMPILE_TYPE=es webpack -p --config webpack.config.js && cp components/style/base.css es/style/base.css && babel components --no-babelrc --config-file ./babel.config.json --out-dir es --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*' && cp components/resize-observer/ResizeObserverPolyfill.js es/resize-observer/ResizeObserverPolyfill.js",
+    "compile:lib": "rimraf lib && mkdir lib && mkdir lib/style && tsc --outDir lib --declaration --emitDeclarationOnly && NODE_ENV=production COMPILE_TYPE=lib webpack -p --config webpack.config.js && cp components/style/base.css lib/style/base.css && babel components --out-dir lib --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*'",
+    "compile:es": "rimraf es && mkdir es && mkdir es/style && tsc --outDir es --declaration --emitDeclarationOnly && NODE_ENV=production COMPILE_TYPE=es webpack -p --config webpack.config.js && cp components/style/base.css es/style/base.css && babel components --no-babelrc --config-file ./babel.config.json --out-dir es --extensions \".ts,.tsx\" --source-maps inline --ignore 'components/**/style/*'",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "lint-staged": "lint-staged",
     "eslint": "eslint $(git diff-index --cached HEAD --name-only --diff-filter ACMR | egrep '.js$')",

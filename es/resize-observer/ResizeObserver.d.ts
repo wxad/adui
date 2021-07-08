@@ -4,7 +4,6 @@
  * 如果 ResizeObserver 也是 fc，就没有办法在不添加额外结构的情况下拿到 dom 了
  */
 import * as React from "react";
-import ResizeObserver from "./ResizeObserverPolyfill";
 interface ResizeObserverEntry {
     readonly borderBoxSize: ResizeObserverEntryBoxSize;
     readonly contentBoxSize: ResizeObserverEntryBoxSize;

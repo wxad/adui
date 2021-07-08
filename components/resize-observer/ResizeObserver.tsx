@@ -10,7 +10,6 @@ import findDOMNode from "rc-util/lib/Dom/findDOMNode"
 import toArray from "rc-util/lib/Children/toArray"
 import warning from "../_util/warning"
 import { composeRef } from "rc-util/lib/ref"
-import ResizeObserver from "./ResizeObserverPolyfill"
 
 interface ResizeObserverEntry {
   readonly borderBoxSize: ResizeObserverEntryBoxSize
