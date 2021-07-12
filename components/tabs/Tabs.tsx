@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import { useIsInitialRender } from "../_util/hooks/use-is-initial-render"
 import { ConfigContext, getComputedSize } from "../config-provider"
+import ResizeObserver from "../resize-observer"
 import Tab from "./Tab"
 import { TabsContext } from "./Context"
 import "./style"
@@ -169,15 +170,23 @@ const Tabs: ITabs = forwardRef(
       <TabsContext.Provider
         value={{ disabled, gutter, handleTabsValueChange, value }}
       >
-        <div
-          className={classSet}
-          data-value={value}
-          ref={tabsRef}
-          {...otherProps}
+        <ResizeObserver
+          onResize={() => {
+            if (!initial) {
+              updateIndicatorStyle()
+            }
+          }}
         >
-          <div className={`${prefix}-indicator`} style={indicatorStyle} />
-          {children}
-        </div>
+          <div
+            className={classSet}
+            data-value={value}
+            ref={tabsRef}
+            {...otherProps}
+          >
+            <div className={`${prefix}-indicator`} style={indicatorStyle} />
+            {children}
+          </div>
+        </ResizeObserver>
       </TabsContext.Provider>
     )
   }
