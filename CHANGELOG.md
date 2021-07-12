@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/wxad/adui/compare/v2.4.0...v2.5.0) (2021-07-12)
+
+
+### Features
+
+* **plugin:** 支持 rollup 按需 icon ([bc1395a](https://github.com/wxad/adui/commit/bc1395a8c8898966349d69b0f482cb350dde6839))
+
+
+### Bug Fixes
+
+* **DatePicker:** 修复 react-day-picker 的 esm build 问题，相关 issue https://github.com/gpbl/react-day-picker/issues/1194 ([300fe57](https://github.com/wxad/adui/commit/300fe573db013b37f0c72f1b45a3efc4d6cef3df))
+
 ## [2.4.0](https://github.com/wxad/adui/compare/v2.3.0...v2.4.0) (2021-07-08)
 
 
