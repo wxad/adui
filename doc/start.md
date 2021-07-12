@@ -79,7 +79,7 @@ plugins: [
 
 ## Vite 按需
 
-可参考 [AD UI Vite 示例项目](https://git.woa.com/wxad-design/vite-adui-example)，此示例使用 `vite@2.4.0`，`^adui@2.4.1-alpha.0`，提供样式按需解决方案、Icon 按需解决方案及 TailwindCSS 的引入。每一项功能都是非必需的。
+可参考 [AD UI Vite 示例项目](https://git.woa.com/wxad-design/vite-adui-example)，此示例使用 `vite@2.4.0`，`^adui@2.5.0`，提供样式按需解决方案、Icon 按需解决方案及 TailwindCSS 的引入。每一项功能都是非必需的。
 
 ---
 
