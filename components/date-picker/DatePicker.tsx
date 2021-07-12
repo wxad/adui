@@ -1,3 +1,5 @@
+/* eslint-disable import/no-duplicates */
+/* eslint-disable no-underscore-dangle */
 import React, {
   forwardRef,
   useContext,
@@ -7,7 +9,8 @@ import React, {
 } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
-import DayPicker, {
+import DPR from "day-picker-react"
+import {
   CaptionElementProps,
   DateUtils,
   NavbarElementProps,
@@ -33,6 +36,7 @@ import {
   convertDateToString,
 } from "./core"
 
+const DayPicker = DPR.__esModule ? DPR.default : DPR
 const prefix = "adui-date"
 const noop = () => {}
 
