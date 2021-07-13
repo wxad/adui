@@ -6,6 +6,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import Column, { IColumnProps } from "./Column";
 import Affix from "../affix";
+import { IPopoverProps } from "../popover";
 import "./style";
 interface IBaseObject {
     [key: string]: any;
@@ -113,6 +114,13 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
      * 设置每行的类名：(row, rowIndex) => (string)
      */
     getRowClassName?: (row: T, rowIndex: number) => string;
+    /**
+     * 设置每行上的由组件规定的 prop，
+     * 如 popover，(row, col, rowIndex, colIndex) => ({})
+     */
+    getRowProps?: (row: T, rowIndex: number) => {
+        popover?: IPopoverProps;
+    };
     /**
      * 设置每行的 style，(row, rowIndex) => ({})
      */
@@ -323,6 +331,11 @@ declare class Table<T extends IBaseObject = IBaseObject> extends React.Component
          * 设置每行的类名：(row, rowIndex) => (string)
          */
         getRowClassName: PropTypes.Requireable<(...args: any[]) => any>;
+        /**
+         * 设置每行上的由组件规定的 prop，
+         * 如 popover，(row, col, rowIndex, colIndex) => ({})
+         */
+        getRowProps: PropTypes.Requireable<(...args: any[]) => any>;
         /**
          * 设置每行的 style，(row, rowIndex) => ({})
          */
