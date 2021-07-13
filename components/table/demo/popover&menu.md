@@ -19,6 +19,14 @@ return (
         <div className="pl-24 py-16">这是要展示的内容</div>
       )}
       onExpandChange={() => {}}
+      onSelectChange={() => {}}
+      getRowProps={(row, rowIndex) => ({
+        popover: {
+          popup: "getRowProps",
+          placement: "left",
+          mouseEnterDelay: 0.1,
+        },
+      })}
       columns={[
         {
           dataIndex: "0",

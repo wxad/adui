@@ -17,7 +17,7 @@ import Column, { IColumnProps } from "./Column"
 import Affix from "../affix"
 import Checkbox from "../checkbox"
 import Icon from "../icon"
-import Popover from "../popover"
+import Popover, { IPopoverProps } from "../popover"
 import Radio from "../radio"
 import ResizeObserver from "../resize-observer"
 import TableSort from "./TableSort"
@@ -177,6 +177,11 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
    * 设置每行的类名：(row, rowIndex) => (string)
    */
   getRowClassName?: (row: T, rowIndex: number) => string
+  /**
+   * 设置每行上的由组件规定的 prop，
+   * 如 popover，(row, col, rowIndex, colIndex) => ({})
+   */
+  getRowProps?: (row: T, rowIndex: number) => { popover?: IPopoverProps }
   /**
    * 设置每行的 style，(row, rowIndex) => ({})
    */
@@ -400,6 +405,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      */
     getRowClassName: PropTypes.func,
     /**
+     * 设置每行上的由组件规定的 prop，
+     * 如 popover，(row, col, rowIndex, colIndex) => ({})
+     */
+    getRowProps: PropTypes.func,
+    /**
      * 设置每行的 style，(row, rowIndex) => ({})
      */
     getRowStyle: PropTypes.func,
@@ -534,6 +544,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     getHeadCellClassName: () => "",
     getHeadCellStyle: noop,
     getRowClassName: () => "",
+    getRowProps: () => ({}),
     getRowStyle: noop,
     getSelectProps: () => ({}),
     headerAffixed: false,
@@ -645,12 +656,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState)
 
   public componentDidMount = () => {
-    const {
-      columnManager,
-      combinedCellsInfo,
-      debouncedWindowResize,
-      props,
-    } = this
+    const { columnManager, combinedCellsInfo, debouncedWindowResize, props } =
+      this
     const { isAnyColumnsFixed } = columnManager
     const { headerAffixed, height } = props
     // 固定表头需要监听 resize 事件
@@ -834,12 +841,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     i: number,
     e: React.MouseEvent<HTMLDivElement>
   ) => {
-    const {
-      expandOnRowClick,
-      getSelectProps,
-      onRowClick,
-      selectOnRowClick,
-    } = this.props
+    const { expandOnRowClick, getSelectProps, onRowClick, selectOnRowClick } =
+      this.props
     const { selectedRowKeys } = this.state
     const { key } = row
     if (
@@ -1091,6 +1094,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       getHeadClassName,
       getHeadStyle,
       getRowClassName,
+      getRowProps,
       getRowStyle,
       getSelectProps,
       headerAffixed,
@@ -1387,7 +1391,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         })
       }
       generateTr(columns)
-      const tr = (
+      let tr = (
         <div
           className={classNames(
             `${prefix}-tr`,
@@ -1453,6 +1457,13 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           {colArray}
         </div>
       )
+
+      if (getRowProps) {
+        const { popover } = getRowProps(row, rowIndex)
+        if (popover?.popup) {
+          tr = <Popover {...popover}>{tr}</Popover>
+        }
+      }
       if (onExpandChange) {
         return [
           tr,
@@ -1561,12 +1572,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   }
 
   public generateThCell = (col: IColumnProps<T>, options?: IBaseObject) => {
-    const {
-      align,
-      columnsResizable,
-      getHeadCellClassName,
-      getHeadCellStyle,
-    } = this.props
+    const { align, columnsResizable, getHeadCellClassName, getHeadCellStyle } =
+      this.props
     const { resizable: colResizable } = col
     let resizable = true
     if (typeof colResizable === "boolean") {
@@ -1833,9 +1840,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   ) => {
     const getTableCell = (rowIndexParam: number, colIndexParam: number) => {
       if (this.mainTable) {
-        const row = this.mainTable.querySelectorAll('[role="row"]')[
-          rowIndexParam
-        ]
+        const row =
+          this.mainTable.querySelectorAll('[role="row"]')[rowIndexParam]
         if (row) {
           return row.children[colIndexParam]
         }
@@ -1877,19 +1883,21 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     return style
   }
 
-  public saveRef = (
-    name?:
-      | "affixHeader"
-      | "affixScrollbar"
-      | "mainTable"
-      | "mainTableBody"
-      | "mainThead"
-      | "wrapper"
-  ) => (node: any) => {
-    if (name) {
-      this[name] = node
+  public saveRef =
+    (
+      name?:
+        | "affixHeader"
+        | "affixScrollbar"
+        | "mainTable"
+        | "mainTableBody"
+        | "mainThead"
+        | "wrapper"
+    ) =>
+    (node: any) => {
+      if (name) {
+        this[name] = node
+      }
     }
-  }
 
   public render() {
     const {
@@ -1926,6 +1934,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       "getHeadCellClassName",
       "getHeadCellStyle",
       "getRowClassName",
+      "getRowProps",
       "getRowStyle",
       "getSelectProps",
       "onExpandChange",
@@ -2001,7 +2010,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           className={classNames(`${prefix}-tables`, {
             [`${prefix}-innerScroll`]: !!height,
             [`${prefix}-overflowed`]: isMainTableOverflowY,
-            [`${prefix}-hasFixedRightColumns`]: this.columnManager.isAnyColumnsRightFixed(),
+            [`${prefix}-hasFixedRightColumns`]:
+              this.columnManager.isAnyColumnsRightFixed(),
           })}
           style={{
             maxHeight: height || undefined,
