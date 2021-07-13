@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/wxad/adui/compare/v2.5.0...v2.6.0) (2021-07-13)
+
+
+### Features
+
+* **Table:** 支持 getRowProps Props ([ee365f3](https://github.com/wxad/adui/commit/ee365f3b7a059ae3de526f13e47c7e89f6b794cd))
+
+
+### Bug Fixes
+
+* **Tabs:** 修复在 children 变化时 Tabs 不会重新定位的问题 ([916e9fb](https://github.com/wxad/adui/commit/916e9fbbcca5d242ee6f7fbaccdb508b8b592f65))
+
 ## [2.5.0](https://github.com/wxad/adui/compare/v2.4.0...v2.5.0) (2021-07-12)
 
 
