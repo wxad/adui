@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/wxad/adui/compare/v2.6.0...v2.7.0) (2021-07-19)
+
+
+### Features
+
+* **tailwind:** visibility 增加 hover focus ([cfff8a1](https://github.com/wxad/adui/commit/cfff8a1d0d142d908ab90796c439cd05a153c526))
+
 ## [2.6.0](https://github.com/wxad/adui/compare/v2.5.0...v2.6.0) (2021-07-13)
 
 
