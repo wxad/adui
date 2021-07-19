@@ -892,7 +892,7 @@ module.exports = {
     translate: ["responsive", "hover", "focus"],
     userSelect: ["responsive"],
     verticalAlign: ["responsive"],
-    visibility: ["responsive"],
+    visibility: ["responsive", "hover", "focus"],
     whitespace: ["responsive"],
     width: ["responsive"],
     wordBreak: ["responsive"],
