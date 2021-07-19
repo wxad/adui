@@ -1,7 +1,7 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "2.7.1",
+  "version": "2.8.1",
   "files": [
     "lib",
     "es",
@@ -71,6 +71,7 @@
     "site": "node scripts/generate-svg-icons.js && rimraf _site && cross-env NODE_ENV=production bisheng build -c ./site/bisheng.config.js",
     "test": "jest --coverage",
     "release": "standard-version",
+    "release-minor": "npm run release -- --release-as minor",
     "prepublishOnly": "npm run compile"
   },
   "husky": {
@@ -190,7 +191,7 @@
     "sass": "^1.32.8",
     "scrollama": "^2.2.1",
     "sinon": "^9.2.3",
-    "standard-version": "^9.1.0",
+    "standard-version": "^9.3.1",
     "style-loader": "^1.1.3",
     "stylelint": "^13.12.0",
     "stylelint-config-prettier": "^8.0.2",
