@@ -44,7 +44,7 @@ const SubMenu: React.FC<ISubMenuProps> = ({
 }: ISubMenuProps) => {
   const [open, setOpen] = useState(false)
 
-  const { onExpandChange } = useContext(MenuContext)
+  const { minWidth, onExpandChange } = useContext(MenuContext)
 
   const classSet = classNames(className, `${prefix}-sub`, {
     [`${prefix}-sub_open`]: open,
@@ -78,7 +78,9 @@ const SubMenu: React.FC<ISubMenuProps> = ({
         <span>{title}</span>
         <Icon icon="triangle-right" className={`${prefix}-icon`} />
       </div>
-      <div className={`${prefix}-dropdown`}>{children}</div>
+      <div className={`${prefix}-dropdown`} style={{ minWidth }}>
+        {children}
+      </div>
     </div>
   )
 }

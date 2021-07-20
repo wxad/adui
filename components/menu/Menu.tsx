@@ -16,6 +16,10 @@ export interface IMenuProps {
    */
   className?: string
   /**
+   * 最小宽度
+   */
+  minWidth?: number
+  /**
    * 其下的 SubMenu 展开状态发生变化的 handler，参数1 index，参数2 bool
    */
   onExpandChange?: (index: React.ReactText, open: boolean) => void
@@ -32,12 +36,26 @@ export interface IMenuProps {
 const Menu: React.FC<IMenuProps> & {
   Item: typeof Item
   SubMenu: typeof SubMenu
-} = ({ className, onExpandChange, onItemClick, ...otherProps }: IMenuProps) => {
+} = ({
+  className,
+  minWidth,
+  onExpandChange,
+  onItemClick,
+  style,
+  ...otherProps
+}: IMenuProps) => {
   const classSet = classNames(className, `${prefix}-base`)
 
   return (
-    <MenuContext.Provider value={{ onExpandChange, onItemClick }}>
-      <div className={classSet} {...otherProps} />
+    <MenuContext.Provider value={{ minWidth, onExpandChange, onItemClick }}>
+      <div
+        className={classSet}
+        style={{
+          minWidth,
+          ...style,
+        }}
+        {...otherProps}
+      />
     </MenuContext.Provider>
   )
 }
@@ -51,6 +69,10 @@ Menu.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * 最小宽度
+   */
+  minWidth: PropTypes.number,
+  /**
    * 其下的 SubMenu 展开状态发生变化的 handler，参数1 index，参数2 bool
    */
   onExpandChange: PropTypes.func,
@@ -63,6 +85,7 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
   className: undefined,
+  minWidth: 160,
   onExpandChange: noop,
   onItemClick: noop,
 }
