@@ -359,6 +359,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     let valueParam = [] as React.ReactText[]
     const {
       disabled,
+      multiple,
       onChange,
       value: valueProp,
       sameValueEnabled,
@@ -385,7 +386,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         valueParam = value
       }
 
-      valueParam = [...new Set(valueParam)]
+      if (multiple) {
+        valueParam = [...new Set(valueParam)]
+      }
 
       if (valueProp === null) {
         this.setState({ value: valueParam })
