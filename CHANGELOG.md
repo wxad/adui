@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/wxad/adui/compare/v2.8.1...v2.9.0) (2021-07-23)
+
+
+### Features
+
+* **Menu:** 增加 minWidth Prop ([db7e12b](https://github.com/wxad/adui/commit/db7e12b0267271569c6a38006eebfbdb73b53f8b))
+* **types:** 所有组件增加相关类型的导出 ([0f79b77](https://github.com/wxad/adui/commit/0f79b77774d19b3958880377e2c49546ac455fce))
+
+
+### Bug Fixes
+
+* **TreeSelect:** 修复单选时， value 字符串会被 new Set 的问题 ([f7b9a2c](https://github.com/wxad/adui/commit/f7b9a2c49946d6775db0952f7699a2caa1863f82))
+
 ### [2.8.1](https://github.com/wxad/adui/compare/v2.7.1...v2.8.1) (2021-07-19)
 
 
