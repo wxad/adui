@@ -1,3 +1,3 @@
-import Tooltip, { ITooltipProps as _ITooltipProps } from "./Tooltip";
-export declare type ITooltipProps = _ITooltipProps;
+import Tooltip from "./Tooltip";
+export type { ITooltipProps } from "./Tooltip";
 export default Tooltip;

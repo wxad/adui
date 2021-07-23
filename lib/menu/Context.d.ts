@@ -1,6 +1,10 @@
 import * as React from "react";
 declare type ContextProps = {
     /**
+     * 最小宽度
+     */
+    minWidth?: number;
+    /**
      * 其下的 SubMenu 展开状态发生变化的 handler，参数1 index，参数2 bool
      */
     onExpandChange?: (index: React.ReactText, open: boolean) => void;

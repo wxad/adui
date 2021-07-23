@@ -1,3 +1,3 @@
-import Icon, { IconNames as _IconNames } from "./Icon";
-export declare type IconNames = _IconNames;
+import Icon from "./Icon";
+export type { IIconProps, IconNames } from "./Icon";
 export default Icon;

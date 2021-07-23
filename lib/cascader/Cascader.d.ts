@@ -9,7 +9,7 @@ export interface CascaderOption {
     disabled?: boolean;
     children?: CascaderOption[];
 }
-export interface IDrawerProps {
+export interface ICascaderProps {
     [key: string]: any;
     /**
      * 是否支持清除
@@ -79,5 +79,5 @@ export interface IDrawerProps {
 /**
  * 级联选择器直观展示已有的层级关系。
  */
-declare const Cascader: React.FC<IDrawerProps>;
+declare const Cascader: React.FC<ICascaderProps>;
 export default Cascader;

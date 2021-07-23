@@ -14,7 +14,7 @@ interface ResizeObserverEntryBoxSize {
     blockSize: number;
     inlineSize: number;
 }
-interface ResizeObserverProps {
+export interface IResizeObserverProps {
     children: React.ReactNode;
     disabled?: boolean;
     onResize?: (size: {
@@ -27,7 +27,7 @@ interface ResizeObserverState {
     width: number;
 }
 declare type RefNode = React.ReactInstance | HTMLElement | null;
-declare class ReactResizeObserver extends React.Component<ResizeObserverProps, ResizeObserverState> {
+declare class ReactResizeObserver extends React.Component<IResizeObserverProps, ResizeObserverState> {
     static displayName: string;
     resizeObserver: ResizeObserver | null;
     childNode: RefNode;

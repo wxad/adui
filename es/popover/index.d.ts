@@ -1,3 +1,3 @@
-import Popover, { IPopoverProps as _IPopoverProps } from "./Popover";
-export declare type IPopoverProps = _IPopoverProps;
+import Popover from "./Popover";
+export type { IPopoverProps } from "./Popover";
 export default Popover;

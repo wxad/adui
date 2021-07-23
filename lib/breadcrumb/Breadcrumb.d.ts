@@ -1,6 +1,7 @@
 import React from "react";
 import Item from "./Item";
 import "./style";
+export type { IItemProps } from "./Item";
 export interface IBreadcrumbProps {
     [key: string]: any;
     /**

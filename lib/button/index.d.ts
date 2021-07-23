@@ -1,3 +1,4 @@
-import Button, { IButtonProps as _IButtonProps } from "./Button";
-export declare type IButtonProps = _IButtonProps;
+import Button from "./Button";
+export type { IButtonProps } from "./Button";
+export type { IButtonGroupProps } from "./Group";
 export default Button;
