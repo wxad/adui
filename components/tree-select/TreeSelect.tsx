@@ -250,7 +250,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     placeholder: "请选择",
     resultRender: null,
     resultVisible: true,
-    rightIcon: "menu",
+    rightIcon: "list",
     sameValueEnabled: false,
     selectAll: false,
     showCheckedStrategy: "show-parent",

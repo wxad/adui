@@ -50,7 +50,7 @@ var ICON_DEFAULTS = {
   tag: ["cancel-circle"],
   timepicker: ["time-outlined"],
   treeselect: [
-    "menu",
+    "list",
     "triangle-right",
     "triangle-down",
     "cancel",
