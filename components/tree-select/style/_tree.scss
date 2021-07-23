@@ -90,12 +90,12 @@ $prefix: "adui-tree-select";
     position: absolute;
     top: -9999px;
     left: -9999px;
-    padding: 8px 0;
     font-size: 13px;
     color: var(--transparent-gray-900);
     z-index: var(--z-index-dropdown);
     background-color: #fff;
     border-radius: 6px;
+    overflow: hidden;
     box-shadow: var(--box-shadow-elevation-2);
 
     &-hidden {
@@ -402,7 +402,7 @@ $prefix: "adui-tree-select";
       text-overflow: ellipsis;
       font-size: 13px;
       line-height: 20px;
-      color: #a3a3a3;
+      color: var(--transparent-gray-700);
     }
 
     &-search {

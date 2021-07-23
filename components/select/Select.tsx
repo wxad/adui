@@ -570,6 +570,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
               </>
             }
             listHeight={250}
+            listItemHeight={size === "large" ? 40 : size === "medium" ? 36 : 32}
             notFoundContent="无匹配结果"
             onDropdownVisibleChange={this.onDropdownVisibleChange}
             onSelect={this.onSelect}

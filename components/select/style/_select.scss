@@ -51,6 +51,7 @@ $prefix: "adui-select";
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: var(--transparent-gray-700);
   }
 
   &-placeholder-text {
@@ -63,6 +64,7 @@ $prefix: "adui-select";
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: var(--transparent-gray-700);
   }
 
   &-selection-search {
@@ -132,10 +134,7 @@ $prefix: "adui-select";
   }
 
   &-item-group {
-    color: var(--gray-700);
-    padding: 0 8px;
-    font-size: 12px;
-    line-height: 32px;
+    color: var(--transparent-gray-700);
   }
 
   &-disabled {
@@ -269,24 +268,75 @@ $prefix: "adui-select";
     z-index: var(--z-index-dropdown);
     background-color: #fff;
     border-radius: 6px;
+    overflow: hidden;
     box-shadow: var(--box-shadow-elevation-2);
 
     [role*="listbox"] + div {
       @include mixins.scrollbar();
-      padding: 4px 0;
     }
 
     .rc-virtual-list-scrollbar {
       width: 14px !important;
 
       &-thumb {
-        margin-top: 4px;
         left: 6px !important;
         width: 6px !important;
         background-color: rgba(0, 0, 0, 0.15) !important;
 
         &:hover {
           background-color: rgba(0, 0, 0, 0.4) !important;
+        }
+      }
+    }
+
+    &-large {
+      .#{$prefix} {
+        &-item {
+          padding-left: 16px;
+          line-height: 40px;
+
+          &-group {
+            font-size: var(--font-size-medium);
+          }
+
+          &-option {
+            font-size: var(--font-size-large);
+          }
+        }
+      }
+    }
+
+    &-medium {
+      .#{$prefix} {
+        &-item {
+          padding-left: 16px;
+          line-height: 36px;
+
+          &-group {
+            font-size: var(--font-size-mini);
+          }
+
+          &-option {
+            font-size: var(--font-size-medium);
+          }
+        }
+      }
+    }
+
+    &-small,
+    &-mini {
+      .#{$prefix} {
+        &-item {
+          padding-left: 12px;
+          line-height: 32px;
+
+          &-group {
+            font-size: var(--font-size-mini);
+          }
+
+          &-option {
+            font-size: var(--font-size-medium);
+          }
         }
       }
     }
@@ -363,7 +413,7 @@ $prefix: "adui-select";
     }
   }
   &-medium {
-    height: 32px;
+    height: 36px;
 
     .#{$prefix} {
       &-placeholder-text,
@@ -372,18 +422,18 @@ $prefix: "adui-select";
       }
 
       &-placeholder-text {
-        left: 13px;
+        left: 12px;
       }
 
       &-placeholder-text,
       &-selection-item {
-        line-height: 32px;
+        line-height: 36px;
       }
 
       &-selection-item,
       &-selection-placeholder {
-        margin-left: 13px;
-        margin-right: 29px;
+        margin-left: 12px;
+        margin-right: 28px;
       }
     }
   }
@@ -397,7 +447,7 @@ $prefix: "adui-select";
       }
 
       &-placeholder-text {
-        left: 11px;
+        left: 10px;
       }
 
       &-placeholder-text,
@@ -407,8 +457,8 @@ $prefix: "adui-select";
 
       &-selection-item,
       &-selection-placeholder {
-        margin-left: 11px;
-        margin-right: 27px;
+        margin-left: 10px;
+        margin-right: 26px;
       }
     }
   }
@@ -422,7 +472,7 @@ $prefix: "adui-select";
       }
 
       &-placeholder-text {
-        left: 9px;
+        left: 8px;
       }
       &-placeholder-text,
       &-selection-item {
@@ -431,8 +481,8 @@ $prefix: "adui-select";
 
       &-selection-item,
       &-selection-placeholder {
-        margin-left: 9px;
-        margin-right: 25px;
+        margin-left: 8px;
+        margin-right: 24px;
       }
     }
   }
