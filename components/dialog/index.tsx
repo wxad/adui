@@ -40,4 +40,6 @@ INTENTS.forEach((intent) => {
   }
 })
 
+export type { IDialogProps } from "./Dialog"
+
 export default Dialog

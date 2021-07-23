@@ -47,7 +47,7 @@ const supportRef = (nodeOrComponent) => {
   return true
 }
 
-interface ResizeObserverProps {
+export interface IResizeObserverProps {
   children: React.ReactNode
   disabled?: boolean
   onResize?: (size: { width: number; height: number }) => void
@@ -61,7 +61,7 @@ interface ResizeObserverState {
 type RefNode = React.ReactInstance | HTMLElement | null
 
 class ReactResizeObserver extends React.Component<
-  ResizeObserverProps,
+  IResizeObserverProps,
   ResizeObserverState
 > {
   static displayName = "ResizeObserver"

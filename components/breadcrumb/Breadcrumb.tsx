@@ -7,6 +7,8 @@ import "./style"
 
 const prefix = "adui-breadcrumb"
 
+export type { IItemProps } from "./Item"
+
 export interface IBreadcrumbProps {
   [key: string]: any
   /**

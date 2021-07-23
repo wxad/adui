@@ -1,7 +1,6 @@
-import Input, { IInputProps as _IInputProps } from "./Input"
-import { ITextareaProps as _ITextareaProps } from "./Textarea"
+import Input from "./Input"
 
-export type IInputProps = _IInputProps
-export type ITextareaProps = _ITextareaProps
+export type { IInputProps } from "./Input"
+export type { ITextareaProps } from "./Textarea"
 
 export default Input

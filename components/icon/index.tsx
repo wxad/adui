@@ -1,5 +1,5 @@
-import Icon, { IconNames as _IconNames } from "./Icon"
+import Icon from "./Icon"
 
-export type IconNames = _IconNames
+export type { IIconProps, IconNames } from "./Icon"
 
 export default Icon

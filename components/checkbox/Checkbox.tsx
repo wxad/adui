@@ -11,7 +11,6 @@ import { ConfigContext, getComputedSize } from "../config-provider"
 import "./style"
 
 const prefix = "adui-checkbox"
-
 export interface ICheckboxProps {
   [key: string]: any
   /**

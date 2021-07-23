@@ -6,4 +6,6 @@ import ConfigProvider, {
 
 export { ConfigContext, ConfigConsumer, getComputedSize }
 
+export type { IConfigProviderProps } from "./ConfigProvider"
+
 export default ConfigProvider
