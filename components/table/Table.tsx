@@ -29,6 +29,7 @@ interface IBaseObject {
 }
 
 interface IFixedColumnsInfo {
+  columnsLength: number
   width: number
   dataIndex: string
   fixed: "left" | "right"
@@ -864,6 +865,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   }
 
   public handleThResize = (
+    columnsLength: number,
     width: number,
     dataIndex: string,
     index: number,
@@ -882,12 +884,15 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     // fixed 可能是 Boolean
     const fixed = fixedPosition === "right" ? "right" : "left"
     if (i > -1) {
-      if (fixedColumnsInfos[i].width === width) {
+      if (
+        fixedColumnsInfos[i].width === width &&
+        fixedColumnsInfos[i].columnsLength === columnsLength
+      ) {
         return
       }
       fixedColumnsInfos.splice(i, 1)
     }
-    fixedColumnsInfos.push({ width, dataIndex, index, fixed })
+    fixedColumnsInfos.push({ width, dataIndex, index, fixed, columnsLength })
     fixedColumnsInfos.sort((a, b) => a.index - b.index)
 
     const fixedColumnsInfosLeft = fixedColumnsInfos.filter(
@@ -1227,10 +1232,16 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           return (
             <ResizeObserver
               onResize={({ width: widthResize }) => {
-                this.handleThResize(widthResize, dataIndex, index, fixed)
+                this.handleThResize(
+                  columns.length,
+                  widthResize,
+                  dataIndex,
+                  index,
+                  fixed
+                )
               }}
               disabled={!fixed}
-              key={dataIndex || index}
+              key={`${dataIndex || index}_${columns.length}`}
             >
               <div
                 className={classNames(`${prefix}-th`, {
