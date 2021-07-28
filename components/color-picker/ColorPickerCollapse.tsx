@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import Icon from "../icon"
-import Motion from "../motion"
 import "./style"
 
 const prefix = "adui-cp"
@@ -66,11 +65,9 @@ const ColorPickerCollapse: React.FC<ICollapseProps> = ({
         {header}
         <Icon icon="arrow-down" className={`${prefix}-collapse-header-icon`} />
       </div>
-      <Motion transition="slide">
-        {!collapsed && (
-          <div className={`${prefix}-collapse-content`}>{content}</div>
-        )}
-      </Motion>
+      {!collapsed && (
+        <div className={`${prefix}-collapse-content`}>{content}</div>
+      )}
     </div>
   )
 }

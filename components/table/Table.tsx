@@ -6,7 +6,6 @@
  */
 import * as React from "react"
 import PropTypes from "prop-types"
-import Animate from "rc-animate"
 import shallowEqual from "shallowequal"
 import addEventListener from "rc-util/lib/Dom/addEventListener"
 import List from "rc-virtual-list"
@@ -1977,13 +1976,12 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
 
     return (
       <div className={classSet} ref={this.saveRef("wrapper")} {...restProps}>
-        <Animate
-          component="div"
-          transitionName="fade"
+        <div
           style={{
             position: "relative",
             top: `${TD_HEIGHT[size || "small"]}px`,
-            zIndex: "calc(var(--z-index-affix) + 2)",
+            zIndex:
+              "calc(var(--z-index-affix) + 2)" as React.CSSProperties["zIndex"],
           }}
         >
           {loading &&
@@ -2005,7 +2003,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                 <i />
               </div>
             ))}
-        </Animate>
+        </div>
         <div
           className={classNames(`${prefix}-tables`, {
             [`${prefix}-innerScroll`]: !!height,

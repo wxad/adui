@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
-import Animate from "rc-animate"
+import CSSMotion from "rc-motion"
 import getScrollBarSize from "rc-util/lib/getScrollBarSize"
 import Button from "../button"
 import Portal from "../portal"
@@ -124,6 +124,7 @@ const Drawer: React.FC<IDrawerProps> = ({
   onClose,
   placement,
   size,
+  style,
   visible,
   zIndex: zIndexProp,
   ...otherProps
@@ -205,14 +206,14 @@ const Drawer: React.FC<IDrawerProps> = ({
         role="none"
         onKeyDown={handleKeyDown}
       >
-        <Animate
-          transitionName={`${prefix}-mask`}
-          component="div"
-          transitionAppear
+        <CSSMotion
+          motionName={`${prefix}-mask`}
+          visible={visible && maskVisible}
         >
-          {visible && maskVisible && (
+          {({ className: cls }, ref) => (
             <div
-              className={`${prefix}-mask`}
+              ref={ref}
+              className={classNames(`${prefix}-mask`, cls)}
               role="none"
               onClick={() => {
                 if (maskClosable) {
@@ -221,21 +222,25 @@ const Drawer: React.FC<IDrawerProps> = ({
               }}
             />
           )}
-        </Animate>
-        <Animate
-          onAppear={handleEnter}
-          onEnter={handleEnter}
-          onLeave={handleLeave}
-          transitionName={`${prefix}-${placement}`}
-          component="div"
-          style={{
-            margin: "auto",
-            zIndex: 1,
-          }}
-          transitionAppear
+        </CSSMotion>
+        <CSSMotion
+          onAppearStart={handleEnter}
+          onEnterStart={handleEnter}
+          onLeaveEnd={handleLeave}
+          motionName={`${prefix}-${placement}`}
+          visible={visible}
         >
-          {visible && (
-            <div className={classSet} {...otherProps}>
+          {({ className: cls }, ref) => (
+            <div
+              ref={ref}
+              className={classNames(classSet, cls)}
+              style={{
+                margin: "auto",
+                zIndex: 1,
+                ...style,
+              }}
+              {...otherProps}
+            >
               {headerElement === null
                 ? null
                 : headerElement || (
@@ -258,7 +263,7 @@ const Drawer: React.FC<IDrawerProps> = ({
               <div className={`${prefix}-body`}>{children}</div>
             </div>
           )}
-        </Animate>
+        </CSSMotion>
       </div>
     )
   }

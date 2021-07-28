@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import Icon, { IconNames } from "../icon"
 import { NavContext } from "./Context"
-import Motion from "../motion"
 import "./style"
 
 const prefix = "adui-nav"
@@ -66,9 +65,7 @@ const SubNav: React.FC<ISubNavProps> = ({
         <div className={`${prefix}-subTitleContent`}>{title}</div>
         <Icon icon="arrow-up" className={`${prefix}-arrow`} />
       </div>
-      <Motion transition="slide" component="div">
-        {open && <div>{children}</div>}
-      </Motion>
+      {open && <div>{children}</div>}
     </div>
   )
 }

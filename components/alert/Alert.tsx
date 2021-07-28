@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import Icon, { IconNames } from "../icon"
 import ICON_INTENTS from "./iconIntents"
-import Motion from "../motion"
 import { ConfigContext, getComputedSize } from "../config-provider"
 import "./style"
 
@@ -48,9 +47,9 @@ export interface IAlertProps {
    */
   intent?: "normal" | "primary" | "success" | "info" | "warning" | "danger"
   /**
-   * 关闭时的 handler，参数 node
+   * 关闭时的 handler
    */
-  onClose?: (node: HTMLElement) => void
+  onClose?: () => void
   /**
    * 展开状态变化时的 handler，参数为 bool
    */
@@ -114,7 +113,15 @@ const Alert: React.FC<IAlertProps> = ({
   const { size: sizeContext } = useContext(ConfigContext)
   const computedSize = getComputedSize(size, sizeContext)
 
-  const handleClose = () => setClosing(true)
+  const handleClose = () => {
+    if (onClose) {
+      onClose()
+    }
+    setClosing(true)
+    if (afterClose) {
+      afterClose()
+    }
+  }
 
   const handleExpand = () => {
     if (expandedProp === null) {
@@ -135,73 +142,61 @@ const Alert: React.FC<IAlertProps> = ({
     }
   )
 
+  if (closing) {
+    return null
+  }
+
   return (
-    <Motion
-      transition="zoom"
-      onLeave={onClose}
-      afterLeave={afterClose}
-      component="div"
-    >
-      {!closing && (
-        <div className={classSet} {...otherProps}>
-          <div className={`${prefix}-inner`}>
-            {icon !== null && (
-              <Icon
-                icon={icon || ICON_INTENTS[intent || "normal"]}
-                size={computedSize === "mini" ? 18 : 20}
-                className={`${prefix}-icon`}
-              />
-            )}
-            <div className={`${prefix}-text`}>
-              {!!title && <div className={`${prefix}-title`}>{title}</div>}
-              <div>{text}</div>
-              {!!expandContent && (
-                <Motion transition="slide" component="div">
-                  {expanded && (
-                    <div className={`${prefix}-expandContent`}>
-                      {" "}
-                      {expandContent}{" "}
-                    </div>
-                  )}
-                </Motion>
-              )}
-            </div>
-            {closable && (
+    <div className={classSet} {...otherProps}>
+      <div className={`${prefix}-inner`}>
+        {icon !== null && (
+          <Icon
+            icon={icon || ICON_INTENTS[intent || "normal"]}
+            size={computedSize === "mini" ? 18 : 20}
+            className={`${prefix}-icon`}
+          />
+        )}
+        <div className={`${prefix}-text`}>
+          {!!title && <div className={`${prefix}-title`}>{title}</div>}
+          <div>{text}</div>
+          {!!expandContent && expanded && (
+            <div className={`${prefix}-expandContent`}> {expandContent} </div>
+          )}
+        </div>
+        {closable && (
+          <div
+            className={classNames(`${prefix}-close`, {
+              [`${prefix}-close_text`]: !!closeText,
+            })}
+          >
+            {closeText ? (
               <div
-                className={classNames(`${prefix}-close`, {
-                  [`${prefix}-close_text`]: !!closeText,
-                })}
-              >
-                {closeText ? (
-                  <div
-                    className={`${prefix}-closeText`}
-                    onClick={handleClose}
-                    role="none"
-                  >
-                    {closeText}
-                  </div>
-                ) : (
-                  <Icon
-                    className={`${prefix}-closeIcon`}
-                    icon="cancel"
-                    onClick={handleClose}
-                  />
-                )}
-              </div>
-            )}
-            {!!expandContent && (
-              <div
-                className={`${prefix}-expand`}
-                onClick={handleExpand}
+                className={`${prefix}-closeText`}
+                onClick={handleClose}
                 role="none"
               >
-                {expanded ? "收起" : "展开"}
+                {closeText}
               </div>
+            ) : (
+              <Icon
+                className={`${prefix}-closeIcon`}
+                icon="cancel"
+                onClick={handleClose}
+              />
             )}
           </div>
-        </div>
-      )}
-    </Motion>
+        )}
+        {!!expandContent && (
+          <div
+            className={`${prefix}-expand`}
+            onClick={handleExpand}
+            role="none"
+          >
+            {expanded ? "收起" : "展开"}
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
 

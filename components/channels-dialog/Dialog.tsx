@@ -3,7 +3,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import getScrollBarSize from "rc-util/lib/getScrollBarSize"
 import classNames from "classnames"
-import Animate from "rc-animate"
+import CSSMotion from "rc-motion"
 import omit from "../_util/omit"
 import Portal from "../portal"
 import Button, { IButtonProps } from "../channels-button"
@@ -520,6 +520,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
       bodyStyle,
       children,
       className,
+      destroyAfterClose,
       footerElement,
       footerStyle,
       headerContent,
@@ -542,7 +543,6 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
       "currentStep",
       "defaultCurrentStep",
       "defaultVisible",
-      "destroyAfterClose",
       "escapeKeyClosable",
       "getContainer",
       "onCancel",
@@ -572,14 +572,15 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
           role="none"
           onKeyDown={this.handleKeyDown}
         >
-          <Animate
-            transitionName={`${prefix}-mask`}
-            component="div"
-            transitionAppear
+          <CSSMotion
+            motionName={`${prefix}-mask`}
+            visible={visible}
+            removeOnLeave={destroyAfterClose}
           >
-            {visible && (
+            {({ className: cls }, ref) => (
               <div
-                className={`${prefix}-mask`}
+                ref={ref}
+                className={classNames(`${prefix}-mask`, cls)}
                 role="none"
                 onClick={() => {
                   if (maskClosable) {
@@ -588,7 +589,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
                 }}
               />
             )}
-          </Animate>
+          </CSSMotion>
           {/**
            * https://stackoverflow.com/a/33455342
            * 1. 最外层 margin: auto 非常重要。
@@ -596,23 +597,28 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
            * margin: auto; 是为了完善 flexbox overflow 的样式。
            * 2. zIndex: 1 是为了覆盖在 mask 上。
            */}
-          <Animate
-            onAppear={this.handleEnter}
-            onEnter={this.handleEnter}
-            onLeave={this.onLeave}
-            transitionName={prefix}
-            component="div"
-            style={{
-              position: "relative",
-              margin: "auto",
-              zIndex: 1,
-              top: "var(--dialog-offset-y)",
-              left: "var(--dialog-offset-x)",
-            }}
-            transitionAppear
+          <CSSMotion
+            onAppearStart={this.handleEnter}
+            onEnterStart={this.handleEnter}
+            onLeaveEnd={this.onLeave}
+            motionName={prefix}
+            visible={visible}
+            removeOnLeave={destroyAfterClose}
           >
-            {visible && (
-              <div className={classSet} style={style} {...restProps}>
+            {({ className: cls }, ref) => (
+              <div
+                ref={ref}
+                className={classNames(classSet, cls)}
+                style={{
+                  position: "relative",
+                  margin: "auto",
+                  zIndex: 1,
+                  top: "var(--dialog-offset-y)",
+                  left: "var(--dialog-offset-x)",
+                  ...style,
+                }}
+                {...restProps}
+              >
                 {headerElement === null
                   ? null
                   : headerElement || (
@@ -663,7 +669,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
                 )}
               </div>
             )}
-          </Animate>
+          </CSSMotion>
         </div>
       </div>
     )

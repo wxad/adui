@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import PropTypes from "prop-types"
-import Animate from "rc-animate"
+import CSSMotion from "rc-motion"
 import classNames from "classnames"
 import warning from "../_util/warning"
 import { ConfigContext, getComputedSize } from "../config-provider"
@@ -158,24 +158,27 @@ const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps) => {
 
   if (isNestedPattern()) {
     return (
-      <Animate
-        component="div"
-        className={`${prefix}-nestedWrapper`}
-        style={null}
-        transitionName="fade"
-        {...otherProps}
-      >
-        {spinning && <div key="loading">{spin}</div>}
-        <div
-          className={classNames(`${prefix}-container`, {
-            [`${prefix}-blur`]: spinning,
-          })}
-          key="container"
-          style={{ minHeight }}
-        >
-          {children}
-        </div>
-      </Animate>
+      <CSSMotion motionName="fade">
+        {({ className: cls, style: sty }) => {
+          return (
+            <div
+              className={`${cls} ${prefix}-nestedWrapper`}
+              style={sty}
+              {...otherProps}
+            >
+              {spinning && spin}
+              <div
+                className={classNames(`${prefix}-container`, {
+                  [`${prefix}-blur`]: spinning,
+                })}
+                style={{ minHeight }}
+              >
+                {children}
+              </div>
+            </div>
+          )
+        }}
+      </CSSMotion>
     )
   }
   return spin
