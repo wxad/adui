@@ -27,7 +27,6 @@ $prefix: "adui-drawer";
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    box-shadow: var(--box-shadow-elevation-4);
     pointer-events: initial;
     @include mixins.overlay();
   }
@@ -125,6 +124,12 @@ $prefix: "adui-drawer";
 
   &-top {
     top: 0;
+  }
+
+  &-left,
+  &-right,
+  &-top {
+    box-shadow: var(--box-shadow-elevation-4);
   }
 
   &-bottom {
