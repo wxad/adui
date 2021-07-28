@@ -7,7 +7,6 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import shallowequal from "shallowequal"
 import addEventListener from "rc-util/lib/Dom/addEventListener"
-import { debounce } from "debounce"
 import omit from "../_util/omit"
 import ResizeObserver from "../resize-observer"
 import "./style"
@@ -28,7 +27,6 @@ export interface IAffixProps {
 
 export interface IAffixState {
   affixStyle?: React.CSSProperties | null
-  placeholderStyle?: React.CSSProperties | null
 }
 
 /**
@@ -85,19 +83,13 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
 
   public placeholderNode: HTMLDivElement
 
-  private debouncedWindowResize: any
-
   private scrollEventHandler: any
-
-  private windowResizeEventHandler: any
 
   constructor(props: IAffixProps) {
     super(props)
     this.state = {
       affixStyle: undefined,
-      placeholderStyle: undefined,
     }
-    this.debouncedWindowResize = debounce(this.syncPlaceholderStyle, 100, null)
   }
 
   public componentDidMount = () => {
@@ -108,11 +100,6 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
       "scroll",
       this.updatePosition
     )
-    this.windowResizeEventHandler = addEventListener(
-      window,
-      "resize",
-      this.debouncedWindowResize
-    )
     this.updatePosition()
     this.syncPlaceholderStyle()
   }
@@ -120,12 +107,6 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
   public componentWillUnmount = () => {
     if (this.scrollEventHandler) {
       this.scrollEventHandler.remove()
-    }
-    if (this.windowResizeEventHandler) {
-      this.windowResizeEventHandler.remove()
-    }
-    if (this.debouncedWindowResize) {
-      this.debouncedWindowResize.clear()
     }
   }
 
@@ -137,15 +118,6 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
     }
     if (!!affixStyle !== !!newAffixStyle && onChange) {
       onChange(!!newAffixStyle)
-    }
-  }
-
-  public setPlaceholderStyle = (
-    newPlaceholderStyle: React.CSSProperties | null
-  ) => {
-    const { placeholderStyle } = this.state
-    if (!shallowequal(placeholderStyle, newPlaceholderStyle)) {
-      this.setState({ placeholderStyle: newPlaceholderStyle })
     }
   }
 
@@ -177,15 +149,6 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
         width: fixedRect.width,
       }
 
-      const setStyle = () => {
-        if (fixedRect.width) {
-          this.setPlaceholderStyle({
-            height: fixedRect.height,
-            width: fixedRect.width,
-          })
-        }
-      }
-
       // 如果传入了 offsetBottom，则会忽略 offsetTop
       if (
         offsetBottom !== null &&
@@ -208,11 +171,9 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
           } else {
             affixStyle.bottom = offsetBottom
           }
-          setStyle()
           this.setAffixStyle(affixStyle)
         } else {
           this.setAffixStyle(null)
-          this.setPlaceholderStyle(null)
         }
       } else if (placeholderRect.top < (offsetTop || 0) + targetTop) {
         if (getContainer && getContainer()) {
@@ -228,11 +189,9 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
         } else {
           affixStyle.top = targetTop + (offsetTop || 0)
         }
-        setStyle()
         this.setAffixStyle(affixStyle)
       } else {
         this.setAffixStyle(null)
-        this.setPlaceholderStyle(null)
       }
     }
   }
@@ -250,11 +209,7 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
         ...affixStyle,
         width,
       })
-      if (width) {
-        this.setPlaceholderStyle({
-          width,
-        })
-      } else {
+      if (!width) {
         this.placeholderNode.style.width = widthPrev
       }
     }
@@ -279,16 +234,20 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
       "onChange",
     ])
 
-    const { affixStyle, placeholderStyle } = this.state
+    const { affixStyle } = this.state
 
     const classSet = classNames(className, `${prefix}-base`)
 
     return (
-      <div ref={this.savePlaceholderNode} style={{ ...placeholderStyle }}>
+      <div ref={this.savePlaceholderNode}>
         <ResizeObserver
-          onResize={() => {
+          onResize={({ width, height }) => {
             this.updatePosition()
             this.syncPlaceholderStyle()
+            if (this.placeholderNode) {
+              this.placeholderNode.style.width = `${width}px`
+              this.placeholderNode.style.height = `${height}px`
+            }
           }}
         >
           <div
