@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/wxad/adui/compare/v2.9.0...v2.10.0) (2021-07-28)
+
+
+### Features
+
+* **tailwind:** 添加 line-clamp ([11dfc17](https://github.com/wxad/adui/commit/11dfc17285264df55ebb107545eb9658e498051a))
+
+
+### Bug Fixes
+
+* **strictMode:** 去除 Motion 的使用，部分组件使用 CSSMotion 替代 ([3a1a902](https://github.com/wxad/adui/commit/3a1a902c9c667ef8f15c54a1adce0a40b034f269))
+* **TreeSelect:** icon 从默认的 menu 改为 list ([269b73e](https://github.com/wxad/adui/commit/269b73e9bb50706b2b9044ffe1eda6f7a9595237))
+
 ## [2.9.0](https://github.com/wxad/adui/compare/v2.8.1...v2.9.0) (2021-07-23)
 
 
