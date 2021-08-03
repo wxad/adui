@@ -733,15 +733,12 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     e.stopPropagation()
     const { resized, currentlyResizing } = this.state
     const { col, dataIndex, parentWidth, startX } = currentlyResizing
+    const title = col.title || ""
     /**
      * 13 代表字号；用 em 的方式计算宽度本身不够合理，这里 + 2，不然在 Safari 下空间会不够。
      */
     const baseWidth =
-      Math.ceil(
-        col.title.length > 4 ? col.title.length / 2 : col.title.length
-      ) *
-        13 +
-      2
+      Math.ceil(title.length > 4 ? title.length / 2 : title.length) * 13 + 2
     const newResized = resized.filter((o) => o.dataIndex !== dataIndex)
     const newWidth = Math.max(
       Math.ceil(parentWidth + e.pageX - startX),
