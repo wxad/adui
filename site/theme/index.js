@@ -1,14 +1,13 @@
 /* eslint-disable */
-const path = require('path')
-const homeTmpl = './template/Home'
-const contentTmpl = './template/Content'
+const path = require("path")
+const homeTmpl = "./template/Home"
+const contentTmpl = "./template/Content"
 
 function pickerGenerator() {
   const tester = new RegExp("^docs/")
   return (markdownData) => {
     const { filename } = markdownData.meta
-    if (tester.test(filename)
-        && !/\/demo$/.test(path.dirname(filename))) {
+    if (tester.test(filename) && !/\/demo$/.test(path.dirname(filename))) {
       return {
         meta: markdownData.meta,
       }
@@ -17,18 +16,21 @@ function pickerGenerator() {
 }
 
 module.exports = {
-  plugins: ['bisheng-plugin-react?lang=jsx'],
+  plugins: ["bisheng-plugin-react?lang=jsx"],
   lazyLoad(nodePath, nodeValue) {
-    if (typeof nodeValue === 'string') {
+    if (typeof nodeValue === "string") {
       return true
     }
-    return nodePath.endsWith('/demo')
+    return nodePath.endsWith("/demo")
   },
   pick: {
     components(markdownData) {
       const { filename } = markdownData.meta
-      if (!/^components/.test(filename)
-          || /[/\\]demo$/.test(path.dirname(filename))) return
+      if (
+        !/^components/.test(filename) ||
+        /[/\\]demo$/.test(path.dirname(filename))
+      )
+        return
 
       return {
         meta: markdownData.meta,
@@ -41,33 +43,37 @@ module.exports = {
         }
       }
     },
-    'docs': pickerGenerator(),
+    docs: pickerGenerator(),
   },
   routes: {
-    path: '/',
-    component: './template/Layout',
+    path: "/",
+    component: "./template/Layout",
     indexRoute: { component: homeTmpl },
     childRoutes: [
       {
-        path: 'index',
+        path: "index",
         component: homeTmpl,
       },
       {
-        path: 'docs/:children',
+        path: "docs/:children",
         component: contentTmpl,
       },
       {
-        path: 'components/:children',
+        path: "components/:children",
         component: contentTmpl,
       },
       {
-          path: 'docs/spec/:children',
-          component: contentTmpl,
+        path: "docs/spec/:children",
+        component: contentTmpl,
       },
       {
-        path: 'changelog',
+        path: "docs/acss/:children",
         component: contentTmpl,
-      }
+      },
+      {
+        path: "changelog",
+        component: contentTmpl,
+      },
       // {
       //   path: 'docs/pattern/:children',
       //   component: redirectTmpl,
@@ -88,5 +94,5 @@ module.exports = {
       //   component: redirectTmpl,
       // }
     ],
-  }
+  },
 }

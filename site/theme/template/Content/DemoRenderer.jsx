@@ -48,7 +48,7 @@ import {
 
 export default class DemoRenderer extends Component {
   componentDidMount = () => {
-    const { lang, codes } = this.props
+    const { codes } = this.props
 
     if (this.demoWrapper) {
       const output = transform(

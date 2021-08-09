@@ -276,7 +276,7 @@ class Home extends React.Component {
                   AD UI 针对网页端后台界面而设计，方便设计师与开发搭建整体的后台体验环境。<br />
                   AD UI 建议以简单、合理的方案解决后台系统中的实际使用问题。
                 </p>
-                <div className={styles["footer-contact"]}>hingliang@tencent.com</div>
+                <div className={styles["footer-contact"]}>yijiejiang@tencent.com</div>
               </footer>
             </div>
           </div>

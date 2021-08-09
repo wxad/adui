@@ -10,19 +10,20 @@ import DemoRenderer from "./DemoRenderer"
 import styles from "./ComponentDoc.scss"
 
 export default class Demo extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.form = null
-  }
-  state = {
-    contents: null,
-    pre: null,
-    realCode: null,
-    expanded: false,
+    this.state = {
+      contents: null,
+      pre: null,
+      realCode: null,
+      expanded: props.defaultExpanded || false,
+    }
   }
 
   componentDidMount = () => {
-    const { utils, content } = this.props
+    const { content } = this.props
+    console.log(content, "yijie")
     const contentChildren = JsonML.getChildren(content)
     const preStartIndex = contentChildren.findIndex(
       (node) => JsonML.getTagName(node) === "pre"
@@ -64,14 +65,16 @@ export default class Demo extends React.Component {
   }
 
   render() {
-    const { utils, content } = this.props
+    const { utils } = this.props
     const { alert, contents, pre, realCode, expanded } = this.state
     // 正则处理代码
     let codeFinal = null
     if (realCode) {
       const codeArrayFirst = new Set(realCode.match(/<[A-Z]\w*/g))
       const codeSecond = [...codeArrayFirst].join("").match(/[a-z-A-Z]+/g)
-      codeFinal = codeSecond.filter((item) => item !== "React")
+      if (codeSecond) {
+        codeFinal = codeSecond.filter((item) => item !== "React")
+      }
     }
 
     // codeSandBox的html模板
@@ -132,11 +135,15 @@ ReactDOM.render(<AduiExample />, document.getElementById('container'))
     return (
       <section>
         <div className={styles.demo}>
-          {contents && utils.toReactComponent(contents)}
+          {contents &&
+            utils.toReactComponent(
+              ["section", { className: "markdown" }].concat(
+                JsonML.getChildren(contents)
+              )
+            )}
           <div className={styles.showCase} id={id}>
             {pre && (
               <DemoRenderer
-                lang={JsonML.getChildren(pre)[0][1].lang}
                 codes={JsonML.getChildren(pre)[0][2][1]}
                 className={styles.demoWrapper}
               />

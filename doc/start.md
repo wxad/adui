@@ -75,6 +75,7 @@ plugins: [
   ...
 ]
 ```
+
 原理与注意事项之后补充。
 
 ## Vite 按需
@@ -91,7 +92,7 @@ plugins: [
 ```css
 :root {
   --primary-color: #07c160;
-  ...
+  ...;
 }
 ```
 

@@ -164,7 +164,7 @@ const parsed = {
       filename: "CardHeader.tsx",
     }),
   },
-  "Cascader": {
+  Cascader: {
     raw: CascaderRaw,
     doc: reactDocs.parse(CascaderRaw, undefined, undefined, {
       filename: "Cascader.tsx",
@@ -537,7 +537,7 @@ import styles from "./ComponentDoc.scss"
 import DemoRenderer from "./DemoRenderer"
 
 export default class ComponentDoc extends React.Component {
-  getComponentType = raw => {
+  getComponentType = (raw) => {
     if (raw.includes("forwardRef")) {
       return "ForwardRef Component"
     }
@@ -558,10 +558,10 @@ export default class ComponentDoc extends React.Component {
     const [...contentClone] = content
 
     const reactCode = contentClone.find(
-      o => o[0] && o[1] && o[0] === "pre" && o[1].lang === "jsx"
+      (o) => o[0] && o[1] && o[0] === "pre" && o[1].lang === "jsx"
     )
     const reactCodeIndex = contentClone.findIndex(
-      o => o[0] && o[1] && o[0] === "pre" && o[1].lang === "jsx"
+      (o) => o[0] && o[1] && o[0] === "pre" && o[1].lang === "jsx"
     )
     if (reactCodeIndex > -1) {
       contentClone.splice(reactCodeIndex, 1)
@@ -569,14 +569,40 @@ export default class ComponentDoc extends React.Component {
 
     let demoos
     if (demos) {
-      demoos = Object.keys(demos).map(key => demos[key])
+      demoos = Object.keys(demos).map((key) => demos[key])
+    }
+
+    /**
+     * acss page
+     */
+    let acssClassNames = contentClone.find(
+      (o) => o[0] && o[1] && o[0] === "pre" && o[1].lang === "json classes"
+    )
+    const acssClassNamesIndex = contentClone.findIndex(
+      (o) => o[0] && o[1] && o[0] === "pre" && o[1].lang === "json classes"
+    )
+    if (acssClassNamesIndex > -1) {
+      contentClone.splice(acssClassNamesIndex, 1)
+    }
+    const acssDemo = contentClone.find(
+      (o) => o[0] && o[1] && o[0] === "pre" && o[1].lang === "jsx acss"
+    )
+    const acssDemoIndex = contentClone.findIndex(
+      (o) => o[0] && o[1] && o[0] === "pre" && o[1].lang === "jsx acss"
+    )
+    if (acssDemoIndex > -1) {
+      contentClone.splice(acssDemoIndex, 1)
+    }
+
+    if (acssClassNames && acssClassNames[2] && acssClassNames[2][1]) {
+      acssClassNames = JSON.parse(acssClassNames[2][1])
     }
 
     /**
      * title：组件英文名；
      * subtitle：组件中文名。
      */
-    const { title, subtitle } = this.props.doc.meta
+    const { title, subtitle } = meta
     const Property = propertyboxes[title] || null
 
     return (
@@ -613,6 +639,57 @@ export default class ComponentDoc extends React.Component {
             )
           )}
         {Property ? <Property /> : null}
+        {acssClassNames && (
+          <Table
+            height={500}
+            dataSource={Object.keys(acssClassNames).map((o) => ({
+              class: o,
+              properties: acssClassNames[o],
+            }))}
+            columns={[
+              {
+                dataIndex: "class",
+                title: "类名",
+                render: ({ class: c }) => (
+                  <span
+                    style={{
+                      color: "rgb(124,58,237)",
+                      fontFamily: "SFMono-medium",
+                      whiteSpace: "break-spaces",
+                    }}
+                  >
+                    {c}
+                  </span>
+                ),
+              },
+              {
+                dataIndex: "properties",
+                title: "属性",
+                render: ({ properties }) => (
+                  <span
+                    style={{
+                      color: "rgb(2,132,199)",
+                      fontFamily: "SFMono-medium",
+                      whiteSpace: "break-spaces",
+                    }}
+                  >
+                    {properties}
+                  </span>
+                ),
+              },
+            ]}
+          />
+        )}
+        {acssDemo && (
+          <>
+            <h2>示例</h2>
+            <Demo
+              content={["article", acssDemo]}
+              utils={utils}
+              defaultExpanded
+            />
+          </>
+        )}
         {demoos && !!demoos.length && (
           <div className={classNames("scrollPoint", styles.demoTitle)}>
             常用示例
@@ -661,10 +738,9 @@ export default class ComponentDoc extends React.Component {
               const docProps = parsed[propName]?.doc?.props
               const dataSource = []
               if (docProps) {
-                Object.keys(docProps).forEach(docProp => {
-                  const { defaultValue, description, type, tsType } = docProps[
-                    docProp
-                  ]
+                Object.keys(docProps).forEach((docProp) => {
+                  const { defaultValue, description, type, tsType } =
+                    docProps[docProp]
                   dataSource.push({
                     docProp,
                     defaultValue,

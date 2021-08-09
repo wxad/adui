@@ -454,11 +454,12 @@ module.exports = {
       ...theme("spacing"),
       full: "100%",
       screen: "100vh",
+      initial: "initial",
     }),
     maxWidth: (theme, { breakpoints }) => ({
       ...theme("spacing"),
       full: "100%",
-      screen: "100vh",
+      screen: "100vw",
       initial: "initial",
       ...breakpoints(theme("screens")),
     }),
@@ -947,8 +948,10 @@ module.exports = {
                 [`.${e(`line-clamp-${key}`)}`]: {
                   overflow: "hidden",
                   display: "-webkit-box",
+                  "text-overflow": "ellipsis",
                   "-webkit-box-orient": "vertical",
                   "-webkit-line-clamp": `${value}`,
+                  "line-clamp": `${value}`,
                 },
               }
             }),

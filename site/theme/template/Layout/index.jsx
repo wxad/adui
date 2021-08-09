@@ -204,20 +204,22 @@ class SiteLayout extends React.Component {
     const locationStringtoArray = location.pathname.split("/")
     const name = locationStringtoArray[locationStringtoArray.length - 1]
     const isHome = location.pathname === "" || location.pathname === "/"
-    let isComponent
-    if (
+    let tabValue
+    if (location.pathname.includes("acss")) {
+      tabValue = 2
+    } else if (
       location.pathname.includes("components") ||
       location.pathname.includes("docs/start") ||
       location.pathname.includes("docs/resource") ||
       location.pathname.includes("changelog")
     ) {
-      isComponent = 1
+      tabValue = 1
     } else if (
       location.pathname.includes("docs") &&
       !location.pathname.includes("docs/start") &&
       !location.pathname.includes("docs/resource")
     ) {
-      isComponent = 0
+      tabValue = 0
     }
     let headerStyle = {}
     if (isHome) {
@@ -292,7 +294,7 @@ class SiteLayout extends React.Component {
             </div>
             <div className={styles["header-right"]}>
               <Tabs
-                value={isComponent !== undefined ? isComponent : ""}
+                value={tabValue !== undefined ? tabValue : ""}
                 size="large"
                 className={styles.tabs}
               >
@@ -306,9 +308,17 @@ class SiteLayout extends React.Component {
                   <Tabs.Tab title="设计语言" value={0} />
                 </Link>
                 <Link
+                  to="/docs/acss/start"
+                  style={{
+                    marginRight: "40px",
+                    color: "#000",
+                  }}
+                >
+                  <Tabs.Tab title="原子规范" value={2} />
+                </Link>
+                <Link
                   to="/docs/start"
                   style={{
-                    // marginRight: "40px",
                     color: "#000",
                   }}
                 >
@@ -428,7 +438,7 @@ class SiteLayout extends React.Component {
                   </div>
                 )}
                 <Nav style={{ marginTop: "24px" }} selectedIndex={name}>
-                  {location.pathname.includes("docs/spec") ? (
+                  {location.pathname.includes("docs/spec") && (
                     <>
                       <Nav.Group title="视觉语言">
                         <Nav.Item index="principle">
@@ -453,6 +463,292 @@ class SiteLayout extends React.Component {
                         </Nav.Item>
                       </Nav.Group>
                       <Nav.Divider />
+                    </>
+                  )}
+                  {location.pathname.includes("docs/acss") ? (
+                    <>
+                      <Nav.Item index="start">
+                        <Link to="/docs/acss/start">开始使用</Link>
+                      </Nav.Item>
+                      <Nav.Item index="color">
+                        <Link to="/docs/acss/color">色彩 Color</Link>
+                      </Nav.Item>
+                      <Nav.Item index="spacing">
+                        <Link to="/docs/acss/spacing">间距 Spacing</Link>
+                      </Nav.Item>
+                      <Nav.Group title="布局">
+                        <Nav.Item index="display">
+                          <Link to="/docs/acss/display">Display</Link>
+                        </Nav.Item>
+                        <Nav.Item index="object-fit">
+                          <Link to="/docs/acss/object-fit">Object Fit</Link>
+                        </Nav.Item>
+                        <Nav.Item index="overflow">
+                          <Link to="/docs/acss/overflow">Overflow</Link>
+                        </Nav.Item>
+                        <Nav.Item index="position">
+                          <Link to="/docs/acss/position">Position</Link>
+                        </Nav.Item>
+                        <Nav.Item index="top-right-bottom-left">
+                          <Link to="/docs/acss/top-right-bottom-left">
+                            Top Right Bottom Left
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="visibility">
+                          <Link to="/docs/acss/visibility">Visibility</Link>
+                        </Nav.Item>
+                        <Nav.Item index="z-index">
+                          <Link to="/docs/acss/z-index">Z-Index</Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="Flex 和 Grid">
+                        <Nav.Item index="flex-direction">
+                          <Link to="/docs/acss/flex-direction">
+                            Flex Direction
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="flex-wrap">
+                          <Link to="/docs/acss/flex-wrap">Flex Wrap</Link>
+                        </Nav.Item>
+                        <Nav.Item index="flex">
+                          <Link to="/docs/acss/flex">Flex</Link>
+                        </Nav.Item>
+                        <Nav.Item index="grid-template-columns">
+                          <Link to="/docs/acss/grid-template-columns">
+                            Grid Template Columns
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="grid-template-rows">
+                          <Link to="/docs/acss/grid-template-rows">
+                            Grid Template Rows
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="grid-auto-flow">
+                          <Link to="/docs/acss/grid-auto-flow">
+                            Grid Auto Flow
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="gap">
+                          <Link to="/docs/acss/gap">Gap</Link>
+                        </Nav.Item>
+                        <Nav.Item index="justify-content">
+                          <Link to="/docs/acss/justify-content">
+                            Justify Content
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="justify-items">
+                          <Link to="/docs/acss/justify-items">
+                            Justify Items
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="justify-self">
+                          <Link to="/docs/acss/justify-self">Justify Self</Link>
+                        </Nav.Item>
+                        <Nav.Item index="align-content">
+                          <Link to="/docs/acss/align-content">
+                            Align Content
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="align-items">
+                          <Link to="/docs/acss/align-items">Align Items</Link>
+                        </Nav.Item>
+                        <Nav.Item index="align-self">
+                          <Link to="/docs/acss/align-self">Align Self</Link>
+                        </Nav.Item>
+                        <Nav.Item index="place-content">
+                          <Link to="/docs/acss/place-content">
+                            Place Content
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="place-items">
+                          <Link to="/docs/acss/place-items">Place Items</Link>
+                        </Nav.Item>
+                        <Nav.Item index="place-self">
+                          <Link to="/docs/acss/place-self">Place Self</Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="间距">
+                        <Nav.Item index="space-between">
+                          <Link to="/docs/acss/space-between">
+                            Space Between
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="padding">
+                          <Link to="/docs/acss/padding">Padding</Link>
+                        </Nav.Item>
+                        <Nav.Item index="margin">
+                          <Link to="/docs/acss/margin">Margin</Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="尺寸">
+                        <Nav.Item index="width">
+                          <Link to="/docs/acss/width">Width</Link>
+                        </Nav.Item>
+                        <Nav.Item index="min-width">
+                          <Link to="/docs/acss/min-width">Min Width</Link>
+                        </Nav.Item>
+                        <Nav.Item index="max-width">
+                          <Link to="/docs/acss/max-width">Max Width</Link>
+                        </Nav.Item>
+                        <Nav.Item index="height">
+                          <Link to="/docs/acss/height">Height</Link>
+                        </Nav.Item>
+                        <Nav.Item index="min-height">
+                          <Link to="/docs/acss/min-height">Min Height</Link>
+                        </Nav.Item>
+                        <Nav.Item index="max-height">
+                          <Link to="/docs/acss/max-height">Max Height</Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="字体">
+                        <Nav.Item index="font-size">
+                          <Link to="/docs/acss/font-size">Font Size</Link>
+                        </Nav.Item>
+                        <Nav.Item index="font-weight">
+                          <Link to="/docs/acss/font-weight">Font Weight</Link>
+                        </Nav.Item>
+                        <Nav.Item index="letter-spacing">
+                          <Link to="/docs/acss/letter-spacing">
+                            Letter Spacing
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="line-height">
+                          <Link to="/docs/acss/line-height">Line Height</Link>
+                        </Nav.Item>
+                        <Nav.Item index="text-align">
+                          <Link to="/docs/acss/text-align">Text Align</Link>
+                        </Nav.Item>
+                        <Nav.Item index="text-color">
+                          <Link to="/docs/acss/text-color">Text Color</Link>
+                        </Nav.Item>
+                        <Nav.Item index="text-opacity">
+                          <Link to="/docs/acss/text-opacity">Text Opacity</Link>
+                        </Nav.Item>
+                        <Nav.Item index="text-decoration">
+                          <Link to="/docs/acss/text-decoration">
+                            Text Decoration
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="text-transform">
+                          <Link to="/docs/acss/text-transform">
+                            Text Transform
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="text-overflow">
+                          <Link to="/docs/acss/text-overflow">
+                            Text Overflow
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="vertical-align">
+                          <Link to="/docs/acss/vertical-align">
+                            Vertical Align
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="whitespace">
+                          <Link to="/docs/acss/whitespace">Whitespace</Link>
+                        </Nav.Item>
+                        <Nav.Item index="word-break">
+                          <Link to="/docs/acss/word-break">Word Break</Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="背景">
+                        <Nav.Item index="background-color">
+                          <Link to="/docs/acss/background-color">
+                            Background Color
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="background-opacity">
+                          <Link to="/docs/acss/background-opacity">
+                            Background Opacity
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="background-position">
+                          <Link to="/docs/acss/background-position">
+                            Background Position
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="background-repeat">
+                          <Link to="/docs/acss/background-repeat">
+                            Background Repeat
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="background-size">
+                          <Link to="/docs/acss/background-size">
+                            Background Size
+                          </Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="边框">
+                        <Nav.Item index="shadow">
+                          <Link to="/docs/acss/shadow">Shadow</Link>
+                        </Nav.Item>
+                        <Nav.Item index="border-radius">
+                          <Link to="/docs/acss/border-radius">
+                            Border Radius
+                          </Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="动画">
+                        <Nav.Item index="transition-property">
+                          <Link to="/docs/acss/transition-property">
+                            Transition Property
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="transition-duration">
+                          <Link to="/docs/acss/transition-duration">
+                            Transition Duration
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="transition-timing-function">
+                          <Link to="/docs/acss/transition-timing-function">
+                            Transition Timing Function
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="transition-delay">
+                          <Link to="/docs/acss/transition-delay">
+                            Transition Delay
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="animation">
+                          <Link to="/docs/acss/animation">Animation</Link>
+                        </Nav.Item>
+                        <Nav.Item index="transform">
+                          <Link to="/docs/acss/transform">Transform</Link>
+                        </Nav.Item>
+                        <Nav.Item index="transform-origin">
+                          <Link to="/docs/acss/transform-origin">
+                            Transform Origin
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="scale">
+                          <Link to="/docs/acss/scale">Scale</Link>
+                        </Nav.Item>
+                        <Nav.Item index="rotate">
+                          <Link to="/docs/acss/rotate">Rotate</Link>
+                        </Nav.Item>
+                        <Nav.Item index="translate">
+                          <Link to="/docs/acss/translate">Translate</Link>
+                        </Nav.Item>
+                      </Nav.Group>
+                      <Nav.Group title="其他">
+                        <Nav.Item index="opacity">
+                          <Link to="/docs/acss/opacity">Opacity</Link>
+                        </Nav.Item>
+                        <Nav.Item index="fill">
+                          <Link to="/docs/acss/fill">Fill</Link>
+                        </Nav.Item>
+                        <Nav.Item index="cursor">
+                          <Link to="/docs/acss/cursor">Cursor</Link>
+                        </Nav.Item>
+                        <Nav.Item index="pointer-events">
+                          <Link to="/docs/acss/pointer-events">
+                            Pointer Events
+                          </Link>
+                        </Nav.Item>
+                        <Nav.Item index="user-select">
+                          <Link to="/docs/acss/user-select">User Select</Link>
+                        </Nav.Item>
+                      </Nav.Group>
                     </>
                   ) : (
                     <>
@@ -658,7 +954,7 @@ class SiteLayout extends React.Component {
                       </p>
                     </div>
                     <p className={styles.connection}>
-                      如有任何优化建议，请联系我们：hingliang@tencent.com
+                      如有任何优化建议，请联系我们：yijiejiang@tencent.com
                     </p>
                   </div>
                 </div>
