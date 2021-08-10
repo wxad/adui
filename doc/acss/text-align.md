@@ -1,26 +1,26 @@
 ---
-title: Flex Direction
+title: Text Align
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以控制元素内文字  的对齐方式。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`text-align`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "text-left": "text-align: left;",
+  "text-center": "text-align: center;",
+  "text-right": "text-align: right;",
+  "text-justify": "text-align: justify;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="p-16 w-full text-right bg-tp-gray-100 space-x-4 text-white rounded-4">
+    <div className="inline-block px-16 py-10 bg-green rounded-4">1</div>
+    <div className="inline-block px-16 py-10 bg-green rounded-4">2</div>
+    <div className="inline-block px-16 py-10 bg-green rounded-4">3</div>
   </div>
 )
 ```

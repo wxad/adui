@@ -29,12 +29,19 @@ AD UI 引入了以下功能类，以控制元素内的文字字号。
 
 ```jsx acss
 return (
-  <div className="space-y-20">
-    <div className="flex">
-      <span></span>
-      为达到更高效的空间利用率、有秩序的环境，AD UI 默认使用
-      小尺寸，以保证在不同场景下，用户仍然能高效地掌握页面结构、内容，不至于迷失。
-    </div>
+  <div className="p-16 space-y-30 bg-tp-gray-50 rounded-6">
+    {[12, 13, 14, 16, 18, 20, 22, 24, 28, 30, 32, 36].map((o) => (
+      <div key={o} className="flex items-center">
+        <span className="flex-none mr-16 text-tp-gray-600">{o}px</span>
+        <span
+          className="flex-1 min-w-0 text-tp-gray-800 truncate"
+          style={{ fontSize: `${o}px`, lineHeight: "initial" }}
+        >
+          AD UI 的组件由有状态组件（Class Component），函数式组件（Functional
+          Component）组成。
+        </span>
+      </div>
+    ))}
   </div>
 )
 ```

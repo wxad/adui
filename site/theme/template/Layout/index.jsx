@@ -639,6 +639,11 @@ class SiteLayout extends React.Component {
                             Text Overflow
                           </Link>
                         </Nav.Item>
+                        <Nav.Item index="line-clamp">
+                          <Link to="/docs/acss/line-clamp">
+                            Line Clamp
+                          </Link>
+                        </Nav.Item>
                         <Nav.Item index="vertical-align">
                           <Link to="/docs/acss/vertical-align">
                             Vertical Align

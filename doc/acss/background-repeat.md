@@ -1,26 +1,31 @@
 ---
-title: Flex Direction
+title: Background Repeat
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以控制背景图片的重复方式。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`background-repeat`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "bg-repeat": "background-repeat: repeat;",
+  "bg-no-repeat": "background-repeat: no-repeat;",
+  "bg-repeat-x": "background-repeat: repeat-x;",
+  "bg-repeat-y": "background-repeat: repeat-y;",
+  "bg-repeat-round": "background-repeat: round;",
+  "bg-repeat-space": "background-repeat: space;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
-  </div>
+  <div
+    className="inline-flex w-150 h-150 bg-right-top bg-repeat-y rounded-4 shadow-tp-gray-100"
+    style={{
+      backgroundImage:
+        "url(//wxa.wxs.qq.com/images/preview/img-placeholder_320x180.png)",
+      backgroundSize: "100px auto",
+    }}
+  />
 )
 ```

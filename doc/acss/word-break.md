@@ -1,26 +1,25 @@
 ---
-title: Flex Direction
+title: Word Break
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以指定怎样在单词内断行。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`word-break` `overflow-wrap`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "break-normal": "overflow-wrap: normal;\nword-break: normal;",
+  "break-words": "overflow-wrap: break-word;",
+  "break-all": "word-break: break-all;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="p-16 w-280 break-normal bg-tp-gray-50 rounded-6">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    Blanditiisitaquequodpraesentiumexplicaboincidunt? Dolores beatae nam at sed
+    dolorum ratione dolorem nisi velit cum.
   </div>
 )
 ```

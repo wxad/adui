@@ -160,7 +160,17 @@ module.exports = {
     },
     backgroundOpacity: (theme) => theme("opacity"),
     // 暂且无用
-    backgroundPosition: false,
+    backgroundPosition: {
+      bottom: "bottom",
+      center: "center",
+      left: "left",
+      "left-bottom": "left bottom",
+      "left-top": "left top",
+      right: "right",
+      "right-bottom": "right bottom",
+      "right-top": "right top",
+      top: "top",
+    },
     backgroundSize: {
       auto: "auto",
       cover: "cover",
@@ -173,7 +183,6 @@ module.exports = {
     borderOpacity: (theme) => theme("opacity"),
     borderRadius: {
       none: "0px",
-      2: "2px",
       2: "2px",
       4: "4px",
       6: "6px",

@@ -1,26 +1,28 @@
 ---
-title: Flex Direction
+title: Vertical Align
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以控制 `inline` 或 `table-cell` 元素的垂直对齐方式。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`vertical-align`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "align-baseline": "vertical-align: baseline;",
+  "align-top": "vertical-align: top;",
+  "align-middle": "vertical-align: middle;",
+  "align-bottom": "vertical-align: bottom;",
+  "align-text-top": "vertical-align: text-top;",
+  "align-text-bottom": "vertical-align: text-bottom;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="p-16 bg-tp-gray-100 space-x-4 text-white rounded-4">
+    <div className="inline-block align-top px-16 py-10 bg-green rounded-4">1</div>
+    <div className="inline-block align-top px-16 py-20 bg-green rounded-4">2</div>
+    <div className="inline-block align-top px-16 py-30 bg-green rounded-4">3</div>
   </div>
 )
 ```

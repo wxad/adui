@@ -1,26 +1,34 @@
 ---
-title: Flex Direction
+title: Text Transform
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以控制元素内文字的大小写显示。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`text-transform`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "uppercase": "text-transform: uppercase;",
+  "lowercase": "text-transform: lowercase;",
+  "capitalize": "text-transform: capitalize;",
+  "normal-case": "text-transform: none;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="p-16 space-y-20 bg-tp-gray-50 rounded-6">
+    {["upperCase", "lowercase", "capitalize"].map((o) => (
+      <div key={o} className="flex items-center text-14">
+        <span className="flex-none mr-16 w-100 text-tp-gray-600">{o}</span>
+        <span
+          className="flex-1 min-w-0 truncate"
+          style={{ lineHeight: "initial", textTransform: o }}
+        >
+          AD UI is a UI full of ads.
+        </span>
+      </div>
+    ))}
   </div>
 )
 ```
