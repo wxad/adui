@@ -149,10 +149,6 @@ module.exports = {
       150: "150px",
       800: "800px",
     },
-    // 待设计规范引入
-    animation: {
-      none: "none",
-    },
     backgroundColor: (theme) => theme("colors"),
     // 可加入 gradients，待设计规范引入
     backgroundImage: {
@@ -554,6 +550,7 @@ module.exports = {
     },
     scale: {
       0: "0",
+      25: "0.25",
       50: ".5",
       75: ".75",
       90: ".9",
@@ -588,24 +585,24 @@ module.exports = {
       "top-left": "top left",
     },
     transitionDelay: {
-      75: "75ms",
       100: "100ms",
       150: "150ms",
       200: "200ms",
       300: "300ms",
+      450: "450ms",
       500: "500ms",
-      700: "700ms",
+      600: "600ms",
       1000: "1000ms",
     },
     transitionDuration: {
       DEFAULT: "150ms",
-      75: "75ms",
       100: "100ms",
       150: "150ms",
       200: "200ms",
       300: "300ms",
+      450: "450ms",
       500: "500ms",
-      700: "700ms",
+      600: "600ms",
       1000: "1000ms",
     },
     transitionProperty: {
@@ -621,11 +618,18 @@ module.exports = {
       height: "height",
     },
     transitionTimingFunction: {
-      DEFAULT: "cubic-bezier(0.4, 0, 0.2, 1)",
+      DEFAULT: "cubic-bezier(0.42, 0, 0.58, 1)",
       linear: "linear",
-      in: "cubic-bezier(0.4, 0, 1, 1)",
-      out: "cubic-bezier(0, 0, 0.2, 1)",
-      "in-out": "cubic-bezier(0.4, 0, 0.2, 1)",
+      in: "cubic-bezier(0.42, 0, 1, 1)",
+      "in-cubic": "cubic-bezier(0.4, 0, 0.68, 0.53)",
+      "in-quint": "cubic-bezier(0.52, 0, 0.74, 0.5)",
+      out: "cubic-bezier(0, 0, 0.58, 1)",
+      "out-cubic": "cubic-bezier(0.32, 0.47, 0.6, 1)",
+      "out-quint": "cubic-bezier(0.22, 0.5, 0.36, 1)",
+      "in-out": "cubic-bezier(0.42, 0, 0.58, 1)",
+      "in-out-cubic": "cubic-bezier(0.66, 0, 0.34, 1)",
+      "in-out-quint": "cubic-bezier(0.84, 0, 0.16, 1)",
+      brand: "cubic-bezier(0.4, 0, 0.15, 1)",
     },
     translate: (theme, { negative }) => ({
       ...theme("spacing"),

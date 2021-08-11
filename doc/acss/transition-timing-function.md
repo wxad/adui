@@ -1,26 +1,35 @@
 ---
-title: Flex Direction
+title: Transition Timing Function
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以控制元素属性的过渡曲线。
 
-相关 CSS 属性：`flex-direction`
+AD UI 为 `in` `out` `in-out` 定义了三种曲线，此外也有 `linear` 和品牌曲线 `brand`。
+
+相关 CSS 属性：`transition-timing-function`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "ease-linear": "transition-timing-function: linear;",
+  "ease-in": "transition-timing-function: cubic-bezier(0.42, 0, 1, 1);",
+  "ease-in-cubic": "transition-timing-function: cubic-bezier(0.4, 0, 0.68, 0.53);",
+  "ease-in-quint": "transition-timing-function: cubic-bezier(0.52, 0, 0.74, 0.5);",
+  "ease-out": "transition-timing-function: cubic-bezier(0, 0, 0.58, 1);",
+  "ease-out-cubic": "transition-timing-function: cubic-bezier(0.32, 0.47, 0.6, 1);",
+  "ease-out-quint": "transition-timing-function: cubic-bezier(0.22, 0.5, 0.36, 1);",
+  "ease-in-out": "transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);",
+  "ease-in-out-cubic": "transition-timing-function: cubic-bezier(0.66, 0, 0.34, 1);",
+  "ease-in-out-quint": "transition-timing-function: cubic-bezier(0.84, 0, 0.16, 1);",
+  "ease-brand": "transition-timing-function: cubic-bezier(0.4, 0, 0.15, 1);"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="flex space-x-16 p-16 text-center rounded-4">
+    <div className="p-16 bg-tp-gray-100 rounded-4 transform-gpu transition-transform ease-brand duration-500 cursor-pointer hover:scale-150">
+      Hover Transform
+    </div>
   </div>
 )
 ```

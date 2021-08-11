@@ -1,26 +1,38 @@
 ---
-title: Flex Direction
+title: Opacity
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以控制元素的透明度。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`opacity`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "opacity-0": "opacity: 0;",
+  "opacity-5": "opacity: 0.05;",
+  "opacity-10": "opacity: 0.1;",
+  "opacity-20": "opacity: 0.2;",
+  "opacity-25": "opacity: 0.25;",
+  "opacity-30": "opacity: 0.3;",
+  "opacity-40": "opacity: 0.4;",
+  "opacity-50": "opacity: 0.5;",
+  "opacity-60": "opacity: 0.6;",
+  "opacity-70": "opacity: 0.7;",
+  "opacity-75": "opacity: 0.75;",
+  "opacity-80": "opacity: 0.8;",
+  "opacity-90": "opacity: 0.9;",
+  "opacity-95": "opacity: 0.95;",
+  "opacity-100": "opacity: 1;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="inline-flex p-20 bg-tp-gray-100 space-x-8 text-white rounded-4">
+    <div className="p-16 bg-green opacity-100 rounded-4">opacity-100</div>
+    <div className="p-16 bg-green opacity-75 rounded-4">opacity-75</div>
+    <div className="p-16 bg-green opacity-50 rounded-4">opacity-50</div>
+    <div className="p-16 bg-green opacity-25 rounded-4">opacity-25</div>
   </div>
 )
 ```

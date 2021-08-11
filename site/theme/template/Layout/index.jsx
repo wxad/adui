@@ -314,7 +314,7 @@ class SiteLayout extends React.Component {
                     color: "#000",
                   }}
                 >
-                  <Tabs.Tab title="原子规范" value={2} />
+                  <Tabs.Tab title="原子类规范" value={2} />
                 </Link>
                 <Link
                   to="/docs/start"
@@ -465,10 +465,13 @@ class SiteLayout extends React.Component {
                       <Nav.Divider />
                     </>
                   )}
-                  {location.pathname.includes("docs/acss") ? (
+                  {location.pathname.includes("docs/acss") && (
                     <>
                       <Nav.Item index="start">
                         <Link to="/docs/acss/start">开始使用</Link>
+                      </Nav.Item>
+                      <Nav.Item index="why">
+                        <Link to="/docs/acss/why">原子类的思考</Link>
                       </Nav.Item>
                       <Nav.Item index="color">
                         <Link to="/docs/acss/color">色彩 Color</Link>
@@ -640,9 +643,7 @@ class SiteLayout extends React.Component {
                           </Link>
                         </Nav.Item>
                         <Nav.Item index="line-clamp">
-                          <Link to="/docs/acss/line-clamp">
-                            Line Clamp
-                          </Link>
+                          <Link to="/docs/acss/line-clamp">Line Clamp</Link>
                         </Nav.Item>
                         <Nav.Item index="vertical-align">
                           <Link to="/docs/acss/vertical-align">
@@ -755,177 +756,187 @@ class SiteLayout extends React.Component {
                         </Nav.Item>
                       </Nav.Group>
                     </>
-                  ) : (
-                    <>
-                      <Nav.Item index="start">
-                        <Link to="/docs/start">开始使用</Link>
-                      </Nav.Item>
-                      <Nav.Item index="resource">
-                        <Link to="/docs/resource">设计资源</Link>
-                      </Nav.Item>
-                      <Nav.Item index="changelog">
-                        <Link to="/changelog">更新日志</Link>
-                      </Nav.Item>
-                      <Nav.Divider />
-                      <Nav.Group title="布局">
-                        <Nav.Item index="grid">
-                          <Link to="/components/grid">栅格 Grid</Link>
-                        </Nav.Item>
-                        <Nav.Item index="layout">
-                          <Link to="/components/layout">布局 Layout</Link>
-                        </Nav.Item>
-                      </Nav.Group>
-                      <Nav.Divider />
-                      <Nav.Group title="基础类">
-                        <Nav.Item index="icon">
-                          <Link to="/components/icon">图标 Icon</Link>
-                        </Nav.Item>
-                        <Nav.Item index="button">
-                          <Link to="/components/button">按钮 Button</Link>
-                        </Nav.Item>
-                        <Nav.Item index="input">
-                          <Link to="/components/input">输入框 Input</Link>
-                        </Nav.Item>
-                        <Nav.Item index="numeric-input">
-                          <Link to="/components/numeric-input">
-                            数字输入框 NumericInput
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="radio">
-                          <Link to="/components/radio">单选 Radio</Link>
-                        </Nav.Item>
-                        <Nav.Item index="checkbox">
-                          <Link to="/components/checkbox">勾选 Checkbox</Link>
-                        </Nav.Item>
-                        <Nav.Item index="switch">
-                          <Link to="/components/switch">开关 Switch</Link>
-                        </Nav.Item>
-                        <Nav.Item index="tag">
-                          <Link to="/components/tag">标签 Tag</Link>
-                        </Nav.Item>
-                        <Nav.Item index="slider">
-                          <Link to="/components/slider">滑动条 Slider</Link>
-                        </Nav.Item>
-                        <Nav.Item index="menu">
-                          <Link to="/components/menu">行动菜单 Menu</Link>
-                        </Nav.Item>
-                        <Nav.Item index="form">
-                          <Link to="/components/form">表单 Form</Link>
-                        </Nav.Item>
-                        <Nav.Item index="table">
-                          <Link to="/components/table">表格 Table</Link>
-                        </Nav.Item>
-                        <Nav.Item index="card">
-                          <Link to="/components/card">卡片 Card</Link>
-                        </Nav.Item>
-                        <Nav.Item index="upload">
-                          <Link to="/components/upload">上传 Upload</Link>
-                        </Nav.Item>
-                      </Nav.Group>
-                      <Nav.Divider />
-                      <Nav.Group title="导航类">
-                        <Nav.Item index="affix">
-                          <Link to="/components/affix">固钉 Affix</Link>
-                        </Nav.Item>
-                        <Nav.Item index="nav">
-                          <Link to="/components/nav">导航栏 Nav</Link>
-                        </Nav.Item>
-                        <Nav.Item index="tabs">
-                          <Link to="/components/tabs">导航页签 Tabs</Link>
-                        </Nav.Item>
-                        <Nav.Item index="pagination">
-                          <Link to="/components/pagination">
-                            分页器 Pagination
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="breadcrumb">
-                          <Link to="/components/breadcrumb">
-                            面包屑 Breadcrumbs
-                          </Link>
-                        </Nav.Item>
-                      </Nav.Group>
-                      <Nav.Divider />
-                      <Nav.Group title="选择类">
-                        <Nav.Item index="select">
-                          <Link to="/components/select">选择器 Select</Link>
-                        </Nav.Item>
-                        <Nav.Item index="suggest">
-                          <Link to="/components/suggest">
-                            推荐选择器 Suggest
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="tree-select">
-                          <Link to="/components/tree-select">
-                            树形选择器 TreeSelect
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="date-picker">
-                          <Link to="/components/date-picker">
-                            日期选择器 DatePicker
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="time-picker">
-                          <Link to="/components/time-picker">
-                            时间选择器 TimePicker
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="color-picker">
-                          <Link to="/components/color-picker">
-                            颜色选择器 ColorPicker
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="cascader">
-                          <Link to="/components/cascader">
-                            级联选择器 Cascader
-                          </Link>
-                        </Nav.Item>
-                      </Nav.Group>
-                      <Nav.Divider />
-                      <Nav.Group title="反馈类">
-                        <Nav.Item index="dialog">
-                          <Link to="/components/dialog">对话框 Dialog</Link>
-                        </Nav.Item>
-                        <Nav.Item index="drawer">
-                          <Link to="/components/drawer">浮层 Drawer</Link>
-                        </Nav.Item>
-                        <Nav.Item index="alert">
-                          <Link to="/components/alert">提醒 Alert</Link>
-                        </Nav.Item>
-                        <Nav.Item index="message">
-                          <Link to="/components/message">全局提醒 Message</Link>
-                        </Nav.Item>
-                        <Nav.Item index="popover">
-                          <Link to="/components/popover">气泡提示 Popover</Link>
-                        </Nav.Item>
-                        <Nav.Item index="tooltip">
-                          <Link to="/components/tooltip">工具提示 Tooltip</Link>
-                        </Nav.Item>
-                        <Nav.Item index="spinner">
-                          <Link to="/components/spinner">旋转加载 Spinner</Link>
-                        </Nav.Item>
-                      </Nav.Group>
-                      <Nav.Divider />
-                      <Nav.Group title="其他">
-                        <Nav.Item index="motion">
-                          <Link to="/components/motion">动效 Motion</Link>
-                        </Nav.Item>
-                        <Nav.Item index="resize-observer">
-                          <Link to="/components/resize-observer">
-                            尺寸监听 ResizeObserver
-                          </Link>
-                        </Nav.Item>
-                        <Nav.Item index="portal">
-                          <Link to="/components/portal">节点渲染 Portal</Link>
-                        </Nav.Item>
-                        <Nav.Item index="config-provider">
-                          <Link to="/components/config-provider">
-                            全局配置 ConfigProvider
-                          </Link>
-                        </Nav.Item>
-                      </Nav.Group>
-                      <Nav.Divider />
-                    </>
                   )}
+                  {!location.pathname.includes("docs/acss") &&
+                    !location.pathname.includes("docs/spec") && (
+                      <>
+                        <Nav.Item index="start">
+                          <Link to="/docs/start">开始使用</Link>
+                        </Nav.Item>
+                        <Nav.Item index="resource">
+                          <Link to="/docs/resource">设计资源</Link>
+                        </Nav.Item>
+                        <Nav.Item index="changelog">
+                          <Link to="/changelog">更新日志</Link>
+                        </Nav.Item>
+                        <Nav.Divider />
+                        <Nav.Group title="布局">
+                          <Nav.Item index="grid">
+                            <Link to="/components/grid">栅格 Grid</Link>
+                          </Nav.Item>
+                          <Nav.Item index="layout">
+                            <Link to="/components/layout">布局 Layout</Link>
+                          </Nav.Item>
+                        </Nav.Group>
+                        <Nav.Divider />
+                        <Nav.Group title="基础类">
+                          <Nav.Item index="icon">
+                            <Link to="/components/icon">图标 Icon</Link>
+                          </Nav.Item>
+                          <Nav.Item index="button">
+                            <Link to="/components/button">按钮 Button</Link>
+                          </Nav.Item>
+                          <Nav.Item index="input">
+                            <Link to="/components/input">输入框 Input</Link>
+                          </Nav.Item>
+                          <Nav.Item index="numeric-input">
+                            <Link to="/components/numeric-input">
+                              数字输入框 NumericInput
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="radio">
+                            <Link to="/components/radio">单选 Radio</Link>
+                          </Nav.Item>
+                          <Nav.Item index="checkbox">
+                            <Link to="/components/checkbox">勾选 Checkbox</Link>
+                          </Nav.Item>
+                          <Nav.Item index="switch">
+                            <Link to="/components/switch">开关 Switch</Link>
+                          </Nav.Item>
+                          <Nav.Item index="tag">
+                            <Link to="/components/tag">标签 Tag</Link>
+                          </Nav.Item>
+                          <Nav.Item index="slider">
+                            <Link to="/components/slider">滑动条 Slider</Link>
+                          </Nav.Item>
+                          <Nav.Item index="menu">
+                            <Link to="/components/menu">行动菜单 Menu</Link>
+                          </Nav.Item>
+                          <Nav.Item index="form">
+                            <Link to="/components/form">表单 Form</Link>
+                          </Nav.Item>
+                          <Nav.Item index="table">
+                            <Link to="/components/table">表格 Table</Link>
+                          </Nav.Item>
+                          <Nav.Item index="card">
+                            <Link to="/components/card">卡片 Card</Link>
+                          </Nav.Item>
+                          <Nav.Item index="upload">
+                            <Link to="/components/upload">上传 Upload</Link>
+                          </Nav.Item>
+                        </Nav.Group>
+                        <Nav.Divider />
+                        <Nav.Group title="导航类">
+                          <Nav.Item index="affix">
+                            <Link to="/components/affix">固钉 Affix</Link>
+                          </Nav.Item>
+                          <Nav.Item index="nav">
+                            <Link to="/components/nav">导航栏 Nav</Link>
+                          </Nav.Item>
+                          <Nav.Item index="tabs">
+                            <Link to="/components/tabs">导航页签 Tabs</Link>
+                          </Nav.Item>
+                          <Nav.Item index="pagination">
+                            <Link to="/components/pagination">
+                              分页器 Pagination
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="breadcrumb">
+                            <Link to="/components/breadcrumb">
+                              面包屑 Breadcrumbs
+                            </Link>
+                          </Nav.Item>
+                        </Nav.Group>
+                        <Nav.Divider />
+                        <Nav.Group title="选择类">
+                          <Nav.Item index="select">
+                            <Link to="/components/select">选择器 Select</Link>
+                          </Nav.Item>
+                          <Nav.Item index="suggest">
+                            <Link to="/components/suggest">
+                              推荐选择器 Suggest
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="tree-select">
+                            <Link to="/components/tree-select">
+                              树形选择器 TreeSelect
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="date-picker">
+                            <Link to="/components/date-picker">
+                              日期选择器 DatePicker
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="time-picker">
+                            <Link to="/components/time-picker">
+                              时间选择器 TimePicker
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="color-picker">
+                            <Link to="/components/color-picker">
+                              颜色选择器 ColorPicker
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="cascader">
+                            <Link to="/components/cascader">
+                              级联选择器 Cascader
+                            </Link>
+                          </Nav.Item>
+                        </Nav.Group>
+                        <Nav.Divider />
+                        <Nav.Group title="反馈类">
+                          <Nav.Item index="dialog">
+                            <Link to="/components/dialog">对话框 Dialog</Link>
+                          </Nav.Item>
+                          <Nav.Item index="drawer">
+                            <Link to="/components/drawer">浮层 Drawer</Link>
+                          </Nav.Item>
+                          <Nav.Item index="alert">
+                            <Link to="/components/alert">提醒 Alert</Link>
+                          </Nav.Item>
+                          <Nav.Item index="message">
+                            <Link to="/components/message">
+                              全局提醒 Message
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="popover">
+                            <Link to="/components/popover">
+                              气泡提示 Popover
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="tooltip">
+                            <Link to="/components/tooltip">
+                              工具提示 Tooltip
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="spinner">
+                            <Link to="/components/spinner">
+                              旋转加载 Spinner
+                            </Link>
+                          </Nav.Item>
+                        </Nav.Group>
+                        <Nav.Divider />
+                        <Nav.Group title="其他">
+                          <Nav.Item index="motion">
+                            <Link to="/components/motion">动效 Motion</Link>
+                          </Nav.Item>
+                          <Nav.Item index="resize-observer">
+                            <Link to="/components/resize-observer">
+                              尺寸监听 ResizeObserver
+                            </Link>
+                          </Nav.Item>
+                          <Nav.Item index="portal">
+                            <Link to="/components/portal">节点渲染 Portal</Link>
+                          </Nav.Item>
+                          <Nav.Item index="config-provider">
+                            <Link to="/components/config-provider">
+                              全局配置 ConfigProvider
+                            </Link>
+                          </Nav.Item>
+                        </Nav.Group>
+                        <Nav.Divider />
+                      </>
+                    )}
                 </Nav>
               </Layout.Aside>
             )}

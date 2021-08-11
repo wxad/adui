@@ -1,26 +1,34 @@
 ---
-title: Flex Direction
+title: Transform Origin
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以控制元素变形的原点。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`transform-origin`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "origin-center": "transform-origin: center;",
+  "origin-top": "transform-origin: top;",
+  "origin-top-right": "transform-origin: top right;",
+  "origin-right": "transform-origin: right;",
+  "origin-bottom-right": "transform-origin: bottom right;",
+  "origin-bottom": "transform-origin: bottom;",
+  "origin-bottom-left": "transform-origin: bottom left;",
+  "origin-left": "transform-origin: left;",
+  "origin-top-left": "transform-origin: top left;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="inline-flex p-16 bg-tp-gray-100 space-x-50 text-white rounded-6">
+    <div className="flex items-center justify-center w-80 h-80 bg-green rounded-6 origin-center transform-gpu rotate-45">
+      center
+    </div>
+    <div className="flex items-center justify-center w-80 h-80 bg-green rounded-6 origin-bottom transform-gpu rotate-45">
+      bottom
+    </div>
   </div>
 )
 ```

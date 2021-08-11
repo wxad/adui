@@ -7,7 +7,7 @@
 <div>
 <div class="flex mt-40">
   <div class="w-100 mr-16 font-medium">色相系<br />类名后缀</div>
-  <div class="flex-1 grid grid-cols-5 gap-16 text-13">
+  <div class="flex-1 grid grid-cols-5 gap-16 text-12">
     <div>
       <div class="rounded-6 mb-4 h-40 bg-green"></div>
       <div class="flex items-center justify-between px-2">
@@ -47,7 +47,7 @@
 </div>
 <div class="flex mt-48">
   <div class="w-100 mr-16 font-medium">无色系<br />类名后缀</div>
-  <div class="flex-1 grid grid-cols-5 gap-16 text-13">
+  <div class="flex-1 grid grid-cols-5 gap-16 text-12">
     <div>
       <div class="rounded-6 mb-4 h-40 bg-gray-50"></div>
       <div class="flex items-center justify-between px-2">
@@ -122,7 +122,7 @@
 </div>
 <div class="flex mt-48">
   <div class="w-100 mr-16 font-medium">无色系 (透明) <br />类名后缀</div>
-  <div class="flex-1 grid grid-cols-5 gap-16 text-13">
+  <div class="flex-1 grid grid-cols-5 gap-16 text-12">
     <div>
       <div class="rounded-6 mb-4 h-40 bg-tp-gray-50"></div>
       <div class="flex items-center justify-between px-2">
@@ -250,7 +250,7 @@
 
 <div class="flex mt-40">
   <div class="w-100 mr-16 font-medium">bg-opacity</div>
-  <div class="flex-1 grid grid-cols-5 gap-16 text-13">
+  <div class="flex-1 grid grid-cols-5 gap-16 text-12">
     <div>
       <div class="rounded-6 mb-4 h-40 bg-green bg-opacity-0"></div>
       <div class="flex items-center justify-between px-2">

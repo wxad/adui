@@ -650,6 +650,7 @@ export default class ComponentDoc extends React.Component {
               {
                 dataIndex: "class",
                 title: "类名",
+                width: 300,
                 render: ({ class: c }) => (
                   <span
                     style={{

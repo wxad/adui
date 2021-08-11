@@ -1,26 +1,23 @@
 ---
-title: Flex Direction
+title: Pointer Events
 ---
 
-AD UI 引入了以下功能类，以控制 `flex` 容器内的元素是如何布局的，定义了主轴的方向。
+AD UI 引入了以下功能类，以指定在什么情况下某个特定的图形元素可以成为鼠标事件的 target。
 
-相关 CSS 属性：`flex-direction`
+相关 CSS 属性：`pointer-events`
 
 ```json classes
 {
-  "flex-row": "flex-direction: row;",
-  "flex-row-reverse": "flex-direction: row-reverse;",
-  "flex-col": "flex-direction: column;",
-  "flex-col-reverse": "flex-direction: column-reverse;"
+  "pointer-events-none": "pointer-events: none;",
+  "pointer-events-auto": "pointer-events: auto;"
 }
 ```
 
 ```jsx acss
 return (
-  <div className="flex flex-col space-y-4 p-16 w-1/2 text-white text-center bg-tp-gray-100 rounded-4">
-    <div className="px-16 py-10 bg-green rounded-4">1</div>
-    <div className="px-16 py-10 bg-green rounded-4">2</div>
-    <div className="px-16 py-10 bg-green rounded-4">3</div>
+  <div className="p-16 w-1/2 bg-tp-gray-50 rounded-6 pointer-events-none cursor-not-allowed">
+    AD UI 的组件由有状态组件（Class Component），函数式组件（Functional
+    Component）组成。
   </div>
 )
 ```
