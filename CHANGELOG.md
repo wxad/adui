@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/wxad/adui/compare/v2.10.4...v2.11.0) (2021-08-12)
+
+
+### Features
+
+* **rollup, vite:** rollup-plugin-adui 支持组件按需及 icon 按需 ([b736d85](https://github.com/wxad/adui/commit/b736d856a9bbf00d97a81ba41f8c9b9ac45b4237))
+
 ## [2.10.4](https://github.com/wxad/adui/compare/v2.10.0...v2.10.4) (2021-08-12)
 
 ### 原子类规范
