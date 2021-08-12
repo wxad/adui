@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.4](https://github.com/wxad/adui/compare/v2.10.0...v2.10.4) (2021-08-12)
+
+
+### Bug Fixes
+
+* **Affix:** 精简代码，使用 resize-observer 同步占位元素的宽高 ([26f81c7](https://github.com/wxad/adui/commit/26f81c71e5306a73104dea253df0b0f6d539c2e5))
+* **Table:** 修复 columns length 变化后 fixed 列不会重新计算的问题 ([d4beaee](https://github.com/wxad/adui/commit/d4beaee34f1e2818f353acb4e0b360aa3e89f1c5))
+* **Table:** 修复 title 为空时，resize 的报错 [#4](https://github.com/wxad/adui/issues/4) ([a175a5f](https://github.com/wxad/adui/commit/a175a5fd5b9ae70ed2cde89a20a7065834e978cf))
+
 ## [2.10.0](https://github.com/wxad/adui/compare/v2.9.0...v2.10.0) (2021-07-28)
 
 
