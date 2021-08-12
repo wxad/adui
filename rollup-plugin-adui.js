@@ -9,8 +9,6 @@ var parser = require("@babel/parser")
  * @babel/traverse: parse 的好伙伴，用于遍历和设置 ast 节点信息
  */
 var traverse = require("@babel/traverse").default
-const fs = require("fs")
-const path = require("path")
 
 var finalIcons = {}
 
@@ -165,19 +163,26 @@ function searchIconByName(name) {
    * 如果 name 合法，并且 addedIconsArray 中不存在，则写入
    */
   if (paths && addedIconsArray.indexOf(name) === -1) {
-    console.log("\n[adui-icon-loader]", name)
+    console.log("\n[📦 adui Shake Icon]: ", name)
     addedIconsArray.push(name)
     finalIcons[name] = paths
   }
 }
 
-module.exports = function myPlugin() {
+function aduiIconPlugin() {
   let savedId = ""
+  let viteConfig
 
   return {
     name: "adui-icon",
+    configResolved(resolvedConfig) {
+      viteConfig = resolvedConfig
+    },
 
     transform(source, id) {
+      if (viteConfig.command !== "build") {
+        return
+      }
       try {
         var ast = parser.parse(source, {
           sourceType: "module",
@@ -329,13 +334,99 @@ module.exports = function myPlugin() {
           savedId = id
           return {
             code: `
-               var finalIcons = ${JSON.stringify(finalIcons)};
-               window.aduiIconReduced = finalIcons;
-               export default finalIcons;
-             `,
+                  var finalIcons = ${JSON.stringify(finalIcons)};
+                  window.aduiIconReduced = finalIcons;
+                  export default finalIcons;
+                `,
           }
         }
       } catch (error) {}
     },
   }
+}
+
+function aduiImportPlugin() {
+  let viteConfig
+  return {
+    name: "adui-import",
+    configResolved(resolvedConfig) {
+      viteConfig = resolvedConfig
+    },
+    transform(source, id) {
+      try {
+        if (
+          !/(node_modules)/.test(id) &&
+          /('adui')|("adui")/.test(source) &&
+          viteConfig.command === "build"
+        ) {
+          var newSource = source
+          var ast = parser.parse(source, {
+            sourceType: "module",
+            plugins: ["dynamicImport"],
+          })
+
+          /**
+           * rollup 按需 CSS 引入
+           * import { Button, Icon } from 'adui'
+           * ↓
+           * import Button from 'adui/es/button'
+           * import Icon from 'adui/es/icon'
+           * import 'adui/es/button/style'
+           * import 'adui/es/icon/style'
+           */
+          var removeIndexes = []
+          var componentNames = []
+          let newImportStatement = ""
+          traverse(ast, {
+            ImportDeclaration: function (path) {
+              if (path.node.source.value === "adui") {
+                removeIndexes.push([path.node.start, path.node.end])
+                path.node.specifiers.forEach(function (specifier, index) {
+                  var name = specifier && specifier.imported.name
+                  var localName = specifier && specifier.local.name
+                  if (!name) {
+                    return
+                  }
+                  var finalName = name
+                    .replace(/([A-Z])/g, (str) => {
+                      return "-" + str.toLowerCase()
+                    })
+                    .substring(1)
+                  newImportStatement +=
+                    "import " +
+                    localName +
+                    " from 'adui/es/" +
+                    finalName +
+                    "'\n"
+
+                  if (!componentNames.includes(finalName)) {
+                    console.log("\n[📦 adui Shake Component]: ", name)
+                    componentNames.push(finalName)
+                  }
+                })
+              }
+            },
+          })
+
+          removeIndexes.forEach(function (removeIndex) {
+            var [start, end] = removeIndex
+            newSource = newSource.slice(0, start) + newSource.slice(end)
+          })
+          componentNames.forEach(function (name) {
+            newImportStatement =
+              newImportStatement + `import 'adui/es/${name}/style' \n`
+          })
+
+          return {
+            code: newImportStatement + newSource,
+          }
+        }
+      } catch (error) {}
+    },
+  }
+}
+
+module.exports = {
+  aduiImportPlugin,
+  aduiIconPlugin,
 }

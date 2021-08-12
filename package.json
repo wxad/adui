@@ -11,7 +11,7 @@
     "adui-tailwind-config.js",
     "adui-tailwind.css",
     "adui-tailwind-build.css",
-    "rollup-plugin-adui-icon.js",
+    "rollup-plugin-adui.js",
     "tailwind.config.js"
   ],
   "keywords": [
