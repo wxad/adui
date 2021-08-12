@@ -373,6 +373,36 @@ var _default = {
     }, {
       "name": "cancel",
       "keywords": ["cancel", "删除", "关闭", "禁止", "叉"]
+    }, {
+      "name": "branch",
+      "keywords": ["branch", ""]
+    }, {
+      "name": "overstriking",
+      "keywords": ["overstriking", ""]
+    }, {
+      "name": "first-heading",
+      "keywords": ["first-heading", ""]
+    }, {
+      "name": "secondary-heading",
+      "keywords": ["secondary-heading", ""]
+    }, {
+      "name": "tertiary-heading",
+      "keywords": ["tertiary-heading", ""]
+    }, {
+      "name": "main-body",
+      "keywords": ["main-body", ""]
+    }, {
+      "name": "bullet",
+      "keywords": ["bullet", ""]
+    }, {
+      "name": "material",
+      "keywords": ["material", ""]
+    }, {
+      "name": "comment",
+      "keywords": ["comment", ""]
+    }, {
+      "name": "sheet",
+      "keywords": ["sheet", ""]
     }]
   },
   "工具": {
