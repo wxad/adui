@@ -2,7 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.10.4](https://github.com/wxad/adui/compare/v2.10.0...v2.10.4) (2021-08-12)
+## [2.10.4](https://github.com/wxad/adui/compare/v2.10.0...v2.10.4) (2021-08-12)
+
+### 原子类规范
+原子类规范文档已上线。
 
 
 ### Bug Fixes
@@ -37,7 +40,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **TreeSelect:** 修复单选时， value 字符串会被 new Set 的问题 ([f7b9a2c](https://github.com/wxad/adui/commit/f7b9a2c49946d6775db0952f7699a2caa1863f82))
 
-### [2.8.1](https://github.com/wxad/adui/compare/v2.7.1...v2.8.1) (2021-07-19)
+## [2.8.1](https://github.com/wxad/adui/compare/v2.7.1...v2.8.1) (2021-07-19)
 
 
 ### Bug Fixes
@@ -51,7 +54,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **TreeSelect:** 修复 title 高度高于 32px 时， isLeaf false 不生效的问题 ([ab1c846](https://github.com/wxad/adui/commit/ab1c846d26fff3a40a512d5200b8a58f83d0d41e))
 
-### [2.7.1](https://github.com/wxad/adui/compare/v2.7.0...v2.7.1) (2021-07-19)
+## [2.7.1](https://github.com/wxad/adui/compare/v2.7.0...v2.7.1) (2021-07-19)
 
 ## [2.7.0](https://github.com/wxad/adui/compare/v2.6.0...v2.7.0) (2021-07-19)
 
@@ -182,13 +185,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **Icon:** 修复过多的计算耗时 ([180f5f7](https://github.com/wxad/adui/commit/180f5f7f676386f226239ed6ccc4e616bc100ef1))
 
-### [1.5.2](https://github.com/wxad/adui/compare/v1.5.1...v1.5.2) (2021-03-03)
+## [1.5.2](https://github.com/wxad/adui/compare/v1.5.1...v1.5.2) (2021-03-03)
 
 ### Bug Fixes
 
 * **TreeSelect:** 修复 jacky 发现的搜索值和 TreeNode 不对应的问题 ([755a29d](https://github.com/wxad/adui/commit/755a29df01219e49d0e93fef1c38731a5ba8596a))
 
-### [1.5.1](https://github.com/wxad/adui/compare/v1.5.0...v1.5.1) (2021-03-02)
+## [1.5.1](https://github.com/wxad/adui/compare/v1.5.0...v1.5.1) (2021-03-02)
 
 ## [1.5.0](https://github.com/wxad/adui/compare/v1.4.0...v1.5.0) (2021-02-23)
 
@@ -225,21 +228,21 @@ All notable changes to this project will be documented in this file. See [standa
 * **ResizeObserver:** interface ([9f9e713](https://github.com/wxad/adui/commit/9f9e7132f879a986bf4088e6d28e2964b5efa90d))
 * **Slider:** 兼容传入 string 的情况 ([de54fdc](https://github.com/wxad/adui/commit/de54fdcf3a87a29059275b5973dee4ad5d072958))
 
-### [1.2.3](https://github.com/wxad/adui/compare/v1.2.2...v1.2.3) (2020-12-24)
+## [1.2.3](https://github.com/wxad/adui/compare/v1.2.2...v1.2.3) (2020-12-24)
 
 
 ### Bug Fixes
 
 * **Select:** 修复  searchable + 空 options 时的报错 ([17bc6f8](https://github.com/wxad/adui/commit/17bc6f87cfd51bea789cce07d2635b6b1647767d))
 
-### [1.2.2](https://github.com/wxad/adui/compare/v1.2.1...v1.2.2) (2020-12-21)
+## [1.2.2](https://github.com/wxad/adui/compare/v1.2.1...v1.2.2) (2020-12-21)
 
 
 ### Bug Fixes
 
 * **DatePicker:** 默认最大年份 + 1 ([aa5741e](https://github.com/wxad/adui/commit/aa5741eadee6833288d70ecef22a7cabe3d43425))
 
-### [1.2.1](https://github.com/wxad/adui/compare/v1.2.0...v1.2.1) (2020-12-09)
+## [1.2.1](https://github.com/wxad/adui/compare/v1.2.0...v1.2.1) (2020-12-09)
 
 
 ### Bug Fixes
@@ -253,7 +256,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **Icon:** update icon ([e04cc54](https://github.com/wxad/adui/commit/e04cc54f971700cfce759de31a3646639934bf5d))
 
-### [1.1.2](https://github.com/wxad/adui/compare/v1.1.1...v1.1.2) (2020-12-02)
+## [1.1.2](https://github.com/wxad/adui/compare/v1.1.1...v1.1.2) (2020-12-02)
 
 
 ### Bug Fixes
@@ -269,25 +272,25 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **Icon:** update ([d1e8510](http://git.code.oa.com/yijiejiang/adUI/commit/d1e8510638f6d5d4579a0d247f45645815054f23))
 
-### [1.0.5](https://git.code.oa.com/yijiejiang/adUI/compare/v1.0.4...v1.0.5) (2020-11-03)
+## [1.0.5](https://git.code.oa.com/yijiejiang/adUI/compare/v1.0.4...v1.0.5) (2020-11-03)
 
 
 ### Bug Fixes
 
 * **Table:** ts ([c7919a9](https://git.code.oa.com/yijiejiang/adUI/commit/c7919a98fcce6aece8707ead6619d3041511819e))
 
-### [1.0.4](https://git.code.oa.com/yijiejiang/adUI/compare/v1.0.3...v1.0.4) (2020-11-03)
+## [1.0.4](https://git.code.oa.com/yijiejiang/adUI/compare/v1.0.3...v1.0.4) (2020-11-03)
 
 
 ### Bug Fixes
 
 * **Table:** 虚拟滚动修复 ([8a73686](https://git.code.oa.com/yijiejiang/adUI/commit/8a73686a01c8b0355e6d86f2f0422910e9fa90d8))
 
-### [1.0.3](http://git.code.oa.com/yijiejiang/adUI/compare/v1.0.1...v1.0.3) (2020-11-03)
+## [1.0.3](http://git.code.oa.com/yijiejiang/adUI/compare/v1.0.1...v1.0.3) (2020-11-03)
 
-### [1.0.2](http://git.code.oa.com/yijiejiang/adUI/compare/v1.0.1...v1.0.2) (2020-10-15)
+## [1.0.2](http://git.code.oa.com/yijiejiang/adUI/compare/v1.0.1...v1.0.2) (2020-10-15)
 
-### [1.0.1](http://git.code.oa.com/yijiejiang/adUI/compare/v1.0.0...v1.0.1) (2020-10-12)
+## [1.0.1](http://git.code.oa.com/yijiejiang/adUI/compare/v1.0.0...v1.0.1) (2020-10-12)
 
 
 ### Bug Fixes
@@ -426,7 +429,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-### [0.10.2](http://git.code.oa.com/yijiejiang/adUI/compare/v0.10.1...v0.10.2) (2019-10-31)
+## [0.10.2](http://git.code.oa.com/yijiejiang/adUI/compare/v0.10.1...v0.10.2) (2019-10-31)
 
 
 ### Bug Fixes
@@ -436,7 +439,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 
-### [0.10.1](http://git.code.oa.com/yijiejiang/adUI/compare/v0.10.0...v0.10.1) (2019-10-29)
+## [0.10.1](http://git.code.oa.com/yijiejiang/adUI/compare/v0.10.0...v0.10.1) (2019-10-29)
 
 
 ### Bug Fixes
