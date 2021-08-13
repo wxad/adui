@@ -273,6 +273,7 @@ $prefix: "adui-select";
 
     [role*="listbox"] + div {
       @include mixins.scrollbar();
+      padding: 4px 0;
     }
 
     .rc-virtual-list-scrollbar {
