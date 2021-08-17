@@ -6,7 +6,7 @@ $prefix: "adui-card";
     border-radius: 6px;
   }
   &-header {
-    padding: 20px 24px;
+    padding: 16px 16px 20px 24px;
   }
   &-headerBlock {
     display: flex;
@@ -24,8 +24,6 @@ $prefix: "adui-card";
     color: var(--gray-800);
   }
   &-large {
-    padding: 24px 24px 28px;
-
     .#{$prefix}-title {
       font-size: 18px;
     }
@@ -40,8 +38,6 @@ $prefix: "adui-card";
     }
   }
   &-medium {
-    padding: 20px 20px 20px 24px;
-
     .#{$prefix}-title {
       font-size: 16px;
     }
@@ -56,8 +52,6 @@ $prefix: "adui-card";
     }
   }
   &-small {
-    padding: 16px 16px 20px 24px;
-
     .#{$prefix}-title {
       font-size: 14px;
     }
@@ -72,8 +66,6 @@ $prefix: "adui-card";
     }
   }
   &-mini {
-    padding: 16px 16px 20px 24px;
-
     .#{$prefix}-title {
       font-size: 13px;
     }
