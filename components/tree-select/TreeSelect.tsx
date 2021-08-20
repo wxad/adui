@@ -370,10 +370,11 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         value?.forEach((v) => {
           const splited = `${v}`.split("__")
           const val = splited[splited.length - 1]
-          const { length } = value.filter((o) => `${o}`.includes(`__${val}`))
+          const { length } = value.filter((o) => `${o}`.endsWith(`__${val}`))
+
           if (
             length ===
-            this.treeValueFlatten.filter((o) => `${o}`.includes(`__${val}`))
+            this.treeValueFlatten.filter((o) => `${o}`.endsWith(`__${val}`))
               .length
           ) {
             // 表示全包含了，则保留
@@ -393,6 +394,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       if (valueProp === null) {
         this.setState({ value: valueParam })
       }
+
       if (onChange) {
         onChange(valueParam, titleList)
       }
