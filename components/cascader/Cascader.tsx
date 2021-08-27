@@ -372,7 +372,7 @@ const Cascader: React.FC<ICascaderProps> = ({
     >
       <Button
         disabled={disabled}
-        className={classNames(`${prefix}-button`, {
+        className={classNames(`${prefix}-button`, className, {
           [`${prefix}-button-valued`]: hasValue,
           [`${prefix}-button-clearable`]: allowClear,
         })}
