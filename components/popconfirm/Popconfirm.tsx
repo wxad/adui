@@ -17,8 +17,12 @@ export interface IPopconfirmProps
   cancelText?: React.ReactNode
   confirmButton?: IButtonProps
   confirmText?: React.ReactNode
-  onCancel?: () => void
-  onConfirm?: () => void
+  onCancel?: (
+    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+  ) => void
+  onConfirm?: (
+    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+  ) => void
   onVisibleChange?: (visible: boolean, options: IVisibleOptions) => void
 }
 
@@ -50,7 +54,9 @@ const Popconfirm: React.ForwardRefExoticComponent<
       setVisible(!!visibleProp)
     }
 
-    const handleClickCancel = () => {
+    const handleClickCancel = (
+      e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+    ) => {
       // 判断是否由外部控制，如果等于 null 则交由组件自己控制
       if (visibleProp === null) {
         setVisible(false)
@@ -59,11 +65,13 @@ const Popconfirm: React.ForwardRefExoticComponent<
         onVisibleChange(false, { target: "cancel" })
       }
       if (onCancel) {
-        onCancel()
+        onCancel(e)
       }
     }
 
-    const handleClickConfirm = () => {
+    const handleClickConfirm = (
+      e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+    ) => {
       if (visibleProp === null) {
         setVisible(false)
       }
@@ -71,7 +79,7 @@ const Popconfirm: React.ForwardRefExoticComponent<
         onVisibleChange(false, { target: "confirm" })
       }
       if (onConfirm) {
-        onConfirm()
+        onConfirm(e)
       }
     }
 
