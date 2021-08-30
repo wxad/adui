@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.0](https://github.com/wxad/adui/compare/v2.11.0...v2.12.0) (2021-08-30)
+
+
+### Features
+
+* **Popconfirm:** onConfirm onCancel 增加参数 e ([878184c](https://github.com/wxad/adui/commit/878184cf56cd372a1479d945990e2bb211060931))
+
+
+### Bug Fixes
+
+* **Cascader:** className Props ([ce3de82](https://github.com/wxad/adui/commit/ce3de8270797b7eb28f7704cfbef4037647dd4ab))
+* **TreeSelect:** 修复 sameValueEnabled 表现错误 ([9789f7c](https://github.com/wxad/adui/commit/9789f7cf20271ef6b20fd184d12b99acc2c43af4))
+
 ## [2.11.0](https://github.com/wxad/adui/compare/v2.10.4...v2.11.0) (2021-08-12)
 
 
