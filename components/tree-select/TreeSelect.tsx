@@ -39,7 +39,7 @@ const isArrayIncludes = (
   a1: React.ReactText[],
   a2: React.ReactText[]
 ): boolean => {
-  if (!a1 || !a2) {
+  if (!Array.isArray(a1) || !Array.isArray(a2)) {
     return false
   }
 
