@@ -64,6 +64,10 @@ export interface ISelectProps {
    */
   onDropdownVisibleChange?: (open: boolean) => void
   /**
+   * 搜索时的 handler, 参数：string
+   */
+  onSearch?: (val: string) => void
+  /**
    * 选择时的 handler，参数：(value, option)
    */
   onSelect?: (value: React.ReactText, option: React.ReactElement<any>) => void
