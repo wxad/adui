@@ -910,7 +910,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         }
         return undefined
       })
-      .filter(Boolean)
+      .filter((o) => Boolean(o) || o === 0)
 
     // 是否是多层级
     const multiLevel = treeDataFinal.some((o) => o.children?.length)
