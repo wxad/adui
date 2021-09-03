@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.12.1](https://github.com/wxad/adui/compare/v2.12.0...v2.12.1) (2021-09-03)
+
+
+### Bug Fixes
+
+* **Select:** 修复 onSearch Prop 不在类型定义的问题 ([9407a37](https://github.com/wxad/adui/commit/9407a3764d5d471200eaa21ba10e6e4591fb5a8c))
+* **TreeSelect:** 修复 isArrayIncludes 可能的报错 ([38c8ba7](https://github.com/wxad/adui/commit/38c8ba7f5eb615a0e9ce83f00954e016b2833e93))
+* **TreeSelect:** 修复值为 0 的 node 在全选时无法被选中的问题 ([7f49657](https://github.com/wxad/adui/commit/7f49657c6a558fead4973bd67542a90d5414b55a))
+
 ## [2.12.0](https://github.com/wxad/adui/compare/v2.11.0...v2.12.0) (2021-08-30)
 
 
