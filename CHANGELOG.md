@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.12.2](https://github.com/wxad/adui/compare/v2.12.1...v2.12.2) (2021-09-06)
+
+
+### Bug Fixes
+
+* **Table:** 修复在多级表头下，loading 样式的错误 ([32011b0](https://github.com/wxad/adui/commit/32011b069987489dfbdf854035e71f034ec4944d))
+
 ### [2.12.1](https://github.com/wxad/adui/compare/v2.12.0...v2.12.1) (2021-09-03)
 
 
