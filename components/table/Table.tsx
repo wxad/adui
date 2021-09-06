@@ -1129,7 +1129,6 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
 
     const {
       getColumns,
-      // getLeftColumnsWidth,
       getGroupColumnsDepth,
       isAnyColumnsLeftFixed,
     } = this.columnManager
@@ -1987,7 +1986,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         <div
           style={{
             position: "relative",
-            top: `${TD_HEIGHT[size || "small"]}px`,
+            top: `${TD_HEIGHT[size || "small"] * getGroupColumnsDepth()}px`,
             zIndex:
               "calc(var(--z-index-affix) + 2)" as React.CSSProperties["zIndex"],
           }}
