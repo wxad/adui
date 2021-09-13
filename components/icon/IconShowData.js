@@ -608,6 +608,15 @@ var _default = {
     }, {
       "name": "circle-optimize-target",
       "keywords": ["circle-optimize-target", "提升目标"]
+    }, {
+      "name": "minigame",
+      "keywords": ["minigame", "小游戏"]
+    }, {
+      "name": "moments",
+      "keywords": ["moments", "朋友圈"]
+    }, {
+      "name": "offiaccount",
+      "keywords": ["offiaccount", "公众号"]
     }]
   },
   "图表": {
