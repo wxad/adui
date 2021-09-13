@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.13.0](https://github.com/wxad/adui/compare/v2.12.2...v2.13.0) (2021-09-13)
+
+
+### Features
+
+* **Icon:** 增加 minigame moments offiaccount ([f404ed1](https://github.com/wxad/adui/commit/f404ed13c15a54eddca39d2de64dee4ae92db5ee))
+
 ### [2.12.2](https://github.com/wxad/adui/compare/v2.12.1...v2.12.2) (2021-09-06)
 
 
