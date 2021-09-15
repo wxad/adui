@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.14.0](https://github.com/wxad/adui/compare/v2.13.0...v2.14.0) (2021-09-15)
+
+
+### Features
+
+* **Nav:** subNav 添加 disabled Prop ([479735a](https://github.com/wxad/adui/commit/479735a3f7dd9cd29faddb4dca098ad254e523ed))
+
 ## [2.13.0](https://github.com/wxad/adui/compare/v2.12.2...v2.13.0) (2021-09-13)
 
 
