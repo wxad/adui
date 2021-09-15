@@ -18,6 +18,10 @@ export interface ISubNavProps {
    */
   className?: string
   /**
+   * 是否禁用
+   */
+  disabled?: boolean
+  /**
    * 设置图标
    */
   icon?: IconNames
@@ -37,6 +41,7 @@ export interface ISubNavProps {
 const SubNav: React.FC<ISubNavProps> = ({
   children,
   className,
+  disabled,
   icon,
   index,
   title,
@@ -48,14 +53,17 @@ const SubNav: React.FC<ISubNavProps> = ({
 
   const classSet = classNames(className, `${prefix}-sub`, {
     [`${prefix}-open`]: open,
+    [`${prefix}-sub-disabled`]: disabled,
   })
 
   return (
     <div className={classSet} {...otherProps}>
       <div
-        className={`${prefix}-subTitle`}
+        className={classNames(`${prefix}-subTitle`, {
+          [`${prefix}-subTitle-disabled`]: disabled,
+        })}
         onClick={() => {
-          if (onOpenChange) {
+          if (onOpenChange && !disabled) {
             onOpenChange(index)
           }
         }}
@@ -80,6 +88,10 @@ SubNav.propTypes = {
    */
   className: PropTypes.string,
   /**
+   * 是否禁用
+   */
+  disabled: PropTypes.bool,
+  /**
    * 设置图标
    */
   icon: PropTypes.any,
@@ -96,6 +108,7 @@ SubNav.propTypes = {
 SubNav.defaultProps = {
   children: null,
   className: undefined,
+  disabled: false,
   icon: undefined,
   title: null,
 }

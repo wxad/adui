@@ -6,63 +6,13 @@ $prefix: "adui-nav";
   &-wrapper {
     background-color: #fff;
     @include mixins.overlay();
-
-    .#{$prefix}-item {
-      padding-left: 28px;
-    }
-
-    .#{$prefix}-group .#{$prefix}-groupTitle {
-      padding-left: 28px;
-    }
-
-    .#{$prefix}-group {
-      .#{$prefix}-item {
-        padding-left: 40px;
-      }
-
-      .#{$prefix}-group .#{$prefix}-groupTitle {
-        padding-left: 52px;
-      }
-
-      .#{$prefix}-group {
-        .#{$prefix}-item {
-          padding-left: 64px;
-        }
-
-        .#{$prefix}-group .#{$prefix}-groupTitle {
-          padding-left: 64px;
-        }
-      }
-    }
-
-    .#{$prefix}-sub .#{$prefix}-subTitle {
-      padding-left: 28px;
-    }
-
-    .#{$prefix}-sub {
-      .#{$prefix}-item {
-        padding-left: 40px;
-      }
-
-      .#{$prefix}-sub .#{$prefix}-subTitle {
-        padding-left: 52px;
-      }
-
-      .#{$prefix}-sub {
-        .#{$prefix}-item {
-          padding-left: 64px;
-        }
-
-        .#{$prefix}-sub .#{$prefix}-subTitle {
-          padding-left: 64px;
-        }
-      }
-    }
   }
+
   &-item {
     position: relative;
     display: flex;
     align-items: center;
+    padding-left: 28px;
     color: var(--transparent-gray-900);
     cursor: pointer;
     transition: all var(--motion-duration-base) var(--ease-out);
@@ -125,6 +75,10 @@ $prefix: "adui-nav";
     color: var(--transparent-gray-600);
     cursor: not-allowed;
 
+    &::before {
+      background-color: currentColor;
+    }
+
     .#{$prefix}-icon {
       fill: currentColor;
     }
@@ -135,7 +89,46 @@ $prefix: "adui-nav";
     height: 1px;
     background-color: var(--transparent-gray-200);
   }
+  &-sub {
+    .#{$prefix}-item {
+      padding-left: 40px;
+    }
+
+    .#{$prefix}-sub .#{$prefix}-subTitle {
+      padding-left: 52px;
+    }
+
+    .#{$prefix}-sub {
+      .#{$prefix}-item {
+        padding-left: 64px;
+      }
+
+      .#{$prefix}-sub .#{$prefix}-subTitle {
+        padding-left: 64px;
+      }
+    }
+  }
+  &-group {
+    .#{$prefix}-item {
+      padding-left: 40px;
+    }
+
+    .#{$prefix}-group .#{$prefix}-groupTitle {
+      padding-left: 52px;
+    }
+
+    .#{$prefix}-group {
+      .#{$prefix}-item {
+        padding-left: 64px;
+      }
+
+      .#{$prefix}-group .#{$prefix}-groupTitle {
+        padding-left: 64px;
+      }
+    }
+  }
   &-groupTitle {
+    padding-left: 28px;
     line-height: 36px;
     color: var(--transparent-gray-700);
   }
@@ -176,17 +169,30 @@ $prefix: "adui-nav";
     position: relative;
     display: flex;
     align-items: center;
+    padding-left: 28px;
     padding-right: 16px;
     color: var(--transparent-gray-900);
-    cursor: pointer;
     transition: all var(--motion-duration-base) var(--ease-out);
 
-    &:hover {
-      background-color: var(--transparent-gray-200);
+    &:not(.#{$prefix}-subTitle-disabled) {
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--transparent-gray-200);
+      }
+
+      &:active {
+        background-color: var(--transparent-gray-300);
+      }
     }
 
-    &:active {
-      background-color: var(--transparent-gray-300);
+    &-disabled {
+      cursor: not-allowed;
+      color: var(--transparent-gray-600);
+
+      .#{$prefix}-icon {
+        fill: currentColor;
+      }
     }
   }
   &-arrow {
