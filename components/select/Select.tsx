@@ -569,7 +569,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
                   ))}
                 <Icon
                   icon={rightIcon || "triangle-down"}
-                  color="var(--gray-800)"
+                  color="var(--transparent-gray-700)"
                 />
               </>
             }
