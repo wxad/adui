@@ -417,8 +417,10 @@ function aduiImportPlugin() {
             newSource = newSource.slice(0, start) + newSource.slice(end)
           })
           componentNames.forEach(function (name) {
-            newImportStatement =
-              newImportStatement + `import 'adui/es/${name}/style' \n`
+            if (!["resize-observer", "motion"].includes(name)) {
+              newImportStatement =
+                newImportStatement + `import 'adui/es/${name}/style' \n`
+            }
           })
 
           return {
