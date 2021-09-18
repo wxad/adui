@@ -144,7 +144,7 @@ function getEleProps(astParam, propKeys = []) {
   }
   return result
 }
-function initOptionIcons() {
+function initOptionIcons(initIcons) {
   if (initIcons.length > 0) {
     searchIcons(initIcons)
   }
@@ -169,7 +169,8 @@ function searchIconByName(name) {
   }
 }
 
-function aduiIconPlugin() {
+function aduiIconPlugin(options) {
+  const { initIcons } = options
   let savedId = ""
   let viteConfig
 
@@ -177,6 +178,9 @@ function aduiIconPlugin() {
     name: "adui-icon",
     configResolved(resolvedConfig) {
       viteConfig = resolvedConfig
+      if (initIcons && initIcons.length) {
+        initOptionIcons(initIcons)
+      }
     },
 
     transform(source, id) {
@@ -334,10 +338,10 @@ function aduiIconPlugin() {
           savedId = id
           return {
             code: `
-                  var finalIcons = ${JSON.stringify(finalIcons)};
-                  window.aduiIconReduced = finalIcons;
-                  export default finalIcons;
-                `,
+                   var finalIcons = ${JSON.stringify(finalIcons)};
+                   window.aduiIconReduced = finalIcons;
+                   export default finalIcons;
+                 `,
           }
         }
       } catch (error) {}
