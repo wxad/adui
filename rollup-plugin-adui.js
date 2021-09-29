@@ -169,7 +169,7 @@ function searchIconByName(name) {
   }
 }
 
-function aduiIconPlugin(options) {
+function aduiIconPlugin(options = {}) {
   const { initIcons } = options
   let savedId = ""
   let viteConfig
