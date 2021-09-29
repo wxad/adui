@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.0](https://github.com/wxad/adui/compare/v2.14.0...v2.15.0) (2021-09-29)
+
+
+### Features
+
+* **rollup:** 增加 initIcons ([2882270](https://github.com/wxad/adui/commit/2882270095783674e26aae4533d03c0d9a72f1e4))
+* **Table:** grow prop ([7ff8194](https://github.com/wxad/adui/commit/7ff819472114e167427b5f50362383472dcaef3a))
+
+
+### Bug Fixes
+
+* **rollup:** 修复 motion resize-observer 组件打包问题 ([cda7d95](https://github.com/wxad/adui/commit/cda7d9573051842c04dee7550f909337ed319166))
+
 ## [2.14.0](https://github.com/wxad/adui/compare/v2.13.0...v2.14.0) (2021-09-15)
 
 
