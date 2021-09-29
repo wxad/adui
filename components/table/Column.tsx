@@ -49,6 +49,10 @@ export interface IColumnProps<T extends IBaseObject = IBaseObject> {
    */
   getCellStyle?: (row: T, rowIndex: number) => React.CSSProperties | void
   /**
+   * 是否在整体宽度有剩余的情况下填充
+   */
+  grow?: boolean
+  /**
    * 筛选时的 handler，筛选和排序功能不能同时使用
    */
   onFilter?: ((value: Array<React.ReactText>) => void) | null
@@ -110,6 +114,7 @@ function Column<T extends IBaseObject = IBaseObject>(props: IColumnProps<T>) {
     "filters",
     "fixed",
     "getCellStyle",
+    "grow",
     "onFilter",
     "onFilterVisibleChange",
     "onSort",
@@ -161,6 +166,10 @@ Column.propTypes = {
    * 设置该列每个单元格上的 style，(row, rowIndex) => ({})
    */
   getCellStyle: PropTypes.func,
+  /**
+   * 是否在整体宽度有剩余的情况下填充
+   */
+  grow: PropTypes.bool,
   /**
    * 筛选时的 handler，筛选和排序功能不能同时使用
    */
@@ -255,6 +264,7 @@ Column.defaultProps = {
   filters: null,
   fixed: null,
   getCellStyle: () => {},
+  grow: undefined,
   onFilter: null,
   onFilterVisibleChange: () => {},
   onSort: null,

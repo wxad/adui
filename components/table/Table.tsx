@@ -192,6 +192,10 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
    */
   getSelectProps?: (row: T, rowIndex: number) => IBaseObject
   /**
+   * 是否在整体宽度有剩余的情况下填充
+   */
+  grow?: boolean
+  /**
    * 是否需要表头固定到页面上
    */
   headerAffixed?: boolean
@@ -419,6 +423,10 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      */
     getSelectProps: PropTypes.func,
     /**
+     * 是否在整体宽度有剩余的情况下填充
+     */
+    grow: PropTypes.bool,
+    /**
      * 是否需要表头固定到页面上
      */
     headerAffixed: PropTypes.bool,
@@ -547,6 +555,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     getRowProps: () => ({}),
     getRowStyle: noop,
     getSelectProps: () => ({}),
+    grow: undefined,
     headerAffixed: false,
     headerAffixedOffsetTop: 0,
     headerAffixGetTarget: null,
@@ -1098,6 +1107,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       getRowProps,
       getRowStyle,
       getSelectProps,
+      grow,
       headerAffixed,
       headerAffixedOffsetTop,
       headerAffixGetTarget,
@@ -1127,11 +1137,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       selectedRowKeys,
     } = this.state
 
-    const {
-      getColumns,
-      getGroupColumnsDepth,
-      isAnyColumnsLeftFixed,
-    } = this.columnManager
+    const { getColumns, getGroupColumnsDepth, isAnyColumnsLeftFixed } =
+      this.columnManager
 
     const columns = getColumns() as IColumnProps<T>[]
 
@@ -1186,6 +1193,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             dataIndex,
             filters,
             fixed,
+            grow: colGrow,
             onFilter,
             onSort,
             sortOrder,
@@ -1193,6 +1201,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             width,
           } = col
 
+          const isGrow = colGrow !== undefined ? colGrow : grow
           const resizedCol = resized.find((o) => o.dataIndex === dataIndex)
           const clickable =
             !!onSort ||
@@ -1268,7 +1277,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                       (isMainTableOverflowY && height ? 14 : 0)
                     : undefined,
                   flex: resizedCol ? `${resizedCol.value} 0 auto` : flexValue,
-                  maxWidth: resizedCol ? resizedCol.value : width || "",
+                  maxWidth: isGrow
+                    ? undefined
+                    : resizedCol
+                    ? resizedCol.value
+                    : width || "",
                   textAlign: align || undefined,
                   width: resizedCol
                     ? resizedCol.value
@@ -1690,6 +1703,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       getCellClassName,
       getCellProps,
       getCellStyle,
+      grow,
       onExpandChange,
       onSelectChange,
       verticalAlign: verticalAlignProp,
@@ -1702,6 +1716,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       align,
       dataIndex,
       filters,
+      grow: colGrow,
       onFilter,
       onSort,
       render,
@@ -1710,6 +1725,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       verticalAlign,
       width,
     } = cell
+
+    const isGrow = colGrow !== undefined ? colGrow : grow
     const clickable =
       !!onSort ||
       (sortOrder !== null && sortOrder !== undefined) ||
@@ -1787,7 +1804,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           width: resizedCol
             ? resizedCol.value
             : width || Math.max(TD_MIN_WIDTH, minWidth),
-          maxWidth: resizedCol ? resizedCol.value : width || "",
+          maxWidth: isGrow
+            ? undefined
+            : resizedCol
+            ? resizedCol.value
+            : width || "",
         }}
         role="cell"
         data-row={rowIndex}
@@ -1943,6 +1964,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       "getRowProps",
       "getRowStyle",
       "getSelectProps",
+      "grow",
       "onExpandChange",
       "onSelectChange",
       "onScroll",
