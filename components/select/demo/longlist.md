@@ -1,5 +1,5 @@
 ---
-order: 0
+order: 1
 title:
   zh-CN: 内部驱动
   en-US: Type
@@ -28,7 +28,7 @@ return (
     }}
   >
     {options.map(({ value }) => (
-      <Select.Option value={value}>
+      <Select.Option value={value} key={value}>
         <div className="flex items-center">
           <img
             className="mr-8 w-24 h-24"

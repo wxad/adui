@@ -23,7 +23,6 @@ export default class Demo extends React.Component {
 
   componentDidMount = () => {
     const { content } = this.props
-    console.log(content, "yijie")
     const contentChildren = JsonML.getChildren(content)
     const preStartIndex = contentChildren.findIndex(
       (node) => JsonML.getTagName(node) === "pre"

@@ -192,7 +192,7 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
    */
   getSelectProps?: (row: T, rowIndex: number) => IBaseObject
   /**
-   * 是否在整体宽度有剩余的情况下填充
+   * adui@2.15.0 是否在整体宽度有剩余的情况下填充
    */
   grow?: boolean
   /**
@@ -423,7 +423,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      */
     getSelectProps: PropTypes.func,
     /**
-     * 是否在整体宽度有剩余的情况下填充
+     * adui@2.15.0 是否在整体宽度有剩余的情况下填充
      */
     grow: PropTypes.bool,
     /**

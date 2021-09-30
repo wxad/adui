@@ -52,7 +52,7 @@ export interface ISelectProps {
    */
   defaultValue?: React.ReactText | null
   /**
-   * 下拉菜单和选择器同宽
+   * 下拉列表是否和选择器同宽
    */
   dropdownMatchSelectWidth?: boolean
   /**
@@ -60,9 +60,13 @@ export interface ISelectProps {
    */
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
   /**
-   * 下拉展示发生变化时的 handler，参数：bool
+   * 下拉列表显示变化时的 handler，参数：bool
    */
   onDropdownVisibleChange?: (open: boolean) => void
+  /**
+   * 下拉列表滚动时的 handler, 参数：e
+   */
+  onPopupScroll?: (e: React.MouseEvent<HTMLDivElement>) => void
   /**
    * 搜索时的 handler, 参数：string
    */
@@ -161,7 +165,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
      */
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     /**
-     * 下拉菜单和选择器同宽
+     * 下拉列表是否和选择器同宽
      */
     dropdownMatchSelectWidth: PropTypes.bool,
     /**
@@ -169,9 +173,17 @@ class Select extends React.Component<ISelectProps, ISelectState> {
      */
     getPopupContainer: PropTypes.func,
     /**
-     * 下拉展示发生变化时的 handler，参数：bool
+     * 下拉列表显示变化时的 handler，参数：bool
      */
     onDropdownVisibleChange: PropTypes.func,
+    /**
+     * 下拉列表滚动时的 handler, 参数：e
+     */
+    onPopupScroll: PropTypes.func,
+    /**
+     * 搜索时的 handler, 参数：string
+     */
+    onSearch: PropTypes.func,
     /**
      * 选择时的 handler，参数：(value, option)
      */
@@ -243,6 +255,8 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     dropdownMatchSelectWidth: true,
     getPopupContainer: null,
     onDropdownVisibleChange: noop,
+    onPopupScroll: noop,
+    onSearch: noop,
     onSelect: noop,
     open: null,
     options: undefined,

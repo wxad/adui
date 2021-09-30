@@ -49,7 +49,7 @@ export interface IColumnProps<T extends IBaseObject = IBaseObject> {
    */
   getCellStyle?: (row: T, rowIndex: number) => React.CSSProperties | void
   /**
-   * 是否在整体宽度有剩余的情况下填充
+   * adui@2.15.0 是否在整体宽度有剩余的情况下填充
    */
   grow?: boolean
   /**
@@ -167,7 +167,7 @@ Column.propTypes = {
    */
   getCellStyle: PropTypes.func,
   /**
-   * 是否在整体宽度有剩余的情况下填充
+   * adui@2.15.0 是否在整体宽度有剩余的情况下填充
    */
   grow: PropTypes.bool,
   /**

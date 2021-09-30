@@ -81,7 +81,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="可搜索"
                   unCheckedText="可搜索"
                   checked={search}
-                  onChange={param => this.setState({ search: param })}
+                  onChange={(param) => this.setState({ search: param })}
                 />
               </div>
               <div className={styles.switchControl}>
@@ -89,7 +89,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="禁用态"
                   unCheckedText="禁用态"
                   checked={disabled}
-                  onChange={param => this.setState({ disabled: param })}
+                  onChange={(param) => this.setState({ disabled: param })}
                 />
               </div>
               <div className={styles.switchControl}>
@@ -97,7 +97,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="轻量风格"
                   unCheckedText="轻量风格"
                   checked={theme}
-                  onChange={param => this.setState({ theme: param })}
+                  onChange={(param) => this.setState({ theme: param })}
                 />
               </div>
             </dl>
