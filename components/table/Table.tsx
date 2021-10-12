@@ -178,7 +178,7 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
    */
   getRowClassName?: (row: T, rowIndex: number) => string
   /**
-   * 设置每行上的由组件规定的 prop，
+   * 设置每行上的由组件规定的 prop，其余的则会透传给行元素
    * 如 popover，(row, col, rowIndex, colIndex) => ({})
    */
   getRowProps?: (row: T, rowIndex: number) => { popover?: IPopoverProps }
@@ -409,7 +409,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      */
     getRowClassName: PropTypes.func,
     /**
-     * 设置每行上的由组件规定的 prop，
+     * 设置每行上的由组件规定的 prop，其余的则会透传给行元素
      * 如 popover，(row, col, rowIndex, colIndex) => ({})
      */
     getRowProps: PropTypes.func,
@@ -1421,7 +1421,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
               [`${prefix}-tr_selected`]: selectedRowKeys.includes(key),
             }
           )}
-          key={key || rowIndex}
+          key={rowIndex}
           role="row"
           data-row={rowIndex}
           onMouseEnter={
@@ -1439,6 +1439,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           style={{
             ...((getRowStyle && getRowStyle(row, rowIndex)) || {}),
           }}
+          {...((getRowProps && getRowProps(row, rowIndex)) || {})}
         >
           {theadPlaceholderVisible && (
             <div
