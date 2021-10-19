@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.16.0](https://github.com/wxad/adui/compare/v2.15.0...v2.16.0) (2021-10-19)
+
+
+### Features
+
+* **Table:** drag demo ([9790625](https://github.com/wxad/adui/commit/97906253767d97f4c0add68044b46566332fa10a))
+
+
+### Bug Fixes
+
+* **Table:** 修复 rowKey 使用 index 的一系列问题 ([35cfdf0](https://github.com/wxad/adui/commit/35cfdf093ff846f35471a0896198cd514cf21923))
+
 ## [2.15.0](https://github.com/wxad/adui/compare/v2.14.0...v2.15.0) (2021-09-29)
 
 
