@@ -1421,7 +1421,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
               [`${prefix}-tr_selected`]: selectedRowKeys.includes(key),
             }
           )}
-          key={rowIndex}
+          key={key !== undefined ? key : rowIndex}
           role="row"
           data-row={rowIndex}
           onMouseEnter={
@@ -1485,23 +1485,27 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         }
       }
       if (onExpandChange) {
-        return [
-          tr,
-          expandedRowKeys.includes(key) ? (
-            <div className={`${prefix}-expandRow`} key="tr-expand">
-              <div
-                className={`${prefix}-expandRow-inner`}
-                style={
-                  isMainTableOverflowX
-                    ? { width: mainTableStyle.width }
-                    : undefined
-                }
-              >
-                {!!expandedRowRender && expandedRowRender(row, rowIndex)}
-              </div>
+        return (
+          <React.Fragment key={key !== undefined ? key : rowIndex}>
+            {tr}
+            <div>
+              {expandedRowKeys.includes(key) ? (
+                <div className={`${prefix}-expandRow`}>
+                  <div
+                    className={`${prefix}-expandRow-inner`}
+                    style={
+                      isMainTableOverflowX
+                        ? { width: mainTableStyle.width }
+                        : undefined
+                    }
+                  >
+                    {!!expandedRowRender && expandedRowRender(row, rowIndex)}
+                  </div>
+                </div>
+              ) : null}
             </div>
-          ) : null,
-        ]
+          </React.Fragment>
+        )
       }
       return tr
     }
