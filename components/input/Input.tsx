@@ -124,9 +124,24 @@ export interface IInputProps {
   value?: string | null
 }
 
+export interface IInputRef {
+  cleave: any
+  input: HTMLInputElement
+  leftElement: HTMLDivElement
+  rightElement: HTMLDivElement
+  updateElementsWidth: () => void
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void
+  handleBlur: (e: React.FocusEvent<HTMLInputElement>) => void
+  handleFocus: (e: React.FocusEvent<HTMLInputElement>) => void
+  handleAttachedElementClick: (position: "left" | "right") => void
+  focus: () => void
+  blur: () => void
+}
+
 export interface IInput
   extends React.ForwardRefExoticComponent<
-    IInputProps & React.RefAttributes<any>
+    IInputProps & React.RefAttributes<IInputRef>
   > {
   Textarea: typeof Textarea
 }
@@ -168,12 +183,10 @@ const Input: IInput = forwardRef(
     }: IInputProps,
     ref
   ) => {
-    const [leftElementWidth, setLeftElementWidth] = useState<null | number>(
-      null
-    )
-    const [rightElementWidth, setRightElementWidth] = useState<null | number>(
-      null
-    )
+    const [leftElementWidth, setLeftElementWidth] =
+      useState<null | number>(null)
+    const [rightElementWidth, setRightElementWidth] =
+      useState<null | number>(null)
     const inputRef = useRef<any>(null)
     const wrapperElementRef = useRef<HTMLDivElement>(null)
     const leftElementRef = useRef<HTMLDivElement>(null)

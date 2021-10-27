@@ -64,6 +64,7 @@
   "circle-optimize-target": string;
   "city-outlined": string;
   "city": string;
+  "clue": string;
   "code-sand-box": string;
   "code": string;
   "comment": string;
@@ -287,4 +288,10 @@
   "woman": string;
   "zoom-in": string;
   "zoom-out": string;
+  "推广数据": string;
+  "新增关注": string;
+  "新增播放量": string;
+  "新增点赞": string;
+  "朋友圈": string;
+  "视频号": string;
   }

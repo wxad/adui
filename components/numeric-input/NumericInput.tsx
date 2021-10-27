@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
-import Input, { IInputProps } from "../input"
+import Input, { IInputProps, IInputRef } from "../input"
 import Icon from "../icon"
 import "./style"
 import { isLegal, stringToNumber, getDecimalNumber } from "./core"
@@ -88,7 +88,7 @@ const NumericInput: React.ForwardRefExoticComponent<
       )
     }
 
-    const inputRef = useRef<any>(null)
+    const inputRef = useRef<IInputRef>(null)
 
     useImperativeHandle(ref, () => ({
       current: inputRef.current,

@@ -46,7 +46,7 @@ export { default as Grid } from "./grid"
 export type { IIconProps, IconNames } from "./icon"
 export { default as Icon } from "./icon"
 
-export type { IInputProps, ITextareaProps } from "./input"
+export type { IInputProps, IInputRef, ITextareaProps } from "./input"
 export { default as Input } from "./input"
 
 export type {
