@@ -127,8 +127,8 @@ export interface IInputProps {
 export interface IInputRef {
   cleave: any
   input: HTMLInputElement
-  leftElement: HTMLDivElement
-  rightElement: HTMLDivElement
+  leftElement: HTMLDivElement | null
+  rightElement: HTMLDivElement | null
   updateElementsWidth: () => void
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void
