@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.0](https://github.com/wxad/adui/compare/v2.16.0...v2.17.0) (2021-10-27)
+
+
+### Features
+
+* **Input:** 增加 ref 类型 ([1a9b2dc](https://github.com/wxad/adui/commit/1a9b2dc640033570dbadebb3329aa5ee0c1981f7))
+
 ## [2.16.0](https://github.com/wxad/adui/compare/v2.15.0...v2.16.0) (2021-10-19)
 
 
