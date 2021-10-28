@@ -1,22 +1,16 @@
-import React from 'react'
-import styles from './components/propertyBox.scss'
-import CodeBox from './components/CodeBox'
-import {
-  Button,
-  Nav,
-} from '../../components'
+import React from "react"
+import styles from "./components/propertyBox.scss"
+import CodeBox from "./components/CodeBox"
+import { Button, Nav } from "../../components"
 import { SIZES } from "./consts"
 
 export default class PropertyBox extends React.Component {
-
   state = {
     size: "small",
   }
 
   render() {
-    const {
-      size,
-    } = this.state
+    const { size } = this.state
 
     const codes = `<Nav>
   <Nav.Group title="导航分组">
@@ -62,12 +56,20 @@ export default class PropertyBox extends React.Component {
                 <Nav.Item index="2">财务管理</Nav.Item>
                 <Nav.Item index="3">消息公告</Nav.Item>
                 <Nav.Divider />
-                <Nav.Item index="4" icon="trending-up">数据概览</Nav.Item>
-                <Nav.Item index="5" icon="finance-outlined">财务管理</Nav.Item>
-                <Nav.Item index="6" icon="bell-outlined">消息公告</Nav.Item>
+                <Nav.Item index="4" icon="trending-up">
+                  数据概览
+                </Nav.Item>
+                <Nav.Item index="5" icon="finance-outlined">
+                  财务管理
+                </Nav.Item>
+                <Nav.Item index="6" icon="bell-outlined">
+                  消息公告
+                </Nav.Item>
                 <Nav.Divider />
                 <Nav.Group title="导航不可选">
-                  <Nav.Item index="7" disabled icon="bell-outlined">导航不可选</Nav.Item>
+                  <Nav.Item index="7" disabled icon="bell-outlined">
+                    导航不可选
+                  </Nav.Item>
                 </Nav.Group>
               </Nav>
               <Nav
@@ -88,7 +90,11 @@ export default class PropertyBox extends React.Component {
                   <Nav.Item index="2">导航</Nav.Item>
                 </Nav.Group>
                 <Nav.Divider />
-                <Nav.SubNav title="导航一" index="sub-1" icon="storage-outlined">
+                <Nav.SubNav
+                  title="导航一"
+                  index="sub-1"
+                  icon="storage-outlined"
+                >
                   <Nav.Group title="导航分组">
                     <Nav.Item index="3">导航</Nav.Item>
                     <Nav.SubNav title="导航" index="sub-2">
@@ -115,17 +121,15 @@ export default class PropertyBox extends React.Component {
               <dt className={styles.controlTitle}>尺寸</dt>
               <dd className={styles.controlContent}>
                 <Button.Group banner>
-                  {
-                    SIZES.map(({ value, text }) => (
-                      <Button
-                        key={value}
-                        active={value === size}
-                        onClick={() => this.setState({ size: value })}
-                      >
-                        { text }
-                      </Button>
-                    ))
-                  }
+                  {SIZES.map(({ value, text }) => (
+                    <Button
+                      key={value}
+                      active={value === size}
+                      onClick={() => this.setState({ size: value })}
+                    >
+                      {text}
+                    </Button>
+                  ))}
                 </Button.Group>
               </dd>
             </dl>

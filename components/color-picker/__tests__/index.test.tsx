@@ -16,7 +16,7 @@ class ColorPickerMounter extends Component {
     return (
       <ColorPicker
         value={value}
-        onChange={val => this.setState({ value: val })}
+        onChange={(val) => this.setState({ value: val })}
         {...this.props}
       />
     )
@@ -39,32 +39,17 @@ describe("ColorPicker", () => {
 
   it("是否能处理小写值的情况", () => {
     const wrapper = mount(<ColorPicker defaultValue="#07c160" />)
-    const value = wrapper
-      .find(".adui-cp")
-      .at(0)
-      .props()["data-value"]
-    const inputValue = wrapper
-      .find("Input")
-      .at(0)
-      .props().value
+    const value = wrapper.find(".adui-cp").at(0).props()["data-value"]
+    const inputValue = wrapper.find("Input").at(0).props().value
     expect(inputValue === "07C160" && value === "#07C160").toBe(true)
   })
 
   it("内部驱动", () => {
     const wrapper = mount(<ColorPicker defaultValue="#07C160" />)
     wrapper.find("button").simulate("click")
-    wrapper
-      .find(".adui-cp-standard i")
-      .at(0)
-      .simulate("click")
-    const value = wrapper
-      .find(".adui-cp")
-      .at(0)
-      .props()["data-value"]
-    const inputValue = wrapper
-      .find("Input")
-      .at(0)
-      .props().value
+    wrapper.find(".adui-cp-standard i").at(0).simulate("click")
+    const value = wrapper.find(".adui-cp").at(0).props()["data-value"]
+    const inputValue = wrapper.find("Input").at(0).props().value
     expect(inputValue === "FFFFFF" && value === "#FFFFFF").toBe(true)
 
     wrapper
@@ -72,14 +57,8 @@ describe("ColorPicker", () => {
       .at(0)
       .simulate("change", { target: { value: "F0F0F0" } })
 
-    const value1 = wrapper
-      .find(".adui-cp")
-      .at(0)
-      .props()["data-value"]
-    const inputValue1 = wrapper
-      .find("Input")
-      .at(0)
-      .props().value
+    const value1 = wrapper.find(".adui-cp").at(0).props()["data-value"]
+    const inputValue1 = wrapper.find("Input").at(0).props().value
     expect(inputValue1 === "F0F0F0" && value1 === "#F0F0F0").toBe(true)
   })
 
@@ -88,20 +67,11 @@ describe("ColorPicker", () => {
 
     wrapper.find("button").simulate("click")
     act(() => {
-      wrapper
-        .find(".adui-cp-standard i")
-        .at(0)
-        .simulate("click")
+      wrapper.find(".adui-cp-standard i").at(0).simulate("click")
       jest.runAllTimers()
       wrapper.update()
-      const value = wrapper
-        .find(".adui-cp")
-        .at(0)
-        .props()["data-value"]
-      const inputValue = wrapper
-        .find("Input")
-        .at(0)
-        .props().value
+      const value = wrapper.find(".adui-cp").at(0).props()["data-value"]
+      const inputValue = wrapper.find("Input").at(0).props().value
       expect(
         inputValue === "FFFFFF" &&
           value === "#FFFFFF" &&
@@ -112,14 +82,8 @@ describe("ColorPicker", () => {
       .find("input")
       .at(0)
       .simulate("change", { target: { value: "F0F0F0" } })
-    const value1 = wrapper
-      .find(".adui-cp")
-      .at(0)
-      .props()["data-value"]
-    const inputValue1 = wrapper
-      .find("Input")
-      .at(0)
-      .props().value
+    const value1 = wrapper.find(".adui-cp").at(0).props()["data-value"]
+    const inputValue1 = wrapper.find("Input").at(0).props().value
     expect(
       inputValue1 === "F0F0F0" &&
         value1 === "#F0F0F0" &&
@@ -149,9 +113,6 @@ describe("ColorPicker", () => {
     wrapper.find(".adui-cp-prefix").simulate("click")
     wrapper.find("button").simulate("click")
     jest.advanceTimersByTime(50)
-    wrapper
-      .find(".adui-cp-prefix")
-      .at(1)
-      .simulate("click")
+    wrapper.find(".adui-cp-prefix").at(1).simulate("click")
   })
 })

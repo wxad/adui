@@ -62,7 +62,7 @@ export default class PropertyBox extends React.Component {
                 checkedText="禁用态"
                 unCheckedText="禁用态"
                 checked={disabled}
-                onChange={param => this.setState({ disabled: param })}
+                onChange={(param) => this.setState({ disabled: param })}
               />
             </div>
           </div>

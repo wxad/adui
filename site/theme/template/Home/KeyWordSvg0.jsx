@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-const SvgComponent = props => (
+const SvgComponent = (props) => (
   <svg width={39} height={36} {...props}>
     <defs>
       <linearGradient

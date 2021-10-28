@@ -144,9 +144,8 @@ const TimePicker: React.ForwardRefExoticComponent<
     const [visible, setVisible] = useState(initialState.visible)
 
     if (value !== null && prevValueProp !== value) {
-      const { hour: newHour, minute: newMinute } = extractHourAndMinuteFromTime(
-        value
-      )
+      const { hour: newHour, minute: newMinute } =
+        extractHourAndMinuteFromTime(value)
       setHour(newHour)
       setInputValue(value || "")
       setMinute(onlyHour ? "00" : newMinute)
@@ -220,10 +219,8 @@ const TimePicker: React.ForwardRefExoticComponent<
           !isTimeAfter(inputValueNew, maxTime) &&
           !isTimeBefore(inputValueNew, minTime))
       ) {
-        const {
-          hour: hourNew,
-          minute: minuteNew,
-        } = extractHourAndMinuteFromTime(inputValueNew)
+        const { hour: hourNew, minute: minuteNew } =
+          extractHourAndMinuteFromTime(inputValueNew)
         if (
           !(disabledHours && disabledHours(hourNew)) &&
           !(disabledMinutes && disabledMinutes(minuteNew))

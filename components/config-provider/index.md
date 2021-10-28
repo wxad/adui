@@ -10,4 +10,5 @@ subtitle: 全局配置
 `ConfigProvider` 提供了对 `size`，`getPopupContainer` 的设置。
 
 ## Props
+
 ### ConfigProvider

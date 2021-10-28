@@ -8,37 +8,44 @@ title:
 `zoom` 用于元素的 **移除与添加**。
 
 ```jsx
-  const [cards, setCards] = useState(["1"])
-  const cardDuplicated = [...cards]
+const [cards, setCards] = useState(["1"])
+const cardDuplicated = [...cards]
 
-  const handleRemove = id => {
-    cardDuplicated.splice(cardDuplicated.indexOf(id), 1)
-    setCards(cardDuplicated)
-  }
+const handleRemove = (id) => {
+  cardDuplicated.splice(cardDuplicated.indexOf(id), 1)
+  setCards(cardDuplicated)
+}
 
-  const handleAdd = () => {
-    cardDuplicated.push(Math.random().toString(36).substring(3, 8))
-    setCards(cardDuplicated)
-  }
+const handleAdd = () => {
+  cardDuplicated.push(Math.random().toString(36).substring(3, 8))
+  setCards(cardDuplicated)
+}
 
-  return (
-    <div style={{ width: "80%" }}>
-      <Motion transition="zoomHorizontal">
-        {cards.map((c, i) => (
-          <div key={c} style={{ paddingBottom: "20px", display: "inline-block", verticalAlign: "top" }}>
-            <Card className="adui-motion-card" style={{ width: "200px" }}>
-              <Card.Header title={`卡片${i}`} />
-              <Icon icon="cancel" size={24} onClick={() => handleRemove(c)} />
-            </Card>
-          </div>
-        ))}
-      </Motion>
-      <div className="adui-motion-example-add" onClick={handleAdd}>
-        <Icon icon="add" interactive />
-      </div>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
+return (
+  <div style={{ width: "80%" }}>
+    <Motion transition="zoomHorizontal">
+      {cards.map((c, i) => (
+        <div
+          key={c}
+          style={{
+            paddingBottom: "20px",
+            display: "inline-block",
+            verticalAlign: "top",
+          }}
+        >
+          <Card className="adui-motion-card" style={{ width: "200px" }}>
+            <Card.Header title={`卡片${i}`} />
+            <Icon icon="cancel" size={24} onClick={() => handleRemove(c)} />
+          </Card>
+        </div>
+      ))}
+    </Motion>
+    <div className="adui-motion-example-add" onClick={handleAdd}>
+      <Icon icon="add" interactive />
+    </div>
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `
             .adui-motion-example-add {
               display: flex;
               align-items: center;
@@ -60,8 +67,8 @@ title:
               right: 12px;
             }
           `,
-        }}
-      />
-    </div>
-  )
+      }}
+    />
+  </div>
+)
 ```

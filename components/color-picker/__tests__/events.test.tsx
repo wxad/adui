@@ -15,7 +15,7 @@ class ColorPickerMounter extends Component {
     return (
       <ColorPicker
         value={value}
-        onChange={val => this.setState({ value: val })}
+        onChange={(val) => this.setState({ value: val })}
         {...this.props}
       />
     )
@@ -62,33 +62,17 @@ describe("ColorPicker", () => {
 
     // 验证 input 修改为非法值后，在 blur 时会重置
     input.simulate("change", { target: { value: "11" } })
-    expect(
-      wrapper
-        .find("input")
-        .at(0)
-        .props().value
-    ).toBe("11")
+    expect(wrapper.find("input").at(0).props().value).toBe("11")
     input.simulate("blur")
-    expect(
-      wrapper
-        .find("input")
-        .at(0)
-        .props().value
-    ).toBe("07C160")
+    expect(wrapper.find("input").at(0).props().value).toBe("07C160")
 
     input.simulate("change", { target: { value: "00BB9C" } })
     input.simulate("blur")
     expect(onFinishChange).toHaveBeenCalledWith("#00BB9C")
 
     wrapper.find("button").simulate("click")
-    wrapper
-      .find(".adui-cp-recent i")
-      .at(0)
-      .simulate("click")
-    wrapper
-      .find(".adui-cp-standard i")
-      .at(11)
-      .simulate("click")
+    wrapper.find(".adui-cp-recent i").at(0).simulate("click")
+    wrapper.find(".adui-cp-standard i").at(11).simulate("click")
     wrapper.find("button").simulate("click")
     // 等待 200ms
     jest.advanceTimersByTime(200)
@@ -107,54 +91,30 @@ describe("ColorPicker", () => {
     head1.simulate("click")
     head2.simulate("click")
 
-    wrapper
-      .find("Slider")
-      .at(0)
-      .simulate("focus")
+    wrapper.find("Slider").at(0).simulate("focus")
     wrapper
       .find("Slider")
       .at(0)
       .find(".adui-slider-handle")
       .at(0)
       .simulate("keyDown", { keyCode: keyCode.RIGHT })
-    expect(
-      wrapper
-        .find(".adui-cp")
-        .at(0)
-        .props()["data-value"]
-    ).toBe("#5BDECA")
-    wrapper
-      .find("Slider")
-      .at(1)
-      .simulate("focus")
+    expect(wrapper.find(".adui-cp").at(0).props()["data-value"]).toBe("#5BDECA")
+    wrapper.find("Slider").at(1).simulate("focus")
     wrapper
       .find("Slider")
       .at(1)
       .find(".adui-slider-handle")
       .at(0)
       .simulate("keyDown", { keyCode: keyCode.RIGHT })
-    expect(
-      wrapper
-        .find(".adui-cp")
-        .at(0)
-        .props()["data-value"]
-    ).toBe("#59DECA")
-    wrapper
-      .find("Slider")
-      .at(2)
-      .simulate("focus")
+    expect(wrapper.find(".adui-cp").at(0).props()["data-value"]).toBe("#59DECA")
+    wrapper.find("Slider").at(2).simulate("focus")
     wrapper
       .find("Slider")
       .at(2)
       .find(".adui-slider-handle")
       .at(0)
       .simulate("keyDown", { keyCode: keyCode.RIGHT })
-    expect(
-      wrapper
-        .find(".adui-cp")
-        .at(0)
-        .props()["data-value"]
-    ).toBe("#5AE0CC")
+    expect(wrapper.find(".adui-cp").at(0).props()["data-value"]).toBe("#5AE0CC")
 
     const map = {}
     // @ts-ignore
@@ -169,19 +129,13 @@ describe("ColorPicker", () => {
     jest.advanceTimersByTime(10)
 
     act(() => {
-      classWrapper
-        .find(".adui-cp-collapse-header")
-        .at(1)
-        .simulate("click")
+      classWrapper.find(".adui-cp-collapse-header").at(1).simulate("click")
       jest.runAllTimers()
       classWrapper.update()
     })
 
     act(() => {
-      classWrapper
-        .find(".adui-cp-palette")
-        .at(0)
-        .simulate("mouseDown")
+      classWrapper.find(".adui-cp-palette").at(0).simulate("mouseDown")
 
       // @ts-ignore
       map.mousemove({})
@@ -190,42 +144,22 @@ describe("ColorPicker", () => {
 
       jest.runAllTimers()
       classWrapper.update()
-      expect(
-        classWrapper
-          .find(".adui-cp")
-          .at(0)
-          .props()["data-s"]
-      ).toBe(100)
+      expect(classWrapper.find(".adui-cp").at(0).props()["data-s"]).toBe(100)
       // @ts-ignore
       map.mousemove({ pageX: -10000, pageY: 0 })
       jest.runAllTimers()
       classWrapper.update()
-      expect(
-        classWrapper
-          .find(".adui-cp")
-          .at(0)
-          .props()["data-s"]
-      ).toBe(0)
+      expect(classWrapper.find(".adui-cp").at(0).props()["data-s"]).toBe(0)
       // @ts-ignore
       map.mousemove({ pageY: 10000, pageX: 0 })
       jest.runAllTimers()
       classWrapper.update()
-      expect(
-        classWrapper
-          .find(".adui-cp")
-          .at(0)
-          .props()["data-b"]
-      ).toBe(0)
+      expect(classWrapper.find(".adui-cp").at(0).props()["data-b"]).toBe(0)
       // @ts-ignore
       map.mousemove({ pageY: -10000, pageX: 0 })
       jest.runAllTimers()
       classWrapper.update()
-      expect(
-        classWrapper
-          .find(".adui-cp")
-          .at(0)
-          .props()["data-b"]
-      ).toBe(100)
+      expect(classWrapper.find(".adui-cp").at(0).props()["data-b"]).toBe(100)
       // @ts-ignore
       map.mouseup({})
     })

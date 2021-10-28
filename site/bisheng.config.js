@@ -4,8 +4,8 @@ const path = require("path")
 const WebpackBar = require("webpackbar")
 const StyleLintPlugin = require("stylelint-webpack-plugin")
 const CSSSplitWebpackPlugin = require("css-split-webpack-plugin").default
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 
 const isDev = process.env.NODE_ENV === "development"
 

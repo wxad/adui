@@ -26,7 +26,7 @@ class RangePickerMounter extends Component {
             value: [new Date("2020-10-01"), new Date("2020-10-07")],
           },
         ]}
-        ref={component => {
+        ref={(component) => {
           if (!this.state.component) {
             this.setState({ component })
           }
@@ -34,8 +34,8 @@ class RangePickerMounter extends Component {
         closeOnSelect
         value={value}
         visible={visible}
-        onChange={val => this.setState({ value: val })}
-        onVisibleChange={bool => this.setState({ visible: bool })}
+        onChange={(val) => this.setState({ value: val })}
+        onVisibleChange={(bool) => this.setState({ visible: bool })}
         {...this.props}
       />
     )
@@ -61,21 +61,13 @@ describe("RangePicker", () => {
     const wrapper = mount(
       <RangePicker defaultValue={val} defaultVisible={false} closeOnSelect />
     )
-    expect(
-      wrapper
-        .find("input")
-        .at(0)
-        .props().value
-    ).toBe(convertDateRangeToString(val))
+    expect(wrapper.find("input").at(0).props().value).toBe(
+      convertDateRangeToString(val)
+    )
 
     wrapper.find("input").simulate("focus")
 
-    expect(
-      wrapper
-        .find("Popover")
-        .at(0)
-        .props().visible
-    ).toBe(true)
+    expect(wrapper.find("Popover").at(0).props().visible).toBe(true)
 
     wrapper.find("input").simulate("change", { target: { value: "" } })
     expect(wrapper.find("input").props().value).toBe("")
@@ -89,46 +81,24 @@ describe("RangePicker", () => {
       wrapper.find("input").simulate("keydown", { key: "enter", keyCode: 13 })
       jest.runAllTimers()
       wrapper.update()
-      expect(
-        wrapper
-          .find("Popover")
-          .at(0)
-          .props().visible
-      ).toBe(false)
+      expect(wrapper.find("Popover").at(0).props().visible).toBe(false)
     })
 
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(14)
-        .simulate("click")
-      wrapper
-        .find(".adui-date-day")
-        .at(15)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(14).simulate("click")
+      wrapper.find(".adui-date-day").at(15).simulate("click")
       const expectedVal = convertDateRangeToString([
         new Date(
-          wrapper
-            .find(".adui-date-day")
-            .at(14)
-            .props()["aria-label"] + " 12:00"
+          wrapper.find(".adui-date-day").at(14).props()["aria-label"] + " 12:00"
         ),
         new Date(
-          wrapper
-            .find(".adui-date-day")
-            .at(15)
-            .props()["aria-label"] + " 12:00"
+          wrapper.find(".adui-date-day").at(15).props()["aria-label"] + " 12:00"
         ),
       ])
       // 等待 350ms
       jest.advanceTimersByTime(350)
       wrapper.update()
-      expect(
-        wrapper
-          .find("Popover")
-          .at(0)
-          .props().visible
-      ).toBe(false)
+      expect(wrapper.find("Popover").at(0).props().visible).toBe(false)
     })
   })
 
@@ -140,64 +110,33 @@ describe("RangePicker", () => {
     const wrapper = mount(
       <RangePicker value={[new Date(), new Date()]} visible closeOnSelect />
     )
-    expect(
-      wrapper
-        .find("input")
-        .at(0)
-        .props().value
-    ).toBe(convertDateRangeToString(val))
+    expect(wrapper.find("input").at(0).props().value).toBe(
+      convertDateRangeToString(val)
+    )
 
-    expect(
-      wrapper
-        .find("Popover")
-        .at(0)
-        .props().visible
-    ).toBe(true)
+    expect(wrapper.find("Popover").at(0).props().visible).toBe(true)
 
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(14)
-        .simulate("click")
-      wrapper
-        .find(".adui-date-day")
-        .at(15)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(14).simulate("click")
+      wrapper.find(".adui-date-day").at(15).simulate("click")
       // 等待 350ms
       jest.advanceTimersByTime(350)
       wrapper.update()
-      expect(
-        wrapper
-          .find("input")
-          .at(0)
-          .props().value
-      ).toBe(convertDateRangeToString(val))
+      expect(wrapper.find("input").at(0).props().value).toBe(
+        convertDateRangeToString(val)
+      )
     })
 
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(15)
-        .simulate("click")
-      wrapper
-        .find(".adui-date-day")
-        .at(16)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(15).simulate("click")
+      wrapper.find(".adui-date-day").at(16).simulate("click")
       // 等待 350ms
       jest.advanceTimersByTime(350)
       wrapper.update()
-      expect(
-        wrapper
-          .find("input")
-          .at(0)
-          .props().value
-      ).toBe(convertDateRangeToString(val))
-      expect(
-        wrapper
-          .find("Popover")
-          .at(0)
-          .props().visible
-      ).toBe(true)
+      expect(wrapper.find("input").at(0).props().value).toBe(
+        convertDateRangeToString(val)
+      )
+      expect(wrapper.find("Popover").at(0).props().visible).toBe(true)
     })
 
     /**
@@ -219,21 +158,10 @@ describe("RangePicker", () => {
     )
     mounter.find("input").simulate("change", { target: { value: "" } })
     expect(convertDateRangeToString(mounter.state().value)).toBe("")
-    expect(
-      mounter
-        .find("Popover")
-        .at(0)
-        .props().visible
-    ).toBe(true)
+    expect(mounter.find("Popover").at(0).props().visible).toBe(true)
     act(() => {
-      mounter
-        .find(".adui-date-day")
-        .at(15)
-        .simulate("click")
-      mounter
-        .find(".adui-date-day")
-        .at(16)
-        .simulate("click")
+      mounter.find(".adui-date-day").at(15).simulate("click")
+      mounter.find(".adui-date-day").at(16).simulate("click")
       jest.runAllTimers()
       mounter.update()
     })
@@ -244,38 +172,20 @@ describe("RangePicker", () => {
     const wrapper = mount(<RangePickerMounter />)
     const expectedRange = []
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(10)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(10).simulate("click")
       expectedRange[0] = new Date(
-        wrapper
-          .find(".adui-date-day")
-          .at(10)
-          .props()["aria-label"] + " 12:00"
+        wrapper.find(".adui-date-day").at(10).props()["aria-label"] + " 12:00"
       )
-      wrapper
-        .find("button")
-        .at(1)
-        .simulate("click")
-      wrapper
-        .find("button")
-        .at(1)
-        .simulate("click")
+      wrapper.find("button").at(1).simulate("click")
+      wrapper.find("button").at(1).simulate("click")
       jest.runAllTimers()
       wrapper.update()
     })
 
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(10)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(10).simulate("click")
       expectedRange[1] = new Date(
-        wrapper
-          .find(".adui-date-day")
-          .at(10)
-          .props()["aria-label"] + " 12:00"
+        wrapper.find(".adui-date-day").at(10).props()["aria-label"] + " 12:00"
       )
       jest.runAllTimers()
       wrapper.update()
@@ -299,14 +209,8 @@ describe("RangePicker", () => {
 
     const wrapperForCoverage0 = mount(<RangePickerMounter disabled />)
     wrapperForCoverage0.state().component.handleVisibleChange(false)
-    wrapperForCoverage0
-      .find(".adui-date-day")
-      .at(14)
-      .simulate("mouseenter")
-    wrapperForCoverage0
-      .find(".adui-date-day")
-      .at(14)
-      .simulate("mouseleave")
+    wrapperForCoverage0.find(".adui-date-day").at(14).simulate("mouseenter")
+    wrapperForCoverage0.find(".adui-date-day").at(14).simulate("mouseleave")
     jest.runAllTimers()
   })
 
@@ -328,10 +232,7 @@ describe("RangePicker", () => {
         .simulate("change", { target: { value: "1" } })
       jest.runAllTimers()
       wrapper.update()
-      wrapper
-        .find(".adui-date-day")
-        .at(14)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(14).simulate("click")
       jest.runAllTimers()
       wrapper.update()
       wrapper
@@ -344,10 +245,7 @@ describe("RangePicker", () => {
         .simulate("change", { target: { value: "2020" } })
       jest.runAllTimers()
       wrapper.update()
-      wrapper
-        .find(".adui-date-day")
-        .at(14)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(14).simulate("click")
       jest.runAllTimers()
       wrapper.update()
     })

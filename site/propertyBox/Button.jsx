@@ -1,14 +1,10 @@
-import React from 'react'
-import styles from './components/propertyBox.scss'
-import CodeBox from './components/CodeBox'
-import {
-  Switch,
-  Button,
-} from '../../components'
+import React from "react"
+import styles from "./components/propertyBox.scss"
+import CodeBox from "./components/CodeBox"
+import { Switch, Button } from "../../components"
 import { SIZES, INTENTS } from "./consts"
 
 export default class PropertyBox extends React.Component {
-
   state = {
     disabled: false,
     href: null,
@@ -49,11 +45,7 @@ export default class PropertyBox extends React.Component {
       <div className={styles.wrapper}>
         <div className={styles.property}>
           <div className={styles.left}>
-            <Button
-              {...this.state}
-            >
-              点击按钮
-            </Button>
+            <Button {...this.state}>点击按钮</Button>
           </div>
           <div className={styles.right}>
             <div className={styles.rightTitle}>可配置项</div>
@@ -61,52 +53,88 @@ export default class PropertyBox extends React.Component {
               <dt className={styles.controlTitle}>尺寸</dt>
               <dd className={styles.controlContent}>
                 <Button.Group banner>
-                  {
-                    SIZES.map(({ value, text }) => (
-                      <Button
-                        key={value}
-                        active={value === size}
-                        onClick={() => this.setState({ size: value })}
-                      >
-                        { text }
-                      </Button>
-                    ))
-                  }
+                  {SIZES.map(({ value, text }) => (
+                    <Button
+                      key={value}
+                      active={value === size}
+                      onClick={() => this.setState({ size: value })}
+                    >
+                      {text}
+                    </Button>
+                  ))}
                 </Button.Group>
               </dd>
               <dt className={styles.controlTitle}>倾向</dt>
               <dd className={styles.controlContent}>
                 <Button.Group banner>
-                  {
-                    INTENTS.map(({ value, text }) => (
-                      <Button
-                        key={value}
-                        active={value === intent}
-                        onClick={() => this.setState({ intent: value })}
-                      >
-                        { text }
-                      </Button>
-                    ))
-                  }
+                  {INTENTS.map(({ value, text }) => (
+                    <Button
+                      key={value}
+                      active={value === intent}
+                      onClick={() => this.setState({ intent: value })}
+                    >
+                      {text}
+                    </Button>
+                  ))}
                 </Button.Group>
               </dd>
               <div className={styles.switchControl}>
-                <Switch checkedText="左图标" unCheckedText="左图标" checked={!!leftIcon} onChange={param => this.setState({ leftIcon: param ? "file-outlined" : null }) } />
+                <Switch
+                  checkedText="左图标"
+                  unCheckedText="左图标"
+                  checked={!!leftIcon}
+                  onChange={(param) =>
+                    this.setState({ leftIcon: param ? "file-outlined" : null })
+                  }
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="右图标" unCheckedText="右图标" checked={!!rightIcon} onChange={param => this.setState({ rightIcon: param ? "arrow-forward" : null }) } />
+                <Switch
+                  checkedText="右图标"
+                  unCheckedText="右图标"
+                  checked={!!rightIcon}
+                  onChange={(param) =>
+                    this.setState({ rightIcon: param ? "arrow-forward" : null })
+                  }
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="加载态" unCheckedText="加载态" checked={loading} onChange={param => this.setState({ loading: param }) } />
+                <Switch
+                  checkedText="加载态"
+                  unCheckedText="加载态"
+                  checked={loading}
+                  onChange={(param) => this.setState({ loading: param })}
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="禁用态" unCheckedText="禁用态" checked={disabled} onChange={param => this.setState({ disabled: param }) } />
+                <Switch
+                  checkedText="禁用态"
+                  unCheckedText="禁用态"
+                  checked={disabled}
+                  onChange={(param) => this.setState({ disabled: param })}
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="轻量风格" unCheckedText="轻量风格" checked={!!theme} onChange={param => this.setState({ theme: param ? "light" : null }) } />
+                <Switch
+                  checkedText="轻量风格"
+                  unCheckedText="轻量风格"
+                  checked={!!theme}
+                  onChange={(param) =>
+                    this.setState({ theme: param ? "light" : null })
+                  }
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="跳转链接" unCheckedText="跳转链接" checked={!!href} onChange={param => this.setState({ href: param ? "https://ad.weixin.qq.com" : null }) } />
+                <Switch
+                  checkedText="跳转链接"
+                  unCheckedText="跳转链接"
+                  checked={!!href}
+                  onChange={(param) =>
+                    this.setState({
+                      href: param ? "https://ad.weixin.qq.com" : null,
+                    })
+                  }
+                />
               </div>
             </dl>
           </div>

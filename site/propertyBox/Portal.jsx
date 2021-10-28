@@ -75,7 +75,7 @@ export default class PropertyBox extends React.Component {
               <dt className={styles.controlTitle}>渲染父节点</dt>
               <dd className={styles.controlContent}>
                 <Button.Group banner>
-                  {["0", "1", "2"].map(o => (
+                  {["0", "1", "2"].map((o) => (
                     <Button
                       key={o}
                       active={o === position}

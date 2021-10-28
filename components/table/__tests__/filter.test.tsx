@@ -33,7 +33,7 @@ const FilterMounter = () => {
         dataIndex="filter"
         filters={filters}
         filteredValue={filteredValue}
-        onFilter={argFilteredValue => set(argFilteredValue)}
+        onFilter={(argFilteredValue) => set(argFilteredValue)}
       />
     </Table>
   )
@@ -115,15 +115,9 @@ describe("筛选功能", () => {
     const th = wrapper.find("[role='columnheader']").at(0)
     th.simulate("click")
     const dropdownWrapper = mount(
-      wrapper
-        .find("Trigger")
-        .instance()
-        .getComponent()
+      wrapper.find("Trigger").instance().getComponent()
     )
-    dropdownWrapper
-      .find("label")
-      .at(1)
-      .simulate("click")
+    dropdownWrapper.find("label").at(1).simulate("click")
     // expect(
     //   wrapper
     //     .find(".adui-table-filter")
@@ -131,10 +125,7 @@ describe("筛选功能", () => {
     //     .props()["data-value"]
     // ).toEqual(["1"])
     expect(onFilter).toHaveBeenCalledWith(["1"])
-    dropdownWrapper
-      .find("label")
-      .at(2)
-      .simulate("click")
+    dropdownWrapper.find("label").at(2).simulate("click")
     // expect(
     //   wrapper
     //     .find(".adui-table-filter")
@@ -148,10 +139,7 @@ describe("筛选功能", () => {
      *      onFilter([])
      * }
      */
-    dropdownWrapper
-      .find("label")
-      .at(0)
-      .simulate("click")
+    dropdownWrapper.find("label").at(0).simulate("click")
     // jest.runAllTimers()
   })
 
@@ -160,20 +148,11 @@ describe("筛选功能", () => {
     const th = wrapper.find("[role='columnheader']").at(0)
     th.simulate("click")
     const dropdownWrapper = mount(
-      wrapper
-        .find("Trigger")
-        .instance()
-        .getComponent()
+      wrapper.find("Trigger").instance().getComponent()
     )
-    dropdownWrapper
-      .find("label")
-      .at(0)
-      .simulate("click")
+    dropdownWrapper.find("label").at(0).simulate("click")
     expect(
-      wrapper
-        .find(".adui-table-filter")
-        .at(0)
-        .props()["data-value"]
+      wrapper.find(".adui-table-filter").at(0).props()["data-value"]
     ).toEqual(["all"])
     // dropdownWrapper
     //   .find("label")

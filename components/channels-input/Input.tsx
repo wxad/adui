@@ -168,12 +168,10 @@ const Input: IInput = forwardRef(
     }: IInputProps,
     ref
   ) => {
-    const [leftElementWidth, setLeftElementWidth] = useState<null | number>(
-      null
-    )
-    const [rightElementWidth, setRightElementWidth] = useState<null | number>(
-      null
-    )
+    const [leftElementWidth, setLeftElementWidth] =
+      useState<null | number>(null)
+    const [rightElementWidth, setRightElementWidth] =
+      useState<null | number>(null)
     const inputRef = useRef<any>(null)
     const wrapperElementRef = useRef<HTMLDivElement>(null)
     const leftElementRef = useRef<HTMLDivElement>(null)

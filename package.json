@@ -73,7 +73,8 @@
     "test": "jest --coverage",
     "release": "standard-version",
     "release-minor": "npm run release -- --release-as minor",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
+    "prettier": "prettier -c --write **/*"
   },
   "husky": {
     "hooks": {

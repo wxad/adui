@@ -1,6 +1,6 @@
-import * as React from 'react'
-import TestRenderer from 'react-test-renderer'
-import Suggest from '..'
+import * as React from "react"
+import TestRenderer from "react-test-renderer"
+import Suggest from ".."
 
 const { Option } = Suggest
 
@@ -15,10 +15,7 @@ describe("Suggest", () => {
 
   it("Suggest 是否正确渲染", () => {
     const wrapper = TestRenderer.create(
-      <Suggest
-        value="1"
-        onSearch={() => {}}
-      >
+      <Suggest value="1" onSearch={() => {}}>
         <Option value="1">pengyouquan</Option>
         <Option value="2">gongzhonghao</Option>
       </Suggest>

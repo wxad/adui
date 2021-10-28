@@ -14,7 +14,7 @@ export default class PropertyBox extends React.Component {
     const icons = Object.keys(dataSource).reduce(
       (acc, cur) => [
         ...acc,
-        ...dataSource[cur].data.map(o => ({ type: cur, ...o })),
+        ...dataSource[cur].data.map((o) => ({ type: cur, ...o })),
       ],
       []
     )
@@ -28,7 +28,7 @@ export default class PropertyBox extends React.Component {
     }
   }
 
-  handleCopyIconName = icon => {
+  handleCopyIconName = (icon) => {
     this.setState(
       {
         copiedName: icon.name,
@@ -52,7 +52,7 @@ export default class PropertyBox extends React.Component {
     }, 100)
   }
 
-  handleSearch = value => {
+  handleSearch = (value) => {
     const { icons } = this.state
     if (value === "") {
       this.setState({
@@ -62,7 +62,7 @@ export default class PropertyBox extends React.Component {
       this.setState({
         iconsFiltered: icons.filter(({ keywords }) => {
           let bool = false
-          keywords.forEach(o => {
+          keywords.forEach((o) => {
             if (!bool && o.includes(value)) {
               bool = true
             }
@@ -95,7 +95,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <ColorPicker
                   value={color}
-                  onChange={param => {
+                  onChange={(param) => {
                     this.setState({ color: param })
                   }}
                 />
@@ -105,7 +105,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="可交互"
                   unCheckedText="可交互"
                   checked={interactive}
-                  onChange={param => this.setState({ interactive: param })}
+                  onChange={(param) => this.setState({ interactive: param })}
                 />
               </div>
             </dl>
@@ -125,7 +125,7 @@ export default class PropertyBox extends React.Component {
           />
           <div>
             <textarea
-              ref={textarea => {
+              ref={(textarea) => {
                 this.textArea = textarea
               }}
               value={copiedName}
@@ -136,8 +136,8 @@ export default class PropertyBox extends React.Component {
               }}
             />
             {iconsFiltered.length !== 0 ? (
-              Object.keys(dataSource).map(type => {
-                const array = iconsFiltered.filter(item => item.type === type)
+              Object.keys(dataSource).map((type) => {
+                const array = iconsFiltered.filter((item) => item.type === type)
                 if (array.length) {
                   return (
                     <div className={styles.iconType} key={type}>
@@ -148,7 +148,7 @@ export default class PropertyBox extends React.Component {
                         </div>
                       </div>
                       <div className={styles.iconList}>
-                        {array.map(icon => {
+                        {array.map((icon) => {
                           return (
                             <div
                               role="none"

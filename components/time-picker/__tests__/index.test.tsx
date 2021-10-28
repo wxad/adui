@@ -18,10 +18,10 @@ class TimePickerTest extends React.Component {
         <TimePicker
           closeOnSelect
           value={value}
-          onChange={val => this.setState({ value: val })}
+          onChange={(val) => this.setState({ value: val })}
           minTime="08:40"
           maxTime="09:20"
-          ref={node => {
+          ref={(node) => {
             if (node) {
               this.picker = node
             }
@@ -81,18 +81,12 @@ describe("TimePicker", () => {
     expect(wrapper.find("Popover").props().visible).toEqual(true)
 
     act(() => {
-      wrapper
-        .find(".adui-time-item")
-        .at(0)
-        .simulate("click")
+      wrapper.find(".adui-time-item").at(0).simulate("click")
       jest.advanceTimersByTime(50)
       wrapper.update()
       expect(wrapper.find("Input").props().value).toEqual("08:40")
 
-      wrapper
-        .find(".adui-time-item")
-        .at(42)
-        .simulate("click")
+      wrapper.find(".adui-time-item").at(42).simulate("click")
       wrapper.update()
       jest.advanceTimersByTime(50)
       expect(wrapper.find("Input").props().value).toEqual("08:40")
@@ -138,10 +132,7 @@ describe("TimePicker", () => {
     const input = wrapper.find("input")
     input.simulate("focus")
     expect(wrapper.find("Popover").props().visible).toEqual(true)
-    wrapper
-      .find(".adui-time-item")
-      .at(0)
-      .simulate("click")
+    wrapper.find(".adui-time-item").at(0).simulate("click")
     expect(wrapper.find("Input").props().value).toEqual("00:20")
   })
 
@@ -150,10 +141,7 @@ describe("TimePicker", () => {
     const input = wrapper.find("input")
     input.simulate("focus")
     expect(wrapper.find("Popover").props().visible).toEqual(true)
-    wrapper
-      .find(".adui-time-item")
-      .at(0)
-      .simulate("click")
+    wrapper.find(".adui-time-item").at(0).simulate("click")
     expect(wrapper.find("Input").props().value).toEqual("09:00")
   })
 

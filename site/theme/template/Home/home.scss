@@ -1,7 +1,7 @@
 /* stylelint-disable */
 
 body {
-  animation: opacityShow .5s ease both;
+  animation: opacityShow 0.5s ease both;
 
   &::-webkit-scrollbar {
     // display: none;
@@ -16,7 +16,7 @@ body {
   margin-right: auto;
   width: 75vw;
   max-width: 1080px;
-  min-width:960px;
+  min-width: 960px;
 }
 
 @keyframes opacityShow {
@@ -60,11 +60,11 @@ body {
 @keyframes rightShow {
   0% {
     opacity: 0;
-    transform: translateY(14px) scaleX(.94);
+    transform: translateY(14px) scaleX(0.94);
   }
 
   35% {
-    opacity: .8;
+    opacity: 0.8;
   }
 
   100% {
@@ -76,11 +76,11 @@ body {
 @keyframes rightSmallShow {
   0% {
     opacity: 0;
-    transform: translateY(20px) scaleX(.9);
+    transform: translateY(20px) scaleX(0.9);
   }
 
   35% {
-    opacity: .8;
+    opacity: 0.8;
   }
 
   100% {
@@ -107,55 +107,56 @@ body {
 }
 @keyframes element0Show {
   0% {
-    transform: scaleX(.5);
+    transform: scaleX(0.5);
     opacity: 0;
   }
   100% {
     transform: scaleX(1);
-    opacity: .1;
+    opacity: 0.1;
   }
 }
 @keyframes element1Show {
   0% {
-    transform: scaleX(.5);
+    transform: scaleX(0.5);
     opacity: 0;
   }
   100% {
     transform: scaleX(1);
-    opacity: .07;
+    opacity: 0.07;
   }
 }
 @keyframes element2Show {
   0% {
-    transform: scaleX(.5);
+    transform: scaleX(0.5);
     opacity: 0;
   }
   100% {
     transform: scaleX(1);
-    opacity: .04;
+    opacity: 0.04;
   }
 }
 
 .left {
   .logo {
-    animation: leftShow 1.5s ease both .4s;
+    animation: leftShow 1.5s ease both 0.4s;
   }
   p {
-    animation: leftShow 1.5s ease both .5s;    
+    animation: leftShow 1.5s ease both 0.5s;
   }
-  button, a {
-    animation: leftShow 1.5s ease both .6s;
+  button,
+  a {
+    animation: leftShow 1.5s ease both 0.6s;
   }
 }
 .right {
-  animation: rightShow 1.5s ease both .4s;
+  animation: rightShow 1.5s ease both 0.4s;
 }
 .rightInner {
-  animation: opacityShow .7s ease both .9s;
+  animation: opacityShow 0.7s ease both 0.9s;
 }
 .right-small {
   transform-origin: 100% 100%;
-  animation: rightSmallShow 1.5s ease both .6s;
+  animation: rightSmallShow 1.5s ease both 0.6s;
 }
 .element {
   transform-origin: 0% 50%;
@@ -167,7 +168,7 @@ body {
   &:nth-child(5),
   &:nth-child(6),
   &:nth-child(7) {
-    animation: element0Show 1.4s ease both .9s;
+    animation: element0Show 1.4s ease both 0.9s;
   }
 
   &:nth-child(8),
@@ -191,7 +192,7 @@ body {
   }
 }
 .mainWrapper {
-  animation: mainShow .8s ease both 1.8s;
+  animation: mainShow 0.8s ease both 1.8s;
 }
 .home {
   :global {
@@ -215,8 +216,8 @@ body {
 
 .header {
   height: 660px;
-  background-image: linear-gradient(-180deg, #FCFCFC 18%, #FAFAFA 94%);
-  box-shadow: 0 1px 0 0 rgba(0,0,0,0.06);
+  background-image: linear-gradient(-180deg, #fcfcfc 18%, #fafafa 94%);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.06);
 }
 .headerInner {
   height: 100%;
@@ -238,7 +239,7 @@ body {
   :global {
     a {
       display: inline-block;
-      
+
       &:last-child {
         margin-left: 24px;
       }
@@ -256,8 +257,8 @@ body {
   width: 222px;
   height: 221px;
   background-color: #fdfdfd;
-  box-shadow: 0px 0px 0px 1px rgba(107,107,107,0.10),
-    0px 8px 15px 0px rgba(0,0,0,0.02);
+  box-shadow: 0px 0px 0px 1px rgba(107, 107, 107, 0.1),
+    0px 8px 15px 0px rgba(0, 0, 0, 0.02);
   border-radius: 24px;
 }
 .right {
@@ -268,9 +269,8 @@ body {
   width: 479px;
   height: 420px;
   background-color: #fff;
-  box-shadow: 0px 0px 0px 1px rgba(107,107,107,0.10),
-    0px 12px 36px 0px rgba(0,0,0,0.05),
-    0px 8px 16px 0px rgba(0,0,0,0.01);
+  box-shadow: 0px 0px 0px 1px rgba(107, 107, 107, 0.1),
+    0px 12px 36px 0px rgba(0, 0, 0, 0.05), 0px 8px 16px 0px rgba(0, 0, 0, 0.01);
   border-radius: 20px;
 }
 .right-top {
@@ -281,7 +281,7 @@ body {
   border-bottom: 1px solid #f3f3f3;
 
   svg {
-    fill: #c7c7c7!important;
+    fill: #c7c7c7 !important;
   }
 }
 .input {
@@ -291,12 +291,12 @@ body {
   margin-right: 4px;
 
   button {
-    padding-left: 11px!important;
-    padding-right: 11px!important;
-    transition: color .8s var(--ease-in-out),
-      background-color .8s var(--ease-in-out),
-      background-image .8s var(--ease-in-out),
-      box-shadow .8s var(--ease-in-out);
+    padding-left: 11px !important;
+    padding-right: 11px !important;
+    transition: color 0.8s var(--ease-in-out),
+      background-color 0.8s var(--ease-in-out),
+      background-image 0.8s var(--ease-in-out),
+      box-shadow 0.8s var(--ease-in-out);
   }
 }
 .button {
@@ -325,7 +325,7 @@ body {
 
   :global {
     label:not(:last-of-type) {
-      margin-right: calc(20px / 1.25)!important;
+      margin-right: calc(20px / 1.25) !important;
     }
   }
 }
@@ -340,15 +340,15 @@ body {
 .home {
   :global {
     .adui-switch-base {
-      width: 38px!important;
-      height: 22px!important;
-      
+      width: 38px !important;
+      height: 22px !important;
+
       i {
         top: 3px;
         left: 3px;
-      } 
+      }
     }
-  
+
     .adui-switch-checked .adui-switch-indicator {
       left: 0;
       transform: translateX(18px);
@@ -385,7 +385,7 @@ body {
     }
 
     svg {
-      fill: #c7c7c7!important;
+      fill: #c7c7c7 !important;
     }
   }
 }
@@ -411,7 +411,12 @@ body {
     left: 0;
     width: 100%;
     height: 1px;
-    background-image: linear-gradient(90deg, rgba(0,0,0,0.01) 0%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.01) 99%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.01) 0%,
+      rgba(0, 0, 0, 0.05) 55%,
+      rgba(0, 0, 0, 0.01) 99%
+    );
   }
 }
 .keyword {
@@ -431,8 +436,8 @@ body {
   min-width: 64px;
   height: 64px;
   background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(223,223,223,0.40),
-    0 4px 12px 0 rgba(0,0,0,0.06);
+  box-shadow: 0 0 0 1px rgba(223, 223, 223, 0.4),
+    0 4px 12px 0 rgba(0, 0, 0, 0.06);
   border-radius: 10px;
 }
 .keyword-title {
@@ -484,8 +489,8 @@ body {
   padding: 26px 90px 32px 25px;
   height: 100%;
   background-color: #fff;
-  box-shadow: 0px 0px 0px 1px rgba(223,223,223,0.5),
-    0px 4px 12px 0px rgba(0,0,0,0.03);
+  box-shadow: 0px 0px 0px 1px rgba(223, 223, 223, 0.5),
+    0px 4px 12px 0px rgba(0, 0, 0, 0.03);
   border-radius: 10px;
 }
 .menu-card-title {

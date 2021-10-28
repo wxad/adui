@@ -1,13 +1,10 @@
-import React from 'react'
-import styles from './components/propertyBox.scss'
-import CodeBox from './components/CodeBox'
-import {
-  Menu,
-} from '../../components'
+import React from "react"
+import styles from "./components/propertyBox.scss"
+import CodeBox from "./components/CodeBox"
+import { Menu } from "../../components"
 import { SIZES, INTENTS } from "./consts"
 
 export default class PropertyBox extends React.Component {
-
   state = {
     disabled: false,
     size: "small",
@@ -15,11 +12,7 @@ export default class PropertyBox extends React.Component {
   }
 
   render() {
-    const {
-      disabled,
-      size,
-      showText,
-    } = this.state
+    const { disabled, size, showText } = this.state
 
     const codes = `<Menu>
   <Menu.Item index="1">新建</Menu.Item>
@@ -33,7 +26,14 @@ export default class PropertyBox extends React.Component {
     return (
       <div className={styles.wrapper}>
         <div className={styles.property}>
-          <div className={styles.left} style={{ paddingTop: "40px", paddingBottom: "40px", alignItems: "flex-start" }}>
+          <div
+            className={styles.left}
+            style={{
+              paddingTop: "40px",
+              paddingBottom: "40px",
+              alignItems: "flex-start",
+            }}
+          >
             <Menu
               style={{
                 marginRight: "20px",

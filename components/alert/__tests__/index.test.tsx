@@ -12,7 +12,7 @@ const AlertMounter = () => {
     <Alert
       expanded={expanded}
       expandContent="1"
-      onExpandChange={bool => setExpanded(bool)}
+      onExpandChange={(bool) => setExpanded(bool)}
       text="2"
       title="3"
     />
@@ -49,14 +49,11 @@ describe("Alert", () => {
     expect(wrapper.text().includes("收起")).toBe(false)
   })
 
-  it("验证关闭", done => {
+  it("验证关闭", (done) => {
     const wrapper = mount(
       <Alert closable text="这是一条提示信息" title="提醒标题" />
     )
-    wrapper
-      .find(".adui-alert-closeIcon")
-      .at(0)
-      .simulate("click")
+    wrapper.find(".adui-alert-closeIcon").at(0).simulate("click")
     async.series(
       [
         timeout(350),

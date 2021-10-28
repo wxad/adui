@@ -1,23 +1,23 @@
-import * as React from 'react'
-import { mount } from 'enzyme'
-import TestRenderer from 'react-test-renderer'
-import Table from '..'
+import * as React from "react"
+import { mount } from "enzyme"
+import TestRenderer from "react-test-renderer"
+import Table from ".."
 
 const { Column } = Table
 
 const dataSource = [
   {
-    "key": 0,
-    "one": "第一项",
+    key: 0,
+    one: "第一项",
   },
   {
-    "key": 1,
-    "one": "第二项",
+    key: 1,
+    one: "第二项",
   },
   {
-    "key": 2,
-    "one": "第三项",
-  }
+    key: 2,
+    one: "第三项",
+  },
 ]
 
 class RadioMounter extends React.Component {
@@ -32,12 +32,9 @@ class RadioMounter extends React.Component {
         dataSource={dataSource}
         selectedRowKeys={keys}
         selectMultiple={false}
-        onSelectChange={args => this.setState({ keys: args})}
+        onSelectChange={(args) => this.setState({ keys: args })}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
   }
@@ -66,17 +63,14 @@ describe("disabled 验证", () => {
           return {}
         }}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
-    wrapper.find('.adui-radio-indicator').at(0).simulate("click")
+    wrapper.find(".adui-radio-indicator").at(0).simulate("click")
     expect(wrapper.find("Table").state().selectedRowKeys).toEqual([1])
-    wrapper.find('.adui-radio-indicator').at(1).simulate("click")
+    wrapper.find(".adui-radio-indicator").at(1).simulate("click")
     expect(wrapper.find("Table").state().selectedRowKeys).toEqual([1])
-    wrapper.find('.adui-radio-indicator').at(2).simulate("click")
+    wrapper.find(".adui-radio-indicator").at(2).simulate("click")
     expect(wrapper.find("Table").state().selectedRowKeys).toEqual([2])
   })
 
@@ -102,26 +96,30 @@ describe("disabled 验证", () => {
           return {}
         }}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     // 多选时找到的第一个元素是全选框
-    wrapper.find('.adui-checkbox-indicator').at(0).simulate("click")
-    expect(wrapper.find("Table").state().selectedRowKeys).toEqual([1, "多余项", 2])
-    wrapper.find('.adui-checkbox-indicator').at(0).simulate("click")
+    wrapper.find(".adui-checkbox-indicator").at(0).simulate("click")
+    expect(wrapper.find("Table").state().selectedRowKeys).toEqual([
+      1,
+      "多余项",
+      2,
+    ])
+    wrapper.find(".adui-checkbox-indicator").at(0).simulate("click")
     expect(wrapper.find("Table").state().selectedRowKeys).toEqual([1, "多余项"])
-    wrapper.find('.adui-checkbox-indicator').at(3).simulate("click")
-    expect(wrapper.find("Table").state().selectedRowKeys).toEqual([1, "多余项", 2])
-    wrapper.find('.adui-checkbox-indicator').at(3).simulate("click")
+    wrapper.find(".adui-checkbox-indicator").at(3).simulate("click")
+    expect(wrapper.find("Table").state().selectedRowKeys).toEqual([
+      1,
+      "多余项",
+      2,
+    ])
+    wrapper.find(".adui-checkbox-indicator").at(3).simulate("click")
     expect(wrapper.find("Table").state().selectedRowKeys).toEqual([1, "多余项"])
   })
 })
 
 describe("base", () => {
-
   it("快照核对", () => {
     const wrapper = TestRenderer.create(
       <Table
@@ -130,10 +128,7 @@ describe("base", () => {
         selectMultiple={false}
         onSelectChange={() => {}}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     expect(wrapper).toMatchSnapshot()
@@ -148,14 +143,11 @@ describe("base", () => {
         defaultSelectedRowKeys={[1]}
         selectMultiple={false}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     expect(wrapper.find("Table").state().selectedRowKeys).toEqual([1])
-    wrapper.find('.adui-radio-indicator').at(0).simulate("click")
+    wrapper.find(".adui-radio-indicator").at(0).simulate("click")
     expect(wrapper.find("Table").state().selectedRowKeys).toEqual([0])
   })
 
@@ -168,19 +160,16 @@ describe("base", () => {
         selectedRowKeys={[1]}
         selectMultiple={false}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     expect(wrapper0.find("Table").state().selectedRowKeys).toEqual([1])
-    wrapper0.find('.adui-radio-indicator').at(0).simulate("click")
+    wrapper0.find(".adui-radio-indicator").at(0).simulate("click")
     expect(wrapper0.find("Table").state().selectedRowKeys).toEqual([1])
 
     const wrapper1 = mount(<RadioMounter />)
     expect(wrapper1.find("Table").state().selectedRowKeys).toEqual([])
-    wrapper1.find('.adui-radio-indicator').at(0).simulate("click")
+    wrapper1.find(".adui-radio-indicator").at(0).simulate("click")
     expect(wrapper1.find("Table").state().selectedRowKeys).toEqual([0])
   })
 
@@ -193,10 +182,7 @@ describe("base", () => {
         onSelectChange={onSelectChange}
         selectOnRowClick
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     wrapper.find('[role="row"]').at(0).simulate("click")

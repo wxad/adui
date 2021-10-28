@@ -75,7 +75,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   value={min}
-                  onChange={param => this.setState({ min: param })}
+                  onChange={(param) => this.setState({ min: param })}
                 >
                   <Select.Option value="none">无</Select.Option>
                   <Select.Option value="-10">-10</Select.Option>
@@ -87,7 +87,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   value={max}
-                  onChange={param => this.setState({ max: param })}
+                  onChange={(param) => this.setState({ max: param })}
                 >
                   <Select.Option value="none">无</Select.Option>
                   <Select.Option value="20">20</Select.Option>
@@ -100,7 +100,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="禁用态"
                   unCheckedText="禁用态"
                   checked={disabled}
-                  onChange={param => this.setState({ disabled: param })}
+                  onChange={(param) => this.setState({ disabled: param })}
                 />
               </div>
             </dl>

@@ -1,22 +1,16 @@
-import React from 'react'
-import styles from './components/propertyBox.scss'
-import CodeBox from './components/CodeBox'
-import {
-  Button,
-  Breadcrumb,
-} from '../../components'
+import React from "react"
+import styles from "./components/propertyBox.scss"
+import CodeBox from "./components/CodeBox"
+import { Button, Breadcrumb } from "../../components"
 import { SIZES } from "./consts"
 
 export default class PropertyBox extends React.Component {
-
   state = {
     size: "small",
   }
 
   render() {
-    const {
-      size,
-    } = this.state
+    const { size } = this.state
 
     const codes = `<Breadcrumb${size === "small" ? "" : ` size="${size}" `}>
   <Breadcrumb.Item href="https://ad.weixin.qq.com">页面一</Breadcrumb.Item>
@@ -29,7 +23,9 @@ export default class PropertyBox extends React.Component {
         <div className={styles.property}>
           <div className={styles.left}>
             <Breadcrumb size={size}>
-              <Breadcrumb.Item href="https://ad.weixin.qq.com">页面一</Breadcrumb.Item>
+              <Breadcrumb.Item href="https://ad.weixin.qq.com">
+                页面一
+              </Breadcrumb.Item>
               <Breadcrumb.Item>页面二</Breadcrumb.Item>
               <Breadcrumb.Item>页面三</Breadcrumb.Item>
             </Breadcrumb>
@@ -40,17 +36,15 @@ export default class PropertyBox extends React.Component {
               <dt className={styles.controlTitle}>尺寸</dt>
               <dd className={styles.controlContent}>
                 <Button.Group banner>
-                  {
-                    SIZES.map(({ value, text }) => (
-                      <Button
-                        key={value}
-                        active={value === size}
-                        onClick={() => this.setState({ size: value })}
-                      >
-                        {text}
-                      </Button>
-                    ))
-                  }
+                  {SIZES.map(({ value, text }) => (
+                    <Button
+                      key={value}
+                      active={value === size}
+                      onClick={() => this.setState({ size: value })}
+                    >
+                      {text}
+                    </Button>
+                  ))}
                 </Button.Group>
               </dd>
             </dl>

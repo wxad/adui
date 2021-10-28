@@ -23,7 +23,7 @@ class TriggerMounter extends React.Component {
       <PopTrigger
         onPopupAlign={() => {}}
         onPopupVisibleChange={() => {}}
-        ref={node => {
+        ref={(node) => {
           if (node) {
             this.trigger = node
           }

@@ -44,7 +44,7 @@ export default class PropertyBox extends React.Component {
               size={size}
               banner={banner}
               style={banner ? { flex: 1 } : null}
-              ref={tabs => {
+              ref={(tabs) => {
                 this.tabs = tabs
               }}
             >
@@ -79,7 +79,7 @@ export default class PropertyBox extends React.Component {
                 checkedText="填满宽度 (banner)"
                 unCheckedText="填满宽度 (banner)"
                 checked={banner}
-                onChange={param =>
+                onChange={(param) =>
                   this.setState({ banner: param }, this.handleUpdate)
                 }
               />

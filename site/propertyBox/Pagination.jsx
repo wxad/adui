@@ -1,15 +1,10 @@
-import React from 'react'
-import styles from './components/propertyBox.scss'
-import CodeBox from './components/CodeBox'
-import {
-  Button,
-  Switch,
-  Pagination,
-} from '../../components'
+import React from "react"
+import styles from "./components/propertyBox.scss"
+import CodeBox from "./components/CodeBox"
+import { Button, Switch, Pagination } from "../../components"
 import { SIZES } from "./consts"
 
 export default class PropertyBox extends React.Component {
-
   state = {
     showInput: false,
     size: "small",
@@ -17,11 +12,7 @@ export default class PropertyBox extends React.Component {
   }
 
   render() {
-    const {
-      showInput,
-      size,
-      theme,
-    } = this.state
+    const { showInput, size, theme } = this.state
 
     const codes = `<Pagination
   defaultCurrent={1}
@@ -55,26 +46,34 @@ export default class PropertyBox extends React.Component {
               <dt className={styles.controlTitle}>尺寸</dt>
               <dd className={styles.controlContent}>
                 <Button.Group banner>
-                  {
-                    SIZES.map(({ value, text }) => (
-                      <Button
-                        key={value}
-                        active={value === size}
-                        onClick={() => this.setState({ size: value })}
-                      >
-                        {text}
-                      </Button>
-                    ))
-                  }
+                  {SIZES.map(({ value, text }) => (
+                    <Button
+                      key={value}
+                      active={value === size}
+                      onClick={() => this.setState({ size: value })}
+                    >
+                      {text}
+                    </Button>
+                  ))}
                 </Button.Group>
               </dd>
             </dl>
             <dl className={styles.controls}>
               <div className={styles.switchControl}>
-                <Switch checkedText="可快捷键跳转" unCheckedText="可快捷键跳转" checked={showInput} onChange={param => this.setState({ showInput: param })} />
+                <Switch
+                  checkedText="可快捷键跳转"
+                  unCheckedText="可快捷键跳转"
+                  checked={showInput}
+                  onChange={(param) => this.setState({ showInput: param })}
+                />
               </div>
               <div className={styles.switchControl}>
-                <Switch checkedText="轻量风格" unCheckedText="轻量风格" checked={theme} onChange={param => this.setState({ theme: param })} />
+                <Switch
+                  checkedText="轻量风格"
+                  unCheckedText="轻量风格"
+                  checked={theme}
+                  onChange={(param) => this.setState({ theme: param })}
+                />
               </div>
             </dl>
           </div>

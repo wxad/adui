@@ -14,14 +14,8 @@ export default class PropertyBox extends React.Component {
   }
 
   render() {
-    const {
-      place,
-      trigger,
-      alignEdge,
-      activeButton,
-      visible,
-      showExample,
-    } = this.state
+    const { place, trigger, alignEdge, activeButton, visible, showExample } =
+      this.state
 
     const codes = `<Tooltip
   placement="${place}"
@@ -51,7 +45,7 @@ export default class PropertyBox extends React.Component {
             {showExample && (
               <Tooltip
                 visible={visible}
-                onVisibleChange={bool => this.setState({ visible: bool })}
+                onVisibleChange={(bool) => this.setState({ visible: bool })}
                 placement={place}
                 trigger={trigger}
                 alignEdge={alignEdge}
@@ -96,7 +90,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   defaultValue={place}
-                  onSelect={value => {
+                  onSelect={(value) => {
                     this.setState({ place: value, showExample: false }, () => {
                       this.setState({
                         showExample: true,
@@ -105,7 +99,7 @@ export default class PropertyBox extends React.Component {
                     })
                   }}
                 >
-                  {placement.map(value => (
+                  {placement.map((value) => (
                     <Select.Option key={value} value={value}>
                       {value}
                     </Select.Option>
@@ -119,7 +113,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="边缘对齐"
                   unCheckedText="边缘对齐"
                   checked={alignEdge}
-                  onChange={param =>
+                  onChange={(param) =>
                     this.setState({ alignEdge: param, visible: true })
                   }
                 />

@@ -12,7 +12,7 @@ const PaginationMounter = () => {
       pageSize={10}
       current={current}
       total={99}
-      onChange={newCurrent => setCurrent(newCurrent)}
+      onChange={(newCurrent) => setCurrent(newCurrent)}
       showButtonJumper
     />
   )
@@ -50,43 +50,17 @@ describe("Pagination", () => {
         showInputJumper
       />
     )
-    expect(
-      wrapper
-        .find("div")
-        .at(0)
-        .props()["data-current"]
-    ).toEqual(5)
-    wrapper
-      .find("button")
-      .at(1)
-      .simulate("click")
-    expect(
-      wrapper
-        .find("div")
-        .at(0)
-        .props()["data-current"]
-    ).toEqual(4)
+    expect(wrapper.find("div").at(0).props()["data-current"]).toEqual(5)
+    wrapper.find("button").at(1).simulate("click")
+    expect(wrapper.find("div").at(0).props()["data-current"]).toEqual(4)
 
-    wrapper
-      .find("button")
-      .at(0)
-      .simulate("click")
-    expect(
-      wrapper
-        .find("div")
-        .at(0)
-        .props()["data-current"]
-    ).toEqual(1)
+    wrapper.find("button").at(0).simulate("click")
+    expect(wrapper.find("div").at(0).props()["data-current"]).toEqual(1)
 
     const input = wrapper.find("input")
     input.simulate("change", { target: { value: "3" } })
     input.simulate("keydown", { keyCode: 13 })
-    expect(
-      wrapper
-        .find("div")
-        .at(0)
-        .props()["data-current"]
-    ).toEqual(3)
+    expect(wrapper.find("div").at(0).props()["data-current"]).toEqual(3)
 
     input.simulate("change", { target: { value: "你好" } })
     input.simulate("keydown", { keyCode: 13 })
@@ -102,38 +76,14 @@ describe("Pagination", () => {
         showButtonJumper
       />
     )
-    wrapper1
-      .find("button")
-      .at(2)
-      .simulate("click")
-    expect(
-      wrapper1
-        .find("div")
-        .at(0)
-        .props()["data-current"]
-    ).toEqual(1)
+    wrapper1.find("button").at(2).simulate("click")
+    expect(wrapper1.find("div").at(0).props()["data-current"]).toEqual(1)
 
-    wrapper1
-      .find("button")
-      .at(3)
-      .simulate("click")
-    expect(
-      wrapper1
-        .find("div")
-        .at(0)
-        .props()["data-current"]
-    ).toEqual(1)
+    wrapper1.find("button").at(3).simulate("click")
+    expect(wrapper1.find("div").at(0).props()["data-current"]).toEqual(1)
   })
 
   const wrapper2 = mount(<PaginationMounter />)
-  wrapper2
-    .find("button")
-    .at(2)
-    .simulate("click")
-  expect(
-    wrapper2
-      .find("div")
-      .at(0)
-      .props()["data-current"]
-  ).toEqual(2)
+  wrapper2.find("button").at(2).simulate("click")
+  expect(wrapper2.find("div").at(0).props()["data-current"]).toEqual(2)
 })

@@ -8,33 +8,35 @@ title:
 `slide` 用于元素的 **隐藏与显示**。
 
 ```jsx
-  const [collapsed, setCollapsed] = useState(false)
+const [collapsed, setCollapsed] = useState(false)
 
-  return (
-    <div style={{ width: "50%" }}>
+return (
+  <div style={{ width: "50%" }}>
+    <div
+      className={`adui-motion-collapse ${
+        collapsed ? "adui-motion-collapse_collapsed" : ""
+      }`}
+    >
       <div
-        className={`adui-motion-collapse ${collapsed ? "adui-motion-collapse_collapsed" : ""}`}
+        className="adui-motion-collapse-header"
+        onClick={() => setCollapsed(!collapsed)}
       >
-        <div
-          className="adui-motion-collapse-header"
-          onClick={() => setCollapsed(!collapsed)}
-        >
-          下拉展开
-          <Icon icon="arrow-down" />
-        </div>
-        <Motion transition="slide">
-          {
-            !collapsed && (
-              <div style={{ padding: "0 16px", boxShadow: "0 1px 0 0 #f3f3f3 inset" }}>
-                <div style={{ padding: "12px 0" }}>下拉展开的内容</div>
-              </div>
-            )
-          }
-        </Motion>
+        下拉展开
+        <Icon icon="arrow-down" />
       </div>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
+      <Motion transition="slide">
+        {!collapsed && (
+          <div
+            style={{ padding: "0 16px", boxShadow: "0 1px 0 0 #f3f3f3 inset" }}
+          >
+            <div style={{ padding: "12px 0" }}>下拉展开的内容</div>
+          </div>
+        )}
+      </Motion>
+    </div>
+    <style
+      dangerouslySetInnerHTML={{
+        __html: `
             .adui-motion-collapse {
               box-shadow: 0 0 0 1px #f3f3f3 inset;
               border-radius: 4px;
@@ -54,8 +56,8 @@ title:
               transform: rotate(0deg);
             }
           `,
-        }}
-      />
-    </div>
-  )
+      }}
+    />
+  </div>
+)
 ```

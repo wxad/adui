@@ -44,9 +44,8 @@ const Popover: React.ForwardRefExoticComponent<
     }: IPopoverProps,
     ref
   ) => {
-    const { getPopupContainer: getPopupContainerContext } = useContext(
-      ConfigContext
-    )
+    const { getPopupContainer: getPopupContainerContext } =
+      useContext(ConfigContext)
 
     const popupTransitionName = useMemo(() => {
       if (arrowed) {

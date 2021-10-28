@@ -24,7 +24,7 @@ class DatePickerMounter extends Component {
             value: new Date("2020-10-01"),
           },
         ]}
-        ref={component => {
+        ref={(component) => {
           if (!this.state.component) {
             this.setState({ component })
           }
@@ -32,8 +32,8 @@ class DatePickerMounter extends Component {
         closeOnSelect
         value={value}
         visible={visible}
-        onChange={val => this.setState({ value: val })}
-        onVisibleChange={bool => this.setState({ visible: bool })}
+        onChange={(val) => this.setState({ value: val })}
+        onVisibleChange={(bool) => this.setState({ visible: bool })}
         {...this.props}
       />
     )
@@ -59,21 +59,13 @@ describe("DatePicker", () => {
     const wrapper = mount(
       <DatePicker defaultValue={val} defaultVisible={false} closeOnSelect />
     )
-    expect(
-      wrapper
-        .find("input")
-        .at(0)
-        .props().value
-    ).toBe(convertDateToString(val))
+    expect(wrapper.find("input").at(0).props().value).toBe(
+      convertDateToString(val)
+    )
 
     wrapper.find("input").simulate("focus")
 
-    expect(
-      wrapper
-        .find("Popover")
-        .at(0)
-        .props().visible
-    ).toBe(true)
+    expect(wrapper.find("Popover").at(0).props().visible).toBe(true)
 
     wrapper.find("input").simulate("change", { target: { value: "" } })
     expect(wrapper.find("input").props().value).toBe("")
@@ -87,42 +79,19 @@ describe("DatePicker", () => {
       wrapper.find("input").simulate("keydown", { key: "enter", keyCode: 13 })
       jest.runAllTimers()
       wrapper.update()
-      expect(
-        wrapper
-          .find("Popover")
-          .at(0)
-          .props().visible
-      ).toBe(false)
+      expect(wrapper.find("Popover").at(0).props().visible).toBe(false)
     })
 
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(14)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(14).simulate("click")
       const expectedVal = convertDateToString(
-        new Date(
-          wrapper
-            .find(".adui-date-day")
-            .at(14)
-            .props()["aria-label"]
-        )
+        new Date(wrapper.find(".adui-date-day").at(14).props()["aria-label"])
       )
       // 等待 350ms
       jest.advanceTimersByTime(350)
       wrapper.update()
-      expect(
-        wrapper
-          .find("input")
-          .at(0)
-          .props().value
-      ).toBe(expectedVal)
-      expect(
-        wrapper
-          .find("Popover")
-          .at(0)
-          .props().visible
-      ).toBe(false)
+      expect(wrapper.find("input").at(0).props().value).toBe(expectedVal)
+      expect(wrapper.find("Popover").at(0).props().visible).toBe(false)
     })
   })
 
@@ -134,56 +103,31 @@ describe("DatePicker", () => {
     const wrapper = mount(
       <DatePicker value={new Date()} visible closeOnSelect />
     )
-    expect(
-      wrapper
-        .find("input")
-        .at(0)
-        .props().value
-    ).toBe(convertDateToString(val))
+    expect(wrapper.find("input").at(0).props().value).toBe(
+      convertDateToString(val)
+    )
 
-    expect(
-      wrapper
-        .find("Popover")
-        .at(0)
-        .props().visible
-    ).toBe(true)
+    expect(wrapper.find("Popover").at(0).props().visible).toBe(true)
 
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(14)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(14).simulate("click")
       // 等待 350ms
       jest.advanceTimersByTime(350)
       wrapper.update()
-      expect(
-        wrapper
-          .find("input")
-          .at(0)
-          .props().value
-      ).toBe(convertDateToString(val))
+      expect(wrapper.find("input").at(0).props().value).toBe(
+        convertDateToString(val)
+      )
     })
 
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(15)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(15).simulate("click")
       // 等待 350ms
       jest.advanceTimersByTime(350)
       wrapper.update()
-      expect(
-        wrapper
-          .find("input")
-          .at(0)
-          .props().value
-      ).toBe(convertDateToString(val))
-      expect(
-        wrapper
-          .find("Popover")
-          .at(0)
-          .props().visible
-      ).toBe(true)
+      expect(wrapper.find("input").at(0).props().value).toBe(
+        convertDateToString(val)
+      )
+      expect(wrapper.find("Popover").at(0).props().visible).toBe(true)
     })
 
     /**
@@ -201,40 +145,21 @@ describe("DatePicker", () => {
     expect(convertDateToString(mounter.state().value)).toBe("2020-02-22")
     mounter.find("input").simulate("change", { target: { value: "" } })
     expect(convertDateToString(mounter.state().value)).toBe("")
-    expect(
-      mounter
-        .find("Popover")
-        .at(0)
-        .props().visible
-    ).toBe(true)
+    expect(mounter.find("Popover").at(0).props().visible).toBe(true)
     act(() => {
-      mounter
-        .find(".adui-date-day")
-        .at(15)
-        .simulate("click")
+      mounter.find(".adui-date-day").at(15).simulate("click")
       jest.runAllTimers()
       mounter.update()
-      expect(
-        mounter
-          .find("Popover")
-          .at(0)
-          .props().visible
-      ).toBe(false)
+      expect(mounter.find("Popover").at(0).props().visible).toBe(false)
     })
   })
 
   it("DayPicker 操作", () => {
     const today = new Date()
     const wrapper = mount(<DatePickerMounter />)
-    wrapper
-      .find("button")
-      .at(0)
-      .simulate("click")
+    wrapper.find("button").at(0).simulate("click")
     act(() => {
-      wrapper
-        .find(".adui-date-day")
-        .at(15)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(15).simulate("click")
       jest.runAllTimers()
       wrapper.update()
       if (today.getFullYear() > wrapper.state().value.getFullYear()) {
@@ -245,10 +170,7 @@ describe("DatePicker", () => {
     })
 
     act(() => {
-      wrapper
-        .find(".adui-date-shortcut")
-        .at(0)
-        .simulate("click")
+      wrapper.find(".adui-date-shortcut").at(0).simulate("click")
       jest.runAllTimers()
       wrapper.update()
       expect(convertDateToString(wrapper.state().value)).toBe("2020-10-01")
@@ -272,10 +194,7 @@ describe("DatePicker", () => {
         .simulate("change", { target: { value: "1" } })
       jest.runAllTimers()
       wrapper.update()
-      wrapper
-        .find(".adui-date-day")
-        .at(14)
-        .simulate("click")
+      wrapper.find(".adui-date-day").at(14).simulate("click")
       jest.runAllTimers()
       wrapper.update()
     })

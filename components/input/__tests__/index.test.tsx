@@ -170,9 +170,21 @@ describe("Input", () => {
     )
     wrapper.find("textarea").simulate("keydown", { key: "enter", keyCode: 13 })
     wrapper.find("textarea").simulate("focus")
-    expect(wrapper.find(".adui-input-wrapper").at(0).props().className.includes("adui-input-focused")).toBe(true)
+    expect(
+      wrapper
+        .find(".adui-input-wrapper")
+        .at(0)
+        .props()
+        .className.includes("adui-input-focused")
+    ).toBe(true)
     wrapper.find("textarea").simulate("blur")
-    expect(wrapper.find(".adui-input-wrapper").at(0).props().className.includes("adui-input-focused")).toBe(false)
+    expect(
+      wrapper
+        .find(".adui-input-wrapper")
+        .at(0)
+        .props()
+        .className.includes("adui-input-focused")
+    ).toBe(false)
     expect(onPressEnter).toHaveBeenCalledTimes(1)
     expect(onKeyDown).toHaveBeenCalledTimes(1)
     expect(onBlur).toHaveBeenCalledTimes(1)

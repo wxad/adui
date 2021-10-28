@@ -13,7 +13,7 @@ class SliderMounter extends Component {
     return (
       <Slider
         value={value}
-        onChange={param => this.setState({ value: param })}
+        onChange={(param) => this.setState({ value: param })}
       />
     )
   }
@@ -33,17 +33,11 @@ describe("Slider", () => {
     // wrapper.instance().handleBeforeChange()
     // wrapper.instance().handleAfterChange()
     expect(
-      wrapper
-        .find(".adui-slider-handle")
-        .at(1)
-        .prop("aria-valuenow")
+      wrapper.find(".adui-slider-handle").at(1).prop("aria-valuenow")
     ).toBe(30)
     wrapper.find("input").simulate("change", { target: { value: "50" } })
     expect(
-      wrapper
-        .find(".adui-slider-handle")
-        .at(1)
-        .prop("aria-valuenow")
+      wrapper.find(".adui-slider-handle").at(1).prop("aria-valuenow")
     ).toBe(50)
   })
 
@@ -56,17 +50,11 @@ describe("Slider", () => {
 
     wrapper0.find("input").simulate("change", { target: { value: "50" } })
     expect(
-      wrapper0
-        .find(".adui-slider-handle")
-        .at(1)
-        .prop("aria-valuenow")
+      wrapper0.find(".adui-slider-handle").at(1).prop("aria-valuenow")
     ).toBe(30)
     wrapper1.find("input").simulate("change", { target: { value: "50" } })
     expect(
-      wrapper1
-        .find(".adui-slider-handle")
-        .at(1)
-        .prop("aria-valuenow")
+      wrapper1.find(".adui-slider-handle").at(1).prop("aria-valuenow")
     ).toBe(50)
   })
 })

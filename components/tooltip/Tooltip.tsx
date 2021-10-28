@@ -122,9 +122,8 @@ const Tooltip: React.ForwardRefExoticComponent<
       setVisible(!!visibleProp)
     }
 
-    const { getPopupContainer: getPopupContainerContext } = useContext(
-      ConfigContext
-    )
+    const { getPopupContainer: getPopupContainerContext } =
+      useContext(ConfigContext)
 
     /**
      * 根据 placement 设置相关样式

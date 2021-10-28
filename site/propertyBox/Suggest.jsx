@@ -15,14 +15,8 @@ export default class PropertyBox extends React.Component {
   }
 
   render() {
-    const {
-      disabled,
-      intent,
-      leftElement,
-      rightElement,
-      size,
-      theme,
-    } = this.state
+    const { disabled, intent, leftElement, rightElement, size, theme } =
+      this.state
 
     let realLeftElement
     let realRightElement
@@ -170,7 +164,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   value={leftElement}
-                  onChange={param => this.setState({ leftElement: param })}
+                  onChange={(param) => this.setState({ leftElement: param })}
                 >
                   <Select.Option value="none">无</Select.Option>
                   <Select.Option value="icon">图标</Select.Option>
@@ -182,7 +176,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   value={rightElement}
-                  onChange={param => this.setState({ rightElement: param })}
+                  onChange={(param) => this.setState({ rightElement: param })}
                 >
                   <Select.Option value="none">无</Select.Option>
                   <Select.Option value="icon">图标</Select.Option>
@@ -195,7 +189,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="禁用态"
                   unCheckedText="禁用态"
                   checked={disabled}
-                  onChange={param => this.setState({ disabled: param })}
+                  onChange={(param) => this.setState({ disabled: param })}
                 />
               </div>
               <div className={styles.switchControl}>
@@ -203,7 +197,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="轻量风格"
                   unCheckedText="轻量风格"
                   checked={!!theme}
-                  onChange={param =>
+                  onChange={(param) =>
                     this.setState({ theme: param ? "light" : null })
                   }
                 />

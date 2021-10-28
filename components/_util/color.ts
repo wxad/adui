@@ -15,7 +15,7 @@ export const hsb2hsl = (a: number, b: number, c: number) => {
 
 export const hsl2hsb = (a: number, b: number, c: number) => {
   b *= c < 0.5 ? c : 1 - c
-  return [a, ((2 * b) / (c + b)) || 0, c + b]
+  return [a, (2 * b) / (c + b) || 0, c + b]
 }
 
 export const hsl2rgb = (h: number, s: number, l: number) => {

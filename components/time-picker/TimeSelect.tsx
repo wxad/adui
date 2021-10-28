@@ -113,9 +113,8 @@ const TimeSelect: React.ForwardRefExoticComponent<
 
     const updateScrollTop = (duration: number) => {
       if (selectRef?.current) {
-        const activeItem: Partial<HTMLDivElement> = selectRef.current.getElementsByClassName(
-          `${prefix}-active`
-        )[0]
+        const activeItem: Partial<HTMLDivElement> =
+          selectRef.current.getElementsByClassName(`${prefix}-active`)[0]
         if (activeItem) {
           const { offsetTop } = activeItem
           if (offsetTop !== undefined) {
@@ -145,12 +144,10 @@ const TimeSelect: React.ForwardRefExoticComponent<
       }
     )
 
-    const { hour: minHour, minute: minMinute } = extractHourAndMinuteFromTime(
-      minTime
-    )
-    const { hour: maxHour, minute: maxMinute } = extractHourAndMinuteFromTime(
-      maxTime
-    )
+    const { hour: minHour, minute: minMinute } =
+      extractHourAndMinuteFromTime(minTime)
+    const { hour: maxHour, minute: maxMinute } =
+      extractHourAndMinuteFromTime(maxTime)
 
     let items: string[] = []
     if (type === "minute") {

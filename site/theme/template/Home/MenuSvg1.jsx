@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-const SvgComponent = props => (
+const SvgComponent = (props) => (
   <svg width={34} height={32} {...props}>
     <defs>
       <linearGradient
@@ -45,7 +45,11 @@ const SvgComponent = props => (
     <g fill="none" fillRule="evenodd">
       <g fillRule="nonzero" transform="translate(.633)">
         <use fill="url(#prefixmenu1__a)" xlinkHref="#prefixmenu1__b" />
-        <use fill="#000" filter="url(#prefixmenu1__c)" xlinkHref="#prefixmenu1__b" />
+        <use
+          fill="#000"
+          filter="url(#prefixmenu1__c)"
+          xlinkHref="#prefixmenu1__b"
+        />
       </g>
       <path d="M7.797 7h18v18h-18z" />
       <path

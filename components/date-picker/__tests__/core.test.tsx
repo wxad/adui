@@ -11,13 +11,21 @@ import {
 
 describe("测试 core 方法的有效性", () => {
   it("areSameMonth", () => {
-    expect(areSameMonth(new Date("2020-02-02"), new Date("2020-02-28"))).toBe(true)
-    expect(areSameMonth(new Date("2020-02-02"), new Date("2020-03-01"))).toBe(false)
+    expect(areSameMonth(new Date("2020-02-02"), new Date("2020-02-28"))).toBe(
+      true
+    )
+    expect(areSameMonth(new Date("2020-02-02"), new Date("2020-03-01"))).toBe(
+      false
+    )
   })
 
   it("areSameDay", () => {
-    expect(areSameDay(new Date("2020-02-02"), new Date("2020-02-02"))).toBe(true)
-    expect(areSameDay(new Date("2020-02-02"), new Date("2020-03-01"))).toBe(false)
+    expect(areSameDay(new Date("2020-02-02"), new Date("2020-02-02"))).toBe(
+      true
+    )
+    expect(areSameDay(new Date("2020-02-02"), new Date("2020-03-01"))).toBe(
+      false
+    )
   })
 
   it("isLegalDateString", () => {

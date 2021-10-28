@@ -136,21 +136,19 @@ const Slider: React.FC<ISliderProps> = ({
    * 1. 优先判断 Prop value，如果存在 Prop value，则 Slider 完全交由外部控制，内部状态无效；
    * 2. 再判断 Prop defaultValue，如果存在默认值，则 Slider 值为此默认值。
    */
-  const [value, setValue] = useState(
-    (): SliderValue => {
-      let val
-      if (valueProp !== null) {
-        val = typeof valueProp === "string" ? Number(valueProp) : valueProp
-      } else if (defaultValue !== null) {
-        val =
-          typeof defaultValue === "string" ? Number(defaultValue) : defaultValue
-      }
-      if (val === undefined) {
-        return val
-      }
-      return range ? val : Number(val)
+  const [value, setValue] = useState((): SliderValue => {
+    let val
+    if (valueProp !== null) {
+      val = typeof valueProp === "string" ? Number(valueProp) : valueProp
+    } else if (defaultValue !== null) {
+      val =
+        typeof defaultValue === "string" ? Number(defaultValue) : defaultValue
     }
-  )
+    if (val === undefined) {
+      return val
+    }
+    return range ? val : Number(val)
+  })
 
   // 相当于生命周期 getDerivedStateFromProps
   if (

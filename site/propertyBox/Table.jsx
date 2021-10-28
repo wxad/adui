@@ -147,7 +147,7 @@ export default class PropertyBox extends React.Component {
               }
               onExpandChange={
                 expand
-                  ? expandedRowKeys => this.setState({ expandedRowKeys })
+                  ? (expandedRowKeys) => this.setState({ expandedRowKeys })
                   : null
               }
               expandOnRowClick={expand ? true : null}
@@ -179,7 +179,7 @@ export default class PropertyBox extends React.Component {
                 filterMultiple={false}
                 onFilter={
                   filter
-                    ? value => {
+                    ? (value) => {
                         if (value[0] === "1") {
                           this.setState({
                             dataSource: [
@@ -288,7 +288,7 @@ export default class PropertyBox extends React.Component {
                 title="数据项"
                 onSort={
                   sort
-                    ? order => {
+                    ? (order) => {
                         if (order === "") {
                           this.setState({
                             dataSource: [
@@ -454,7 +454,7 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   defaultValue="13px"
-                  onSelect={value => {
+                  onSelect={(value) => {
                     this.setState({ fontSize: value })
                   }}
                 >
@@ -469,7 +469,9 @@ export default class PropertyBox extends React.Component {
                   checkedText="可拖拽列"
                   unCheckedText="可拖拽列"
                   checked={columnsResizable}
-                  onChange={param => this.setState({ columnsResizable: param })}
+                  onChange={(param) =>
+                    this.setState({ columnsResizable: param })
+                  }
                 />
               </div>
               <div className={styles.switchControl}>
@@ -477,7 +479,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="可排序"
                   unCheckedText="可排序"
                   checked={sort}
-                  onChange={param => this.setState({ sort: param })}
+                  onChange={(param) => this.setState({ sort: param })}
                 />
               </div>
               <div className={styles.switchControl}>
@@ -485,7 +487,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="可筛选"
                   unCheckedText="可筛选"
                   checked={filter}
-                  onChange={param => this.setState({ filter: param })}
+                  onChange={(param) => this.setState({ filter: param })}
                 />
               </div>
               <div className={styles.switchControl}>
@@ -494,7 +496,7 @@ export default class PropertyBox extends React.Component {
                   unCheckedText="可单选"
                   checked={selectSin}
                   disabled={selectMul || expand}
-                  onChange={param => {
+                  onChange={(param) => {
                     this.setState({
                       selectSin: param,
                     })
@@ -507,7 +509,7 @@ export default class PropertyBox extends React.Component {
                   unCheckedText="可多选"
                   checked={selectMul}
                   disabled={selectSin || expand}
-                  onChange={param => {
+                  onChange={(param) => {
                     this.setState({
                       selectMul: param,
                     })
@@ -520,7 +522,7 @@ export default class PropertyBox extends React.Component {
                   unCheckedText="可展开"
                   checked={expand}
                   disabled={selectSin || selectMul}
-                  onChange={param => {
+                  onChange={(param) => {
                     this.setState({ expand: param })
                     if (!param) {
                       this.setState({
@@ -535,7 +537,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="加载态"
                   unCheckedText="加载态"
                   checked={loading}
-                  onChange={param => this.setState({ loading: param })}
+                  onChange={(param) => this.setState({ loading: param })}
                 />
               </div>
               <div className={styles.switchControl}>
@@ -543,7 +545,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="无数据"
                   unCheckedText="无数据"
                   checked={nodata}
-                  onChange={param => this.setState({ nodata: param })}
+                  onChange={(param) => this.setState({ nodata: param })}
                 />
               </div>
             </dl>

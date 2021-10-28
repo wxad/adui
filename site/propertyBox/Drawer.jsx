@@ -161,7 +161,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="显示顶栏"
                   unCheckedText="显示顶栏"
                   checked={headerElementVisible}
-                  onChange={param =>
+                  onChange={(param) =>
                     this.setState({
                       headerElementVisible: param,
                     })
@@ -173,7 +173,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="固定顶栏"
                   unCheckedText="固定顶栏"
                   checked={headerSticky}
-                  onChange={param =>
+                  onChange={(param) =>
                     this.setState({
                       headerSticky: param,
                     })
@@ -219,7 +219,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="显示蒙层"
                   unCheckedText="显示蒙层"
                   checked={maskVisible}
-                  onChange={param =>
+                  onChange={(param) =>
                     this.setState({
                       maskVisible: param,
                     })
@@ -231,7 +231,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="点击蒙层可退出"
                   unCheckedText="点击蒙层可退出"
                   checked={maskClosable}
-                  onChange={param =>
+                  onChange={(param) =>
                     this.setState({
                       maskClosable: param,
                     })
@@ -243,7 +243,7 @@ export default class PropertyBox extends React.Component {
                   checkedText="浮层外可滚动"
                   unCheckedText="浮层外可滚动"
                   checked={bodyScrollable}
-                  onChange={param =>
+                  onChange={(param) =>
                     this.setState({
                       bodyScrollable: param,
                     })

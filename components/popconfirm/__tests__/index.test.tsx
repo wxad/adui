@@ -61,20 +61,14 @@ describe("Popconfirm", () => {
         <div id="child">child</div>
       </Popconfirm>
     )
-    wrapper
-      .find("#child")
-      .at(0)
-      .simulate("click")
+    wrapper.find("#child").at(0).simulate("click")
     expect(onVisibleChange).toHaveBeenCalledWith(true, {})
     expect(wrapper.find("Popover").props().visible).toBe(true)
     const buttons = wrapper.find("button")
     buttons.at(0).simulate("click")
     expect(onVisibleChange).toHaveBeenCalledWith(false, { target: "cancel" })
     expect(wrapper.find("Popover").props().visible).toBe(false)
-    wrapper
-      .find("#child")
-      .at(0)
-      .simulate("click")
+    wrapper.find("#child").at(0).simulate("click")
     buttons.at(1).simulate("click")
     expect(onVisibleChange).toHaveBeenCalledWith(false, { target: "confirm" })
     expect(wrapper.find("Popover").props().visible).toBe(false)
@@ -85,10 +79,7 @@ describe("Popconfirm", () => {
     const buttons = wrapper.find("button")
     buttons.at(0).simulate("click")
     expect(wrapper.find("Popover").props().visible).toEqual(false)
-    wrapper
-      .find("#children")
-      .at(0)
-      .simulate("click")
+    wrapper.find("#children").at(0).simulate("click")
     expect(wrapper.find("Popover").props().visible).toEqual(true)
     buttons.at(1).simulate("click")
     expect(wrapper.find("Popover").props().visible).toEqual(true)

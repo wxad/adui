@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-const SvgComponent = props => (
+const SvgComponent = (props) => (
   <svg width={217} height={106} {...props}>
     <g fill="#1F1F1F" fillRule="nonzero">
       <path

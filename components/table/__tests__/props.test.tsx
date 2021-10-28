@@ -1,40 +1,40 @@
 /* eslint-disable */
-import * as React from 'react'
-import { mount } from 'enzyme'
-import TestRenderer from 'react-test-renderer'
-import sinon from 'sinon'
-import Table from '..'
+import * as React from "react"
+import { mount } from "enzyme"
+import TestRenderer from "react-test-renderer"
+import sinon from "sinon"
+import Table from ".."
 
 const dataSource = [
   {
-    "one": "阿萨德",
-    "two": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "four": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "three": "阿萨德阿萨德阿萨德阿萨德阿萨德",
+    one: "阿萨德",
+    two: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    four: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    three: "阿萨德阿萨德阿萨德阿萨德阿萨德",
   },
   {
-    "one": "阿萨德",
-    "two": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "four": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "three": "阿萨德阿萨德阿萨德阿萨德阿萨德",
+    one: "阿萨德",
+    two: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    four: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    three: "阿萨德阿萨德阿萨德阿萨德阿萨德",
   },
   {
-    "one": "阿萨德",
-    "two": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "four": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "three": "阿萨德阿萨德阿萨德阿萨德阿萨德",
+    one: "阿萨德",
+    two: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    four: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    three: "阿萨德阿萨德阿萨德阿萨德阿萨德",
   },
   {
-    "one": "阿萨德",
-    "two": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "four": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "three": "阿萨德阿萨德阿萨德阿萨德阿萨德",
+    one: "阿萨德",
+    two: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    four: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    three: "阿萨德阿萨德阿萨德阿萨德阿萨德",
   },
   {
-    "one": "阿萨德",
-    "two": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "four": "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
-    "three": "阿萨德阿萨德阿萨德阿萨德阿萨德",
+    one: "阿萨德",
+    two: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    four: "阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德阿萨德",
+    three: "阿萨德阿萨德阿萨德阿萨德阿萨德",
   },
 ]
 
@@ -42,9 +42,7 @@ export interface IBaseObject {
   [key: string]: any
 }
 
-
 describe("Table", () => {
-
   beforeAll(() => {
     /**
      * https://stackoverflow.com/a/40006663
@@ -67,10 +65,7 @@ describe("Table", () => {
 
   it("headerAffixed 检测", () => {
     const wrapper = mount(
-      <Table
-        dataSource={dataSource}
-        headerAffixed
-      >
+      <Table dataSource={dataSource} headerAffixed>
         <Table.Column
           dataIndex="one"
           title="第一项"
@@ -91,10 +86,7 @@ describe("Table", () => {
           align="center"
           render={() => "这些撒大声地"}
         />
-        <Table.Column
-          dataIndex="three"
-          title="第san项"
-        />
+        <Table.Column dataIndex="three" title="第san项" />
         <Table.Column
           dataIndex="four"
           title="第si项"
@@ -106,9 +98,9 @@ describe("Table", () => {
     // @ts-ignore
     global.innerWidth = 500
     // @ts-ignore
-    global.dispatchEvent(new Event('resize'))
+    global.dispatchEvent(new Event("resize"))
     // @ts-ignore
-    global.dispatchEvent(new Event('scroll'))
+    global.dispatchEvent(new Event("scroll"))
     wrapper.instance().handleMainTableScroll()
     wrapper.instance().componentWillUnmount()
   })
@@ -134,13 +126,9 @@ describe("Table", () => {
   // })
 
   it("height 与 headerAffixed 不能同时使用 验证", () => {
-    const stub = sinon.stub(console, 'error')
+    const stub = sinon.stub(console, "error")
     mount(
-      <Table
-        dataSource={dataSource}
-        height={500}
-        headerAffixed
-      >
+      <Table dataSource={dataSource} height={500} headerAffixed>
         <Table.Column
           dataIndex="one"
           title="半角括号外(半角括号内测试)"
@@ -156,10 +144,7 @@ describe("Table", () => {
 
   it("height 检测", () => {
     const wrapper = mount(
-      <Table
-        dataSource={dataSource}
-        height={200}
-      >
+      <Table dataSource={dataSource} height={200}>
         <Table.Column
           dataIndex="one"
           title="第一项"
@@ -180,10 +165,7 @@ describe("Table", () => {
           align="center"
           render={() => "这些撒大声地"}
         />
-        <Table.Column
-          dataIndex="three"
-          title="第san项"
-        />
+        <Table.Column dataIndex="three" title="第san项" />
         <Table.Column
           dataIndex="four"
           title="第si项"
@@ -197,9 +179,9 @@ describe("Table", () => {
     // @ts-ignore
     global.innerHeight = 500
     // @ts-ignore
-    global.dispatchEvent(new Event('resize'))
+    global.dispatchEvent(new Event("resize"))
     // @ts-ignore
-    global.dispatchEvent(new Event('scroll'))
+    global.dispatchEvent(new Event("scroll"))
     wrapper.instance().handleMainTableScroll()
   })
 
@@ -221,16 +203,10 @@ describe("Table", () => {
   // })
 
   it("Column width 在 fixed 时必须设置 验证", () => {
-    const stub = sinon.stub(console, 'error')
+    const stub = sinon.stub(console, "error")
     mount(
-      <Table
-        dataSource={dataSource}
-      >
-        <Table.Column
-          dataIndex="one"
-          title="第一项"
-          fixed="left"
-        />
+      <Table dataSource={dataSource}>
+        <Table.Column dataIndex="one" title="第一项" fixed="left" />
       </Table>
     )
     expect(stub.calledOnce).toBe(true)
@@ -239,15 +215,8 @@ describe("Table", () => {
 
   it("loading 快照", () => {
     const wrapper = TestRenderer.create(
-      <Table
-        loading
-        dataSource={dataSource}
-      >
-        <Table.Column
-          dataIndex="one"
-          title="第一项"
-          fixed="left"
-        />
+      <Table loading dataSource={dataSource}>
+        <Table.Column dataIndex="one" title="第一项" fixed="left" />
       </Table>
     )
     expect(wrapper).toMatchSnapshot()
@@ -285,21 +254,9 @@ describe("Table", () => {
           return {}
         }}
       >
-        <Table.Column
-          dataIndex="one"
-          title="第一项"
-          fixed
-        />
-        <Table.Column
-          dataIndex="two"
-          title="第er项"
-          fixed
-        />
-        <Table.Column
-          dataIndex="three"
-          title="第3项"
-          align="center"
-        />
+        <Table.Column dataIndex="one" title="第一项" fixed />
+        <Table.Column dataIndex="two" title="第er项" fixed />
+        <Table.Column dataIndex="three" title="第3项" align="center" />
         <Table.Column
           dataIndex="four"
           title="第四项"

@@ -41,23 +41,12 @@ describe("Select", () => {
       </Select>
     )
     let dropdownWrapper = mount(
-      wrapper
-        .find("Trigger")
-        .instance()
-        .getComponent()
+      wrapper.find("Trigger").instance().getComponent()
     )
     expect(dropdownWrapper.props().visible).toBe(true)
-    dropdownWrapper
-      .find(".adui-select-item-option")
-      .at(0)
-      .simulate("click")
+    dropdownWrapper.find(".adui-select-item-option").at(0).simulate("click")
     // 需要重新获取
-    dropdownWrapper = mount(
-      wrapper
-        .find("Trigger")
-        .instance()
-        .getComponent()
-    )
+    dropdownWrapper = mount(wrapper.find("Trigger").instance().getComponent())
     expect(wrapper.state().value).toBe(1)
     expect(dropdownWrapper.props().visible).toBe(false)
   })
@@ -71,24 +60,13 @@ describe("Select", () => {
       </Select>
     )
     let dropdownWrapper = mount(
-      wrapper
-        .find("Trigger")
-        .instance()
-        .getComponent()
+      wrapper.find("Trigger").instance().getComponent()
     )
     expect(wrapper.state().value).toBe(2)
     expect(dropdownWrapper.props().visible).toBe(true)
-    dropdownWrapper
-      .find(".adui-select-item-option")
-      .at(0)
-      .simulate("click")
+    dropdownWrapper.find(".adui-select-item-option").at(0).simulate("click")
     // 需要重新获取
-    dropdownWrapper = mount(
-      wrapper
-        .find("Trigger")
-        .instance()
-        .getComponent()
-    )
+    dropdownWrapper = mount(wrapper.find("Trigger").instance().getComponent())
     expect(wrapper.state().value).toBe(2)
     expect(dropdownWrapper.props().visible).toBe(true)
   })

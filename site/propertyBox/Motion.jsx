@@ -12,7 +12,7 @@ const ZoomExample = () => {
     电子邮箱: "donon@gmail.com",
   })
 
-  const handleClick = expanded => {
+  const handleClick = (expanded) => {
     const dataNew = { ...data }
     if (expanded) {
       delete dataNew["职业"]
@@ -33,7 +33,7 @@ const ZoomExample = () => {
       labelSize={4}
     >
       <Motion transition="zoom">
-        {Object.keys(data).map(key => (
+        {Object.keys(data).map((key) => (
           <Form.Item key={key} label={key}>
             {data[key]}
           </Form.Item>

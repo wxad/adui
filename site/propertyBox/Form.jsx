@@ -1,18 +1,11 @@
-import React from 'react'
-import styles from './components/propertyBox.scss'
-import CodeBox from './components/CodeBox'
-import {
-  Button,
-  Form,
-  Input,
-  Select,
-  Radio,
-} from '../../components'
+import React from "react"
+import styles from "./components/propertyBox.scss"
+import CodeBox from "./components/CodeBox"
+import { Button, Form, Input, Select, Radio } from "../../components"
 
 export default class PropertyBox extends React.Component {
-
   state = {
-    labelAlign: 'left',
+    labelAlign: "left",
     labelMargin: "16px",
     itemMargin: "24px",
     itemTextMargin: "8px",
@@ -70,10 +63,11 @@ export default class PropertyBox extends React.Component {
       <div className={styles.wrapper}>
         <div className={styles.property}>
           <div className={styles.left}>
-            <div style={{
-              display: "flex",
-              margin: "64px 0 36px 0",
-            }}
+            <div
+              style={{
+                display: "flex",
+                margin: "64px 0 36px 0",
+              }}
             >
               <Form
                 itemStyle={{ marginBottom: itemMargin }}
@@ -112,27 +106,10 @@ export default class PropertyBox extends React.Component {
                 labelSize={labelSize}
                 labelAlign={labelAlign}
               >
-                <Form.Item
-                  label="名称"
-                >
-                  微信广告助手
-                </Form.Item>
-                <Form.Item
-                  label="城市"
-                >
-                  深圳市
-                </Form.Item>
-                <Form.Item
-                  label="性别"
-                >
-                  男
-                </Form.Item>
-                <Form.Item
-                  label="电子邮箱"
-
-                >
-                  donon@gmail.com
-                </Form.Item>
+                <Form.Item label="名称">微信广告助手</Form.Item>
+                <Form.Item label="城市">深圳市</Form.Item>
+                <Form.Item label="性别">男</Form.Item>
+                <Form.Item label="电子邮箱">donon@gmail.com</Form.Item>
               </Form>
             </div>
           </div>
@@ -227,7 +204,9 @@ export default class PropertyBox extends React.Component {
               <dd className={styles.controlContent}>
                 <Select
                   defaultValue={4}
-                  onSelect={value => { this.setState({ labelSize: value }) }}
+                  onSelect={(value) => {
+                    this.setState({ labelSize: value })
+                  }}
                 >
                   <Select.Option value={4}>4</Select.Option>
                   <Select.Option value={5}>5</Select.Option>

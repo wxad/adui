@@ -1,23 +1,23 @@
-import * as React from 'react'
-import { mount } from 'enzyme'
-import TestRenderer from 'react-test-renderer'
-import Table from '..'
+import * as React from "react"
+import { mount } from "enzyme"
+import TestRenderer from "react-test-renderer"
+import Table from ".."
 
 const { Column } = Table
 
 const dataSource = [
   {
-    "key": 0,
-    "one": "第一项",
+    key: 0,
+    one: "第一项",
   },
   {
-    "key": 1,
-    "one": "第二项",
+    key: 1,
+    one: "第二项",
   },
   {
-    "key": 2,
-    "one": "第三项",
-  }
+    key: 2,
+    one: "第三项",
+  },
 ]
 
 class ExpandMounter extends React.Component {
@@ -31,19 +31,15 @@ class ExpandMounter extends React.Component {
       <Table
         dataSource={dataSource}
         expandedRowKeys={keys}
-        onExpandChange={argKeys => this.setState({ keys: argKeys })}
+        onExpandChange={(argKeys) => this.setState({ keys: argKeys })}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
   }
 }
 
 describe("base", () => {
-
   it("快照核对", () => {
     const wrapper = TestRenderer.create(
       <Table
@@ -51,10 +47,7 @@ describe("base", () => {
         defaultExpandedRowKeys={[1]}
         onExpandChange={() => {}}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     expect(wrapper).toMatchSnapshot()
@@ -68,10 +61,7 @@ describe("base", () => {
         onExpandChange={onExpandChange}
         defaultExpandedRowKeys={[1]}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     expect(wrapper.find("Table").state().expandedRowKeys).toEqual([1])
@@ -87,10 +77,7 @@ describe("base", () => {
         onExpandChange={onExpandChange}
         expandedRowKeys={[1]}
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     expect(wrapper0.find("Table").state().expandedRowKeys).toEqual([1])
@@ -113,10 +100,7 @@ describe("base", () => {
         onExpandChange={onExpandChange}
         expandOnRowClick
       >
-        <Column
-          title="one"
-          dataIndex="one"
-        />
+        <Column title="one" dataIndex="one" />
       </Table>
     )
     wrapper.find('[role="row"]').at(0).simulate("click")

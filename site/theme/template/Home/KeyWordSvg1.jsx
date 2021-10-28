@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-const SvgComponent = props => (
+const SvgComponent = (props) => (
   <svg width={32} height={24} {...props}>
     <defs>
       <filter
@@ -112,15 +112,27 @@ const SvgComponent = props => (
     <g fillRule="nonzero" fill="none">
       <g transform="translate(-16 -20)">
         <use fill="url(#preprefix__a)" xlinkHref="#preprefix__b" />
-        <use fill="#000" filter="url(#preprefix__c)" xlinkHref="#preprefix__b" />
+        <use
+          fill="#000"
+          filter="url(#preprefix__c)"
+          xlinkHref="#preprefix__b"
+        />
       </g>
       <g opacity={0.8} transform="translate(-16 -20)">
         <use fill="url(#preprefix__d)" xlinkHref="#preprefix__e" />
-        <use fill="#000" filter="url(#preprefix__f)" xlinkHref="#preprefix__e" />
+        <use
+          fill="#000"
+          filter="url(#preprefix__f)"
+          xlinkHref="#preprefix__e"
+        />
       </g>
       <g opacity={0.6} transform="translate(-16 -20)">
         <use fill="url(#preprefix__d)" xlinkHref="#preprefix__g" />
-        <use fill="#000" filter="url(#preprefix__h)" xlinkHref="#preprefix__g" />
+        <use
+          fill="#000"
+          filter="url(#preprefix__h)"
+          xlinkHref="#preprefix__g"
+        />
       </g>
     </g>
   </svg>

@@ -31,19 +31,9 @@ describe("Tooltip", () => {
     )
     const child = wrapper.find("#children").at(0)
     child.simulate("mouseenter")
-    expect(
-      wrapper
-        .find("Trigger")
-        .at(0)
-        .props().popupVisible
-    ).toBe(true)
+    expect(wrapper.find("Trigger").at(0).props().popupVisible).toBe(true)
     child.simulate("mouseleave")
-    expect(
-      wrapper
-        .find("Trigger")
-        .at(0)
-        .props().popupVisible
-    ).toBe(false)
+    expect(wrapper.find("Trigger").at(0).props().popupVisible).toBe(false)
   })
 })
 
@@ -97,12 +87,9 @@ describe("Tooltip 测试 handlePopupAlign - Top", () => {
       wrapper.update()
     })
 
-    expect(
-      wrapper
-        .find("PopTrigger")
-        .at(0)
-        .props().popupPlacement
-    ).toBe("bottom")
+    expect(wrapper.find("PopTrigger").at(0).props().popupPlacement).toBe(
+      "bottom"
+    )
   })
 })
 
@@ -156,11 +143,6 @@ describe("Tooltip 测试 handlePopupAlign - Bottom", () => {
       wrapper.update()
     })
 
-    expect(
-      wrapper
-        .find("PopTrigger")
-        .at(0)
-        .props().popupPlacement
-    ).toBe("top")
+    expect(wrapper.find("PopTrigger").at(0).props().popupPlacement).toBe("top")
   })
 })

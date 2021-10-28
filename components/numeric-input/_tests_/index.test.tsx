@@ -1,7 +1,7 @@
 /* eslint-disable */
-import * as React from 'react'
-import TestRenderer from 'react-test-renderer'
-import NumericInput from '..'
+import * as React from "react"
+import TestRenderer from "react-test-renderer"
+import NumericInput from ".."
 
 // class Mounter extends React.Component<any, any> {
 //   constructor(props) {
@@ -29,7 +29,6 @@ import NumericInput from '..'
 // }
 
 describe("NumericInput", () => {
-
   beforeAll(() => {
     /**
      * https://stackoverflow.com/a/40006663
@@ -51,9 +50,7 @@ describe("NumericInput", () => {
   })
 
   it("快照验证", () => {
-    const wrapper = TestRenderer.create(
-      <NumericInput />
-    )
+    const wrapper = TestRenderer.create(<NumericInput />)
     expect(wrapper).toMatchSnapshot()
   })
 })

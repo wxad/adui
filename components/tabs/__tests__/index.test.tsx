@@ -54,22 +54,9 @@ describe("Tabs", () => {
         <Tab title="2" value="2" />
       </Tabs>
     )
-    expect(
-      wrapper
-        .find("div")
-        .at(0)
-        .props()["data-value"]
-    ).toEqual("1")
-    wrapper
-      .find("[role='tab']")
-      .at(1)
-      .simulate("click")
-    expect(
-      wrapper
-        .find("div")
-        .at(0)
-        .props()["data-value"]
-    ).toEqual("2")
+    expect(wrapper.find("div").at(0).props()["data-value"]).toEqual("1")
+    wrapper.find("[role='tab']").at(1).simulate("click")
+    expect(wrapper.find("div").at(0).props()["data-value"]).toEqual("2")
   })
 
   it("是否能受外部控制", () => {
@@ -79,21 +66,8 @@ describe("Tabs", () => {
         <Tab title="2" value="2" />
       </Tabs>
     )
-    expect(
-      wrapper0
-        .find("div")
-        .at(0)
-        .props()["data-value"]
-    ).toEqual("1")
-    wrapper0
-      .find("[role='tab']")
-      .at(1)
-      .simulate("click")
-    expect(
-      wrapper0
-        .find("div")
-        .at(0)
-        .props()["data-value"]
-    ).toEqual("1")
+    expect(wrapper0.find("div").at(0).props()["data-value"]).toEqual("1")
+    wrapper0.find("[role='tab']").at(1).simulate("click")
+    expect(wrapper0.find("div").at(0).props()["data-value"]).toEqual("1")
   })
 })
