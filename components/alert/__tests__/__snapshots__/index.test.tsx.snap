@@ -1,39 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Alert 是否正确渲染 1`] = `
-<div>
+<div
+  className="adui-alert-base adui-alert-normal adui-alert-small"
+>
   <div
-    className="adui-alert-base adui-alert-normal adui-alert-small"
+    className="adui-alert-inner"
   >
-    <div
-      className="adui-alert-inner"
+    <svg
+      className="adui-alert-icon adui-icon-base"
+      data-icon="info-circle"
+      data-interactive={false}
+      fill="var(--gray-700)"
+      height={20}
+      onClick={[Function]}
+      viewBox="0 0 18 18"
+      width={20}
     >
-      <svg
-        className="adui-alert-icon adui-icon-base"
-        data-icon="info-circle"
-        data-interactive={false}
-        fill="var(--gray-700)"
-        height={20}
-        onClick={[Function]}
-        viewBox="0 0 18 18"
-        width={20}
-      >
-        <path
-          d="M9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16ZM8.25 4.5V6H9.75V4.5H8.25ZM8.25 13.5H9.75V7H8.25V13.5Z"
-          fillRule="evenodd"
-        />
-      </svg>
+      <path
+        d="M9 16C5.13401 16 2 12.866 2 9C2 5.13401 5.13401 2 9 2C12.866 2 16 5.13401 16 9C16 12.866 12.866 16 9 16ZM8.25 4.5V6H9.75V4.5H8.25ZM8.25 13.5H9.75V7H8.25V13.5Z"
+        fillRule="evenodd"
+      />
+    </svg>
+    <div
+      className="adui-alert-text"
+    >
       <div
-        className="adui-alert-text"
+        className="adui-alert-title"
       >
-        <div
-          className="adui-alert-title"
-        >
-          提醒标题
-        </div>
-        <div>
-          这是一条提示信息
-        </div>
+        提醒标题
+      </div>
+      <div>
+        这是一条提示信息
       </div>
     </div>
   </div>

@@ -4,6 +4,14 @@ import TestRenderer from "react-test-renderer"
 import { mount } from "enzyme"
 import Tabs from ".."
 
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }))
+
 const { Tab } = Tabs
 
 describe("Tabs", () => {

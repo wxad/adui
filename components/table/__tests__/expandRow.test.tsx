@@ -3,6 +3,14 @@ import { mount } from "enzyme"
 import TestRenderer from "react-test-renderer"
 import Table from ".."
 
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }))
+
 const { Column } = Table
 
 const dataSource = [

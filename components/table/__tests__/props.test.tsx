@@ -5,6 +5,14 @@ import TestRenderer from "react-test-renderer"
 import sinon from "sinon"
 import Table from ".."
 
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }))
+
 const dataSource = [
   {
     one: "阿萨德",

@@ -2,46 +2,43 @@
 
 exports[`Spinner Spinner 是否正确渲染 1`] = `
 <div
-  className="adui-spinner-nestedWrapper"
-  style={null}
+  className="undefined adui-spinner-nestedWrapper"
 >
-  <div>
-    <div
-      className="adui-spinner-base adui-spinner-normal adui-spinner-spinning"
-      style={
-        Object {
-          "color": "#00bb9c",
-        }
+  <div
+    className="adui-spinner-base adui-spinner-normal adui-spinner-spinning"
+    style={
+      Object {
+        "color": "#00bb9c",
       }
+    }
+  >
+    <svg
+      className="adui-spinner-circular"
+      fill="none"
+      height={20}
+      viewBox="0 0 100 100"
+      width={20}
     >
-      <svg
-        className="adui-spinner-circular"
-        fill="none"
-        height={20}
-        viewBox="0 0 100 100"
-        width={20}
-      >
-        <circle
-          className="adui-spinner-track"
-          cx="50%"
-          cy="50%"
-          r="44"
-          strokeWidth={12.5}
-        />
-        <circle
-          className="adui-spinner-head"
-          cx="50%"
-          cy="50%"
-          r="44"
-          strokeWidth={12.5}
-          style={
-            Object {
-              "strokeDasharray": "282.743px",
-            }
+      <circle
+        className="adui-spinner-track"
+        cx="50%"
+        cy="50%"
+        r="44"
+        strokeWidth={12.5}
+      />
+      <circle
+        className="adui-spinner-head"
+        cx="50%"
+        cy="50%"
+        r="44"
+        strokeWidth={12.5}
+        style={
+          Object {
+            "strokeDasharray": "282.743px",
           }
-        />
-      </svg>
-    </div>
+        }
+      />
+    </svg>
   </div>
   <div
     className="adui-spinner-container adui-spinner-blur"

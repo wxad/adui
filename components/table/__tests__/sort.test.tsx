@@ -2,6 +2,14 @@ import * as React from "react"
 import { mount } from "enzyme"
 import Table from ".."
 
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }))
+
 const { Column } = Table
 
 class SortMounter extends React.Component {

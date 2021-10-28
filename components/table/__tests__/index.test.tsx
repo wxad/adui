@@ -2,6 +2,14 @@ import * as React from "react"
 import TestRenderer from "react-test-renderer"
 import Table from ".."
 
+window.ResizeObserver =
+  window.ResizeObserver ||
+  jest.fn().mockImplementation(() => ({
+    disconnect: jest.fn(),
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+  }))
+
 const ds = [
   {
     one: "阿萨德",
