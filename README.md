@@ -184,8 +184,7 @@ enzyme + jest 书写测试用例。
 
 ## 多人维护
 
-1. 透明的开发：前期的开发模式仍待规范，我自己都重复 refactor 过几次；
-2. Pull Request Review：为了更好地进行 review，需要将 jest snapshot 一并 request。
+Pull Request Review：为了更好地进行 review，需要将 jest snapshot 一并 request。
 
 ## 分支名称规范
 
