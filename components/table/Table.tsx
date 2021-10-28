@@ -684,17 +684,14 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   }
 
   public componentDidUpdate = ({
-    dataSource: dataSourceOld,
     getCellProps: getCellPropsOld,
   }: ITableProps<T>) => {
-    const { dataSource, getCellProps } = this.props
+    const { getCellProps } = this.props
     /**
      * handleWindowResize 不应该只在 didmount 时执行
      * didUpdate 时也需要
      */
-    if (!shallowEqual(dataSourceOld, dataSource)) {
-      setTimeout(this.handleWindowResize, 0)
-    }
+    setTimeout(this.handleWindowResize, 0)
 
     /**
      * 合并单元格需拿到真实的 dom 元素计算尺寸，因此这里需要 forceUpdate
@@ -785,7 +782,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     const { isAnyColumnsFixed } = columnManager
     const { headerAffixed, height } = props
     if ((headerAffixed || height || isAnyColumnsFixed) && mainTable) {
-      const { mainTableStyle: oldStyle } = this.state
+      const {
+        mainTableStyle: oldStyle,
+        isMainTableOverflowX: oldOverflowX,
+        isMainTableOverflowY: oldOverflowY,
+      } = this.state
       const rect = mainTable.getBoundingClientRect()
       const mainTableStyle: Partial<React.CSSProperties> = {}
       mainTableStyle.left = rect.left
@@ -793,12 +794,19 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       if (!shallowEqual(mainTableStyle, oldStyle)) {
         this.setState({ mainTableStyle })
       }
-      this.setState({
-        isMainTableOverflowX:
-          mainTable && mainTable.scrollWidth > mainTable.offsetWidth,
-        isMainTableOverflowY:
-          mainTable && mainTable.scrollHeight > mainTable.offsetHeight,
-      })
+      const isMainTableOverflowX =
+        mainTable && mainTable.scrollWidth > mainTable.offsetWidth
+      const isMainTableOverflowY =
+        mainTable && mainTable.scrollHeight > mainTable.offsetHeight
+      if (
+        oldOverflowX !== isMainTableOverflowX ||
+        oldOverflowY !== isMainTableOverflowY
+      ) {
+        this.setState({
+          isMainTableOverflowX,
+          isMainTableOverflowY,
+        })
+      }
     }
   }
 
@@ -1488,7 +1496,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         return (
           <React.Fragment key={key !== undefined ? key : rowIndex}>
             {tr}
-            <div>
+            <>
               {expandedRowKeys.includes(key) ? (
                 <div className={`${prefix}-expandRow`}>
                   <div
@@ -1503,7 +1511,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                   </div>
                 </div>
               ) : null}
-            </div>
+            </>
           </React.Fragment>
         )
       }
