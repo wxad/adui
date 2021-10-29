@@ -40,6 +40,7 @@ return (
         </div>
       </>
     )}
+    triggerElement={<Button rightIcon="triangle-down">选择日期</Button>}
   />
 )
 ```

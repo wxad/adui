@@ -143,6 +143,10 @@ export interface IRangePickerProps {
    */
   theme?: null | "light"
   /**
+   * 自定义触发下拉的元素
+   */
+  triggerElement?: JSX.Element
+  /**
    * 外部控制：当前日期范围
    */
   value?: [Date | null | undefined, Date | null | undefined] | null
@@ -181,6 +185,7 @@ const RangePicker: React.ForwardRefExoticComponent<
       shortcuts,
       size: sizeProp,
       theme,
+      triggerElement,
       value: valueProp,
       visible: visibleProp,
       ...otherProps
@@ -306,7 +311,7 @@ const RangePicker: React.ForwardRefExoticComponent<
     }
 
     const handleVisibleChange = (bool: boolean) => {
-      const { input: inputElement } = inputRef.current
+      const { input: inputElement } = inputRef.current || {}
       if (disabled) {
         return
       }
@@ -466,7 +471,7 @@ const RangePicker: React.ForwardRefExoticComponent<
       const keys = [9, 13, 27]
       if (keys.includes(keyCode)) {
         handleVisibleChange(false)
-        inputRef.current.input.blur()
+        inputRef.current?.input.blur()
       }
     }
 
@@ -579,6 +584,24 @@ const RangePicker: React.ForwardRefExoticComponent<
       </>
     )
 
+    const inputElement = (
+      <Input
+        className={classSet}
+        disabled={disabled}
+        intent={intent}
+        onChange={handleInputChange}
+        onFocus={handleInputFocus}
+        onKeyDown={handleInputKeyDown}
+        placeholder={placeholder}
+        ref={inputRef}
+        rightElement={<Icon icon="calendar-outlined" />}
+        size={size}
+        theme={theme}
+        value={rangeValue}
+        {...otherProps}
+      />
+    )
+
     return (
       <Popover
         arrowed={false}
@@ -599,21 +622,7 @@ const RangePicker: React.ForwardRefExoticComponent<
         visible={visible}
         {...popoverProps}
       >
-        <Input
-          className={classSet}
-          disabled={disabled}
-          intent={intent}
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-          onKeyDown={handleInputKeyDown}
-          placeholder={placeholder}
-          ref={inputRef}
-          rightElement={<Icon icon="calendar-outlined" />}
-          size={size}
-          theme={theme}
-          value={rangeValue}
-          {...otherProps}
-        />
+        {triggerElement || inputElement}
       </Popover>
     )
   }
@@ -728,6 +737,10 @@ RangePicker.propTypes = {
    */
   theme: PropTypes.oneOf([null, "light"]),
   /**
+   * 自定义触发下拉的元素
+   */
+  triggerElement: PropTypes.any,
+  /**
    * 外部控制：当前日期范围
    */
   value: PropTypes.any,
@@ -759,6 +772,7 @@ RangePicker.defaultProps = {
   shortcuts: undefined,
   size: "small",
   theme: null,
+  triggerElement: undefined,
   value: null,
   visible: null,
 }

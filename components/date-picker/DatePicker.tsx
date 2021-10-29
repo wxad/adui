@@ -129,6 +129,10 @@ export interface IDatePickerProps {
    */
   theme?: null | "light"
   /**
+   * 自定义触发下拉的元素
+   */
+  triggerElement?: JSX.Element
+  /**
    * 外部控制：当前日期
    */
   value?: Date | "" | null
@@ -171,6 +175,7 @@ const DatePicker: IDatePicker = forwardRef(
       shortcuts,
       size: sizeProp,
       theme,
+      triggerElement,
       value: valueProp,
       visible: visibleProp,
       ...otherProps
@@ -248,7 +253,7 @@ const DatePicker: IDatePicker = forwardRef(
     }
 
     const handleVisibleChange = (bool: boolean) => {
-      const { input: inputElement } = inputRef.current
+      const { input: inputElement } = inputRef.current || {}
       if (disabled) {
         return
       }
@@ -346,7 +351,7 @@ const DatePicker: IDatePicker = forwardRef(
       const keys = [9, 13, 27]
       if (keys.includes(keyCode)) {
         handleVisibleChange(false)
-        inputRef.current.input.blur()
+        inputRef.current?.input.blur()
       }
     }
 
@@ -415,6 +420,28 @@ const DatePicker: IDatePicker = forwardRef(
       </>
     )
 
+    const inputElement = (
+      <Input
+        className={classSet}
+        cleaveOptions={{
+          blocks: [4, 2, 2],
+          delimiter: "-",
+        }}
+        disabled={disabled}
+        intent={intent}
+        onChange={handleInputChange}
+        onFocus={handleInputFocus}
+        onKeyDown={handleInputKeyDown}
+        placeholder={placeholder}
+        ref={inputRef}
+        rightElement={<Icon icon="calendar-outlined" />}
+        size={size}
+        theme={theme}
+        value={value}
+        {...otherProps}
+      />
+    )
+
     return (
       <Popover
         arrowed={false}
@@ -435,25 +462,7 @@ const DatePicker: IDatePicker = forwardRef(
         visible={visible}
         {...popoverProps}
       >
-        <Input
-          className={classSet}
-          cleaveOptions={{
-            blocks: [4, 2, 2],
-            delimiter: "-",
-          }}
-          disabled={disabled}
-          intent={intent}
-          onChange={handleInputChange}
-          onFocus={handleInputFocus}
-          onKeyDown={handleInputKeyDown}
-          placeholder={placeholder}
-          ref={inputRef}
-          rightElement={<Icon icon="calendar-outlined" />}
-          size={size}
-          theme={theme}
-          value={value}
-          {...otherProps}
-        />
+        {triggerElement || inputElement}
       </Popover>
     )
   }
@@ -561,6 +570,10 @@ DatePicker.propTypes = {
    */
   theme: PropTypes.oneOf([null, "light"]),
   /**
+   * 自定义触发下拉的元素
+   */
+  triggerElement: PropTypes.any,
+  /**
    * 外部控制：当前日期
    */
   value: PropTypes.any,
@@ -590,6 +603,7 @@ DatePicker.defaultProps = {
   shortcuts: undefined,
   size: "small",
   theme: null,
+  triggerElement: undefined,
   value: null,
   visible: null,
 }
