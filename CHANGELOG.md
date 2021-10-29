@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.18.0](https://github.com/wxad/adui/compare/v2.17.0...v2.18.0) (2021-10-29)
+
+
+### Features
+
+* **DatePicker:** dropdownRender Props featured ([d747b1c](https://github.com/wxad/adui/commit/d747b1cd292c9b19a72442814dc9027edc3615bd))
+* **DatePicker:** renderDay Props featured ([6e364a3](https://github.com/wxad/adui/commit/6e364a3f266d44f12ec4711091206f9face8692b))
+* **DatePicker:** triggerElement Prop featured ([ac4ada6](https://github.com/wxad/adui/commit/ac4ada6e2f7f9dbb9dbf8e965bac099865850212))
+
+
+### Bug Fixes
+
+* **Table:** 试图修复 column 变化时的宽度问题 ([da231e8](https://github.com/wxad/adui/commit/da231e843350b20c2137ef274704a43f5b435652))
+
 ## [2.17.0](https://github.com/wxad/adui/compare/v2.16.0...v2.17.0) (2021-10-27)
 
 
