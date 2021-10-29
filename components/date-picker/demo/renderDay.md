@@ -26,7 +26,7 @@ return (
       return day.getDate()
     }}
     dropdownRender={(popup) => (
-      <>
+      <React.Fragment>
         {popup}
         <div className="flex items-center justify-center p-8 shadow-t-tp-gray-100">
           <Button
@@ -38,7 +38,7 @@ return (
             回到今天
           </Button>
         </div>
-      </>
+      </React.Fragment>
     )}
     triggerElement={<Button rightIcon="triangle-down">选择日期</Button>}
   />
