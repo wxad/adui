@@ -150,7 +150,7 @@ $prefix: "adui-date";
     }
 
     &.#{$prefix}-disabled {
-      color: var(--gray-600);
+      color: var(--gray-600) !important;
       cursor: not-allowed;
       pointer-events: none;
     }
