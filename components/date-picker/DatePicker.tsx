@@ -100,6 +100,10 @@ export interface IDatePickerProps {
    */
   popoverProps?: IPopoverProps
   /**
+   * 自定义如何渲染每个日期
+   */
+  renderDay?: (day: Date) => React.ReactNode
+  /**
    * 快捷选择项，格式：[{ label: "祖国生日", value: new Date("2020-10-01") }]
    */
   shortcuts?: {
@@ -112,7 +116,6 @@ export interface IDatePickerProps {
      */
     value: Date
   }[]
-
   /**
    * 设置尺寸
    */
@@ -159,6 +162,7 @@ const DatePicker: IDatePicker = forwardRef(
       placeholder,
       placement,
       popoverProps,
+      renderDay,
       shortcuts,
       size: sizeProp,
       theme,
@@ -403,7 +407,9 @@ const DatePicker: IDatePicker = forwardRef(
               onDayClick={handleDayClick}
               onMonthChange={handleMonthChange}
               renderDay={(day: Date) => (
-                <div className={`${prefix}-cell`}>{day.getDate()}</div>
+                <div className={`${prefix}-cell`}>
+                  {renderDay && renderDay(day) ? renderDay(day) : day.getDate()}
+                </div>
               )}
             />
           </div>
@@ -522,6 +528,10 @@ DatePicker.propTypes = {
    */
   popoverProps: PropTypes.object,
   /**
+   * 自定义如何渲染每个日期
+   */
+  renderDay: PropTypes.any,
+  /**
    * 快捷选择项，格式：[{ label: "祖国生日", value: new Date("2020-10-01") }]
    */
   shortcuts: PropTypes.any,
@@ -558,6 +568,7 @@ DatePicker.defaultProps = {
   placeholder: "选择日期",
   placement: "bottomLeft",
   popoverProps: {},
+  renderDay: undefined,
   shortcuts: undefined,
   size: "small",
   theme: null,
