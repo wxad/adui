@@ -71,6 +71,10 @@ export interface IRangePickerProps {
    */
   disabledDays?: (date: Date) => boolean | void
   /**
+   * 自定义下拉框内容
+   */
+  dropdownRender?: (element: JSX.Element) => React.ReactNode
+  /**
    * 设置输入框类型
    */
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -162,6 +166,7 @@ const RangePicker: React.ForwardRefExoticComponent<
       defaultVisible,
       disabled,
       disabledDays,
+      dropdownRender,
       intent,
       maxDate,
       minDate,
@@ -501,6 +506,79 @@ const RangePicker: React.ForwardRefExoticComponent<
       handleVisibleChange,
     }))
 
+    const popupElement = (
+      <>
+        {shortcutsEnabled && (
+          <Shortcuts
+            onShortcutClick={(valueShortcut) => {
+              if (Array.isArray(valueShortcut)) {
+                const fromShortcut = valueShortcut[0]
+                const toShortcut = valueShortcut[1]
+                setFrom(fromShortcut)
+                setMonth(fromShortcut)
+                setTo(toShortcut)
+                setRangeValue(convertDateRangeToString(valueShortcut))
+
+                if (onChange) {
+                  onChange(valueShortcut)
+                }
+
+                if (closeOnSelect) {
+                  // 延迟是为了让状态的变化在视觉上先被接受
+                  setTimeout(() => {
+                    setVisible(false)
+                  }, 100)
+                }
+              }
+            }}
+            selectedDays={range}
+            shortcuts={shortcuts}
+          />
+        )}
+        <DayPicker
+          ref={dayPickerRef}
+          numberOfMonths={2}
+          disabledDays={isDayDisabled}
+          fromMonth={minDate}
+          toMonth={maxDate}
+          canChangeMonth
+          classNames={styles}
+          month={month}
+          months={MONTHS}
+          weekdaysLong={WEEKDAYS_LONG}
+          weekdaysShort={WEEKDAYS_SHORT}
+          selectedDays={selectedDays}
+          navbarElement={
+            <Navbar
+              maxDate={maxDate}
+              minDate={minDate}
+              onManuallyChangeMonth={() => {
+                setMonth(minDate)
+              }}
+              {...NavbarElementProps}
+            />
+          }
+          captionElement={
+            <Caption
+              maxDate={maxDate}
+              minDate={minDate}
+              onDateChange={handleMonthChange}
+              {...CaptionElementProps}
+            />
+          }
+          onDayMouseEnter={handleDayMouseEnter}
+          onDayMouseLeave={handleDayMouseLeave}
+          onDayClick={handleDayClick}
+          renderDay={(day: Date) => (
+            <div className={`${prefix}-cell`}>
+              {renderDay && renderDay(day) ? renderDay(day) : day.getDate()}
+            </div>
+          )}
+          modifiers={modifiers}
+        />
+      </>
+    )
+
     return (
       <Popover
         arrowed={false}
@@ -508,74 +586,9 @@ const RangePicker: React.ForwardRefExoticComponent<
         placement={placement}
         popup={
           <div className={`${prefix}-popup`}>
-            {shortcutsEnabled && (
-              <Shortcuts
-                onShortcutClick={(valueShortcut) => {
-                  if (Array.isArray(valueShortcut)) {
-                    const fromShortcut = valueShortcut[0]
-                    const toShortcut = valueShortcut[1]
-                    setFrom(fromShortcut)
-                    setMonth(fromShortcut)
-                    setTo(toShortcut)
-                    setRangeValue(convertDateRangeToString(valueShortcut))
-
-                    if (onChange) {
-                      onChange(valueShortcut)
-                    }
-
-                    if (closeOnSelect) {
-                      // 延迟是为了让状态的变化在视觉上先被接受
-                      setTimeout(() => {
-                        setVisible(false)
-                      }, 100)
-                    }
-                  }
-                }}
-                selectedDays={range}
-                shortcuts={shortcuts}
-              />
-            )}
-            <DayPicker
-              ref={dayPickerRef}
-              numberOfMonths={2}
-              disabledDays={isDayDisabled}
-              fromMonth={minDate}
-              toMonth={maxDate}
-              canChangeMonth
-              classNames={styles}
-              month={month}
-              months={MONTHS}
-              weekdaysLong={WEEKDAYS_LONG}
-              weekdaysShort={WEEKDAYS_SHORT}
-              selectedDays={selectedDays}
-              navbarElement={
-                <Navbar
-                  maxDate={maxDate}
-                  minDate={minDate}
-                  onManuallyChangeMonth={() => {
-                    setMonth(minDate)
-                  }}
-                  {...NavbarElementProps}
-                />
-              }
-              captionElement={
-                <Caption
-                  maxDate={maxDate}
-                  minDate={minDate}
-                  onDateChange={handleMonthChange}
-                  {...CaptionElementProps}
-                />
-              }
-              onDayMouseEnter={handleDayMouseEnter}
-              onDayMouseLeave={handleDayMouseLeave}
-              onDayClick={handleDayClick}
-              renderDay={(day: Date) => (
-                <div className={`${prefix}-cell`}>
-                  {renderDay && renderDay(day) ? renderDay(day) : day.getDate()}
-                </div>
-              )}
-              modifiers={modifiers}
-            />
+            {dropdownRender && dropdownRender(popupElement)
+              ? dropdownRender(popupElement)
+              : popupElement}
           </div>
         }
         popupStyle={{
@@ -632,6 +645,10 @@ RangePicker.propTypes = {
    * 比较日期的时候小心这一点。
    */
   disabledDays: PropTypes.func,
+  /**
+   * 自定义下拉框内容
+   */
+  dropdownRender: PropTypes.any,
   /**
    * 设置输入框类型
    */
@@ -727,6 +744,7 @@ RangePicker.defaultProps = {
   defaultVisible: null,
   disabled: false,
   disabledDays: noop,
+  dropdownRender: undefined,
   intent: "normal",
   maxDate: getDefaultMaxDate(),
   minDate: getDefaultMinDate(),

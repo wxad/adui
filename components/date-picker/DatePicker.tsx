@@ -68,6 +68,10 @@ export interface IDatePickerProps {
    */
   disabledDays?: (date: Date) => boolean | void
   /**
+   * 自定义下拉框内容
+   */
+  dropdownRender?: (element: JSX.Element) => React.ReactNode
+  /**
    * 设置输入框类型
    */
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -154,6 +158,7 @@ const DatePicker: IDatePicker = forwardRef(
       defaultVisible,
       disabled,
       disabledDays,
+      dropdownRender,
       intent,
       maxDate,
       minDate,
@@ -361,6 +366,55 @@ const DatePicker: IDatePicker = forwardRef(
       handleVisibleChange,
     }))
 
+    const popupElement = (
+      <>
+        {shortcutsEnabled && (
+          <Shortcuts
+            onShortcutClick={(valueShortcut: Date) => {
+              handleDayClick(valueShortcut, {})
+              setMonth(valueShortcut)
+            }}
+            selectedDay={selectedDay}
+            shortcuts={shortcuts}
+          />
+        )}
+        <DayPicker
+          disabledDays={isDayDisabled}
+          fromMonth={minDate}
+          toMonth={maxDate}
+          canChangeMonth
+          classNames={styles}
+          month={month || undefined}
+          months={MONTHS}
+          weekdaysLong={WEEKDAYS_LONG}
+          weekdaysShort={WEEKDAYS_SHORT}
+          selectedDays={selectedDay || undefined}
+          navbarElement={
+            <Navbar
+              maxDate={maxDate}
+              minDate={minDate}
+              {...NavbarElementProps}
+            />
+          }
+          captionElement={
+            <Caption
+              maxDate={maxDate}
+              minDate={minDate}
+              onDateChange={handleMonthChange}
+              {...CaptionElementProps}
+            />
+          }
+          onDayClick={handleDayClick}
+          onMonthChange={handleMonthChange}
+          renderDay={(day: Date) => (
+            <div className={`${prefix}-cell`}>
+              {renderDay && renderDay(day) ? renderDay(day) : day.getDate()}
+            </div>
+          )}
+        />
+      </>
+    )
+
     return (
       <Popover
         arrowed={false}
@@ -368,50 +422,9 @@ const DatePicker: IDatePicker = forwardRef(
         placement={placement}
         popup={
           <div className={`${prefix}-popup`}>
-            {shortcutsEnabled && (
-              <Shortcuts
-                onShortcutClick={(valueShortcut: Date) => {
-                  handleDayClick(valueShortcut, {})
-                  setMonth(valueShortcut)
-                }}
-                selectedDay={selectedDay}
-                shortcuts={shortcuts}
-              />
-            )}
-            <DayPicker
-              disabledDays={isDayDisabled}
-              fromMonth={minDate}
-              toMonth={maxDate}
-              canChangeMonth
-              classNames={styles}
-              month={month || undefined}
-              months={MONTHS}
-              weekdaysLong={WEEKDAYS_LONG}
-              weekdaysShort={WEEKDAYS_SHORT}
-              selectedDays={selectedDay || undefined}
-              navbarElement={
-                <Navbar
-                  maxDate={maxDate}
-                  minDate={minDate}
-                  {...NavbarElementProps}
-                />
-              }
-              captionElement={
-                <Caption
-                  maxDate={maxDate}
-                  minDate={minDate}
-                  onDateChange={handleMonthChange}
-                  {...CaptionElementProps}
-                />
-              }
-              onDayClick={handleDayClick}
-              onMonthChange={handleMonthChange}
-              renderDay={(day: Date) => (
-                <div className={`${prefix}-cell`}>
-                  {renderDay && renderDay(day) ? renderDay(day) : day.getDate()}
-                </div>
-              )}
-            />
+            {dropdownRender && dropdownRender(popupElement)
+              ? dropdownRender(popupElement)
+              : popupElement}
           </div>
         }
         popupStyle={{
@@ -476,6 +489,10 @@ DatePicker.propTypes = {
    * 比较日期的时候小心这一点。
    */
   disabledDays: PropTypes.func,
+  /**
+   * 自定义下拉框内容
+   */
+  dropdownRender: PropTypes.any,
   /**
    * 设置输入框类型
    */
@@ -560,6 +577,7 @@ DatePicker.defaultProps = {
   defaultVisible: null,
   disabled: false,
   disabledDays: noop,
+  dropdownRender: undefined,
   intent: "normal",
   maxDate: getDefaultMaxDate(),
   minDate: getDefaultMinDate(),
