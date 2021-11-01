@@ -108,7 +108,7 @@ export interface IDatePickerProps {
    */
   renderDay?: (day: Date) => React.ReactNode
   /**
-   * 快捷选择项，格式：[{ label: "祖国生日", value: new Date("2020-10-01") }]
+   * 快捷选择项，格式：[{ label: "祖国生日", value: new Date("2022-10-01") }]
    */
   shortcuts?: {
     /**
@@ -372,7 +372,7 @@ const DatePicker: IDatePicker = forwardRef(
     }))
 
     const popupElement = (
-      <>
+      <div className={`${prefix}-popup`}>
         {shortcutsEnabled && (
           <Shortcuts
             onShortcutClick={(valueShortcut: Date) => {
@@ -417,7 +417,7 @@ const DatePicker: IDatePicker = forwardRef(
             </div>
           )}
         />
-      </>
+      </div>
     )
 
     const inputElement = (
@@ -448,11 +448,11 @@ const DatePicker: IDatePicker = forwardRef(
         onVisibleChange={handleVisibleChange}
         placement={placement}
         popup={
-          <div className={`${prefix}-popup`}>
+          <>
             {dropdownRender && dropdownRender(popupElement)
               ? dropdownRender(popupElement)
               : popupElement}
-          </div>
+          </>
         }
         popupStyle={{
           maxWidth: shortcutsEnabled ? "342px" : "242px",
@@ -558,7 +558,7 @@ DatePicker.propTypes = {
    */
   renderDay: PropTypes.any,
   /**
-   * 快捷选择项，格式：[{ label: "祖国生日", value: new Date("2020-10-01") }]
+   * 快捷选择项，格式：[{ label: "祖国生日", value: new Date("2022-10-01") }]
    */
   shortcuts: PropTypes.any,
   /**

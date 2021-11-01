@@ -14,6 +14,7 @@ return (
   <DatePicker
     value={date}
     onChange={setDate}
+    shortcuts={[{ label: "祖国母亲生日", value: new Date("2022-10-01") }]}
     renderDay={(day) => {
       const today = new Date()
       const isToday =

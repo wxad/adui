@@ -277,6 +277,13 @@ $prefix: "adui-date";
       border-bottom: none !important;
     }
   }
+  &-popup {
+    display: flex;
+
+    > div:last-child {
+      flex: 1;
+    }
+  }
   &-shortcuts {
     flex: none;
     padding-top: 8px;

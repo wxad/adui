@@ -121,7 +121,7 @@ export interface IRangePickerProps {
   /**
    * 快捷选择项，格式：
    * [{
-   * label: "祖国母亲生日", value: [new Date("2020-10-01"), new Date("2020-10-07")]
+   * label: "祖国母亲生日", value: [new Date("2022-10-01"), new Date("2022-10-07")]
    * }]
    */
   shortcuts?: {
@@ -724,7 +724,7 @@ RangePicker.propTypes = {
   /**
    * 快捷选择项，格式：
    * [{
-   * label: "祖国母亲生日", value: [new Date("2020-10-01"), new Date("2020-10-07")]
+   * label: "祖国母亲生日", value: [new Date("2022-10-01"), new Date("2022-10-07")]
    * }]
    */
   shortcuts: PropTypes.any,
