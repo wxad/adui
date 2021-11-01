@@ -24,7 +24,7 @@ export default class PropertyBox extends React.Component {
   ${
     shortcuts
       ? `shortcuts={[
-    { label: "祖国母亲生日", value: new Date("2020-10-01") },
+    { label: "祖国母亲生日", value: new Date("2022-10-01") },
   ]}`
       : ""
   }
@@ -39,8 +39,8 @@ export default class PropertyBox extends React.Component {
     {
       label: "祖国母亲生日",
       value: [
-        new Date("2020-10-01"),
-        new Date("2020-10-07"),
+        new Date("2022-10-01"),
+        new Date("2022-10-07"),
       ] 
     }
   ]}`
@@ -69,7 +69,7 @@ export default class PropertyBox extends React.Component {
                     ? [
                         {
                           label: "祖国母亲生日",
-                          value: new Date("2020-10-01"),
+                          value: new Date("2022-10-01"),
                         },
                       ]
                     : null
@@ -90,8 +90,8 @@ export default class PropertyBox extends React.Component {
                         {
                           label: "祖国母亲生日",
                           value: [
-                            new Date("2020-10-01"),
-                            new Date("2020-10-07"),
+                            new Date("2022-10-01"),
+                            new Date("2022-10-07"),
                           ],
                         },
                       ]

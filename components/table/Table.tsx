@@ -684,14 +684,17 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   }
 
   public componentDidUpdate = ({
+    dataSource: dataSourceOld,
     getCellProps: getCellPropsOld,
   }: ITableProps<T>) => {
-    const { getCellProps } = this.props
+    const { dataSource, getCellProps } = this.props
     /**
      * handleWindowResize 不应该只在 didmount 时执行
      * didUpdate 时也需要
      */
-    setTimeout(this.handleWindowResize, 0)
+    if (!shallowEqual(dataSourceOld, dataSource)) {
+      setTimeout(this.handleWindowResize, 0)
+    }
 
     /**
      * 合并单元格需拿到真实的 dom 元素计算尺寸，因此这里需要 forceUpdate
@@ -767,6 +770,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     window.removeEventListener("mousemove", this.resizeColumnMoving)
     window.removeEventListener("mouseup", this.resizeColumnEnd)
     window.removeEventListener("mouseleave", this.resizeColumnEnd)
+
     this.setState({
       currentlyResizing: {},
       isMainTableOverflowX:
@@ -782,11 +786,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     const { isAnyColumnsFixed } = columnManager
     const { headerAffixed, height } = props
     if ((headerAffixed || height || isAnyColumnsFixed) && mainTable) {
-      const {
-        mainTableStyle: oldStyle,
-        isMainTableOverflowX: oldOverflowX,
-        isMainTableOverflowY: oldOverflowY,
-      } = this.state
+      const { mainTableStyle: oldStyle } = this.state
       const rect = mainTable.getBoundingClientRect()
       const mainTableStyle: Partial<React.CSSProperties> = {}
       mainTableStyle.left = rect.left
@@ -794,19 +794,12 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       if (!shallowEqual(mainTableStyle, oldStyle)) {
         this.setState({ mainTableStyle })
       }
-      const isMainTableOverflowX =
-        mainTable && mainTable.scrollWidth > mainTable.offsetWidth
-      const isMainTableOverflowY =
-        mainTable && mainTable.scrollHeight > mainTable.offsetHeight
-      if (
-        oldOverflowX !== isMainTableOverflowX ||
-        oldOverflowY !== isMainTableOverflowY
-      ) {
-        this.setState({
-          isMainTableOverflowX,
-          isMainTableOverflowY,
-        })
-      }
+      this.setState({
+        isMainTableOverflowX:
+          mainTable && mainTable.scrollWidth > mainTable.offsetWidth,
+        isMainTableOverflowY:
+          mainTable && mainTable.scrollHeight > mainTable.offsetHeight,
+      })
     }
   }
 
@@ -1496,9 +1489,12 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         return (
           <React.Fragment key={key !== undefined ? key : rowIndex}>
             {tr}
-            <>
+            <div>
               {expandedRowKeys.includes(key) ? (
-                <div className={`${prefix}-expandRow`}>
+                <div
+                  className={`${prefix}-expandRow`}
+                  style={{ maxWidth: mainTableStyle.width }}
+                >
                   <div
                     className={`${prefix}-expandRow-inner`}
                     style={
@@ -1511,7 +1507,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                   </div>
                 </div>
               ) : null}
-            </>
+            </div>
           </React.Fragment>
         )
       }
