@@ -82,6 +82,7 @@ export interface ITreeSelectProps {
   multiple?: boolean
   onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void
   onDropdownVisibleChange?: (visible: boolean) => void
+  onSearchEnter?: (e: KeyboardEvent) => void
   onSearch?: (value: string) => void
   placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
@@ -169,6 +170,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      */
     onSearch: PropTypes.func,
     /**
+     * 搜索回车时的回调，参数: e
+     */
+    onSearchEnter: PropTypes.func,
+    /**
      * 设置弹出位置
      */
     placement: PropTypes.oneOf([
@@ -246,6 +251,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     onChange: noop,
     onDropdownVisibleChange: noop,
     onSearch: noop,
+    onSearchEnter: noop,
     placement: "bottomLeft",
     placeholder: "请选择",
     resultRender: null,
@@ -704,6 +710,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
   }
 
   listenInputChange = (e: any) => {
+    const { onSearchEnter } = this.props
     const {
       target: { value },
       keyCode,
@@ -712,6 +719,12 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     if (keyCode === 8 && value === "") {
       e.stopPropagation()
     }
+
+    setTimeout(() => {
+      if (keyCode === 13 && onSearchEnter) {
+        onSearchEnter(e)
+      }
+    }, 0)
   }
 
   public componentDidMount = () => {
@@ -819,6 +832,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     const restProps: any = omit(otherProps, [
       "onChange",
       "onSearch",
+      "onSearchEnter",
       "defaultValue",
       "value",
     ])
