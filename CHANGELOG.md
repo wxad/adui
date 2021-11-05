@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.19.0](https://github.com/wxad/adui/compare/v2.18.0...v2.19.0) (2021-11-05)
+
+
+### Features
+
+* **Icon:** 支持传入自定义 paths Prop ([aa1d238](https://github.com/wxad/adui/commit/aa1d2386da2c41c7c01c92ae8d64f5e2d144fd07))
+* **TreeSelect:** intent Prop Featured ([1e99377](https://github.com/wxad/adui/commit/1e9937702426312a1168fdf69e5d34d4b4c24f0f))
+* **TreeSelect:** onSearchEnter Prop featured ([1d83334](https://github.com/wxad/adui/commit/1d83334bd172209a6717e490684aea967a1fe58a))
+
+
+### Bug Fixes
+
+* **DatePicker:** 修复 shortcuts 样式错误 ([f64a32f](https://github.com/wxad/adui/commit/f64a32fa240704c6c9a0431fcf45dddcceed21f6))
+* **Table:** 修复宽度计算问题 ([3620e59](https://github.com/wxad/adui/commit/3620e595694ada4ff3856373e45f774c900f2aad))
+* **TreeSelect:** 修复 showCheckedStrategy 和 selectAll 交叉产生的 bug [#8](https://github.com/wxad/adui/issues/8) ([b05c986](https://github.com/wxad/adui/commit/b05c9863af311fe181c55cd25e561a3d29b47bd0))
+
 ## [2.18.0](https://github.com/wxad/adui/compare/v2.17.0...v2.18.0) (2021-10-29)
 
 
