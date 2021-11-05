@@ -33,6 +33,10 @@ export interface IIconProps {
    */
   onClick?: ((e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void) | null
   /**
+   * 自定义图标 path 路径
+   */
+  paths?: string[]
+  /**
    * 尺寸
    */
   size?: number
@@ -49,9 +53,14 @@ const Icon: React.FC<IIconProps> & {
   icon,
   interactive: interactiveProp,
   onClick,
+  paths,
   size,
   ...otherProps
 }: IIconProps) => {
+  if (!icon && !paths?.length) {
+    return null
+  }
+
   const lightness = useMemo(() => {
     let colorProp = color
     if (colorProp && colorProp.includes("var")) {
@@ -67,7 +76,7 @@ const Icon: React.FC<IIconProps> & {
   }, [color])
 
   const data = IconSvgPaths[icon] || []
-  const paths = data.map((d: string) => (
+  const finalPaths = (paths || data).map((d: string) => (
     <path d={d} key={d} fillRule="evenodd" />
   ))
   const interactive = interactiveProp || !!onClick
@@ -99,10 +108,10 @@ const Icon: React.FC<IIconProps> & {
       }}
       {...otherProps}
     >
-      {paths}
+      {finalPaths}
       {interactive && lightness !== 1 && (
         <g className={`${prefix}-interactive-cover`} fill="#000">
-          {paths}
+          {finalPaths}
         </g>
       )}
     </svg>
@@ -121,7 +130,7 @@ Icon.propTypes = {
   /**
    * 图标名称
    */
-  icon: PropTypes.any.isRequired,
+  icon: PropTypes.any,
   /**
    * 是否可交互，组件内部将会根据当前颜色，为其加上 hover active 样式
    */
@@ -131,6 +140,10 @@ Icon.propTypes = {
    */
   onClick: PropTypes.func,
   /**
+   * 自定义图标 path 路径
+   */
+  paths: PropTypes.array,
+  /**
    * 尺寸
    */
   size: PropTypes.number,
@@ -139,8 +152,10 @@ Icon.propTypes = {
 Icon.defaultProps = {
   className: undefined,
   color: "var(--gray-700)",
+  icon: undefined,
   interactive: false,
   onClick: null,
+  paths: undefined,
   size: 18,
 }
 
