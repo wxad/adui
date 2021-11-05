@@ -78,6 +78,7 @@ export interface ITreeSelectProps {
   disabled?: boolean
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
   heightFixed?: boolean
+  intent?: "normal" | "primary" | "success" | "warning" | "danger"
   maxTagCount?: null | number
   multiple?: boolean
   onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void
@@ -149,6 +150,16 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      * 高度是否固定一行，TreeSelect 将根据内容区域宽度自动将结果收起，开启这个 Prop 后 TreeSelect 会忽略 maxTagCount Prop
      */
     heightFixed: PropTypes.bool,
+    /**
+     * 类型
+     */
+    intent: PropTypes.oneOf([
+      "normal",
+      "primary",
+      "success",
+      "warning",
+      "danger",
+    ]),
     /**
      * 最多显示多少个 tag，如果超过了则以收起的形式出现
      */
@@ -246,6 +257,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     disabled: false,
     getPopupContainer: null,
     heightFixed: false,
+    intent: "normal",
     maxTagCount: null,
     multiple: true,
     onChange: noop,
@@ -813,6 +825,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       className,
       getPopupContainer,
       heightFixed,
+      intent,
       maxTagCount,
       multiple,
       onDropdownVisibleChange,
@@ -839,7 +852,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
     const { hash, topContentPortalTarget, value, maxHeightFixed } = this.state
 
-    const classSet = classNames(className, {
+    const classSet = classNames(className, `${prefix}-${intent}`, {
       [`${prefix}_resultHidden`]: !resultVisible,
     })
 
