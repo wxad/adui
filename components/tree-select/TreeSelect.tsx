@@ -925,19 +925,51 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       }) || []
 
     this.treeData = treeDataFinal
-    this.treeValueAll = treeDataFinal
-      .map(({ value: val, disabled, disableCheckbox, checkable }) => {
-        if (
-          val !== undefined &&
-          !disabled &&
-          !disableCheckbox &&
-          checkable !== false
-        ) {
-          return val
-        }
-        return undefined
-      })
-      .filter((o) => Boolean(o) || o === 0)
+
+    if (showCheckedStrategy === "show-parent") {
+      this.treeValueAll = treeDataFinal
+        .map(({ value: val, disabled, disableCheckbox, checkable }) => {
+          if (
+            val !== undefined &&
+            !disabled &&
+            !disableCheckbox &&
+            checkable !== false
+          ) {
+            return val
+          }
+          return undefined
+        })
+        .filter((o) => Boolean(o) || o === 0)
+    } else {
+      const treeValueAll: any[] = []
+
+      const getAllValue = (data: DataNode[]) => {
+        data.forEach(
+          ({
+            value: val,
+            disabled,
+            disableCheckbox,
+            checkable,
+            children: child,
+          }) => {
+            if (
+              val !== undefined &&
+              !disabled &&
+              !disableCheckbox &&
+              checkable !== false
+            ) {
+              if (showCheckedStrategy === "show-all" || !child) {
+                treeValueAll.push(val)
+              } else {
+                getAllValue(child)
+              }
+            }
+          }
+        )
+      }
+      getAllValue(treeDataFinal)
+      this.treeValueAll = treeValueAll.filter((o) => Boolean(o) || o === 0)
+    }
 
     // 是否是多层级
     const multiLevel = treeDataFinal.some((o) => o.children?.length)

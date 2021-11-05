@@ -58,15 +58,10 @@ $prefix: "adui-tree-select";
     padding: 1px 30px 1px 4px;
     min-height: 30px;
     border-radius: 4px;
-    box-shadow: 0 0 0 1px var(--transparent-gray-400);
     outline: none;
     user-select: none;
     transition: var(--motion-duration-base) var(--ease-in-out) background-color,
       var(--motion-duration-base) var(--ease-in-out) box-shadow;
-
-    &:hover {
-      box-shadow: 0 0 0 1px var(--transparent-gray-600);
-    }
   }
 
   // 单选时的按钮右侧箭头
@@ -667,11 +662,118 @@ $prefix: "adui-tree-select";
     }
   }
 
-  &-focused {
+  &-normal {
     .#{$prefix} {
       &-selector {
-        box-shadow: 0 0 0 1px var(--primary-color),
-          0 0 0 4px rgba(255, 255, 255, 0.75), 0 0 0 4px var(--primary-color);
+        box-shadow: 0 0 0 1px var(--transparent-gray-400);
+
+        &:hover {
+          box-shadow: 0 0 0 1px var(--transparent-gray-600);
+        }
+      }
+    }
+
+    &.#{$prefix} {
+      &-focused {
+        .#{$prefix} {
+          &-selector {
+            box-shadow: 0 0 0 1px var(--primary-color),
+              0 0 0 4px rgba(255, 255, 255, 0.75),
+              0 0 0 4px var(--primary-color);
+          }
+        }
+      }
+    }
+  }
+
+  &-primary {
+    .#{$prefix} {
+      &-selector {
+        box-shadow: 0 0 0 1px var(--primary-color);
+
+        &:hover {
+          box-shadow: 0 0 0 1px var(--primary-color);
+        }
+      }
+    }
+
+    &.#{$prefix} {
+      &-focused {
+        .#{$prefix} {
+          &-selector {
+            box-shadow: 0 0 0 1px var(--primary-color),
+              0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 4px var(--primary-color);
+          }
+        }
+      }
+    }
+  }
+
+  &-success {
+    .#{$prefix} {
+      &-selector {
+        box-shadow: 0 0 0 1px var(--ad-green);
+
+        &:hover {
+          box-shadow: 0 0 0 1px var(--ad-green);
+        }
+      }
+    }
+
+    &.#{$prefix} {
+      &-focused {
+        .#{$prefix} {
+          &-selector {
+            box-shadow: 0 0 0 1px var(--ad-green),
+              0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 4px var(--ad-green);
+          }
+        }
+      }
+    }
+  }
+
+  &-warning {
+    .#{$prefix} {
+      &-selector {
+        box-shadow: 0 0 0 1px var(--ad-orange);
+
+        &:hover {
+          box-shadow: 0 0 0 1px var(--ad-orange);
+        }
+      }
+    }
+
+    &.#{$prefix} {
+      &-focused {
+        .#{$prefix} {
+          &-selector {
+            box-shadow: 0 0 0 1px var(--ad-orange),
+              0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 4px var(--ad-orange);
+          }
+        }
+      }
+    }
+  }
+
+  &-danger {
+    .#{$prefix} {
+      &-selector {
+        box-shadow: 0 0 0 1px var(--ad-red);
+
+        &:hover {
+          box-shadow: 0 0 0 1px var(--ad-red);
+        }
+      }
+    }
+
+    &.#{$prefix} {
+      &-focused {
+        .#{$prefix} {
+          &-selector {
+            box-shadow: 0 0 0 1px var(--ad-red),
+              0 0 0 4px rgba(255, 255, 255, 0.7), 0 0 0 4px var(--ad-red);
+          }
+        }
       }
     }
   }
