@@ -26,6 +26,8 @@ declare module "rc-slider/lib/Handle"
 
 declare module "rc-tree-select"
 
+declare module "react-window"
+
 declare module "react-test-renderer"
 
 declare module "day-picker-react"

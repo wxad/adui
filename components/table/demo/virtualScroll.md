@@ -5,16 +5,21 @@ title:
   en-US: virtualScroll
 ---
 
-开启 `virtualScroll` 实现 10000 行渲染：
+开启 `virtualScroll` 实现大数据渲染：
 
 ```jsx
 const [value, setValue] = useState([])
 return (
   <Table
-    dataSource={Array.from(new Array(100), (_, i) => ({ key: i }))}
+    dataSource={Array.from(new Array(200), (_, i) => ({ key: i }))}
     selectOnRowClick
     virtualScroll
-    virtualListStyle={{ width: "1530px" }}
+    virtualListProps={{
+      width: "760px",
+      onScroll: (options) => {
+        // console.log(options, "o")
+      },
+    }}
     height={500}
     columns={[
       {

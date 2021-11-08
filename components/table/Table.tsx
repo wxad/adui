@@ -1,14 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
+/* eslint-disable no-underscore-dangle */
 /**
  * Table 组件将不会修改成 FunctionComponent，
  * 因为考虑到之前在使用时存在不少通过 实例.table 的方法直接访问 <table /> 元素的用法。
  */
 import * as React from "react"
+import { VariableSizeList } from "react-window"
 import PropTypes from "prop-types"
 import shallowEqual from "shallowequal"
 import addEventListener from "rc-util/lib/Dom/addEventListener"
-import List from "rc-virtual-list"
 import { debounce } from "debounce"
 import classNames from "classnames"
 import omit from "../_util/omit"
@@ -276,7 +277,7 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
    */
   verticalAlign?: "top" | "center" | "bottom"
   /**
-   * 虚拟列表的 Props，请参考 https://www.npmjs.com/package/rc-virtual-list
+   * 虚拟列表的 Props，请参考 https://react-window.vercel.app/#/examples/list/variable-size
    */
   virtualListProps?: IBaseObject
   /**
@@ -516,7 +517,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      */
     verticalAlign: PropTypes.oneOf([null, "top", "center", "bottom"]),
     /**
-     * 虚拟列表的 Props，请参考 https://www.npmjs.com/package/rc-virtual-list
+     * 虚拟列表的 Props，请参考 https://react-window.vercel.app/#/examples/list/variable-size
      */
     virtualListProps: PropTypes.object,
     /**
@@ -611,6 +612,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
 
   public wrapper: HTMLDivElement
 
+  public virtualList: any
+
   private debouncedWindowResize: any
 
   private resizeEvent: any
@@ -668,7 +671,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     const { columnManager, combinedCellsInfo, debouncedWindowResize, props } =
       this
     const { isAnyColumnsFixed } = columnManager
-    const { headerAffixed, height } = props
+    const { headerAffixed, height, virtualScroll } = props
     // 固定表头需要监听 resize 事件
     if (headerAffixed || height || isAnyColumnsFixed) {
       this.handleWindowResize()
@@ -681,6 +684,20 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     if (combinedCellsInfo.length) {
       this.setState({ combinedCellsInfo })
     }
+
+    setTimeout(() => {
+      const virtualWrapper = this.virtualList._outerRef
+      if (virtualScroll && virtualWrapper) {
+        this.mainThead.style.paddingRight = "14px"
+        virtualWrapper.addEventListener(
+          "scroll",
+          () => {
+            this.mainThead.scrollLeft = virtualWrapper.scrollLeft
+          },
+          true
+        )
+      }
+    }, 0)
   }
 
   public componentDidUpdate = ({
@@ -1353,7 +1370,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       </div>
     )
 
-    const generateTrs = (row: T, rowIndex: number) => {
+    const generateTrs = (
+      row: T,
+      rowIndex: number,
+      style?: React.CSSProperties
+    ) => {
       const { key } = row
       const colArray: any = []
       const selectPropsGetted = getSelectProps && getSelectProps(row, rowIndex)
@@ -1439,6 +1460,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           onKeyDown={noop}
           style={{
             ...((getRowStyle && getRowStyle(row, rowIndex)) || {}),
+            ...(style || {}),
           }}
           {...((getRowProps && getRowProps(row, rowIndex)) || {})}
         >
@@ -1558,21 +1580,35 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             return generateTrs(row, rowIndex)
           })}
         {virtualScroll && dataSource && !!dataSource.length && (
-          <List
-            data={dataSource}
-            itemKey="key"
+          <VariableSizeList
             height={(height || 400) - 40}
-            itemHeight={42}
+            itemCount={dataSource.length}
+            itemSize={() => 42}
             className={`${prefix}-virtual-wrapper`}
             style={{
               ...virtualListStyle,
             }}
-            {...virtualListProps}
-          >
-            {(row: T, rowIndex: number) => {
-              return generateTrs(row, rowIndex)
+            ref={(o: any) => {
+              this.virtualList = o
             }}
-          </List>
+            {...virtualListProps}
+            onScroll={(options: {
+              scrollDirection: "forward" | "backward"
+              scrollOffset: number
+            }) => {
+              if (virtualListProps?.onScroll) {
+                virtualListProps.onScroll(options)
+              }
+            }}
+          >
+            {({
+              index,
+              style,
+            }: {
+              index: number
+              style: React.CSSProperties
+            }) => generateTrs(dataSource[index], index, style)}
+          </VariableSizeList>
         )}
       </div>,
       isMainTableOverflowX && headerAffixed && (
