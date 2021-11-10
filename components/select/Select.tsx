@@ -299,7 +299,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
 
   public menu: JSX.Element
 
-  constructor(props: ISelectProps) {
+  constructor(props: ISelectProps<T>) {
     super(props)
     const { defaultOpen, defaultValue, open, value } = props
 
