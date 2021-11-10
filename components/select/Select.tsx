@@ -33,7 +33,9 @@ export interface ISelect {
   getPopupDOMNode: () => HTMLElement
 }
 
-export interface ISelectProps {
+type ValueType = React.ReactText
+
+export interface ISelectProps<T extends ValueType = ValueType> {
   [key: string]: any
   /**
    * 子节点
@@ -50,7 +52,7 @@ export interface ISelectProps {
   /**
    * 内部驱动：当前选中项的值
    */
-  defaultValue?: React.ReactText | null
+  defaultValue?: T | null
   /**
    * 下拉列表是否和选择器同宽
    */
@@ -74,7 +76,7 @@ export interface ISelectProps {
   /**
    * 选择时的 handler，参数：(value, option)
    */
-  onSelect?: (value: React.ReactText, option: React.ReactElement<any>) => void
+  onSelect?: (value: T, option: React.ReactElement<any>) => void
   /**
    * 外部控制：是否展开
    */
@@ -87,7 +89,7 @@ export interface ISelectProps {
     className?: string
     disabled?: boolean
     label: React.ReactNode
-    value: React.ReactText
+    value: T
   }[]
   /**
    * 选择框默认文字
@@ -124,14 +126,14 @@ export interface ISelectProps {
   /**
    * 外部控制：当前选中项的值
    */
-  value?: React.ReactText | null
+  value?: T | null
 }
 
-export interface ISelectState {
+export interface ISelectState<T extends ValueType = ValueType> {
   open?: boolean
   placeholderShow?: boolean
   placeholderText?: string
-  value?: React.ReactText | null
+  value?: T | null
   selectId?: string
 }
 
@@ -140,7 +142,10 @@ export interface ISelectState {
  * 选择器对比单选 Radio 的优势是，当选项过多时，选择器可对内容收起，并更关注于已选项。
  * 通常，当用户能够通过已选项，轻易得知其余选项的规律时（如年份、城市等），选择器 Select 是比较好的选择。
  */
-class Select extends React.Component<ISelectProps, ISelectState> {
+class Select<T extends ValueType = ValueType> extends React.Component<
+  ISelectProps<T>,
+  ISelectState<T>
+> {
   public static type = "Select"
 
   public static Option: typeof Option = Option
@@ -394,7 +399,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
     }
   }
 
-  public onSelect = (value: React.ReactText, option: any) => {
+  public onSelect = (value: T, option: any) => {
     const { onSelect, value: valueProp } = this.props
 
     if (valueProp === null) {
