@@ -686,7 +686,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     }
 
     setTimeout(() => {
-      const virtualWrapper = this.virtualList._outerRef
+      const virtualWrapper = this.virtualList?._outerRef
       if (virtualScroll && virtualWrapper) {
         this.mainThead.style.paddingRight = "14px"
         virtualWrapper.addEventListener(
@@ -1511,25 +1511,23 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         return (
           <React.Fragment key={key !== undefined ? key : rowIndex}>
             {tr}
-            <div>
-              {expandedRowKeys.includes(key) ? (
+            {expandedRowKeys.includes(key) ? (
+              <div
+                className={`${prefix}-expandRow`}
+                style={{ maxWidth: mainTableStyle.width }}
+              >
                 <div
-                  className={`${prefix}-expandRow`}
-                  style={{ maxWidth: mainTableStyle.width }}
+                  className={`${prefix}-expandRow-inner`}
+                  style={
+                    isMainTableOverflowX
+                      ? { width: mainTableStyle.width }
+                      : undefined
+                  }
                 >
-                  <div
-                    className={`${prefix}-expandRow-inner`}
-                    style={
-                      isMainTableOverflowX
-                        ? { width: mainTableStyle.width }
-                        : undefined
-                    }
-                  >
-                    {!!expandedRowRender && expandedRowRender(row, rowIndex)}
-                  </div>
+                  {!!expandedRowRender && expandedRowRender(row, rowIndex)}
                 </div>
-              ) : null}
-            </div>
+              </div>
+            ) : null}
           </React.Fragment>
         )
       }
