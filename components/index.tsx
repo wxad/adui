@@ -121,7 +121,12 @@ export { default as Switch } from "./switch"
 export type { ITabsProps, ITabsTabProps } from "./tabs"
 export { default as Tabs } from "./tabs"
 
-export type { ITableProps, ITableFilterProps, ITableSortProps } from "./table"
+export type {
+  ITableProps,
+  ITableFilterProps,
+  ITableSortProps,
+  IColumnProps,
+} from "./table"
 export { default as Table } from "./table"
 
 export type { ITagProps } from "./tag"
