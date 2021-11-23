@@ -45,9 +45,33 @@ export interface IColumnProps<T extends IBaseObject = IBaseObject> {
    */
   fixed?: true | false | "left" | "right"
   /**
-   * 设置该列每个单元格上的 style，(row, rowIndex) => ({})
+   * 设置每个单元格的类名：(row, col, rowIndex, colIndex) => (string)
    */
-  getCellStyle?: (row: T, rowIndex: number) => React.CSSProperties | void
+  getCellClassName?: (
+    row: T,
+    col: IBaseObject,
+    rowIndex: number,
+    colIndex: number
+  ) => string
+  /**
+   * 设置每个单元格上的由组件规定的 prop，
+   * 如 rowSpan colSpan，(row, col, rowIndex, colIndex) => ({})
+   */
+  getCellProps?: (
+    row: T,
+    col: IBaseObject,
+    rowIndex: number,
+    colIndex: number
+  ) => IBaseObject | void
+  /**
+   * 设置每个单元格上的 style，(row, col, rowIndex, colIndex) => ({})
+   */
+  getCellStyle?: (
+    row: T,
+    col: IBaseObject,
+    rowIndex: number,
+    colIndex: number
+  ) => React.CSSProperties | void
   /**
    * adui@2.15.0 是否在整体宽度有剩余的情况下填充
    */
@@ -113,6 +137,8 @@ function Column<T extends IBaseObject = IBaseObject>(props: IColumnProps<T>) {
     "filteredValue",
     "filters",
     "fixed",
+    "getCellClassName",
+    "getCellProps",
     "getCellStyle",
     "grow",
     "onFilter",

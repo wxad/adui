@@ -1743,9 +1743,9 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     const {
       align: alignProp,
       expandIconVisible,
-      getCellClassName,
-      getCellProps,
-      getCellStyle,
+      getCellClassName: getCellClassNameProp,
+      getCellProps: getCellPropsProp,
+      getCellStyle: getCellStyleProp,
       grow,
       onExpandChange,
       onSelectChange,
@@ -1767,6 +1767,9 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       title,
       verticalAlign,
       width,
+      getCellClassName,
+      getCellProps,
+      getCellStyle,
     } = cell
 
     const isGrow = colGrow !== undefined ? colGrow : grow
@@ -1797,11 +1800,17 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     }
     const resizedCol = resized.find((o) => o.dataIndex === dataIndex)
     const cellClassName =
-      getCellClassName && getCellClassName(row, cell, rowIndex, cellIndex)
+      (getCellClassName && getCellClassName(row, cell, rowIndex, cellIndex)) ||
+      (getCellClassNameProp &&
+        getCellClassNameProp(row, cell, rowIndex, cellIndex))
     const cellProps =
-      (getCellProps && getCellProps(row, cell, rowIndex, cellIndex)) || {}
+      (getCellProps && getCellProps(row, cell, rowIndex, cellIndex)) ||
+      (getCellPropsProp && getCellPropsProp(row, cell, rowIndex, cellIndex)) ||
+      {}
     const cellStyle =
-      (getCellStyle && getCellStyle(row, cell, rowIndex, cellIndex)) || {}
+      (getCellStyle && getCellStyle(row, cell, rowIndex, cellIndex)) ||
+      (getCellStyleProp && getCellStyleProp(row, cell, rowIndex, cellIndex)) ||
+      {}
     const { rowSpan, colSpan, ...otherCellProps } = cellProps
     if (rowSpan || colSpan) {
       this.combinedCellsInfo.push({
