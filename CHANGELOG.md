@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.20.0](https://github.com/wxad/adui/compare/v2.19.0...v2.20.0) (2021-11-23)
+
+
+### Features
+
+* **Select:** 增加针对 value 的泛型判断 ([939bf0a](https://github.com/wxad/adui/commit/939bf0a7f9f48746a163a28bdfc9dd6551342c23))
+* **Table:** 更换 react-window 实现虚拟滚动 ([8b01d5a](https://github.com/wxad/adui/commit/8b01d5a303bcf6b0443fb3d0e27f0da1e0b225f6))
+* **Table:** IColumnProps exported [#9](https://github.com/wxad/adui/issues/9) ([13400a1](https://github.com/wxad/adui/commit/13400a1ee17aeb64526178790f92920a9c30b464))
+
+
+### Bug Fixes
+
+* **Table:** 修复 Column 上 getCellxxx 不生效 [#11](https://github.com/wxad/adui/issues/11) ([ee35a6c](https://github.com/wxad/adui/commit/ee35a6c15776ec4a9c9bba55784260eeac766bef))
+* **Table:** 移除多余层级造成的 expandedRow 宽度无法撑满 ([d3d6b96](https://github.com/wxad/adui/commit/d3d6b96a6df02cae8fd9423e75b935c626f67b99))
+
 ## [2.19.0](https://github.com/wxad/adui/compare/v2.18.0...v2.19.0) (2021-11-05)
 
 
