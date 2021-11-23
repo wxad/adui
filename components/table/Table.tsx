@@ -1800,15 +1800,15 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     }
     const resizedCol = resized.find((o) => o.dataIndex === dataIndex)
     const cellClassName =
-      (getCellClassName && getCellClassName(row, cell, rowIndex, cellIndex)) ||
+      (getCellClassName && getCellClassName(row, rowIndex)) ||
       (getCellClassNameProp &&
         getCellClassNameProp(row, cell, rowIndex, cellIndex))
     const cellProps =
-      (getCellProps && getCellProps(row, cell, rowIndex, cellIndex)) ||
+      (getCellProps && getCellProps(row, rowIndex)) ||
       (getCellPropsProp && getCellPropsProp(row, cell, rowIndex, cellIndex)) ||
       {}
     const cellStyle =
-      (getCellStyle && getCellStyle(row, cell, rowIndex, cellIndex)) ||
+      (getCellStyle && getCellStyle(row, rowIndex)) ||
       (getCellStyleProp && getCellStyleProp(row, cell, rowIndex, cellIndex)) ||
       {}
     const { rowSpan, colSpan, ...otherCellProps } = cellProps

@@ -45,33 +45,18 @@ export interface IColumnProps<T extends IBaseObject = IBaseObject> {
    */
   fixed?: true | false | "left" | "right"
   /**
-   * 设置每个单元格的类名：(row, col, rowIndex, colIndex) => (string)
+   * 设置该列每个单元格的类名：(row, rowIndex) => (string)
    */
-  getCellClassName?: (
-    row: T,
-    col: IBaseObject,
-    rowIndex: number,
-    colIndex: number
-  ) => string
+  getCellClassName?: (row: T, rowIndex: number) => string
   /**
-   * 设置每个单元格上的由组件规定的 prop，
-   * 如 rowSpan colSpan，(row, col, rowIndex, colIndex) => ({})
+   * 设置该列每个单元格上的由组件规定的 prop，
+   * 如 rowSpan colSpan，(row, rowIndex) => ({})
    */
-  getCellProps?: (
-    row: T,
-    col: IBaseObject,
-    rowIndex: number,
-    colIndex: number
-  ) => IBaseObject | void
+  getCellProps?: (row: T, rowIndex: number) => IBaseObject | void
   /**
-   * 设置每个单元格上的 style，(row, col, rowIndex, colIndex) => ({})
+   * 设置该列每个单元格上的 style，(row, rowIndex) => ({})
    */
-  getCellStyle?: (
-    row: T,
-    col: IBaseObject,
-    rowIndex: number,
-    colIndex: number
-  ) => React.CSSProperties | void
+  getCellStyle?: (row: T, rowIndex: number) => React.CSSProperties | void
   /**
    * adui@2.15.0 是否在整体宽度有剩余的情况下填充
    */
@@ -189,6 +174,15 @@ Column.propTypes = {
    */
   fixed: PropTypes.oneOf([null, false, true, "left", "right"]),
   /**
+   * 设置该列每个单元格的类名：(row, rowIndex) => (string)
+   */
+  getCellClassName: PropTypes.func,
+  /**
+   * 设置该列每个单元格上的由组件规定的 prop，
+   * 如 rowSpan colSpan，(row, rowIndex) => ({})
+   */
+  getCellProps: PropTypes.func,
+  /**
    * 设置该列每个单元格上的 style，(row, rowIndex) => ({})
    */
   getCellStyle: PropTypes.func,
@@ -289,7 +283,9 @@ Column.defaultProps = {
   filterVisible: null,
   filters: null,
   fixed: null,
-  getCellStyle: () => {},
+  getCellClassName: undefined,
+  getCellProps: undefined,
+  getCellStyle: undefined,
   grow: undefined,
   onFilter: null,
   onFilterVisibleChange: () => {},
