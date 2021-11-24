@@ -275,6 +275,8 @@ const Drawer: React.FC<IDrawerProps> = ({
   return <Portal onChildrenMount={handleChildrenMount}>{getComponent()}</Portal>
 }
 
+Drawer.displayName = "Drawer"
+
 Drawer.propTypes = {
   /**
    * 关闭后（transition 结束后）的 handler

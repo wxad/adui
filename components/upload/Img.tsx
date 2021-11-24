@@ -222,6 +222,8 @@ const Img: React.ForwardRefExoticComponent<
   }
 )
 
+Img.displayName = "Img"
+
 Img.propTypes = {
   /**
    * 附加类名

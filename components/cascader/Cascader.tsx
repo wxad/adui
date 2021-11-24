@@ -408,6 +408,8 @@ const Cascader: React.FC<ICascaderProps> = ({
   )
 }
 
+Cascader.displayName = "Cascader"
+
 Cascader.propTypes = {
   /**
    * 是否支持清除

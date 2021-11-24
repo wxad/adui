@@ -63,6 +63,8 @@ Breadcrumb.defaultProps = {
   size: "small",
 }
 
+Breadcrumb.displayName = "Breadcrumb"
+
 Breadcrumb.Item = Item
 
 export default Breadcrumb

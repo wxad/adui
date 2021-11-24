@@ -1,3 +1,4 @@
+@use "sass:math";
 $prefix: "adui-grid";
 
 .#{$prefix}-row {
@@ -5,6 +6,6 @@ $prefix: "adui-grid";
 }
 @for $i from 1 through 12 {
   .#{$prefix}-col_#{$i} {
-    width: percentage($i / 12);
+    width: calc(math.div($i, 12) * 100%);
   }
 }

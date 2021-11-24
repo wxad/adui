@@ -199,6 +199,8 @@ const Radio: IRadio = forwardRef(
 
 Radio.Group = Group
 
+Radio.displayName = "Radio"
+
 Radio.propTypes = {
   /**
    * 是否选中

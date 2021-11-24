@@ -85,6 +85,8 @@ Form.Item = Item
 
 Form.Tip = Tip
 
+Form.displayName = "Form"
+
 Form.propTypes = {
   /**
    * 子节点

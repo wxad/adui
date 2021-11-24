@@ -184,6 +184,8 @@ const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps) => {
   return spin
 }
 
+Spinner.displayName = "Spinner"
+
 Spinner.propTypes = {
   /**
    * 子节点

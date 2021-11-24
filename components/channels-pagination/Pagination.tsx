@@ -244,6 +244,8 @@ const Pagination: React.FC<IPaginationProps> = ({
   )
 }
 
+Pagination.displayName = "Pagination"
+
 Pagination.propTypes = {
   /**
    * 对齐方式

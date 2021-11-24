@@ -200,6 +200,8 @@ const Alert: React.FC<IAlertProps> = ({
   )
 }
 
+Alert.displayName = "Alert"
+
 Alert.propTypes = {
   /**
    * 关闭后的 handler，参数 node

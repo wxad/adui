@@ -98,6 +98,8 @@ const File: React.ForwardRefExoticComponent<
   }
 )
 
+File.displayName = "File"
+
 File.propTypes = {
   /**
    * 附加类名

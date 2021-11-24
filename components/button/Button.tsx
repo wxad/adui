@@ -191,6 +191,8 @@ Button.type = "Button"
 
 Button.Group = Group
 
+Button.displayName = "Button"
+
 Button.propTypes = {
   /**
    * active 状态，用于 Button.Group 中

@@ -21,7 +21,7 @@ export interface ICardProps {
    */
   elevation?: 0 | 1 | 2 | 3 | 4
   /**
-   * 可互动性
+   * 可互动性
    */
   interactive?: boolean
 }
@@ -71,7 +71,7 @@ Card.propTypes = {
    */
   elevation: PropTypes.oneOf([0, 1, 2, 3, 4]),
   /**
-   * 可互动性
+   * 可互动性
    */
   interactive: PropTypes.bool,
 }
@@ -84,5 +84,7 @@ Card.defaultProps = {
 }
 
 Card.Header = Header
+
+Card.displayName = "Card"
 
 export default Card

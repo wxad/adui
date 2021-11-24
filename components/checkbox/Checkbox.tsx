@@ -218,6 +218,8 @@ const Checkbox: ICheckbox = forwardRef(
 
 Checkbox.Group = Group
 
+Checkbox.displayName = "Checkbox"
+
 Checkbox.propTypes = {
   /**
    * 是否选中

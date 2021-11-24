@@ -194,6 +194,8 @@ const Tabs: ITabs = forwardRef(
 
 Tabs.Tab = Tab
 
+Tabs.displayName = "Tabs"
+
 Tabs.propTypes = {
   /**
    * 是否通栏分配宽度（flex: 1;）

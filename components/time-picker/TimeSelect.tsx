@@ -201,6 +201,8 @@ const TimeSelect: React.ForwardRefExoticComponent<
   }
 )
 
+TimeSelect.displayName = "TimeSelect"
+
 TimeSelect.propTypes = {
   /**
    * 当前小时值
