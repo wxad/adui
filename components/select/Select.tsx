@@ -303,7 +303,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
     super(props)
     const { defaultOpen, defaultValue, open, value } = props
 
-    let valueState
+    let valueState: T | undefined
     if (value !== null) {
       if (value === "") {
         valueState = undefined
