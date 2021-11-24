@@ -68,8 +68,8 @@ const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps) => {
     text,
     value,
     ...otherProps
-  } = props
-  const isNestedPattern = () => !!(props && props.children !== null)
+  } = props || {}
+  const isNestedPattern = () => children !== null
 
   if (value !== null && value !== undefined) {
     warning(
