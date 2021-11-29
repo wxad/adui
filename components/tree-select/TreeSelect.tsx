@@ -740,7 +740,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
   }
 
   public componentDidMount = () => {
-    const input = this.wrapper.querySelector("input")
+    const input = this.wrapper?.querySelector("input")
     const { maxTagCount, placeholder, resultVisible } = this.props
     const { value } = this.state
 
@@ -775,7 +775,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     if (!resultVisible) {
       setTimeout(() => {
         window.dispatchEvent(new Event("resize"))
-        const input = this.wrapper.querySelector("input")
+        const input = this.wrapper?.querySelector("input")
         if (input) {
           input.placeholder = placeholder
         }
