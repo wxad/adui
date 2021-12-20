@@ -17,6 +17,7 @@ var IconSvgPaths = require("./lib/icon/IconSvgPaths").default
  * addedIconsArray: 记录已经被添加的 icon
  */
 var addedIconsArray = []
+var componentNames = []
 var validTypeArr = ["Literal", "StringLiteral"]
 var ICON_INTENTS = {
   danger: "alert-circle",
@@ -379,7 +380,6 @@ function aduiImportPlugin() {
            * import 'adui/es/icon/style'
            */
           var removeIndexes = []
-          var componentNames = []
           let newImportStatement = ""
           traverse(ast, {
             ImportDeclaration: function (path) {
