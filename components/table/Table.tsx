@@ -703,14 +703,23 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   public componentDidUpdate = ({
     dataSource: dataSourceOld,
     getCellProps: getCellPropsOld,
+    columns: columnsOld,
   }: ITableProps<T>) => {
-    const { dataSource, getCellProps } = this.props
+    const { dataSource, getCellProps, columns } = this.props
     /**
      * handleWindowResize 不应该只在 didmount 时执行
      * didUpdate 时也需要
      */
     if (!shallowEqual(dataSourceOld, dataSource)) {
       setTimeout(this.handleWindowResize, 0)
+    }
+
+    if (!shallowEqual(columnsOld, columns)) {
+      columns?.forEach(({ dataIndex, fixed, width }, index) => {
+        if (typeof width === "number" && fixed) {
+          this.handleThResize(columns.length, width, dataIndex, index, fixed)
+        }
+      })
     }
 
     /**
@@ -910,7 +919,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     if (i > -1) {
       if (
         fixedColumnsInfos[i].width === width &&
-        fixedColumnsInfos[i].columnsLength === columnsLength
+        fixedColumnsInfos[i].columnsLength === columnsLength &&
+        fixedColumnsInfos[i].index === index
       ) {
         return
       }
@@ -962,7 +972,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                 .reduce((acc, cur) => acc + cur.width, 0)
       }
     })
-    this.setState({ fixedColumnsInfos }, this.forceUpdate)
+    this.setState({ fixedColumnsInfos })
   }
 
   public handleTheadMouseEnter = () => {
@@ -1278,7 +1288,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                     (o) => o.dataIndex === dataIndex
                   )?.isFirstRight,
                 })}
-                key={dataIndex || index}
+                key={dataIndex ? `${dataIndex}_${index}` : index}
                 style={{
                   left: isFixedLeft(col)
                     ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
@@ -1306,6 +1316,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                     : width || Math.max(TD_MIN_WIDTH, minWidth),
                 }}
                 data-column={index}
+                data-column-key={dataIndex ? `${dataIndex}_${index}` : index}
               >
                 {this.generateThCell(col, { index, columns })}
                 {col.children && (
@@ -1838,7 +1849,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           )?.isFirstRight,
           [`${prefix}-td_combined`]: rowSpan || colSpan,
         })}
-        key={dataIndex || cellIndex}
+        key={dataIndex ? `${dataIndex}_${cellIndex}` : cellIndex}
         style={{
           left: isFixedLeft(cell)
             ? (fixedColumnsInfos.find((o) => o.dataIndex === dataIndex)
