@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.20.1](https://github.com/wxad/adui/compare/v2.20.0...v2.20.1) (2021-12-20)
+
+
+### Bug Fixes
+
+* **Table:** 尝试修复 columns 变化后，固定列不会变化的问题 [#13](https://github.com/wxad/adui/issues/13) ([0d19d23](https://github.com/wxad/adui/commit/0d19d23648050d8c4fe26c8c09f45048c5bcbd47))
+* **TreeSelect:** 修复潜在的可能错误 ([5fa2504](https://github.com/wxad/adui/commit/5fa250410e1d576ccd38b18518566e29e4c93141))
+
 ## [2.20.0](https://github.com/wxad/adui/compare/v2.19.0...v2.20.0) (2021-11-23)
 
 
