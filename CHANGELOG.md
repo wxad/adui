@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.21.0](https://github.com/wxad/adui/compare/v2.20.1...v2.21.0) (2021-12-28)
+
+
+### Features
+
+* **Table:** Column 增加 getHeadCellClassName 和 getHeadCellStyle Prop ([613d7c5](https://github.com/wxad/adui/commit/613d7c59bc8b3fdaadcc1286b6e0df56ec1f5c38))
+
 ### [2.20.1](https://github.com/wxad/adui/compare/v2.20.0...v2.20.1) (2021-12-20)
 
 
