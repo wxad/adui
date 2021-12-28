@@ -1645,9 +1645,17 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   }
 
   public generateThCell = (col: IColumnProps<T>, options?: IBaseObject) => {
-    const { align, columnsResizable, getHeadCellClassName, getHeadCellStyle } =
-      this.props
-    const { resizable: colResizable } = col
+    const {
+      align,
+      columnsResizable,
+      getHeadCellClassName: getHeadCellClassNameProp,
+      getHeadCellStyle: getHeadCellStyleProp,
+    } = this.props
+    const {
+      resizable: colResizable,
+      getHeadCellClassName,
+      getHeadCellStyle,
+    } = col
     let resizable = true
     if (typeof colResizable === "boolean") {
       resizable = colResizable
@@ -1663,16 +1671,18 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       <div
         className={classNames(
           `${prefix}-cell`,
-          getHeadCellClassName &&
-            getHeadCellClassName(col, options ? options.index : undefined)
+          getHeadCellClassName && getHeadCellClassName(),
+          getHeadCellClassNameProp &&
+            getHeadCellClassNameProp(col, options ? options.index : undefined)
         )}
         style={{
           justifyContent:
             (col.align && HORIZONTAL_ALIGN[col.align]) ||
             (align && HORIZONTAL_ALIGN[align]) ||
             undefined,
-          ...((getHeadCellStyle &&
-            getHeadCellStyle(col, options ? options.index : undefined)) ||
+          ...((getHeadCellStyle && getHeadCellStyle()) || {}),
+          ...((getHeadCellStyleProp &&
+            getHeadCellStyleProp(col, options ? options.index : undefined)) ||
             {}),
         }}
       >

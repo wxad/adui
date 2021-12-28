@@ -45,6 +45,14 @@ export interface IColumnProps<T extends IBaseObject = IBaseObject> {
    */
   fixed?: true | false | "left" | "right"
   /**
+   * 设置该列 TH 的类名
+   */
+  getHeadCellClassName?: () => string
+  /**
+   * 设置该列 TH 上的 style
+   */
+  getHeadCellStyle?: () => React.CSSProperties | void
+  /**
    * 设置该列每个单元格的类名：(row, rowIndex) => (string)
    */
   getCellClassName?: (row: T, rowIndex: number) => string
@@ -122,6 +130,8 @@ function Column<T extends IBaseObject = IBaseObject>(props: IColumnProps<T>) {
     "filteredValue",
     "filters",
     "fixed",
+    "getHeadCellClassName",
+    "getHeadCellStyle",
     "getCellClassName",
     "getCellProps",
     "getCellStyle",
@@ -173,6 +183,14 @@ Column.propTypes = {
    * 固定设置
    */
   fixed: PropTypes.oneOf([null, false, true, "left", "right"]),
+  /**
+   * 设置该列 TH 的类名：() => (string)
+   */
+  getHeadCellClassName: PropTypes.func,
+  /**
+   * 设置该列 TH 上的 style，() => ({})
+   */
+  getHeadCellStyle: PropTypes.func,
   /**
    * 设置该列每个单元格的类名：(row, rowIndex) => (string)
    */
@@ -283,6 +301,8 @@ Column.defaultProps = {
   filterVisible: null,
   filters: null,
   fixed: null,
+  getHeadCellClassName: () => "",
+  getHeadCellStyle: () => {},
   getCellClassName: undefined,
   getCellProps: undefined,
   getCellStyle: undefined,
