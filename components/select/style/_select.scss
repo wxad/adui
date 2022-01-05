@@ -144,7 +144,7 @@ $prefix: "adui-select";
       }
 
       &-selector {
-        color: var(--gray-600);
+        color: var(--gray-700);
         background-color: rgba(0, 0, 0, 0.03);
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
         cursor: not-allowed;
@@ -159,7 +159,7 @@ $prefix: "adui-select";
       &-arrow {
         svg {
           cursor: not-allowed;
-          fill: var(--gray-600);
+          fill: var(--gray-700);
         }
       }
     }
@@ -212,12 +212,12 @@ $prefix: "adui-select";
 
     &.#{$prefix}-disabled {
       .#{$prefix}-selector {
-        color: var(--gray-600);
+        color: var(--gray-700);
         background-color: transparent;
         box-shadow: none;
 
         svg {
-          fill: var(--gray-600);
+          fill: var(--gray-700);
         }
 
         &:hover,
