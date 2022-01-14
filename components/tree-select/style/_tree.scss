@@ -52,6 +52,8 @@ $prefix: "adui-tree-select";
   }
 
   &-selector {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -59,6 +61,7 @@ $prefix: "adui-tree-select";
     min-height: 30px;
     border-radius: 4px;
     outline: none;
+    cursor: pointer;
     user-select: none;
     transition: var(--motion-duration-base) var(--ease-in-out) background-color,
       var(--motion-duration-base) var(--ease-in-out) box-shadow;
@@ -612,6 +615,9 @@ $prefix: "adui-tree-select";
         &:hover {
           box-shadow: 0 0 0 1px var(--transparent-gray-400);
         }
+      }
+      &-arrow {
+        z-index: 1;
       }
       &-selection {
         &:hover,
