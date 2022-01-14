@@ -9,7 +9,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: install
-      run: npm install
+      run: npm install --force
 
     - name: build
       run: npm run site
