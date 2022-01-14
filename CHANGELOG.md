@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.22.0](https://github.com/wxad/adui/compare/v2.21.1...v2.22.0) (2022-01-14)
+
+
+### Features
+
+* **Icon:** 更新 icon 至 1.8.23 ([269a195](https://github.com/wxad/adui/commit/269a195a746255025970e4c63598a72e5a806077))
+
+
+### Bug Fixes
+
+* **TreeSelect:** 修复单选时 icon 无法点击的问题 ([30d697d](https://github.com/wxad/adui/commit/30d697d2fb3f859e533a3c18dca0954ae25f9897))
+
 ### [2.21.1](https://github.com/wxad/adui/compare/v2.21.0...v2.21.1) (2022-01-05)
 
 ## [2.21.0](https://github.com/wxad/adui/compare/v2.20.1...v2.21.0) (2021-12-28)
