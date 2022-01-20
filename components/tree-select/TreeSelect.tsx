@@ -68,6 +68,22 @@ export interface DataNode {
   children?: DataNode[]
 }
 
+export interface BaseOptionType {
+  disabled?: boolean
+  checkable?: boolean
+  disableCheckbox?: boolean
+  children?: BaseOptionType[]
+  [name: string]: any
+}
+
+export interface DefaultOptionType extends BaseOptionType {
+  value?: React.ReactText
+  title?: React.ReactNode
+  label?: React.ReactNode
+  key?: React.Key
+  children?: DefaultOptionType[]
+}
+
 export type TreeData = DataNode[] | undefined
 
 export interface ITreeSelectProps {
@@ -76,6 +92,9 @@ export interface ITreeSelectProps {
   className?: string
   defaultValue?: TreeNodeValue
   disabled?: boolean
+  filterTreeNode?:
+    | boolean
+    | ((inputValue: string, treeNode: DefaultOptionType) => boolean)
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
   heightFixed?: boolean
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -84,7 +103,7 @@ export interface ITreeSelectProps {
   onChange?: (value: TreeNodeValue, titleList: React.ReactNode[]) => void
   onDropdownVisibleChange?: (visible: boolean) => void
   onSearchEnter?: (e: KeyboardEvent) => void
-  onSearch?: (value: string) => void
+  onSearch?: (value: string, nodes: DataNode[]) => void
   placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
   resultVisible?: boolean
@@ -95,6 +114,9 @@ export interface ITreeSelectProps {
   treeData?: TreeData
   value?: TreeNodeValue
 }
+
+type GetFuncType<T> = T extends boolean ? never : T
+type FilterFn = GetFuncType<ITreeSelectProps["filterTreeNode"]>
 
 export interface ITreeSelectState {
   hash: string
@@ -419,10 +441,50 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     }
   }
 
+  public getFilteredTreeData = (searchValue: string) => {
+    const { filterTreeNode } = this.props
+    if (!searchValue || filterTreeNode === false) {
+      return this.treeData
+    }
+
+    let filterOptionFunc: FilterFn
+    if (typeof filterTreeNode === "function") {
+      filterOptionFunc = filterTreeNode
+    } else {
+      filterOptionFunc = this.filterTreeNode
+    }
+
+    const dig = (
+      list: DefaultOptionType[],
+      keepAll: boolean = false
+    ): DataNode[] => {
+      // @ts-ignore
+      return list
+        .map((dataNode) => {
+          const { children } = dataNode
+
+          const match =
+            keepAll ||
+            (filterOptionFunc && filterOptionFunc(searchValue, dataNode))
+          const childList = dig(children || [], match)
+
+          if (match || childList.length) {
+            return {
+              ...dataNode,
+              children: childList,
+            }
+          }
+          return null
+        })
+        .filter((node) => node)
+    }
+    return dig(this.treeData)
+  }
+
   public handleSearch = (val: string) => {
     const { onSearch } = this.props
     if (onSearch) {
-      onSearch(val)
+      onSearch(val, this.getFilteredTreeData(val))
       setTimeout(() => {
         this.forceUpdate()
       }, 0)
