@@ -144,7 +144,7 @@ export { default as Transition } from "./transition"
 export type { ITreeSelectProps, ITreeNodeProps } from "./tree-select"
 export { default as TreeSelect } from "./tree-select"
 
-export type { IUploadFileProps, IUploadImgProps } from "./upload"
+export type { IUpload, IUploadFileProps, IUploadImgProps } from "./upload"
 export { default as Upload } from "./upload"
 
 export { default as ChannelsButton } from "./channels-button"
