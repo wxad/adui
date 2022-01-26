@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.23.0](https://github.com/wxad/adui/compare/v2.22.0...v2.23.0) (2022-01-20)
+
+
+### Features
+
+* **TreeSelect:** onSearch 增加第二个参数，返回筛选后的 treeNodes ([483a9e2](https://github.com/wxad/adui/commit/483a9e22f80cc8614b3314a8b4f206f6c853f18c))
+
+
+### Bug Fixes
+
+* **popmotion:** 修复由于 popmotion 版本问题导致 cra 报错，定版本到 v9 ([e305f16](https://github.com/wxad/adui/commit/e305f166357023605f2ec14ce3009a5cd5045267))
+* **Tabs:** 修复 Tabs 在 banner 模式时，导致的 indicator 不对齐问题 ([2e648eb](https://github.com/wxad/adui/commit/2e648ebe72c29256f3b1d5722509d897f87dc1db))
+
 ## [2.22.0](https://github.com/wxad/adui/compare/v2.21.1...v2.22.0) (2022-01-14)
 
 

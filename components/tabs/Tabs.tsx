@@ -85,9 +85,7 @@ const Tabs: ITabs = forwardRef(
     ref: any
   ) => {
     const initial = useIsInitialRender()
-    const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>(
-      {}
-    )
+    const indicatorRef = useRef<HTMLDivElement>(null)
 
     /**
      * 初始化 value state
@@ -116,6 +114,15 @@ const Tabs: ITabs = forwardRef(
 
     const { size: sizeContext } = useContext(ConfigContext)
 
+    const setIndicatorStyle = (styles: React.CSSProperties) => {
+      Object.keys(styles).forEach((key: keyof React.CSSProperties) => {
+        if (indicatorRef.current) {
+          // @ts-ignore
+          indicatorRef.current.style[key] = styles[key]
+        }
+      })
+    }
+
     const updateIndicatorStyle = () => {
       setTimeout(() => {
         if (tabsRef && tabsRef.current) {
@@ -129,7 +136,7 @@ const Tabs: ITabs = forwardRef(
               transition: initial
                 ? ""
                 : "all var(--motion-duration-base) var(--ease-in-out)",
-              width: clientWidth,
+              width: `${clientWidth}px`,
             })
           } else {
             setIndicatorStyle({ opacity: 0 })
@@ -154,7 +161,7 @@ const Tabs: ITabs = forwardRef(
 
     useEffect(() => {
       updateIndicatorStyle()
-    }, [value])
+    })
 
     const classSet = classNames(
       className,
@@ -183,7 +190,7 @@ const Tabs: ITabs = forwardRef(
             ref={tabsRef}
             {...otherProps}
           >
-            <div className={`${prefix}-indicator`} style={indicatorStyle} />
+            <div ref={indicatorRef} className={`${prefix}-indicator`} />
             {children}
           </div>
         </ResizeObserver>
