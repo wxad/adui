@@ -12,7 +12,7 @@ jobs:
       run: yarn
 
     - name: build
-      run: npm run site
+      run: node -v && npm run site
 
     - name: deploy
       uses: peaceiris/actions-gh-pages@v3.7.3
