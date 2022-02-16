@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.24.0](https://github.com/wxad/adui/compare/v2.23.0...v2.24.0) (2022-02-16)
+
+
+### Features
+
+* **Upload:** 导出 IUpload 类型 ([d497a97](https://github.com/wxad/adui/commit/d497a971709c63f9d920d6950a62bd406649e014))
+
+
+### Bug Fixes
+
+* **TreeSelect:** 修复 dropdownPopupAlign 和 全选的 warning，其中 dropdownPopupAlign 不再被支持 ([54f41fa](https://github.com/wxad/adui/commit/54f41fa28d8c6e2a4c8458dc3e8db9c78ae32ee5))
+
 ## [2.23.0](https://github.com/wxad/adui/compare/v2.22.0...v2.23.0) (2022-01-20)
 
 
