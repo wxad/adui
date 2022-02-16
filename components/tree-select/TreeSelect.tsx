@@ -19,8 +19,6 @@ import Icon from "../icon"
 import Popover, { IPopoverProps } from "../popover"
 import Portal from "../portal"
 import Spinner from "../spinner"
-import getPlacements from "../tooltip/placements"
-import { Placement } from "../pop-trigger"
 import "./style"
 
 const prefix = "adui-tree-select"
@@ -104,7 +102,6 @@ export interface ITreeSelectProps {
   onDropdownVisibleChange?: (visible: boolean) => void
   onSearchEnter?: (e: KeyboardEvent) => void
   onSearch?: (value: string, nodes: DataNode[]) => void
-  placement?: Placement
   resultRender?: null | ((values: ITreeNode[]) => JSX.Element)
   resultVisible?: boolean
   sameValueEnabled?: boolean
@@ -207,23 +204,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      */
     onSearchEnter: PropTypes.func,
     /**
-     * 设置弹出位置
-     */
-    placement: PropTypes.oneOf([
-      "top",
-      "left",
-      "right",
-      "bottom",
-      "topLeft",
-      "topRight",
-      "bottomLeft",
-      "bottomRight",
-      "leftTop",
-      "leftBottom",
-      "rightTop",
-      "rightBottom",
-    ]),
-    /**
      * 设置输入框的默认内容
      */
     placeholder: PropTypes.string,
@@ -286,7 +266,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     onDropdownVisibleChange: noop,
     onSearch: noop,
     onSearchEnter: noop,
-    placement: "bottomLeft",
     placeholder: "请选择",
     resultRender: null,
     resultVisible: true,
@@ -775,6 +754,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         ),
         className: `${prefix}-tree-treenode-all`,
         key: `${prefix}-tree-treenode-all`,
+        value: `${prefix}-tree-treenode-all`,
         checkable: false,
         disableCheckbox: true,
       })
@@ -891,7 +871,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       maxTagCount,
       multiple,
       onDropdownVisibleChange,
-      placement,
       placeholder,
       rightIcon,
       resultRender,
@@ -1066,9 +1045,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                 [`${prefix}-dropdown-all`]: selectAll,
                 [`${prefix}-dropdown-single-level`]: !multiLevel,
               })}
-              dropdownPopupAlign={
-                placement && getPlacements({ alignEdge: true })[placement]
-              }
               filterTreeNode={this.filterTreeNode}
               getPopupContainer={getPopupContainer || getPopupContainerContext}
               inputIcon={<Icon icon="triangle-down" />}
