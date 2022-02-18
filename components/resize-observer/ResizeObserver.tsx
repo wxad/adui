@@ -6,10 +6,11 @@
 /* eslint-disable */
 // @ts-nocheck
 import * as React from "react"
+import ResizeObserver from "resize-observer-polyfill"
 import findDOMNode from "rc-util/lib/Dom/findDOMNode"
 import toArray from "rc-util/lib/Children/toArray"
-import warning from "../_util/warning"
 import { composeRef } from "rc-util/lib/ref"
+import warning from "../_util/warning"
 
 interface ResizeObserverEntry {
   readonly borderBoxSize: ResizeObserverEntryBoxSize
