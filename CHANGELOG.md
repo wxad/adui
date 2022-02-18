@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.24.1](https://github.com/wxad/adui/compare/v2.24.0...v2.24.1) (2022-02-18)
+
+
+### Bug Fixes
+
+* **ResizeObserver:** 加回 Polyfill ([7deab1b](https://github.com/wxad/adui/commit/7deab1b7006669924f71124e9880cd8d7b08b164))
+
 ## [2.24.0](https://github.com/wxad/adui/compare/v2.23.0...v2.24.0) (2022-02-16)
 
 
