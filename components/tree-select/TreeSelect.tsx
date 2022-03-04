@@ -22,6 +22,7 @@ import Spinner from "../spinner"
 import "./style"
 
 const prefix = "adui-tree-select"
+const sameValueSplitter = "__@@__"
 const noop = () => {}
 
 const strategies = {
@@ -387,14 +388,17 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     if (!disabled) {
       if (sameValueEnabled) {
         value?.forEach((v) => {
-          const splited = `${v}`.split("__")
+          const splited = `${v}`.split(sameValueSplitter)
           const val = splited[splited.length - 1]
-          const { length } = value.filter((o) => `${o}`.endsWith(`__${val}`))
+          const { length } = value.filter((o) =>
+            `${o}`.endsWith(`${sameValueSplitter}${val}`)
+          )
 
           if (
             length ===
-            this.treeValueFlatten.filter((o) => `${o}`.endsWith(`__${val}`))
-              .length
+            this.treeValueFlatten.filter((o) =>
+              `${o}`.endsWith(`${sameValueSplitter}${val}`)
+            ).length
           ) {
             // 表示全包含了，则保留
             valueParam.push(val)
@@ -710,7 +714,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
           o.value = key
         }
         if (sameValueEnabled) {
-          const newVal = `${parentValue ? `${parentValue}__` : ""}${value}`
+          const newVal = `${
+            parentValue ? `${parentValue}${sameValueSplitter}` : ""
+          }${value}`
           o.key = newVal
           o.value = newVal
           if (!this.treeValueFlatten.includes(newVal)) {
@@ -939,7 +945,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       if (restProps.value) {
         restProps.value.forEach((o: any) => {
           this.treeValueFlatten.forEach((p) => {
-            const splited = p.split("__")
+            const splited = p.split(sameValueSplitter)
             if (splited[splited.length - 1] === o) {
               trueValue.push(p)
             }
