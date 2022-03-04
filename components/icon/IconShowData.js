@@ -376,6 +376,12 @@ var _default = {
     }, {
       "name": "material-image",
       "keywords": ["material-image", ""]
+    }, {
+      "name": "undo",
+      "keywords": ["undo", "撤销", "回退", "还原"]
+    }, {
+      "name": "redo",
+      "keywords": ["redo", "上一步", "重做"]
     }]
   },
   "工具": {
@@ -875,8 +881,8 @@ var _default = {
       "name": "live",
       "keywords": ["live", "直播\n"]
     }, {
-      "name": "family activities-outlined",
-      "keywords": ["family activities-outlined", "亲子活动"]
+      "name": "family-activities-outlined",
+      "keywords": ["family-activities-outlined", "亲子活动"]
     }, {
       "name": "market-outlined",
       "keywords": ["market-outlined", "菜市场", "菜篮子"]

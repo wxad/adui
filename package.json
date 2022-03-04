@@ -1,7 +1,7 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "2.24.1",
+  "version": "2.24.2",
   "files": [
     "lib",
     "es",
@@ -115,7 +115,7 @@
     "@typescript-eslint/parser": "^4.20.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "adui-design-token": "^1.0.9",
-    "adui-icon": "^1.8.23",
+    "adui-icon": "^1.8.24",
     "async": "^3.2.0",
     "autoprefixer": "^9.8.6",
     "babel-core": "^7.0.0-bridge.0",

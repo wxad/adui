@@ -183,10 +183,12 @@ const Input: IInput = forwardRef(
     }: IInputProps,
     ref
   ) => {
-    const [leftElementWidth, setLeftElementWidth] =
-      useState<null | number>(null)
-    const [rightElementWidth, setRightElementWidth] =
-      useState<null | number>(null)
+    const [leftElementWidth, setLeftElementWidth] = useState<null | number>(
+      null
+    )
+    const [rightElementWidth, setRightElementWidth] = useState<null | number>(
+      null
+    )
     const inputRef = useRef<any>(null)
     const wrapperElementRef = useRef<HTMLDivElement>(null)
     const leftElementRef = useRef<HTMLDivElement>(null)
@@ -199,6 +201,28 @@ const Input: IInput = forwardRef(
     const { size: sizeContext } = useContext(ConfigContext)
 
     const size = getComputedSize(sizeProp, sizeContext)
+
+    const syncCleave = () => {
+      /**
+       * 修复 cleave.1.4.7 bug:
+       */
+      if (cleaveRef?.current) {
+        const { element, state, properties } = cleaveRef.current
+        let { lastInputValue } = cleaveRef.current
+        if (lastInputValue !== value) {
+          lastInputValue = value
+        }
+        if (state.value !== value) {
+          state.value = value
+        }
+        if (properties.result !== value) {
+          properties.result = value
+        }
+        if (element && element.value !== value && value) {
+          element.value = value
+        }
+      }
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (!disabled && onChange) {
@@ -223,6 +247,7 @@ const Input: IInput = forwardRef(
     }
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      syncCleave()
       if (onBlur) {
         onBlur(e)
       }
@@ -317,24 +342,7 @@ const Input: IInput = forwardRef(
 
     useEffect(() => {
       updateElementsWidth()
-      if (cleaveRef?.current) {
-        const el = cleaveRef.current.element
-        /**
-         * 修复 cleave.1.4.7 bug:
-         */
-        if (cleaveRef.current.lastInputValue !== value) {
-          cleaveRef.current.lastInputValue = value
-        }
-        if (cleaveRef.current.state.value !== value) {
-          cleaveRef.current.state.value = value
-        }
-        if (cleaveRef.current.properties.result !== value) {
-          cleaveRef.current.properties.result = value
-        }
-        if (el && el.value !== value && value) {
-          el.value = value
-        }
-      }
+      syncCleave()
     })
 
     useImperativeHandle(ref, () => {
