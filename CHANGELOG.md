@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.25.0](https://github.com/wxad/adui/compare/v2.24.1...v2.25.0) (2022-03-07)
+
+
+### Features
+
+* **TreeSelect:** 默认支持大小写搜索，也加入了 filterCaseSensitive 开关以关闭这个功能 ([d9a8f28](https://github.com/wxad/adui/commit/d9a8f28b3ca3c2e520f06db95bc21cf462ae618d))
+
+
+### Bug Fixes
+
+* **Input:** 修复 cleave controlled 状态，保证 Blur 时可以重置 value ([45ffcb4](https://github.com/wxad/adui/commit/45ffcb4378dd82cf3ae2dce9668ecb9bc2f95f78))
+* **TreeSelect:** 将 sameValueSplitter 复杂化，避免冲突 ([bd5d3de](https://github.com/wxad/adui/commit/bd5d3de46d35e23074697445ada22699155a2870))
+
 ### [2.24.1](https://github.com/wxad/adui/compare/v2.24.0...v2.24.1) (2022-02-18)
 
 
