@@ -94,6 +94,7 @@ export interface ITreeSelectProps {
   filterTreeNode?:
     | boolean
     | ((inputValue: string, treeNode: DefaultOptionType) => boolean)
+  filterCaseSensitive?: boolean
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
   heightFixed?: boolean
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -162,6 +163,14 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      * 是否禁用
      */
     disabled: PropTypes.bool,
+    /**
+     * 自定义树节点过滤函数
+     */
+    filterTreeNode: PropTypes.any,
+    /**
+     * 是否开启大小写敏感搜索，默认为 true
+     */
+    filterCaseSensitive: PropTypes.bool,
     /**
      * 指定弹出层的父级，默认为 document.body
      */
@@ -258,6 +267,8 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     className: undefined,
     defaultValue: null,
     disabled: false,
+    filterTreeNode: undefined,
+    filterCaseSensitive: true,
     getPopupContainer: null,
     heightFixed: false,
     intent: "normal",
@@ -475,9 +486,13 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
   }
 
   public filterTreeNode = (input: string, treeNode: any) => {
+    const { filterCaseSensitive } = this.props
     const { key, title, value, dataTitle } = treeNode
     if (!key || !value) {
       return false
+    }
+    if (filterCaseSensitive) {
+    return String(dataTitle || title).toLocaleLowerCase().includes(input.toLocaleLowerCase())
     }
     return String(dataTitle || title).includes(input)
   }
@@ -871,6 +886,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       autoClearSearchValue,
       children,
       className,
+      filterTreeNode,
       getPopupContainer,
       heightFixed,
       intent,
@@ -890,6 +906,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     } = this.props
 
     const restProps: any = omit(otherProps, [
+      "filterCaseSensitive",
       "onChange",
       "onSearch",
       "onSearchEnter",
@@ -1051,7 +1068,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
                 [`${prefix}-dropdown-all`]: selectAll,
                 [`${prefix}-dropdown-single-level`]: !multiLevel,
               })}
-              filterTreeNode={this.filterTreeNode}
+              filterTreeNode={filterTreeNode || this.filterTreeNode}
               getPopupContainer={getPopupContainer || getPopupContainerContext}
               inputIcon={<Icon icon="triangle-down" />}
               maxTagPlaceholder={this.getMaxTagPlaceholder}
