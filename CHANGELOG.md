@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.26.0](https://github.com/wxad/adui/compare/v2.25.0...v2.26.0) (2022-03-10)
+
+
+### Features
+
+* **DatePicker.RangePicker:** 根据 input focus 的位置，显示不同的月份 ([b55ff1f](https://github.com/wxad/adui/commit/b55ff1f105d40aada2fcbd9dd137dc29284e6a2a))
+
 ## [2.25.0](https://github.com/wxad/adui/compare/v2.24.1...v2.25.0) (2022-03-07)
 
 
