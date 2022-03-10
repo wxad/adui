@@ -47,7 +47,6 @@ const File: React.ForwardRefExoticComponent<
       icon,
       name,
       onIconClick,
-      onUpload,
       progress,
       src,
       ...otherProps

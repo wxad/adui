@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /**
  * confirm 是将 Dialog 函数式编程的结果。
  * 1. confirm 是为了让使用者方便地函数式调用组件；因此 confirm 方法的 visible 状态是不交给外部处理的；

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable max-len */
 /**
  * confirm 是将 Dialog 函数式编程的结果。

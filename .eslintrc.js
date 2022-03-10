@@ -66,6 +66,8 @@ const eslintrc = {
     "react/jsx-filename-extension": 0,
     "react/static-property-placement": 0,
     "react/jsx-props-no-spreading": 0,
+    "react/prop-types": 0,
+    "react/require-default-props": 0,
     // 不设置 jsx 的缩进
     "react/jsx-indent": 0,
     // 不设置 jsx prop 的缩进
