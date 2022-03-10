@@ -224,10 +224,9 @@ const RangePicker: React.ForwardRefExoticComponent<
     const [month, setMonth] = useState<Date | null | undefined>(
       initialState.month
     )
-    const [prevValueProp, setPrevValueProp] =
-      useState<
-        [Date | null | undefined, Date | null | undefined] | null | undefined
-      >(valueProp)
+    const [prevValueProp, setPrevValueProp] = useState<
+      [Date | null | undefined, Date | null | undefined] | null | undefined
+    >(valueProp)
     const [rangeValue, setRangeValue] = useState<string>(
       initialState.rangeValue
     )
@@ -462,6 +461,17 @@ const RangePicker: React.ForwardRefExoticComponent<
         if (visibleProp === null) {
           setVisible(true)
         }
+        const { input: inputElement } = inputRef.current || {}
+        // get input cursor position when focused
+        setTimeout(() => {
+          const { selectionStart } = inputElement
+          // 小于 12 代表 focus 到的是 from date
+          if (selectionStart < 12) {
+            setMonth(from)
+          } else if (to) {
+            setMonth(new Date(to.getFullYear(), to.getMonth() - 1))
+          }
+        }, 0)
       }
     }
 
