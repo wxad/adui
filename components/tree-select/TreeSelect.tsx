@@ -168,7 +168,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      */
     filterTreeNode: PropTypes.any,
     /**
-     * 是否开启大小写敏感搜索，默认为 true
+     * 是否开启大小写敏感搜索，默认为 false
      */
     filterCaseSensitive: PropTypes.bool,
     /**
@@ -268,7 +268,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     defaultValue: null,
     disabled: false,
     filterTreeNode: undefined,
-    filterCaseSensitive: true,
+    filterCaseSensitive: false,
     getPopupContainer: null,
     heightFixed: false,
     intent: "normal",
@@ -491,8 +491,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     if (!key || !value) {
       return false
     }
-    if (filterCaseSensitive) {
-    return String(dataTitle || title).toLocaleLowerCase().includes(input.toLocaleLowerCase())
+    if (!filterCaseSensitive) {
+      return String(dataTitle || title)
+        .toLocaleLowerCase()
+        .includes(input.toLocaleLowerCase())
     }
     return String(dataTitle || title).includes(input)
   }
