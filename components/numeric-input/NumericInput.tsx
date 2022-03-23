@@ -79,16 +79,17 @@ const NumericInput: React.ForwardRefExoticComponent<
     const [inputValue, setInputValue] = useState<string>(
       typeof value === "number" ? value.toFixed(precision) : ""
     )
+    const inputRef = useRef<IInputRef>(null)
 
     // 相当于生命周期 getDerivedStateFromProps
     if (valueProp !== null && value !== valueProp) {
       setValue(typeof valueProp === "number" ? valueProp : "")
-      setInputValue(
-        typeof valueProp === "number" ? valueProp.toFixed(precision) : ""
-      )
+      if (document.activeElement !== inputRef.current?.input) {
+        setInputValue(
+          typeof valueProp === "number" ? valueProp.toFixed(precision) : ""
+        )
+      }
     }
-
-    const inputRef = useRef<IInputRef>(null)
 
     useImperativeHandle(ref, () => ({
       current: inputRef.current,
@@ -157,19 +158,19 @@ const NumericInput: React.ForwardRefExoticComponent<
       }
     }
 
-    const handleMouseDown = (
-      e: React.MouseEvent<HTMLDivElement>,
-      type: "plus" | "minus"
-    ) => {
-      e.preventDefault()
-      e.stopPropagation()
+    const handleMouseDown = (type: "plus" | "minus") => {
       handleButtonClick(type)
-      if (
-        inputRef.current &&
-        document.activeElement !== inputRef.current.input
-      ) {
-        inputRef.current.input.focus()
-      }
+      setTimeout(() => {
+        if (
+          inputRef.current &&
+          document.activeElement !== inputRef.current.input
+        ) {
+          const { input } = inputRef.current
+          const end = input.value.length
+          input.setSelectionRange(end, end)
+          input.focus()
+        }
+      }, 100)
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -206,18 +207,14 @@ const NumericInput: React.ForwardRefExoticComponent<
           <div className={`${prefix}-buttons`}>
             <div
               className={`${prefix}-button`}
-              onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
-                handleMouseDown(e, "plus")
-              }
+              onClick={() => handleMouseDown("plus")}
               role="none"
             >
               <Icon icon="arrow-up" interactive={!disabled} size={12} />
             </div>
             <div
               className={`${prefix}-button`}
-              onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
-                handleMouseDown(e, "minus")
-              }
+              onClick={() => handleMouseDown("minus")}
               role="none"
             >
               <Icon icon="arrow-down" interactive={!disabled} size={12} />
