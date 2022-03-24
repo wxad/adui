@@ -192,10 +192,13 @@ const Tooltip: React.ForwardRefExoticComponent<
      * 可能存在 x, y 轴都需要调整的情况，
      * 比如在屏幕右下角的 "bottomLeft" || "bottom"，那么目标是将其调整为 "topRight"。
      *
-     * 20190828: 尝试将 “top*” 的 CSS 定位从 top: xxx; 改为 bottom: xxx;
+     * 20190828: 尝试将 “top*” 的 CSS 定位从 top: xxx; 改为 bottom: xxx;
      * 因为这时候如果弹出框高度变化的话，从下定位就不会有样式问题。
      */
     const handlePopupAlign = (node: HTMLElement) => {
+      if (!autoAdjustPlacement) {
+        return
+      }
       const rect = node.getBoundingClientRect()
       const { width, height, top: Y, left: X } = rect
 
