@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.27.0](https://github.com/wxad/adui/compare/v2.26.0...v2.27.0) (2022-04-07)
+
+
+### Features
+
+* **DatePicker, RangePicker:** 增加 hour Prop，对选中日期的小时进行调整 ([46c79d4](https://github.com/wxad/adui/commit/46c79d42c063bf2cff60ea1b2d424b85495f98eb))
+* **Drawer:** 增加 maskClassName maskStyle Prop ([bc69e32](https://github.com/wxad/adui/commit/bc69e3241464d1280eae355f95e9aec07368229a))
+
+
+### Bug Fixes
+
+* **NumericInput:** 修复 icon 点击不生效的问题 ([8129a9f](https://github.com/wxad/adui/commit/8129a9f4079427e28a7689cd34d7a5ba85237409))
+* **Tooltip:** autoAdjustPlacement 为 false 时，不再自动更换位置 ([4b3a830](https://github.com/wxad/adui/commit/4b3a83008d4838fd54f0674436ecde9c71a9de04))
+
 ## [2.26.0](https://github.com/wxad/adui/compare/v2.25.0...v2.26.0) (2022-03-10)
 
 
