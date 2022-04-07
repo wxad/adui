@@ -15,7 +15,7 @@ import warning from "../_util/warning"
 interface ResizeObserverEntry {
   readonly borderBoxSize: ResizeObserverEntryBoxSize
   readonly contentBoxSize: ResizeObserverEntryBoxSize
-  readonly contentRect: DOMRectReadOnly
+  readonly contentRect: any
   readonly target: Element
 }
 interface ResizeObserverEntryBoxSize {

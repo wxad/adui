@@ -65,6 +65,7 @@ const Popover: React.ForwardRefExoticComponent<
 
     return (
       <Tooltip
+        autoAdjustPlacement={autoAdjustPlacement}
         getPopupContainer={getPopupContainer || getPopupContainerContext}
         placement={placement}
         popup={popup}
