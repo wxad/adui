@@ -75,6 +75,10 @@ export interface IRangePickerProps {
    */
   dropdownRender?: (element: JSX.Element) => React.ReactNode
   /**
+   * 20220407: 默认的日期时间为 12 点，可以使用此 Prop 修改小时
+   */
+  hour?: number
+  /**
    * 设置输入框类型
    */
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -171,6 +175,7 @@ const RangePicker: React.ForwardRefExoticComponent<
       disabled,
       disabledDays,
       dropdownRender,
+      hour = 12,
       intent,
       maxDate,
       minDate,
@@ -224,9 +229,10 @@ const RangePicker: React.ForwardRefExoticComponent<
     const [month, setMonth] = useState<Date | null | undefined>(
       initialState.month
     )
-    const [prevValueProp, setPrevValueProp] = useState<
-      [Date | null | undefined, Date | null | undefined] | null | undefined
-    >(valueProp)
+    const [prevValueProp, setPrevValueProp] =
+      useState<
+        [Date | null | undefined, Date | null | undefined] | null | undefined
+      >(valueProp)
     const [rangeValue, setRangeValue] = useState<string>(
       initialState.rangeValue
     )
@@ -350,6 +356,7 @@ const RangePicker: React.ForwardRefExoticComponent<
     }
 
     const handleDayClick = (day: Date) => {
+      day.setHours(hour, 0, 0, 0)
       if (
         DateUtils.isDayBefore(day, minDate) ||
         DateUtils.isDayAfter(day, maxDate)
@@ -428,6 +435,8 @@ const RangePicker: React.ForwardRefExoticComponent<
         const rangeValueStrs = val.split(" - ")
         const newFrom = new Date(rangeValueStrs[0])
         const newTo = new Date(rangeValueStrs[1])
+        newFrom.setHours(hour, 0, 0, 0)
+        newTo.setHours(hour, 0, 0, 0)
         if (
           !isDayDisabled(newFrom) &&
           !isDayDisabled(newTo) &&
@@ -669,6 +678,10 @@ RangePicker.propTypes = {
    */
   dropdownRender: PropTypes.any,
   /**
+   * 20220407: 默认的日期时间为 12 点，可以使用此 Prop 修改小时
+   */
+  hour: PropTypes.number,
+  /**
    * 设置输入框类型
    */
   intent: PropTypes.oneOf([
@@ -768,6 +781,7 @@ RangePicker.defaultProps = {
   disabled: false,
   disabledDays: noop,
   dropdownRender: undefined,
+  hour: 12,
   intent: "normal",
   maxDate: getDefaultMaxDate(),
   minDate: getDefaultMinDate(),

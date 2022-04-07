@@ -72,6 +72,10 @@ export interface IDatePickerProps {
    */
   dropdownRender?: (element: JSX.Element) => React.ReactNode
   /**
+   * 20220407: 默认的日期时间为 12 点，可以使用此 Prop 修改小时
+   */
+  hour?: number
+  /**
    * 设置输入框类型
    */
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -163,6 +167,7 @@ const DatePicker: IDatePicker = forwardRef(
       disabled,
       disabledDays,
       dropdownRender,
+      hour = 12,
       intent,
       maxDate,
       minDate,
@@ -278,6 +283,7 @@ const DatePicker: IDatePicker = forwardRef(
       selectedDayNew: Date,
       { disabled: bool }: { [key: string]: any }
     ) => {
+      selectedDayNew.setHours(hour, 0, 0, 0)
       if (!bool) {
         if (closeOnSelect) {
           // 延迟是为了让状态的变化在视觉上先被接受
@@ -316,6 +322,7 @@ const DatePicker: IDatePicker = forwardRef(
         }
       } else if (isLegalDateString(val)) {
         const newDate = new Date(val)
+        newDate.setHours(hour, 0, 0, 0)
         if (
           !isDayDisabled(newDate) &&
           !DateUtils.isSameDay(newDate, selectedDay)
@@ -503,6 +510,10 @@ DatePicker.propTypes = {
    */
   dropdownRender: PropTypes.any,
   /**
+   * 20220407: 默认的日期时间为 12 点，可以使用此 Prop 修改小时
+   */
+  hour: PropTypes.number,
+  /**
    * 设置输入框类型
    */
   intent: PropTypes.oneOf([
@@ -591,6 +602,7 @@ DatePicker.defaultProps = {
   disabled: false,
   disabledDays: noop,
   dropdownRender: undefined,
+  hour: 12,
   intent: "normal",
   maxDate: getDefaultMaxDate(),
   minDate: getDefaultMinDate(),
