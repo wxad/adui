@@ -77,9 +77,17 @@ export interface IDrawerProps {
    */
   headerStyle?: React.CSSProperties
   /**
+   * mask 的类名
+   */
+  maskClassName?: string
+  /**
    * 点击 mask 是否触发 cancel 事件
    */
   maskClosable?: boolean
+  /**
+   * mask 的样式
+   */
+  maskStyle?: React.CSSProperties
   /**
    * 是否显示 mask
    */
@@ -119,7 +127,9 @@ const Drawer: React.FC<IDrawerProps> = ({
   headerContent,
   headerElement,
   headerStyle,
+  maskClassName,
   maskClosable,
+  maskStyle,
   maskVisible,
   onClose,
   placement,
@@ -213,8 +223,9 @@ const Drawer: React.FC<IDrawerProps> = ({
           {({ className: cls }, ref) => (
             <div
               ref={ref}
-              className={classNames(`${prefix}-mask`, cls)}
+              className={classNames(`${prefix}-mask`, maskClassName, cls)}
               role="none"
+              style={maskStyle}
               onClick={() => {
                 if (maskClosable) {
                   handleClose()
@@ -315,9 +326,17 @@ Drawer.propTypes = {
    */
   headerStyle: PropTypes.object,
   /**
+   * mask 的类名
+   */
+  maskClassName: PropTypes.string,
+  /**
    * 点击 mask 是否触发 cancel 事件
    */
   maskClosable: PropTypes.bool,
+  /**
+   * mask 的样式
+   */
+  maskStyle: PropTypes.object,
   /**
    * 是否显示 mask
    */
@@ -354,7 +373,9 @@ Drawer.defaultProps = {
   headerContent: null,
   headerElement: undefined,
   headerStyle: {},
+  maskClassName: undefined,
   maskClosable: false,
+  maskStyle: {},
   maskVisible: false,
   onClose: null,
   placement: "right",
