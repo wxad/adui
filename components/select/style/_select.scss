@@ -8,6 +8,19 @@ $prefix: "adui-select";
   min-width: 77px;
   height: 36px;
 
+  &-allow-clear {
+    &:not(.#{$prefix}-disabled) {
+      &:hover {
+        .#{$prefix} {
+          &-clear {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+
   &-selector {
     position: relative;
     display: flex;
@@ -157,8 +170,9 @@ $prefix: "adui-select";
       }
 
       &-arrow {
+        cursor: not-allowed;
+
         svg {
-          cursor: not-allowed;
           fill: var(--gray-700);
         }
       }
@@ -249,16 +263,27 @@ $prefix: "adui-select";
     max-width: 100%;
   }
 
+  &-arrow,
+  &-clear {
+    position: absolute;
+    top: 50%;
+    margin-top: -9px;
+    right: 6px;
+    line-height: 0;
+
+    svg {
+      display: block;
+    }
+  }
+
   &-arrow {
     pointer-events: none;
+  }
 
-    > svg {
-      position: absolute;
-      top: 50%;
-      margin-top: -9px;
-      right: 6px;
-      line-height: 0;
-    }
+  &-clear {
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
   }
 
   &-dropdown {

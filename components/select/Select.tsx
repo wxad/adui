@@ -38,6 +38,10 @@ type ValueType = React.ReactText
 export interface ISelectProps<T extends ValueType = ValueType> {
   [key: string]: any
   /**
+   * 是否提供清除功能
+   */
+  allowClear?: boolean
+  /**
    * 子节点
    */
   children?: React.ReactNode
@@ -154,6 +158,10 @@ class Select<T extends ValueType = ValueType> extends React.Component<
 
   public static propTypes = {
     /**
+     * 是否提供清除功能
+     */
+    allowClear: PropTypes.bool,
+    /**
      * 子节点
      */
     children: PropTypes.node,
@@ -253,6 +261,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
   }
 
   public static defaultProps: ISelectProps = {
+    allowClear: false,
     children: null,
     className: undefined,
     defaultOpen: null,
@@ -273,7 +282,6 @@ class Select<T extends ValueType = ValueType> extends React.Component<
     searchable: false,
     size: "small",
     theme: null,
-    value: null,
   }
 
   public static getDerivedStateFromProps = ({ open, value }: ISelectProps) => {
@@ -497,8 +505,10 @@ class Select<T extends ValueType = ValueType> extends React.Component<
 
   public render() {
     const {
+      allowClear,
       className,
       getPopupContainer,
+      onChange,
       options,
       placeholder,
       placeholderColor,
@@ -548,6 +558,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
       <ConfigContext.Consumer>
         {({ getPopupContainer: getPopupContainerContext }) => (
           <RcSelect
+            allowClear={allowClear}
             className={classNames(
               className,
               `${prefix}-select`,
@@ -592,11 +603,33 @@ class Select<T extends ValueType = ValueType> extends React.Component<
                 />
               </>
             }
+            clearIcon={
+              <div
+                style={{
+                  background: `radial-gradient(
+                    circle at 50% 50%, #fff 50%, transparent 50%
+                  )`,
+                }}
+              >
+                <Icon
+                  icon="cancel-circle"
+                  color="var(--transparent-gray-700)"
+                />
+              </div>
+            }
             listHeight={250}
             listItemHeight={size === "large" ? 40 : size === "medium" ? 36 : 32}
             notFoundContent="无匹配结果"
             onDropdownVisibleChange={this.onDropdownVisibleChange}
             onSelect={this.onSelect}
+            onChange={(v: T, ops: { [key: string]: any }) => {
+              if (v === undefined && ops === undefined && allowClear) {
+                this.onSelect(v, ops)
+              }
+              if (onChange) {
+                onChange(v, ops)
+              }
+            }}
             defaultActiveFirstOption={false}
             getPopupContainer={getPopupContainer || getPopupContainerContext}
             optionLabelProp={options ? "label" : "children"}
