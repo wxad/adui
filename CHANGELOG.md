@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.28.0](https://github.com/wxad/adui/compare/v2.27.0...v2.28.0) (2022-04-18)
+
+
+### Features
+
+* **Select:** 增加 allowClear Prop [#17](https://github.com/wxad/adui/issues/17) ([5725fcf](https://github.com/wxad/adui/commit/5725fcf6ab81d3b771be1b7e6ccc19bf645b3333))
+
 ## [2.27.0](https://github.com/wxad/adui/compare/v2.26.0...v2.27.0) (2022-04-07)
 
 
