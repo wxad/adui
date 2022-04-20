@@ -129,6 +129,7 @@
   "help-circle-outlined": string;
   "help-circle": string;
   "help": string;
+  "hide-outlined": string;
   "histogram-outlined": string;
   "histogram-square": string;
   "histogram": string;

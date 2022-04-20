@@ -194,6 +194,9 @@ var _default = {
       "name": "view",
       "keywords": ["view", "预览", "眼睛"]
     }, {
+      "name": "hide-outlined",
+      "keywords": ["hide-outlined", "隐藏\n"]
+    }, {
       "name": "replay",
       "keywords": ["replay", "重播", "回放"]
     }, {
