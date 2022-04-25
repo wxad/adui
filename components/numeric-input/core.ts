@@ -33,6 +33,10 @@ export const isLegal = (
     return true
   }
   const value = stringToNumber(val)
+
+  if (Number.isNaN(value)) {
+    return false
+  }
   const decimal = getDecimalNumber(step)
   if (min !== undefined) {
     /**

@@ -11,10 +11,11 @@ export default class PropertyBox extends React.Component {
     size: "small",
     min: 0,
     max: 100,
+    value: 27,
   }
 
   render() {
-    const { disabled, intent, size, min, max } = this.state
+    const { disabled, intent, size, min, max, value } = this.state
 
     const codes = `<NumericInput
   ${disabled ? "disabled" : ""}
@@ -35,9 +36,15 @@ export default class PropertyBox extends React.Component {
               disabled={disabled}
               intent={intent}
               size={size}
-              defaultValue={27}
-              min={min === "none" ? null : Number(min)}
-              max={max === "none" ? null : Number(max)}
+              value={value}
+              onChange={(val) => {
+                console.log("yijie", val)
+                this.setState({
+                  value: val,
+                })
+              }}
+              // min={min === "none" ? null : Number(min)}
+              // max={max === "none" ? null : Number(max)}
             />
           </div>
           <div className={styles.right}>
