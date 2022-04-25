@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.29.1](https://github.com/wxad/adui/compare/v2.29.0...v2.29.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **NumericInput:** 修复输入 . - 时引发的 NaN 错误 ([672e694](https://github.com/wxad/adui/commit/672e6948059e958fe4693e91935e1718fed8a49f))
+
 ## [2.29.0](https://github.com/wxad/adui/compare/v2.28.0...v2.29.0) (2022-04-20)
 
 
