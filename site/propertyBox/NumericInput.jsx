@@ -38,13 +38,12 @@ export default class PropertyBox extends React.Component {
               size={size}
               value={value}
               onChange={(val) => {
-                console.log("yijie", val)
                 this.setState({
                   value: val,
                 })
               }}
-              // min={min === "none" ? null : Number(min)}
-              // max={max === "none" ? null : Number(max)}
+              min={min === "none" ? null : Number(min)}
+              max={max === "none" ? null : Number(max)}
             />
           </div>
           <div className={styles.right}>
