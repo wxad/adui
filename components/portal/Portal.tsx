@@ -26,6 +26,11 @@ export interface IPortalProps {
    * @default document.body
    */
   container?: HTMLElement
+
+  /**
+   * get container when mounted
+   */
+  getContainer?: () => HTMLElement | undefined
 }
 
 export interface IPortalState {
@@ -67,7 +72,12 @@ export default class Portal extends React.Component<
     !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState)
 
   public componentDidMount = () => {
-    const { container, onChildrenMount } = this.props
+    const {
+      container: containerProp,
+      getContainer,
+      onChildrenMount,
+    } = this.props
+    const container = (getContainer && getContainer()) || containerProp
     if (!container) {
       return
     }

@@ -99,7 +99,7 @@ export interface IDialogProps extends IStepProps {
   /**
    * 指定弹出层的父级，默认为 document.body，类似于 Tooltip 的 getPopupContainer
    */
-  getContainer?: (() => HTMLElement) | null
+  getContainer?: () => HTMLElement
   /**
    * header 标题下的内容
    */
@@ -303,7 +303,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     footerElement: undefined,
     footerClassName: "",
     footerStyle: {},
-    getContainer: null,
+    getContainer: undefined,
     headerContent: null,
     headerClassName: "",
     headerElement: undefined,
@@ -528,22 +528,6 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     }
   }
 
-  public getContainer = () => {
-    const { getContainer } = this.props
-    if (this.container) {
-      return this.container
-    }
-
-    const container = document.createElement("div")
-    this.container = container
-    if (getContainer) {
-      getContainer().appendChild(container)
-    } else {
-      document.body.appendChild(container)
-    }
-    return container
-  }
-
   public handleEnter = () => {
     const { escapeKeyClosable } = this.props
     if (this.wrapper) {
@@ -747,12 +731,16 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
   }
 
   public render() {
+    const { getContainer } = this.props
     const { hasEverOpened } = this.state
     if (!hasEverOpened) {
       return null
     }
     return (
-      <Portal onChildrenMount={this.handleChildrenMount}>
+      <Portal
+        onChildrenMount={this.handleChildrenMount}
+        getContainer={getContainer}
+      >
         {this.getComponent()}
       </Portal>
     )
