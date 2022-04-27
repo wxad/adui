@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.29.2](https://github.com/wxad/adui/compare/v2.29.1...v2.29.2) (2022-04-27)
+
+
+### Bug Fixes
+
+* **Dialog:** 修复 dialog getContainer 无效的问题 ([aa8ea33](https://github.com/wxad/adui/commit/aa8ea33f27399882cf6d07e1257cf2f5838a8164))
+
 ### [2.29.1](https://github.com/wxad/adui/compare/v2.29.0...v2.29.1) (2022-04-25)
 
 
