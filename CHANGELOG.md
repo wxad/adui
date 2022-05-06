@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.29.3](https://github.com/wxad/adui/compare/v2.29.2...v2.29.3) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Affix:** 修复有 getTarget Prop 时的显示错误 ([b68c49a](https://github.com/wxad/adui/commit/b68c49a794a391d5ae2adb2519a31719200d486d))
+* **Table:** 修复在 headerAffixGetTarget 时，滚动条及头部的显示问题 ([916572e](https://github.com/wxad/adui/commit/916572e5a4d29661bc932fccd66107dde1855801))
+
 ### [2.29.2](https://github.com/wxad/adui/compare/v2.29.1...v2.29.2) (2022-04-27)
 
 
