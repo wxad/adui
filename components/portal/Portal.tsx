@@ -62,7 +62,7 @@ export default class Portal extends React.Component<
       return null
     }
 
-    return ReactDOM.createPortal(children, this.portalElement)
+    return <>{ReactDOM.createPortal(children, this.portalElement)}</>
   }
 
   public shouldComponentUpdate = (

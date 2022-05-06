@@ -169,20 +169,24 @@ class ReactResizeObserver extends React.Component<
       })
     }
 
-    return childNodes.length === 1
-      ? childNodes[0]
-      : childNodes.map((node, index) => {
-          if (
-            !React.isValidElement(node) ||
-            ("key" in node && node.key !== null)
-          ) {
-            return node
-          }
+    return (
+      <>
+        {childNodes.length === 1
+          ? childNodes[0]
+          : childNodes.map((node, index) => {
+              if (
+                !React.isValidElement(node) ||
+                ("key" in node && node.key !== null)
+              ) {
+                return node
+              }
 
-          return React.cloneElement(node, {
-            key: `adui-observer-key-${index}`,
-          })
-        })
+              return React.cloneElement(node, {
+                key: `adui-observer-key-${index}`,
+              })
+            })}
+      </>
+    )
   }
 }
 
