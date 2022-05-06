@@ -130,7 +130,7 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
     if (target && placeholderNode && fixedNode) {
       // documentRect 是一定需要的，为了设置正确的 left 值
       const documentRect = document.body.getBoundingClientRect()
-      const placeholderRect = placeholderNode.getBoundingClientRect()
+      let placeholderRect = placeholderNode.getBoundingClientRect()
       const fixedRect = fixedNode.getBoundingClientRect()
 
       // 判断是否是 window
@@ -155,31 +155,47 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
         offsetBottom !== undefined &&
         !isNaN(offsetBottom)
       ) {
-        if (placeholderRect.bottom > targetHeight - offsetBottom) {
-          if (getContainer && getContainer()) {
-            const containerRect = getContainer().getBoundingClientRect()
-            const bottom =
-              targetHeight - containerRect.top - placeholderRect.height
-            if (bottom <= offsetBottom) {
-              affixStyle.bottom =
-                bottom + placeholderRect.height < 0
-                  ? -placeholderRect.height
-                  : bottom
+        setTimeout(() => {
+          placeholderRect = placeholderNode.getBoundingClientRect()
+          if (
+            placeholderRect.bottom >
+            targetHeight - offsetBottom + targetTop
+          ) {
+            if (getContainer && getContainer()) {
+              const containerRect = getContainer().getBoundingClientRect()
+              const bottom =
+                targetHeight -
+                containerRect.top -
+                placeholderRect.height +
+                targetTop
+              if (bottom <= offsetBottom) {
+                if (placeholderRect.height) {
+                  affixStyle.bottom =
+                    bottom + placeholderRect.height < 0
+                      ? -placeholderRect.height
+                      : bottom
+                }
+              } else {
+                affixStyle.bottom =
+                  offsetBottom + window.innerHeight - targetTop - targetHeight
+              }
             } else {
-              affixStyle.bottom = offsetBottom
+              affixStyle.bottom =
+                offsetBottom + window.innerHeight - targetTop - targetHeight
             }
+            this.setAffixStyle(affixStyle)
           } else {
-            affixStyle.bottom = offsetBottom
+            this.setAffixStyle(null)
           }
-          this.setAffixStyle(affixStyle)
-        } else {
-          this.setAffixStyle(null)
-        }
+        }, 0)
       } else if (placeholderRect.top < (offsetTop || 0) + targetTop) {
         if (getContainer && getContainer()) {
           const containerRect = getContainer().getBoundingClientRect()
           const top =
-            containerRect.height + containerRect.top - placeholderRect.height
+            containerRect.height +
+            containerRect.top -
+            placeholderRect.height -
+            targetTop
           if (offsetTop !== undefined && top <= offsetTop) {
             affixStyle.top =
               top + placeholderRect.height < 0 ? -placeholderRect.height : top
