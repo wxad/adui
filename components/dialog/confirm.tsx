@@ -117,15 +117,16 @@ const confirm = (config: IConfirmProps) => {
    * 关闭时一定要执行 afterClose，Dialog 自身会去 destroy，但是那个空的 div 需要在这里 destory。
    */
   function onClose(cb: () => void) {
+    let cbReturn: any
+    if (cb) {
+      cbReturn = cb()
+    }
     currentConfig = {
       ...currentConfig,
       afterClose,
-      visible: false,
+      visible: cbReturn === false,
     }
     render(currentConfig)
-    if (cb) {
-      cb()
-    }
   }
 
   currentConfig = {
