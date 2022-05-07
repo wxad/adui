@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.30.0](https://github.com/wxad/adui/compare/v2.29.3...v2.30.0) (2022-05-07)
+
+
+### Features
+
+* **Dialog:** 函数式调用 onConfirm onCancel 添加 return false 不关闭功能 ([b741431](https://github.com/wxad/adui/commit/b741431e2816cf34e5401837157070574ecb8cc3))
+* **Icon:** 添加 link icon ([d23ce7c](https://github.com/wxad/adui/commit/d23ce7c88ea629fcab4e0c9084febfc2b8696ef2))
+
 ### [2.29.3](https://github.com/wxad/adui/compare/v2.29.2...v2.29.3) (2022-05-06)
 
 
