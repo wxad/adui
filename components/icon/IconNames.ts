@@ -151,6 +151,7 @@
   "line-chart-outlined": string;
   "line-chart-square": string;
   "line-chart": string;
+  "link": string;
   "list": string;
   "live": string;
   "location-outlined": string;

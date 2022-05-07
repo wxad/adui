@@ -1626,6 +1626,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           offsetBottom={0}
           getContainer={() => this.mainTableBody}
           getTarget={headerAffixGetTarget}
+          // @ts-ignore
           ref={this.saveRef("affixScrollbar")}
           className={classNames(`${prefix}-affixScrollbar`, {
             [`${prefix}-affixScrollbar_show`]: affixedBottom,
@@ -1988,7 +1989,6 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     (
       name?:
         | "affixHeader"
-        | "affixScrollbar"
         | "mainTable"
         | "mainTableBody"
         | "mainThead"

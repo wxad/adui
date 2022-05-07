@@ -543,6 +543,9 @@ var _default = {
       "name": "offiaccount",
       "keywords": ["offiaccount", "公众号"]
     }, {
+      "name": "link",
+      "keywords": ["link", "链接"]
+    }, {
       "name": "button-outlined",
       "keywords": ["button-outlined", "按钮", "链接"]
     }, {
@@ -575,9 +578,6 @@ var _default = {
     }, {
       "name": "video-cam",
       "keywords": ["video-cam", "视频", "摄像", "录像", "影像", "数码", "设备", "素材"]
-    }, {
-      "name": "book",
-      "keywords": ["book", "书本", "书签", "学习", "读书", "阅读"]
     }, {
       "name": "ticket-outlined",
       "keywords": ["ticket-outlined", "卡券", "票", "优惠券"]
@@ -686,9 +686,6 @@ var _default = {
   "生活": {
     "description": "衣食住行、行业等",
     "data": [{
-      "name": "book-outlined",
-      "keywords": ["book-outlined", "教育", "书本"]
-    }, {
       "name": "shopping-outlined",
       "keywords": ["shopping-outlined", "商品", "购物"]
     }, {
@@ -757,6 +754,9 @@ var _default = {
     }, {
       "name": "education",
       "keywords": ["education", "教育", "学习"]
+    }, {
+      "name": "book-outlined",
+      "keywords": ["book-outlined", "教育", "书本"]
     }, {
       "name": "clothes-outlined",
       "keywords": ["clothes-outlined", "衣服", "服饰"]
