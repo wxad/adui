@@ -308,8 +308,11 @@ var _default = {
       "name": "wish-outlined",
       "keywords": ["wish-outlined", "心愿", "心愿单", "喜爱"]
     }, {
-      "name": "hot zone",
-      "keywords": ["hot zone", "热区"]
+      "name": "hot-zone",
+      "keywords": ["hot-zone", "热区"]
+    }, {
+      "name": "stretch",
+      "keywords": ["stretch", "拉伸", "拉长"]
     }, {
       "name": "adjust",
       "keywords": ["adjust", "调节", "调整", "设置"]
