@@ -52,9 +52,10 @@ const TableFilter: React.FC<ITableFilterProps> = ({
   if (
     filteredValueProp !== null &&
     filteredValueProp !== undefined &&
-    filteredValue !== filteredValueProp
+    JSON.stringify(filteredValue) !==
+      JSON.stringify(getFilteredValue(filteredValueProp))
   ) {
-    setFilteredValue(filteredValueProp)
+    setFilteredValue(getFilteredValue(filteredValueProp))
   }
 
   if (typeof filterVisible === "boolean" && visible !== filterVisible) {
