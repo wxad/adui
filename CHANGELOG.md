@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.30.2](https://github.com/wxad/adui/compare/v2.30.1...v2.30.2) (2022-05-10)
+
+
+### Bug Fixes
+
+* **TableFilter:** 修复 [] 空数组的显示错误 ([65d0b4e](https://github.com/wxad/adui/commit/65d0b4ecf65d57fae57ad820972a5e3c0d0f470a))
+* **TreeSelect:** 修复 maxTagCount 在 disabled 情况下的报错 ([9671689](https://github.com/wxad/adui/commit/9671689fde992923c5132542b1f767e02d7e8b45))
+
 ### [2.30.1](https://github.com/wxad/adui/compare/v2.30.0...v2.30.1) (2022-05-09)
 
 ## [2.30.0](https://github.com/wxad/adui/compare/v2.29.3...v2.30.0) (2022-05-07)
