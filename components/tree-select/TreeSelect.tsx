@@ -542,7 +542,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     if (!this.select) {
       return null
     }
-    const { onChange, resultRender, value, disabled } = this.props
+    const { onChange, resultRender, value, disabled: disabledProp } = this.props
 
     if (resultRender) {
       return resultRender(nodes)
@@ -571,7 +571,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
     return (
       <Popover
-        visible={disabled ? false : undefined}
+        visible={disabledProp ? false : undefined}
         alignEdge={false}
         placement="top"
         popup={
@@ -616,7 +616,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
             icon="cancel"
             size={14}
             onClick={() => {
-              if (!disabled) {
+              if (!disabledProp) {
                 if (value === null) {
                   this.setState({ value: [] })
                 }
