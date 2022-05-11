@@ -60,7 +60,7 @@ export default class PropertyBox extends React.Component {
     const codes = `<Suggest
   autoHidePopup={false}
   dataSource={[
-    "广告计划-01",
+    "广告计划-01",
     "广告计划-02",
     "广告计划-03",
     "广告计划-04",
@@ -114,7 +114,7 @@ export default class PropertyBox extends React.Component {
               autoFocus
               autoHidePopup={false}
               dataSource={[
-                "广告计划-01",
+                "广告计划-01",
                 "广告计划-02",
                 "广告计划-03",
                 "广告计划-04",

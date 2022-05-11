@@ -38,6 +38,10 @@ export interface ISuggestProps {
   defaultValue?: string | null
   dataSource?: any[]
   /**
+   * 接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false
+   */
+  filterOption?: (inputValue: string, option: any) => boolean
+  /**
    * 指定弹出层的父级，默认为 document.body
    */
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
@@ -102,6 +106,10 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
      * 默认值 - 内部驱动
      */
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    /**
+     * 接收 inputValue option 两个参数，当 option 符合筛选条件时，应返回 true，反之则返回 false
+     */
+    filterOption: PropTypes.func,
     /**
      * 指定弹出层的父级，默认为 document.body
      */
@@ -173,6 +181,7 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
     dataSource: [],
     defaultOpen: null,
     defaultValue: "",
+    filterOption: undefined,
     getPopupContainer: null,
     inputProps: {},
     intent: "normal",
@@ -254,6 +263,7 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
       autoHidePopup,
       dataSource,
       defaultValue,
+      filterOption: filterOptionProp,
       getPopupContainer,
       inputProps,
       intent,
@@ -290,16 +300,20 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
       selectProps.defaultValue = defaultValue
     }
 
+    const filterOption =
+      filterOptionProp ||
+      ((inputValue: string, o: any) => {
+        if (typeof o !== "string") {
+          return o.props.title.toUpperCase().includes(inputValue.toUpperCase())
+        }
+        return o.toUpperCase().includes(inputValue.toUpperCase())
+      })
+
     let options = dataSource
       ? dataSource
           .filter((o) => {
             if (searchValue) {
-              if (typeof o !== "string") {
-                return o.props.title
-                  .toUpperCase()
-                  .includes(searchValue.toUpperCase())
-              }
-              return o.toUpperCase().includes(searchValue.toUpperCase())
+              return filterOption(searchValue, o)
             }
             return true
           })
