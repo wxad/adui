@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.31.0](https://github.com/wxad/adui/compare/v2.30.3...v2.31.0) (2022-05-11)
+
+
+### Features
+
+* **Suggest:** 添加 filterOption Prop ([425b640](https://github.com/wxad/adui/commit/425b6400ed60c4646bab045559051b0c5b60a17e))
+
 ### [2.30.3](https://github.com/wxad/adui/compare/v2.30.2...v2.30.3) (2022-05-11)
 
 
