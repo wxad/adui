@@ -5,7 +5,7 @@ title:
   en-US: Type
 ---
 
- 使用 `color` 自定义标签色彩：
+使用 `color` 自定义标签色彩：
 
 ```jsx
 return (

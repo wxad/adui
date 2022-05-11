@@ -18,7 +18,7 @@ return (
         dataIndex: "0",
         fixed: "left",
         filters: [
-          { text: "分类 A", value: 1 },
+          { text: "分类 A", value: 1 },
           { text: "分类 D", value: 2 },
         ],
         filterMultiple: false,

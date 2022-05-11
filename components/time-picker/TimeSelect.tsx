@@ -89,7 +89,7 @@ const TimeSelect: React.ForwardRefExoticComponent<
       isOnlyHour?: boolean
     ) => {
       if (type === "hour") {
-        // 这里要注意把整点选择 24:00 的情况特殊处理
+        // 这里要注意把整点选择 24:00 的情况特殊处理
         return (
           value < minHour ||
           value > (isOnlyHour && !maxTime ? "24:00" : maxHour)

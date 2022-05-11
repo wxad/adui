@@ -27,7 +27,7 @@ export interface IRowProps {
 }
 
 /**
- * 栅格行
+ * 栅格行
  */
 const Row: React.FC<IRowProps> = ({
   children,

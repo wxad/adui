@@ -33,11 +33,11 @@ export interface IMessageProps {
    */
   content?: React.ReactNode
   /**
-   * 间隔多久自动关闭，单位为 s，如果传入 0，则表示不会自动消失
+   * 间隔多久自动关闭，单位为 s，如果传入 0，则表示不会自动消失
    */
   duration?: number
   /**
-   * Message 插入到哪个元素，默认 () => document.body
+   * Message 插入到哪个元素，默认 () => document.body
    */
   getContainer?: () => HTMLElement
   /**
@@ -265,11 +265,11 @@ Message.propTypes = {
    */
   content: PropTypes.node,
   /**
-   * 间隔多久自动关闭，单位为 s，如果传入 0，则表示不会自动消失
+   * 间隔多久自动关闭，单位为 s，如果传入 0，则表示不会自动消失
    */
   duration: PropTypes.number,
   /**
-   * Message 插入到哪个元素，默认 () => document.body
+   * Message 插入到哪个元素，默认 () => document.body
    */
   getContainer: PropTypes.func,
   /**

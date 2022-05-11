@@ -27,7 +27,7 @@ export interface IColProps {
 }
 
 /**
- * 栅格列
+ * 栅格列
  */
 const Col: React.FC<IColProps> = ({
   children,

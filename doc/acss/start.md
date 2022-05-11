@@ -12,7 +12,7 @@ AD UI 2.0 的组件自身并没有使用原子类开发，而是定义了一套�
 
 ## 安装
 
-`tailwindcss` 本质是一个 `postcss` 插件，可参考 [官方文档](https://tailwindcss.com/docs/installation) 安装 `tailwindcss` `postcss` `autoprefixer`。安装后导入  AD UI 配置即可：
+`tailwindcss` 本质是一个 `postcss` 插件，可参考 [官方文档](https://tailwindcss.com/docs/installation) 安装 `tailwindcss` `postcss` `autoprefixer`。安装后导入 AD UI 配置即可：
 
 ```javascript
 // tailwind.config.js

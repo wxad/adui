@@ -2,7 +2,7 @@
 title: Text Align
 ---
 
-AD UI 引入了以下功能类，以控制元素内文字  的对齐方式。
+AD UI 引入了以下功能类，以控制元素内文字 的对齐方式。
 
 相关 CSS 属性：`text-align`
 

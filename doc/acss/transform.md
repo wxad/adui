@@ -2,7 +2,7 @@
 title: Transform
 ---
 
-AD UI 引入了以下功能类，以  CSS 变量的方式控制元素的 `transform` 属性。
+AD UI 引入了以下功能类，以 CSS 变量的方式控制元素的 `transform` 属性。
 
 相关 CSS 属性：`transform`
 

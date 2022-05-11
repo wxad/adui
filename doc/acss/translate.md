@@ -2,7 +2,7 @@
 title: Translate
 ---
 
-AD UI 引入了以下功能类，以  CSS 变量的方式控制元素的 `transform` 属性，可分开控制 `x` 与 `y` 两个方向。
+AD UI 引入了以下功能类，以 CSS 变量的方式控制元素的 `transform` 属性，可分开控制 `x` 与 `y` 两个方向。
 
 相关 CSS 属性：`--tw-translate-x` `--tw-translate-y`
 

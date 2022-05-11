@@ -97,7 +97,7 @@ export default class PropertyBox extends React.Component {
       ${
         filter
           ? `filters: [
-        { text: "分类 A", value: 1 },
+        { text: "分类 A", value: 1 },
         { text: "分类 D", value: 2 },
       ],
       filterMultiple: false,
@@ -166,7 +166,7 @@ export default class PropertyBox extends React.Component {
                   filter
                     ? [
                         {
-                          text: "分类 A",
+                          text: "分类 A",
                           value: "1",
                         },
                         {
