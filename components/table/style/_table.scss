@@ -64,8 +64,6 @@ $prefix: "adui-table";
     }
 
     &:hover {
-      width: 21px;
-
       &::before {
         width: 2px;
         background-color: rgba(0, 0, 0, 0.3);
@@ -80,8 +78,6 @@ $prefix: "adui-table";
     }
 
     &.#{$prefix}-resizer_current {
-      width: 20px;
-
       &::before {
         width: 2px;
         background-color: var(--primary-color);

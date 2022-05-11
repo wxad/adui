@@ -1721,7 +1721,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             title={col.title}
           />
         )}
-        {!col.fixed && resizable && !isLastTh && (
+        {resizable && !isLastTh && (
           <div
             className={classNames(`${prefix}-resizer`, {
               [`${prefix}-resizer_show`]: isResizerShow,
