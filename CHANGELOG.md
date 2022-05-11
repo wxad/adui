@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.30.3](https://github.com/wxad/adui/compare/v2.30.2...v2.30.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* **Table:** fixed 列可调整列宽 ([9c4a9d1](https://github.com/wxad/adui/commit/9c4a9d1e2f3f6f13bcd0b7a9edca4986e44aeea6))
+
 ### [2.30.2](https://github.com/wxad/adui/compare/v2.30.1...v2.30.2) (2022-05-10)
 
 
