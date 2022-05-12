@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.32.0](https://github.com/wxad/adui/compare/v2.31.0...v2.32.0) (2022-05-12)
+
+
+### Features
+
+* **Suggest:** onInputKeyDown prop ([98bd57f](https://github.com/wxad/adui/commit/98bd57f7ef5e234a609865f2e2b105d2c38d5213))
+
+
+### Bug Fixes
+
+* **Table:** 修复表格行未全选时，表头checkbox不是半选中状态的问题 ([be2db78](https://github.com/wxad/adui/commit/be2db784d26aab038af70f90cee006571994b359))
+
 ## [2.31.0](https://github.com/wxad/adui/compare/v2.30.3...v2.31.0) (2022-05-11)
 
 
