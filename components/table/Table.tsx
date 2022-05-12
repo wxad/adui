@@ -1203,16 +1203,22 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             })}
             key="functional-all"
           >
-            {selectMultiple && !!onSelectChange && (
-              <div className={`${prefix}-cell`}>
-                <Checkbox
-                  disabled={!this.getAvailableRowsKeys().length}
-                  onChange={this.handleSelectAll}
-                  checked={this.hasSelectedAll()}
-                  className={`${prefix}-selectComponent`}
-                />
-              </div>
-            )}
+            {selectMultiple && !!onSelectChange && (() => {
+              const hasSelectedAll = this.hasSelectedAll()
+              const hasSelectedOne = !!selectedRowKeys?.length
+
+              return (
+                <div className={`${prefix}-cell`}>
+                  <Checkbox
+                    disabled={!this.getAvailableRowsKeys().length}
+                    onChange={this.handleSelectAll}
+                    checked={hasSelectedAll}
+                    indeterminate={!hasSelectedAll && hasSelectedOne}
+                    className={`${prefix}-selectComponent`}
+                  />
+                </div>
+              )
+            })()}
           </div>
         )}
         {columns.map((col, index) => {
