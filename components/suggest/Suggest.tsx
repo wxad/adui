@@ -52,6 +52,7 @@ export interface ISuggestProps {
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
   leftElement?: JSX.Element
   notFoundContent?: string | null
+  onInputKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
   onDropdownVisibleChange?: (open: boolean) => void
   onSearch?: (val: string) => void
   onSelect?: (value: string, option: IOption) => void
@@ -141,6 +142,15 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
      */
     onDropdownVisibleChange: PropTypes.func,
     /**
+     * input key press 时的 handler,如果想禁用回车选择，可以尝试：
+      onInputKeyDown={(e) => {
+        if (e.key === "Enter") {
+          e.stopPropagation()
+        }
+      }}
+     */
+    onInputKeyDown: PropTypes.func,
+    /**
      * 搜索时的 handler，参数：value
      */
     onSearch: PropTypes.func,
@@ -188,6 +198,7 @@ class Suggest extends React.Component<ISuggestProps, ISuggestState> {
     leftElement: undefined,
     notFoundContent: null,
     onDropdownVisibleChange: noop,
+    onInputKeyDown: noop,
     onSearch: noop,
     onSelect: noop,
     open: null,
