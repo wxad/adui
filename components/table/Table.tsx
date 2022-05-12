@@ -1084,17 +1084,20 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   }
 
   /**
-   * 判断是否已全部选择
+   * 判断是否已选中，all or one
    */
-  public hasSelectedAll = () => {
+  public hasSelected = (mode: "all" | "one") => {
     const keys = this.getAvailableRowsKeys()
     const { dataSource } = this.props
     const { selectedRowKeys } = this.state
+
     if (
       dataSource &&
       dataSource.length &&
       keys.length &&
-      keys.every((key) => selectedRowKeys.includes(key))
+      (mode === "all"
+        ? keys.every((key) => selectedRowKeys.includes(key))
+        : keys.some((key) => selectedRowKeys.includes(key)))
     ) {
       return true
     }
@@ -1203,22 +1206,24 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             })}
             key="functional-all"
           >
-            {selectMultiple && !!onSelectChange && (() => {
-              const hasSelectedAll = this.hasSelectedAll()
-              const hasSelectedOne = !!selectedRowKeys?.length
+            {selectMultiple &&
+              !!onSelectChange &&
+              (() => {
+                const hasSelectedAll = this.hasSelected("all")
+                const hasSelectedOne = this.hasSelected("one")
 
-              return (
-                <div className={`${prefix}-cell`}>
-                  <Checkbox
-                    disabled={!this.getAvailableRowsKeys().length}
-                    onChange={this.handleSelectAll}
-                    checked={hasSelectedAll}
-                    indeterminate={!hasSelectedAll && hasSelectedOne}
-                    className={`${prefix}-selectComponent`}
-                  />
-                </div>
-              )
-            })()}
+                return (
+                  <div className={`${prefix}-cell`}>
+                    <Checkbox
+                      disabled={!this.getAvailableRowsKeys().length}
+                      onChange={this.handleSelectAll}
+                      checked={hasSelectedAll}
+                      indeterminate={!hasSelectedAll && hasSelectedOne}
+                      className={`${prefix}-selectComponent`}
+                    />
+                  </div>
+                )
+              })()}
           </div>
         )}
         {columns.map((col, index) => {
