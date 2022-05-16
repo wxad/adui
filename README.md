@@ -38,7 +38,7 @@ import { Button } from "adui"
 
 ## 主题色
 
-**adui** 使用了 CSS Variables 实现变量配置。同时配合 [css-vars-ponyfill](https://github.com/jhildenbiddle/css-vars-ponyfill) 解决兼容性问题。  
+**adui** 使用了 CSS Variables 实现变量配置。  
 在引入之后，你的页面上就会有如下的样式：
 
 ```css
