@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.32.1](https://github.com/wxad/adui/compare/v2.32.0...v2.32.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **TreeSelect:** 回退 rc-tree-select 为 4 版本，以支持 multiple={false} 时 value 可以传一个 reactnode，5 之后不行了 ([f3d30f4](https://github.com/wxad/adui/commit/f3d30f46eadf1f9b0be6247bae54bfebf761a548))
+
 ## [2.32.0](https://github.com/wxad/adui/compare/v2.31.0...v2.32.0) (2022-05-12)
 
 
