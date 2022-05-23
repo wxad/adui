@@ -130,7 +130,9 @@ const Checkbox: ICheckbox = forwardRef(
         [`${prefix}-checked`]:
           indeterminate ||
           (valueContext
-            ? valueComputed && valueContext.includes(valueComputed)
+            ? valueComputed !== null &&
+              valueComputed !== undefined &&
+              valueContext.includes(valueComputed)
             : checked),
         [`${prefix}-noChildren`]: !children,
         [`${prefix}-disabled`]: disabledContext || disabled,
@@ -159,7 +161,11 @@ const Checkbox: ICheckbox = forwardRef(
       if (disabled || disabledContext) {
         return
       }
-      if (handleGroupValueChange && valueComputed) {
+      if (
+        handleGroupValueChange &&
+        valueComputed !== null &&
+        valueComputed !== undefined
+      ) {
         handleGroupValueChange(valueComputed)
       } else {
         if (checkedProp === null) {
