@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.32.2](https://github.com/wxad/adui/compare/v2.32.1...v2.32.2) (2022-05-23)
+
+
+### Bug Fixes
+
+* **Checkbox:** 修复 value 为 0 时的错误 ([aa31c25](https://github.com/wxad/adui/commit/aa31c255392ae8313fb01339b2430f2f150f9147))
+
 ### [2.32.1](https://github.com/wxad/adui/compare/v2.32.0...v2.32.1) (2022-05-17)
 
 
