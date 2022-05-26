@@ -209,6 +209,10 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
    */
   headerAffixGetTarget?: (() => HTMLElement) | null
   /**
+   * 横向滚动条（如果有）在 headerAffixed 开启后，距离容器底部到达指定偏移量后触发固定行为
+   */
+  scrollXAffixedOffsetBottom?: number
+  /**
    * 加重头部，开启之后表头将会加粗 + 背景
    */
   headerEmphasized?: boolean
@@ -560,6 +564,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     headerAffixed: false,
     headerAffixedOffsetTop: 0,
     headerAffixGetTarget: null,
+    scrollXAffixedOffsetBottom: 0,
     headerEmphasized: false,
     height: null,
     loading: false,
@@ -1142,6 +1147,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       headerAffixed,
       headerAffixedOffsetTop,
       headerAffixGetTarget,
+      scrollXAffixedOffsetBottom,
       height,
       onExpandChange,
       onRowMouseEnter,
@@ -1634,7 +1640,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       isMainTableOverflowX && headerAffixed && (
         <Affix
           key={2}
-          offsetBottom={0}
+          offsetBottom={scrollXAffixedOffsetBottom}
           getContainer={() => this.mainTableBody}
           getTarget={headerAffixGetTarget}
           // @ts-ignore
