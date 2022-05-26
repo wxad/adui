@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.33.0](https://github.com/wxad/adui/compare/v2.32.2...v2.33.0) (2022-05-26)
+
+
+### Features
+
+* **Table:** 支持在表头页面固定时，自定义横向滚动条距离底部的触发距离 ([b473620](https://github.com/wxad/adui/commit/b473620df8c2af5886bea734da45eff3e5867bed))
+
 ### [2.32.2](https://github.com/wxad/adui/compare/v2.32.1...v2.32.2) (2022-05-23)
 
 
