@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[23],{1394:function(e,o){e.exports={content:["article",["p","包含表单项标题、输入内容、行动按钮等数据采集的集合形态。通常服务于大量需要收集用户信息场景。"],["h2","Props"],["h3","Form"],["h3","Form.Item"],["h3","Form.Tip"]],meta:{category:"Components",type:"General",title:"Form",subtitle:"表单",filename:"components/form/index.md"}}}}]);

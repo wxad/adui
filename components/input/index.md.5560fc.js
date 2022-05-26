@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[28],{1399:function(e,n){e.exports={content:["article",["p","输入框用于文本输入的区域，可结合图标、按钮、选择器等组件使用。"],["h2","Props"],["h3","Input"],["h3","Input.Textarea"]],meta:{category:"Components",type:"General",title:"Input",subtitle:"输入框",filename:"components/input/index.md"}}}}]);
