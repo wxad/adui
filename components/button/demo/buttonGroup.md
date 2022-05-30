@@ -12,7 +12,7 @@ const [activeIndex, setActiveIndex] = useState(0)
 
 return (
   <React.Fragment>
-    <Button.Group className="mr-20">
+    <Button.Group className="mr-20" theme="light" intent="primary">
       {["选项一", "选项二", "选项三"].map((text, index) => (
         <Button
           key={text}

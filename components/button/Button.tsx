@@ -109,9 +109,13 @@ const Button: IButton = forwardRef(
     const { size: sizeConfigContext } = useContext(ConfigContext)
 
     const disabled = disabledProp === null ? disabledContext : disabledProp
-    const intent = intentProp === null ? intentContext : intentProp
+    let intent = intentContext || intentProp
     const size = getComputedSize(sizeProp, sizeContext, sizeConfigContext)
     const theme = themeProp === null ? themeContext : themeProp
+
+    if (!intent) {
+      intent = "normal"
+    }
 
     const classSet = classNames(
       className,
@@ -261,7 +265,7 @@ Button.defaultProps = {
   disabled: null,
   href: undefined,
   iconStyle: {},
-  intent: "normal",
+  intent: undefined,
   leftIcon: undefined,
   loading: false,
   onClick: null,

@@ -258,6 +258,31 @@ $prefix: "adui-button";
 .#{$prefix}-group {
   display: inline-block;
 
+  &_light {
+    padding: 3px;
+    background-color: var(--gray-50);
+    border-radius: 6px;
+
+    .#{$prefix} {
+      &-mini {
+        height: 20px;
+        line-height: 20px;
+      }
+      &-small {
+        height: 24px;
+        line-height: 24px;
+      }
+      &-medium {
+        height: 30px;
+        line-height: 30px;
+      }
+      &-large {
+        height: 36px;
+        line-height: 36px;
+      }
+    }
+  }
+
   .#{$prefix}-base {
     &:focus {
       z-index: 1;
@@ -287,45 +312,39 @@ $prefix: "adui-button";
     &.#{$prefix}-light {
       color: var(--gray-800);
 
+      &:not(:last-child) {
+        margin-right: 4px;
+      }
+
       &:hover {
+        color: var(--gray-900);
+
         &::after {
-          opacity: 0.1;
-          transform: scale(1);
+          opacity: 0;
         }
       }
 
       &.#{$prefix}-primary {
-        &:hover,
         &.#{$prefix}-active {
           color: var(--primary-color);
         }
       }
 
       &.#{$prefix}-warning {
-        &:hover,
         &.#{$prefix}-active {
           color: var(--ad-orange);
         }
       }
 
       &.#{$prefix}-danger {
-        &:hover,
         &.#{$prefix}-active {
           color: var(--ad-red);
         }
       }
 
-      &:not(.#{$prefix}-active) {
-        &::after {
-          background-color: var(--gray-800);
-        }
-      }
-
       &.#{$prefix}-active {
-        &:not(:hover) {
-          &::after {
-            opacity: 0;
-          }
+        &::after {
+          opacity: 0.2;
         }
       }
     }

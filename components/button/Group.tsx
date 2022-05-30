@@ -53,6 +53,7 @@ const Group: React.FC<IButtonGroupProps> = ({
 }: IButtonGroupProps) => {
   const classSet = classNames(className, `${prefix}-group`, {
     [`${prefix}-group_banner`]: banner,
+    [`${prefix}-group_light`]: theme === "light",
   })
 
   return (
@@ -105,7 +106,7 @@ Group.defaultProps = {
   children: null,
   className: undefined,
   disabled: false,
-  intent: "normal",
+  intent: undefined,
   size: "small",
   theme: null,
 }
