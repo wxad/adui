@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.34.0](https://github.com/wxad/adui/compare/v2.33.0...v2.34.0) (2022-05-30)
+
+
+### Features
+
+* **Button.Group:** 更新 Group 样式 ([b6cb893](https://github.com/wxad/adui/commit/b6cb893aea0c589e5a0da2880212bd2e2388e3d0))
+
 ## [2.33.0](https://github.com/wxad/adui/compare/v2.32.2...v2.33.0) (2022-05-26)
 
 
