@@ -440,6 +440,10 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      */
     headerAffixedOffsetTop: PropTypes.number,
     /**
+     * 横向滚动条（如果有）在 headerAffixed 开启后，距离容器底部到达指定偏移量后触发固定行为
+     */
+    scrollXAffixedOffsetBottom: PropTypes.number,
+    /**
      * 参考 <Affix /> 的 getTarget Prop
      */
     headerAffixGetTarget: PropTypes.func,
