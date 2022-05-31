@@ -16,7 +16,7 @@ import { default as AlertRaw } from "!raw-loader!../../../../components/alert/Al
 import { default as BreadcrumbRaw } from "!raw-loader!../../../../components/breadcrumb/Breadcrumb"
 import { default as BreadcrumbItemRaw } from "!raw-loader!../../../../components/breadcrumb/Item"
 import { default as ButtonRaw } from "!raw-loader!../../../../components/button/Button"
-import { default as ButtonGroupRaw } from "!raw-loader!../../../../components/button/Group"
+import { default as ButtonGroupRaw } from "!raw-loader!../../../../components/button-group/Group"
 import { default as CardRaw } from "!raw-loader!../../../../components/card/Card"
 import { default as CardHeaderRaw } from "!raw-loader!../../../../components/card/Header"
 import { default as CascaderRaw } from "!raw-loader!../../../../components/cascader/Cascader"
@@ -79,6 +79,7 @@ import AffixPropertyBox from "../../../propertyBox/Affix"
 import AlertPropertyBox from "../../../propertyBox/Alert"
 import BreadcrumbPropertyBox from "../../../propertyBox/Breadcrumb"
 import ButtonPropertyBox from "../../../propertyBox/Button"
+import ButtonGroupPropertyBox from "../../../propertyBox/ButtonGroup"
 import CardPropertyBox from "../../../propertyBox/Card"
 import CascaderPropertyBox from "../../../propertyBox/Cascader"
 import CheckboxPropertyBox from "../../../propertyBox/Checkbox"
@@ -500,6 +501,7 @@ const propertyboxes = {
   Alert: AlertPropertyBox,
   Breadcrumb: BreadcrumbPropertyBox,
   Button: ButtonPropertyBox,
+  ButtonGroup: ButtonGroupPropertyBox,
   Card: CardPropertyBox,
   Cascader: CascaderPropertyBox,
   Checkbox: CheckboxPropertyBox,
@@ -545,10 +547,7 @@ export default class ComponentDoc extends React.Component {
     if (raw.includes("extends React.Component")) {
       return "Class Component"
     }
-
-    if (raw.includes("React.FunctionComponent") || raw.includes("React.FC")) {
-      return "Function Component"
-    }
+    return "Function Component"
   }
 
   render() {

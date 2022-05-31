@@ -39,7 +39,7 @@ return (
     <Button onClick={() => handleClick("danger")} intent="danger">
       危险类
     </Button>
-    {/** 请忽略这个 style 标签 😊 */}
+
     <style
       dangerouslySetInnerHTML={{
         __html: `.adui-dialog-demoWrapper button:not(:last-of-type) { margin-right: 16px; }`,

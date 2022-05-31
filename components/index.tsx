@@ -10,7 +10,8 @@ export { default as Alert } from "./alert"
 export type { IBreadcrumbProps, IBreadcrumbItemProps } from "./breadcrumb"
 export { default as Breadcrumb } from "./breadcrumb"
 
-export type { IButtonProps, IButtonGroupProps } from "./button"
+export type { IButtonProps } from "./button"
+export type { IButtonGroupProps } from "./button-group"
 export { default as Button } from "./button"
 
 export type { ICardProps, ICardHeaderProps } from "./card"

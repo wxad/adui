@@ -61,7 +61,6 @@ return (
       columns={cols}
     />
 
-    {/** 请忽略这个 style 标签 😊 */}
     <style
       dangerouslySetInnerHTML={{
         __html: `.adui-ComponentDoc-table-example-title { margin-top: 36px;margin-bottom: 8px;font-size: 13px;line-height: 20px;color: #636363; }.adui-ComponentDoc-table-example-title:first-child{margin-top: 0;}`,

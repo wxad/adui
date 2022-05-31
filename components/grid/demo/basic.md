@@ -28,7 +28,7 @@ return (
       {renderCard(3)}
     </Grid.Row>
     <Grid.Row gutter={16}>{renderCard(12)}</Grid.Row>
-    {/** 请忽略这个 style 标签 😊 */}
+
     <style
       dangerouslySetInnerHTML={{
         __html: `.adui-ComponentDoc-demoWrapper { background-color: #fcfcfc; }`,

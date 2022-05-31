@@ -36,6 +36,10 @@ export interface ITooltipProps {
    */
   defaultVisible?: null | boolean
   /**
+   * forceRender before first visible
+   */
+  forceRender?: boolean
+  /**
    * 指定气泡提示的父级，默认为 document.body
    */
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)

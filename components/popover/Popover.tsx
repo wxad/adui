@@ -110,6 +110,10 @@ Popover.propTypes = {
    */
   getPopupContainer: PropTypes.func,
   /**
+   * forceRender before first visible
+   */
+  forceRender: PropTypes.bool,
+  /**
    * mouseEnter 显示的延时，单位：s，只在 trigger="hover" 时有效
    */
   mouseEnterDelay: PropTypes.number,
@@ -166,6 +170,7 @@ Popover.defaultProps = {
   children: "",
   defaultVisible: null,
   getPopupContainer: null,
+  forceRender: false,
   mouseEnterDelay: 0,
   mouseLeaveDelay: 0.1,
   onVisibleChange: () => {},

@@ -786,6 +786,9 @@ class SiteLayout extends React.Component {
                           <Nav.Item index="button">
                             <Link to="/components/button">按钮 Button</Link>
                           </Nav.Item>
+                          <Nav.Item index="button-group">
+                            <Link to="/components/button-group">按钮组 Button Group</Link>
+                          </Nav.Item>
                           <Nav.Item index="input">
                             <Link to="/components/input">输入框 Input</Link>
                           </Nav.Item>

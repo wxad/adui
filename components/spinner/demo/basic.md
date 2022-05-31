@@ -45,7 +45,7 @@ return (
           <Form.Item label="电子邮箱">donon@gmail.com</Form.Item>
         </Form>
       </Card>
-      {/** 请忽略这个 style 标签 😊 */}
+
       <style
         dangerouslySetInnerHTML={{
           __html: `.adui-ComponentDoc-demoWrapper { background-color: #fcfcfc; }`,
