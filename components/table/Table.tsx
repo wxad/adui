@@ -2090,6 +2090,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       "selectMultiple",
       "selectedRowKeys",
       "selectOnRowClick",
+      "scrollXAffixedOffsetBottom",
       "verticalAlign",
       "virtualListProps",
       "virtualListStyle",
