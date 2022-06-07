@@ -368,6 +368,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
             }
             if (id) {
               const parent = document.getElementById(id)?.nextSibling as Element
+
               const el = parent?.getElementsByClassName(
                 "adui-select-item-option-selected"
               )[0]?.children[0] as HTMLElement
@@ -390,6 +391,10 @@ class Select<T extends ValueType = ValueType> extends React.Component<
                 })
               }
             }
+          } else {
+            this.setState({
+              placeholderText: "",
+            })
           }
           this.search.focus()
         }
@@ -564,6 +569,8 @@ class Select<T extends ValueType = ValueType> extends React.Component<
               `${prefix}-select`,
               `${prefix}-${size}`,
               {
+                [`${prefix}-value_is_empty_string`]:
+                  valueState === "" || valueState === undefined,
                 [`${prefix}-light`]: theme === "light",
                 [`${prefix}-select_placeholderShow`]: placeholderShow,
               }
@@ -584,7 +591,11 @@ class Select<T extends ValueType = ValueType> extends React.Component<
                   "string" ? (
                     <div
                       className={`${prefix}-placeholder-text`}
-                      style={{ color: placeholderColor }}
+                      style={{
+                        color: !valueState
+                          ? placeholderColor || "var(--gray-700)"
+                          : "var(--gray-900)",
+                      }}
                       dangerouslySetInnerHTML={{
                         __html: `${placeholderText || placeholder || ""}`,
                       }}
@@ -592,7 +603,11 @@ class Select<T extends ValueType = ValueType> extends React.Component<
                   ) : (
                     <div
                       className={`${prefix}-placeholder-text`}
-                      style={{ color: placeholderColor }}
+                      style={{
+                        color: !valueState
+                          ? placeholderColor || "var(--gray-700)"
+                          : "var(--gray-900)",
+                      }}
                     >
                       {placeholderText || placeholder || ""}
                     </div>
