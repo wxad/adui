@@ -240,6 +240,7 @@ const Transition: React.FC<ITransitionProps> = ({
     const delay = phase === "enter" ? enterDelay : leaveDelay
     const tension = phase === "enter" ? enterTension : leaveTension
     const friction = phase === "enter" ? enterFriction : leaveFriction
+
     if (phase === "enter") {
       if (beforeEnter) {
         beforeEnter()
@@ -288,6 +289,7 @@ const Transition: React.FC<ITransitionProps> = ({
                     duration: durationOption,
                     // ease
                   }
+
             const animateOptions: AnimationOptions<number> = {
               from: Number(from),
               to: Number(to),
@@ -362,10 +364,12 @@ const Transition: React.FC<ITransitionProps> = ({
 
   useEffect(() => {
     if (show) {
-      setIsToRender(true)
       if (animatingPhase.current === "leave") {
         doAnimate("enter")
       }
+      setTimeout(() => {
+        setIsToRender(true)
+      }, 0)
     } else if (!initial) {
       doAnimate("leave")
     }
@@ -505,15 +509,15 @@ Transition.defaultProps = {
   enterDelay: undefined,
   enterDuration: undefined,
   enterEase: undefined,
-  enterTension: undefined,
-  enterFriction: undefined,
+  enterTension: 170,
+  enterFriction: 26,
   enterFrom: "",
   enterTo: "",
   leaveDelay: undefined,
   leaveDuration: undefined,
   leaveEase: undefined,
-  leaveTension: undefined,
-  leaveFriction: undefined,
+  leaveTension: 170,
+  leaveFriction: 26,
   leaveFrom: "",
   leaveTo: "",
   show: true,
