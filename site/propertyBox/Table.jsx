@@ -135,7 +135,13 @@ export default class PropertyBox extends React.Component {
               expandedRowKeys={expand ? this.state.expandedRowKeys : null}
               loading={loading}
               selectMultiple={selectFinal}
-              onSelectChange={selectSin || selectMul ? () => {} : null}
+              onSelectChange={
+                selectSin || selectMul
+                  ? (keys, options) => {
+                      console.log("yijie", keys, options)
+                    }
+                  : null
+              }
               expandedRowRender={
                 expand
                   ? () => (

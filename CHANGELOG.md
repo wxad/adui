@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.35.0](https://github.com/wxad/adui/compare/v2.34.0...v2.35.0) (2022-06-07)
+
+
+### Features
+
+* **Table:** onSelectChange 增加第二个参数 options，具体解释请参见文档 ([dca8d63](https://github.com/wxad/adui/commit/dca8d6334c69754f44a9f717fbe6d02147bb8aa3))
+
+
+### Bug Fixes
+
+* **Select:** 修复搜索时，值为空白的问题；修复 [#23](https://github.com/wxad/adui/issues/23) ([c94754c](https://github.com/wxad/adui/commit/c94754c5e69940ee02e438ea003ad04eb3d3d1a2))
+* **Table:** 修复 scrollXAffixedOffsetBottom warning ([5566ec2](https://github.com/wxad/adui/commit/5566ec27230f5623c965d795f09140e094841aca))
+
 ## [2.34.0](https://github.com/wxad/adui/compare/v2.33.0...v2.34.0) (2022-05-30)
 
 

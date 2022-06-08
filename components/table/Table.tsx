@@ -250,8 +250,20 @@ export interface ITableProps<T extends IBaseObject = IBaseObject> {
   /**
    * 【选择行】选择每行时的 handler，Table 也以此 prop 作为开启选择功能的判断；
    * 请确保 dataSource 的对象含有属性 key，及其唯一的值。
+   *
+   * adui@2.35.0 新增第二个参数 options，此参数是可选的 —— 全选时为 undefined。其中，selected 表示当前行操作是选中还是取消选中，selectedRows 表示当前已选中的行，currentRowKey 表示当前操作行的 key，currentRow 表示当前操作行的数据。
    */
-  onSelectChange?: ((keys: Array<React.ReactText>) => void) | null
+  onSelectChange?:
+    | ((
+        keys: Array<React.ReactText>,
+        options?: {
+          selected: boolean
+          selectedRows: T[]
+          currentRowKey: React.ReactText
+          currentRow: T
+        }
+      ) => void)
+    | null
   /**
    * Table 滚动时的 handler
    */
@@ -494,6 +506,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     /**
      * 【选择行】选择每行时的 handler，Table 也以此 prop 作为开启选择功能的判断；
      * 请确保 dataSource 的对象含有属性 key，及其唯一的值。
+     *
+     * adui@2.35.0 新增第二个参数 options，此参数是可选的 —— 全选时为 undefined。其中，selected 表示当前行操作是选中还是取消选中，selectedRows 表示当前已选中的行，currentRowKey 表示当前操作行的 key，currentRow 表示当前操作行的数据。
      */
     onSelectChange: PropTypes.func,
     /**
@@ -1029,19 +1043,21 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
   /**
    * 选择行
    */
-  public handleSelect = (key: React.ReactText, checked: boolean) => {
-    if (typeof key === "undefined") {
-      return
-    }
+  public handleSelect = (key: React.ReactText, selected: boolean) => {
     const {
       onSelectChange,
       selectedRowKeys: selectedRowKeysProp,
       selectMultiple,
+      dataSource,
     } = this.props
+    const currentRow = dataSource?.find((o) => o.key === key)
+    if (typeof key === "undefined" || !dataSource?.length || !currentRow) {
+      return
+    }
     const { selectedRowKeys } = this.state
     let keys = [...selectedRowKeys]
     if (selectMultiple) {
-      if (checked) {
+      if (selected) {
         keys.push(key)
       } else {
         keys.splice(selectedRowKeys.indexOf(key), 1)
@@ -1055,7 +1071,12 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       })
     }
     if (onSelectChange) {
-      onSelectChange(keys)
+      onSelectChange(keys, {
+        selected: !selectMultiple || selected,
+        currentRowKey: key,
+        selectedRows: dataSource.filter((o) => keys.includes(o.key)),
+        currentRow,
+      })
     }
   }
 
