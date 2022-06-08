@@ -21,6 +21,16 @@ const UNITS: { [key: string]: string } = {
   height: "px",
 }
 
+const transformProperty = (property: string) => {
+  if (property === "w") {
+    return "width"
+  }
+  if (property === "h") {
+    return "height"
+  }
+  return property
+}
+
 export type TEase = "ease-in" | "ease-out"
 
 export type TPhase = "enter" | "leave"
@@ -52,7 +62,35 @@ export interface ITransitionProps {
    */
   children?: React.ReactNode
   /**
-   * enter：延迟
+   * 延迟
+   */
+  delay?: number | number[]
+  /**
+   * 总体时间，当有此 Prop 时将忽略 spring 相关属性，即 stiffness 和 damping
+   */
+  duration?: number | number[]
+  /**
+   * 贝塞尔曲线，将在 duration 有效时应用，在 spring 动画时被忽略
+   */
+  ease?: TEase | TEase[]
+  /**
+   * 弹力 —— 在现实世界中是由材料和钢卷厚度（coil thickness）造成的。弹力越大，弹簧会收缩得更有力，动画也会变得活泼
+   */
+  tension?: number | number[]
+  /**
+   * 摩擦力 —— 摩擦力越高，就需要越多的力让物体运动，动画也会越慢。如果摩擦力足够低，物体会运动超过终点，产生数个回弹效果
+   */
+  friction?: number | number[]
+  /**
+   * 起点的一些原子类名
+   */
+  from?: string | string[]
+  /**
+   * 终点的一些原子类名
+   */
+  to?: string | string[]
+  /**
+   * 延迟
    */
   enterDelay?: number | number[]
   /**
@@ -145,6 +183,7 @@ const useSplitClassesToStyle = (classes: string | string[] = ""): TStyle => {
       } else {
         ;[property, value] = splits
       }
+      property = transformProperty(property)
       if (TRANSFORMS.includes(property)) {
         if (!style.transform) {
           style["--adui-translate-x"] = { value: 0, index }
@@ -202,6 +241,15 @@ const Transition: React.FC<ITransitionProps> = ({
   beforeEnter,
   beforeLeave,
   children,
+
+  delay: delayProp,
+  duration: durationProp,
+  ease: easeProp,
+  tension: tensionProp,
+  friction: frictionProp,
+  from: fromProp,
+  to: toProp,
+
   enterDelay,
   enterDuration,
   enterEase,
@@ -209,6 +257,7 @@ const Transition: React.FC<ITransitionProps> = ({
   enterFriction,
   enterFrom,
   enterTo,
+
   leaveDelay,
   leaveDuration,
   leaveEase,
@@ -216,6 +265,7 @@ const Transition: React.FC<ITransitionProps> = ({
   leaveFriction,
   leaveFrom,
   leaveTo,
+
   show,
   style = {},
   tag: TagName = "span",
@@ -223,10 +273,10 @@ const Transition: React.FC<ITransitionProps> = ({
 }: ITransitionProps) => {
   const [isToRender, setIsToRender] = useState(false)
   const initial = useIsInitialRender()
-  const enterFromStyles = useSplitClassesToStyle(enterFrom)
-  const enterToStyles = useSplitClassesToStyle(enterTo)
-  const leaveFromStyles = useSplitClassesToStyle(leaveFrom)
-  const leaveToStyles = useSplitClassesToStyle(leaveTo)
+  const enterFromStyles = useSplitClassesToStyle(enterFrom || fromProp)
+  const enterToStyles = useSplitClassesToStyle(enterTo || toProp)
+  const leaveFromStyles = useSplitClassesToStyle(leaveFrom || toProp)
+  const leaveToStyles = useSplitClassesToStyle(leaveTo || fromProp)
   const wrapperRef = useRef<HTMLElement>(null)
   const animatingIdRef = useRef("")
   const animatingPhase = useRef("")
@@ -236,10 +286,13 @@ const Transition: React.FC<ITransitionProps> = ({
     const currentAnimatingId = animatingIdRef.current
     const fromStyles = phase === "enter" ? enterFromStyles : leaveFromStyles
     const toStyles = phase === "enter" ? enterToStyles : leaveToStyles
-    const duration = phase === "enter" ? enterDuration : leaveDuration
-    const delay = phase === "enter" ? enterDelay : leaveDelay
-    const tension = phase === "enter" ? enterTension : leaveTension
-    const friction = phase === "enter" ? enterFriction : leaveFriction
+    const duration =
+      (phase === "enter" ? enterDuration : leaveDuration) || durationProp
+    const delay = (phase === "enter" ? enterDelay : leaveDelay) || delayProp
+    const tension =
+      (phase === "enter" ? enterTension : leaveTension) || tensionProp || 170
+    const friction =
+      (phase === "enter" ? enterFriction : leaveFriction) || frictionProp || 24
 
     if (phase === "enter") {
       if (beforeEnter) {
@@ -301,6 +354,7 @@ const Transition: React.FC<ITransitionProps> = ({
               type,
               ...additionals,
             }
+
             if (delayOption) {
               const timeDelay = new Promise((r) => setTimeout(r, delayOption))
               timeDelay.then(() => {
@@ -430,6 +484,34 @@ Transition.propTypes = {
    */
   children: PropTypes.any,
   /**
+   * 延迟
+   */
+  delay: PropTypes.any,
+  /**
+   * 总体时间，当有此 Prop 时将忽略 spring 相关属性，即 stiffness 和 damping
+   */
+  duration: PropTypes.any,
+  /**
+   * 贝塞尔曲线，将在 duration 有效时应用，在 spring 动画时被忽略
+   */
+  ease: PropTypes.any,
+  /**
+   * 弹力 —— 在现实世界中是由材料和钢卷厚度（coil thickness）造成的。弹力越大，弹簧会收缩得更有力，动画也会变得活泼
+   */
+  tension: PropTypes.any,
+  /**
+   * 摩擦力 —— 摩擦力越高，就需要越多的力让物体运动，动画也会越慢。如果摩擦力足够低，物体会运动超过终点，产生数个回弹效果
+   */
+  friction: PropTypes.any,
+  /**
+   * 起点的一些原子类名
+   */
+  from: PropTypes.any,
+  /**
+   * 终点的一些原子类名
+   */
+  to: PropTypes.any,
+  /**
    * enter：延迟
    */
   enterDelay: PropTypes.any,
@@ -506,18 +588,25 @@ Transition.defaultProps = {
   beforeEnter: undefined,
   beforeLeave: undefined,
   children: undefined,
+  delay: undefined,
+  duration: undefined,
+  ease: undefined,
+  tension: undefined,
+  friction: undefined,
+  from: "",
+  to: "",
   enterDelay: undefined,
   enterDuration: undefined,
   enterEase: undefined,
-  enterTension: 170,
-  enterFriction: 26,
+  enterTension: undefined,
+  enterFriction: undefined,
   enterFrom: "",
   enterTo: "",
   leaveDelay: undefined,
   leaveDuration: undefined,
   leaveEase: undefined,
-  leaveTension: 170,
-  leaveFriction: 26,
+  leaveTension: undefined,
+  leaveFriction: undefined,
   leaveFrom: "",
   leaveTo: "",
   show: true,
