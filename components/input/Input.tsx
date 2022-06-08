@@ -51,6 +51,14 @@ export interface IInputProps {
    */
   disabled?: boolean
   /**
+   * 作用到 input 元素的类名
+   */
+  inputClassName?: string
+  /**
+   * 作用到 input 元素的样式
+   */
+  inputStyle?: React.CSSProperties
+  /**
    * 输入框的 id
    */
   id?: string | null
@@ -162,6 +170,8 @@ const Input: IInput = forwardRef(
       defaultValue,
       disabled,
       id,
+      inputClassName,
+      inputStyle,
       intent,
       leftElement,
       limit,
@@ -366,7 +376,7 @@ const Input: IInput = forwardRef(
     const inputProps: { [key: string]: any } = {
       autoComplete,
       autoFocus,
-      className: `${prefix}-base`,
+      className: `${prefix}-base ${inputClassName}`,
       disabled,
       id,
       name,
@@ -380,6 +390,7 @@ const Input: IInput = forwardRef(
       style: {
         paddingLeft: leftElementWidth ? `${leftElementWidth}px` : undefined,
         paddingRight: rightElementWidth ? `${rightElementWidth}px` : undefined,
+        ...inputStyle,
       },
       type,
     }
@@ -559,6 +570,14 @@ Input.propTypes = {
    * 输入框的 id
    */
   id: PropTypes.string,
+  /**
+   * 作用到 input 元素的类名
+   */
+  inputClassName: PropTypes.string,
+  /**
+   * 作用到 input 元素的样式
+   */
+  inputStyle: PropTypes.object,
   /**
    * 类型
    */
