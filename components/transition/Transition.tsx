@@ -179,15 +179,26 @@ const useSplitClassesToStyle = (classes: string | string[] = ""): TStyle => {
        * - 开头为负值
        */
       if (o.startsWith("-")) {
-        ;[, property, value] = splits
+        if (splits.length === 4) {
+          const [, p1, p2, v] = splits
+          property = `${p1}-${p2}`
+          value = `-${v}`
+        } else {
+          ;[, property, value] = splits
+        }
+      } else if (splits.length === 3) {
+        const [p1, p2, v] = splits
+        property = `${p1}-${p2}`
+        value = v
       } else {
         ;[property, value] = splits
       }
       property = transformProperty(property)
+
       if (TRANSFORMS.includes(property)) {
         if (!style.transform) {
-          style["--adui-translate-x"] = { value: 0, index }
-          style["--adui-translate-y"] = { value: 0, index }
+          style["--adui-translate-x"] = { value: 0, unit: "px", index }
+          style["--adui-translate-y"] = { value: 0, unit: "px", index }
           style["--adui-rotate"] = { value: 0, unit: "deg", index }
           style["--adui-skew-x"] = { value: 0, index }
           style["--adui-skew-y"] = { value: 0, index }
@@ -200,6 +211,20 @@ const useSplitClassesToStyle = (classes: string | string[] = ""): TStyle => {
           }
         }
         switch (property) {
+          case "translate-x":
+            style["--adui-translate-x"] = {
+              value: parseInt(value, 10),
+              unit: "px",
+              index,
+            }
+            break
+          case "translate-y":
+            style["--adui-translate-y"] = {
+              value: parseInt(value, 10),
+              unit: "px",
+              index,
+            }
+            break
           case "scale":
             style["--adui-scale-x"] = {
               value: parseInt(value, 10) / 100,
@@ -207,7 +232,6 @@ const useSplitClassesToStyle = (classes: string | string[] = ""): TStyle => {
             }
             style["--adui-scale-y"] = {
               value: parseInt(value, 10) / 100,
-              unit: "",
               index,
             }
             break
@@ -286,17 +310,24 @@ const Transition: React.FC<ITransitionProps> = ({
     const currentAnimatingId = animatingIdRef.current
     const fromStyles = phase === "enter" ? enterFromStyles : leaveFromStyles
     const toStyles = phase === "enter" ? enterToStyles : leaveToStyles
+
     const duration =
       (phase === "enter" ? enterDuration : leaveDuration) || durationProp
     const delay = (phase === "enter" ? enterDelay : leaveDelay) || delayProp
     const tension =
-      (phase === "enter" ? enterTension : leaveTension) || tensionProp || 170
+      (phase === "enter" ? enterTension : leaveTension) || tensionProp || 220
     const friction =
-      (phase === "enter" ? enterFriction : leaveFriction) || frictionProp || 24
+      (phase === "enter" ? enterFriction : leaveFriction) || frictionProp || 26
 
     if (phase === "enter") {
       if (beforeEnter) {
         beforeEnter()
+      }
+
+      if (wrapperRef.current) {
+        if (wrapperRef.current.style.visibility === "hidden") {
+          wrapperRef.current.style.visibility = "visible"
+        }
       }
     } else if (beforeLeave) {
       beforeLeave()
@@ -421,9 +452,7 @@ const Transition: React.FC<ITransitionProps> = ({
       if (animatingPhase.current === "leave") {
         doAnimate("enter")
       }
-      setTimeout(() => {
-        setIsToRender(true)
-      }, 0)
+      setIsToRender(true)
     } else if (!initial) {
       doAnimate("leave")
     }
@@ -448,7 +477,7 @@ const Transition: React.FC<ITransitionProps> = ({
       // @ts-ignore
       ref={wrapperRef}
       style={{
-        visibility: show && !isToRender ? "hidden" : "visible",
+        visibility: "hidden",
         ...style,
       }}
       {...otherProps}
