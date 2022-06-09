@@ -20,6 +20,7 @@ const getOptions = () => {
 }
 const [options, setOptions] = useState(getOptions())
 const [loadTimes, setLoadTimes] = useState(0)
+const [value, setValue] = useState(undefined)
 
 return (
   <div className="w-2/4">
@@ -33,6 +34,8 @@ return (
           setOptions([...options, ...getOptions()])
         }
       }}
+      value={value}
+      onChange={setValue}
     >
       {options.map(({ value }) => (
         <Select.Option key={value} value={value}>

@@ -8,6 +8,8 @@ title:
 虚拟滚动，处理 `10000` 行数据：
 
 ```jsx
+const [value, setValue] = useState(undefined)
+
 const options = []
 for (let i = 0; i < 10000; i++) {
   const value = `${i.toString(36)}${i}`
@@ -26,6 +28,8 @@ return (
       }
       return false
     }}
+    value={value}
+    onChange={setValue}
   >
     {options.map(({ value }) => (
       <Select.Option value={value} key={value}>

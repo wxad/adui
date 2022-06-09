@@ -10,10 +10,11 @@ export default class PropertyBox extends React.Component {
     search: false,
     size: "small",
     theme: false,
+    value: undefined,
   }
 
   render() {
-    const { disabled, search, size, theme } = this.state
+    const { disabled, search, size, theme, value } = this.state
 
     const codes = `<Select
   onSelect={(value, option) => {}}
@@ -45,6 +46,10 @@ export default class PropertyBox extends React.Component {
               size={size}
               theme={theme ? "light" : null}
               style={{ width: "160px" }}
+              value={value}
+              onChange={(val) => {
+                this.setState({ value: val })
+              }}
             >
               <Select.OptGroup label="广告位">
                 <Select.Option value="朋友圈广告">朋友圈</Select.Option>
