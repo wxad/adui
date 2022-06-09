@@ -225,6 +225,18 @@ const useSplitClassesToStyle = (classes: string | string[] = ""): TStyle => {
               index,
             }
             break
+          case "scale-x":
+            style["--adui-scale-x"] = {
+              value: parseInt(value, 10) / 100,
+              index,
+            }
+            break
+          case "scale-y":
+            style["--adui-scale-y"] = {
+              value: parseInt(value, 10) / 100,
+              index,
+            }
+            break
           case "scale":
             style["--adui-scale-x"] = {
               value: parseInt(value, 10) / 100,
