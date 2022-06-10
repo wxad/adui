@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.36.0](https://github.com/wxad/adui/compare/v2.35.0...v2.36.0) (2022-06-10)
+
+
+### Features
+
+* **Button.Group:** 拆分 button group 为自有主页 ([d50095e](https://github.com/wxad/adui/commit/d50095ee9392e748ac5f40ac3d320b6e993e2848))
+* **Input:** inputClassName, inputStyle Prop ([b09f45c](https://github.com/wxad/adui/commit/b09f45c805f87b14eb28dea3061ed350fea75980))
+* **Transition:** 增加一些 Props ([361c488](https://github.com/wxad/adui/commit/361c488e4deb18141c701fc6e90acd47fba0ba31))
+
+
+### Bug Fixes
+
+* **rollup:** 修复 <Transition /> 的打包 ([8ad19fb](https://github.com/wxad/adui/commit/8ad19fb9ee41c0cb7c24f4438722b2c6a389d298))
+* **Transition:** 修复一些表现问题 ([6edbf80](https://github.com/wxad/adui/commit/6edbf8081a7cc0519bcf9dd0f3559c6abc1da735))
+* **Transition:** 修复一些表现问题 ([aee3bd0](https://github.com/wxad/adui/commit/aee3bd08613a53a31cf22e084e28842dd1724d43))
+
 ## [2.35.0](https://github.com/wxad/adui/compare/v2.34.0...v2.35.0) (2022-06-07)
 
 
