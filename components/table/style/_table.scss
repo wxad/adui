@@ -246,6 +246,7 @@ $prefix: "adui-table";
     word-break: break-all;
   }
   &-cellInner {
+    flex: 1;
     min-width: 0;
     overflow: hidden;
     white-space: inherit;
