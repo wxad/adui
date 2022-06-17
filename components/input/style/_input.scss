@@ -19,11 +19,18 @@ $prefix: "adui-input";
   &-wrapper_textarea {
     width: 100%;
 
-    .#{$prefix}-limit {
-      top: initial;
-      bottom: 10px;
-      padding-right: 18px;
-      height: auto;
+    .#{$prefix} {
+      &-base {
+        min-height: initial;
+        max-height: initial;
+      }
+
+      &-limit {
+        top: initial;
+        bottom: 10px;
+        padding-right: 18px;
+        height: auto;
+      }
     }
   }
   &-base {

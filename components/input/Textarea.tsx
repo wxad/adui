@@ -46,6 +46,14 @@ export interface ITextareaProps {
    */
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
   /**
+   * 作用到 input 元素的类名
+   */
+  inputClassName?: string
+  /**
+   * 作用到 input 元素的样式
+   */
+  inputStyle?: React.CSSProperties
+  /**
    * 限制长度
    */
   limit?: number | null
@@ -121,6 +129,8 @@ const Textarea: React.ForwardRefExoticComponent<
       defaultValue,
       disabled,
       id,
+      inputClassName,
+      inputStyle,
       intent,
       limit,
       name,
@@ -217,7 +227,7 @@ const Textarea: React.ForwardRefExoticComponent<
 
     const textareaProps: { [key: string]: any } = {
       autoFocus,
-      className: `${prefix}-base`,
+      className: classNames(`${prefix}-base`, inputClassName),
       disabled,
       id,
       name,
@@ -229,7 +239,7 @@ const Textarea: React.ForwardRefExoticComponent<
       placeholder,
       ref: textareaRef,
       required,
-      style: { resize },
+      style: { resize, ...inputStyle },
       type,
     }
 
@@ -316,6 +326,14 @@ Textarea.propTypes = {
    */
   id: PropTypes.string,
   /**
+   * 作用到 input 元素的类名
+   */
+  inputClassName: PropTypes.string,
+  /**
+   * 作用到 input 元素的样式
+   */
+  inputStyle: PropTypes.object,
+  /**
    * 设置类型
    */
   intent: PropTypes.oneOf([
@@ -394,6 +412,8 @@ Textarea.defaultProps = {
   defaultValue: null,
   disabled: false,
   id: null,
+  inputClassName: undefined,
+  inputStyle: {},
   intent: "normal",
   limit: null,
   name: null,

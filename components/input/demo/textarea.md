@@ -10,11 +10,14 @@ title:
 ```jsx
 const [value, setValue] = useState("")
 return (
-  <Input.Textarea
-    limit={15}
-    onChange={({ target: { value: val } }) => setValue(val)}
-    value={value}
-    className="w-240 h-120"
-  />
+  <div>
+    <Input.Textarea
+      limit={15}
+      onChange={({ target: { value: val } }) => setValue(val)}
+      value={value}
+      inputStyle={{ width: "240px", height: "120px" }}
+      resize="both"
+    />
+  </div>
 )
 ```

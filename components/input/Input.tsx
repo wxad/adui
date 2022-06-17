@@ -376,7 +376,7 @@ const Input: IInput = forwardRef(
     const inputProps: { [key: string]: any } = {
       autoComplete,
       autoFocus,
-      className: `${prefix}-base ${inputClassName}`,
+      className: classNames(`${prefix}-base`, inputClassName),
       disabled,
       id,
       name,
@@ -665,6 +665,8 @@ Input.defaultProps = {
   disabled: false,
   id: null,
   intent: "normal",
+  inputClassName: undefined,
+  inputStyle: {},
   leftElement: undefined,
   limit: null,
   name: null,
