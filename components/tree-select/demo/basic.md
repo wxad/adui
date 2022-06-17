@@ -223,7 +223,7 @@ return (
     </div>
     <TreeSelect
       selectAll
-      resultVisible
+      resultVisible={false}
       placeholder="请选择位置请选择位置请选择位置请选择位置请选择位置请选择位置"
       className="w-360"
       onChange={(val) => {
@@ -232,7 +232,6 @@ return (
       }}
       value={value}
       treeData={treeData}
-      heightFixed
     />
   </div>
 )

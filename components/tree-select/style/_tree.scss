@@ -1,3 +1,5 @@
+@use "../../style/index" as mixins;
+
 $prefix: "adui-tree-select";
 
 .#{$prefix} {
@@ -28,24 +30,6 @@ $prefix: "adui-tree-select";
           position: relative;
           top: 2px;
           z-index: 1;
-        }
-      }
-    }
-
-    &-fixed {
-      .#{$prefix} {
-        &-selection-overflow {
-          flex-wrap: nowrap;
-
-          &-item {
-            max-width: 75%;
-          }
-
-          &-item-suffix {
-            max-width: initial;
-            flex: 1;
-            min-width: 0;
-          }
         }
       }
     }
@@ -553,6 +537,7 @@ $prefix: "adui-tree-select";
       max-width: 200px;
       max-height: 190px;
       overflow-y: auto;
+      @include mixins.scrollbar();
     }
   }
 

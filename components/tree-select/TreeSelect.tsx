@@ -96,7 +96,6 @@ export interface ITreeSelectProps {
     | ((inputValue: string, treeNode: DefaultOptionType) => boolean)
   filterCaseSensitive?: boolean
   getPopupContainer?: null | ((node: HTMLElement) => HTMLElement)
-  heightFixed?: boolean
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
   maxTagCount?: null | number
   multiple?: boolean
@@ -121,7 +120,6 @@ export interface ITreeSelectState {
   hash: string
   topContentPortalTarget?: HTMLDivElement
   value?: TreeNodeValue
-  maxHeightFixed: boolean
 }
 
 export interface ITreeNodeProps {
@@ -175,10 +173,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      * 指定弹出层的父级，默认为 document.body
      */
     getPopupContainer: PropTypes.func,
-    /**
-     * 高度是否固定一行，TreeSelect 将根据内容区域宽度自动将结果收起，开启这个 Prop 后 TreeSelect 会忽略 maxTagCount Prop
-     */
-    heightFixed: PropTypes.bool,
     /**
      * 类型
      */
@@ -270,7 +264,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     filterTreeNode: undefined,
     filterCaseSensitive: false,
     getPopupContainer: null,
-    heightFixed: false,
     intent: "normal",
     maxTagCount: null,
     multiple: true,
@@ -321,7 +314,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     this.state = {
       hash: Math.random().toString(36).substring(3, 8),
       value: valueState,
-      maxHeightFixed: false,
     }
   }
 
@@ -501,12 +493,9 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
   public getMaxTagCount = () => {
     const { maxTagCount } = this.props
-    const { value, maxHeightFixed } = this.state
+    const { value } = this.state
 
-    if (
-      (!maxTagCount || !value || value.length <= maxTagCount) &&
-      !maxHeightFixed
-    ) {
+    if (!maxTagCount || !value || value.length <= maxTagCount) {
       return null
     }
     return 0
@@ -575,7 +564,11 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         alignEdge={false}
         placement="top"
         popup={
-          <div className={`${prefix}-max-popover-item-wrapper`}>
+          <div
+            role="none"
+            className={`${prefix}-max-popover-item-wrapper`}
+            onMouseDown={(e) => e.stopPropagation()}
+          >
             {nodes.map(({ key, disabled, label }, i) => {
               return (
                 <div className={`${prefix}-max-popover-item`} key={key}>
@@ -827,12 +820,8 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     }
   }
 
-  public componentDidUpdate = (
-    _: ITreeSelectProps,
-    { value: valuePrev }: ITreeSelectState
-  ) => {
-    const { resultVisible, heightFixed, placeholder } = this.props
-    const { hash, value, maxHeightFixed } = this.state
+  public componentDidUpdate = () => {
+    const { resultVisible, placeholder } = this.props
     /**
      * resultVisible 为 false 时， selector 高度不会改变。
      * 根据我的经验 Popup 触发重新定位的时机是：
@@ -849,41 +838,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         }
       }, 0)
     }
-
-    if (heightFixed && valuePrev?.length !== value?.length) {
-      try {
-        const wrapper = document.querySelector(
-          `.${prefix}-wrapper_${hash} .${prefix}-selection-overflow`
-        ) as HTMLDivElement
-        const suffix = document.querySelector(
-          `.${prefix}-wrapper_${hash} .${prefix}-selection-overflow-item-suffix`
-        ) as HTMLDivElement
-        const last = suffix.children[
-          suffix.children.length - 1
-        ] as HTMLDivElement
-        if (
-          last.offsetLeft > wrapper.offsetWidth - 30 &&
-          !maxHeightFixed &&
-          valuePrev &&
-          value &&
-          valuePrev.length < value.length
-        ) {
-          this.setState({
-            maxHeightFixed: true,
-          })
-        } else if (
-          last.offsetLeft < wrapper.offsetWidth - 30 &&
-          maxHeightFixed &&
-          valuePrev &&
-          value &&
-          valuePrev.length > value.length
-        ) {
-          this.setState({
-            maxHeightFixed: false,
-          })
-        }
-      } catch (error) {}
-    }
   }
 
   public render() {
@@ -893,7 +847,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       className,
       filterTreeNode,
       getPopupContainer,
-      heightFixed,
       intent,
       maxTagCount,
       multiple,
@@ -919,7 +872,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       "value",
     ])
 
-    const { hash, topContentPortalTarget, value, maxHeightFixed } = this.state
+    const { hash, topContentPortalTarget, value } = this.state
 
     const classSet = classNames(className, `${prefix}-${intent}`, {
       [`${prefix}_resultHidden`]: !resultVisible,
@@ -977,7 +930,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       restProps.value = trueValue
     }
 
-    if (maxTagCount !== null || maxHeightFixed) {
+    if (maxTagCount !== null) {
       const count = this.getMaxTagCount()
       if (count !== null) {
         restProps.maxTagCount = count
@@ -1051,7 +1004,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
               `${prefix}-wrapper ${prefix}-wrapper_${hash}`,
               {
                 [`${prefix}-wrapper-maxTag`]: this.getMaxTagCount() !== null,
-                [`${prefix}-wrapper-fixed`]: heightFixed,
                 [`${prefix}-wrapper-resultRender`]: !!resultRender,
               }
             )}
