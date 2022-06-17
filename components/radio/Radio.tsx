@@ -112,14 +112,21 @@ const Radio: IRadio = forwardRef(
     const size = getComputedSize(sizeProp, sizeContext, sizeConfig)
 
     const popover = helper ? (
-      <Popover alignEdge={false} popup={helper} {...helperProps}>
-        <Icon
-          icon={helperIcon || "help-circle"}
-          color="var(--gray-600)"
-          interactive
-          className={`${prefix}-helper`}
-        />
-      </Popover>
+      <span
+        role="none"
+        onClick={(e) => {
+          e.stopPropagation()
+        }}
+      >
+        <Popover alignEdge={false} popup={helper} {...helperProps}>
+          <Icon
+            icon={helperIcon || "help-circle"}
+            color="var(--gray-600)"
+            interactive
+            className={`${prefix}-helper`}
+          />
+        </Popover>
+      </span>
     ) : null
 
     /**
