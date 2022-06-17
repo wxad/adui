@@ -26,6 +26,10 @@ $prefix: "adui-select";
     .#{$prefix}-selection-item {
       color: var(--gray-700);
     }
+
+    .#{$prefix}-clear {
+      display: none;
+    }
   }
 
   &-selector {
