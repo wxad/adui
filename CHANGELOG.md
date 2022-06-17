@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.36.1](https://github.com/wxad/adui/compare/v2.36.0...v2.36.1) (2022-06-17)
+
+
+### Bug Fixes
+
+* **Checkbox, Radio:** [#26](https://github.com/wxad/adui/issues/26) 提示信息帮助 点击后 触发勾选 ([b15073d](https://github.com/wxad/adui/commit/b15073df6c20d270a170db20249b41981c98afae))
+* **Select:** 修复空字符串时，出现 clearIcon 的问题 ([cd161bc](https://github.com/wxad/adui/commit/cd161bcff3bd71e52d2c5e566fe9505de1d5a0ec))
+* **Textarea:** 修复一些表现问题 ([aa57351](https://github.com/wxad/adui/commit/aa573515f45da2dcb81f15eff4e294aa64e0fbe7))
+
 ## [2.36.0](https://github.com/wxad/adui/compare/v2.35.0...v2.36.0) (2022-06-10)
 
 
