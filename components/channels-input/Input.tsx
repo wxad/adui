@@ -168,10 +168,12 @@ const Input: IInput = forwardRef(
     }: IInputProps,
     ref
   ) => {
-    const [leftElementWidth, setLeftElementWidth] =
-      useState<null | number>(null)
-    const [rightElementWidth, setRightElementWidth] =
-      useState<null | number>(null)
+    const [leftElementWidth, setLeftElementWidth] = useState<null | number>(
+      null
+    )
+    const [rightElementWidth, setRightElementWidth] = useState<null | number>(
+      null
+    )
     const inputRef = useRef<any>(null)
     const wrapperElementRef = useRef<HTMLDivElement>(null)
     const leftElementRef = useRef<HTMLDivElement>(null)
@@ -199,7 +201,7 @@ const Input: IInput = forwardRef(
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.keyCode === 13 && onPressEnter) {
+      if (e.key === "Enter" && onPressEnter) {
         onPressEnter(e)
       }
       if (onKeyDown) {

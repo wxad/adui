@@ -248,7 +248,7 @@ const Input: IInput = forwardRef(
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.keyCode === 13 && onPressEnter) {
+      if (e.key === "Enter" && onPressEnter) {
         onPressEnter(e)
       }
       if (onKeyDown) {

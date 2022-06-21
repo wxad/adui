@@ -85,8 +85,8 @@ const Tab: React.FC<ITabProps> = ({
       className={classSet}
       key={value}
       onClick={handleClick}
-      onKeyDown={({ keyCode }: React.KeyboardEvent<HTMLDivElement>) => {
-        if (keyCode === 13) {
+      onKeyDown={({ key }: React.KeyboardEvent<HTMLDivElement>) => {
+        if (key === "Enter") {
           handleClick()
         }
       }}

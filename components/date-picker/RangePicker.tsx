@@ -229,10 +229,9 @@ const RangePicker: React.ForwardRefExoticComponent<
     const [month, setMonth] = useState<Date | null | undefined>(
       initialState.month
     )
-    const [prevValueProp, setPrevValueProp] =
-      useState<
-        [Date | null | undefined, Date | null | undefined] | null | undefined
-      >(valueProp)
+    const [prevValueProp, setPrevValueProp] = useState<
+      [Date | null | undefined, Date | null | undefined] | null | undefined
+    >(valueProp)
     const [rangeValue, setRangeValue] = useState<string>(
       initialState.rangeValue
     )
@@ -485,10 +484,10 @@ const RangePicker: React.ForwardRefExoticComponent<
     }
 
     const handleInputKeyDown = ({
-      keyCode,
+      key,
     }: React.KeyboardEvent<HTMLInputElement>) => {
-      const keys = [9, 13, 27]
-      if (keys.includes(keyCode)) {
+      const keys = ["Tab", "Escape", "Enter"]
+      if (keys.includes(key)) {
         handleVisibleChange(false)
         inputRef.current?.input.blur()
       }

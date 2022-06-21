@@ -786,15 +786,15 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     const { onSearchEnter } = this.props
     const {
       target: { value },
-      keyCode,
+      key,
     } = e
 
-    if (keyCode === 8 && value === "") {
+    if (key === "Backspace" && value === "") {
       e.stopPropagation()
     }
 
     setTimeout(() => {
-      if (keyCode === 13 && onSearchEnter) {
+      if (key === "Enter" && onSearchEnter) {
         onSearchEnter(e)
       }
     }, 0)

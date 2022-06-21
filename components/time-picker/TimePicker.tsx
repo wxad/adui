@@ -243,10 +243,10 @@ const TimePicker: React.ForwardRefExoticComponent<
     }
 
     const handleInputKeyDown = ({
-      keyCode,
+      key,
     }: React.KeyboardEvent<HTMLInputElement>) => {
-      const keys = [9, 13, 27]
-      if (keys.includes(keyCode)) {
+      const keys = ["Tab", "Escape", "Enter"]
+      if (keys.includes(key)) {
         setVisible(false)
         inputRef.current.input.blur()
       }

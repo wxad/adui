@@ -173,7 +173,7 @@ const Textarea: React.ForwardRefExoticComponent<
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      if (e.keyCode === 13 && onPressEnter) {
+      if (e.key === "Enter" && onPressEnter) {
         onPressEnter(e)
       }
       if (onKeyDown) {

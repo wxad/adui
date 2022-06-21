@@ -181,7 +181,7 @@ const Radio: IRadio = forwardRef(
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLLabelElement>) => {
-      if (e.keyCode === 13) {
+      if (e.key === "Enter") {
         handleClick(e)
       }
     }

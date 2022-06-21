@@ -59,7 +59,7 @@ const Shortcuts: React.FC<IShortcutsProps> = ({
             onClick={() => onShortcutClick(valueShortcut)}
             tabIndex={0}
             onKeyDown={(e) => {
-              if (e.keyCode === 13) {
+              if (e.key === "Enter") {
                 onShortcutClick(valueShortcut)
               }
             }}

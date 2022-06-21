@@ -174,13 +174,13 @@ const NumericInput: React.ForwardRefExoticComponent<
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      const { keyCode } = e
-      if (keyCode === 38) {
+      const { key } = e
+      if (key === "ArrowUp") {
         e.preventDefault()
         e.stopPropagation()
         handleButtonClick("plus")
       }
-      if (keyCode === 40) {
+      if (key === "ArrowDown") {
         e.preventDefault()
         e.stopPropagation()
         handleButtonClick("minus")

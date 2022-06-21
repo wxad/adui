@@ -456,7 +456,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
 
   public handleKeyDown = (e: React.KeyboardEvent) => {
     const { escapeKeyClosable } = this.props
-    if (escapeKeyClosable && e.keyCode === 27) {
+    if (escapeKeyClosable && e.key === "Escape") {
       e.stopPropagation()
       this.handleCancel()
     }
