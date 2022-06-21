@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import CSSMotion from "rc-motion"
@@ -8,35 +8,6 @@ import Portal from "../portal"
 import "./style"
 
 const prefix = "adui-drawer"
-
-const scrollbarWidth = getScrollBarSize()
-let bodyIsOverflowing = false
-
-const setScrollbarPadding = ({
-  bodyScrollable,
-}: {
-  bodyScrollable?: boolean
-}) => {
-  const { innerWidth } = window
-  bodyIsOverflowing = document.body.clientWidth < innerWidth
-  if (bodyIsOverflowing && !document.body.style.paddingRight) {
-    if (scrollbarWidth !== undefined) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`
-    }
-  }
-
-  if (bodyScrollable) {
-    document.body.classList.add("adui-scrollbar-hidden")
-  } else {
-    document.body.style.overflow = "hidden"
-  }
-}
-
-const resetScrollbarPadding = () => {
-  document.body.classList.remove("adui-scrollbar-hidden")
-  document.body.style.overflow = ""
-  document.body.style.paddingRight = ""
-}
 
 export interface IDrawerProps {
   [key: string]: any
@@ -143,6 +114,35 @@ const Drawer: React.FC<IDrawerProps> = ({
   const [hasEverOpened, setHasEverOpened] = useState(visible)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
+  const scrollbarWidth = useMemo(getScrollBarSize, [])
+  let bodyIsOverflowing = false
+
+  const setScrollbarPadding = ({
+    bodyScrollable: bodyScrollableParam,
+  }: {
+    bodyScrollable?: boolean
+  }) => {
+    const { innerWidth } = window
+    bodyIsOverflowing = document.body.clientWidth < innerWidth
+    if (bodyIsOverflowing && !document.body.style.paddingRight) {
+      if (scrollbarWidth !== undefined) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`
+      }
+    }
+
+    if (bodyScrollableParam) {
+      document.body.classList.add("adui-scrollbar-hidden")
+    } else {
+      document.body.style.overflow = "hidden"
+    }
+  }
+
+  const resetScrollbarPadding = () => {
+    document.body.classList.remove("adui-scrollbar-hidden")
+    document.body.style.overflow = ""
+    document.body.style.paddingRight = ""
+  }
+
   useEffect(() => {
     if (visible && wrapperRef.current) {
       setScrollbarPadding({ bodyScrollable })
@@ -169,7 +169,7 @@ const Drawer: React.FC<IDrawerProps> = ({
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (escapeKeyClosable && e.keyCode === 27) {
+    if (escapeKeyClosable && e.key === "Escape") {
       e.stopPropagation()
       handleClose()
     }
