@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.36.3](https://github.com/wxad/adui/compare/v2.36.1...v2.36.3) (2022-06-21)
+
+
+### Bug Fixes
+
+* **Drawer:** 修复可能的报错 ([b086b1f](https://github.com/wxad/adui/commit/b086b1f4557dfdf3995e222419f52bce0fabe8a2))
+
 ### [2.36.1](https://github.com/wxad/adui/compare/v2.36.0...v2.36.1) (2022-06-17)
 
 
