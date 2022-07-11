@@ -25,6 +25,7 @@ export interface ITableFilterProps {
   onFilter?: ((value: Array<React.ReactText>) => void) | null
   onFilterVisibleChange?: ((visible: boolean) => void) | null
   title?: React.ReactNode
+  sortableAndFilterable?: boolean
 }
 
 /**
@@ -39,6 +40,7 @@ const TableFilter: React.FC<ITableFilterProps> = ({
   onFilter,
   onFilterVisibleChange,
   title,
+  sortableAndFilterable,
 }: ITableFilterProps) => {
   if (!filters) {
     return null
@@ -151,8 +153,9 @@ const TableFilter: React.FC<ITableFilterProps> = ({
             (filteredValue.length > 1 || filteredValue[0] !== "all"),
         })}
       >
-        {title}
+        {!sortableAndFilterable ? title : null}
         <Icon icon="filter-outlined" />
+        {!sortableAndFilterable && <div className={`${prefix}-clickholder`} />}
       </div>
     </Popover>
   )
@@ -191,6 +194,10 @@ TableFilter.propTypes = {
    * title
    */
   title: PropTypes.node,
+  /**
+   * sortableAndFilterable?: boolean
+   */
+  sortableAndFilterable: PropTypes.bool,
 }
 
 TableFilter.defaultProps = {
@@ -202,6 +209,7 @@ TableFilter.defaultProps = {
   onFilter: null,
   onFilterVisibleChange: null,
   title: null,
+  sortableAndFilterable: false,
 }
 
 export default TableFilter

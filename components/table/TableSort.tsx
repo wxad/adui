@@ -10,6 +10,7 @@ export interface ITableSortProps {
   onSort?: ((order: "asc" | "desc" | "") => void) | null
   sortOrder?: null | "" | "asc" | "desc"
   title?: React.ReactNode
+  sortableAndFilterable?: boolean
 }
 
 /**
@@ -19,6 +20,7 @@ const TableSort: React.FC<ITableSortProps> = ({
   onSort,
   sortOrder: sortOrderProp,
   title,
+  sortableAndFilterable,
 }: ITableSortProps) => {
   const [sortOrder, setSortOrder] = useState(sortOrderProp)
 
@@ -56,7 +58,7 @@ const TableSort: React.FC<ITableSortProps> = ({
       role="columnheader"
       tabIndex={0}
     >
-      {title}
+      {!sortableAndFilterable ? title : null}
       <div>
         <svg className={`${prefix}-asc`} width="16" height="16">
           <path d="M12.315 5.764c.372.407.218.736-.32.736H4.01c-.548 0-.696-.325-.32-.736l3.64-3.983a.891.891 0 0 1 1.345 0l3.641 3.983z" />
@@ -65,6 +67,7 @@ const TableSort: React.FC<ITableSortProps> = ({
           <path d="M12.315 10.236c.372-.407.218-.736-.32-.736H4.01c-.548 0-.696.325-.32.736l3.64 3.983c.372.406.97.41 1.345 0l3.641-3.983z" />
         </svg>
       </div>
+      {!sortableAndFilterable && <div className={`${prefix}-clickholder`} />}
     </div>
   )
 }
@@ -83,12 +86,17 @@ TableSort.propTypes = {
    * title
    */
   title: PropTypes.node,
+  /**
+   * sortableAndFilterable?: boolean
+   */
+  sortableAndFilterable: PropTypes.bool,
 }
 
 TableSort.defaultProps = {
   onSort: null,
   sortOrder: null,
   title: null,
+  sortableAndFilterable: false,
 }
 
 export default TableSort

@@ -1278,6 +1278,9 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             (sortOrder !== null && sortOrder !== undefined) ||
             !!onFilter ||
             !!filters
+          const sortableAndFilterable =
+            (!!onSort || (sortOrder !== null && sortOrder !== undefined)) &&
+            (!!onFilter || !!filters)
           let minWidth = 0
           if (typeof title === "string") {
             minWidth =
@@ -1320,7 +1323,9 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             >
               <div
                 className={classNames(`${prefix}-th`, {
-                  [`${prefix}-th_clickable`]: clickable,
+                  [`${prefix}-th_clickable`]:
+                    clickable && !sortableAndFilterable,
+                  [`${prefix}-th_sortableAndFilterable`]: sortableAndFilterable,
                   [`${prefix}-th_left`]: isFixedLeft(col),
                   [`${prefix}-th_right`]: isFixedRight(col),
                   [`${prefix}-th_leftLast`]: fixedColumnsInfos.find(
@@ -1699,7 +1704,19 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
       resizable: colResizable,
       getHeadCellClassName,
       getHeadCellStyle,
+      onSort,
+      sortOrder,
+      onFilter,
+      filters,
     } = col
+    const clickable =
+      !!onSort ||
+      (sortOrder !== null && sortOrder !== undefined) ||
+      !!onFilter ||
+      !!filters
+    const sortableAndFilterable =
+      (!!onSort || (sortOrder !== null && sortOrder !== undefined)) &&
+      (!!onFilter || !!filters)
     let resizable = true
     if (typeof colResizable === "boolean") {
       resizable = colResizable
@@ -1730,14 +1747,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             {}),
         }}
       >
-        {!col.onSort &&
-          (col.sortOrder === null || col.sortOrder === undefined) &&
-          !col.onFilter &&
-          !col.filters &&
-          col.title}
+        {(!clickable || sortableAndFilterable) && col.title}
         {(!!col.onSort ||
           (col.sortOrder !== null && col.sortOrder !== undefined)) && (
           <TableSort
+            sortableAndFilterable={sortableAndFilterable}
             onSort={(order) => (col.onSort ? col.onSort(order) : {})}
             sortOrder={col.sortOrder}
             title={col.title}
@@ -1745,6 +1759,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
         )}
         {(!!col.onFilter || !!col.filters) && (
           <TableFilter
+            sortableAndFilterable={sortableAndFilterable}
             filteredValue={col.filteredValue}
             filterVisible={col.filterVisible}
             filterMultiple={col.filterMultiple}

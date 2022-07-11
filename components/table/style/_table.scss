@@ -435,21 +435,22 @@ $prefix: "adui-table";
     display: flex;
     align-items: center;
     outline: none;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: all var(--motion-duration-fast) var(--ease-in-out);
-    }
+    cursor: pointer;
 
     svg {
       margin-left: 4px;
     }
   }
+
+  &-clickholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all var(--motion-duration-fast) var(--ease-in-out);
+  }
+
   &-filter {
     svg {
       fill: var(--gray-600);

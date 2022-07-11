@@ -88,6 +88,12 @@ return (
           title: "数据项",
           render: () => "92,435,344",
           onSort: () => {},
+          filters: [
+            { text: "分类 A", value: 1 },
+            { text: "分类 D", value: 2 },
+          ],
+          filterMultiple: true,
+          onFilter: () => {},
         },
         {
           dataIndex: "3",
