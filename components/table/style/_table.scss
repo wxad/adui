@@ -475,6 +475,7 @@ $prefix: "adui-table";
     padding-bottom: 4px;
     flex-direction: column;
     align-items: flex-start;
+    user-select: none;
 
     label {
       display: flex;

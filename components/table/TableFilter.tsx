@@ -147,7 +147,8 @@ const TableFilter: React.FC<ITableFilterProps> = ({
         role="columnheader"
         className={classNames(`${prefix}-filter`, {
           [`${prefix}-filtered`]:
-            filteredValue && filteredValue.length && filteredValue[0] !== "all",
+            filteredValue &&
+            (filteredValue.length > 1 || filteredValue[0] !== "all"),
         })}
       >
         {title}
