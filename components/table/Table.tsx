@@ -1763,6 +1763,10 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             filteredValue={col.filteredValue}
             filterVisible={col.filterVisible}
             filterMultiple={col.filterMultiple}
+            filterSearchable={col.filterSearchable}
+            filterSearchPlaceholder={col.filterSearchPlaceholder}
+            filterSearchCaseSensitive={col.filterSearchCaseSensitive}
+            filterSearchFunc={col.filterSearchFunc}
             filterPopoverProps={col.filterPopoverProps}
             filters={col.filters}
             onFilter={(filter) => {

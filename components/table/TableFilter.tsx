@@ -8,7 +8,7 @@ import Radio from "../radio"
 import "./style"
 
 const prefix = "adui-table"
-const getFilteredValue = (val?: Array<React.ReactText> | null) => {
+const getFilteredValue = (val?: (string | number)[] | null) => {
   if (val === null || val === undefined || val.length === 0) {
     return ["all"]
   }
@@ -16,13 +16,19 @@ const getFilteredValue = (val?: Array<React.ReactText> | null) => {
 }
 
 export interface ITableFilterProps {
-  [key: string]: any
-  filteredValue?: Array<React.ReactText> | null
+  filteredValue?: (string | number)[] | null
   filterMultiple?: boolean
+  filterSearchable?: boolean
+  filterSearchCaseSensitive?: boolean
+  filterSearchPlaceholder?: string
+  filterSearchFunc?: (
+    input: string,
+    item: { text: string; value: string | number }
+  ) => boolean
   filterPopoverProps?: IPopoverProps
-  filters?: Array<{ text: string; value: React.ReactText }> | null
+  filters?: Array<{ text: string; value: string | number }> | null
   filterVisible?: boolean | null
-  onFilter?: ((value: Array<React.ReactText>) => void) | null
+  onFilter?: ((value: (string | number)[]) => void) | null
   onFilterVisibleChange?: ((visible: boolean) => void) | null
   title?: React.ReactNode
   sortableAndFilterable?: boolean
@@ -32,23 +38,28 @@ export interface ITableFilterProps {
  * 表格筛选
  */
 const TableFilter: React.FC<ITableFilterProps> = ({
+  filterSearchable,
+  filterSearchPlaceholder,
+  filterSearchCaseSensitive,
+  filterSearchFunc,
   filteredValue: filteredValueProp,
   filterMultiple,
   filterPopoverProps,
   filterVisible,
-  filters,
+  filters: filtersProp,
   onFilter,
   onFilterVisibleChange,
   title,
   sortableAndFilterable,
 }: ITableFilterProps) => {
-  if (!filters) {
+  if (!filtersProp) {
     return null
   }
   const [filteredValue, setFilteredValue] = useState(
     getFilteredValue(filteredValueProp)
   )
   const [visible, setVisible] = useState(filterVisible || false)
+  const [searchValue, setSearchValue] = useState("")
 
   // 相当于生命周期 getDerivedStateFromProps
   if (
@@ -65,7 +76,7 @@ const TableFilter: React.FC<ITableFilterProps> = ({
   }
 
   const handleChange = (
-    filteredValueParam: React.ReactText | Array<React.ReactText>
+    filteredValueParam: (string | number) | (string | number)[]
   ) => {
     const newValue: any =
       filterMultiple && filteredValueParam
@@ -94,36 +105,83 @@ const TableFilter: React.FC<ITableFilterProps> = ({
 
   let popup
 
+  if (filterSearchable) {
+    popup = (
+      <div>
+        <div className={`${prefix}-filter-search`}>
+          <input
+            value={searchValue}
+            placeholder={filterSearchPlaceholder}
+            onChange={(e) => {
+              const { value } = e.target
+              setSearchValue(value)
+            }}
+          />
+          <Icon icon="search" className={`${prefix}-filter-icon`} />
+        </div>
+      </div>
+    )
+  }
+
+  const filters = searchValue
+    ? filtersProp.filter((o) => {
+        const { text } = o
+        if (filterSearchFunc) {
+          return filterSearchFunc(searchValue, o)
+        }
+        if (!filterSearchCaseSensitive) {
+          return String(text)
+            .toLocaleLowerCase()
+            .includes(searchValue.toLocaleLowerCase())
+        }
+        return String(text).includes(searchValue)
+      })
+    : filtersProp
+
   if (filterMultiple) {
     popup = (
-      <Checkbox.Group
-        className={`${prefix}-filterList`}
-        defaultValue={["all"]}
-        value={filteredValue}
-        onChange={handleChange}
-      >
-        {filters.map((item) => (
-          <Checkbox key={item.value} value={item.value}>
-            {item.text}
-          </Checkbox>
-        ))}
-      </Checkbox.Group>
+      <>
+        {popup}
+        {!filters.length ? (
+          <div className={`${prefix}-filter-no`}>无匹配结果</div>
+        ) : (
+          <Checkbox.Group
+            className={`${prefix}-filterList`}
+            defaultValue={["all"]}
+            value={filteredValue}
+            onChange={handleChange}
+          >
+            {filters.map((item) => (
+              <Checkbox key={item.value} value={item.value}>
+                {item.text}
+              </Checkbox>
+            ))}
+          </Checkbox.Group>
+        )}
+      </>
     )
   } else {
     popup = (
-      <Radio.Group
-        className={`${prefix}-filterList`}
-        defaultValue="all"
-        value={filteredValue ? filteredValue[0] : null}
-        onChange={handleChange}
-      >
-        <Radio value="all">全部</Radio>
-        {filters.map((item) => (
-          <Radio key={item.value} value={item.value}>
-            {item.text}
-          </Radio>
-        ))}
-      </Radio.Group>
+      <>
+        {popup}
+        {!filters.length ? (
+          <div className={`${prefix}-filter-no`}>无匹配结果</div>
+        ) : (
+          <Radio.Group
+            className={`${prefix}-filterList`}
+            defaultValue="all"
+            value={filteredValue ? filteredValue[0] : null}
+            onChange={handleChange}
+          >
+            <Radio value="all">全部</Radio>
+            {filters.map((item) => (
+              <Radio key={item.value} value={item.value}>
+                {item.text}
+              </Radio>
+            ))}
+          </Radio.Group>
+        )}
+      </>
     )
   }
 
@@ -167,6 +225,22 @@ TableFilter.propTypes = {
    */
   filterMultiple: PropTypes.bool,
   /**
+   * 筛选是否支持搜索
+   */
+  filterSearchable: PropTypes.bool,
+  /**
+   * 筛选搜索开启大小写敏感搜索，默认为 false
+   */
+  filterSearchCaseSensitive: PropTypes.bool,
+  /**
+   * 筛选搜索 placeholder
+   */
+  filterSearchPlaceholder: PropTypes.string,
+  /**
+   * 筛选搜索的自定义 function
+   */
+  filterSearchFunc: PropTypes.func,
+  /**
    * 筛选 Popover props，会将此对象透传给 <Popover />
    */
   filterPopoverProps: PropTypes.object,
@@ -202,6 +276,10 @@ TableFilter.propTypes = {
 
 TableFilter.defaultProps = {
   filterMultiple: false,
+  filterSearchable: false,
+  filterSearchCaseSensitive: false,
+  filterSearchPlaceholder: "在筛选项中搜索",
+  filterSearchFunc: undefined,
   filterPopoverProps: {},
   filteredValue: null,
   filterVisible: null,

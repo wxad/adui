@@ -21,9 +21,28 @@ export interface IColumnProps<T extends IBaseObject = IBaseObject> {
    */
   dataIndex: string
   /**
-   * 是否多选
+   * 筛选是否支持多选
    */
   filterMultiple?: boolean
+  /**
+   * 筛选是否支持搜索
+   */
+  filterSearchable?: boolean
+  /**
+   * 筛选搜索开启大小写敏感搜索，默认为 false
+   */
+  filterSearchCaseSensitive?: boolean
+  /**
+   * 筛选搜索 placeholder
+   */
+  filterSearchPlaceholder?: string
+  /**
+   * 筛选搜索的自定义 function
+   */
+  filterSearchFunc?: (
+    input: string,
+    item: { text: string; value: string | number }
+  ) => boolean
   /**
    * 筛选 Popover props，会将此对象透传给 <Popover />
    */
@@ -126,6 +145,10 @@ function Column<T extends IBaseObject = IBaseObject>(props: IColumnProps<T>) {
     "children",
     "dataIndex",
     "filterMultiple",
+    "filterSearchable",
+    "filterSearchCaseSensitive",
+    "filterSearchPlaceholder",
+    "filterSearchFunc",
     "filterPopoverProps",
     "filteredValue",
     "filters",
@@ -160,9 +183,25 @@ Column.propTypes = {
    */
   dataIndex: PropTypes.string,
   /**
-   * 是否多选
+   * 筛选是否支持多选
    */
   filterMultiple: PropTypes.bool,
+  /**
+   * 筛选是否支持搜索
+   */
+  filterSearchable: PropTypes.bool,
+  /**
+   * 筛选搜索开启大小写敏感搜索，默认为 false
+   */
+  filterSearchCaseSensitive: PropTypes.bool,
+  /**
+   * 筛选搜索 placeholder
+   */
+  filterSearchPlaceholder: PropTypes.string,
+  /**
+   * 筛选搜索的自定义 function
+   */
+  filterSearchFunc: PropTypes.func,
   /**
    * 筛选 Popover props，会将此对象透传给 <Popover />
    */
@@ -296,6 +335,10 @@ Column.defaultProps = {
   align: null,
   dataIndex: null,
   filterMultiple: false,
+  filterSearchable: false,
+  filterSearchCaseSensitive: false,
+  filterSearchPlaceholder: "在筛选项中搜索",
+  filterSearchFunc: undefined,
   filterPopoverProps: {},
   filteredValue: null,
   filterVisible: null,

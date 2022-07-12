@@ -477,6 +477,8 @@ $prefix: "adui-table";
     flex-direction: column;
     align-items: flex-start;
     user-select: none;
+    max-height: 232px;
+    @include mixins.overlay();
 
     label {
       display: flex;
@@ -492,6 +494,52 @@ $prefix: "adui-table";
         background-color: var(--gray-300);
       }
     }
+  }
+  &-filter-search {
+    position: relative;
+    height: 36px;
+    box-shadow: 0 1px 0 0 var(--gray-300);
+
+    .#{$prefix}-filter-icon {
+      position: absolute;
+      z-index: 0;
+      top: 50%;
+      left: 10px;
+      margin-top: -9px;
+      fill: var(--gray-700);
+      transition: fill var(--motion-duration-base) var(--ease-in-out);
+    }
+
+    input {
+      position: relative;
+      z-index: 1;
+      padding: 8px 12px 8px 32px;
+      width: 100%;
+      font-size: 13px;
+      line-height: 20px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      @include mixins.placeholder();
+
+      &:hover {
+        + .#{$prefix}-filter-icon {
+          fill: var(--gray-800);
+        }
+      }
+
+      &:focus {
+        + .#{$prefix}-filter-icon {
+          fill: var(--gray-900);
+        }
+      }
+    }
+  }
+  &-filter-no {
+    padding: 0 12px;
+    font-size: 13px;
+    line-height: 36px;
+    color: var(--gray-700);
   }
   &-sort {
     &:hover {
