@@ -297,14 +297,14 @@ const Input: IInput = forwardRef(
       return val
     }
 
-    const updateElementsWidth = () => {
+    const updateElementsWidth = async () => {
       /**
        * 这个方法会在 didUpdate 和 didMount 时去 setState
        * 一定要避免造成循环。
        */
+      await new Promise((resolve) => setTimeout(resolve, 0))
       if (leftElementRef?.current) {
         const { clientWidth } = leftElementRef.current
-
         // 防止循环
         if (Math.abs(clientWidth - (leftElementWidth || 0)) > 2) {
           setLeftElementWidth(clientWidth)
