@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.37.0](https://github.com/wxad/adui/compare/v2.36.3...v2.37.0) (2022-07-12)
+
+
+### Features
+
+* 支持列同时使用筛选和排序 [#27](https://github.com/wxad/adui/issues/27) ([f04b587](https://github.com/wxad/adui/commit/f04b587bfab381cb92312b6936d83d8d801dbcf8))
+* **TableFilter:** 支持搜索筛选 [#28](https://github.com/wxad/adui/issues/28) ([0694db0](https://github.com/wxad/adui/commit/0694db052e100d3617c0359b6eaf2e807bb3a05b))
+
+
+### Bug Fixes
+
+* **Input:** 修复 left/right element 宽度计算可能为 0 的问题 ([aa4da2d](https://github.com/wxad/adui/commit/aa4da2d945ca3d77853b001989211d1c557b6111))
+* **TableFilter:** 修复多选时没有选中态的样式错误 ([958329e](https://github.com/wxad/adui/commit/958329e190b5f6e630d6e116febd39edc82fb366))
+
 ### [2.36.3](https://github.com/wxad/adui/compare/v2.36.1...v2.36.3) (2022-06-21)
 
 
