@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.37.1](https://github.com/wxad/adui/compare/v2.37.0...v2.37.1) (2022-07-13)
+
+
+### Bug Fixes
+
+* [#29](https://github.com/wxad/adui/issues/29) ([ce84c3f](https://github.com/wxad/adui/commit/ce84c3fa21580acd6d331d692ae60e3e752a3d81))
+* **Table:** [#30](https://github.com/wxad/adui/issues/30) ([af2f4a5](https://github.com/wxad/adui/commit/af2f4a50fbc8abc3fef5264a3716f5a869f993da))
+
 ## [2.37.0](https://github.com/wxad/adui/compare/v2.36.3...v2.37.0) (2022-07-12)
 
 
