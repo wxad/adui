@@ -246,7 +246,7 @@ $prefix: "adui-table";
     word-break: break-all;
   }
   &-cellInner {
-    flex: 1;
+    // cellInner 不能 flex: 1 是因为要保证 align Prop 的工作
     min-width: 0;
     overflow: hidden;
     white-space: inherit;
