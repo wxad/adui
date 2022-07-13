@@ -82,8 +82,11 @@ const TableFilter: React.FC<ITableFilterProps> = ({
       filterMultiple && filteredValueParam
         ? filteredValueParam
         : [filteredValueParam]
+    if (newValue.includes("all")) {
+      newValue.splice(newValue.indexOf("all"), 1)
+    }
     if (filteredValueProp === null) {
-      setFilteredValue(newValue)
+      setFilteredValue(getFilteredValue(newValue))
     }
     if (onFilter) {
       if (filteredValueParam === "all") {
