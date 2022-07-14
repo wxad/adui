@@ -795,8 +795,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     /**
      * 13 代表字号；用 em 的方式计算宽度本身不够合理，这里 + 2，不然在 Safari 下空间会不够。
      */
-    const baseWidth =
+    let baseWidth =
       Math.ceil(title.length > 4 ? title.length / 2 : title.length) * 13 + 2
+    if (!baseWidth) {
+      baseWidth = 100
+    }
     const newResized = resized.filter((o) => o.dataIndex !== dataIndex)
     const newWidth = Math.max(
       Math.ceil(parentWidth + e.pageX - startX),
