@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.37.2](https://github.com/wxad/adui/compare/v2.37.1...v2.37.2) (2022-07-14)
+
+
+### Bug Fixes
+
+* **Table:** 修复 Column title 为 node 时 resize 失效的问题，给一个 100px 的兜底 ([501ecc5](https://github.com/wxad/adui/commit/501ecc53e27b2bd3ad9e947e2774b32df4d21359))
+
 ### [2.37.1](https://github.com/wxad/adui/compare/v2.37.0...v2.37.1) (2022-07-13)
 
 
