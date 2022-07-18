@@ -18,16 +18,20 @@ $prefix: "adui-input";
   }
   &-wrapper_textarea {
     .#{$prefix} {
-      &-base {
-        min-height: initial;
-        max-height: initial;
-      }
-
       &-limit {
         top: initial;
         bottom: 10px;
         padding-right: 18px;
         height: auto;
+      }
+    }
+
+    &.#{$prefix}-resizable {
+      .#{$prefix} {
+        &-base {
+          min-height: initial;
+          max-height: initial;
+        }
       }
     }
   }

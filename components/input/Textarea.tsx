@@ -275,6 +275,7 @@ const Textarea: React.ForwardRefExoticComponent<
       `${prefix}-${size}`,
       {
         [`${prefix}-${theme}`]: theme,
+        [`${prefix}-resizable`]: resize !== "none",
         [`${prefix}-disabled`]: disabled,
         [`${prefix}-limited`]: !!limit,
         [`${prefix}-normal`]: intent === "normal",
