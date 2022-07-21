@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.37.3](https://github.com/wxad/adui/compare/v2.37.2...v2.37.3) (2022-07-21)
+
+
+### Bug Fixes
+
+* **Textarea:** 修复 style 和 inputStyle bug ([7a5e178](https://github.com/wxad/adui/commit/7a5e17842ae4bdbc4b1abfb356130b8f06f71d3e))
+
 ### [2.37.2](https://github.com/wxad/adui/compare/v2.37.1...v2.37.2) (2022-07-14)
 
 
