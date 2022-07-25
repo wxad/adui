@@ -260,7 +260,7 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
           onResize={({ width, height }) => {
             this.updatePosition()
             this.syncPlaceholderStyle()
-            if (this.placeholderNode) {
+            if (this.placeholderNode && width && height) {
               this.placeholderNode.style.width = `${width}px`
               this.placeholderNode.style.height = `${height}px`
             }
