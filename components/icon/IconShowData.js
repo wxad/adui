@@ -614,6 +614,12 @@ var _default = {
     }, {
       "name": "task",
       "keywords": ["task", "订单", "小任务"]
+    }, {
+      "name": "verify-outline",
+      "keywords": ["verify-outline", "报告", "文档", "文件"]
+    }, {
+      "name": "verify",
+      "keywords": ["verify", "报告", "文档", "文件"]
     }]
   },
   "图表": {
@@ -645,6 +651,9 @@ var _default = {
     }, {
       "name": "pie-chart-square",
       "keywords": ["pie-chart-square", "饼图", "图表"]
+    }, {
+      "name": "funnel-chart",
+      "keywords": ["funnel-chart", ""]
     }, {
       "name": "figure-ring",
       "keywords": ["figure-ring", "环状图", "图表"]
@@ -886,6 +895,9 @@ var _default = {
     }, {
       "name": "live",
       "keywords": ["live", "直播\n"]
+    }, {
+      "name": "live-outlined",
+      "keywords": ["live-outlined", "直播\n"]
     }, {
       "name": "family-activities-outlined",
       "keywords": ["family-activities-outlined", "亲子活动"]
