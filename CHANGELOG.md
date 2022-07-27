@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.39.0](https://github.com/wxad/adui/compare/v2.38.0...v2.39.0) (2022-07-27)
+
+
+### Features
+
+* **Icon:** update adui-icon@1.8.30 ([cc6a548](https://github.com/wxad/adui/commit/cc6a548eec40e025c2ee5872c9389c681093128a))
+
 ## [2.38.0](https://github.com/wxad/adui/compare/v2.37.4...v2.38.0) (2022-07-26)
 
 
