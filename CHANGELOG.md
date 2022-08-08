@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.39.1](https://github.com/wxad/adui/compare/v2.39.0...v2.39.1) (2022-08-08)
+
+
+### Bug Fixes
+
+* **adui-icon-loader:** 根据 loaderUtils@3 的 api 修复 ([09807e1](https://github.com/wxad/adui/commit/09807e1705c9cf6df5f2ba24fc083ea86195f55d))
+
 ## [2.39.0](https://github.com/wxad/adui/compare/v2.38.0...v2.39.0) (2022-07-27)
 
 
