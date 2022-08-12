@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.40.0](https://github.com/wxad/adui/compare/v2.39.1...v2.40.0) (2022-08-12)
+
+
+### Features
+
+* **Select:** composition Props & searchInputProps ([9bf1d16](https://github.com/wxad/adui/commit/9bf1d16e62da17bd05bb8d5a53df540aaa47dbf9))
+
 ### [2.39.1](https://github.com/wxad/adui/compare/v2.39.0...v2.39.1) (2022-08-08)
 
 
