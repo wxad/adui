@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import * as React from "react"
 import PropTypes from "prop-types"
 import getScrollBarSize from "rc-util/lib/getScrollBarSize"
@@ -7,6 +6,7 @@ import CSSMotion from "rc-motion"
 import omit from "../_util/omit"
 import Portal from "../portal"
 import Button, { IButtonProps } from "../channels-button"
+import Icon from "../icon"
 import "./style"
 
 const prefix = "adui-channels-dialog"
@@ -49,7 +49,11 @@ export interface IDialogProps extends IStepProps {
    */
   afterClose?: (() => void) | null
   /**
-   * 设置 body 样式
+   * 设置 body className
+   */
+  bodyClassName?: string
+  /**
+   * 设置 body style
    */
   bodyStyle?: React.CSSProperties
   /**
@@ -85,13 +89,17 @@ export interface IDialogProps extends IStepProps {
    */
   footerElement?: React.ReactNode
   /**
-   * 设置 footer 样式
+   * 设置 footer className
+   */
+  footerClassName?: string
+  /**
+   * 设置 footer style
    */
   footerStyle?: React.CSSProperties
   /**
    * 指定弹出层的父级，默认为 document.body，类似于 Tooltip 的 getPopupContainer
    */
-  getContainer?: (() => HTMLElement) | null
+  getContainer?: () => HTMLElement
   /**
    * header 标题下的内容
    */
@@ -101,7 +109,11 @@ export interface IDialogProps extends IStepProps {
    */
   headerElement?: React.ReactNode
   /**
-   * 设置 header 样式
+   * 设置 header className
+   */
+  headerClassName?: string
+  /**
+   * 设置 header style
    */
   headerStyle?: React.CSSProperties
   /**
@@ -128,6 +140,10 @@ export interface IDialogProps extends IStepProps {
    * 外部控制：是否显示
    */
   visible?: null | boolean
+  /**
+   * 设置 z-index 层级，默认为 var(--z-index-dialog)
+   */
+  zIndex?: React.ReactNode
 }
 
 export interface IDialogState {
@@ -147,7 +163,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      */
     afterClose: PropTypes.func,
     /**
-     * 设置 body 样式
+     * 设置 body className
+     */
+    bodyClassName: PropTypes.string,
+    /**
+     * 设置 body style
      */
     bodyStyle: PropTypes.object,
     /**
@@ -203,7 +223,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      */
     footerElement: PropTypes.node,
     /**
-     * 设置 footer 样式
+     * 设置 footer className
+     */
+    footerClassName: PropTypes.string,
+    /**
+     * 设置 footer style
      */
     footerStyle: PropTypes.object,
     /**
@@ -219,7 +243,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      */
     headerElement: PropTypes.node,
     /**
-     * 设置 header 样式
+     * 设置 header className
+     */
+    headerClassName: PropTypes.string,
+    /**
+     * 设置 header style
      */
     headerStyle: PropTypes.object,
     /**
@@ -250,10 +278,15 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      * 外部控制：是否显示
      */
     visible: PropTypes.bool,
+    /**
+     * 设置 z-index 层级，默认为 var(--z-index-dialog)
+     */
+    zIndex: PropTypes.any,
   }
 
   public static defaultProps: IDialogProps = {
     afterClose: null,
+    bodyClassName: "",
     bodyStyle: {},
     cancelProps: {},
     cancelText: "取消",
@@ -268,9 +301,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     destroyAfterClose: false,
     escapeKeyClosable: true,
     footerElement: undefined,
+    footerClassName: "",
     footerStyle: {},
-    getContainer: null,
+    getContainer: undefined,
     headerContent: null,
+    headerClassName: "",
     headerElement: undefined,
     headerStyle: {},
     maskClosable: false,
@@ -280,6 +315,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     title: null,
     type: "confirm",
     visible: null,
+    zIndex: "var(--z-index-dialog)",
   }
 
   public static info: any
@@ -329,6 +365,8 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
   public dialog: HTMLDivElement
 
   public wrapper: HTMLDivElement
+
+  public isUnmounted: boolean = false
 
   constructor(props: IDialogProps) {
     super(props)
@@ -475,6 +513,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
   }
 
   public onLeave = () => {
+    console.log("yijie", "onLeave")
     const { afterClose, destroyAfterClose } = this.props
     if (this.wrapper) {
       this.wrapper.style.display = "none"
@@ -485,28 +524,13 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
       afterClose()
     }
 
-    if (destroyAfterClose) {
+    if (destroyAfterClose && !this.isUnmounted) {
       this.setState({ hasEverOpened: false })
     }
   }
 
-  public getContainer = () => {
-    const { getContainer } = this.props
-    if (this.container) {
-      return this.container
-    }
-
-    const container = document.createElement("div")
-    this.container = container
-    if (getContainer) {
-      getContainer().appendChild(container)
-    } else {
-      document.body.appendChild(container)
-    }
-    return container
-  }
-
   public handleEnter = () => {
+    console.log("yijie", "onEnter")
     const { escapeKeyClosable } = this.props
     if (this.wrapper) {
       if (escapeKeyClosable) {
@@ -517,12 +541,15 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
 
   public getComponent = (options?: { visible: boolean }) => {
     const {
+      bodyClassName,
       bodyStyle,
       children,
       className,
       destroyAfterClose,
+      footerClassName,
       footerElement,
       footerStyle,
+      headerClassName,
       headerContent,
       headerElement,
       headerStyle,
@@ -530,8 +557,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
       steps,
       style,
       title,
+      zIndex: zIndexProp,
       ...otherProps
     } = this.props
+
+    const zIndex = zIndexProp as React.CSSProperties["zIndex"]
 
     const restProps = omit(otherProps, [
       "afterClose",
@@ -567,7 +597,10 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
               this.wrapper = wrapper
             }
           }}
-          style={{ display: visible ? "flex" : "" }}
+          style={{
+            display: visible ? "flex" : "",
+            zIndex,
+          }}
           tabIndex={0}
           role="none"
           onKeyDown={this.handleKeyDown}
@@ -610,11 +643,8 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
                 ref={ref}
                 className={classNames(classSet, cls)}
                 style={{
-                  position: "relative",
                   margin: "auto",
                   zIndex: 1,
-                  top: "var(--dialog-offset-y)",
-                  left: "var(--dialog-offset-x)",
                   ...style,
                 }}
                 {...restProps}
@@ -622,7 +652,10 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
                 {headerElement === null
                   ? null
                   : headerElement || (
-                      <div className={`${prefix}-header`} style={headerStyle}>
+                      <div
+                        className={`${prefix}-header ${headerClassName}`}
+                        style={headerStyle}
+                      >
                         {[
                           <div key={0} className={`${prefix}-title`}>
                             {title}
@@ -634,33 +667,29 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
                               </div>
                             )}
                           </div>,
-                          <svg
+                          <Icon
                             key={2}
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
                             className={`${prefix}-close`}
+                            size={24}
+                            icon="cancel"
                             onClick={() => this.handleCancel("close")}
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              d="M12.25 10.6932L6.05682 4.5L5 5.55682L11.1932 11.75L5 17.9432L6.05682 19L12.25 12.8068L18.4432 19L19.5 17.9432L13.3068 11.75L19.5 5.55682L18.4432 4.5L12.25 10.6932Z"
-                              fill="black"
-                              fillOpacity="0.9"
-                            />
-                          </svg>,
+                          />,
                         ]}
                       </div>
                     )}
-                <div className={`${prefix}-body`} style={bodyStyle}>
+                <div
+                  className={`${prefix}-body ${bodyClassName}`}
+                  style={bodyStyle}
+                >
                   {steps && steps.length
                     ? steps[currentStep].children
                     : children}
                 </div>
                 {footerElement === null ? null : (
-                  <div className={`${prefix}-footer`} style={footerStyle}>
+                  <div
+                    className={`${prefix}-footer ${footerClassName}`}
+                    style={footerStyle}
+                  >
                     {footerElement || [
                       this.getCancelButton(),
                       this.getConfirmButton(),
@@ -697,18 +726,23 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
 
   public componentWillUnmount = () => {
     const { visible } = this.state
+    this.isUnmounted = true
     if (visible) {
       this.resetScrollbarPadding()
     }
   }
 
   public render() {
+    const { getContainer } = this.props
     const { hasEverOpened } = this.state
     if (!hasEverOpened) {
       return null
     }
     return (
-      <Portal onChildrenMount={this.handleChildrenMount}>
+      <Portal
+        onChildrenMount={this.handleChildrenMount}
+        getContainer={getContainer}
+      >
         {this.getComponent()}
       </Portal>
     )
