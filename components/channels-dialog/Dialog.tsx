@@ -513,7 +513,6 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
   }
 
   public onLeave = () => {
-    console.log("yijie", "onLeave")
     const { afterClose, destroyAfterClose } = this.props
     if (this.wrapper) {
       this.wrapper.style.display = "none"
@@ -530,7 +529,6 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
   }
 
   public handleEnter = () => {
-    console.log("yijie", "onEnter")
     const { escapeKeyClosable } = this.props
     if (this.wrapper) {
       if (escapeKeyClosable) {
