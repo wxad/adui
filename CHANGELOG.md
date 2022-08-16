@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.40.1](https://github.com/wxad/adui/compare/v2.40.0...v2.40.1) (2022-08-16)
+
+
+### Bug Fixes
+
+* **ChannelsDialog:** 修复 onleave 生命周期问题，props 对齐 dialog ([601af75](https://github.com/wxad/adui/commit/601af754dc7c3480d5fdbd62103f5662017c9c91))
+* **Table:** [#32](https://github.com/wxad/adui/issues/32) ([7e343f4](https://github.com/wxad/adui/commit/7e343f4efb88907db4957688dfde0f6f3a0eb876))
+
 ## [2.40.0](https://github.com/wxad/adui/compare/v2.39.1...v2.40.0) (2022-08-12)
 
 
