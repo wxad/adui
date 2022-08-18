@@ -15,7 +15,6 @@ var traverse = require("@babel/traverse").default
  * 使用 getOptions 拿到自定义的配置
  */
 var loaderUtils = require("loader-utils")
-
 /**
  * 通过 @babel/parser 将 JS 代码转换为 ast 格式，并修改后，你需要将 ast 格式转回 JS 代码，交给下一个 webpack loader
  * 最后输出物为 core.transformFromAstSync(ast).code
@@ -115,7 +114,7 @@ exports["default"] = _default;`
 }
 
 function parseOptions() {
-  var options = this.getOptions() || {}
+  var options = loaderUtils.getOptions(this) || {}
   tempFilePath = options.filePath
   initIcons = options.initIcons || []
 }
