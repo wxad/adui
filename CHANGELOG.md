@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.40.2](https://github.com/wxad/adui/compare/v2.40.1...v2.40.2) (2022-08-18)
+
+
+### Bug Fixes
+
+* 回退 loader-utils 版本 ([fc17cbd](https://github.com/wxad/adui/commit/fc17cbd18d53730acd6ee8ffbb4a59cf368b342c))
+
 ### [2.40.1](https://github.com/wxad/adui/compare/v2.40.0...v2.40.1) (2022-08-16)
 
 
