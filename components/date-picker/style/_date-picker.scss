@@ -75,76 +75,78 @@ $prefix: "adui-date";
     &:not(.#{$prefix}-outside) {
       cursor: pointer;
 
-      &:hover {
-        &::after {
-          background-color: var(--gray-300);
-        }
-      }
-
-      &:focus {
-        outline: none;
-
-        &::after {
-          background-color: var(--gray-300);
-        }
-      }
-
-      &.#{$prefix}-selected {
-        color: #fff;
-        font-weight: 600;
-
-        &::after {
-          background-color: var(--primary-color);
-        }
-      }
-
-      &.#{$prefix}-selectedRange {
-        color: var(--gray-900);
-        font-weight: 400;
-        border-radius: 0;
-
-        &::after {
-          background-color: var(--primary-color);
-          opacity: 0.1;
-        }
-
+      &:not(.#{$prefix}-disabled) {
         &:hover {
           &::after {
+            background-color: var(--gray-300);
+          }
+        }
+
+        &:focus {
+          outline: none;
+
+          &::after {
+            background-color: var(--gray-300);
+          }
+        }
+
+        &.#{$prefix}-selected {
+          color: #fff;
+          font-weight: 600;
+
+          &::after {
+            background-color: var(--primary-color);
+          }
+        }
+
+        &.#{$prefix}-selectedRange {
+          color: var(--gray-900);
+          font-weight: 400;
+          border-radius: 0;
+
+          &::after {
+            background-color: var(--primary-color);
+            opacity: 0.1;
+          }
+
+          &:hover {
+            &::after {
+              opacity: 0.2;
+            }
+          }
+        }
+
+        &.#{$prefix}-rangeStartHover,
+        &.#{$prefix}-rangeEndHover {
+          color: var(--gray-900);
+          font-weight: 400;
+
+          &::after {
+            background-color: var(--primary-color);
             opacity: 0.2;
           }
-        }
-      }
 
-      &.#{$prefix}-rangeStartHover,
-      &.#{$prefix}-rangeEndHover {
-        color: var(--gray-900);
-        font-weight: 400;
-
-        &::after {
-          background-color: var(--primary-color);
-          opacity: 0.2;
-        }
-
-        &:active {
-          &::after {
-            opacity: 0.3;
+          &:active {
+            &::after {
+              opacity: 0.3;
+            }
           }
         }
-      }
 
-      &.#{$prefix}-rangeStart,
-      &.#{$prefix}-rangeStartHover {
-        &:not(.#{$prefix}-rangeEnd) {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
+        &.#{$prefix}-rangeStart,
+        &.#{$prefix}-rangeStartHover {
+          &:not(.#{$prefix}-rangeEnd) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
         }
-      }
 
-      &.#{$prefix}-rangeEnd,
-      &.#{$prefix}-rangeEndHover {
-        &:not(.#{$prefix}-rangeStart) {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
+        &.#{$prefix}-rangeEnd,
+        &.#{$prefix}-rangeEndHover {
+          &:not(.#{$prefix}-rangeStart) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+          }
         }
       }
     }
@@ -152,7 +154,6 @@ $prefix: "adui-date";
     &.#{$prefix}-disabled {
       color: var(--gray-600) !important;
       cursor: not-allowed;
-      pointer-events: none;
     }
   }
   &-cell {

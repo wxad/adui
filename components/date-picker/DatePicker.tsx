@@ -283,6 +283,9 @@ const DatePicker: IDatePicker = forwardRef(
       selectedDayNew: Date,
       { disabled: bool }: { [key: string]: any }
     ) => {
+      if (isDayDisabled(selectedDayNew)) {
+        return
+      }
       selectedDayNew.setHours(hour, 0, 0, 0)
       if (!bool) {
         if (closeOnSelect) {
