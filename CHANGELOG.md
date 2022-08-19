@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.40.3](https://github.com/wxad/adui/compare/v2.40.2...v2.40.3) (2022-08-19)
+
+
+### Bug Fixes
+
+* **DatePicker:** disabledDays cursor style ([9512e14](https://github.com/wxad/adui/commit/9512e147922af4c103c1362269fbdc216c6a1cc3))
+
 ### [2.40.2](https://github.com/wxad/adui/compare/v2.40.1...v2.40.2) (2022-08-18)
 
 
