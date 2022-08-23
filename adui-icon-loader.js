@@ -43,7 +43,12 @@ var ICON_DEFAULTS = {
   breadcrumb: ["arrow-right"],
   cascader: ["triangle-down", "triangle-right", "cancel-circle"],
   colorpicker: ["arrow-down"],
-  datepicker: ["calendar-outlined", "triangle-down", "arrow-down"],
+  datepicker: [
+    "calendar-outlined",
+    "triangle-down",
+    "arrow-down",
+    "cancel-circle",
+  ],
   dialog: ["cancel"],
   menu: ["triangle-right"],
   numericinput: ["arrow-up", "arrow-down"],

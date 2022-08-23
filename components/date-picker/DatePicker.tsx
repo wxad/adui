@@ -43,6 +43,10 @@ const noop = () => {}
 export interface IDatePickerProps {
   [key: string]: any
   /**
+   * 是否支持清除
+   */
+  allowClear?: boolean
+  /**
    * 附加类名
    */
   className?: string
@@ -160,6 +164,7 @@ export interface IDatePicker
 const DatePicker: IDatePicker = forwardRef(
   (
     {
+      allowClear,
       className,
       closeOnSelect,
       defaultValue,
@@ -225,6 +230,7 @@ const DatePicker: IDatePicker = forwardRef(
       }
       return false
     })
+    const [clearIconState, setClearIconState] = useState<"in" | "out">("out")
 
     // 相当于生命周期 getDerivedStateFromProps
     if (valueProp !== null && selectedDay !== valueProp) {
@@ -444,7 +450,46 @@ const DatePicker: IDatePicker = forwardRef(
         onKeyDown={handleInputKeyDown}
         placeholder={placeholder}
         ref={inputRef}
-        rightElement={<Icon icon="calendar-outlined" />}
+        rightElement={
+          allowClear ? (
+            <Icon
+              icon={
+                clearIconState === "in" ? "cancel-circle" : "calendar-outlined"
+              }
+              onMouseEnter={() => {
+                if (value) {
+                  setClearIconState("in")
+                }
+              }}
+              onMouseLeave={() => {
+                setClearIconState("out")
+              }}
+              onClick={(e) => {
+                if (value) {
+                  e.stopPropagation()
+                  if (valueProp === null) {
+                    setSelectedDay("")
+                    setValue("")
+                  }
+                  if (onChange) {
+                    onChange("")
+                  }
+
+                  if (visible) {
+                    if (onVisibleChange) {
+                      onVisibleChange(false)
+                    }
+                    if (visibleProp === null) {
+                      setVisible(false)
+                    }
+                  }
+                }
+              }}
+            />
+          ) : (
+            <Icon icon="calendar-outlined" />
+          )
+        }
         size={size}
         theme={theme}
         value={value}
@@ -483,6 +528,10 @@ DatePicker.displayName = "DatePicker"
 DatePicker.RangePicker = RangePicker
 
 DatePicker.propTypes = {
+  /**
+   * 是否支持清除
+   */
+  allowClear: PropTypes.bool,
   /**
    * 附加类名
    */
@@ -598,6 +647,7 @@ DatePicker.propTypes = {
 }
 
 DatePicker.defaultProps = {
+  allowClear: false,
   className: "",
   closeOnSelect: false,
   defaultValue: null,
