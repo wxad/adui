@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.40.4](https://github.com/wxad/adui/compare/v2.40.3...v2.40.4) (2022-08-23)
+
+
+### Bug Fixes
+
+* **Table:** 1. 修复表头不可选中的问题，去除了 user-select; 2. 空状态下表头无法滚动，这里因结构问题 placeholder 是写在 table 外的，移到 table 内后，又可能因为 table 的横向滚动造成问题，因此加入了 sticky ([3f81ca6](https://github.com/wxad/adui/commit/3f81ca641488c5a690141ba5bf208afb6ad7bd16))
+
 ### [2.40.3](https://github.com/wxad/adui/compare/v2.40.2...v2.40.3) (2022-08-19)
 
 
