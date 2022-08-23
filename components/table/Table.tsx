@@ -2193,9 +2193,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             onScroll={this.handleMainTableScroll}
           >
             {this.generateTable()}
+            {empty && (
+              <div className={`${prefix}-placeholder`}>{emptyText}</div>
+            )}
           </div>
         </div>
-        {empty && <div className={`${prefix}-placeholder`}>{emptyText}</div>}
       </div>
     )
   }
