@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[140],{1517:function(e,o){e.exports={content:["article",["h1","原子类的思考"],["p",["a",{title:null,href:"https://honored-meteor-e9c.notion.site/AD-UI-2-0-83846eb2730c49b48416bd72bbac8b09"},"https://honored-meteor-e9c.notion.site/AD-UI-2-0-83846eb2730c49b48416bd72bbac8b09"]]],meta:{filename:"doc/acss/why.md"}}}}]);
