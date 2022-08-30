@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.41.0](https://github.com/wxad/adui/compare/v2.40.4...v2.41.0) (2022-08-30)
+
+
+### Features
+
+* **DatePicker, RangePicker:** allowClear Prop ([11a0217](https://github.com/wxad/adui/commit/11a02176a896c27382e7c1c8ea786812d2e4abb0))
+
+
+### Bug Fixes
+
+* **Input:** 修复 Safari disabled 文字颜色问题 ([8a815a3](https://github.com/wxad/adui/commit/8a815a3d9ee24949c440eb2b10ae6d80fa20eea3))
+
 ### [2.40.4](https://github.com/wxad/adui/compare/v2.40.3...v2.40.4) (2022-08-23)
 
 
