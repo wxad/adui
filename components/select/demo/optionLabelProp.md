@@ -1,11 +1,11 @@
 ---
 order: 1
 title:
-  zh-CN: 滚动加载
-  en-US: Scroll
+  zh-CN: optionLabelProp
+  en-US: optionLabelProp
 ---
 
-使用 `onPopupScroll` 滚动加载数据：
+使用 `optionLabelProp` 自定义渲染到 Select 中的结果：
 
 ```jsx
 const getOptions = () => {
@@ -14,6 +14,7 @@ const getOptions = () => {
     const value = `${i.toString(36)}${i}`
     options.push({
       value,
+      whateverTitleULike: <div className="bg-tp-gray-400">自定义结果渲染 {value}</div>,
     })
   }
   return options
@@ -24,21 +25,18 @@ const [value, setValue] = useState(undefined)
 
 return (
   <div className="w-2/4">
-    <div className="mb-12">已加载次数：{loadTimes}</div>
     <Select
       className="w-full"
-      onPopupScroll={(e) => {
-        const { scrollHeight, scrollTop, offsetHeight } = e.target
-        if (scrollTop + offsetHeight > scrollHeight - 32) {
-          setLoadTimes(loadTimes + 1)
-          setOptions([...options, ...getOptions()])
-        }
-      }}
       value={value}
       onChange={setValue}
+      optionLabelProp="whateverTitleULike"
     >
-      {options.map(({ value }) => (
-        <Select.Option key={value} value={value}>
+      {options.map(({ value, whateverTitleULike }) => (
+        <Select.Option
+          key={value}
+          value={value}
+          whateverTitleULike={whateverTitleULike}
+        >
           {value}
         </Select.Option>
       ))}
