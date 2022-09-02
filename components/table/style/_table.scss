@@ -117,7 +117,6 @@ $prefix: "adui-table";
     .#{$prefix}-cell {
       flex: 1;
       color: var(--gray-800);
-      user-select: none;
     }
 
     &:last-of-type {
@@ -421,6 +420,8 @@ $prefix: "adui-table";
     }
   }
   &-placeholder {
+    position: sticky;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -595,11 +596,6 @@ $prefix: "adui-table";
   }
   &-affixScrollbar_show {
     display: block;
-  }
-  &-empty {
-    .#{$prefix}-mainTable {
-      overflow: hidden;
-    }
   }
   &-loading {
     .#{$prefix}-tbody {

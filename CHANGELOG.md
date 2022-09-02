@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.41.0](https://github.com/wxad/adui/compare/v2.40.4...v2.41.0) (2022-08-30)
+
+
+### Features
+
+* **DatePicker, RangePicker:** allowClear Prop ([11a0217](https://github.com/wxad/adui/commit/11a02176a896c27382e7c1c8ea786812d2e4abb0))
+
+
+### Bug Fixes
+
+* **Input:** 修复 Safari disabled 文字颜色问题 ([8a815a3](https://github.com/wxad/adui/commit/8a815a3d9ee24949c440eb2b10ae6d80fa20eea3))
+
+### [2.40.4](https://github.com/wxad/adui/compare/v2.40.3...v2.40.4) (2022-08-23)
+
+
+### Bug Fixes
+
+* **Table:** 1. 修复表头不可选中的问题，去除了 user-select; 2. 空状态下表头无法滚动，这里因结构问题 placeholder 是写在 table 外的，移到 table 内后，又可能因为 table 的横向滚动造成问题，因此加入了 sticky ([3f81ca6](https://github.com/wxad/adui/commit/3f81ca641488c5a690141ba5bf208afb6ad7bd16))
+
+### [2.40.3](https://github.com/wxad/adui/compare/v2.40.2...v2.40.3) (2022-08-19)
+
+
+### Bug Fixes
+
+* **DatePicker:** disabledDays cursor style ([9512e14](https://github.com/wxad/adui/commit/9512e147922af4c103c1362269fbdc216c6a1cc3))
+
+### [2.40.2](https://github.com/wxad/adui/compare/v2.40.1...v2.40.2) (2022-08-18)
+
+
+### Bug Fixes
+
+* 回退 loader-utils 版本 ([fc17cbd](https://github.com/wxad/adui/commit/fc17cbd18d53730acd6ee8ffbb4a59cf368b342c))
+
+### [2.40.1](https://github.com/wxad/adui/compare/v2.40.0...v2.40.1) (2022-08-16)
+
+
+### Bug Fixes
+
+* **ChannelsDialog:** 修复 onleave 生命周期问题，props 对齐 dialog ([601af75](https://github.com/wxad/adui/commit/601af754dc7c3480d5fdbd62103f5662017c9c91))
+* **Table:** [#32](https://github.com/wxad/adui/issues/32) ([7e343f4](https://github.com/wxad/adui/commit/7e343f4efb88907db4957688dfde0f6f3a0eb876))
+
+## [2.40.0](https://github.com/wxad/adui/compare/v2.39.1...v2.40.0) (2022-08-12)
+
+
+### Features
+
+* **Select:** composition Props & searchInputProps ([9bf1d16](https://github.com/wxad/adui/commit/9bf1d16e62da17bd05bb8d5a53df540aaa47dbf9))
+
+### [2.39.1](https://github.com/wxad/adui/compare/v2.39.0...v2.39.1) (2022-08-08)
+
+
+### Bug Fixes
+
+* **adui-icon-loader:** 根据 loaderUtils@3 的 api 修复 ([09807e1](https://github.com/wxad/adui/commit/09807e1705c9cf6df5f2ba24fc083ea86195f55d))
+
+## [2.39.0](https://github.com/wxad/adui/compare/v2.38.0...v2.39.0) (2022-07-27)
+
+
+### Features
+
+* **Icon:** update adui-icon@1.8.30 ([cc6a548](https://github.com/wxad/adui/commit/cc6a548eec40e025c2ee5872c9389c681093128a))
+
 ## [2.38.0](https://github.com/wxad/adui/compare/v2.37.4...v2.38.0) (2022-07-26)
 
 

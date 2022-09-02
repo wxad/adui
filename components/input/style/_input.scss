@@ -196,6 +196,9 @@ $prefix: "adui-input";
   &-disabled {
     .#{$prefix}-base {
       color: var(--gray-700);
+      // 20220830 修复 Safari 文字消失问题
+      -webkit-text-fill-color: var(--gray-700);
+      opacity: 1;
       background-color: rgba(0, 0, 0, 0.03);
       box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
       cursor: not-allowed;

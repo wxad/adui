@@ -78,6 +78,24 @@ export interface ISelectProps<T extends ValueType = ValueType> {
    */
   onSearch?: (val: string) => void
   /**
+   * 搜索 CompositionStart 的 handler, 参数：string
+   */
+  onSearchCompositionStart?: (val: string) => void
+  /**
+   * 搜索 CompositionUpdate 的 handler, 参数：string
+   */
+  onSearchCompositionUpdate?: (val: string) => void
+  /**
+   * 搜索 CompositionEnd 的 handler, 参数：string
+   */
+  onSearchCompositionEnd?: (val: string) => void
+  /**
+   * 更多自定义 search input 的 Prop
+   */
+  searchInputProps?: {
+    [key: string]: any
+  }
+  /**
    * 选择时的 handler，参数：(value, option)
    */
   onSelect?: (value: T, option: React.ReactElement<any>) => void
@@ -198,6 +216,22 @@ class Select<T extends ValueType = ValueType> extends React.Component<
      */
     onSearch: PropTypes.func,
     /**
+     * 搜索 CompositionStart 的 handler, 参数：string
+     */
+    onSearchCompositionStart: PropTypes.func,
+    /**
+     * 搜索 CompositionUpdate 的 handler, 参数：string
+     */
+    onSearchCompositionUpdate: PropTypes.func,
+    /**
+     * 搜索 CompositionEnd 的 handler, 参数：string
+     */
+    onSearchCompositionEnd: PropTypes.func,
+    /**
+     * 更多自定义 search input 的 Prop
+     */
+    searchInputProps: PropTypes.any,
+    /**
      * 选择时的 handler，参数：(value, option)
      */
     onSelect: PropTypes.func,
@@ -271,6 +305,10 @@ class Select<T extends ValueType = ValueType> extends React.Component<
     onDropdownVisibleChange: noop,
     onPopupScroll: noop,
     onSearch: noop,
+    onSearchCompositionStart: noop,
+    onSearchCompositionUpdate: noop,
+    onSearchCompositionEnd: noop,
+    searchInputProps: {},
     onSelect: noop,
     open: null,
     options: undefined,
@@ -434,7 +472,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
 
   public handleDropdownRender = (menu: JSX.Element) => {
     this.menu = menu
-    const { searchable, searchPlaceholder } = this.props
+    const { searchable, searchPlaceholder, searchInputProps } = this.props
     if (searchable) {
       return (
         <div>
@@ -443,9 +481,13 @@ class Select<T extends ValueType = ValueType> extends React.Component<
               ref={this.saveSearch}
               placeholder={searchPlaceholder}
               onChange={this.handleSearch}
+              onCompositionStart={this.handleSearchStart}
+              onCompositionUpdate={this.handleSearchUpdate}
+              onCompositionEnd={this.handleSearchEnd}
               onKeyDown={this.handleSearchKeyDown}
               onMouseDown={this.preventVisibleChange}
               onMouseUp={this.preventVisibleChange}
+              {...(searchInputProps || {})}
             />
             <Icon icon="search" className={`${prefix}-icon`} />
           </div>
@@ -454,6 +496,51 @@ class Select<T extends ValueType = ValueType> extends React.Component<
       )
     }
     return menu
+  }
+
+  public handleSearchStart: React.CompositionEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    const { onSearchCompositionStart } = this.props
+    let target: HTMLInputElement
+    if (e) {
+      target = e.target as HTMLInputElement
+    } else {
+      target = this.search
+    }
+    if (onSearchCompositionStart) {
+      onSearchCompositionStart(target.value)
+    }
+  }
+
+  public handleSearchUpdate: React.CompositionEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    const { onSearchCompositionUpdate } = this.props
+    let target: HTMLInputElement
+    if (e) {
+      target = e.target as HTMLInputElement
+    } else {
+      target = this.search
+    }
+    if (onSearchCompositionUpdate) {
+      onSearchCompositionUpdate(target.value)
+    }
+  }
+
+  public handleSearchEnd: React.CompositionEventHandler<HTMLInputElement> = (
+    e
+  ) => {
+    const { onSearchCompositionEnd } = this.props
+    let target: HTMLInputElement
+    if (e) {
+      target = e.target as HTMLInputElement
+    } else {
+      target = this.search
+    }
+    if (onSearchCompositionEnd) {
+      onSearchCompositionEnd(target.value)
+    }
   }
 
   public handleSearch = (e?: React.ChangeEvent<HTMLInputElement>) => {
@@ -532,6 +619,10 @@ class Select<T extends ValueType = ValueType> extends React.Component<
       "onDropdownVisibleChange",
       "onSelect",
       "searchPlaceholder",
+      "onSearchCompositionStart",
+      "onSearchCompositionUpdate",
+      "onSearchCompositionEnd",
+      "searchInputProps",
     ])
 
     const {

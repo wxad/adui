@@ -937,7 +937,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
      * columns 变化后 fixedColumnsInfos 中可能存在已经移除的 column
      */
     fixedColumnsInfos = fixedColumnsInfos.filter((o) =>
-      columns.find((p) => p.dataIndex === o.dataIndex)
+      columns.find((p) => p.dataIndex === o.dataIndex && !!p.fixed)
     )
     const i = fixedColumnsInfos.findIndex((o) => o.dataIndex === dataIndex)
     // fixed 可能是 Boolean
@@ -2193,9 +2193,11 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             onScroll={this.handleMainTableScroll}
           >
             {this.generateTable()}
+            {empty && (
+              <div className={`${prefix}-placeholder`}>{emptyText}</div>
+            )}
           </div>
         </div>
-        {empty && <div className={`${prefix}-placeholder`}>{emptyText}</div>}
       </div>
     )
   }

@@ -46,6 +46,10 @@ const noop = () => {}
 export interface IRangePickerProps {
   [key: string]: any
   /**
+   * 是否支持清除
+   */
+  allowClear?: boolean
+  /**
    * 附加类名
    */
   className?: string
@@ -168,6 +172,7 @@ const RangePicker: React.ForwardRefExoticComponent<
 > = forwardRef(
   (
     {
+      allowClear,
       className,
       closeOnSelect,
       defaultValue,
@@ -244,6 +249,7 @@ const RangePicker: React.ForwardRefExoticComponent<
       }
       return false
     })
+    const [clearIconState, setClearIconState] = useState<"in" | "out">("out")
 
     // 相当于生命周期 getDerivedStateFromProps
     if (
@@ -612,7 +618,47 @@ const RangePicker: React.ForwardRefExoticComponent<
         onKeyDown={handleInputKeyDown}
         placeholder={placeholder}
         ref={inputRef}
-        rightElement={<Icon icon="calendar-outlined" />}
+        rightElement={
+          allowClear ? (
+            <Icon
+              icon={
+                clearIconState === "in" ? "cancel-circle" : "calendar-outlined"
+              }
+              onMouseEnter={() => {
+                if (rangeValue) {
+                  setClearIconState("in")
+                }
+              }}
+              onMouseLeave={() => {
+                setClearIconState("out")
+              }}
+              onClick={(e) => {
+                if (rangeValue) {
+                  e.stopPropagation()
+                  if (valueProp === null) {
+                    setEnteredTo(null)
+                    setFrom(null)
+                    setTo(null)
+                    setRangeValue("")
+                  }
+                  if (onChange) {
+                    onChange([undefined, undefined])
+                  }
+                  if (visible) {
+                    if (onVisibleChange) {
+                      onVisibleChange(false)
+                    }
+                    if (visibleProp === null) {
+                      setVisible(false)
+                    }
+                  }
+                }
+              }}
+            />
+          ) : (
+            <Icon icon="calendar-outlined" />
+          )
+        }
         size={size}
         theme={theme}
         value={rangeValue}
@@ -647,6 +693,10 @@ const RangePicker: React.ForwardRefExoticComponent<
 )
 
 RangePicker.propTypes = {
+  /**
+   * 是否支持清除
+   */
+  allowClear: PropTypes.bool,
   /**
    * 附加类名
    */
@@ -773,6 +823,7 @@ RangePicker.propTypes = {
 }
 
 RangePicker.defaultProps = {
+  allowClear: false,
   className: "",
   closeOnSelect: false,
   defaultValue: null,

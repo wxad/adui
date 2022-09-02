@@ -117,6 +117,9 @@ $prefix: "adui-channels-input";
   &-disabled {
     .#{$prefix}-base {
       color: var(--gray-700);
+      // 20220830 修复 Safari 文字消失问题
+      -webkit-text-fill-color: var(--gray-700);
+      opacity: 1;
       cursor: not-allowed;
     }
 

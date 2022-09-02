@@ -140,7 +140,7 @@ $prefix: "adui-channels-dialog";
   &-enter.#{$prefix}-enter-active {
     opacity: 1;
     transform: scale(1) translate3d(0, 0, 0);
-    transition: 0s var(--ease-out) all;
+    transition: 0.00001s var(--ease-out) all;
   }
 
   &-leave {
@@ -151,7 +151,7 @@ $prefix: "adui-channels-dialog";
   &-leave.#{$prefix}-leave-active {
     opacity: 0;
     transform: scale(0.8) translate3d(0, 50px, 0);
-    transition: all 0s var(--ease-in);
+    transition: all 0.00001s var(--ease-in);
   }
 
   &-mask-appear,
@@ -162,7 +162,7 @@ $prefix: "adui-channels-dialog";
   &-mask-appear.#{$prefix}-mask-appear-active,
   &-mask-enter.#{$prefix}-mask-enter-active {
     opacity: 1;
-    transition: all 0s var(--ease-out);
+    transition: all 0.00001s var(--ease-out);
   }
 
   &-mask-leave {
@@ -171,6 +171,6 @@ $prefix: "adui-channels-dialog";
 
   &-mask-leave.#{$prefix}-mask-leave-active {
     opacity: 0;
-    transition: all 0s var(--ease-in);
+    transition: all 0.00001s var(--ease-in);
   }
 }
