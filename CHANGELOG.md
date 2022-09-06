@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.42.0](https://github.com/wxad/adui/compare/v2.41.0...v2.42.0) (2022-09-06)
+
+
+### Features
+
+* **Select:** 增加 topContent / bottomContent Prop ([28e6544](https://github.com/wxad/adui/commit/28e654499f636a0d74abdb5739b4e22aef66effd))
+* **TreeSelect:** 以 topContent 相同的实现增加 bottomContent Prop ([5542a02](https://github.com/wxad/adui/commit/5542a02b0906d3984578da5611d1fdcee4338ef6))
+
 ## [2.41.0](https://github.com/wxad/adui/compare/v2.40.4...v2.41.0) (2022-08-30)
 
 
