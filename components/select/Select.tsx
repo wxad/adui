@@ -42,6 +42,10 @@ export interface ISelectProps<T extends ValueType = ValueType> {
    */
   allowClear?: boolean
   /**
+   * 下拉框底部显示的自定义元素
+   */
+  bottomContent?: React.ReactNode
+  /**
    * 子节点
    */
   children?: React.ReactNode
@@ -146,6 +150,10 @@ export interface ISelectProps<T extends ValueType = ValueType> {
    */
   theme?: null | "light"
   /**
+   * 下拉框顶部显示的自定义元素
+   */
+  topContent?: React.ReactNode
+  /**
    * 外部控制：当前选中项的值
    */
   value?: T | null
@@ -179,6 +187,10 @@ class Select<T extends ValueType = ValueType> extends React.Component<
      * 是否提供清除功能
      */
     allowClear: PropTypes.bool,
+    /**
+     * 下拉框底部显示的自定义元素
+     */
+    bottomContent: PropTypes.node,
     /**
      * 子节点
      */
@@ -289,6 +301,10 @@ class Select<T extends ValueType = ValueType> extends React.Component<
      */
     theme: PropTypes.oneOf([null, "light"]),
     /**
+     * 下拉框顶部显示的自定义元素
+     */
+    topContent: PropTypes.node,
+    /**
      * 外部控制：当前选中项的值
      */
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -296,6 +312,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
 
   public static defaultProps: ISelectProps = {
     allowClear: false,
+    bottomContent: null,
     children: null,
     className: undefined,
     defaultOpen: null,
@@ -320,6 +337,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
     searchable: false,
     size: "small",
     theme: null,
+    topContent: null,
   }
 
   public static getDerivedStateFromProps = ({ open, value }: ISelectProps) => {
@@ -472,10 +490,17 @@ class Select<T extends ValueType = ValueType> extends React.Component<
 
   public handleDropdownRender = (menu: JSX.Element) => {
     this.menu = menu
-    const { searchable, searchPlaceholder, searchInputProps } = this.props
+    const {
+      searchable,
+      searchPlaceholder,
+      searchInputProps,
+      topContent,
+      bottomContent,
+    } = this.props
     if (searchable) {
       return (
         <div>
+          {topContent}
           <div className={`${prefix}-search`}>
             <input
               ref={this.saveSearch}
@@ -492,10 +517,17 @@ class Select<T extends ValueType = ValueType> extends React.Component<
             <Icon icon="search" className={`${prefix}-icon`} />
           </div>
           {menu}
+          {bottomContent}
         </div>
       )
     }
-    return menu
+    return (
+      <>
+        {topContent}
+        {menu}
+        {bottomContent}
+      </>
+    )
   }
 
   public handleSearchStart: React.CompositionEventHandler<HTMLInputElement> = (
@@ -623,6 +655,8 @@ class Select<T extends ValueType = ValueType> extends React.Component<
       "onSearchCompositionUpdate",
       "onSearchCompositionEnd",
       "searchInputProps",
+      "topContent",
+      "bottomContent",
     ])
 
     const {
