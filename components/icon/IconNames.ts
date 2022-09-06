@@ -65,6 +65,8 @@
   "circle-optimize-target": string;
   "city-outlined": string;
   "city": string;
+  "click": string;
+  "close-share": string;
   "clothes-outlined": string;
   "clue": string;
   "code-sand-box": string;
@@ -136,6 +138,7 @@
   "histogram": string;
   "home-outlined": string;
   "home": string;
+  "hosting": string;
   "hot-zone": string;
   "hotzone": string;
   "iPhone-outlined": string;
@@ -208,6 +211,7 @@
   "people-outlined": string;
   "people": string;
   "percentage": string;
+  "person-outlined": string;
   "person": string;
   "phone-outlined": string;
   "phone": string;
@@ -309,6 +313,8 @@
   "watch-outlined": string;
   "website-outlined": string;
   "website": string;
+  "wechat-bubble-outlined": string;
+  "wechat-bubble": string;
   "wish-outlined": string;
   "wish": string;
   "woman-outlined": string;
