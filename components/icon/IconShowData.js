@@ -269,9 +269,6 @@ var _default = {
       "name": "share",
       "keywords": ["share", "分享", "转发"]
     }, {
-      "name": "close-share",
-      "keywords": ["close-share", "关闭分享", "关闭转发"]
-    }, {
       "name": "send-outlined",
       "keywords": ["send-outlined", "发送", "纸飞机"]
     }, {
@@ -414,23 +411,14 @@ var _default = {
       "name": "bell",
       "keywords": ["bell", "铃铛;通知", "消息"]
     }, {
-      "name": "mic-outlined",
-      "keywords": ["mic-outlined", "麦克风", "话筒.录音"]
-    }, {
-      "name": "mic",
-      "keywords": ["mic", "麦克风", "话筒", "录音"]
-    }, {
       "name": "calculator-outlined",
       "keywords": ["calculator-outlined", "计算器"]
     }, {
       "name": "calculator",
       "keywords": ["calculator", "计算器"]
     }, {
-      "name": "mail-outlined",
-      "keywords": ["mail-outlined", "邮件", "消息", "通知", "信封"]
-    }, {
-      "name": "mail",
-      "keywords": ["mail", "邮件", "消息", "通知", "信封"]
+      "name": "storage-outlined",
+      "keywords": ["storage-outlined", "储存", "服务器", "柜", "储物"]
     }, {
       "name": "key-outlined",
       "keywords": ["key-outlined", "钥匙"]
@@ -438,17 +426,11 @@ var _default = {
       "name": "key",
       "keywords": ["key", "钥匙"]
     }, {
-      "name": "phone-outlined",
-      "keywords": ["phone-outlined", "电话", "联系", "客服"]
-    }, {
       "name": "phone",
       "keywords": ["phone", "电话", "联系", "客服"]
     }, {
-      "name": "location-outlined",
-      "keywords": ["location-outlined", "地点", "地标", "打点", "LBS", "本地", "门店", "地址", "位置", "定位"]
-    }, {
-      "name": "location",
-      "keywords": ["location", "地点", "地标", "打点", "LBS", "本地", "门店", "地址", "位置", "定位"]
+      "name": "phone-outlined",
+      "keywords": ["phone-outlined", "电话", "联系", "客服"]
     }, {
       "name": "time-outlined",
       "keywords": ["time-outlined", "时钟", "时间", "历史", "钟表"]
@@ -462,26 +444,11 @@ var _default = {
       "name": "bulb",
       "keywords": ["bulb", "灯泡", "灵感", "智能", "电灯", "想法"]
     }, {
-      "name": "button-outlined",
-      "keywords": ["button-outlined", "按钮", "链接"]
-    }, {
-      "name": "button",
-      "keywords": ["button", "按钮", "链接"]
-    }, {
-      "name": "verify-outline",
-      "keywords": ["verify-outline", "报告", "文档", "文件"]
-    }, {
-      "name": "verify",
-      "keywords": ["verify", "报告", "文档", "文件"]
-    }, {
-      "name": "chat-bubble-outlined",
-      "keywords": ["chat-bubble-outlined", "聊天气泡", "对话", "评论"]
-    }, {
-      "name": "chat-bubble",
-      "keywords": ["chat-bubble", "聊天气泡", "对话", "评论"]
-    }, {
       "name": "map-outlined",
-      "keywords": ["map-outlined", "地图", "册子"]
+      "keywords": ["map-outlined", "地图"]
+    }, {
+      "name": "text",
+      "keywords": ["text", "文本", "文字", "输入"]
     }, {
       "name": "radar-outlined",
       "keywords": ["radar-outlined", "雷达", "检测"]
@@ -489,8 +456,17 @@ var _default = {
       "name": "compass-outlined",
       "keywords": ["compass-outlined", "指南针", "导航", "指引", "方向"]
     }, {
-      "name": "click",
-      "keywords": ["click", "点击", "手指", "指向"]
+      "name": "circle-optimize-target",
+      "keywords": ["circle-optimize-target", "提升目标"]
+    }, {
+      "name": "channels",
+      "keywords": ["channels", "视频号"]
+    }, {
+      "name": "moments",
+      "keywords": ["moments", "朋友圈"]
+    }, {
+      "name": "division",
+      "keywords": ["division", "除号", "除法", "比值"]
     }, {
       "name": "image-outlined",
       "keywords": ["image-outlined", "图片", "照片", "素材"]
@@ -498,11 +474,11 @@ var _default = {
       "name": "image",
       "keywords": ["image", "图片", "照片", "素材"]
     }, {
-      "name": "video-cam-outlined",
-      "keywords": ["video-cam-outlined", "视频", "摄像", "录像", "影像", "数码", "设备", "素材"]
+      "name": "folder-outlined",
+      "keywords": ["folder-outlined", "文件夹"]
     }, {
-      "name": "video-cam",
-      "keywords": ["video-cam", "视频", "摄像", "录像", "影像", "数码", "设备", "素材"]
+      "name": "folder",
+      "keywords": ["folder", "文件夹"]
     }, {
       "name": "speaker-outlined",
       "keywords": ["speaker-outlined", "喇叭", "消息", "通知"]
@@ -510,23 +486,26 @@ var _default = {
       "name": "speaker",
       "keywords": ["speaker", "喇叭", "消息", "通知"]
     }, {
-      "name": "folder-outlined",
-      "keywords": ["folder-outlined", "文件夹"]
+      "name": "wallet-outlined",
+      "keywords": ["wallet-outlined", "钱包", "储蓄", "收入"]
     }, {
-      "name": "folder",
-      "keywords": ["folder", "文件夹"]
+      "name": "wallet",
+      "keywords": ["wallet", "钱包", "储蓄", "收入"]
     }, {
-      "name": "file-outlined",
-      "keywords": ["file-outlined", "文件", "文档"]
-    }, {
-      "name": "file",
-      "keywords": ["file", "文件", "文档"]
+      "name": "mobile",
+      "keywords": ["mobile", "手机", "屏幕"]
     }, {
       "name": "report-outlined",
       "keywords": ["report-outlined", "报告", "文档", "文件"]
     }, {
       "name": "report",
       "keywords": ["report", "报告", "文档", "文件"]
+    }, {
+      "name": "file-outlined",
+      "keywords": ["file-outlined", "文件", "文档"]
+    }, {
+      "name": "file",
+      "keywords": ["file", "文件", "文档"]
     }, {
       "name": "website-outlined",
       "keywords": ["website-outlined", "网页", "网站", "页面", "站点", "内容"]
@@ -543,14 +522,14 @@ var _default = {
       "name": "computer",
       "keywords": ["computer", "计算机", "电脑", "PC", "屏幕", "显示器", "web", "监控", "监视器"]
     }, {
-      "name": "mobile",
-      "keywords": ["mobile", "手机", "屏幕"]
+      "name": "qr-code",
+      "keywords": ["qr-code", "二维码", "扫码"]
     }, {
-      "name": "wallet-outlined",
-      "keywords": ["wallet-outlined", "钱包", "储蓄", "收入", "卡包"]
+      "name": "chat-bubble-outlined",
+      "keywords": ["chat-bubble-outlined", "聊天气泡", "对话"]
     }, {
-      "name": "wallet",
-      "keywords": ["wallet", "钱包", "储蓄", "收入", "卡包"]
+      "name": "chat-bubble",
+      "keywords": ["chat-bubble", "聊天气泡", "对话"]
     }, {
       "name": "toolbox-outlined",
       "keywords": ["toolbox-outlined", "工具箱"]
@@ -561,41 +540,47 @@ var _default = {
       "name": "number",
       "keywords": ["number", "数值", "数字", "标签"]
     }, {
-      "name": "wechat-bubble-outlined",
-      "keywords": ["wechat-bubble-outlined", "微信", "会话", "聊天气泡", "对话"]
-    }, {
-      "name": "wechat-bubble",
-      "keywords": ["wechat-bubble", "微信", "会话", "聊天气泡", "对话"]
-    }, {
-      "name": "moments",
-      "keywords": ["moments", "朋友圈"]
+      "name": "mini-program",
+      "keywords": ["mini-program", "小程序"]
     }, {
       "name": "offiaccount",
       "keywords": ["offiaccount", "公众号"]
     }, {
-      "name": "mini-program",
-      "keywords": ["mini-program", "小程序"]
+      "name": "link",
+      "keywords": ["link", "链接"]
     }, {
-      "name": "minigame",
-      "keywords": ["minigame", "小游戏"]
+      "name": "button-outlined",
+      "keywords": ["button-outlined", "按钮", "链接"]
     }, {
-      "name": "channels",
-      "keywords": ["channels", "视频号"]
+      "name": "button",
+      "keywords": ["button", "按钮", "链接"]
     }, {
-      "name": "storage-outlined",
-      "keywords": ["storage-outlined", "储存", "服务器", "柜", "储物"]
+      "name": "mail-outlined",
+      "keywords": ["mail-outlined", "邮件", "消息", "通知", "信封"]
+    }, {
+      "name": "mail",
+      "keywords": ["mail", "邮件", "消息", "通知", "信封"]
+    }, {
+      "name": "mic-outlined",
+      "keywords": ["mic-outlined", "麦克风", "录音"]
+    }, {
+      "name": "mic",
+      "keywords": ["mic", "麦克风", "录音"]
+    }, {
+      "name": "location-outlined",
+      "keywords": ["location-outlined", "地点", "地标", "地图", "打点", "LBS", "本地", "门店", "地址"]
+    }, {
+      "name": "location",
+      "keywords": ["location", "地点", "地标", "地图", "打点", "LBS", "本地", "门店", "地址"]
     }, {
       "name": "code",
       "keywords": ["code", "代码", "程序"]
     }, {
-      "name": "code-sand-box",
-      "keywords": ["code-sand-box", "codesandbox", "代码"]
+      "name": "video-cam-outlined",
+      "keywords": ["video-cam-outlined", "视频", "摄像", "录像", "影像", "数码", "设备", "素材"]
     }, {
-      "name": "link",
-      "keywords": ["link", "链接"]
-    }, {
-      "name": "qr-code",
-      "keywords": ["qr-code", "二维码", "扫码"]
+      "name": "video-cam",
+      "keywords": ["video-cam", "视频", "摄像", "录像", "影像", "数码", "设备", "素材"]
     }, {
       "name": "ticket-outlined",
       "keywords": ["ticket-outlined", "卡券", "票", "优惠券"]
@@ -609,32 +594,32 @@ var _default = {
       "name": "clue",
       "keywords": ["clue", "线索"]
     }, {
+      "name": "code-sand-box",
+      "keywords": ["code-sand-box", "codesandbox", "代码"]
+    }, {
       "name": "receipt-outlined",
       "keywords": ["receipt-outlined", "收据", "发票"]
     }, {
       "name": "receipt",
       "keywords": ["receipt", "收据", "发票"]
     }, {
-      "name": "text",
-      "keywords": ["text", "文本", "文字", "输入"]
-    }, {
       "name": "headline",
       "keywords": ["headline", ""]
-    }, {
-      "name": "division",
-      "keywords": ["division", "除号", "除法", "比值"]
     }, {
       "name": "percentage",
       "keywords": ["percentage", "百分号", "百分比", "占比", "比率"]
     }, {
-      "name": "circle-optimize-target",
-      "keywords": ["circle-optimize-target", "提升目标"]
+      "name": "minigame",
+      "keywords": ["minigame", "小游戏"]
     }, {
       "name": "task",
       "keywords": ["task", "订单", "小任务"]
     }, {
-      "name": "hosting",
-      "keywords": ["hosting", "托管", "委托"]
+      "name": "verify-outline",
+      "keywords": ["verify-outline", "报告", "文档", "文件"]
+    }, {
+      "name": "verify",
+      "keywords": ["verify", "报告", "文档", "文件"]
     }]
   },
   "图表": {
@@ -880,9 +865,6 @@ var _default = {
     }, {
       "name": "person",
       "keywords": ["person", "人", "用户"]
-    }, {
-      "name": "person-outlined",
-      "keywords": ["person-outlined", "人", "用户"]
     }, {
       "name": "people",
       "keywords": ["people", "人群", "用户", "组", "多人"]

@@ -5,7 +5,7 @@ title:
   en-US: Type
 ---
 
-使用 `topContent` 在树形结构上方增加顶部元素
+使用 `topContent` 在树形结构上方增加顶部元素，使用 `bottomContent` 在树形结构下方增加底部元素
 
 ```jsx
 const treeDatas = [
@@ -105,6 +105,7 @@ return (
         <Tabs.Tab title="选项二" value={1} />
       </Tabs>
     }
+    bottomContent={<div>bottomContent</div>}
   />
 )
 ```

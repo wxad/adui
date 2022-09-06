@@ -99,7 +99,6 @@ return (
       }}
       value={value}
       treeData={treeData}
-      heightFixed
       sameValueEnabled
     />
   </div>
