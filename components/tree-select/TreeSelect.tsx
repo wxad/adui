@@ -88,6 +88,7 @@ export type TreeData = DataNode[] | undefined
 export interface ITreeSelectProps {
   [key: string]: any
   autoClearSearchValue?: boolean
+  bottomContent?: React.ReactNode
   className?: string
   defaultValue?: TreeNodeValue
   disabled?: boolean
@@ -118,6 +119,7 @@ type FilterFn = GetFuncType<ITreeSelectProps["filterTreeNode"]>
 
 export interface ITreeSelectState {
   hash: string
+  bottomContentPortalTarget?: HTMLDivElement
   topContentPortalTarget?: HTMLDivElement
   value?: TreeNodeValue
 }
@@ -149,6 +151,10 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
      * 值被选择后，是否需要清空搜索框
      */
     autoClearSearchValue: PropTypes.bool,
+    /**
+     * 下拉框底部显示的自定义元素
+     */
+    bottomContent: PropTypes.node,
     /**
      * 附加类名
      */
@@ -258,6 +264,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
 
   public static defaultProps: ITreeSelectProps = {
     autoClearSearchValue: false,
+    bottomContent: undefined,
     className: undefined,
     defaultValue: null,
     disabled: false,
@@ -327,10 +334,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
     this.select = node
   }
 
-  public savePortal = (node: React.ReactNode) => {
-    this.portal = node
-  }
-
   public saveWrapper = (node: HTMLDivElement) => {
     this.wrapper = node
   }
@@ -350,25 +353,43 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
   public handleVisibleChange = (visible: boolean) => {
     setTimeout(() => {
       this.forceUpdate(() => {
-        const { topContent } = this.props
-        const { hash, topContentPortalTarget } = this.state
+        const { bottomContent, topContent } = this.props
+        const { hash, bottomContentPortalTarget, topContentPortalTarget } =
+          this.state
         /**
          * 下拉框显示 && 传入了顶部自定义元素 && 首次添加
          */
-        if (visible && topContent && !topContentPortalTarget) {
+        if (
+          visible &&
+          ((topContent && !topContentPortalTarget) ||
+            (bottomContent && !bottomContentPortalTarget))
+        ) {
           const dropdown = document.querySelector(
             `.${prefix}-dropdown_${hash}`
           ) as HTMLDivElement
           if (dropdown) {
-            const el = document.createElement("div")
-            el.onmousedown = (e) => {
-              e.preventDefault()
-              e.stopImmediatePropagation()
+            if (topContent && !topContentPortalTarget) {
+              const el = document.createElement("div")
+              el.onmousedown = (e) => {
+                e.preventDefault()
+                e.stopImmediatePropagation()
+              }
+              dropdown.insertBefore(el, dropdown.children[0])
+              this.setState({
+                topContentPortalTarget: el,
+              })
             }
-            dropdown.insertBefore(el, dropdown.children[0])
-            this.setState({
-              topContentPortalTarget: el,
-            })
+            if (bottomContent && !bottomContentPortalTarget) {
+              const el = document.createElement("div")
+              el.onmousedown = (e) => {
+                e.preventDefault()
+                e.stopImmediatePropagation()
+              }
+              dropdown.appendChild(el)
+              this.setState({
+                bottomContentPortalTarget: el,
+              })
+            }
           }
         }
       })
@@ -843,6 +864,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
   public render() {
     const {
       autoClearSearchValue,
+      bottomContent,
       children,
       className,
       filterTreeNode,
@@ -872,7 +894,8 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
       "value",
     ])
 
-    const { hash, topContentPortalTarget, value } = this.state
+    const { hash, bottomContentPortalTarget, topContentPortalTarget, value } =
+      this.state
 
     const classSet = classNames(className, `${prefix}-${intent}`, {
       [`${prefix}_resultHidden`]: !resultVisible,
@@ -1010,8 +1033,11 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
             ref={this.saveWrapper}
           >
             {topContent && topContentPortalTarget && (
-              <Portal ref={this.savePortal} container={topContentPortalTarget}>
-                {topContent}
+              <Portal container={topContentPortalTarget}>{topContent}</Portal>
+            )}
+            {bottomContent && bottomContentPortalTarget && (
+              <Portal container={bottomContentPortalTarget}>
+                {bottomContent}
               </Portal>
             )}
             <RcTreeSelect
