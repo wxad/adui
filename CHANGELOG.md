@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.42.1](https://github.com/wxad/adui/compare/v2.42.0...v2.42.1) (2022-09-13)
+
+
+### Bug Fixes
+
+* **rollup:** 修复 portal 在 vite 下打包错误 ([de81288](https://github.com/wxad/adui/commit/de812885cdd0ae0cf525d0c6e5311ac5acdef462))
+
 ## [2.42.0](https://github.com/wxad/adui/compare/v2.41.0...v2.42.0) (2022-09-06)
 
 
