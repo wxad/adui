@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.43.1](https://github.com/wxad/adui/compare/v2.43.0...v2.43.1) (2022-11-22)
+
+
+### Bug Fixes
+
+* **Drawer:** 补充 maskMotionName getMotionName ([020524e](https://github.com/wxad/adui/commit/020524ee857601ebc50a4ae6543f083b9adabc63))
+
 ## [2.43.0](https://github.com/wxad/adui/compare/v2.42.1...v2.43.0) (2022-11-22)
 
 
