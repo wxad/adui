@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.43.0](https://github.com/wxad/adui/compare/v2.42.1...v2.43.0) (2022-11-22)
+
+
+### Features
+
+* **Dialog:** 支持 motionName 定义 ([a8c1a1b](https://github.com/wxad/adui/commit/a8c1a1b28dee9d24af67f9bf4ba21e4dd8c6d8f7))
+
 ### [2.42.1](https://github.com/wxad/adui/compare/v2.42.0...v2.42.1) (2022-09-13)
 
 
