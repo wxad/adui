@@ -9,6 +9,8 @@ import "./style"
 
 const prefix = "adui-drawer"
 
+type TPlacement = "top" | "right" | "bottom" | "left"
+
 export interface IDrawerProps {
   [key: string]: any
   /**
@@ -64,13 +66,21 @@ export interface IDrawerProps {
    */
   maskVisible?: boolean
   /**
+   * 设置 mask 的 CSS Motion name
+   */
+  maskMotionName?: string
+  /**
+   * 设置 dialog 的 CSS Motion name
+   */
+  getMotionName?: (placement: TPlacement) => string
+  /**
    * 关闭时的 handler
    */
   onClose?: (() => void) | null
   /**
    * 位置
    */
-  placement?: "top" | "right" | "bottom" | "left"
+  placement?: TPlacement
   /**
    * 尺寸
    */
@@ -102,8 +112,10 @@ const Drawer: React.FC<IDrawerProps> = ({
   maskClosable,
   maskStyle,
   maskVisible,
+  maskMotionName,
+  getMotionName = () => "",
   onClose,
-  placement,
+  placement = "right",
   size,
   style,
   visible,
@@ -217,7 +229,7 @@ const Drawer: React.FC<IDrawerProps> = ({
         onKeyDown={handleKeyDown}
       >
         <CSSMotion
-          motionName={`${prefix}-mask`}
+          motionName={maskMotionName || `${prefix}-mask`}
           visible={visible && maskVisible}
         >
           {({ className: cls }, ref) => (
@@ -238,7 +250,7 @@ const Drawer: React.FC<IDrawerProps> = ({
           onAppearStart={handleEnter}
           onEnterStart={handleEnter}
           onLeaveEnd={handleLeave}
-          motionName={`${prefix}-${placement}`}
+          motionName={getMotionName(placement) || `${prefix}-${placement}`}
           visible={visible}
         >
           {({ className: cls }, ref) => (
@@ -377,6 +389,8 @@ Drawer.defaultProps = {
   maskClosable: false,
   maskStyle: {},
   maskVisible: false,
+  maskMotionName: "",
+  getMotionName: () => "",
   onClose: null,
   placement: "right",
   size: "medium",
