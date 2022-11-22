@@ -121,6 +121,14 @@ export interface IDialogProps extends IStepProps {
    */
   maskClosable?: boolean
   /**
+   * 设置 mask 的 CSS Motion name
+   */
+  maskMotionName?: string
+  /**
+   * 设置 dialog 的 CSS Motion name
+   */
+  motionName?: string
+  /**
    * 指定步骤，用以快捷上一步、下一步的需求。
    */
   steps?: Array<IStepProps>
@@ -255,6 +263,14 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
      */
     maskClosable: PropTypes.bool,
     /**
+     * 设置 mask 的 CSS Motion name
+     */
+    maskMotionName: PropTypes.string,
+    /**
+     * 设置 dialog 的 CSS Motion name
+     */
+    motionName: PropTypes.string,
+    /**
      * 点击取消按钮、右上角关闭时的 handler
      */
     onCancel: PropTypes.func,
@@ -309,6 +325,8 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     headerElement: undefined,
     headerStyle: {},
     maskClosable: false,
+    maskMotionName: "",
+    motionName: "",
     onCancel: null,
     onConfirm: null,
     style: {},
@@ -552,6 +570,8 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
       headerElement,
       headerStyle,
       maskClosable,
+      maskMotionName,
+      motionName,
       steps,
       style,
       title,
@@ -604,7 +624,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
           onKeyDown={this.handleKeyDown}
         >
           <CSSMotion
-            motionName={`${prefix}-mask`}
+            motionName={maskMotionName || `${prefix}-mask`}
             visible={visible}
             removeOnLeave={destroyAfterClose}
           >
@@ -632,7 +652,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
             onAppearStart={this.handleEnter}
             onEnterStart={this.handleEnter}
             onLeaveEnd={this.onLeave}
-            motionName={prefix}
+            motionName={motionName || prefix}
             visible={visible}
             removeOnLeave={destroyAfterClose}
           >
