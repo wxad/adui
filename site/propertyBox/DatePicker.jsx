@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./components/propertyBox.scss"
 import CodeBox from "./components/CodeBox"
 import { Button, Switch, DatePicker, Radio } from "../../components"
-import { SIZES } from "./consts"
+import { SIZES, INTENTS } from "./consts"
 
 export default class PropertyBox extends React.Component {
   state = {
@@ -11,10 +11,11 @@ export default class PropertyBox extends React.Component {
     shortcuts: false,
     size: "small",
     theme: false,
+    intent: "normal",
   }
 
   render() {
-    const { date, disabled, shortcuts, size, theme } = this.state
+    const { date, disabled, shortcuts, size, theme, intent } = this.state
 
     const codes = `${
       date
@@ -48,6 +49,7 @@ export default class PropertyBox extends React.Component {
   }
   ${size === "small" ? "" : `size="${size}"`}
   ${theme ? `theme="light"` : ""}
+  ${intent === "normal" ? "" : `intent="${intent}"`}
 />`
     }`
 
@@ -62,6 +64,7 @@ export default class PropertyBox extends React.Component {
               <DatePicker
                 defaultValue={new Date()}
                 theme={theme ? "light" : null}
+                intent={intent}
                 closeOnSelect
                 disabled={disabled}
                 shortcuts={
@@ -80,6 +83,7 @@ export default class PropertyBox extends React.Component {
               <DatePicker.RangePicker
                 defaultValue={[dateRangeFirst, new Date()]}
                 theme={theme ? "light" : null}
+                intent={intent}
                 closeOnSelect
                 disabled={disabled}
                 onStartDaySelect={() => {}}
@@ -140,6 +144,20 @@ export default class PropertyBox extends React.Component {
                       key={value}
                       active={value === size}
                       onClick={() => this.setState({ size: value })}
+                    >
+                      {text}
+                    </Button>
+                  ))}
+                </Button.Group>
+              </dd>
+              <dt className={styles.controlTitle}>倾向</dt>
+              <dd className={styles.controlContent}>
+                <Button.Group banner>
+                  {INTENTS.map(({ value, text }) => (
+                    <Button
+                      key={value}
+                      active={value === intent}
+                      onClick={() => this.setState({ intent: value })}
                     >
                       {text}
                     </Button>

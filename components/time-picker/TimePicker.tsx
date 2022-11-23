@@ -110,7 +110,6 @@ const TimePicker: React.ForwardRefExoticComponent<
       disabled,
       disabledHours,
       disabledMinutes,
-      intent,
       maxTime,
       minTime,
       onChange,

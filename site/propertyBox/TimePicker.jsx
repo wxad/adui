@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./components/propertyBox.scss"
 import CodeBox from "./components/CodeBox"
 import { Button, Switch, TimePicker } from "../../components"
-import { SIZES } from "./consts"
+import { SIZES, INTENTS } from "./consts"
 
 export default class PropertyBox extends React.Component {
   state = {
@@ -10,16 +10,18 @@ export default class PropertyBox extends React.Component {
     disabled: false,
     size: "small",
     theme: false,
+    intent: "normal",
   }
 
   render() {
-    const { onlyHour, disabled, size, theme } = this.state
+    const { onlyHour, disabled, size, theme, intent } = this.state
 
     const codes = `<TimePicker
   ${disabled ? `disabled` : ""}
   ${onlyHour ? `onlyHour` : ""}
   ${size === "small" ? "" : `size="${size}"`}
   ${theme ? `theme="light"` : ""}
+  ${intent === "normal" ? "" : `intent="${intent}"`}
 />`
 
     const d = new Date()
@@ -38,6 +40,7 @@ export default class PropertyBox extends React.Component {
                 size={size}
                 onlyHour
                 theme={theme ? "light" : null}
+                intent={intent}
               />
             ) : (
               <TimePicker
@@ -48,6 +51,7 @@ export default class PropertyBox extends React.Component {
                 disabled={disabled}
                 size={size}
                 theme={theme ? "light" : null}
+                intent={intent}
               />
             )}
           </div>
@@ -62,6 +66,20 @@ export default class PropertyBox extends React.Component {
                       key={value}
                       active={value === size}
                       onClick={() => this.setState({ size: value })}
+                    >
+                      {text}
+                    </Button>
+                  ))}
+                </Button.Group>
+              </dd>
+              <dt className={styles.controlTitle}>倾向</dt>
+              <dd className={styles.controlContent}>
+                <Button.Group banner>
+                  {INTENTS.map(({ value, text }) => (
+                    <Button
+                      key={value}
+                      active={value === intent}
+                      onClick={() => this.setState({ intent: value })}
                     >
                       {text}
                     </Button>
