@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.43.2](https://github.com/wxad/adui/compare/v2.43.1...v2.43.2) (2022-11-23)
+
+
+### Bug Fixes
+
+* **TimePicker:** 修复 intent 失效 ([2473743](https://github.com/wxad/adui/commit/24737432aa774a05e0ff9655b9cee6af04cbd1ac))
+
 ### [2.43.1](https://github.com/wxad/adui/compare/v2.43.0...v2.43.1) (2022-11-22)
 
 
