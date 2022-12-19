@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[43],{1421:function(e,n){e.exports={content:["article",["p","卡片组件用于卡片布局。"],["h2","何时使用"],["p","待补充"],["h2","API"],["p","卡片组件的属性说明如下："]],meta:{category:"Components",type:"General",title:"Popconfirm",subtitle:"弹出式面板",filename:"components/popconfirm/index.md"}}}}]);
