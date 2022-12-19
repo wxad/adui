@@ -440,6 +440,7 @@ const Transition: React.FC<ITransitionProps> = ({
     animatingPhase.current = phase
     if (phase === "enter") {
       const returns = await animating("enter")
+      // @ts-ignore
       returns.forEach(({ property }) => {
         if (wrapperRef.current) {
           wrapperRef.current.style.setProperty(property, null)
