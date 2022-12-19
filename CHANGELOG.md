@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.44.0](https://github.com/wxad/adui/compare/v2.43.2...v2.44.0) (2022-12-19)
+
+
+### Features
+
+* **TimePicker:** 支持秒的选择 ([2d4efa5](https://github.com/wxad/adui/commit/2d4efa59bf230bcf1c22caf7bb6c2bb09e534cf5))
+
 ### [2.43.2](https://github.com/wxad/adui/compare/v2.43.1...v2.43.2) (2022-11-23)
 
 
