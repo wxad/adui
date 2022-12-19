@@ -15,7 +15,8 @@ import Popover, { IPopoverProps } from "../popover"
 import TimeSelect from "./TimeSelect"
 import "./style"
 import {
-  extractHourAndMinuteFromTime,
+  transformTimeWithSeconds,
+  extractHMSFromTime,
   isLegalTimeString,
   isTimeAfter,
   isTimeBefore,
@@ -51,6 +52,10 @@ export interface ITimePickerProps {
    */
   disabledMinutes?: (minute?: string | null) => boolean | void
   /**
+   * 禁止选择的秒
+   */
+  disabledSeconds?: (second?: string | null) => boolean | void
+  /**
    * 设置输入框类型
    */
   intent?: "normal" | "primary" | "success" | "warning" | "danger"
@@ -79,6 +84,10 @@ export interface ITimePickerProps {
    */
   popoverProps?: IPopoverProps
   /**
+   * 20221216: 支持秒的选择
+   */
+  secondsAvailable?: boolean
+  /**
    * 设置尺寸
    */
   size?: "mini" | "small" | "medium" | "large"
@@ -86,14 +95,6 @@ export interface ITimePickerProps {
    * 外部控制：当前时间
    */
   value?: null | string
-}
-
-export interface ITimePickerState {
-  hour: string | null
-  minute: string | null
-  inputValue?: string | null
-  visible: boolean
-  prevValueProp: null | string
 }
 
 /**
@@ -110,12 +111,14 @@ const TimePicker: React.ForwardRefExoticComponent<
       disabled,
       disabledHours,
       disabledMinutes,
+      disabledSeconds,
       maxTime,
       minTime,
       onChange,
       onlyHour,
       placeholder,
       popoverProps,
+      secondsAvailable = false,
       size: sizeProp,
       value,
       ...otherProps
@@ -124,30 +127,37 @@ const TimePicker: React.ForwardRefExoticComponent<
   ) => {
     const getInitialState = () => {
       const valueState = value !== null ? value : defaultValue
-      const { hour, minute } = extractHourAndMinuteFromTime(valueState)
+      const { hour, minute, second } = extractHMSFromTime(valueState)
       return {
         hour,
         inputValue: valueState || "",
         minute: onlyHour ? "00" : minute,
+        second: secondsAvailable ? second : "00",
         prevValueProp: valueState || "",
         visible: false,
       }
     }
     const initialState = useMemo(getInitialState, [])
-    const [hour, setHour] = useState(initialState.hour)
     const [inputValue, setInputValue] = useState(initialState.inputValue)
+    const [hour, setHour] = useState(initialState.hour)
     const [minute, setMinute] = useState(initialState.minute)
+    const [second, setSecond] = useState(initialState.second)
     const [prevValueProp, setPrevValueProp] = useState(
       initialState.prevValueProp
     )
     const [visible, setVisible] = useState(initialState.visible)
 
     if (value !== null && prevValueProp !== value) {
-      const { hour: newHour, minute: newMinute } =
-        extractHourAndMinuteFromTime(value)
-      setHour(newHour)
+      const {
+        hour: newHour,
+        minute: newMinute,
+        second: newSecond,
+      } = extractHMSFromTime(value)
+
       setInputValue(value || "")
+      setHour(newHour)
       setMinute(onlyHour ? "00" : newMinute)
+      setSecond(secondsAvailable ? newSecond : "00")
       setPrevValueProp(value || "")
     }
 
@@ -160,26 +170,44 @@ const TimePicker: React.ForwardRefExoticComponent<
     const handleClick = (valueNew: string, type: "hour" | "minute") => {
       const valueProp = value
 
-      let inputValueNow =
-        type === "hour"
-          ? `${valueNew}:${minute || ""}`
-          : `${hour || ""}:${valueNew}`
+      let inputValueNow = ""
+      if (secondsAvailable) {
+        if (type === "hour") {
+          inputValueNow = `${valueNew}:${minute || ""}:${second || ""}`
+        } else if (type === "minute") {
+          inputValueNow = `${hour || ""}:${valueNew}:${second || ""}`
+        } else {
+          inputValueNow = `${hour || ""}:${minute || ""}:${valueNew}`
+        }
+      } else {
+        inputValueNow =
+          type === "hour"
+            ? `${valueNew}:${minute || ""}`
+            : `${hour || ""}:${valueNew}`
+      }
 
       if (maxTime && isTimeAfter(inputValueNow, maxTime)) {
-        inputValueNow = maxTime
+        inputValueNow = secondsAvailable
+          ? transformTimeWithSeconds(maxTime)
+          : maxTime
       } else if (minTime && isTimeBefore(inputValueNow, minTime)) {
-        inputValueNow = minTime
+        inputValueNow = secondsAvailable
+          ? transformTimeWithSeconds(minTime)
+          : minTime
       }
+
       if (valueProp === null) {
         const valueFinal = {
           inputValueNow,
-          ...extractHourAndMinuteFromTime(inputValueNow),
+          ...extractHMSFromTime(inputValueNow),
         }
         setHour(valueFinal.hour)
         setMinute(valueFinal.minute)
+        setSecond(valueFinal.second)
         setInputValue(valueFinal.inputValueNow)
       }
-      if (isLegalTimeString(inputValue, onlyHour)) {
+
+      if (isLegalTimeString({ time: inputValue, onlyHour })) {
         if (onChange) {
           onChange(inputValueNow)
         }
@@ -199,7 +227,10 @@ const TimePicker: React.ForwardRefExoticComponent<
       setTimeout(() => {
         const { activeElement } = document
         if (visibleNew || (!visibleNew && inputElement !== activeElement)) {
-          const newInputValue = hour && minute ? `${hour}:${minute}` : ""
+          const withSeconds =
+            hour && minute && second ? `${hour}:${minute}:${second}` : ""
+          const noSeconds = hour && minute ? `${hour}:${minute}` : ""
+          const newInputValue = secondsAvailable ? withSeconds : noSeconds
           if (!visibleNew && inputValue !== newInputValue) {
             setInputValue(newInputValue)
           }
@@ -214,15 +245,22 @@ const TimePicker: React.ForwardRefExoticComponent<
       setInputValue(inputValueNew)
       if (
         inputValueNew === "" ||
-        (isLegalTimeString(inputValueNew, onlyHour) &&
+        (isLegalTimeString({
+          time: inputValueNew,
+          onlyHour,
+        }) &&
           !isTimeAfter(inputValueNew, maxTime) &&
           !isTimeBefore(inputValueNew, minTime))
       ) {
-        const { hour: hourNew, minute: minuteNew } =
-          extractHourAndMinuteFromTime(inputValueNew)
+        const {
+          hour: hourNew,
+          minute: minuteNew,
+          second: secondNew,
+        } = extractHMSFromTime(inputValueNew)
         if (
           !(disabledHours && disabledHours(hourNew)) &&
-          !(disabledMinutes && disabledMinutes(minuteNew))
+          !(disabledMinutes && disabledMinutes(minuteNew)) &&
+          !(disabledSeconds && disabledSeconds(secondNew))
         ) {
           if (onChange) {
             onChange(inputValueNew)
@@ -230,6 +268,7 @@ const TimePicker: React.ForwardRefExoticComponent<
           if (value === null) {
             setHour(hourNew)
             setMinute(onlyHour ? "00" : minuteNew)
+            setSecond(secondsAvailable ? secondNew : "00")
           }
         }
       }
@@ -259,7 +298,10 @@ const TimePicker: React.ForwardRefExoticComponent<
     const classSet = classNames(
       className,
       `${prefix}-input`,
-      `${prefix}-${size}`
+      `${prefix}-${size}`,
+      {
+        [`${prefix}-secondsAvailable`]: secondsAvailable,
+      }
     )
 
     return (
@@ -291,6 +333,19 @@ const TimePicker: React.ForwardRefExoticComponent<
                 type="minute"
               />
             )}
+            {secondsAvailable && (
+              <TimeSelect
+                disabledSeconds={disabledSeconds}
+                onChange={handleClick}
+                currentHour={hour ? parseInt(hour, 10) : null}
+                currentMinute={minute ? parseInt(minute, 10) : null}
+                maxTime={maxTime}
+                minTime={minTime}
+                selectedValue={second}
+                size={size}
+                type="second"
+              />
+            )}
           </div>
         }
         trigger="click"
@@ -300,7 +355,7 @@ const TimePicker: React.ForwardRefExoticComponent<
         <Input
           className={classSet}
           cleaveOptions={{
-            blocks: [2, 2],
+            blocks: secondsAvailable ? [2, 2, 2] : [2, 2],
             delimiter: ":",
           }}
           disabled={disabled}
@@ -345,6 +400,10 @@ TimePicker.propTypes = {
    * 禁止选择的分钟
    */
   disabledMinutes: PropTypes.func,
+  /**
+   * 禁止选择的秒
+   */
+  disabledSeconds: PropTypes.func,
   /**
    * 设置输入框类型
    */
@@ -392,12 +451,14 @@ TimePicker.defaultProps = {
   disabled: false,
   disabledHours: noop,
   disabledMinutes: noop,
+  disabledSeconds: noop,
   intent: "normal",
   maxTime: "24:00",
   minTime: null,
   onChange: noop,
   onlyHour: false,
   placeholder: "请选择",
+  secondsAvailable: false,
   size: "small",
   value: null,
 }

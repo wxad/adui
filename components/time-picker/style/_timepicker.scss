@@ -20,6 +20,12 @@ $prefix: "adui-time";
     width: calc(var(--width) * 1px);
   }
 
+  &-secondsAvailable {
+    &.#{$prefix}-input {
+      width: calc(var(--width) * 1px + 10px);
+    }
+  }
+
   // TimeSelect
   &-timeSelect {
     display: inline-block;

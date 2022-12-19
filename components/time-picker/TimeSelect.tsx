@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, {
   forwardRef,
   useContext,
@@ -11,7 +10,7 @@ import PropTypes from "prop-types"
 import classNames from "classnames"
 import { getRequestAnimationFrame } from "../_util/raf"
 import "./style"
-import { extractHourAndMinuteFromTime, hours, minutes } from "./core"
+import { extractHMSFromTime, hours, minutes, seconds } from "./core"
 import { ConfigContext, getComputedSize } from "../config-provider"
 
 const prefix = "adui-time"
@@ -20,15 +19,17 @@ const noop = () => {}
 export interface ITimeSelectProps {
   [key: string]: any
   currentHour?: number | null
+  currentMinute?: number | null
   disabledHours?: (hour?: string | null) => boolean | void
   disabledMinutes?: (minute?: string | null) => boolean | void
+  disabledSeconds?: (second?: string | null) => boolean | void
   maxTime?: string | null
   minTime?: string | null
-  onChange: (value: string, type: "hour" | "minute") => void
+  onChange: (value: string, type: "hour" | "minute" | "second") => void
   onlyHour?: boolean
   size?: "mini" | "small" | "medium" | "large"
   selectedValue?: null | string
-  type: "hour" | "minute"
+  type: "hour" | "minute" | "second"
 }
 
 const scrollTo = (element: HTMLDivElement, to: number, duration: number) => {
@@ -56,8 +57,10 @@ const TimeSelect: React.ForwardRefExoticComponent<
   (
     {
       currentHour,
+      currentMinute,
       disabledHours,
       disabledMinutes,
+      disabledSeconds,
       maxTime,
       minTime,
       onChange,
@@ -84,8 +87,10 @@ const TimeSelect: React.ForwardRefExoticComponent<
       value: number,
       minHour: number,
       minMinute: number,
+      minSecond: number,
       maxHour: number,
       maxMinute: number,
+      maxSecond: number,
       isOnlyHour?: boolean
     ) => {
       if (type === "hour") {
@@ -95,17 +100,50 @@ const TimeSelect: React.ForwardRefExoticComponent<
           value > (isOnlyHour && !maxTime ? "24:00" : maxHour)
         )
       }
-      // 在同一个小时内
-      if (minHour === maxHour) {
-        return value < minMinute || value > maxMinute
+      if (type === "minute") {
+        // 在同一个小时内
+        if (minHour === maxHour) {
+          return value < minMinute || value > maxMinute
+        }
+        // 在最小的小时内时，这时候要把 minMinute 以下的 disabled
+        if (minHour === currentHour) {
+          return value < minMinute
+        }
+        // 在最大的小时内时，这时候要把 maxMinute 以上的 disabled
+        if (maxHour === currentHour) {
+          return value > maxMinute
+        }
       }
-      // 在最小的小时内时，这时候要把 minMinute 以下的 disabled
-      if (minHour === currentHour) {
-        return value < minMinute
-      }
-      // 在最大的小时内时，这时候要把 maxMinute 以上的 disabled
-      if (maxHour === currentHour) {
-        return value > maxMinute
+      if (type === "second") {
+        // 在同一个小时内
+        if (minHour === maxHour) {
+          // 在同一个分钟内
+          if (minMinute === maxMinute) {
+            return value < minSecond || value > maxSecond
+          }
+          // 在最小的分钟内时，这时候要把 minSecond 以下的 disabled
+          if (minMinute === currentMinute) {
+            return value < minSecond
+          }
+          // 在最大的分钟内时，这时候要把 maxSecond 以上的 disabled
+          if (maxMinute === currentMinute) {
+            return value > maxSecond
+          }
+        }
+        // 在最小的小时内时，这时候要把 minMinute 以下的 disabled
+        if (minHour === currentHour) {
+          // 在最小的小时内时，这时候要把 minMinute 以下的 disabled
+          if (minMinute === currentMinute) {
+            return value < minSecond
+          }
+        }
+        // 在最大的小时内时，这时候要把 maxMinute 以上的 disabled
+        if (maxHour === currentHour) {
+          // 在最大的小时内时，这时候要把 maxMinute 以上的 disabled
+          if (maxMinute === currentMinute) {
+            return value > maxSecond
+          }
+        }
       }
 
       return false
@@ -144,13 +182,21 @@ const TimeSelect: React.ForwardRefExoticComponent<
       }
     )
 
-    const { hour: minHour, minute: minMinute } =
-      extractHourAndMinuteFromTime(minTime)
-    const { hour: maxHour, minute: maxMinute } =
-      extractHourAndMinuteFromTime(maxTime)
+    const {
+      hour: minHour,
+      minute: minMinute,
+      second: minSecond,
+    } = extractHMSFromTime(minTime)
+    const {
+      hour: maxHour,
+      minute: maxMinute,
+      second: maxSecond,
+    } = extractHMSFromTime(maxTime)
 
     let items: string[] = []
-    if (type === "minute") {
+    if (type === "second") {
+      items = seconds
+    } else if (type === "minute") {
       items = minutes
     } else {
       items = hours
@@ -163,14 +209,18 @@ const TimeSelect: React.ForwardRefExoticComponent<
             parseInt(value, 10),
             parseInt(minHour || "00", 10),
             parseInt(minMinute || "00", 10),
+            parseInt(minSecond || "00", 10),
             parseInt(maxHour || "24", 10),
             parseInt(maxMinute || "59", 10),
+            parseInt(maxSecond || "59", 10),
             onlyHour
           )
+
           if (
             ((disabled || (disabledHours && disabledHours(value))) &&
               type === "hour") ||
-            (disabledMinutes && disabledMinutes(value) && type === "minute")
+            (disabledMinutes && disabledMinutes(value) && type === "minute") ||
+            (disabledSeconds && disabledSeconds(value) && type === "second")
           ) {
             // 小时的 disabled 直接不显示，而不是做 disabled 处理
             // 分钟的 disabled 显示，如果传入了 disabledMinutes 则不显示
@@ -209,6 +259,10 @@ TimeSelect.propTypes = {
    */
   currentHour: PropTypes.number,
   /**
+   * 当前分钟值
+   */
+  currentMinute: PropTypes.number,
+  /**
    * 不可选的小时
    */
   disabledHours: PropTypes.func,
@@ -216,6 +270,10 @@ TimeSelect.propTypes = {
    * 不可选的分钟
    */
   disabledMinutes: PropTypes.func,
+  /**
+   * 不可选的秒
+   */
+  disabledSeconds: PropTypes.func,
   /**
    * 可选时间段的最大值
    */
@@ -248,8 +306,10 @@ TimeSelect.propTypes = {
 
 TimeSelect.defaultProps = {
   currentHour: null,
+  currentMinute: null,
   disabledHours: noop,
   disabledMinutes: noop,
+  disabledSeconds: noop,
   maxTime: "24:00",
   minTime: "00:00",
   onChange: noop,
