@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.44.1](https://github.com/wxad/adui/compare/v2.44.0...v2.44.1) (2023-03-29)
+
+
+### Bug Fixes
+
+* **TreeSelect:** 修复 inline-block 内部高度 34px，外层 30px 的问题 ([f69066c](https://github.com/wxad/adui/commit/f69066c66195237c5863e27316cf6dbc0f5ee0a3))
+
 ## [2.44.0](https://github.com/wxad/adui/compare/v2.43.2...v2.44.0) (2022-12-19)
 
 
