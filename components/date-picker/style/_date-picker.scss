@@ -154,6 +154,8 @@ $prefix: "adui-date";
     &.#{$prefix}-disabled {
       color: var(--gray-600) !important;
       cursor: not-allowed;
+      // pointer-events 需保留，否则 disabledDays 将无效
+      pointer-events: none;
     }
   }
   &-cell {
