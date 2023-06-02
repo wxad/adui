@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.44.3](https://github.com/wxad/adui/compare/v2.44.2...v2.44.3) (2023-06-02)
+
+
+### Bug Fixes
+
+* **Input:** 修正Input在NumbericInput中使用时光标位置不稳定的问题 ([95671c3](https://github.com/wxad/adui/commit/95671c3eac59506d500894a9ff6e3741a5d6701f))
+
 ### [2.44.2](https://github.com/wxad/adui/compare/v2.44.1...v2.44.2) (2023-04-06)
 
 
