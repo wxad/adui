@@ -2,9 +2,9 @@ import React, {
   forwardRef,
   useContext,
   useImperativeHandle,
-  useEffect,
   useRef,
   useState,
+  useLayoutEffect,
 } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
@@ -229,7 +229,17 @@ const Input: IInput = forwardRef(
           properties.result = value
         }
         if (element && element.value !== value && value) {
+          // 保存光标位置等后续恢复
+          const pos = element.selectionStart
+
           element.value = value
+
+          // 简单等待一个microtask，否则无法设置光标位置
+          // eslint-disable-next-line max-len
+          // see: https://github.com/zloirock/core-js/blob/master/packages/core-js/internals/microtask.js#LL46C61-L46C61
+          Promise.resolve().then(() => {
+            element.setSelectionRange(pos, pos)
+          })
         }
       }
     }
@@ -350,7 +360,7 @@ const Input: IInput = forwardRef(
       return Math.ceil(realLength)
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       updateElementsWidth()
       syncCleave()
     })
