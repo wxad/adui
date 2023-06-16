@@ -1523,7 +1523,9 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
             ...((getRowStyle && getRowStyle(row, rowIndex)) || {}),
             ...(style || {}),
           }}
-          {...((getRowProps && getRowProps(row, rowIndex)) || {})}
+          {...omit((getRowProps && getRowProps(row, rowIndex)) || {}, [
+            "popover",
+          ])}
         >
           {theadPlaceholderVisible && (
             <div
