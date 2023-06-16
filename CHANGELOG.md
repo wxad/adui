@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.44.4](https://github.com/wxad/adui/compare/v2.44.3...v2.44.4) (2023-06-16)
+
+
+### Bug Fixes
+
+* **Table:** 修复 Chrome 新版支持 popover 原生 Prop 造成的 Bug ([5d80116](https://github.com/wxad/adui/commit/5d801162716f5a0f8f215b9f08e8e9792fc466be))
+
 ### [2.44.3](https://github.com/wxad/adui/compare/v2.44.2...v2.44.3) (2023-06-02)
 
 
