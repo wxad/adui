@@ -329,7 +329,7 @@ class Home extends React.Component {
                   AD UI 建议以简单、合理的方案解决后台系统中的实际使用问题。
                 </p>
                 <div className={styles["footer-contact"]}>
-                  yijiejiang@tencent.com
+                  <del>yijiejiang@tencent.com</del> adui has been deprecated, it belongs to the past days of WeChat Ads Design. I will try my best to keep fixing bugs and maintaining it.
                 </div>
               </footer>
             </div>
