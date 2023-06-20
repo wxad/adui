@@ -973,7 +973,7 @@ class SiteLayout extends React.Component {
                       </p>
                     </div>
                     <p className={styles.connection}>
-                      如有任何优化建议，请联系我们：yijiejiang@tencent.com
+                      <del>如有任何优化建议，请联系我们：yijiejiang@tencent.com</del> adui has been deprecated, it belongs to the past days of WeChat Ads Design. I will try my best to keep fixing bugs and maintaining it.
                     </p>
                   </div>
                 </div>
