@@ -203,6 +203,7 @@
   "node-tree-outlined": string;
   "number": string;
   "offiaccount": string;
+  "optimize-circle": string;
   "order": string;
   "overstriking": string;
   "pause-circle-outlined": string;

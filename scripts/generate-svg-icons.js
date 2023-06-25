@@ -19,10 +19,10 @@ async function writeLinesToFile(filename, filepath) {
   fs.writeFileSync(outputPath, contents)
 }
 
-writeLinesToFile(
-  "IconShowData.js",
-  "../node_modules/adui-icon/lib/data/icon-types/type-data.js"
-)
+// writeLinesToFile(
+//   "IconShowData.js",
+//   "../node_modules/adui-icon/lib/data/icon-types/type-data.js"
+// )
 writeLinesToFile(
   "IconSvgPaths.ts",
   "../node_modules/adui-icon/lib/data/path/path.ts"
