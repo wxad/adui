@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.44.6](https://github.com/wxad/adui/compare/v2.44.5...v2.44.6) (2023-06-28)
+
+
+### Bug Fixes
+
+* **DatePicker, RangePicker:** 修复 click 事件覆盖 ([e8a1d8f](https://github.com/wxad/adui/commit/e8a1d8f7f40dc82eb7cd9f063ce4bb4d9d97b14a))
+
 ### [2.44.5](https://github.com/wxad/adui/compare/v2.44.4...v2.44.5) (2023-06-28)
 
 
