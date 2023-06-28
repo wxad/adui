@@ -185,6 +185,7 @@ const RangePicker: React.ForwardRefExoticComponent<
       maxDate,
       minDate,
       onChange,
+      onClick,
       onEndDaySelect,
       onStartDaySelect,
       onVisibleChange,
@@ -621,6 +622,9 @@ const RangePicker: React.ForwardRefExoticComponent<
         onFocus={handleInputFocus}
         onKeyDown={handleInputKeyDown}
         onClick={() => {
+          if (onClick) {
+            onClick()
+          }
           nextClickInsideRef.current = true
         }}
         placeholder={placeholder}

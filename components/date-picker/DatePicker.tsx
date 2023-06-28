@@ -177,6 +177,7 @@ const DatePicker: IDatePicker = forwardRef(
       maxDate,
       minDate,
       onChange,
+      onClick,
       onVisibleChange,
       placeholder,
       placement,
@@ -453,6 +454,9 @@ const DatePicker: IDatePicker = forwardRef(
         onFocus={handleInputFocus}
         onKeyDown={handleInputKeyDown}
         onClick={() => {
+          if (onClick) {
+            onClick()
+          }
           nextClickInsideRef.current = true
         }}
         placeholder={placeholder}
