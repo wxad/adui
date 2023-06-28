@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   useContext,
   useImperativeHandle,
+  useEffect,
   useRef,
   useState,
 } from "react"
@@ -247,6 +248,17 @@ const DatePicker: IDatePicker = forwardRef(
     const { size: sizeContext } = useContext(ConfigContext)
     const size = getComputedSize(sizeProp, sizeContext)
 
+    useEffect(() => {
+      if (inputRef.current) {
+        const wrapper = inputRef.current.wrapper as HTMLDivElement
+        if (wrapper) {
+          wrapper.addEventListener("click", (e) => {
+            e.stopPropagation()
+          })
+        }
+      }
+    }, [])
+
     const classSet = classNames(
       className,
       `${prefix}-dateBase`,
@@ -264,25 +276,20 @@ const DatePicker: IDatePicker = forwardRef(
     }
 
     const handleVisibleChange = (bool: boolean) => {
-      const { input: inputElement } = inputRef.current || {}
       if (disabled) {
         return
       }
-      setTimeout(() => {
-        const { activeElement } = document
-        if (bool || (!bool && inputElement !== activeElement)) {
-          const newVal = convertDateToString(selectedDay)
-          if (!bool && value !== newVal) {
-            setValue(newVal)
-          }
-          if (onVisibleChange) {
-            onVisibleChange(bool)
-          }
-          if (visibleProp === null) {
-            setVisible(bool)
-          }
-        }
-      }, 0)
+
+      const newVal = convertDateToString(selectedDay)
+      if (!bool && value !== newVal) {
+        setValue(newVal)
+      }
+      if (onVisibleChange) {
+        onVisibleChange(bool)
+      }
+      if (visibleProp === null) {
+        setVisible(bool)
+      }
     }
 
     const handleDayClick = (
@@ -464,7 +471,7 @@ const DatePicker: IDatePicker = forwardRef(
               onMouseLeave={() => {
                 setClearIconState("out")
               }}
-              onClick={(e) => {
+              onMouseDown={(e) => {
                 if (value) {
                   e.stopPropagation()
                   if (valueProp === null) {
@@ -487,7 +494,12 @@ const DatePicker: IDatePicker = forwardRef(
               }}
             />
           ) : (
-            <Icon icon="calendar-outlined" />
+            <Icon
+              icon="calendar-outlined"
+              onMouseDown={() => {
+                handleVisibleChange(!visible)
+              }}
+            />
           )
         }
         size={size}

@@ -33,6 +33,10 @@ export interface IIconProps {
    */
   onClick?: ((e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void) | null
   /**
+   * onMouseDown 的 handler
+   */
+  onMouseDown?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void
+  /**
    * 自定义图标 path 路径
    */
   paths?: string[]
@@ -140,6 +144,10 @@ Icon.propTypes = {
    */
   onClick: PropTypes.func,
   /**
+   * onMouseDown 的 handler
+   */
+  onMouseDown: PropTypes.func,
+  /**
    * 自定义图标 path 路径
    */
   paths: PropTypes.array,
@@ -155,6 +163,7 @@ Icon.defaultProps = {
   icon: undefined,
   interactive: false,
   onClick: null,
+  onMouseDown: undefined,
   paths: undefined,
   size: 18,
 }
