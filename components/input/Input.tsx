@@ -368,6 +368,7 @@ const Input: IInput = forwardRef(
     useImperativeHandle(ref, () => {
       const realRef = inputRef?.current || cleaveRef?.current?.element
       return {
+        wrapper: wrapperElementRef?.current,
         cleave: cleaveRef?.current,
         input: realRef,
         leftElement: leftElementRef?.current,

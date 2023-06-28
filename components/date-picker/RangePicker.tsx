@@ -4,6 +4,7 @@
 import React, {
   forwardRef,
   useContext,
+  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -272,6 +273,17 @@ const RangePicker: React.ForwardRefExoticComponent<
     const { size: sizeContext } = useContext(ConfigContext)
     const size = getComputedSize(sizeProp, sizeContext)
 
+    useEffect(() => {
+      if (inputRef.current) {
+        const wrapper = inputRef.current.wrapper as HTMLDivElement
+        if (wrapper) {
+          wrapper.addEventListener("click", (e) => {
+            e.stopPropagation()
+          })
+        }
+      }
+    }, [])
+
     const classSet = classNames(
       className,
       `${prefix}-rangeBase`,
@@ -321,35 +333,30 @@ const RangePicker: React.ForwardRefExoticComponent<
     }
 
     const handleVisibleChange = (bool: boolean) => {
-      const { input: inputElement } = inputRef.current || {}
       if (disabled) {
         return
       }
-      setTimeout(() => {
-        const { activeElement } = document
-        if (bool || (!bool && inputElement !== activeElement)) {
-          const newVal = convertDateRangeToString([from, to])
-          if (!bool) {
-            if (!to) {
-              if (newVal) {
-                const rangeReset = rangeValue.split(" - ")
-                setTimeout(() => {
-                  setFrom(new Date(rangeReset[0]))
-                  setTo(new Date(rangeReset[1]))
-                }, 250)
-              }
-            } else if (rangeValue !== newVal) {
-              setRangeValue(newVal)
-            }
+
+      const newVal = convertDateRangeToString([from, to])
+      if (!bool) {
+        if (!to) {
+          if (newVal) {
+            const rangeReset = rangeValue.split(" - ")
+            setTimeout(() => {
+              setFrom(new Date(rangeReset[0]))
+              setTo(new Date(rangeReset[1]))
+            }, 250)
           }
-          if (onVisibleChange) {
-            onVisibleChange(bool)
-          }
-          if (visibleProp === null) {
-            setVisible(bool)
-          }
+        } else if (rangeValue !== newVal) {
+          setRangeValue(newVal)
         }
-      }, 0)
+      }
+      if (onVisibleChange) {
+        onVisibleChange(bool)
+      }
+      if (visibleProp === null) {
+        setVisible(bool)
+      }
     }
 
     const isSelectingFirstDay = (
@@ -632,7 +639,7 @@ const RangePicker: React.ForwardRefExoticComponent<
               onMouseLeave={() => {
                 setClearIconState("out")
               }}
-              onClick={(e) => {
+              onMouseDown={(e) => {
                 if (rangeValue) {
                   e.stopPropagation()
                   if (valueProp === null) {
@@ -656,7 +663,12 @@ const RangePicker: React.ForwardRefExoticComponent<
               }}
             />
           ) : (
-            <Icon icon="calendar-outlined" />
+            <Icon
+              icon="calendar-outlined"
+              onMouseDown={() => {
+                handleVisibleChange(!visible)
+              }}
+            />
           )
         }
         size={size}
