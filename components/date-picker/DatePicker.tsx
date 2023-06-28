@@ -231,6 +231,7 @@ const DatePicker: IDatePicker = forwardRef(
       return false
     })
     const [clearIconState, setClearIconState] = useState<"in" | "out">("out")
+    const nextClickInsideRef = useRef(false)
 
     // 相当于生命周期 getDerivedStateFromProps
     if (valueProp !== null && selectedDay !== valueProp) {
@@ -264,13 +265,17 @@ const DatePicker: IDatePicker = forwardRef(
     }
 
     const handleVisibleChange = (bool: boolean) => {
-      const { input: inputElement } = inputRef.current || {}
       if (disabled) {
         return
       }
       setTimeout(() => {
-        const { activeElement } = document
-        if (bool || (!bool && inputElement !== activeElement)) {
+        if (nextClickInsideRef.current === true) {
+            nextClickInsideRef.current = false
+            // 展开时，如果在内部元素点击，则不做默认的收起操作
+            if (!bool) {
+                return
+            }
+        }
           const newVal = convertDateToString(selectedDay)
           if (!bool && value !== newVal) {
             setValue(newVal)
@@ -281,7 +286,6 @@ const DatePicker: IDatePicker = forwardRef(
           if (visibleProp === null) {
             setVisible(bool)
           }
-        }
       }, 0)
     }
 
@@ -448,6 +452,9 @@ const DatePicker: IDatePicker = forwardRef(
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         onKeyDown={handleInputKeyDown}
+        onClick={() => {
+            nextClickInsideRef.current = true
+        }}
         placeholder={placeholder}
         ref={inputRef}
         rightElement={
@@ -483,11 +490,22 @@ const DatePicker: IDatePicker = forwardRef(
                       setVisible(false)
                     }
                   }
+
+                  setTimeout(() => {
+                    nextClickInsideRef.current = false
+                  })
                 }
               }}
             />
           ) : (
-            <Icon icon="calendar-outlined" />
+            <Icon icon="calendar-outlined" onClick={() => {
+                // setTimeout 用于覆盖 Input 本身设置的 nextClickInsideRef
+                // 注意 下一次 handleVisibleChange 调用中的 setTimeout
+                // 由于是在全局 click 事件中触发，因此可以保证顺序在此之后
+                setTimeout(() => {
+                    nextClickInsideRef.current = false
+                })
+            }}/>
           )
         }
         size={size}
