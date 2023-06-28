@@ -270,22 +270,22 @@ const DatePicker: IDatePicker = forwardRef(
       }
       setTimeout(() => {
         if (nextClickInsideRef.current === true) {
-            nextClickInsideRef.current = false
-            // 展开时，如果在内部元素点击，则不做默认的收起操作
-            if (!bool) {
-                return
-            }
+          nextClickInsideRef.current = false
+          // 展开时，如果在内部元素点击，则不做默认的收起操作
+          if (!bool) {
+            return
+          }
         }
-          const newVal = convertDateToString(selectedDay)
-          if (!bool && value !== newVal) {
-            setValue(newVal)
-          }
-          if (onVisibleChange) {
-            onVisibleChange(bool)
-          }
-          if (visibleProp === null) {
-            setVisible(bool)
-          }
+        const newVal = convertDateToString(selectedDay)
+        if (!bool && value !== newVal) {
+          setValue(newVal)
+        }
+        if (onVisibleChange) {
+          onVisibleChange(bool)
+        }
+        if (visibleProp === null) {
+          setVisible(bool)
+        }
       }, 0)
     }
 
@@ -453,7 +453,7 @@ const DatePicker: IDatePicker = forwardRef(
         onFocus={handleInputFocus}
         onKeyDown={handleInputKeyDown}
         onClick={() => {
-            nextClickInsideRef.current = true
+          nextClickInsideRef.current = true
         }}
         placeholder={placeholder}
         ref={inputRef}
@@ -498,14 +498,17 @@ const DatePicker: IDatePicker = forwardRef(
               }}
             />
           ) : (
-            <Icon icon="calendar-outlined" onClick={() => {
+            <Icon
+              icon="calendar-outlined"
+              onClick={() => {
                 // setTimeout 用于覆盖 Input 本身设置的 nextClickInsideRef
                 // 注意 下一次 handleVisibleChange 调用中的 setTimeout
                 // 由于是在全局 click 事件中触发，因此可以保证顺序在此之后
                 setTimeout(() => {
-                    nextClickInsideRef.current = false
+                  nextClickInsideRef.current = false
                 })
-            }}/>
+              }}
+            />
           )
         }
         size={size}

@@ -250,6 +250,7 @@ const RangePicker: React.ForwardRefExoticComponent<
       return false
     })
     const [clearIconState, setClearIconState] = useState<"in" | "out">("out")
+    const nextClickInsideRef = useRef(false)
 
     // 相当于生命周期 getDerivedStateFromProps
     if (
@@ -321,33 +322,36 @@ const RangePicker: React.ForwardRefExoticComponent<
     }
 
     const handleVisibleChange = (bool: boolean) => {
-      const { input: inputElement } = inputRef.current || {}
       if (disabled) {
         return
       }
       setTimeout(() => {
-        const { activeElement } = document
-        if (bool || (!bool && inputElement !== activeElement)) {
-          const newVal = convertDateRangeToString([from, to])
+        if (nextClickInsideRef.current === true) {
+          nextClickInsideRef.current = false
+          // 展开时，如果在内部元素点击，则不做默认的收起操作
           if (!bool) {
-            if (!to) {
-              if (newVal) {
-                const rangeReset = rangeValue.split(" - ")
-                setTimeout(() => {
-                  setFrom(new Date(rangeReset[0]))
-                  setTo(new Date(rangeReset[1]))
-                }, 250)
-              }
-            } else if (rangeValue !== newVal) {
-              setRangeValue(newVal)
+            return
+          }
+        }
+        const newVal = convertDateRangeToString([from, to])
+        if (!bool) {
+          if (!to) {
+            if (newVal) {
+              const rangeReset = rangeValue.split(" - ")
+              setTimeout(() => {
+                setFrom(new Date(rangeReset[0]))
+                setTo(new Date(rangeReset[1]))
+              }, 250)
             }
+          } else if (rangeValue !== newVal) {
+            setRangeValue(newVal)
           }
-          if (onVisibleChange) {
-            onVisibleChange(bool)
-          }
-          if (visibleProp === null) {
-            setVisible(bool)
-          }
+        }
+        if (onVisibleChange) {
+          onVisibleChange(bool)
+        }
+        if (visibleProp === null) {
+          setVisible(bool)
         }
       }, 0)
     }
@@ -616,6 +620,9 @@ const RangePicker: React.ForwardRefExoticComponent<
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         onKeyDown={handleInputKeyDown}
+        onClick={() => {
+          nextClickInsideRef.current = true
+        }}
         placeholder={placeholder}
         ref={inputRef}
         rightElement={
@@ -652,11 +659,25 @@ const RangePicker: React.ForwardRefExoticComponent<
                       setVisible(false)
                     }
                   }
+
+                  setTimeout(() => {
+                    nextClickInsideRef.current = false
+                  })
                 }
               }}
             />
           ) : (
-            <Icon icon="calendar-outlined" />
+            <Icon
+              icon="calendar-outlined"
+              onClick={() => {
+                // setTimeout 用于覆盖 Input 本身设置的 nextClickInsideRef
+                // 注意 下一次 handleVisibleChange 调用中的 setTimeout
+                // 由于是在全局 click 事件中触发，因此可以保证顺序在此之后
+                setTimeout(() => {
+                  nextClickInsideRef.current = false
+                })
+              }}
+            />
           )
         }
         size={size}
