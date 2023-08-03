@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.44.7](https://github.com/wxad/adui/compare/v2.44.6...v2.44.7) (2023-08-03)
+
 ### [2.44.6](https://github.com/wxad/adui/compare/v2.44.5...v2.44.6) (2023-06-28)
 
 
