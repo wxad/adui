@@ -709,7 +709,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
               searchable ? "adui-select-dropdown-searchable" : ""
             }`}
             dropdownRender={this.handleDropdownRender}
-            inputIcon={
+            suffixIcon={
               <>
                 {placeholderShow &&
                   (typeof (placeholderText || placeholder || "") ===
