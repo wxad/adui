@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.44.11](https://github.com/wxad/adui/compare/v2.44.10...v2.44.11) (2023-09-26)
+
+
+### Bug Fixes
+
+* **NumericInput:** 尝试修复在外层 prop 变化时，如果 document.activeElement 仍然是 input，导致的问题，https://codesandbox.io/s/zealous-browser-98m26n?file=/index.js ([0b7d7bc](https://github.com/wxad/adui/commit/0b7d7bcf934d44ee9ed4ee1285bab33057b15f51))
+
 ### [2.44.10](https://github.com/wxad/adui/compare/v2.44.8...v2.44.10) (2023-08-28)
 
 ### [2.44.9](https://github.com/wxad/adui/compare/v2.44.8...v2.44.9) (2023-08-28)
