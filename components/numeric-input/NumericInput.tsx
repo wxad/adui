@@ -1,4 +1,10 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from "react"
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+  memo,
+} from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import Input, { IInputProps, IInputRef } from "../input"
@@ -270,4 +276,12 @@ NumericInput.defaultProps = {
   value: null,
 }
 
-export default NumericInput
+const MemoNumericInput = memo(
+  NumericInput,
+  (prevProps, nextProps) =>
+    JSON.stringify(prevProps) === JSON.stringify(nextProps)
+)
+
+MemoNumericInput.displayName = "NumericInput"
+
+export default MemoNumericInput
