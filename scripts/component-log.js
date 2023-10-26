@@ -24,9 +24,8 @@ function getTagDate(tag) {
 }
 
 function getCommits(tag1, tag2) {
-  const output = execSync(
-    `git log ${tag1}..${tag2} --pretty=format:%H:%s`
-  ).toString()
+  const range = tag1 ? `${tag1}..${tag2}` : tag2
+  const output = execSync(`git log ${range} --pretty=format:%H:%s`).toString()
   return output.trim().split("\n")
 }
 
