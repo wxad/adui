@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{1320:function(e,n){e.exports={content:["article",["p","面包屑用于展示当前和历史的行为路径、所在位置，并能够依据线性逻辑进行返回。"],["h2","Props"],["h3","Breadcrumb"],["h3","Breadcrumb.Item"]],meta:{category:"Components",type:"General",title:"Breadcrumb",subtitle:"面包屑",filename:"components/breadcrumb/index.md"}}}}]);
