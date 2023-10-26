@@ -278,8 +278,14 @@ NumericInput.defaultProps = {
 
 const MemoNumericInput = memo(
   NumericInput,
-  (prevProps, nextProps) =>
-    JSON.stringify(prevProps) === JSON.stringify(nextProps)
+  (
+    { leftElement, rightElement, ...prevProps },
+    {
+      leftElement: leftElementNext,
+      rightElement: rightElementNext,
+      ...nextProps
+    }
+  ) => JSON.stringify(prevProps) === JSON.stringify(nextProps)
 )
 
 MemoNumericInput.displayName = "NumericInput"
