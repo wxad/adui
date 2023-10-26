@@ -7,6 +7,7 @@ import capitalize from "capitalize"
 import { transform } from "@babel/standalone"
 import classNames from "classnames"
 import { Alert, Icon, Input, Switch, Select, Table, Tag } from "componentPath"
+import logs from "../../component-changelog.json"
 
 const Option = Select.Option
 import * as Components from "componentPath"
@@ -603,6 +604,7 @@ export default class ComponentDoc extends React.Component {
      */
     const { title, subtitle } = meta
     const Property = propertyboxes[title] || null
+    const log = logs[title]
 
     return (
       <div
@@ -847,6 +849,85 @@ export default class ComponentDoc extends React.Component {
               )
             }
           })}
+        {!!log && (
+          <section>
+            <div
+              style={{
+                marginTop: "72px",
+                marginBottom: "20px",
+                fontSize: "24px",
+                lineHeight: "28px",
+                color: "#1f1f1f",
+                fontWeight: 600,
+              }}
+              className="scrollPoint"
+            >
+              更新日志
+            </div>
+            {Object.keys(log).map((version) => {
+              return (
+                <div key={version}>
+                  <div
+                    style={{
+                      marginBottom: "6px",
+                      fontSize: "20px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {version}
+                  </div>
+                  <div
+                    style={{
+                      marginBottom: "12px",
+                      fontSize: "14px",
+                      color: "var(--gray-700)",
+                    }}
+                  >
+                    {log[version].date.split(" ")[0]}
+                  </div>
+                  <div
+                    style={{
+                      marginBottom: "64px",
+                      padding: "12px 24px",
+                      boxShadow: "1px 0 0 0 var(--primary-color) inset",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "12px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      {log[version].logs.map((l, i) => {
+                        return (
+                          <div key={i}>
+                            <span>
+                              {l.type === "fix" && "🐞"}
+                              {l.type === "feat" && "🆕"}
+                              {l.type === "refactor" && "🛠"} {l.text}
+                            </span>
+                            <span>
+                              (
+                              <a
+                                href={`https://github.com/wxad/adui/commit/${l.hash}`}
+                                target="_blank"
+                              >
+                                #{l.hash.slice(0, 6)}
+                              </a>
+                              )
+                            </span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </section>
+        )}
       </div>
     )
   }

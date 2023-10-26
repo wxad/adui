@@ -76,7 +76,8 @@
     "release": "standard-version",
     "release-minor": "npm run release -- --release-as minor",
     "prepublishOnly": "npm run compile",
-    "prettier": "prettier -c --write components"
+    "prettier": "prettier -c --write components",
+    "component-log": "node scripts/component-log.js"
   },
   "husky": {
     "hooks": {

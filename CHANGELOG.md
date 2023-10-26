@@ -1,6 +1,7 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+现在（2023.10.26），每个组件页都增加了独立的 Changelog，可在组件页的底部找到。
+
 
 ### [2.44.11](https://github.com/wxad/adui/compare/v2.44.10...v2.44.11) (2023-09-26)
 

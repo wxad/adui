@@ -1,0 +1,1800 @@
+{
+  "NumericInput": {
+    "v2.44.11": {
+      "date": "2023-09-26 17:51:04 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "尝试修复在外层 prop 变化时，如果 document.activeElement 仍然是 input，导致的问题，https//codesandbox.io/s/zealous-browser-98m26n?file=/index.js",
+          "hash": "0b7d7bcf934d44ee9ed4ee1285bab33057b15f51"
+        }
+      ]
+    },
+    "v2.29.1": {
+      "date": "2022-04-25 16:38:21 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复输入 . - 时引发的 NaN 错误",
+          "hash": "672e6948059e958fe4693e91935e1718fed8a49f"
+        }
+      ]
+    },
+    "v2.27.0": {
+      "date": "2022-04-07 11:06:39 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 icon 点击不生效的问题",
+          "hash": "8129a9f4079427e28a7689cd34d7a5ba85237409"
+        }
+      ]
+    }
+  },
+  "DatePicker, RangePicker": {
+    "v2.44.6": {
+      "date": "2023-06-28 16:36:26 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 click 事件覆盖",
+          "hash": "e8a1d8f7f40dc82eb7cd9f063ce4bb4d9d97b14a"
+        }
+      ]
+    },
+    "v2.44.5": {
+      "date": "2023-06-28 16:21:11 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "#38",
+          "hash": "b57894084b7ff05720cf19f165b9efea5a22ec23"
+        }
+      ]
+    },
+    "v2.41.0": {
+      "date": "2022-08-30 12:00:39 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "allowClear Prop",
+          "hash": "11a02176a896c27382e7c1c8ea786812d2e4abb0"
+        }
+      ]
+    },
+    "v2.27.0": {
+      "date": "2022-04-07 11:06:39 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 hour Prop，对选中日期的小时进行调整",
+          "hash": "46c79d42c063bf2cff60ea1b2d424b85495f98eb"
+        }
+      ]
+    }
+  },
+  "DatePicker": {
+    "v2.44.5": {
+      "date": "2023-06-28 16:21:11 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "尝试修复 DatePicker visible 问题",
+          "hash": "7ce66346727c3710fbcef38db77a4567c95860ee"
+        }
+      ]
+    },
+    "v2.44.2": {
+      "date": "2023-04-06 19:54:16 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 disabledDays 无效，在样式放弃 cursor 先",
+          "hash": "4fe022683065732f0338ff37bb96a8eb1ccb527a"
+        }
+      ]
+    },
+    "v2.40.3": {
+      "date": "2022-08-19 10:35:10 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "disabledDays cursor style",
+          "hash": "9512e147922af4c103c1362269fbdc216c6a1cc3"
+        }
+      ]
+    },
+    "v2.19.0": {
+      "date": "2021-11-05 18:39:07 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 shortcuts 样式错误",
+          "hash": "f64a32fa240704c6c9a0431fcf45dddcceed21f6"
+        }
+      ]
+    },
+    "v2.18.0": {
+      "date": "2021-10-29 14:21:30 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "triggerElement Prop featured",
+          "hash": "ac4ada6e2f7f9dbb9dbf8e965bac099865850212"
+        },
+        {
+          "type": "feat",
+          "text": "dropdownRender Props featured",
+          "hash": "d747b1cd292c9b19a72442814dc9027edc3615bd"
+        },
+        {
+          "type": "feat",
+          "text": "renderDay Props featured",
+          "hash": "6e364a3f266d44f12ec4711091206f9face8692b"
+        }
+      ]
+    },
+    "v2.5.0": {
+      "date": "2021-07-12 21:39:05 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 react-day-picker 的 esm build 问题，相关 issue https//github.com/gpbl/react-day-picker/issues/1194",
+          "hash": "300fe573db013b37f0c72f1b45a3efc4d6cef3df"
+        }
+      ]
+    },
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "尝试修复可能的 toLocaleDateString 报错",
+          "hash": "49e8ac47ab359e93c2c753527b1ea9342fdf8f63"
+        },
+        {
+          "type": "fix",
+          "text": "maxDate minDate 支持 Null",
+          "hash": "dd7b8c08cc8c2e2d8f7f3f93f55bb75e94c4f7c8"
+        }
+      ]
+    },
+    "v1.2.2": {
+      "date": "2020-12-21 19:07:20 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "默认最大年份 + 1",
+          "hash": "aa5741eadee6833288d70ecef22a7cabe3d43425"
+        }
+      ]
+    }
+  },
+  "Table": {
+    "v2.44.4": {
+      "date": "2023-06-16 11:26:46 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 Chrome 新版支持 popover 原生 Prop 造成的 Bug",
+          "hash": "5d801162716f5a0f8f215b9f08e8e9792fc466be"
+        }
+      ]
+    },
+    "v2.40.4": {
+      "date": "2022-08-23 11:42:29 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "1. 修复表头不可选中的问题，去除了 user-select; 2. 空状态下表头无法滚动，这里因结构问题 placeholder 是写在 table 外的，移到 table 内后，又可能因为 table 的横向滚动造成问题，因此加入了 sticky",
+          "hash": "3f81ca641488c5a690141ba5bf208afb6ad7bd16"
+        }
+      ]
+    },
+    "v2.40.1": {
+      "date": "2022-08-16 17:39:33 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "#32",
+          "hash": "7e343f4efb88907db4957688dfde0f6f3a0eb876"
+        }
+      ]
+    },
+    "v2.37.2": {
+      "date": "2022-07-14 20:01:23 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 Column title 为 node 时 resize 失效的问题，给一个 100px 的兜底",
+          "hash": "501ecc53e27b2bd3ad9e947e2774b32df4d21359"
+        }
+      ]
+    },
+    "v2.37.1": {
+      "date": "2022-07-13 15:26:21 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "#30",
+          "hash": "af2f4a50fbc8abc3fef5264a3716f5a869f993da"
+        }
+      ]
+    },
+    "v2.35.0": {
+      "date": "2022-06-07 21:07:13 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 scrollXAffixedOffsetBottom warning",
+          "hash": "5566ec27230f5623c965d795f09140e094841aca"
+        },
+        {
+          "type": "feat",
+          "text": "onSelectChange 增加第二个参数 options，具体解释请参见文档",
+          "hash": "dca8d6334c69754f44a9f717fbe6d02147bb8aa3"
+        }
+      ]
+    },
+    "v2.33.0": {
+      "date": "2022-05-26 18:19:19 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持在表头页面固定时，自定义横向滚动条距离底部的触发距离",
+          "hash": "b473620df8c2af5886bea734da45eff3e5867bed"
+        }
+      ]
+    },
+    "v2.32.0": {
+      "date": "2022-05-12 12:57:41 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复表格行未全选时，表头checkbox不是半选中状态的问题",
+          "hash": "be2db784d26aab038af70f90cee006571994b359"
+        }
+      ]
+    },
+    "v2.30.3": {
+      "date": "2022-05-11 14:19:22 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "fixed 列可调整列宽",
+          "hash": "9c4a9d1e2f3f6f13bcd0b7a9edca4986e44aeea6"
+        }
+      ]
+    },
+    "v2.29.3": {
+      "date": "2022-05-06 11:42:55 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复在 headerAffixGetTarget 时，滚动条及头部的显示问题",
+          "hash": "916572e5a4d29661bc932fccd66107dde1855801"
+        }
+      ]
+    },
+    "v2.21.0": {
+      "date": "2021-12-28 11:11:13 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "Column 增加 getHeadCellClassName 和 getHeadCellStyle Prop",
+          "hash": "613d7c59bc8b3fdaadcc1286b6e0df56ec1f5c38"
+        }
+      ]
+    },
+    "v2.20.1": {
+      "date": "2021-12-20 14:35:33 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "尝试修复 columns 变化后，固定列不会变化的问题 #13",
+          "hash": "0d19d23648050d8c4fe26c8c09f45048c5bcbd47"
+        }
+      ]
+    },
+    "v2.20.0": {
+      "date": "2021-11-23 14:46:48 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 Column 上 getCellxxx 不生效 #11",
+          "hash": "ee35a6c15776ec4a9c9bba55784260eeac766bef"
+        },
+        {
+          "type": "feat",
+          "text": "IColumnProps exported #9",
+          "hash": "13400a1ee17aeb64526178790f92920a9c30b464"
+        },
+        {
+          "type": "fix",
+          "text": "移除多余层级造成的 expandedRow 宽度无法撑满",
+          "hash": "d3d6b96a6df02cae8fd9423e75b935c626f67b99"
+        },
+        {
+          "type": "feat",
+          "text": "更换 react-window 实现虚拟滚动",
+          "hash": "8b01d5a303bcf6b0443fb3d0e27f0da1e0b225f6"
+        }
+      ]
+    },
+    "v2.19.0": {
+      "date": "2021-11-05 18:39:07 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复宽度计算问题",
+          "hash": "3620e595694ada4ff3856373e45f774c900f2aad"
+        }
+      ]
+    },
+    "v2.18.0": {
+      "date": "2021-10-29 14:21:30 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "试图修复 column 变化时的宽度问题",
+          "hash": "da231e843350b20c2137ef274704a43f5b435652"
+        }
+      ]
+    },
+    "v2.16.0": {
+      "date": "2021-10-19 17:02:55 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 rowKey 使用 index 的一系列问题",
+          "hash": "35cfdf093ff846f35471a0896198cd514cf21923"
+        },
+        {
+          "type": "feat",
+          "text": "drag demo",
+          "hash": "97906253767d97f4c0add68044b46566332fa10a"
+        }
+      ]
+    },
+    "v2.15.0": {
+      "date": "2021-09-29 19:31:47 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "grow prop",
+          "hash": "7ff819472114e167427b5f50362383472dcaef3a"
+        }
+      ]
+    },
+    "v2.12.2": {
+      "date": "2021-09-06 17:51:27 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复在多级表头下，loading 样式的错误",
+          "hash": "32011b069987489dfbdf854035e71f034ec4944d"
+        }
+      ]
+    },
+    "v2.10.4": {
+      "date": "2021-08-12 15:04:49 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 title 为空时，resize 的报错 #4",
+          "hash": "a175a5fd5b9ae70ed2cde89a20a7065834e978cf"
+        },
+        {
+          "type": "fix",
+          "text": "修复 columns length 变化后 fixed 列不会重新计算的问题",
+          "hash": "d4beaee34f1e2818f353acb4e0b360aa3e89f1c5"
+        }
+      ]
+    },
+    "v2.6.0": {
+      "date": "2021-07-13 13:35:08 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持 getRowProps Props",
+          "hash": "ee365f3b7a059ae3de526f13e47c7e89f6b794cd"
+        }
+      ]
+    },
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复虚拟滚动 key warning 问题",
+          "hash": "413ee373541c0226116215e5fbe9ae1e98f76b81"
+        }
+      ]
+    },
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "支持 select 和 expand 同时使用",
+          "hash": "ce5968a28dc7d20e9e8393dd711e50b08389dced"
+        },
+        {
+          "type": "fix",
+          "text": "支持展开行+固定列的情景",
+          "hash": "645ba01280a4ebb65073a43a40fd528af9497b86"
+        }
+      ]
+    },
+    "v1.4.0": {
+      "date": "2021-01-26 22:31:12 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "排序首选降序",
+          "hash": "9938c1107a1e04d3a24bacb7775e2b06072e03a8"
+        }
+      ]
+    },
+    "v1.1.2": {
+      "date": "2020-12-02 15:29:43 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复合并单元格问题",
+          "hash": "e330ff5008f1fa70ab555d49e4cee243ccbaffc6"
+        }
+      ]
+    }
+  },
+  "Input": {
+    "v2.44.3": {
+      "date": "2023-06-02 10:06:34 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修正Input在NumbericInput中使用时光标位置不稳定的问题",
+          "hash": "95671c3eac59506d500894a9ff6e3741a5d6701f"
+        }
+      ]
+    },
+    "v2.41.0": {
+      "date": "2022-08-30 12:00:39 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 Safari disabled 文字颜色问题",
+          "hash": "8a815a3d9ee24949c440eb2b10ae6d80fa20eea3"
+        }
+      ]
+    },
+    "v2.37.0": {
+      "date": "2022-07-12 13:14:45 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 left/right element 宽度计算可能为 0 的问题",
+          "hash": "aa4da2d945ca3d77853b001989211d1c557b6111"
+        }
+      ]
+    },
+    "v2.36.0": {
+      "date": "2022-06-10 11:50:57 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "inputClassName, inputStyle Prop",
+          "hash": "b09f45c805f87b14eb28dea3061ed350fea75980"
+        }
+      ]
+    },
+    "v2.25.0": {
+      "date": "2022-03-07 10:16:48 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 cleave controlled 状态，保证 Blur 时可以重置 value",
+          "hash": "45ffcb4378dd82cf3ae2dce9668ecb9bc2f95f78"
+        }
+      ]
+    },
+    "v2.17.0": {
+      "date": "2021-10-27 12:00:50 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 ref 类型",
+          "hash": "1a9b2dc640033570dbadebb3329aa5ee0c1981f7"
+        }
+      ]
+    },
+    "v1.4.0": {
+      "date": "2021-01-26 22:31:12 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 ref undefined 问题",
+          "hash": "e7aa7d75a58509614849a6ab10497d59f4f7be56"
+        }
+      ]
+    }
+  },
+  "TreeSelect": {
+    "v2.44.1": {
+      "date": "2023-03-29 17:16:28 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 inline-block 内部高度 34px，外层 30px 的问题",
+          "hash": "f69066c66195237c5863e27316cf6dbc0f5ee0a3"
+        }
+      ]
+    },
+    "v2.42.0": {
+      "date": "2022-09-06 15:48:21 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "以 topContent 相同的实现增加 bottomContent Prop",
+          "hash": "5542a02b0906d3984578da5611d1fdcee4338ef6"
+        }
+      ]
+    },
+    "v2.32.1": {
+      "date": "2022-05-17 11:03:45 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "回退 rc-tree-select 为 4 版本，以支持 multiple={\u0010false} 时 value 可以传一个 reactnode，5 之后不行了",
+          "hash": "f3d30f46eadf1f9b0be6247bae54bfebf761a548"
+        }
+      ]
+    },
+    "v2.30.2": {
+      "date": "2022-05-10 20:47:10 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 maxTagCount 在 disabled 情况下的报错",
+          "hash": "9671689fde992923c5132542b1f767e02d7e8b45"
+        }
+      ]
+    },
+    "v2.25.0": {
+      "date": "2022-03-07 10:16:48 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "默认支持大小写搜索，也加入了 filterCaseSensitive 开关以关闭这个功能",
+          "hash": "d9a8f28b3ca3c2e520f06db95bc21cf462ae618d"
+        },
+        {
+          "type": "fix",
+          "text": "将 sameValueSplitter 复杂化，避免冲突",
+          "hash": "bd5d3de46d35e23074697445ada22699155a2870"
+        }
+      ]
+    },
+    "v2.24.0": {
+      "date": "2022-02-16 15:47:13 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 dropdownPopupAlign 和 全选的 warning，其中 dropdownPopupAlign 不再被支持",
+          "hash": "54f41fa28d8c6e2a4c8458dc3e8db9c78ae32ee5"
+        }
+      ]
+    },
+    "v2.23.0": {
+      "date": "2022-01-20 22:20:24 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "onSearch 增加第二个参数，返回筛选后的 treeNodes",
+          "hash": "483a9e22f80cc8614b3314a8b4f206f6c853f18c"
+        }
+      ]
+    },
+    "v2.22.0": {
+      "date": "2022-01-14 14:09:23 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复单选时 icon 无法点击的问题",
+          "hash": "30d697d2fb3f859e533a3c18dca0954ae25f9897"
+        }
+      ]
+    },
+    "v2.20.1": {
+      "date": "2021-12-20 14:35:33 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复潜在的可能错误",
+          "hash": "5fa250410e1d576ccd38b18518566e29e4c93141"
+        }
+      ]
+    },
+    "v2.19.0": {
+      "date": "2021-11-05 18:39:07 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 showCheckedStrategy 和 selectAll 交叉产生的 bug #8",
+          "hash": "b05c9863af311fe181c55cd25e561a3d29b47bd0"
+        },
+        {
+          "type": "feat",
+          "text": "intent Prop Featured",
+          "hash": "1e9937702426312a1168fdf69e5d34d4b4c24f0f"
+        },
+        {
+          "type": "feat",
+          "text": "onSearchEnter Prop featured",
+          "hash": "1d83334bd172209a6717e490684aea967a1fe58a"
+        }
+      ]
+    },
+    "v2.12.1": {
+      "date": "2021-09-03 19:51:28 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复值为 0 的 node 在全选时无法被选中的问题",
+          "hash": "7f49657c6a558fead4973bd67542a90d5414b55a"
+        },
+        {
+          "type": "fix",
+          "text": "修复 isArrayIncludes 可能的报错",
+          "hash": "38c8ba7f5eb615a0e9ce83f00954e016b2833e93"
+        }
+      ]
+    },
+    "v2.12.0": {
+      "date": "2021-08-30 17:46:31 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 sameValueEnabled 表现错误",
+          "hash": "9789f7cf20271ef6b20fd184d12b99acc2c43af4"
+        }
+      ]
+    },
+    "v2.10.0": {
+      "date": "2021-07-28 14:33:09 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "icon 从默认的 menu 改为 list",
+          "hash": "269b73e9bb50706b2b9044ffe1eda6f7a9595237"
+        }
+      ]
+    },
+    "v2.9.0": {
+      "date": "2021-07-23 15:52:51 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复单选时， value 字符串会被 new Set 的问题",
+          "hash": "f7b9a2c49946d6775db0952f7699a2caa1863f82"
+        }
+      ]
+    },
+    "v2.8.1": {
+      "date": "2021-07-19 21:45:54 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 title 高度高于 32px 时， isLeaf false 不生效的问题",
+          "hash": "ab1c846d26fff3a40a512d5200b8a58f83d0d41e"
+        }
+      ]
+    },
+    "v2.4.0": {
+      "date": "2021-07-08 10:32:46 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 sameValueEnabled Props",
+          "hash": "503bece3e371382bece92cb7d3cace4143b1239f"
+        }
+      ]
+    },
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 resultVisible false 时 placeholder 不更新的问题",
+          "hash": "33d5ef0d3af5e5788288391aec58775615df1ec3"
+        },
+        {
+          "type": "fix",
+          "text": "尝试修复 getMaxTagPlaceholder 报错",
+          "hash": "453e3bcd056a039723a1f14b72f19c3b608fa898"
+        },
+        {
+          "type": "fix",
+          "text": "修复 children 用法无选项的问题",
+          "hash": "d58c225c6e4714786fae0500eb65e650b18b9742"
+        },
+        {
+          "type": "fix",
+          "text": "修复全选数据处理问题",
+          "hash": "7bd767eebd3c477f5140c262209a0ccf70d59e52"
+        }
+      ]
+    },
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持 heightFixed Prop",
+          "hash": "6a3637540d5ea3f76d2bc8e8ba6022b0d189c1fb"
+        },
+        {
+          "type": "feat",
+          "text": "支持全选",
+          "hash": "43d954ba94e82a1b2085053aabfb154f23049f71"
+        },
+        {
+          "type": "fix",
+          "text": "防止 topContent 点击时 dropdown 会消失的问题",
+          "hash": "4647f8eecd5e47aed7b33b511929b15c6790da7a"
+        },
+        {
+          "type": "feat",
+          "text": "尝试支持 topContent props",
+          "hash": "02350d4f6cca8b8a6ee01a40a70192de559553c2"
+        }
+      ]
+    },
+    "v1.5.2": {
+      "date": "2021-03-03 14:32:32 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 jacky 发现的搜索值和 TreeNode 不对应的问题",
+          "hash": "755a29df01219e49d0e93fef1c38731a5ba8596a"
+        }
+      ]
+    },
+    "v1.5.0": {
+      "date": "2021-02-23 21:07:52 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "onChange 增加第二个参数 titleList",
+          "hash": "548e0e3a8f81a5fa7525bc00c60eb4d46378cc37"
+        }
+      ]
+    },
+    "v1.4.0": {
+      "date": "2021-01-26 22:31:12 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "update",
+          "hash": "e02f463b9e1a6780e60f6057932e01b03f028123"
+        }
+      ]
+    }
+  },
+  "TimePicker": {
+    "v2.44.0": {
+      "date": "2022-12-19 11:19:32 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持秒的选择",
+          "hash": "2d4efa59bf230bcf1c22caf7bb6c2bb09e534cf5"
+        }
+      ]
+    },
+    "v2.43.2": {
+      "date": "2022-11-23 16:28:52 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 intent 失效",
+          "hash": "24737432aa774a05e0ff9655b9cee6af04cbd1ac"
+        }
+      ]
+    },
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持 2400 选择",
+          "hash": "9a18d9070427a6b4a33b45952909de0e9c1f73a0"
+        }
+      ]
+    }
+  },
+  "Drawer": {
+    "v2.43.1": {
+      "date": "2022-11-22 11:28:52 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "补充 maskMotionName getMotionName",
+          "hash": "020524ee857601ebc50a4ae6543f083b9adabc63"
+        }
+      ]
+    },
+    "v2.36.3": {
+      "date": "2022-06-21 15:39:40 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复可能的报错",
+          "hash": "b086b1f4557dfdf3995e222419f52bce0fabe8a2"
+        }
+      ]
+    },
+    "v2.27.0": {
+      "date": "2022-04-07 11:06:39 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 maskClassName maskStyle Prop",
+          "hash": "bc69e3241464d1280eae355f95e9aec07368229a"
+        }
+      ]
+    }
+  },
+  "Dialog": {
+    "v2.43.0": {
+      "date": "2022-11-22 10:46:23 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持 motionName 定义",
+          "hash": "a8c1a1b28dee9d24af67f9bf4ba21e4dd8c6d8f7"
+        }
+      ]
+    },
+    "v2.30.0": {
+      "date": "2022-05-07 16:52:20 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "函数式调用 onConfirm onCancel 添加 return false 不关闭功能",
+          "hash": "b741431e2816cf34e5401837157070574ecb8cc3"
+        }
+      ]
+    },
+    "v2.29.2": {
+      "date": "2022-04-27 17:29:50 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 dialog getContainer 无效的问题",
+          "hash": "aa8ea33f27399882cf6d07e1257cf2f5838a8164"
+        }
+      ]
+    },
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "header body footer 支持 className",
+          "hash": "777b05afe901a80ab81e19fa5de40622430ceaa0"
+        }
+      ]
+    }
+  },
+  "rollup": {
+    "v2.42.1": {
+      "date": "2022-09-13 16:00:03 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 portal 在 vite 下打包错误",
+          "hash": "de812885cdd0ae0cf525d0c6e5311ac5acdef462"
+        }
+      ]
+    },
+    "v2.36.0": {
+      "date": "2022-06-10 11:50:57 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 <Transition /> 的打包",
+          "hash": "8ad19fb9ee41c0cb7c24f4438722b2c6a389d298"
+        }
+      ]
+    },
+    "v2.15.0": {
+      "date": "2021-09-29 19:31:47 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 motion resize-observer 组件打包问题",
+          "hash": "cda7d9573051842c04dee7550f909337ed319166"
+        },
+        {
+          "type": "feat",
+          "text": "增加 initIcons",
+          "hash": "2882270095783674e26aae4533d03c0d9a72f1e4"
+        }
+      ]
+    }
+  },
+  "Select": {
+    "v2.42.0": {
+      "date": "2022-09-06 15:48:21 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 topContent / bottomContent Prop",
+          "hash": "28e654499f636a0d74abdb5739b4e22aef66effd"
+        }
+      ]
+    },
+    "v2.40.0": {
+      "date": "2022-08-12 15:45:16 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "composition Props & searchInputProps",
+          "hash": "9bf1d16e62da17bd05bb8d5a53df540aaa47dbf9"
+        }
+      ]
+    },
+    "v2.36.1": {
+      "date": "2022-06-17 15:58:24 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复空字符串时，出现 clearIcon 的问题",
+          "hash": "cd161bcff3bd71e52d2c5e566fe9505de1d5a0ec"
+        }
+      ]
+    },
+    "v2.35.0": {
+      "date": "2022-06-07 21:07:13 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复搜索时，值为空白的问题；修复 #23",
+          "hash": "c94754c5e69940ee02e438ea003ad04eb3d3d1a2"
+        }
+      ]
+    },
+    "v2.28.0": {
+      "date": "2022-04-18 20:04:04 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 allowClear Prop #17",
+          "hash": "5725fcf6ab81d3b771be1b7e6ccc19bf645b3333"
+        }
+      ]
+    },
+    "v2.20.0": {
+      "date": "2021-11-23 14:46:48 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加针对 value 的泛型判断",
+          "hash": "939bf0a7f9f48746a163a28bdfc9dd6551342c23"
+        }
+      ]
+    },
+    "v2.12.1": {
+      "date": "2021-09-03 19:51:28 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 onSearch Prop 不在类型定义的问题",
+          "hash": "9407a3764d5d471200eaa21ba10e6e4591fb5a8c"
+        }
+      ]
+    },
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 options label 不显示在结果区的错误",
+          "hash": "885a7b51b0cf9e02c5f1bdd94e5f7caebb00d87b"
+        },
+        {
+          "type": "feat",
+          "text": "placeholderColor prop",
+          "hash": "3f23602c6659d4fc124ee267188415eb5ef6143e"
+        },
+        {
+          "type": "fix",
+          "text": "修复问题",
+          "hash": "0c56cc07842939d705fd077ee0f6b9f49f37952d"
+        },
+        {
+          "type": "feat",
+          "text": "支持 searchValue onSearch 的 prop",
+          "hash": "7780ba9e6ce377e803d7a01e4897eb605706f6a2"
+        }
+      ]
+    },
+    "v1.2.3": {
+      "date": "2020-12-24 15:00:25 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复  searchable + 空 options 时的报错",
+          "hash": "17bc6f87cfd51bea789cce07d2635b6b1647767d"
+        }
+      ]
+    }
+  },
+  "ChannelsDialog": {
+    "v2.40.1": {
+      "date": "2022-08-16 17:39:33 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 onleave 生命周期问题，props 对齐 dialog",
+          "hash": "601af754dc7c3480d5fdbd62103f5662017c9c91"
+        }
+      ]
+    }
+  },
+  "adui-icon-loader": {
+    "v2.39.1": {
+      "date": "2022-08-08 17:36:11 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "根据 loaderUtils@3 的 api 修复",
+          "hash": "09807e1705c9cf6df5f2ba24fc083ea86195f55d"
+        }
+      ]
+    }
+  },
+  "Icon": {
+    "v2.39.0": {
+      "date": "2022-07-27 10:38:23 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "update adui-icon@1.8.30",
+          "hash": "cc6a548eec40e025c2ee5872c9389c681093128a"
+        }
+      ]
+    },
+    "v2.38.0": {
+      "date": "2022-07-26 15:06:11 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "更新 adui-icon@1.8.29",
+          "hash": "eac450737745abd12c4abe38cafcc99d47296b21"
+        }
+      ]
+    },
+    "v2.30.0": {
+      "date": "2022-05-07 16:52:20 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "添加 link icon",
+          "hash": "d23ce7c88ea629fcab4e0c9084febfc2b8696ef2"
+        }
+      ]
+    },
+    "v2.29.0": {
+      "date": "2022-04-20 20:54:46 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "更新 icon",
+          "hash": "c759146fea8ac15632a35a5b97b396a7477fb31d"
+        }
+      ]
+    },
+    "v2.22.0": {
+      "date": "2022-01-14 14:09:23 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "更新 icon 至 1.8.23",
+          "hash": "269a195a746255025970e4c63598a72e5a806077"
+        }
+      ]
+    },
+    "v2.19.0": {
+      "date": "2021-11-05 18:39:07 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持传入自定义 paths Prop",
+          "hash": "aa1d2386da2c41c7c01c92ae8d64f5e2d144fd07"
+        }
+      ]
+    },
+    "v2.13.0": {
+      "date": "2021-09-13 08:57:26 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 minigame moments offiaccount",
+          "hash": "f404ed13c15a54eddca39d2de64dee4ae92db5ee"
+        }
+      ]
+    },
+    "v2.3.0": {
+      "date": "2021-07-02 11:49:21 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "update adui-icon",
+          "hash": "6b0af9a9e042aa4fa055ba0116ed4e2855e4d64a"
+        }
+      ]
+    },
+    "v1.6.0": {
+      "date": "2021-03-17 17:12:39 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复过多的计算耗时",
+          "hash": "180f5f7f676386f226239ed6ccc4e616bc100ef1"
+        }
+      ]
+    },
+    "v1.2.0": {
+      "date": "2020-12-02 20:52:12 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "update icon",
+          "hash": "e04cc54f971700cfce759de31a3646639934bf5d"
+        }
+      ]
+    }
+  },
+  "Affix": {
+    "v2.37.4": {
+      "date": "2022-07-25 14:14:24 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "#31",
+          "hash": "11b03c49c549fe1a4ca887ee375bc74816a8493c"
+        }
+      ]
+    },
+    "v2.29.3": {
+      "date": "2022-05-06 11:42:55 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复有 getTarget Prop 时的显示错误",
+          "hash": "b68c49a794a391d5ae2adb2519a31719200d486d"
+        }
+      ]
+    },
+    "v2.10.4": {
+      "date": "2021-08-12 15:04:49 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "精简代码，使用 resize-observer 同步占位元素的宽高",
+          "hash": "26f81c71e5306a73104dea253df0b0f6d539c2e5"
+        }
+      ]
+    },
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复在 display none 变为 Block 时的状态问题",
+          "hash": "ff9226a04d3867da0a731226aa917475ce80f2e4"
+        }
+      ]
+    }
+  },
+  "Textarea": {
+    "v2.37.3": {
+      "date": "2022-07-21 11:40:06 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 style 和 inputStyle bug",
+          "hash": "7a5e17842ae4bdbc4b1abfb356130b8f06f71d3e"
+        }
+      ]
+    },
+    "v2.36.1": {
+      "date": "2022-06-17 15:58:24 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复一些表现问题",
+          "hash": "aa573515f45da2dcb81f15eff4e294aa64e0fbe7"
+        }
+      ]
+    }
+  },
+  "TableFilter": {
+    "v2.37.0": {
+      "date": "2022-07-12 13:14:45 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持搜索筛选 #28",
+          "hash": "0694db052e100d3617c0359b6eaf2e807bb3a05b"
+        },
+        {
+          "type": "fix",
+          "text": "修复多选时没有选中态的样式错误",
+          "hash": "958329e190b5f6e630d6e116febd39edc82fb366"
+        }
+      ]
+    },
+    "v2.30.2": {
+      "date": "2022-05-10 20:47:10 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 [] 空数组的显示错误",
+          "hash": "65d0b4ecf65d57fae57ad820972a5e3c0d0f470a"
+        }
+      ]
+    }
+  },
+  "Checkbox, Radio": {
+    "v2.36.1": {
+      "date": "2022-06-17 15:58:24 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "#26 提示信息帮助 点击后 触发勾选",
+          "hash": "b15073df6c20d270a170db20249b41981c98afae"
+        }
+      ]
+    }
+  },
+  "Transition": {
+    "v2.36.0": {
+      "date": "2022-06-10 11:50:57 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复一些表现问题",
+          "hash": "6edbf8081a7cc0519bcf9dd0f3559c6abc1da735"
+        },
+        {
+          "type": "feat",
+          "text": "增加一些 Props",
+          "hash": "361c488e4deb18141c701fc6e90acd47fba0ba31"
+        },
+        {
+          "type": "fix",
+          "text": "修复一些表现问题",
+          "hash": "aee3bd08613a53a31cf22e084e28842dd1724d43"
+        }
+      ]
+    },
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "width, height 加入单位",
+          "hash": "79bd2c765014ba36c30e6cabe52119ab003471be"
+        },
+        {
+          "type": "feat",
+          "text": "init",
+          "hash": "ccb5d6ce05103a306cda96a562a16c4792cae1f4"
+        }
+      ]
+    }
+  },
+  "Button.Group": {
+    "v2.36.0": {
+      "date": "2022-06-10 11:50:57 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "拆分 button group 为自有主页",
+          "hash": "d50095ee9392e748ac5f40ac3d320b6e993e2848"
+        }
+      ]
+    },
+    "v2.34.0": {
+      "date": "2022-05-30 14:37:59 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "更新 Group 样式",
+          "hash": "b6cb893aea0c589e5a0da2880212bd2e2388e3d0"
+        }
+      ]
+    }
+  },
+  "Checkbox": {
+    "v2.32.2": {
+      "date": "2022-05-23 21:52:40 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 value 为 0 时的错误",
+          "hash": "aa31c255392ae8313fb01339b2430f2f150f9147"
+        }
+      ]
+    }
+  },
+  "Suggest": {
+    "v2.32.0": {
+      "date": "2022-05-12 12:57:41 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "onInputKeyDown prop",
+          "hash": "98bd57f7ef5e234a609865f2e2b105d2c38d5213"
+        }
+      ]
+    },
+    "v2.31.0": {
+      "date": "2022-05-11 18:53:27 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "添加 filterOption Prop",
+          "hash": "425b6400ed60c4646bab045559051b0c5b60a17e"
+        }
+      ]
+    }
+  },
+  "Tooltip": {
+    "v2.27.0": {
+      "date": "2022-04-07 11:06:39 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "autoAdjustPlacement 为 false 时，不再自动更换位置",
+          "hash": "4b3a83008d4838fd54f0674436ecde9c71a9de04"
+        }
+      ]
+    }
+  },
+  "DatePicker.RangePicker": {
+    "v2.26.0": {
+      "date": "2022-03-10 10:41:41 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "根据 input focus 的位置，显示不同的月份",
+          "hash": "b55ff1f105d40aada2fcbd9dd137dc29284e6a2a"
+        }
+      ]
+    },
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 minDate 比 value 大时的导航区域显示问题",
+          "hash": "d28e7cc3f0a2855ca77f4475f1038322119cc433"
+        }
+      ]
+    }
+  },
+  "ResizeObserver": {
+    "v2.24.1": {
+      "date": "2022-02-18 14:41:58 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "加回 Polyfill",
+          "hash": "7deab1b7006669924f71124e9880cd8d7b08b164"
+        }
+      ]
+    },
+    "v1.4.0": {
+      "date": "2021-01-26 22:31:12 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "interface",
+          "hash": "9f9e7132f879a986bf4088e6d28e2964b5efa90d"
+        }
+      ]
+    }
+  },
+  "Upload": {
+    "v2.24.0": {
+      "date": "2022-02-16 15:47:13 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "导出 IUpload 类型",
+          "hash": "d497a971709c63f9d920d6950a62bd406649e014"
+        }
+      ]
+    },
+    "v2.3.0": {
+      "date": "2021-07-02 11:49:21 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "hoverOperations Props",
+          "hash": "551c14753d37ec0988546d1eacd15d6315ced139"
+        }
+      ]
+    }
+  },
+  "popmotion": {
+    "v2.23.0": {
+      "date": "2022-01-20 22:20:24 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复由于 popmotion 版本问题导致 cra 报错，定版本到 v9",
+          "hash": "e305f166357023605f2ec14ce3009a5cd5045267"
+        }
+      ]
+    }
+  },
+  "Tabs": {
+    "v2.23.0": {
+      "date": "2022-01-20 22:20:24 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 Tabs 在 banner 模式时，导致的 indicator 不对齐问题",
+          "hash": "2e648ebe72c29256f3b1d5722509d897f87dc1db"
+        }
+      ]
+    },
+    "v2.6.0": {
+      "date": "2021-07-13 13:35:08 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复在 children 变化时 Tabs 不会重新定位的问题",
+          "hash": "916e9fbbcca5d242ee6f7fbaccdb508b8b592f65"
+        }
+      ]
+    }
+  },
+  "Nav": {
+    "v2.14.0": {
+      "date": "2021-09-15 17:42:07 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "subNav 添加 disabled Prop",
+          "hash": "479735a3f7dd9cd29faddb4dca098ad254e523ed"
+        }
+      ]
+    }
+  },
+  "Popconfirm": {
+    "v2.12.0": {
+      "date": "2021-08-30 17:46:31 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "onConfirm onCancel 增加参数 e",
+          "hash": "878184cf56cd372a1479d945990e2bb211060931"
+        }
+      ]
+    }
+  },
+  "Cascader": {
+    "v2.12.0": {
+      "date": "2021-08-30 17:46:31 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "className Props",
+          "hash": "ce3de8270797b7eb28f7704cfbef4037647dd4ab"
+        }
+      ]
+    },
+    "v2.3.0": {
+      "date": "2021-07-02 11:49:21 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "加入动画",
+          "hash": "7f59382e3d207a79087cca4310626be49ca4db11"
+        }
+      ]
+    },
+    "v2.2.0": {
+      "date": "2021-06-28 19:53:29 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "添加 Cascader 组件",
+          "hash": "15de9503896466c5477de735a55bde57681c024c"
+        }
+      ]
+    }
+  },
+  "rollup, vite": {
+    "v2.11.0": {
+      "date": "2021-08-12 23:19:13 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "rollup-plugin-adui 支持组件按需及 icon 按需",
+          "hash": "b736d856a9bbf00d97a81ba41f8c9b9ac45b4237"
+        }
+      ]
+    }
+  },
+  "strictMode": {
+    "v2.10.0": {
+      "date": "2021-07-28 14:33:09 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "去除 Motion 的使用，部分组件使用 CSSMotion 替代",
+          "hash": "3a1a902c9c667ef8f15c54a1adce0a40b034f269"
+        }
+      ]
+    }
+  },
+  "tailwind": {
+    "v2.10.0": {
+      "date": "2021-07-28 14:33:09 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "添加 line-clamp",
+          "hash": "11dfc17285264df55ebb107545eb9658e498051a"
+        }
+      ]
+    },
+    "v2.7.0": {
+      "date": "2021-07-19 17:13:53 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "visibility 增加 hover focus",
+          "hash": "cfff8a1d0d142d908ab90796c439cd05a153c526"
+        }
+      ]
+    },
+    "v2.2.0": {
+      "date": "2021-06-28 19:53:29 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "添加 overflow overlay;",
+          "hash": "02c7cafcb97141e9bd36ff4b78c2352ae533ea9a"
+        }
+      ]
+    }
+  },
+  "types": {
+    "v2.9.0": {
+      "date": "2021-07-23 15:52:51 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "所有组件增加相关类型的导出",
+          "hash": "0f79b77774d19b3958880377e2c49546ac455fce"
+        }
+      ]
+    }
+  },
+  "Menu": {
+    "v2.9.0": {
+      "date": "2021-07-23 15:52:51 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "增加 minWidth Prop",
+          "hash": "db7e12b0267271569c6a38006eebfbdb73b53f8b"
+        }
+      ]
+    }
+  },
+  "plugin": {
+    "v2.5.0": {
+      "date": "2021-07-12 21:39:05 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持 rollup 按需 icon",
+          "hash": "bc1395a8c8898966349d69b0f482cb350dde6839"
+        }
+      ]
+    }
+  },
+  "Upload.Img": {
+    "v2.4.0": {
+      "date": "2021-07-08 10:32:46 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持 icon null；支持 disabled 态",
+          "hash": "ca35e165a7e0a1f2e7015207a46d82de8471eca7"
+        }
+      ]
+    },
+    "v2.2.0": {
+      "date": "2021-06-28 19:53:29 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "添加 previewDisabled prop",
+          "hash": "cc1d004229c177b9505497e516dfca35858d6672"
+        }
+      ]
+    }
+  },
+  "loader": {
+    "v2.4.0": {
+      "date": "2021-07-08 10:32:46 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复没有 icon 情况下，loader 的报错",
+          "hash": "af6d60ef88a7334bc2d2d621c3b356074df32c0f"
+        }
+      ]
+    },
+    "v2.2.0": {
+      "date": "2021-06-28 19:53:29 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "icon-loader 添加 cascader 按需",
+          "hash": "00f57be2425b16bfce8c0337b167579208ba00a9"
+        }
+      ]
+    },
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 Alert 没有传 intent 时的报错",
+          "hash": "6e52bd91101c5f3f50e6ce4846f94ede9c602fbc"
+        }
+      ]
+    }
+  },
+  "Button": {
+    "v2.2.0": {
+      "date": "2021-06-28 19:53:29 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "iconStyle Props",
+          "hash": "b1dfbe4c1f79a6c3739aa908acff4f3a34cb8513"
+        }
+      ]
+    }
+  },
+  "ColorPicker": {
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复无法重置为 \"\" 的问题",
+          "hash": "246c5aaef417f961fec9b0f091d278f4223a4cc3"
+        }
+      ]
+    }
+  },
+  "compile": {
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 es 编译的 css require 问题",
+          "hash": "0e3a3f4aa7a4f2f5ef48e8bece5926980cb5f392"
+        }
+      ]
+    }
+  },
+  "Form": {
+    "v2.1.0": {
+      "date": "2021-06-22 14:02:56 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 labelClassName 关系",
+          "hash": "ddf08a80cbb2e32e1c337c4bf486de15ec0cd2f4"
+        },
+        {
+          "type": "fix",
+          "text": "修复 itemClassName 和 context 的冲突",
+          "hash": "aac7859793823b127bccf4a99ec97b6526005a48"
+        },
+        {
+          "type": "feat",
+          "text": "支持 itemClassName labelClassName",
+          "hash": "377991dd78c41c6277f14f963f45206ed02df932"
+        }
+      ]
+    }
+  },
+  "Alert": {
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 icon null 类型错误",
+          "hash": "54ae4e77c22676a59d4f7a882bdd4ff7fdb54918"
+        }
+      ]
+    }
+  },
+  "Radio, Checkbox, Switch": {
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复 string 类型会造成的死循环",
+          "hash": "da8ac70378493731f5fe922122c73396747cf722"
+        }
+      ]
+    }
+  },
+  "channels-input": {
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "init",
+          "hash": "89fe67302c0a391e90407105ba591acc07ddc3be"
+        }
+      ]
+    }
+  },
+  "Dialog, Drawer, Tooltip, Popover": {
+    "v2.0.0": {
+      "date": "2021-05-20 11:07:36 +0800",
+      "logs": [
+        {
+          "type": "feat",
+          "text": "支持 zIndex Prop",
+          "hash": "f85132d0c1f7566094ff82a006db8db9353fc530"
+        }
+      ]
+    }
+  },
+  "Slider": {
+    "v1.4.0": {
+      "date": "2021-01-26 22:31:12 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "兼容传入 string 的情况",
+          "hash": "de54fdcf3a87a29059275b5973dee4ad5d072958"
+        }
+      ]
+    }
+  },
+  "Switch": {
+    "v1.2.1": {
+      "date": "2020-12-09 16:14:49 +0800",
+      "logs": [
+        {
+          "type": "fix",
+          "text": "修复对 onClick 事件的覆盖",
+          "hash": "0dccf21aba4c6f6e12b9b2ffd4f6052a2299c1ce"
+        }
+      ]
+    }
+  }
+}
