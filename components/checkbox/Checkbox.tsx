@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-import React, { forwardRef, useContext, useState } from "react"
+import React, { forwardRef, useContext, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import { GroupContext } from "./Context"
@@ -60,6 +60,10 @@ export interface ICheckboxProps {
       ) => void)
     | null
   /**
+   * onMouseDown 时的 handler
+   */
+  onMouseDown?: (e: React.MouseEvent<HTMLLabelElement>) => void
+  /**
    * 设置尺寸
    */
   size?: "mini" | "small" | "medium" | "large"
@@ -93,11 +97,12 @@ const Checkbox: ICheckbox = forwardRef(
       indeterminate,
       onChange,
       onClick,
+      onMouseDown,
       size: sizeProp,
       value,
       ...otherProps
     }: ICheckboxProps,
-    ref
+    refProp
   ) => {
     const [checked, setChecked] = useState(!!checkedProp)
     const {
@@ -107,6 +112,9 @@ const Checkbox: ICheckbox = forwardRef(
       value: valueContext,
     } = useContext(GroupContext)
     const { size: sizeConfig } = useContext(ConfigContext)
+    const activeTimeOutRef = useRef(0)
+    const labelRef = useRef<HTMLLabelElement>(null)
+    const ref = refProp || labelRef
 
     // 相当于生命周期 getDerivedStateFromProps
     if (checkedProp !== null && checked !== !!checkedProp) {
@@ -136,6 +144,7 @@ const Checkbox: ICheckbox = forwardRef(
             : checked),
         [`${prefix}-noChildren`]: !children,
         [`${prefix}-disabled`]: disabledContext || disabled,
+        [`${prefix}-indeterminate`]: indeterminate,
       }
     )
 
@@ -190,6 +199,31 @@ const Checkbox: ICheckbox = forwardRef(
       }
     }
 
+    const handleWindowMouseUp = () => {
+      window.clearTimeout(activeTimeOutRef.current)
+      window.removeEventListener("mouseup", handleWindowMouseUp)
+    }
+
+    const handleMouseDown = (
+      e: React.MouseEvent<HTMLLabelElement, MouseEvent>
+    ) => {
+      if (onMouseDown) {
+        onMouseDown(e)
+      }
+
+      window.addEventListener("mouseup", handleWindowMouseUp)
+
+      if (ref && "current" in ref && ref.current) {
+        delete ref.current.dataset.actived
+      }
+
+      activeTimeOutRef.current = window.setTimeout(() => {
+        if (ref && "current" in ref && ref.current) {
+          ref.current.dataset.actived = "true"
+        }
+      }, 200)
+    }
+
     return (
       <label
         aria-checked={checked}
@@ -198,29 +232,11 @@ const Checkbox: ICheckbox = forwardRef(
         onKeyDown={handleKeyDown}
         ref={ref}
         role="checkbox"
+        onMouseDown={handleMouseDown}
         {...otherProps}
       >
         <span className={`${prefix}-indicator`}>
-          {indeterminate ? (
-            <svg width="12" height="10">
-              <rect
-                x="1"
-                y="4"
-                width="10"
-                height="2"
-                rx=".5"
-                fill="#fff"
-                fillRule="evenodd"
-              />
-            </svg>
-          ) : (
-            <svg width="12" height="10">
-              <path
-                d="M.618 5.827a.463.463 0 0 1-.02-.675l.804-.804a.52.52 0 0 1 .716-.01L4.75 6.75l4.922-5.625a.513.513 0 0 1 .707-.06l.742.62a.478.478 0 0 1 .044.687l-6.08 6.756a.506.506 0 0 1-.703.045L.618 5.827z"
-                fillRule="evenodd"
-              />
-            </svg>
-          )}
+          <i className={`${prefix}-indicator-inner`} />
         </span>
         {!!children && <span>{children}</span>}
         {popover}

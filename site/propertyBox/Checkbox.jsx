@@ -18,7 +18,7 @@ export default class PropertyBox extends React.Component {
   ${disabled ? "disabled" : ""}
   ${size === "small" ? "" : `size="${size}"`}
 >
-  <Checkbox value={1}>勾选</Checkbox>
+  <Checkbox value={1} helper="提示文字">勾选</Checkbox>
   <Checkbox value={2}>勾选</Checkbox>
   <Checkbox value={3}>勾选</Checkbox>
 </Checkbox.Group>`
@@ -28,7 +28,7 @@ export default class PropertyBox extends React.Component {
         <div className={styles.property}>
           <div className={styles.left}>
             <Checkbox.Group defaultValue={[1]} {...this.state}>
-              <Checkbox value={1}>勾选</Checkbox>
+              <Checkbox value={1} helper="提示文字">勾选</Checkbox>
               <Checkbox value={2}>勾选</Checkbox>
               <Checkbox value={3}>勾选</Checkbox>
             </Checkbox.Group>

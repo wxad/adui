@@ -1,177 +1,285 @@
 $prefix: "adui-checkbox";
+@import "./tokens";
 
-.#{$prefix}-base {
+.adui-checkbox-large {
+  --adui-checkbox-font-size: var(--adui-checkbox-font-size-lg);
+  --adui-checkbox-font-leading: var(--adui-checkbox-font-leading-lg);
+  --adui-checkbox-spacing: var(--adui-checkbox-spacing-lg);
+  --adui-checkbox-indicator-scale: var(--adui-checkbox-indicator-scale-lg);
+  --adui-checkbox-size: var(--adui-checkbox-size-lg);
+}
+.adui-checkbox-medium {
+  --adui-checkbox-font-size: var(--adui-checkbox-font-size-md);
+  --adui-checkbox-font-leading: var(--adui-checkbox-font-leading-md);
+  --adui-checkbox-spacing: var(--adui-checkbox-spacing-md);
+  --adui-checkbox-indicator-scale: var(--adui-checkbox-indicator-scale-md);
+  --adui-checkbox-size: var(--adui-checkbox-size-md);
+}
+.adui-checkbox-small {
+  --adui-checkbox-font-size: var(--adui-checkbox-font-size-sm);
+  --adui-checkbox-font-leading: var(--adui-checkbox-font-leading-sm);
+  --adui-checkbox-spacing: var(--adui-checkbox-spacing-sm);
+  --adui-checkbox-indicator-scale: var(--adui-checkbox-indicator-scale-sm);
+  --adui-checkbox-size: var(--adui-checkbox-size-sm);
+}
+.adui-checkbox-mini {
+  --adui-checkbox-font-size: var(--adui-checkbox-font-size-mn);
+  --adui-checkbox-font-leading: var(--adui-checkbox-font-leading-mn);
+  --adui-checkbox-spacing: var(--adui-checkbox-spacing-mn);
+  --adui-checkbox-indicator-scale: var(--adui-checkbox-indicator-scale-mn);
+  --adui-checkbox-size: var(--adui-checkbox-size-mn);
+}
+
+.adui-checkbox-base {
+  --adui-checkbox-indicator-shadow: var(--adui-checkbox-border);
   display: inline-block;
-  font-size: var(--font-size-medium);
-  line-height: 36px;
+  font-size: var(--adui-checkbox-font-size);
+  line-height: var(--adui-checkbox-font-leading);
+  user-select: none;
 
-  &:not(.#{$prefix}-disabled) {
+  &:not(.adui-checkbox-disabled) {
     cursor: pointer;
 
-    &:not(.#{$prefix}-checked) {
+    &:not(.adui-checkbox-checked):not(.adui-checkbox-indeterminate) {
       &:hover {
-        .#{$prefix}-indicator {
-          background-color: var(--gray-100);
-          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-600);
+        .adui-checkbox-indicator {
+          --adui-checkbox-indicator-shadow: var(--adui-checkbox-border-hover);
+        }
+
+        &:active {
+          &[data-actived="true"] {
+            .adui-checkbox-indicator {
+              --adui-checkbox-indicator-shadow: var(
+                --adui-checkbox-border-active
+              );
+            }
+
+            .adui-checkbox-indicator-inner {
+              transform: rotate(45deg) scale(1);
+              transition: 0s ease;
+
+              &::before {
+                background-color: var(--adui-checkbox-bg-checked);
+                transform: scale(1, 1);
+                transition: 0.1s ease transform;
+              }
+
+              &::after {
+                background-color: var(--adui-checkbox-bg-checked);
+                transition: 0.1s ease background-color;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.adui-checkbox-checked {
+      .adui-checkbox-indicator {
+        --adui-checkbox-indicator-shadow: var(--adui-checkbox-bg-checked);
+        background-color: var(--adui-checkbox-bg-checked);
+      }
+
+      .adui-checkbox-indicator-inner {
+        &::after {
+          // checked + active + unhover
+          transition: var(--adui-motion-duration-base)
+            var(--adui-motion-ease-base) transform;
         }
       }
 
-      &:active {
-        .#{$prefix}-indicator {
-          background-color: var(--gray-300);
-          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-600);
+      &:hover {
+        .adui-checkbox-indicator {
+          --adui-checkbox-indicator-shadow: var(
+            --adui-checkbox-bg-checked-hover
+          );
+          background-color: var(--adui-checkbox-bg-checked-hover);
         }
-      }
-    }
 
-    &.#{$prefix}-checked {
-      .#{$prefix}-indicator {
-        background-color: var(--primary-color);
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
-          0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--primary-color);
-      }
-    }
-  }
+        &:active {
+          .adui-checkbox-indicator {
+            --adui-checkbox-indicator-shadow: var(
+              --adui-checkbox-bg-checked-active
+            );
+            background-color: var(--adui-checkbox-bg-checked-active);
+            animation: none;
+          }
 
-  &.#{$prefix}-disabled {
-    cursor: not-allowed;
-    color: var(--gray-700);
-
-    .#{$prefix}-indicator {
-      background-color: rgba(0, 0, 0, 0.03);
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
-    }
-
-    &.#{$prefix}-checked {
-      .#{$prefix}-indicator {
-        svg {
-          fill: var(--gray-600);
+          &[data-actived="true"] {
+            .adui-checkbox-indicator-inner {
+              &::after {
+                // checked + active + hover
+                transform: scale(1, 0);
+                transition: var(--adui-motion-duration-base)
+                  var(--adui-motion-ease-base) transform;
+              }
+            }
+          }
         }
       }
     }
   }
 }
-.#{$prefix}-indicator {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 8px;
-  width: 16px;
-  height: 16px;
-  background-color: var(--gray-50);
+.adui-checkbox-indicator {
+  position: relative;
+  display: inline-block;
+  margin-right: var(--adui-checkbox-spacing);
+  width: var(--adui-checkbox-size);
+  height: var(--adui-checkbox-size);
+  vertical-align: calc(
+    -0.125em - (var(--adui-checkbox-size) - var(--adui-checkbox-font-size)) / 2
+  );
+  background-color: var(--adui-checkbox-bg);
   border-radius: 2px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-500);
-  transform-origin: 0 50%;
-  transition: background-color var(--motion-duration-fast) var(--ease-in-out),
-    box-shadow var(--motion-duration-fast) var(--ease-in-out);
-
-  svg {
-    fill: #fff;
-    opacity: 0;
-    transform: scale(0.6) rotate(10deg);
-    transition: transform var(--motion-duration-base) var(--ease-in-out);
-  }
-}
-.#{$prefix}-checked {
-  svg {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-
-  &.#{$prefix}-large {
-    .#{$prefix}-indicator {
-      svg {
-        opacity: 1;
-        transform: scale(1.1) rotate(0deg);
-      }
-    }
-  }
-
-  &.#{$prefix}-small,
-  &.#{$prefix}-mini {
-    .#{$prefix}-indicator {
-      svg {
-        opacity: 1;
-        transform: scale(0.85) rotate(0deg);
-      }
-    }
-  }
-}
-.#{$prefix}-helper {
-  margin-left: 4px;
-  vertical-align: -4px;
-}
-.#{$prefix}-large {
-  font-size: var(--font-size-large);
-  line-height: 42px;
-
-  .#{$prefix}-indicator {
-    transform: scale(1.125);
-  }
-
-  .#{$prefix}-helper {
-    vertical-align: -3px;
-  }
-}
-.#{$prefix}-small {
-  font-size: var(--font-size-small);
-  line-height: 30px;
-
-  .#{$prefix}-indicator {
-    margin-right: 4px;
-    transform: scale(0.875);
-  }
-
-  .#{$prefix}-helper {
-    vertical-align: -4px;
-  }
-}
-.#{$prefix}-mini {
-  font-size: var(--font-size-mini);
-  line-height: 26px;
-
-  .#{$prefix}-indicator {
-    margin-right: 4px;
-    transform: scale(0.875);
-
-    svg {
-      transform: scale(0.739636825); // calculated
-    }
-  }
-
-  .#{$prefix}-helper {
-    vertical-align: -4px;
-  }
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+    0 0 0 1px var(--adui-checkbox-indicator-shadow);
+  transition: all var(--adui-motion-ease-base) var(--adui-motion-duration-base);
+  animation: none;
 }
 
+.adui-checkbox-indicator-inner {
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 2.5px);
+  width: 5px;
+  height: 8px;
+  transform: rotate(45deg) scale(0);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    transition: var(--adui-motion-duration-base) ease opacity,
+      0s ease var(--adui-motion-duration-base) transform,
+      0s ease var(--adui-motion-duration-base) background-color;
+  }
+
+  &::before {
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform-origin: 0 50%;
+    transform: scale(0, 1);
+  }
+
+  &::after {
+    right: 0;
+    width: 2px;
+    height: 100%;
+    transform-origin: 50% 100%;
+    transform: scale(1, 0);
+  }
+}
+.adui-checkbox-helper {
+  margin-left: calc(var(--adui-checkbox-spacing) - 2px);
+  vertical-align: calc(-0.125em - (18px - var(--adui-checkbox-font-size)) / 2);
+}
 /**
  * Checkbox.Group
  */
-.#{$prefix}-group {
-  .#{$prefix}-base {
+.adui-checkbox-group {
+  .adui-checkbox-base {
     &:not(:last-of-type) {
-      &.#{$prefix}-large {
-        margin-right: 24px;
-      }
-
-      &.#{$prefix}-medium {
-        margin-right: 20px;
-      }
-
-      &.#{$prefix}-small {
-        margin-right: 16px;
-      }
-
-      &.#{$prefix}-mini {
-        margin-right: 12px;
-      }
+      margin-right: calc(var(--adui-checkbox-font-leading) - 14px);
     }
   }
 }
-.#{$prefix}-noChildren {
+.adui-checkbox-noChildren {
   line-height: 0;
 
-  .#{$prefix}-indicator {
+  .adui-checkbox-indicator {
     margin-right: 0;
+  }
+}
+
+.adui-checkbox-checked {
+  .adui-checkbox-indicator {
+    &::after {
+      transform: scale(var(--adui-checkbox-indicator-scale));
+    }
+  }
+
+  &:not([data-actived="true"]) {
+    .adui-checkbox-indicator {
+      animation: aduiCheckboxIndicatorScale ease
+        var(--adui-motion-duration-base) both;
+    }
+
+    @keyframes aduiCheckboxIndicatorScale {
+      0% {
+        transform: scale(1, 1);
+      }
+      60% {
+        transform: scale(1.05, 1.05);
+      }
+      100% {
+        transform: scale(1, 1);
+      }
+    }
+
+    &:not(.adui-checkbox-indeterminate) {
+      .adui-checkbox-indicator-inner {
+        transform: rotate(45deg) scale(1);
+        transition: var(--adui-motion-duration-bounce)
+          var(--adui-motion-ease-bounce) all;
+
+        &::before,
+        &::after {
+          transform: scale(1, 1);
+          transition: 0s ease all !important;
+        }
+      }
+    }
+  }
+
+  .adui-checkbox-indicator-inner {
+    transform: rotate(45deg) scale(1);
+    transition: 0s;
+
+    &::before,
+    &::after {
+      background-color: #fff;
+      transform: scale(1, 1);
+      transition: var(--adui-motion-duration-base) var(--adui-motion-ease-base)
+        transform;
+    }
+  }
+}
+
+.adui-checkbox-indeterminate {
+  --adui-checkbox-indicator-shadow: var(--adui-checkbox-bg-checked);
+
+  .adui-checkbox-indicator {
+    background-color: var(--adui-checkbox-bg-checked);
+  }
+  .adui-checkbox-indicator-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 2px;
+    background-color: #fff;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.adui-checkbox-disabled {
+  --adui-checkbox-indicator-shadow: var(--adui-checkbox-border-disabled);
+  cursor: not-allowed;
+
+  .adui-checkbox-indicator {
+    background-color: rgba(0, 0, 0, 0.03);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+
+  &.adui-checkbox-checked {
+    .adui-checkbox-indicator-inner {
+      &::before,
+      &::after {
+        background-color: var(--gray-600);
+      }
+    }
   }
 }
