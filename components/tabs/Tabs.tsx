@@ -14,6 +14,7 @@ import ResizeObserver from "../resize-observer"
 import Tab from "./Tab"
 import { TabsContext } from "./Context"
 import "./style"
+import { BOUNCE_DISTANCE } from "../_util/motion"
 
 const prefix = "adui-tabs"
 
@@ -130,18 +131,20 @@ const Tabs: ITabs = forwardRef(
             '[aria-selected="true"]'
           ) as HTMLDivElement
           if (theActiveTab) {
+            const lastOffsetLeft =
+              indicatorRef.current?.style.transform.match(
+                /translate3d\((\d+)px/
+              )?.[1] || 0
             const { clientWidth, offsetLeft } = theActiveTab
+            const delta = Math.abs(offsetLeft - Number(lastOffsetLeft))
+            const transition =
+              delta < BOUNCE_DISTANCE
+                ? "all var(--adui-motion-duration-base) var(--adui-motion-ease-base)"
+                : "all var(--adui-motion-duration-gentle) var(--adui-motion-ease-gentle)"
+
             setIndicatorStyle({
-              transform: `translateX(${Math.floor(offsetLeft)}px)`,
-              transition: initial
-                ? ""
-                : `all var(--adui-motion-duration-bounce) linear(
-                  0, 0.002, 0.006, 0.015, 0.026 2.2%, 0.059 3.4%, 0.106 4.8%, 0.152 5.9%,
-                  0.21 7.2%, 0.462 12.4%, 0.575 14.8%, 0.681 17.4%, 0.727, 0.769, 0.809, 0.844,
-                  0.876, 0.904, 0.929, 0.952, 0.971, 0.987 30.7%, 0.998, 1.007, 1.015, 1.021,
-                  1.026, 1.029 38.4%, 1.031, 1.032 41.6% 43.7%, 1.03 46%, 1.01 59.6%, 1.006,
-                  1.002 68.5%, 1 73.6%, 0.999 79.5%, 1
-                )`,
+              transform: `translate3d(${Math.floor(offsetLeft)}px, 0, 0)`,
+              transition: initial ? "" : transition,
               width: `${clientWidth}px`,
             })
           } else {
