@@ -8,6 +8,7 @@ import Group from "./Group"
 import Icon, { IconNames } from "../icon"
 import Popover, { IPopoverProps } from "../popover"
 import { ConfigContext, getComputedSize } from "../config-provider"
+import { useActive } from "../_util/hooks/use-active"
 import "./style"
 
 const prefix = "adui-checkbox"
@@ -112,9 +113,9 @@ const Checkbox: ICheckbox = forwardRef(
       value: valueContext,
     } = useContext(GroupContext)
     const { size: sizeConfig } = useContext(ConfigContext)
-    const activeTimeOutRef = useRef(0)
     const labelRef = useRef<HTMLLabelElement>(null)
     const ref = refProp || labelRef
+    const { handleMouseDown } = useActive({ ref })
 
     // 相当于生命周期 getDerivedStateFromProps
     if (checkedProp !== null && checked !== !!checkedProp) {
@@ -199,29 +200,13 @@ const Checkbox: ICheckbox = forwardRef(
       }
     }
 
-    const handleWindowMouseUp = () => {
-      window.clearTimeout(activeTimeOutRef.current)
-      window.removeEventListener("mouseup", handleWindowMouseUp)
-    }
-
-    const handleMouseDown = (
+    const handleLabelMouseDown = (
       e: React.MouseEvent<HTMLLabelElement, MouseEvent>
     ) => {
       if (onMouseDown) {
         onMouseDown(e)
       }
-
-      window.addEventListener("mouseup", handleWindowMouseUp)
-
-      if (ref && "current" in ref && ref.current) {
-        delete ref.current.dataset.actived
-      }
-
-      activeTimeOutRef.current = window.setTimeout(() => {
-        if (ref && "current" in ref && ref.current) {
-          ref.current.dataset.actived = "true"
-        }
-      }, 200)
+      handleMouseDown()
     }
 
     return (
@@ -232,7 +217,7 @@ const Checkbox: ICheckbox = forwardRef(
         onKeyDown={handleKeyDown}
         ref={ref}
         role="checkbox"
-        onMouseDown={handleMouseDown}
+        onMouseDown={handleLabelMouseDown}
         {...otherProps}
       >
         <span className={`${prefix}-indicator`}>

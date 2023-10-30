@@ -35,7 +35,6 @@ $prefix: "adui-checkbox";
   display: inline-block;
   font-size: var(--adui-checkbox-font-size);
   line-height: var(--adui-checkbox-font-leading);
-  user-select: none;
 
   &:not(.adui-checkbox-disabled) {
     cursor: pointer;

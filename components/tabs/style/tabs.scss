@@ -16,7 +16,8 @@ $prefix: "adui-tabs";
     white-space: nowrap;
     cursor: pointer;
     outline: none;
-    transition: color var(--motion-duration-base) var(--ease-in-out);
+    transition: var(--adui-motion-duration-base) var(--adui-motion-ease-base)
+      all;
 
     &:hover {
       color: var(--primary-color);

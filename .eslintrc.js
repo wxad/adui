@@ -60,7 +60,7 @@ const eslintrc = {
         roles: ["none"],
       },
     ],
-    "max-len": ["error", { code: 80 }],
+    "max-len": ["error", { code: 120 }],
     "import/prefer-default-export": 0,
     // 不要求 .JSX
     "react/jsx-filename-extension": 0,

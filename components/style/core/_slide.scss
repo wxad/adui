@@ -3,17 +3,17 @@
 @mixin slide-motion(
   $className,
   $keyframeName,
-  $duration: var(--motion-duration-base)
+  $duration: var(--adui-motion-duration-bounce)
 ) {
   @include make-motion($className, $keyframeName, $duration);
   .#{$className}-enter,
   .#{$className}-appear {
     opacity: 0;
-    animation-timing-function: var(--ease-out-quint);
+    animation-timing-function: var(--adui-motion-ease-bounce);
     backface-visibility: hidden;
   }
   .#{$className}-leave {
-    animation-timing-function: var(--ease-in-quint);
+    animation-timing-function: var(--adui-motion-ease-bounce);
     backface-visibility: hidden;
   }
 }
@@ -27,7 +27,7 @@
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleY(0.8) translateY(-0) translateZ(0);
+    transform: scaleY(0.9) translateY(-0) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -45,7 +45,7 @@
   100% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleY(0.8) translateY(-0) translateZ(0);
+    transform: scaleY(0.9) translateY(-0) translateZ(0);
   }
 }
 
@@ -53,7 +53,7 @@
   0% {
     opacity: 0;
     transform-origin: 100% 100%;
-    transform: scaleY(0.8) translateY(0) translateZ(0);
+    transform: scaleY(0.9) translateY(0) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -71,7 +71,7 @@
   100% {
     opacity: 0;
     transform-origin: 100% 100%;
-    transform: scaleY(0.8) translateY(0) translateZ(0);
+    transform: scaleY(0.9) translateY(0) translateZ(0);
   }
 }
 
@@ -79,7 +79,7 @@
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleX(0.8) translateX(-0) translateZ(0);
+    transform: scaleX(0.9) translateX(-0) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -97,7 +97,7 @@
   100% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleX(0.8) translateX(-0) translateZ(0);
+    transform: scaleX(0.9) translateX(-0) translateZ(0);
   }
 }
 
@@ -105,7 +105,7 @@
   0% {
     opacity: 0;
     transform-origin: 100% 0%;
-    transform: scaleX(0.8) translateX(0) translateZ(0);
+    transform: scaleX(0.9) translateX(0) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -123,6 +123,6 @@
   100% {
     opacity: 0;
     transform-origin: 100% 0%;
-    transform: scaleX(0.8) translateX(0) translateZ(0);
+    transform: scaleX(0.9) translateX(0) translateZ(0);
   }
 }

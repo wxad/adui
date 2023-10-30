@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
-import React, { forwardRef, useContext, useState } from "react"
+import React, { forwardRef, useContext, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import { GroupContext } from "./Context"
@@ -7,6 +7,7 @@ import { ConfigContext, getComputedSize } from "../config-provider"
 import Group from "./Group"
 import Icon, { IconNames } from "../icon"
 import Popover, { IPopoverProps } from "../popover"
+import { useActive } from "../_util/hooks/use-active"
 import "./style"
 
 const prefix = "adui-radio"
@@ -56,6 +57,10 @@ export interface IRadioProps {
       ) => void)
     | null
   /**
+   * onMouseDown 时的 handler
+   */
+  onMouseDown?: (e: React.MouseEvent<HTMLLabelElement>) => void
+  /**
    * 设置尺寸
    */
   size?: "mini" | "small" | "medium" | "large"
@@ -88,11 +93,12 @@ const Radio: IRadio = forwardRef(
       helperProps,
       onChange,
       onClick,
+      onMouseDown,
       size: sizeProp,
       value,
       ...otherProps
     }: IRadioProps,
-    ref
+    refProp
   ) => {
     const [checked, setChecked] = useState(!!checkedProp)
     const {
@@ -101,6 +107,9 @@ const Radio: IRadio = forwardRef(
       size: sizeContext,
       value: valueContext,
     } = useContext(GroupContext)
+    const labelRef = useRef<HTMLLabelElement>(null)
+    const ref = refProp || labelRef
+    const { handleMouseDown } = useActive({ ref })
 
     // 相当于生命周期 getDerivedStateFromProps
     if (checkedProp !== null && checked !== !!checkedProp) {
@@ -186,6 +195,16 @@ const Radio: IRadio = forwardRef(
       }
     }
 
+    const handleLabelMouseDown = (
+      e: React.MouseEvent<HTMLLabelElement, MouseEvent>
+    ) => {
+      if (onMouseDown) {
+        onMouseDown(e)
+      }
+
+      handleMouseDown()
+    }
+
     return (
       <label
         aria-checked={checked}
@@ -194,6 +213,7 @@ const Radio: IRadio = forwardRef(
         onKeyDown={handleKeyDown}
         ref={ref}
         role="radio"
+        onMouseDown={handleLabelMouseDown}
         {...otherProps}
       >
         <span className={`${prefix}-indicator`} />
