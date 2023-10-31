@@ -1,0 +1,35 @@
+/**
+ * _tokens.scss 规定为该组件的变量文件
+ * 1. 名称需为 _tokens.scss 且放置于 style 目录下
+ * 2. 该文件中的变量会被脚本自动解析，展示到官网的 API 文档中
+ * 3. 每个变量需以 --adui- 开头，且需有注释，注释会作为该变量的描述展示到 API 文档中
+ */
+:root {
+  // 大尺寸下的宽度
+  --adui-switch-width-lg: 44px;
+  // 大尺寸下的 handle 宽高
+  --adui-switch-indicator-size-lg: 22px;
+  // 大尺寸下的字体大小
+  --adui-switch-font-size-lg: var(--font-size-large);
+
+  // 中尺寸下的宽度
+  --adui-switch-width-md: 34px;
+  // 中尺寸下的 handle 宽高
+  --adui-switch-indicator-size-md: 16px;
+  // 中尺寸下的字体大小
+  --adui-switch-font-size-md: var(--font-size-medium);
+
+  // 小尺寸下的宽度
+  --adui-switch-width-sm: 28px;
+  // 小尺寸下的 handle 宽高
+  --adui-switch-indicator-size-sm: 12px;
+  // 小尺寸下的字体大小
+  --adui-switch-font-size-sm: var(--font-size-small);
+
+  // 迷你尺寸下的宽度
+  --adui-switch-width-mn: 24px;
+  // 迷你尺寸下的 handle 宽高
+  --adui-switch-indicator-size-mn: 10px;
+  // 迷你尺寸下的字体大小
+  --adui-switch-font-size-mn: var(--font-size-mini);
+}

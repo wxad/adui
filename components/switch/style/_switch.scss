@@ -1,24 +1,17 @@
 $prefix: "adui-switch";
+@import "./tokens";
 
 .#{$prefix} {
   &-wrapper {
     display: inline-block;
+    font-size: var(--adui-switch-font-size);
     cursor: pointer;
+    user-select: none;
 
     &:hover {
       .#{$prefix} {
         &-base {
           background-color: rgba(0, 0, 0, 0.2);
-        }
-      }
-
-      &:active {
-        &[data-actived="true"] {
-          .#{$prefix} {
-            &-indicator {
-              width: 16px;
-            }
-          }
         }
       }
     }
@@ -30,6 +23,17 @@ $prefix: "adui-switch";
             var(--adui-motion-ease-base) all;
         }
       }
+
+      &:hover {
+        &:active {
+          .#{$prefix} {
+            &-indicator {
+              inset: 2px calc(100% - var(--adui-switch-indicator-size) - 8px)
+                2px 2px;
+            }
+          }
+        }
+      }
     }
   }
   &-checked {
@@ -39,11 +43,16 @@ $prefix: "adui-switch";
           background-color: var(--primary-color);
         }
       }
+    }
 
-      &:active {
-        .#{$prefix} {
-          &-indicator {
-            right: 25%;
+    &[data-actived="true"] {
+      &:hover {
+        &:active {
+          .#{$prefix} {
+            &-indicator {
+              inset: 2px 2px 2px
+                calc(100% - var(--adui-switch-indicator-size) - 8px);
+            }
           }
         }
       }
@@ -55,8 +64,7 @@ $prefix: "adui-switch";
       }
 
       &-indicator {
-        left: calc(100% - 2px);
-        transform: translateX(-100%);
+        inset: 2px 2px 2px calc(100% - var(--adui-switch-indicator-size) - 2px);
       }
     }
   }
@@ -78,6 +86,13 @@ $prefix: "adui-switch";
   &-base {
     position: relative;
     display: inline-block;
+    width: var(--adui-switch-width);
+    height: calc(var(--adui-switch-indicator-size) + 4px);
+    vertical-align: calc(
+      -0.125em - (
+          var(--adui-switch-indicator-size) + 4px - var(--adui-switch-font-size)
+        ) / 2
+    );
     background-color: rgba(0, 0, 0, 0.12);
     border-radius: 14px;
     transition: var(--adui-motion-duration-base) var(--adui-motion-ease-base)
@@ -85,9 +100,9 @@ $prefix: "adui-switch";
   }
   &-indicator {
     position: absolute;
-    top: 2px;
-    left: 2px;
+    inset: 2px calc(100% - var(--adui-switch-indicator-size) - 2px) 2px 2px;
     background-color: #fff;
+    border-radius: var(--adui-switch-indicator-size);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
       0 5px 10px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
     transition: var(--adui-motion-duration-bounce)
@@ -98,73 +113,24 @@ $prefix: "adui-switch";
   }
 
   /* 尺寸 sizes */
-  /* 由于 indicator 会在 active 的情况下增大 width，因此 border-radius 也要分开写*/
-  &-mini {
-    font-size: var(--font-size-mini);
-
-    .#{$prefix} {
-      &-base {
-        width: 24px;
-        height: 14px;
-        vertical-align: calc(-0.125em - (14px - var(--font-size-mini)) / 2);
-      }
-
-      &-indicator {
-        width: 10px;
-        height: 10px;
-        border-radius: 10px;
-      }
-    }
-  }
-  &-small {
-    font-size: var(--font-size-small);
-
-    .#{$prefix} {
-      &-base {
-        width: 28px;
-        height: 16px;
-        vertical-align: calc(-0.125em - (16px - var(--font-size-small)) / 2);
-      }
-
-      &-indicator {
-        width: 12px;
-        height: 12px;
-        border-radius: 12px;
-      }
-    }
+  &-large {
+    --adui-switch-width: var(--adui-switch-width-lg);
+    --adui-switch-font-size: var(--adui-switch-font-size-lg);
+    --adui-switch-indicator-size: var(--adui-switch-indicator-size-lg);
   }
   &-medium {
-    font-size: var(--font-size-medium);
-
-    .#{$prefix} {
-      &-base {
-        width: 34px;
-        height: 20px;
-        vertical-align: calc(-0.125em - (20px - var(--font-size-medium)) / 2);
-      }
-
-      &-indicator {
-        width: 16px;
-        height: 16px;
-        border-radius: 16px;
-      }
-    }
+    --adui-switch-width: var(--adui-switch-width-md);
+    --adui-switch-font-size: var(--adui-switch-font-size-md);
+    --adui-switch-indicator-size: var(--adui-switch-indicator-size-md);
   }
-  &-large {
-    font-size: var(--font-size-large);
-
-    .#{$prefix} {
-      &-base {
-        width: 44px;
-        height: 26px;
-        vertical-align: calc(-0.125em - (26px - var(--font-size-large)) / 2);
-      }
-
-      &-indicator {
-        width: 22px;
-        height: 22px;
-        border-radius: 22px;
-      }
-    }
+  &-small {
+    --adui-switch-width: var(--adui-switch-width-sm);
+    --adui-switch-font-size: var(--adui-switch-font-size-sm);
+    --adui-switch-indicator-size: var(--adui-switch-indicator-size-sm);
+  }
+  &-mini {
+    --adui-switch-width: var(--adui-switch-width-mn);
+    --adui-switch-font-size: var(--adui-switch-font-size-mn);
+    --adui-switch-indicator-size: var(--adui-switch-indicator-size-mn);
   }
 }
