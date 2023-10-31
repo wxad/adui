@@ -1,7 +1,21 @@
 # Changelog
 
-现在（2023.10.26），每个组件页都增加了独立的 Changelog，可在组件页的底部找到。
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.45.0](https://github.com/wxad/adui/compare/v2.44.11...v2.45.0) (2023-10-31)
+
+
+### Features
+
+* **Button:** 应用新动效 ([eb9bcfb](https://github.com/wxad/adui/commit/eb9bcfba80c65400c0721e2a481277944d8b8773))
+* **Checkbox:** 应用新动效 ([1bf0e5c](https://github.com/wxad/adui/commit/1bf0e5c5801f87cd8e54aae877e33678b6866d37))
+* **Slider:** 双 tooltip 合并设计 ([85482ad](https://github.com/wxad/adui/commit/85482ad4e14b02dc0088d5f0c970d84122fd0aeb))
+* **Tabs:** 根据距离应用 ease / bounce 动效 ([38bea31](https://github.com/wxad/adui/commit/38bea318ca690eae6d55ee950f88fd050f1b171a))
+
+
+### Bug Fixes
+
+* 试图修复 numericinput 错误先 [#43](https://github.com/wxad/adui/issues/43) ([7cae4b4](https://github.com/wxad/adui/commit/7cae4b4a7f7aa3eaf57763d49bd2ca2403f6f1b4))
 
 ### [2.44.11](https://github.com/wxad/adui/compare/v2.44.10...v2.44.11) (2023-09-26)
 

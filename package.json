@@ -1,7 +1,7 @@
 {
   "name": "adui",
   "author": "yijiejiang <yijiejiang@tencent.com>",
-  "version": "2.44.11",
+  "version": "2.45.0",
   "files": [
     "lib",
     "es",
