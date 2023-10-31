@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import RcHandle from "rc-slider/lib/Handle"
@@ -127,6 +127,12 @@ const Slider: React.FC<ISliderProps> = ({
   value: valueProp,
   ...otherProps
 }: ISliderProps) => {
+  const tooltipLeft = useRef<HTMLDivElement>(null)
+  const tooltipRight = useRef<HTMLDivElement>(null)
+  const tooltipCombined = useRef<HTMLDivElement>(null)
+  const [rangeTooltipCombinedStatus, setRangeTooltipCombinedStatus] = useState<
+    "combined" | "separated" | "overlapped"
+  >("separated")
   const [active, setActive] = useState(false)
   const [tooltipVisibleArray, setTooltipVisibleArray] = useState<{
     [index: number]: boolean
@@ -160,6 +166,38 @@ const Slider: React.FC<ISliderProps> = ({
     setValue(range ? valueProp : Number(valueProp))
   }
 
+  useEffect(() => {
+    // 这里做双滑块模式时的 tooltip 设计
+    if (
+      range &&
+      Array.isArray(value) &&
+      (tooltipVisibleArray[0] || active) &&
+      tooltipLeft.current &&
+      tooltipRight.current
+    ) {
+      const rectLeft = tooltipLeft.current.getBoundingClientRect()
+      const rectRight = tooltipRight.current.getBoundingClientRect()
+      // 判断两个 tooltip 是否在位置上存在重叠
+      if (rectLeft.left === rectRight.left) {
+        setRangeTooltipCombinedStatus("overlapped")
+      } else if (rectLeft.left + rectLeft.width > rectRight.left) {
+        setRangeTooltipCombinedStatus("combined")
+
+        if (tooltipCombined.current) {
+          tooltipCombined.current.style.left = `calc(${value[0]}% - ${
+            rectLeft.width / 2
+          }px)`
+
+          tooltipCombined.current.style.width = `calc(${
+            value[1] - value[0]
+          }% + ${rectLeft.width}px)`
+        }
+      } else {
+        setRangeTooltipCombinedStatus("separated")
+      }
+    }
+  }, [value, range, active, tooltipVisibleArray])
+
   const valuePropsObject: IValue = {}
   const numericInputPropsObject: INumericInputValue = {}
 
@@ -188,11 +226,18 @@ const Slider: React.FC<ISliderProps> = ({
     precision = stepString.length - stepString.indexOf(".") - 1
   }
 
-  const setTooltipVisible = (index: number, bool: boolean) => {
-    setTooltipVisibleArray({
-      ...tooltipVisibleArray,
-      [index]: bool,
-    })
+  const setTooltipVisible = (bool: boolean) => {
+    if (bool) {
+      setTooltipVisibleArray({
+        0: true,
+        1: true,
+      })
+    } else if (!active) {
+      setTooltipVisibleArray({
+        0: false,
+        1: false,
+      })
+    }
   }
 
   const handleWithTooltip = ({
@@ -202,17 +247,27 @@ const Slider: React.FC<ISliderProps> = ({
     ...restProps
   }: IHandleGeneratorInfo) => {
     if (tipFormatter) {
+      if (range) {
+        return (
+          <RcHandle
+            value={val}
+            onMouseEnter={() => setTooltipVisible(true)}
+            onMouseLeave={() => setTooltipVisible(false)}
+            {...restProps}
+          />
+        )
+      }
       return (
         <Tooltip
           key={index}
           popup={tipFormatter(val)}
           placement={(tooltipProps && tooltipProps.placement) || "top"}
-          visible={tooltipVisibleArray[index] || dragging}
+          visible={tooltipVisibleArray[index] || active}
         >
           <RcHandle
             value={val}
-            onMouseEnter={() => setTooltipVisible(index, true)}
-            onMouseLeave={() => setTooltipVisible(index, false)}
+            onMouseEnter={() => setTooltipVisible(true)}
+            onMouseLeave={() => setTooltipVisible(false)}
             {...restProps}
           />
         </Tooltip>
@@ -233,6 +288,10 @@ const Slider: React.FC<ISliderProps> = ({
 
   const handleAfterChange = (val: SliderValue) => {
     setActive(false)
+    setTooltipVisibleArray({
+      0: false,
+      1: false,
+    })
     // 拖拽结束，样式重置
     document.documentElement.style.cursor = ""
     if (onAfterChange) {
@@ -286,6 +345,43 @@ const Slider: React.FC<ISliderProps> = ({
 
   return (
     <div className={classSet} style={style}>
+      {tipFormatter && range && Array.isArray(value) && (
+        <div
+          className={classNames("adui-slider-range-tooltip-wrapper", {
+            "adui-slider-range-tooltip-wrapper-visible":
+              tooltipVisibleArray[0] || active,
+            "adui-slider-range-tooltip-wrapper-combined":
+              rangeTooltipCombinedStatus === "combined",
+            "adui-slider-range-tooltip-wrapper-overlapped":
+              rangeTooltipCombinedStatus === "overlapped",
+          })}
+        >
+          <div
+            className="adui-slider-range-tooltip adui-slider-range-tooltip-left"
+            style={{
+              left: `${value[0]}%`,
+            }}
+            ref={tooltipLeft}
+          >
+            {tipFormatter(value[0])}
+          </div>
+          <div
+            className="adui-slider-range-tooltip adui-slider-range-tooltip-right"
+            style={{
+              left: `${value[1]}%`,
+            }}
+            ref={tooltipRight}
+          >
+            {tipFormatter(value[1])}
+          </div>
+          <div
+            className="adui-slider-range-tooltip-combined"
+            ref={tooltipCombined}
+          >
+            {tipFormatter(value[0])} - {tipFormatter(value[1])}
+          </div>
+        </div>
+      )}
       {slider}
       {inputVisible && !range && (
         <NumericInput
