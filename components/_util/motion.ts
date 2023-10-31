@@ -13,9 +13,9 @@
 export const BOUNCE_DISTANCE = 350
 
 /**
- * 以 350px 为正方形的对角线长，计算出一个正方形的面积为 350 / √2 * 350 / √2 = 350 * 350 / 2 = 61250
+ * 以 350px 为正方形的边长，计算出一个正方形的面积为 350 * 350 = 122500
  *
- * 当元素尺寸小于 61250 时，使用 ease-base；
- * 当元素尺寸大于 61250 时，使用 ease-gentle/bounce。
+ * 当元素尺寸小于 122500 时，使用 ease-base；
+ * 当元素尺寸大于 122500 时，使用 ease-gentle/bounce。
  */
-export const BOUNCE_SIZE = 61250
+export const BOUNCE_SIZE = 122500

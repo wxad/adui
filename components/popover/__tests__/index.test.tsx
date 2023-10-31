@@ -31,7 +31,7 @@ describe("Popover", () => {
       </Popover>
     )
     expect(wrapper0.find("Tooltip").props().popupTransitionName).toBe(
-      "zoom-big-fast"
+      "zoom-big"
     )
     expect(wrapper1.find("Tooltip").props().popupTransitionName).toBe(
       "slide-down"

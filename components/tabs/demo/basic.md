@@ -17,6 +17,9 @@ return (
       <Tabs.Tab title="选择项一" value={0} />
       <Tabs.Tab title="选择项二" value={1} />
       <Tabs.Tab title="选择项三" value={2} />
+      <Tabs.Tab title="选择项三" value={3} />
+      <Tabs.Tab title="选择项三" value={4} />
+      <Tabs.Tab title="选择项三" value={5} />
     </Tabs>
     <div className="pt-20">
       {value === 0 && "内容 A"}

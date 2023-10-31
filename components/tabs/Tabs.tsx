@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, {
   forwardRef,
   useContext,
@@ -140,7 +141,7 @@ const Tabs: ITabs = forwardRef(
             const transition =
               delta < BOUNCE_DISTANCE
                 ? "all var(--adui-motion-duration-base) var(--adui-motion-ease-base)"
-                : "all var(--adui-motion-duration-gentle) var(--adui-motion-ease-gentle)"
+                : "all 0.35s linear(0,0.002,0.006,0.014,0.025 2.5%,0.056 3.8%,0.1,0.144,0.198 8%,0.436 13.9%,0.544,0.645 19.6%,0.69,0.731,0.769,0.803,0.834,0.862,0.888,0.911,0.931,0.949,0.964,0.976,0.987,0.996,1.003,1.009,1.013 47.3%,1.015 49.7%,1.017 53%,1.016 56.9%,1.006 72.6%,1.002 81.4%,1.001 89.7%,1)"
 
             setIndicatorStyle({
               transform: `translate3d(${Math.floor(offsetLeft)}px, 0, 0)`,

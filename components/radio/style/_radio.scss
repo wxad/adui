@@ -26,6 +26,12 @@ $prefix: "adui-radio";
 
     &.#{$prefix}-checked {
       &:not([data-actived="true"]) {
+        &:active {
+          .#{$prefix}-indicator {
+            animation: none;
+          }
+        }
+
         .#{$prefix}-indicator {
           animation: aduiCheckboxIndicatorScale ease
             var(--adui-motion-duration-base) both;
@@ -45,6 +51,18 @@ $prefix: "adui-radio";
           &::after {
             transition: transform var(--adui-motion-duration-bounce)
               var(--adui-motion-ease-bounce);
+          }
+        }
+      }
+
+      &:hover {
+        &:active {
+          &[data-actived="true"] {
+            .#{$prefix}-indicator {
+              &::after {
+                transform: scale(0.8);
+              }
+            }
           }
         }
       }
