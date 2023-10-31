@@ -16,6 +16,11 @@
   font-style: normal;
   font-weight: 500;
 }
+
+:root {
+  --primary-color: rgba(41, 107, 239, 1);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu,
@@ -349,11 +354,11 @@ body {
   }
 
   .main {
-    padding: 120px 64px 160px;
+    padding: 120px 32px 160px;
     max-width: 100%;
   }
 
   .footer {
-    padding: 56px 64px;
+    padding: 56px 32px;
   }
 }

@@ -14,17 +14,59 @@ $prefix: "adui-radio";
           background-color: var(--gray-100);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-600);
         }
-      }
 
-      &:active {
-        .#{$prefix}-indicator {
-          background-color: var(--gray-300);
-          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-600);
+        &:active {
+          .#{$prefix}-indicator {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+              0 0 0 1px var(--primary-color);
+          }
         }
       }
     }
 
     &.#{$prefix}-checked {
+      &:not([data-actived="true"]) {
+        &:active {
+          .#{$prefix}-indicator {
+            animation: none;
+          }
+        }
+
+        .#{$prefix}-indicator {
+          animation: aduiCheckboxIndicatorScale ease
+            var(--adui-motion-duration-base) both;
+
+          @keyframes aduiCheckboxIndicatorScale {
+            0% {
+              transform: scale(1, 1);
+            }
+            60% {
+              transform: scale(1.05, 1.05);
+            }
+            100% {
+              transform: scale(1, 1);
+            }
+          }
+
+          &::after {
+            transition: transform var(--adui-motion-duration-bounce)
+              var(--adui-motion-ease-bounce);
+          }
+        }
+      }
+
+      &:hover {
+        &:active {
+          &[data-actived="true"] {
+            .#{$prefix}-indicator {
+              &::after {
+                transform: scale(0.8);
+              }
+            }
+          }
+        }
+      }
+
       .#{$prefix}-indicator {
         background-color: var(--primary-color);
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
@@ -65,7 +107,7 @@ $prefix: "adui-radio";
 .#{$prefix}-indicator {
   position: relative;
   display: inline-block;
-  vertical-align: -3px;
+  vertical-align: calc(-0.125em - (16px - var(--font-size-medium)) / 2);
   margin-right: 6px;
   width: 16px;
   height: 16px;
@@ -73,9 +115,9 @@ $prefix: "adui-radio";
   background-color: var(--gray-50);
   border-radius: 100%;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 0 0 1px var(--gray-500);
-  transform-origin: 0 50%;
-  transition: background-color var(--motion-duration-fast) var(--ease-in-out),
-    box-shadow var(--motion-duration-fast) var(--ease-in-out);
+  transition: background-color var(--adui-motion-duration-base)
+      var(--adui-motion-ease-base),
+    box-shadow var(--adui-motion-duration-base) var(--adui-motion-ease-base);
 
   &::after {
     content: "";
@@ -89,7 +131,8 @@ $prefix: "adui-radio";
     background-color: #fff;
     border-radius: 100%;
     transform: scale(0);
-    transition: transform var(--motion-duration-base) var(--ease-in-out);
+    transition: transform var(--adui-motion-duration-base)
+      var(--adui-motion-ease-base);
   }
 }
 .#{$prefix}-helper {
@@ -101,9 +144,10 @@ $prefix: "adui-radio";
   line-height: 42px;
 
   .#{$prefix}-indicator {
-    vertical-align: -2px;
+    vertical-align: calc(-0.125em - (18px - var(--font-size-large)) / 2);
     margin-right: 8px;
-    transform: scale(1.125);
+    width: 18px;
+    height: 18px;
   }
 
   .#{$prefix}-helper {
@@ -117,8 +161,9 @@ $prefix: "adui-radio";
 
   .#{$prefix}-indicator {
     margin-right: 4px;
-    vertical-align: -3px;
-    transform: scale(0.875);
+    vertical-align: calc(-0.125em - (14px - var(--font-size-small)) / 2);
+    width: 14px;
+    height: 14px;
   }
 
   .#{$prefix}-helper {
@@ -132,8 +177,9 @@ $prefix: "adui-radio";
 
   .#{$prefix}-indicator {
     margin-right: 4px;
-    vertical-align: -4px;
-    transform: scale(0.875);
+    vertical-align: calc(-0.125em - (14px - var(--font-size-mini)) / 2);
+    width: 14px;
+    height: 14px;
   }
 
   .#{$prefix}-helper {

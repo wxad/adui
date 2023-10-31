@@ -9,13 +9,14 @@ $prefix: "adui-message";
     width: 100vw;
     opacity: 0;
     transform: translate3d(0, -56px, 0);
-    transition: all var(--motion-duration-base) var(--ease-in-out);
+    transition: all var(--adui-motion-duration-base)
+      var(--adui-motion-ease-base);
   }
   &-base {
     position: fixed;
     top: 16px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
     display: flex;
     align-items: center;
     padding-left: 16px;
@@ -23,7 +24,8 @@ $prefix: "adui-message";
     min-width: 120px;
     height: 40px;
     border-radius: 4px;
-    transition: all var(--motion-duration-base) var(--ease-in-out);
+    transition: all var(--adui-motion-duration-base)
+      var(--adui-motion-ease-base);
   }
   &-hasActions {
     padding-right: 4px;
@@ -85,7 +87,8 @@ $prefix: "adui-message";
         svg {
           fill: #fff !important;
           opacity: 0.5;
-          transition: all var(--motion-duration-base) var(--ease-in-out);
+          transition: all var(--adui-motion-duration-base)
+            var(--adui-motion-ease-base);
         }
 
         &::after {

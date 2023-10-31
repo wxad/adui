@@ -787,7 +787,9 @@ class SiteLayout extends React.Component {
                             <Link to="/components/button">按钮 Button</Link>
                           </Nav.Item>
                           <Nav.Item index="button-group">
-                            <Link to="/components/button-group">按钮组 Button Group</Link>
+                            <Link to="/components/button-group">
+                              按钮组 Button Group
+                            </Link>
                           </Nav.Item>
                           <Nav.Item index="input">
                             <Link to="/components/input">输入框 Input</Link>
@@ -920,6 +922,9 @@ class SiteLayout extends React.Component {
                         </Nav.Group>
                         <Nav.Divider />
                         <Nav.Group title="其他">
+                          <Nav.Item index="transition">
+                            <Link to="/components/transition">过渡 Transition</Link>
+                          </Nav.Item>
                           <Nav.Item index="motion">
                             <Link to="/components/motion">动效 Motion</Link>
                           </Nav.Item>
@@ -973,7 +978,12 @@ class SiteLayout extends React.Component {
                       </p>
                     </div>
                     <p className={styles.connection}>
-                      <del>如有任何优化建议，请联系我们：yijiejiang@tencent.com</del> adui has been deprecated, it belongs to the past days of WeChat Ads Design. I will try my best to keep fixing bugs and maintaining it.
+                      <del>
+                        如有任何优化建议，请联系我们：yijiejiang@tencent.com
+                      </del>{" "}
+                      adui has been deprecated, it belongs to the past days of
+                      WeChat Ads Design. I will try my best to keep fixing bugs
+                      and maintaining it.
                     </p>
                   </div>
                 </div>

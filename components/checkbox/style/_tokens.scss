@@ -1,0 +1,78 @@
+:root {
+  // 背景颜色
+  --adui-checkbox-bg: var(--gray-0);
+  // 边框颜色
+  --adui-checkbox-border: var(--gray-500);
+  // 鼠标悬浮时的边框颜色
+  --adui-checkbox-border-hover: var(--gray-600);
+  // 鼠标按下时的边框颜色
+  --adui-checkbox-border-active: var(--primary-color);
+  // 选中状态下的背景颜色
+  --adui-checkbox-bg-checked: var(--primary-color);
+  // 选中状态且鼠标悬浮时的背景颜色
+  --adui-checkbox-bg-checked-hover: var(--primary-color);
+  // 选中状态且鼠标按下时的背景颜色
+  --adui-checkbox-bg-checked-active: var(--primary-color);
+
+  // 文字颜色
+  --adui-checkbox-color: var(--adui-color-black-12);
+  // 禁用状态下的文字颜色
+  --adui-checkbox-color-disabled: var(--adui-color-black-8);
+  // 禁用状态下的边框颜色
+  --adui-checkbox-border-disabled: var(--adui-color-black-6);
+  // 禁用状态下的背景颜色
+  --adui-checkbox-bg-disabled: var(--adui-color-black-3);
+  // 禁用且选中状态下的边框颜色
+  --adui-checkbox-border-checked-disabled: var(--adui-color-brand-2);
+  // 禁用且选中状态下的背景颜色
+  --adui-checkbox-bg-checked-disabled: var(--adui-color-brand-2);
+
+  // group 设置为 vertical 时的间距
+  --adui-checkbox-group-spacing-vertical: 16px;
+  // group 设置为 horizontal 时的间距
+  --adui-checkbox-group-spacing-horizontal: 24px;
+
+  // 迷你尺寸下的宽高
+  --adui-checkbox-size-mn: 14px;
+  // 迷你尺寸下的白点缩放
+  --adui-checkbox-indicator-scale-mn: 0.875;
+  // 迷你尺寸下的文字间距
+  --adui-checkbox-spacing-mn: 4px;
+  // 迷你尺寸下的字体大小
+  --adui-checkbox-font-size-mn: var(--font-size-mini);
+  // 迷你尺寸下的字体行高
+  --adui-checkbox-font-leading-mn: 26px;
+
+  // 小尺寸下的宽高
+  --adui-checkbox-size-sm: 14px;
+  // 小尺寸下的白点缩放
+  --adui-checkbox-indicator-scale-sm: 0.875;
+  // 小尺寸下的文字间距
+  --adui-checkbox-spacing-sm: 6px;
+  // 小尺寸下的字体大小
+  --adui-checkbox-font-size-sm: var(--font-size-small);
+  // 小尺寸下的字体行高
+  --adui-checkbox-font-leading-sm: 30px;
+
+  // 中尺寸下的宽高
+  --adui-checkbox-size-md: 16px;
+  // 中尺寸下的白点缩放
+  --adui-checkbox-indicator-scale-md: 1;
+  // 中尺寸下的文字间距
+  --adui-checkbox-spacing-md: 8px;
+  // 中尺寸下的字体大小
+  --adui-checkbox-font-size-md: var(--font-size-medium);
+  // 中尺寸下的字体行高
+  --adui-checkbox-font-leading-md: 34px;
+
+  // 大尺寸下的宽高
+  --adui-checkbox-size-lg: 18px;
+  // 大尺寸下的白点缩放
+  --adui-checkbox-indicator-scale-lg: 1.125;
+  // 大尺寸下的文字间距
+  --adui-checkbox-spacing-lg: 8px;
+  // 大尺寸下的字体大小
+  --adui-checkbox-font-size-lg: var(--font-size-large);
+  // 大尺寸下的字体行高
+  --adui-checkbox-font-leading-lg: 38px;
+}

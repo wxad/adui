@@ -101,8 +101,9 @@ const Message: IMessage = forwardRef(
       if (messageRef && messageRef.current) {
         messageRef.current.style.opacity = "0"
         messageRef.current.style.visibility = "hidden"
-        messageRef.current.style.webkitFilter = "blur(4px)"
-        messageRef.current.style.filter = "blur(4px)"
+        messageRef.current.style.transform = "translate3d(-50%, -56px, 0)"
+        messageRef.current.style.transition =
+          "all var(--adui-motion-duration-base) var(--adui-motion-ease-base)"
       }
       clearCloseTimer()
       if (onClose) {
@@ -244,18 +245,23 @@ const newInstance = (props: IMessageProps) => {
     const firstChild = firstInstance.children[0] as HTMLElement
     if (firstChild.dataset.duration !== "0") {
       firstInstance.dataset.close = "true"
+      firstInstance.style.transform = "translate3d(0, -56px, 0)"
       firstChild.style.opacity = "0"
       firstChild.style.visibility = "hidden"
-      firstChild.style.webkitFilter = "blur(4px)"
-      firstChild.style.filter = "blur(4px)"
+
+      firstInstance.style.transition =
+        "all var(--adui-motion-duration-base) var(--adui-motion-ease-base)"
+      firstChild.style.transition =
+        "all var(--adui-motion-duration-base) var(--adui-motion-ease-base)"
     }
   }
 
   let instance: any
 
-  const { onClose, getContainer, ...otherProps } = props
+  const { onClose, getContainer, intent, ...otherProps } = props
   const container = document.createElement("div")
   container.className = `${prefix}-wrapper`
+  container.dataset.intent = intent
   if (getContainer) {
     getContainer().appendChild(container)
   } else {
@@ -264,16 +270,19 @@ const newInstance = (props: IMessageProps) => {
 
   const updateStyles = () => {
     setTimeout(() => {
-      const messages = document.getElementsByClassName(`${prefix}-wrapper`)
-      Array.prototype.forEach.call(
-        messages,
-        (message: HTMLDivElement, index: number) => {
-          message.style.opacity = "1"
-          message.style.transform = `translate3d(0, ${
-            56 * (messages.length - 1 - index)
-          }px, 0)`
+      const messages = Array.from(
+        document.getElementsByClassName(`${prefix}-wrapper`)
+      ) as HTMLDivElement[]
+      messages.forEach((message, index) => {
+        if (["warning", "danger"].includes(message.dataset.intent || "")) {
+          message.style.transition =
+            "all var(--adui-motion-duration-bounce) var(--adui-motion-ease-bounce)"
         }
-      )
+        message.style.opacity = "1"
+        message.style.transform = `translate3d(0, ${
+          56 * (messages.length - 1 - index)
+        }px, 0)`
+      })
     }, 50)
   }
 
@@ -298,6 +307,7 @@ const newInstance = (props: IMessageProps) => {
         instance = message
       }}
       onClose={close}
+      intent={intent}
       {...otherProps}
     />,
     container

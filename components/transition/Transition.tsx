@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { useEffect, useMemo, useRef, useState } from "react"
 import PropTypes from "prop-types"
-import { animate, AnimationOptions } from "popmotion"
+import { animate, AnimationOptions, cubicBezier } from "popmotion"
 import { useIsInitialRender } from "../_util/hooks/use-is-initial-render"
 import Memo from "./Memo"
 
@@ -383,7 +383,7 @@ const Transition: React.FC<ITransitionProps> = ({
                   }
                 : {
                     duration: durationOption,
-                    // ease
+                    ease: cubicBezier(0.23, 0.14, 0.18, 1),
                   }
 
             const animateOptions: AnimationOptions<number> = {

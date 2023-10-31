@@ -14,6 +14,7 @@ import { ConfigContext } from "../config-provider"
 import getPlacements from "./placements"
 import Popup from "./Popup"
 import "./style"
+import { BOUNCE_SIZE } from "../_util/motion"
 
 const prefix = "adui-tooltip"
 
@@ -116,6 +117,7 @@ const Tooltip: React.ForwardRefExoticComponent<
     const triggerRef = useRef<ITrigger>()
     const [placement, setPlacement] = useState(placementProp || "bottom")
     const [visible, setVisible] = useState(visibleProp)
+    const [motionName, setMotionName] = useState(popupTransitionName)
 
     useImperativeHandle(ref, () => ({
       current: triggerRef.current,
@@ -207,6 +209,14 @@ const Tooltip: React.ForwardRefExoticComponent<
       const { width, height, top: Y, left: X } = rect
 
       let newPlacement: any = placement
+
+      if (width * height > BOUNCE_SIZE) {
+        if (motionName === "zoom-big") {
+          setMotionName("zoom-big-bounce")
+        } else if (motionName === "slide-up") {
+          setMotionName("slide-up-bounce")
+        }
+      }
 
       setTimeout(() => {
         if (
@@ -339,7 +349,7 @@ const Tooltip: React.ForwardRefExoticComponent<
         popup={<Popup content={popup} trigger={triggerRef.current} />}
         popupPlacement={placement}
         popupMotion={{
-          motionName: popupTransitionName,
+          motionName,
           motionDeadline: 1000,
         }}
         popupStyle={getPopupStyle()}
@@ -443,7 +453,7 @@ Tooltip.defaultProps = {
   popup: "复制",
   popupClassName: "",
   popupStyle: {},
-  popupTransitionName: "zoom-big-fast",
+  popupTransitionName: "zoom-big",
   trigger: "hover",
   visible: null,
   zIndex: "var(--z-index-tooltip)",

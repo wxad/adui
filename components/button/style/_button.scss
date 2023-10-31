@@ -17,10 +17,13 @@ $prefix: "adui-button";
     user-select: none;
     appearance: none;
     cursor: pointer;
-    transition: color var(--motion-duration-fast) var(--ease-in-out),
-      background-color var(--motion-duration-fast) var(--ease-in-out),
-      background-image var(--motion-duration-fast) var(--ease-in-out),
-      box-shadow var(--motion-duration-fast) var(--ease-in-out);
+    transition: color var(--adui-motion-duration-base)
+        var(--adui-motion-ease-base),
+      background-color var(--adui-motion-duration-base)
+        var(--adui-motion-ease-base),
+      background-image var(--adui-motion-duration-base)
+        var(--adui-motion-ease-base),
+      box-shadow var(--adui-motion-duration-base) var(--adui-motion-ease-base);
 
     &:not(.#{$prefix}-light) {
       &.#{$prefix}-normal {

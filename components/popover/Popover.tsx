@@ -49,7 +49,7 @@ const Popover: React.ForwardRefExoticComponent<
 
     const popupTransitionName = useMemo(() => {
       if (arrowed) {
-        return "zoom-big-fast"
+        return "zoom-big"
       }
       if (placement && placement.indexOf("top") === 0) {
         return "slide-down"

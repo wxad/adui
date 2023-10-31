@@ -13,6 +13,7 @@ import { ConfigContext } from "../config-provider"
 import { Placement } from "../pop-trigger"
 import getPlacements from "../tooltip/placements"
 import "./style"
+import { BOUNCE_SIZE } from "../_util/motion"
 
 /**
  * Select 封装于 rc-select: https://github.com/react-component/select
@@ -355,6 +356,8 @@ class Select<T extends ValueType = ValueType> extends React.Component<
     return Object.keys(newState).length > 0 ? newState : null
   }
 
+  public hash = Math.random().toString(36).slice(2)
+
   public locked = false
 
   public select: ISelect
@@ -684,6 +687,19 @@ class Select<T extends ValueType = ValueType> extends React.Component<
         )
     }
 
+    let transitionName = "slide-up"
+
+    const dropdownEl = document.querySelector(
+      `.adui-select-dropdown-${this.hash}`
+    ) as HTMLDivElement
+
+    if (dropdownEl) {
+      const { width, height } = dropdownEl.getBoundingClientRect()
+      if (width * height > BOUNCE_SIZE) {
+        transitionName = "slide-up-bounce"
+      }
+    }
+
     return (
       <ConfigContext.Consumer>
         {({ getPopupContainer: getPopupContainerContext }) => (
@@ -705,7 +721,9 @@ class Select<T extends ValueType = ValueType> extends React.Component<
             dropdownAlign={
               getPlacements({ alignEdge: true })[placement || "bottomLeft"]
             }
-            dropdownClassName={`adui-select-dropdown-${size} ${
+            dropdownClassName={`adui-select-dropdown-${
+              this.hash
+            } adui-select-dropdown-${size} ${
               searchable ? "adui-select-dropdown-searchable" : ""
             }`}
             dropdownRender={this.handleDropdownRender}
@@ -786,7 +804,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
             // 开启 showSearch 才可能 hack 式地触发 input change 事件
             showSearch
             ref={this.saveSelect}
-            transitionName="slide-up"
+            transitionName={transitionName}
             {...openProps}
             {...restProps}
           />

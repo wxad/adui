@@ -1,25 +1,41 @@
 @use "../mixins/motion" as *;
 
-@mixin zoom($className, $keyframeName, $duration: var(--motion-duration-base)) {
+@mixin zoom(
+  $className,
+  $keyframeName,
+  $duration: var(--adui-motion-duration-base),
+  $ease: var(--adui-motion-ease-base)
+) {
   @include make-motion($className, $keyframeName, $duration);
   .#{$className}-enter,
   .#{$className}-appear {
     transform: scale(0);
-    animation-timing-function: var(--ease-out-circ);
+    animation-timing-function: $ease;
 
     &-prepare {
       transform: none;
     }
   }
   .#{$className}-leave {
-    animation-timing-function: var(--ease-in-out-circ);
+    animation-timing-function: $ease;
   }
 }
 
 @include zoom(zoom, wxadZoom);
 
-// Tooltip
-@include zoom(zoom-big-fast, wxadZoomBig, var(--motion-duration-fast));
+@include zoom(
+  zoom-big-bounce,
+  wxadZoomBig,
+  var(--adui-motion-duration-bounce),
+  var(--adui-motion-ease-bounce)
+);
+
+@include zoom(
+  zoom-big,
+  wxadZoomBig,
+  var(--adui-motion-duration-base),
+  var(--adui-motion-ease-base)
+);
 
 @keyframes wxadZoomIn {
   0% {

@@ -59,6 +59,7 @@ const Confirm = (props: IConfirmProps) => {
           onClose(onConfirm)
         }
       }}
+      intent={intent}
       {...otherProps}
     >
       {intent ? (

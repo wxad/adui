@@ -4,15 +4,54 @@ $prefix: "adui-switch";
   &-wrapper {
     display: inline-block;
     cursor: pointer;
+
+    &:hover {
+      .#{$prefix} {
+        &-base {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      &:active {
+        &[data-actived="true"] {
+          .#{$prefix} {
+            &-indicator {
+              width: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    &[data-actived="true"] {
+      .#{$prefix} {
+        &-indicator {
+          transition: var(--adui-motion-duration-base)
+            var(--adui-motion-ease-base) all;
+        }
+      }
+    }
   }
   &-checked {
+    &:hover {
+      .#{$prefix} {
+        &-base {
+          background-color: var(--primary-color);
+        }
+      }
+
+      &:active {
+        .#{$prefix} {
+          &-indicator {
+            right: 25%;
+          }
+        }
+      }
+    }
+
     .#{$prefix} {
       &-base {
         background-color: var(--primary-color);
-
-        &:hover {
-          background-color: var(--primary-color);
-        }
       }
 
       &-indicator {
@@ -41,11 +80,8 @@ $prefix: "adui-switch";
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.12);
     border-radius: 14px;
-    transition: background-color var(--ease-in-out) var(--motion-duration-base);
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.25);
-    }
+    transition: var(--adui-motion-duration-base) var(--adui-motion-ease-base)
+      all;
   }
   &-indicator {
     position: absolute;
@@ -54,7 +90,8 @@ $prefix: "adui-switch";
     background-color: #fff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
       0 5px 10px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
-    transition: all var(--ease-in-out) var(--motion-duration-base);
+    transition: var(--adui-motion-duration-bounce)
+      var(--adui-motion-ease-bounce) all;
   }
   &-text {
     margin-left: 8px;

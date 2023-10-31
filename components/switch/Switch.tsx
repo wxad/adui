@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import { ConfigContext, getComputedSize } from "../config-provider"
+import { useActive } from "../_util/hooks/use-active"
 import "./style"
 
 const prefix = "adui-switch"
@@ -57,6 +58,7 @@ const Switch: React.FC<ISwitchProps> = ({
   disabled,
   onChange,
   onClick,
+  onMouseDown,
   size,
   unCheckedText,
   ...otherProps
@@ -71,6 +73,8 @@ const Switch: React.FC<ISwitchProps> = ({
   }
 
   const { size: sizeContext } = useContext(ConfigContext)
+  const ref = useRef<HTMLSpanElement>(null)
+  const { handleMouseDown } = useActive({ ref, delay: 100 })
 
   const handleChange = () => {
     if (onClick) {
@@ -92,6 +96,13 @@ const Switch: React.FC<ISwitchProps> = ({
     }
   }
 
+  const handleSpanMouseDown = (e: React.MouseEvent) => {
+    if (onMouseDown) {
+      onMouseDown(e)
+    }
+    handleMouseDown()
+  }
+
   const classSet = classNames(
     className,
     `${prefix}-wrapper`,
@@ -108,7 +119,9 @@ const Switch: React.FC<ISwitchProps> = ({
       className={classSet}
       onClick={handleChange}
       onKeyPress={handleKeyPress}
+      onMouseDown={handleSpanMouseDown}
       role="switch"
+      ref={ref}
       tabIndex={0}
       {...otherProps}
     >

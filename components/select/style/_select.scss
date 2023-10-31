@@ -44,10 +44,13 @@ $prefix: "adui-select";
     outline: none;
     user-select: none;
     cursor: pointer;
-    transition: color var(--motion-duration-fast) var(--ease-in-out),
-      background-color var(--motion-duration-fast) var(--ease-in-out),
-      background-image var(--motion-duration-fast) var(--ease-in-out),
-      box-shadow var(--motion-duration-fast) var(--ease-in-out);
+    transition: color var(--adui-motion-duration-base)
+        var(--adui-motion-ease-base),
+      background-color var(--adui-motion-duration-base)
+        var(--adui-motion-ease-base),
+      background-image var(--adui-motion-duration-base)
+        var(--adui-motion-ease-base),
+      box-shadow var(--adui-motion-duration-base) var(--adui-motion-ease-base);
 
     &:hover {
       background-color: var(--gray-100);
@@ -119,7 +122,8 @@ $prefix: "adui-select";
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: background-color var(--motion-duration-fast) var(--ease-in-out);
+    transition: background-color var(--adui-motion-duration-base)
+      var(--adui-motion-ease-base);
 
     &-content {
       max-width: 100%;
@@ -213,7 +217,8 @@ $prefix: "adui-select";
           background-color: var(--gray-800);
           border-radius: 4px;
           transform: scale(0.94);
-          transition: all var(--ease-in-out) var(--motion-duration-base);
+          transition: all var(--adui-motion-ease-base)
+            var(--motion-duration-base);
         }
 
         &:hover {
@@ -400,9 +405,8 @@ $prefix: "adui-select";
     cursor: not-allowed;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-transition: background-color var(--motion-duration-fast)
-      var(--ease-in-out);
-    transition: background-color var(--motion-duration-fast) var(--ease-in-out);
+    transition: background-color var(--adui-motion-duration-base)
+      var(--adui-motion-ease-base);
   }
 
   &-open {
@@ -540,7 +544,7 @@ $prefix: "adui-select";
       left: 12px;
       margin-top: -9px;
       fill: var(--gray-700);
-      transition: fill var(--motion-duration-base) var(--ease-in-out);
+      transition: fill var(--motion-duration-base) var(--adui-motion-ease-base);
     }
 
     input {

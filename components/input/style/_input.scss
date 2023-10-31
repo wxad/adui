@@ -50,8 +50,9 @@ $prefix: "adui-input";
     border-radius: 4px;
     outline: none;
     appearance: none;
-    transition: var(--motion-duration-base) var(--ease-in-out) background-color,
-      var(--motion-duration-base) var(--ease-in-out) box-shadow;
+    transition: var(--adui-motion-duration-base) var(--adui-motion-ease-base)
+        background-color,
+      var(--adui-motion-duration-base) var(--adui-motion-ease-base) box-shadow;
     @include mixins.scrollbar();
     @include mixins.placeholder();
 
@@ -506,7 +507,8 @@ $prefix: "adui-input";
       background-color: var(--gray-800);
       border-radius: 4px;
       transform: scale(0.94);
-      transition: all var(--ease-in-out) var(--motion-duration-base);
+      transition: all var(--adui-motion-ease-bounce)
+        var(--adui-motion-duration-bounce);
     }
 
     &:not(.#{$prefix}-disabled) {

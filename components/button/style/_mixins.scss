@@ -147,7 +147,8 @@ $colors: (
     background-color: map.get($colors, #{$type}#{-light-color});
     border-radius: 4px;
     transform: scale(0.92);
-    transition: all var(--ease-in-out) var(--motion-duration-base);
+    transition: var(--adui-motion-duration-bounce)
+      var(--adui-motion-ease-bounce) all;
   }
 
   &:hover {
