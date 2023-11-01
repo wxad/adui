@@ -12,20 +12,20 @@ const [value, setValue] = useState(0)
 const tabsRef = useRef(null)
 
 return (
-  <div>
-    <Tabs value={value} ref={tabsRef} onChange={(val) => setValue(val)}>
-      <Tabs.Tab title="选择项一" value={0} />
-      <Tabs.Tab title="选择项二" value={1} />
-      <Tabs.Tab title="选择项三" value={2} />
-      <Tabs.Tab title="选择项三" value={3} />
-      <Tabs.Tab title="选择项三" value={4} />
-      <Tabs.Tab title="选择项三" value={5} />
+  <div style={{ padding: "100px" }}>
+    <Tabs
+      value={value}
+      ref={tabsRef}
+      onChange={(val) => setValue(val)}
+      size="medium"
+    >
+      <Tabs.Tab title="朋友圈广告" value={0} />
+      <Tabs.Tab title="公众号广告" value={1} />
+      <Tabs.Tab title="视频号广告" value={2} />
+      <Tabs.Tab title="小程序广告" value={3} />
+      <Tabs.Tab title="搜一搜广告" value={4} />
+      <Tabs.Tab title="看一看广告" value={5} />
     </Tabs>
-    <div className="pt-20">
-      {value === 0 && "内容 A"}
-      {value === 1 && "内容 B"}
-      {value === 2 && "内容 C"}
-    </div>
   </div>
 )
 ```

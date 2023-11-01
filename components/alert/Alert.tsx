@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useRef, useState } from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import Icon, { IconNames } from "../icon"
@@ -94,6 +94,7 @@ const Alert: React.FC<IAlertProps> = ({
   theme,
   ...otherProps
 }: IAlertProps) => {
+  const ref = useRef<HTMLDivElement>(null)
   const [expanded, setExpanded] = useState(
     expandedProp !== null && expandedProp !== undefined
       ? expandedProp
@@ -117,9 +118,26 @@ const Alert: React.FC<IAlertProps> = ({
     if (onClose) {
       onClose()
     }
-    setClosing(true)
-    if (afterClose) {
-      afterClose()
+
+    if (ref.current) {
+      ref.current.style.height = `${ref.current.offsetHeight}px`
+
+      setTimeout(() => {
+        if (ref.current) {
+          ref.current.style.marginTop = "0"
+          ref.current.style.marginBottom = "0"
+          ref.current.style.paddingTop = "0"
+          ref.current.style.paddingBottom = "0"
+          ref.current.style.height = "0"
+          ref.current.style.opacity = "0"
+        }
+        setTimeout(() => {
+          setClosing(true)
+          if (afterClose) {
+            afterClose()
+          }
+        }, 300)
+      }, 0)
     }
   }
 
@@ -147,7 +165,7 @@ const Alert: React.FC<IAlertProps> = ({
   }
 
   return (
-    <div className={classSet} {...otherProps}>
+    <div ref={ref} className={classSet} {...otherProps}>
       <div className={`${prefix}-inner`}>
         {icon !== null && (
           <Icon

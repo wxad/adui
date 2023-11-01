@@ -21,24 +21,28 @@ return (
       text="这是一条提示信息"
       title="提醒标题"
       style={{ width: "500px", marginBottom: "12px" }}
+      intent="primary"
     />
     <Alert
       closable
       text="这是一条提示信息"
       title="提醒标题"
       style={{ width: "500px", marginBottom: "12px" }}
+      intent="success"
     />
     <Alert
       closable
       text="这是一条提示信息"
       title="提醒标题"
       style={{ width: "500px", marginBottom: "12px" }}
+      intent="warning"
     />
     <Alert
       closable
       text="这是一条提示信息"
       title="提醒标题"
       style={{ width: "500px", marginBottom: "12px" }}
+      intent="danger"
     />
   </div>
 )
