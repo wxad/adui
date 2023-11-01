@@ -28,7 +28,7 @@ const handleClick = (intent) => {
 }
 
 return (
-  <section className="adui-dialog-demoWrapper">
+  <section className="flex gap-16" style={{ padding: '1000px 0' }}>
     <Button onClick={() => handleClick("info")}>信息类</Button>
     <Button onClick={() => handleClick("success")} intent="success">
       成功类
@@ -39,12 +39,6 @@ return (
     <Button onClick={() => handleClick("danger")} intent="danger">
       危险类
     </Button>
-
-    <style
-      dangerouslySetInnerHTML={{
-        __html: `.adui-dialog-demoWrapper button:not(:last-of-type) { margin-right: 16px; }`,
-      }}
-    />
   </section>
 )
 ```

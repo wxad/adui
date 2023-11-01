@@ -113,7 +113,7 @@ $prefix: "adui-nav";
       padding-left: 40px;
     }
 
-    .#{$prefix}-group .#{$prefix}-groupTitle {
+    .#{$prefix}-group .#{$prefix}-group-title {
       padding-left: 52px;
     }
 
@@ -122,12 +122,13 @@ $prefix: "adui-nav";
         padding-left: 64px;
       }
 
-      .#{$prefix}-group .#{$prefix}-groupTitle {
+      .#{$prefix}-group .#{$prefix}-group-title {
         padding-left: 64px;
       }
     }
   }
-  &-groupTitle {
+  &-group-title {
+    position: relative;
     padding-left: 28px;
     line-height: 36px;
     color: var(--transparent-gray-700);

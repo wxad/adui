@@ -34,7 +34,7 @@ const Group: React.FC<IGroupProps> = ({
 
   return (
     <div className={classSet} {...otherProps}>
-      <div className={`${prefix}-groupTitle`}>{title}</div>
+      <div className={`${prefix}-group-title`}>{title}</div>
       {children}
     </div>
   )
