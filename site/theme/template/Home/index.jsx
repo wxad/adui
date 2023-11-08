@@ -34,7 +34,6 @@ class Home extends React.Component {
     buttonActive: "",
     checkboxValue: [],
     color: "#07c160",
-    dateValue: null,
     loadingTable: false,
     radioValue: 0,
     switchChecked: false,
@@ -49,16 +48,21 @@ class Home extends React.Component {
     setTimeout(() => {
       this.setState({
         buttonActive: "code",
-        checkboxValue: [1],
         radioValue: 1,
-        switchChecked: true,
       })
-    }, 1500)
-    setTimeout(() => {
-      this.setState({
-        dateValue: new Date(),
-      })
-    }, 1600)
+
+      setTimeout(() => {
+        this.setState({
+          checkboxValue: [1],
+        })
+
+        setTimeout(() => {
+          this.setState({
+            switchChecked: true,
+          })
+        }, 50)
+      }, 50)
+    }, 800)
   }
 
   render() {
@@ -66,7 +70,6 @@ class Home extends React.Component {
       buttonActive,
       checkboxValue,
       color,
-      dateValue,
       inputValue,
       loadingTable,
       radioValue,
@@ -329,7 +332,9 @@ class Home extends React.Component {
                   AD UI 建议以简单、合理的方案解决后台系统中的实际使用问题。
                 </p>
                 <div className={styles["footer-contact"]}>
-                  <del>yijiejiang@tencent.com</del> adui has been deprecated, it belongs to the past days of WeChat Ads Design. I will try my best to keep fixing bugs and maintaining it.
+                  <del>yijiejiang@tencent.com</del> adui has been deprecated, it
+                  belongs to the past days of WeChat Ads Design. I will try my
+                  best to keep fixing bugs and maintaining it.
                 </div>
               </footer>
             </div>

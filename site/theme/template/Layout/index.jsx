@@ -429,7 +429,7 @@ class SiteLayout extends React.Component {
                           .slice(1, 100)
                         document
                           .querySelector(
-                            `.adui-layout-asideInner [href="/adui/components/${valUncaped}"]`
+                            `.adui-layout-asideInner [href="/components/${valUncaped}"]`
                           )
                           .click()
                       }}

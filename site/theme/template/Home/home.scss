@@ -138,25 +138,25 @@ body {
 
 .left {
   .logo {
-    animation: leftShow 1.5s ease both 0.4s;
+    animation: leftShow 1s var(--adui-motion-ease-bounce) both 0.4s;
   }
   p {
-    animation: leftShow 1.5s ease both 0.5s;
+    animation: leftShow 1s var(--adui-motion-ease-bounce) both 0.45s;
   }
   button,
   a {
-    animation: leftShow 1.5s ease both 0.6s;
+    animation: leftShow 1s var(--adui-motion-ease-bounce) both 0.5s;
   }
 }
 .right {
-  animation: rightShow 1.5s ease both 0.4s;
+  animation: rightShow 1s var(--adui-motion-ease-bounce) both 0.4s;
 }
 .rightInner {
-  animation: opacityShow 0.7s ease both 0.9s;
+  animation: opacityShow 1s var(--adui-motion-ease-bounce) both 0.6s;
 }
 .right-small {
   transform-origin: 100% 100%;
-  animation: rightSmallShow 1.5s ease both 0.6s;
+  animation: rightSmallShow 1s var(--adui-motion-ease-bounce) both 0.6s;
 }
 .element {
   transform-origin: 0% 50%;
@@ -168,7 +168,7 @@ body {
   &:nth-child(5),
   &:nth-child(6),
   &:nth-child(7) {
-    animation: element0Show 1.4s ease both 0.9s;
+    animation: element0Show 1s var(--adui-motion-ease-bounce) both 1s;
   }
 
   &:nth-child(8),
@@ -178,7 +178,7 @@ body {
   &:nth-child(12),
   &:nth-child(13),
   &:nth-child(14) {
-    animation: element1Show 1.4s ease both 1.1s;
+    animation: element1Show 1s var(--adui-motion-ease-bounce) both 1.1s;
   }
 
   &:nth-child(15),
@@ -188,26 +188,29 @@ body {
   &:nth-child(19),
   &:nth-child(20),
   &:nth-child(21) {
-    animation: element2Show 1.4s ease both 1.2s;
+    animation: element2Show 1s var(--adui-motion-ease-bounce) both 1.2s;
   }
 }
 .mainWrapper {
-  animation: mainShow 0.8s ease both 1.8s;
+  animation: mainShow 1s var(--adui-motion-ease-bounce) both 1.3s;
+}
+.pagination {
+  animation: mainShow 1s var(--adui-motion-ease-bounce) both 1.25s;
 }
 .home {
   :global {
     .adui-slider-track {
-      animation: opacityShow 1.5s ease both 1.7s;
+      animation: opacityShow 1s var(--adui-motion-ease-bounce) both 1s;
     }
     .adui-slider-wrapper {
       &:first-child {
         .adui-slider-handle {
-          animation: handle0 1.2s ease both 1.4s;
+          animation: handle0 1s var(--adui-motion-ease-bounce) both 1s;
         }
       }
       &:last-child {
         .adui-slider-handle {
-          animation: handle1 1.2s ease both 1.4s;
+          animation: handle1 1s var(--adui-motion-ease-bounce) both 1s;
         }
       }
     }
@@ -293,10 +296,10 @@ body {
   button {
     padding-left: 11px !important;
     padding-right: 11px !important;
-    transition: color 0.8s var(--ease-in-out),
-      background-color 0.8s var(--ease-in-out),
-      background-image 0.8s var(--ease-in-out),
-      box-shadow 0.8s var(--ease-in-out);
+    transition: color 1s var(--ease-in-out),
+      background-color 1s var(--ease-in-out),
+      background-image 1s var(--ease-in-out),
+      box-shadow 1s var(--ease-in-out);
   }
 }
 .button {
@@ -314,10 +317,6 @@ body {
   height: 116px;
   padding-left: 48px;
   border-bottom: 1px solid #f3f3f3;
-
-  * {
-    transition: 1s ease all;
-  }
 }
 .radioGroup {
   transform: scale(1.25);
@@ -336,24 +335,6 @@ body {
 }
 .switch {
   margin-left: 60px;
-}
-.home {
-  :global {
-    .adui-switch-base {
-      width: 38px !important;
-      height: 22px !important;
-
-      i {
-        top: 3px;
-        left: 3px;
-      }
-    }
-
-    .adui-switch-checked .adui-switch-indicator {
-      left: 0;
-      transform: translateX(18px);
-    }
-  }
 }
 .sliders {
   position: relative;
