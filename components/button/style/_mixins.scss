@@ -107,10 +107,21 @@ $colors: (
     } @else {
       box-shadow: map.get($colors, normal-border-hover);
     }
+
+    &:active {
+      background-image: map.get($colors, #{$type}#{-bg-gradient-active});
+      background-color: map.get($colors, #{$type}#{-bg-active});
+      @if $type != "normal" {
+        box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.04),
+          0 0 0 1px rgba(0, 0, 0, 0.3),
+          0 0 0 1px map.get($colors, #{$type}#{-bg});
+      } @else {
+        box-shadow: map.get($colors, normal-border-active);
+      }
+    }
   }
 
-  &.#{$prefix}-active,
-  &:active {
+  &.#{$prefix}-active {
     background-image: map.get($colors, #{$type}#{-bg-gradient-active});
     background-color: map.get($colors, #{$type}#{-bg-active});
     @if $type != "normal" {

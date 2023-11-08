@@ -41,11 +41,11 @@ $prefix: "adui-tag";
     &:hover {
       opacity: 0.65;
       fill: currentColor;
-    }
 
-    &:active {
-      opacity: 0.9;
-      fill: currentColor;
+      &:active {
+        opacity: 0.9;
+        fill: currentColor;
+      }
     }
   }
   &-large {
@@ -172,17 +172,17 @@ $prefix: "adui-tag";
           opacity: 0.35;
           box-shadow: 0 0 0 1px rgb(163, 163, 163);
         }
-      }
 
-      &:active {
-        .#{$prefix}-background {
-          opacity: 0.05;
-          background-color: #000;
-        }
+        &:active {
+          .#{$prefix}-background {
+            opacity: 0.05;
+            background-color: #000;
+          }
 
-        .#{$prefix}-shadow {
-          opacity: 0.35;
-          box-shadow: 0 0 0 1px rgb(163, 163, 163);
+          .#{$prefix}-shadow {
+            opacity: 0.35;
+            box-shadow: 0 0 0 1px rgb(163, 163, 163);
+          }
         }
       }
     }
@@ -251,15 +251,15 @@ $prefix: "adui-tag";
             opacity: 0.35;
           }
         }
-      }
 
-      &:active {
-        .#{$prefix} {
-          &-background {
-            opacity: 0.12;
-          }
-          &-shadow {
-            opacity: 0.35;
+        &:active {
+          .#{$prefix} {
+            &-background {
+              opacity: 0.12;
+            }
+            &-shadow {
+              opacity: 0.35;
+            }
           }
         }
       }

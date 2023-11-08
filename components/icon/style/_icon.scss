@@ -52,10 +52,11 @@ $colors: (
         .#{$prefix}-interactive-cover {
           fill-opacity: map.get($colors, #{level_}#{$i}#{_hover});
         }
-      }
-      &:active {
-        .#{$prefix}-interactive-cover {
-          fill-opacity: map.get($colors, #{level_}#{$i}#{_active});
+
+        &:active {
+          .#{$prefix}-interactive-cover {
+            fill-opacity: map.get($colors, #{level_}#{$i}#{_active});
+          }
         }
       }
     }
