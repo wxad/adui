@@ -11,11 +11,6 @@ var parser = require("@babel/parser")
  */
 var traverse = require("@babel/traverse").default
 /**
- * loaderUtils: Webpack 官方提供的 loader 开发者工具
- * 使用 getOptions 拿到自定义的配置
- */
-var loaderUtils = require("loader-utils")
-/**
  * 通过 @babel/parser 将 JS 代码转换为 ast 格式，并修改后，你需要将 ast 格式转回 JS 代码，交给下一个 webpack loader
  * 最后输出物为 core.transformFromAstSync(ast).code
  */
@@ -24,8 +19,6 @@ var IconSvgPaths = require("./lib/icon/IconSvgPaths").default
 var fs = require("fs")
 var path = require("path")
 
-var tempFilePath = ""
-var initIcons = []
 /**
  * addedIconsArray: 记录已经被添加的 icon
  */
@@ -118,11 +111,6 @@ exports["default"] = _default;`
   }
 }
 
-function parseOptions() {
-  var options = loaderUtils.getOptions(this) || {}
-  tempFilePath = options.filePath
-  initIcons = options.initIcons || []
-}
 function isEleType(astParam, evarype) {
   if (
     Object.hasOwnProperty.call(astParam, "name") &&
@@ -200,27 +188,17 @@ function getEleProps(astParam, propKeys = []) {
   }
   return result
 }
-function initOptionIcons() {
-  if (initIcons.length > 0) {
-    searchIcons(initIcons)
-  }
-}
-function searchIcons(icons = []) {
-  icons.forEach(function (iconItem) {
-    searchIconByName(iconItem)
-  })
-}
+
 /**
  * adui-icon-loader
  * @param {source} source babel-loader 吐给我的 js 文件代码
  * @returns core.transformFromAstSync(ast).code
  */
 module.exports = function (source) {
-  parseOptions.call(this)
   if (!fs.existsSync(tempFilePath)) {
     tempFilePath = path.resolve(__dirname, "adui-icons-reduced.js")
   }
-  initOptionIcons()
+
   var ast = parser.parse(source, {
     sourceType: "module",
     plugins: ["dynamicImport"],
