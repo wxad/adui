@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[71],{1402:function(n,t){n.exports={content:["article",["p","Transition 组件可为组件提供进入、离开或者改变时的过渡效果。"],["p","提供基于 CSS 以 duration / easing 的方式或 JavaScript 弹簧动画的方式。"]],meta:{category:"Components",type:"General",title:"Transition",subtitle:"过渡",filename:"components/transition/index.md"}}}}]);
