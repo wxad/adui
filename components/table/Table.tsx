@@ -643,6 +643,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
 
   private columnManager: any
 
+  private fixedColumnsInfosRef: IFixedColumnsInfo[] = []
+
   constructor(props: ITableProps<T>) {
     super(props)
     const {
@@ -931,7 +933,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
     fixedPosition?: boolean | "left" | "right"
   ) => {
     const { getColumns } = this.columnManager
-    let { fixedColumnsInfos } = this.state
+    let { fixedColumnsInfosRef: fixedColumnsInfos } = this
     const columns = getColumns() as IColumnProps<T>[]
     /**
      * columns 变化后 fixedColumnsInfos 中可能存在已经移除的 column
@@ -998,6 +1000,8 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
                 .reduce((acc, cur) => acc + cur.width, 0)
       }
     })
+
+    this.fixedColumnsInfosRef = fixedColumnsInfos
     this.setState({ fixedColumnsInfos })
   }
 
