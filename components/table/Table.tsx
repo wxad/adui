@@ -1608,6 +1608,7 @@ class Table<T extends IBaseObject = IBaseObject> extends React.Component<
           offsetTop={headerAffixedOffsetTop}
           getContainer={() => this.wrapper}
           getTarget={headerAffixGetTarget}
+          width={mainTableStyle.width}
           onChange={(bool) => {
             this.setState({ affixedTop: bool }, () => {
               // 固定的那一刻也需要立即重新定位。

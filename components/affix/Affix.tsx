@@ -23,6 +23,8 @@ export interface IAffixProps {
   offsetTop?: number
   onChange?: ((affixed: boolean) => void) | null
   style?: React.CSSProperties
+  // 20240701 增加 width prop，如果外部指定了 width，则不再在内部动态计算宽度
+  width?: React.CSSProperties["width"]
 }
 
 export interface IAffixState {
@@ -240,7 +242,13 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
   }
 
   public render() {
-    const { children, className, style, ...otherProps } = this.props
+    const {
+      children,
+      className,
+      style,
+      width: widthProp,
+      ...otherProps
+    } = this.props
 
     const restProps = omit(otherProps, [
       "getContainer",
@@ -255,13 +263,20 @@ export default class Affix extends React.Component<IAffixProps, IAffixState> {
     const classSet = classNames(className, `${prefix}-base`)
 
     return (
-      <div ref={this.savePlaceholderNode}>
+      <div
+        ref={this.savePlaceholderNode}
+        style={{
+          width: widthProp,
+        }}
+      >
         <ResizeObserver
           onResize={({ width, height }) => {
             this.updatePosition()
             this.syncPlaceholderStyle()
             if (this.placeholderNode && width && height) {
-              this.placeholderNode.style.width = `${width}px`
+              if (!widthProp) {
+                this.placeholderNode.style.width = `${width}px`
+              }
               this.placeholderNode.style.height = `${height}px`
             }
           }}
