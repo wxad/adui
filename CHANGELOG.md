@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.45.4](https://github.com/wxad/adui/compare/v2.45.3...v2.45.4) (2024-07-01)
+
+
+### Bug Fixes
+
+* 修复 fixedColumnsInfo 直接从 this.state 读取时可能会产生的 bug，改为属性的方式读取 ([341f6ad](https://github.com/wxad/adui/commit/341f6ada7f3cb818914ae302cbe7b99e3383c55c))
+* **Table:** 试图修复 headerAffixed 时 Table 无法自适应宽度的问题 ([879297e](https://github.com/wxad/adui/commit/879297e8227c962563f645043bc3b70de1dc3899))
+
 ### [2.45.3](https://github.com/wxad/adui/compare/v2.45.2...v2.45.3) (2024-06-27)
 
 ### [2.45.2](https://github.com/wxad/adui/compare/v2.45.1...v2.45.2) (2024-03-05)
