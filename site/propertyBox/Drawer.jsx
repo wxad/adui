@@ -107,7 +107,7 @@ export default class PropertyBox extends React.Component {
                   transformOrigin = "0% 50%"
                 }
 
-                const scale = isVertical
+                const scale = !isVertical
                   ? (window.innerHeight - 26) / window.innerHeight
                   : (window.innerWidth - 26) / window.innerWidth
 

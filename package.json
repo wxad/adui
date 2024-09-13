@@ -191,7 +191,7 @@
     "react-test-renderer": "^17.0.1",
     "regenerator-runtime": "^0.13.7",
     "resolve": "1.19.0",
-    "sass": "^1.51.0",
+    "sass": "1.51.0",
     "scrollama": "^2.2.1",
     "sinon": "^9.2.3",
     "standard-version": "^9.3.2",
