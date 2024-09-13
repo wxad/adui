@@ -26,7 +26,7 @@ const POSITIONS = [
 export default class PropertyBox extends React.Component {
   state = {
     visible: false,
-    position: "left",
+    position: "bottom",
     size: "medium",
     headerElementVisible: true,
     headerSticky: true,
@@ -85,6 +85,41 @@ export default class PropertyBox extends React.Component {
           <div className={styles.left}>
             <Button
               onClick={() => {
+                document.body.style.background = "#000"
+                document.body.style.marginRight = "-15px"
+                const mainEl = document.querySelector("#react-content")
+                const isVertical = position === "top" || position === "bottom"
+                let x = "0"
+                let y = "0"
+                let transformOrigin = ""
+
+                if (position === "top") {
+                  y = "-14px"
+                  transformOrigin = "50% 100%"
+                } else if (position === "bottom") {
+                  y = "14px"
+                  transformOrigin = "50% 0%"
+                } else if (position === "left") {
+                  x = "-14px"
+                  transformOrigin = "100% 50%"
+                } else if (position === "right") {
+                  x = "14px"
+                  transformOrigin = "0% 50%"
+                }
+
+                const scale = isVertical
+                  ? (window.innerHeight - 26) / window.innerHeight
+                  : (window.innerWidth - 26) / window.innerWidth
+
+                mainEl.style.backgroundColor = "#fff"
+                mainEl.style.borderRadius = "8px"
+                mainEl.style.transform = `scale(${scale}) translate3d(${x}, ${y}, 0)`
+                mainEl.style.transformOrigin = transformOrigin
+                mainEl.style.transitionProperty = "transform, border-radius"
+                mainEl.style.transitionDuration = "0.5s"
+                mainEl.style.transitionTimingFunction =
+                  "cubic-bezier(0.32, 0.72, 0, 1)"
+
                 this.setState({ visible: true })
               }}
             >
@@ -105,6 +140,17 @@ export default class PropertyBox extends React.Component {
               visible={visible}
               onClose={() => {
                 this.setState({ visible: false })
+
+                const mainEl = document.querySelector("#react-content")
+                mainEl.style.borderRadius = ""
+                // mainEl.style.overflow = ""
+                mainEl.style.transform = ""
+              }}
+              afterClose={() => {
+                document.body.style.background = ""
+                document.body.style.marginRight = ""
+                const mainEl = document.querySelector("#react-content")
+                mainEl.style.backgroundColor = ""
               }}
             >
               <div

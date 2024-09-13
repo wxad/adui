@@ -47,8 +47,10 @@ class SiteLayout extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.location.pathname !== this.props.location.pathname) {
-      document.documentElement.style.setProperty("scroll-behavior", "auto")
-      window.scroll(0, 0)
+      const root = document.getElementById("react-content")
+      if (root) {
+        root.scrollTop = 0
+      }
     }
     return true
   }
@@ -81,8 +83,11 @@ class SiteLayout extends React.Component {
   }
 
   handleScroll = (scrolltop) => {
-    document.documentElement.style.setProperty("scroll-behavior", "smooth")
-    window.scroll(0, scrolltop - 20)
+    const root = document.getElementById("react-content")
+    if (root) {
+      root.style.setProperty("scroll-behavior", "smooth")
+      root.scrollTop = scrolltop - 20
+    }
   }
 
   renderNavSide = () => {
@@ -116,7 +121,8 @@ class SiteLayout extends React.Component {
 
   // 监听页面滚动进行右侧边导航的变更
   changeNavAside = () => {
-    const docScroll = document.documentElement.scrollTop
+    const root = document.getElementById("react-content")
+    const docScroll = root.scrollTop
     this.scrollJugePoint.map((item, index) => {
       if (
         index === this.scrollJugePoint.length - 1 &&
@@ -139,9 +145,10 @@ class SiteLayout extends React.Component {
   }
 
   componentDidUpdate = (prevProps) => {
+    const root = document.getElementById("react-content")
     const { appendNavSide } = this.state
     if (this.props.location.pathname.includes("components")) {
-      window.addEventListener("scroll", this.changeNavAside, false)
+      root.addEventListener("scroll", this.changeNavAside, false)
       if (document.getElementsByClassName("componentTitle")) {
         if (!appendNavSide) {
           this.setState({
@@ -150,11 +157,16 @@ class SiteLayout extends React.Component {
         }
       }
     } else {
-      window.removeEventListener("scroll", this.changeNavAside, false)
+      root.removeEventListener("scroll", this.changeNavAside, false)
     }
     if (prevProps.params.children !== this.props.params.children) {
-      document.documentElement.style.setProperty("scroll-behavior", "auto")
-      window.scroll(0, 0)
+      // document.documentElement.style.setProperty("scroll-behavior", "auto")
+      // window.scroll(0, 0)
+      const root = document.getElementById("react-content")
+      if (root) {
+        root.style.setProperty("scroll-behavior", "auto")
+        root.scrollTop = 0
+      }
     }
     if (appendNavSide) {
       if (document.getElementsByClassName("navSideContainer")[0]) {
@@ -171,10 +183,11 @@ class SiteLayout extends React.Component {
   }
 
   componentDidMount = () => {
+    const root = document.getElementById("react-content")
     this.handleResize()
     window.addEventListener("resize", this.handleResize, false)
     if (this.props.location.pathname.includes("components")) {
-      window.addEventListener("scroll", this.changeNavAside, false)
+      root.addEventListener("scroll", this.changeNavAside, false)
       if (document.getElementsByClassName("componentTitle")) {
         this.setState({
           appendNavSide: true,
@@ -923,7 +936,9 @@ class SiteLayout extends React.Component {
                         <Nav.Divider />
                         <Nav.Group title="其他">
                           <Nav.Item index="transition">
-                            <Link to="/components/transition">过渡 Transition</Link>
+                            <Link to="/components/transition">
+                              过渡 Transition
+                            </Link>
                           </Nav.Item>
                           <Nav.Item index="motion">
                             <Link to="/components/motion">动效 Motion</Link>

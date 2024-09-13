@@ -28,7 +28,7 @@ const handleClick = (intent) => {
 }
 
 return (
-  <section className="flex gap-16" style={{ padding: '1000px 0' }}>
+  <section className="flex gap-16">
     <Button onClick={() => handleClick("info")}>信息类</Button>
     <Button onClick={() => handleClick("success")} intent="success">
       成功类

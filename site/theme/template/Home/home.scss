@@ -198,6 +198,8 @@ body {
   animation: mainShow 1s var(--adui-motion-ease-bounce) both 1.25s;
 }
 .home {
+  width: 100%;
+
   :global {
     .adui-slider-track {
       animation: opacityShow 1s var(--adui-motion-ease-bounce) both 1s;
@@ -501,7 +503,6 @@ body {
   margin-top: 140px;
   padding-top: 56px;
   padding-bottom: 56px;
-  width: 100vw;
   background-color: #fdfdfd;
   box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.06);
 
