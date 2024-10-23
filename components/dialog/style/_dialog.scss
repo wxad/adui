@@ -122,81 +122,50 @@ $prefix: "adui-dialog";
     line-height: 20px;
     color: #636363;
   }
-}
 
-.adui-dialog-appear,
-.adui-dialog-enter {
-  opacity: 0;
-  // transform: scale(0.2);
-  will-change: transform;
-}
-
-.adui-dialog-appear.adui-dialog-appear-active,
-.adui-dialog-enter.adui-dialog-enter-active {
-  animation-fill-mode: both;
-
-  @keyframes dialogUpIn {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, -30px, 0);
-    }
-    100% {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-  }
-}
-
-.adui-dialog-leave {
-  opacity: 1;
-  will-change: transform;
-}
-
-.adui-dialog-leave.adui-dialog-leave-active {
-  opacity: 0;
-  animation-fill-mode: both;
-  animation-duration: var(--adui-motion-duration-base);
-  animation-timing-function: var(--adui-motion-ease-base);
-
-  @keyframes dialogUpOut {
-    100% {
-      opacity: 0;
-      transform: translate3d(0, -30px, 0);
-    }
-    0% {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
+  &-appear,
+  &-enter {
+    opacity: 0;
+    transform: scale(0.9) translate3d(0, 20px, 0);
   }
 
-  @keyframes dialogDownOut {
-    100% {
-      opacity: 0;
-      transform: translate3d(0, 30px, 0);
-    }
-    0% {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
+  &-appear.#{$prefix}-appear-active,
+  &-enter.#{$prefix}-enter-active {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+    transition: var(--adui-motion-duration-base) var(--adui-motion-ease-base)
+      all;
   }
-}
 
-.adui-dialog-mask-appear,
-.adui-dialog-mask-enter {
-  opacity: 0;
-}
+  &-leave {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
 
-.adui-dialog-mask-appear.adui-dialog-mask-appear-active,
-.adui-dialog-mask-enter.adui-dialog-mask-enter-active {
-  opacity: 1;
-  transition: all var(--adui-motion-ease-base) var(--adui-motion-duration-base);
-}
+  &-leave.#{$prefix}-leave-active {
+    opacity: 0;
+    transform: scale(0.8) translate3d(0, 20px, 0);
+    transition: all 0.2s var(--adui-motion-ease-base);
+  }
 
-.adui-dialog-mask-leave {
-  opacity: 1;
-}
+  &-mask-appear,
+  &-mask-enter {
+    opacity: 0;
+  }
 
-.adui-dialog-mask-leave.adui-dialog-mask-leave-active {
-  opacity: 0;
-  transition: all var(--adui-motion-ease-base) var(--adui-motion-duration-base);
+  &-mask-appear.#{$prefix}-mask-appear-active,
+  &-mask-enter.#{$prefix}-mask-enter-active {
+    opacity: 1;
+    transition: all var(--adui-motion-duration-base)
+      var(--adui-motion-ease-base);
+  }
+
+  &-mask-leave {
+    opacity: 1;
+  }
+
+  &-mask-leave.#{$prefix}-mask-leave-active {
+    opacity: 0;
+    transition: all 0.2s var(--adui-motion-ease-base);
+  }
 }

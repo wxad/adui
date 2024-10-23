@@ -11,19 +11,6 @@ import "./style"
 
 const prefix = "adui-dialog"
 
-const motionTypes = {
-  base: {
-    animationName: "dialogUpIn",
-    animationDuration: "var(--adui-motion-duration-base)",
-    animationTimingFunction: "var(--adui-motion-ease-base)",
-  },
-  bounce: {
-    animationName: "dialogUpIn",
-    animationDuration: "var(--adui-motion-duration-bounce)",
-    animationTimingFunction: "var(--adui-motion-ease-bounce)",
-  },
-}
-
 interface IStepProps {
   /**
    * 取消按钮的 props，参考 Button Props
@@ -171,17 +158,6 @@ export interface IDialogState {
   visible?: boolean
   currentStep: number
   hasEverOpened?: boolean
-}
-
-let lastClickElement: HTMLElement | null = null
-
-const getClickElement = (e: MouseEvent) => {
-  lastClickElement = e.target as HTMLElement
-}
-
-// 只有点击事件支持从鼠标位置动画展开
-if (document.documentElement) {
-  document.documentElement.addEventListener("click", getClickElement, true)
 }
 
 /**
@@ -408,8 +384,6 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
 
   public wrapper: HTMLDivElement
 
-  public dialogRef: HTMLDivElement
-
   public isUnmounted: boolean = false
 
   constructor(props: IDialogProps) {
@@ -572,25 +546,6 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     }
   }
 
-  public handleEnterPrepare = () => {
-    const { intent } = this.props
-    this.dialogRef.style.animationName = ""
-
-    setTimeout(() => {
-      const motionStyle = ["danger", "warning"].includes(intent)
-        ? motionTypes.bounce
-        : motionTypes.base
-
-      const styles = {
-        animationName: motionStyle.animationName,
-        animationDuration: motionStyle.animationDuration,
-        animationTimingFunction: motionStyle.animationTimingFunction,
-      }
-
-      Object.assign(this.dialogRef.style, styles)
-    }, 0)
-  }
-
   public handleEnter = () => {
     const { escapeKeyClosable } = this.props
     if (this.wrapper) {
@@ -598,29 +553,6 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
         this.wrapper.focus()
       }
     }
-  }
-
-  public handleLeavePrepare = () => {
-    const styles = {
-      animationName: "dialogUpOut",
-    }
-
-    if (
-      lastClickElement &&
-      "className" in lastClickElement &&
-      typeof lastClickElement.className === "string"
-    ) {
-      if (lastClickElement.className.includes("adui-button-content")) {
-        lastClickElement = lastClickElement.parentElement as HTMLButtonElement
-      }
-      if (
-        lastClickElement.tagName.toLowerCase() === "button" &&
-        lastClickElement.className.includes("adui-button-primary")
-      ) {
-        styles.animationName = "dialogDownOut"
-      }
-    }
-    Object.assign(this.dialogRef.style, styles)
   }
 
   public getComponent = (options?: { visible: boolean }) => {
@@ -717,20 +649,12 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
            * 2. zIndex: 1 是为了覆盖在 mask 上。
            */}
           <CSSMotion
-            onAppearPrepare={this.handleEnterPrepare}
-            onEnterPrepare={this.handleEnterPrepare}
             onAppearStart={this.handleEnter}
             onEnterStart={this.handleEnter}
-            onLeavePrepare={this.handleLeavePrepare}
             onLeaveEnd={this.onLeave}
             motionName={motionName || prefix}
             visible={visible}
             removeOnLeave={destroyAfterClose}
-            ref={(dialogRef) => {
-              if (dialogRef) {
-                this.dialogRef = dialogRef
-              }
-            }}
           >
             {({ className: cls }, ref) => (
               <div

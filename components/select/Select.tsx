@@ -13,7 +13,6 @@ import { ConfigContext } from "../config-provider"
 import { Placement } from "../pop-trigger"
 import getPlacements from "../tooltip/placements"
 import "./style"
-import { BOUNCE_SIZE } from "../_util/motion"
 
 /**
  * Select 封装于 rc-select: https://github.com/react-component/select
@@ -687,18 +686,7 @@ class Select<T extends ValueType = ValueType> extends React.Component<
         )
     }
 
-    let transitionName = "slide-up"
-
-    const dropdownEl = document.querySelector(
-      `.adui-select-dropdown-${this.hash}`
-    ) as HTMLDivElement
-
-    if (dropdownEl) {
-      const { width, height } = dropdownEl.getBoundingClientRect()
-      if (width * height > BOUNCE_SIZE) {
-        transitionName = "slide-up-bounce"
-      }
-    }
+    const transitionName = "slide-up"
 
     return (
       <ConfigContext.Consumer>

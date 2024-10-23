@@ -85,7 +85,7 @@
   --adui-motion-ease-base: cubic-bezier(0.32, 0.72, 0, 1);
   --adui-motion-duration-base: 0.3s;
   --adui-motion-ease-bounce: cubic-bezier(0.36, 1.46, 0.38, 1.01);
-  --adui-motion-duration-bounce: 0.5s;
+  --adui-motion-duration-bounce: 0.4s;
 }
 html {
   box-sizing: border-box;
