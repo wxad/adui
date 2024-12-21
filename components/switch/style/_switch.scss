@@ -105,8 +105,8 @@ $prefix: "adui-switch";
     border-radius: var(--adui-switch-indicator-size);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05),
       0 5px 10px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
-    transition: var(--adui-motion-duration-bounce)
-      var(--adui-motion-ease-bounce) all;
+    transition: var(--adui-motion-duration-base) var(--adui-motion-ease-base)
+      all;
   }
   &-text {
     margin-left: 8px;

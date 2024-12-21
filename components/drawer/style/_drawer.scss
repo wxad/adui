@@ -116,17 +116,17 @@ $prefix: "adui-drawer";
 
   &-left {
     left: 0;
-    border-radius: 0 10px 10px 0;
+    // border-radius: 0 10px 10px 0;
   }
 
   &-right {
     right: 0;
-    border-radius: 10px 0 0 10px;
+    // border-radius: 10px 0 0 10px;
   }
 
   &-top {
     top: 0;
-    border-radius: 0 0 10px 10px;
+    // border-radius: 0 0 10px 10px;
   }
 
   &-left,
@@ -137,7 +137,7 @@ $prefix: "adui-drawer";
 
   &-bottom {
     bottom: 0;
-    border-radius: 10px 10px 0 0;
+    // border-radius: 10px 10px 0 0;
   }
 
   // React Animation 相关

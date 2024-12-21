@@ -274,10 +274,10 @@ const newInstance = (props: IMessageProps) => {
         document.getElementsByClassName(`${prefix}-wrapper`)
       ) as HTMLDivElement[]
       messages.forEach((message, index) => {
-        if (["warning", "danger"].includes(message.dataset.intent || "")) {
-          message.style.transition =
-            "all var(--adui-motion-duration-bounce) var(--adui-motion-ease-bounce)"
-        }
+        // if (["warning", "danger"].includes(message.dataset.intent || "")) {
+        //   message.style.transition =
+        //     "all var(--adui-motion-duration-bounce) var(--adui-motion-ease-bounce)"
+        // }
         message.style.opacity = "1"
         message.style.transform = `translate3d(0, ${
           56 * (messages.length - 1 - index)
