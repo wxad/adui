@@ -104,7 +104,7 @@ export default class Demo extends React.Component {
           } ${
             codeFinal && realCode.includes("useRef") ? "useRef," : ""
           } } from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { ${
             codeFinal
               ? `${codeFinal.join(", ")}${
@@ -117,7 +117,8 @@ import "adui/adui-tailwind-build.css"
 const AduiExample = () => {
 ${realCode}
 }
-ReactDOM.render(<AduiExample />, document.getElementById('container'))
+const root = ReactDOM.createRoot(document.getElementById("container"));
+root.render(<AduiExample />);
 `,
         },
         "index.html": {
