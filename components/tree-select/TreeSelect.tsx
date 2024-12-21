@@ -733,7 +733,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         /**
          * dataTitle 用于有 popover 的情况下的搜索
          */
-        if (title) {
+        if (title && !dataTitle) {
           o.dataTitle = title
         }
         /**
@@ -768,6 +768,7 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
             </>
           )
         }
+
         if (children) {
           process(children, o.value)
         }
@@ -799,7 +800,6 @@ class TreeSelect extends React.Component<ITreeSelectProps, ITreeSelectState> {
         disableCheckbox: true,
       })
     }
-
     return dataNode
   }
 
