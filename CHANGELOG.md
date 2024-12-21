@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.45.5](https://github.com/wxad/adui/compare/v2.45.4...v2.45.5) (2024-12-21)
+
+
+### Bug Fixes
+
+* fix sandbox react 19 error ([68180e4](https://github.com/wxad/adui/commit/68180e445123a95f187e3411e16bcda245bc5d7e))
+* fix treeSelect search when popover exists ([f51de91](https://github.com/wxad/adui/commit/f51de91ad91b9401842952415ff3ca65a867889e))
+
 ### [2.45.4](https://github.com/wxad/adui/compare/v2.45.3...v2.45.4) (2024-07-01)
 
 
