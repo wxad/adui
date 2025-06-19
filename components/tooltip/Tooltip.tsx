@@ -14,7 +14,6 @@ import { ConfigContext } from "../config-provider"
 import getPlacements from "./placements"
 import Popup from "./Popup"
 import "./style"
-import { BOUNCE_SIZE } from "../_util/motion"
 
 const prefix = "adui-tooltip"
 
@@ -209,14 +208,6 @@ const Tooltip: React.ForwardRefExoticComponent<
       const { width, height, top: Y, left: X } = rect
 
       let newPlacement: any = placement
-
-      if (width * height > BOUNCE_SIZE) {
-        if (motionName === "zoom-big") {
-          setMotionName("zoom-big-bounce")
-        } else if (motionName === "slide-up") {
-          setMotionName("slide-up-bounce")
-        }
-      }
 
       setTimeout(() => {
         if (

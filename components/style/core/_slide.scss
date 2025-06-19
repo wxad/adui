@@ -3,7 +3,7 @@
 @mixin slide-motion(
   $className,
   $keyframeName,
-  $duration: var(--adui-motion-duration-base),
+  $duration: 0.2s,
   $ease: var(--adui-motion-ease-base)
 ) {
   @include make-motion($className, $keyframeName, $duration);
@@ -34,7 +34,7 @@
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleY(0.9) translateY(-0) translateZ(0);
+    transform: scaleY(1) translateY(-4px) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -52,7 +52,7 @@
   100% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleY(0.9) translateY(-0) translateZ(0);
+    transform: scaleY(1) translateY(-4px) translateZ(0);
   }
 }
 
@@ -60,7 +60,7 @@
   0% {
     opacity: 0;
     transform-origin: 100% 100%;
-    transform: scaleY(0.9) translateY(0) translateZ(0);
+    transform: scaleY(1) translateY(4px) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -78,7 +78,7 @@
   100% {
     opacity: 0;
     transform-origin: 100% 100%;
-    transform: scaleY(0.9) translateY(0) translateZ(0);
+    transform: scaleY(1) translateY(4px) translateZ(0);
   }
 }
 
@@ -86,7 +86,7 @@
   0% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleX(0.9) translateX(-0) translateZ(0);
+    transform: scaleX(1) translateX(-4px) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -104,7 +104,7 @@
   100% {
     opacity: 0;
     transform-origin: 0% 0%;
-    transform: scaleX(0.9) translateX(-0) translateZ(0);
+    transform: scaleX(1) translateX(-4px) translateZ(0);
   }
 }
 
@@ -112,7 +112,7 @@
   0% {
     opacity: 0;
     transform-origin: 100% 0%;
-    transform: scaleX(0.9) translateX(0) translateZ(0);
+    transform: scaleX(1) translateX(4px) translateZ(0);
   }
   100% {
     opacity: 1;
@@ -130,6 +130,6 @@
   100% {
     opacity: 0;
     transform-origin: 100% 0%;
-    transform: scaleX(0.9) translateX(0) translateZ(0);
+    transform: scaleX(1) translateX(4px) translateZ(0);
   }
 }
