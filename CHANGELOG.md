@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.46.0](https://github.com/wxad/adui/compare/v2.45.6...v2.46.0) (2025-06-20)
+
+
+### Features
+
+* **Dialog:** 增加 autoScaleRange Prop ([a842704](https://github.com/wxad/adui/commit/a8427049a8fccc45bc2ed10cb08048ee590dbce5))
+
 ### [2.45.6](https://github.com/wxad/adui/compare/v2.45.5...v2.45.6) (2025-06-19)
 
 ### [2.45.5](https://github.com/wxad/adui/compare/v2.45.4...v2.45.5) (2024-12-21)
