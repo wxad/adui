@@ -45,6 +45,10 @@ interface IStepProps {
 export interface IDialogProps extends IStepProps {
   [key: string]: any
   /**
+   * 缩放对话框范围
+   */
+  autoScaleRange?: [number, number]
+  /**
    * 关闭后（transition 结束后）的 handler
    */
   afterClose?: (() => void) | null
@@ -166,6 +170,10 @@ export interface IDialogState {
  */
 class Dialog extends React.Component<IDialogProps, IDialogState> {
   public static propTypes = {
+    /**
+     * 缩放对话框范围
+     */
+    autoScaleRange: PropTypes.array,
     /**
      * 关闭后（transition 结束后）的 handler
      */
@@ -301,6 +309,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
   }
 
   public static defaultProps: IDialogProps = {
+    autoScaleRange: [0.92, 1],
     afterClose: null,
     bodyClassName: "",
     bodyStyle: {},
@@ -582,6 +591,7 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     const zIndex = zIndexProp as React.CSSProperties["zIndex"]
 
     const restProps = omit(otherProps, [
+      "autoScaleRange",
       "afterClose",
       "cancelProps",
       "cancelText",
@@ -732,6 +742,45 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     }
   }
 
+  public handleResize = () => {
+    const { autoScaleRange = [0.92, 1] } = this.props
+    const { visible } = this.state
+    if (!this.wrapper || !visible) {
+      return
+    }
+    const innerEl = this.dialog.querySelector(
+      `.${prefix}-inner`
+    ) as HTMLDivElement
+    if (!innerEl) {
+      return
+    }
+
+    const { clientWidth, clientHeight } = innerEl
+
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+
+    // 计算需要的空间（包括边距）
+    const requiredWidth = clientWidth + 72
+    const requiredHeight = clientHeight + 72
+
+    // 计算宽度和高度的缩放比例
+    const widthScale = windowWidth / requiredWidth
+    const heightScale = windowHeight / requiredHeight
+
+    // 取较小的缩放比例，确保内容完全可见
+    const scale = Math.min(widthScale, heightScale)
+
+    // 限制在指定范围内
+    const clampedScale = Math.min(
+      Math.max(scale, autoScaleRange[0]),
+      autoScaleRange[1]
+    )
+
+    // @ts-ignore
+    innerEl.style.zoom = `${clampedScale}`
+  }
+
   public componentDidUpdate = (
     _: IDialogProps,
     { visible: visiblePrev }: IDialogState
@@ -740,6 +789,11 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     if (visible !== visiblePrev && visible && this.wrapper) {
       this.setScrollbarPadding()
     }
+
+    setTimeout(() => {
+      this.handleResize()
+    }, 0)
+    window.addEventListener("resize", this.handleResize)
   }
 
   public componentWillUnmount = () => {
@@ -748,6 +802,8 @@ class Dialog extends React.Component<IDialogProps, IDialogState> {
     if (visible) {
       this.resetScrollbarPadding()
     }
+
+    window.removeEventListener("resize", this.handleResize)
   }
 
   public render() {

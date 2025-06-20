@@ -18,10 +18,12 @@ $prefix: "adui-dialog";
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 36px;
     overflow: auto;
     outline: none;
   }
   &-inner {
+    flex: none;
     display: flex;
     flex-direction: column;
     margin: 36px auto;
